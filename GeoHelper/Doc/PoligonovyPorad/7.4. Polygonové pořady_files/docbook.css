@@ -1,0 +1,103 @@
+body { 
+    background: #FFFFFF; 
+}
+
+a {
+   color: #493;
+   text-decoration: none;
+}
+
+a:visited {
+   color: #362;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+     padding: 1% 2%;
+     margin: 0px;
+     text-align: left;
+     font-family: Verdana, sans-serif;
+     font-size: 65%;  /* pro MSIE 5 */
+     font-size: 82%;
+     color: #333;
+     background: #fff;
+}
+				
+h1 {
+ color: #666;
+ font-size: 200%;
+ font-variant: small-caps;
+}
+
+h2 {
+ color: #666;
+ font-size: 160%;
+ font-variant: small-caps;
+}
+
+h3 {
+ color: #666;
+ font-size: 130%;
+ font-variant: small-caps;
+}
+		  
+hr {
+  height: 1px;
+  width: 90%;
+  margin: 0.8em auto;
+  border: none;
+  color: #ccc;
+  background-color: #ccc;
+  text-align: center;
+}
+				  
+div.table table {
+    border-style: solid;
+    border-width: 2px;
+    border-collapse: collapse;
+}				  
+div.table thead {
+    border-width: 1px;
+    border-style: double;
+    border-bottom-width: 3px;
+}			  
+
+div.table td,th {
+padding-left: 15px;
+padding-right: 15px;
+}
+
+span.term { 
+    font-weight: bold; 
+}
+
+div.sidebar { 
+    background: #F0F0F0; 
+    border: 1px solid gray; 
+    padding: 5px; 
+    margin: 20px; 
+}
+
+pre.programlisting { 
+    background: #F0F0F0; 
+    border: 1px solid gray; 
+    padding: 2px; 
+    font-size: 10pt;
+    white-space: pre;
+}
+
+div.table-contents table {
+    border: 2px solid;
+    border-collapse: collapse;
+}
+div.table-contents th{
+    border: 2px solid;
+}
+div.table-contents td {
+    border: 1px solid;
+}
+div.navheader {
+}

@@ -1,0 +1,56 @@
+﻿<Gui:DialogBase x:Class="CAD.VFK.GUI.VFKExportDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                loc:Translate.Uid="120"
+                Title="{loc:Translate Default=VFKExport}"
+                SizeToContent="WidthAndHeight">
+    <Gui:DialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:DialogBase.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   loc:Translate.Uid="32"
+                   Content="{loc:Translate Default=FileName:}" />
+            <TextBox Grid.Column="1"
+                     Height="22"
+                     Name="_mFileName"
+                     Text="{Binding Path=FileName}" />
+            <Button Grid.Column="2"
+                    Name="_mFileChooser"
+                    Click="OnFileChooser"
+                    MaxWidth="20"
+                    MinWidth="20"
+                    Content="..." />
+        </Grid>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right">
+            <Button Grid.Row="1"
+                    loc:Translate.Uid="43"
+                    Content="{loc:Translate Default=Ok}"
+                    IsCancel="True"
+                    Click="OnOkButtonClick" />
+            <Button Grid.Row="1"
+                    loc:Translate.Uid="44"
+                    Content="{loc:Translate Default=Cancle}"
+                    IsCancel="True"
+                    Click="OnCancelButtonClick" />
+        </StackPanel>
+    </Grid>
+</Gui:DialogBase>

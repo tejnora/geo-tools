@@ -1,0 +1,197 @@
+﻿<Calculations:CalculationDialogBase x:Class="GeoHelper.Calculations.ControlDistanceDialog"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                                    xmlns:Calculations="clr-namespace:GeoHelper.Calculations"
+                                    xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                                    xmlns:controls="clr-namespace:GeoHelper.Controls"
+                                    LanguageNamespace="ControlDistanceDialog"
+                                    loc:Translate.Uid="0"
+                                    Title="{loc:Translate ControlDistance}"
+                                    NewButtomContent="{loc:Translate NewCalculation}"
+                                    SizeToContent="Height"
+                                    Width="430">
+    <Calculations:CalculationDialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Converters/ConvertersStyles.xaml" />
+                <ResourceDictionary Source="CalculationStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Calculations:CalculationDialogBase.Resources>
+    <Calculations:CalculationDialogBase.DialogContent>
+        <GroupBox Grid.Row="0">
+            <Grid DragEnter="OnIdenticiallyPointDragEnter"
+                  PreviewDragOver="OnIdenticiallyPointDragEnter"
+                  Drop="OnIdenticiallyPointDrop"
+                  AllowDrop="True"
+                  DataContext="{Binding Path=CalculationContext}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="0"
+                          Grid.Column="0"
+                          ItemsSource="{Binding Path=TableNodes}"
+                          x:Name="_dataGrid"
+                          SelectionChanged="OnIdenticllyPointSelectionChanged">
+                    <DataGrid.Columns>
+                        <controls:LabelTextBoxColumn loc:Translate.Uid="ControlDistanceDialog.1"
+                                                     Width="30*"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     IsReadOnly="True"
+                                                     Header="{loc:Translate Point}"
+                                                     ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                                     EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                                     Binding="{Binding Path=Number}" />
+                        <controls:LabelTextBoxColumn Width="20*"
+                                                     loc:Translate.Uid="ControlDistanceDialog.2"
+                                                     Header="{loc:Translate Distance}"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     IsReadOnly="True"
+                                                     ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                                     EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                                     Binding="{Binding Path=CoordinateLength,Converter={StaticResource LengthConverter}}" />
+                        <controls:LabelTextBoxColumn Width="20*"
+                                                     loc:Translate.Uid="ControlDistanceDialog.3"
+                                                     Header="{loc:Translate Rozdil}"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     IsReadOnly="True"
+                                                     ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                                     EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                                     Binding="{Binding Path=LengthDifference,Converter={StaticResource LengthConverter}}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Column="0"
+                            Grid.Row="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            loc:Translate.Uid="4"
+                            Margin="5,1,5,1"
+                            Content="{loc:Translate Add}"
+                            Click="OnAdd"
+                            IsEnabled="{Binding Path=CanAddNodeIntoTable}"
+                            MinWidth="0" />
+                    <Button Grid.Column="2"
+                            Grid.Row="0"
+                            loc:Translate.Uid="5"
+                            Margin="5,1,5,1"
+                            Content="{loc:Translate Remove}"
+                            Click="OnRemove"
+                            MinWidth="0"
+                            IsEnabled="{Binding Path=CanRemoveItemFromTable}" />
+                </StackPanel>
+                <Grid Grid.Row="0"
+                      Grid.RowSpan="2"
+                      Grid.Column="1"
+                      Margin="0,3,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           loc:Translate.Uid="6"
+                           Content="{loc:Translate Prefix:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             Utils:TextBoxMaskBehavior.Mask="Integer"
+                             Utils:TextBoxMaskBehavior.MinimumValue="0"
+                             Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                             Text="{Binding Path=Node.Prefix}" />
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           loc:Translate.Uid="7"
+                           Content="{loc:Translate Number:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             Utils:TextBoxMaskBehavior.Mask="Integer"
+                             Utils:TextBoxMaskBehavior.MinimumValue="0"
+                             Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                             Text="{Binding Path=Node.Number}" />
+                    <Label Grid.Column="0"
+                           Grid.Row="2"
+                           loc:Translate.Uid="8"
+                           Content="{loc:Translate Length:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="2"
+                             Utils:TextBoxMaskBehavior.Mask="Decimal"
+                             Text="{Binding Path=Node.MeasuringLength, Converter={StaticResource LengthConverter}}" />
+                    <Label Grid.Column="0"
+                           Grid.Row="3"
+                           loc:Translate.Uid="9"
+                           Content="{loc:Translate Y:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="3"
+                             Utils:TextBoxMaskBehavior.Mask="Decimal"
+                             Text="{Binding Path=Node.Y, Converter={StaticResource CoordinateConverter}}"
+                             Height="23"
+                             VerticalAlignment="Top" />
+                    <Label Grid.Column="0"
+                           Grid.Row="4"
+                           loc:Translate.Uid="10"
+                           Content="{loc:Translate X:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="4"
+                             Utils:TextBoxMaskBehavior.Mask="Decimal"
+                             Text="{Binding Path=Node.X, Converter={StaticResource CoordinateConverter}}" />
+                </Grid>
+                <GroupBox loc:Translate.Uid=""
+                          Header="{loc:Translate KodKvality}"
+                          Grid.Column="2"
+                          Grid.Row="0"
+                          Grid.RowSpan="2">
+                    <StackPanel>
+                        <RadioButton Content="3"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_3}" />
+                        <RadioButton Content="4"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_4}" />
+                        <RadioButton Content="5"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_5}" />
+                        <RadioButton Content="6 (1:1000)"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_6}" />
+                        <RadioButton Content="7 (1:2000)"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_7}" />
+                        <RadioButton Content="8 (1:2880)"
+                                     GroupName="ControlDistanceDialogTableNodeQualityCode"
+                                     IsChecked="{Binding Path=QualityCode, Mode=TwoWay, 
+                               Converter={StaticResource EnumMatchToBooleanConverter},
+                               ConverterParameter=_8}" />
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+    </Calculations:CalculationDialogBase.DialogContent>
+</Calculations:CalculationDialogBase>

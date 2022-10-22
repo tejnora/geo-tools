@@ -1,0 +1,40 @@
+﻿<GUI:PpWindow x:Class="CAD.GUI.VfkNumberPropPage"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:GUI="clr-namespace:CAD.GUI" xmlns:Utils="clr-namespace:CAD.Utils" xmlns:GeoBase="clr-namespace:CAD.Utils;assembly=GeoBase"
+              xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" Title="VFKNumberPropPage"
+              Height="122"
+              Width="248">
+   <Grid Margin="5,5,5,5">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="Auto" />
+         <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Label Grid.Column="0"
+             loc:Translate.Uid="94"
+             Content="{loc:Translate Text}" />
+      <TextBox Grid.Column="1"
+               Text="{Binding Path=TextBoxContent, UpdateSourceTrigger=PropertyChanged}" />
+      <Label Grid.Column="0"
+                Grid.Row="1"
+                loc:Translate.Uid="96"
+                Content="{loc:Translate Velikost}" />
+      <TextBox Grid.Column="1"
+               Grid.Row="1"
+               loc:Translate.Uid="96"
+               ToolTip="{loc:Translate mm}"
+               GeoBase:TextBoxMaskBehavior.Mask="Decimal"
+               Text="{Binding Path=TextSize, UpdateSourceTrigger=PropertyChanged}" />
+      <CheckBox Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                loc:Translate.Uid="95"
+                Content="{loc:Translate Angle}"
+                IsChecked="{Binding Path=SetAngle}" />
+   </Grid>
+</GUI:PpWindow>

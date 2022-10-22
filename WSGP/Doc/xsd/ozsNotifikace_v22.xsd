@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://katastr.cuzk.cz/ozsNotifikace/types/v2.2" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" xmlns:on="http://katastr.cuzk.cz/ozsNotifikace/types/v2.2" elementFormDefault="qualified" version="2.2.0">
+
+	<import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="baseTypes_v22.xsd"/>
+	<import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="commonTypes_v22.xsd"/>
+
+	<element name="notifikace" type="on:NotifikaceType">
+		<annotation>
+			<documentation>Struktura notifikační zprávy poskytované službou OZS-2 ukládaná v OZS_ZPRAVA.ZPRAVA.
+Zprávy jsou odebírané prostřednictvím WS.
+Struktura se odkazuje na společné typy CommonTypes a BaseTypes definované používané též aplkací DP.</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="NotifikaceType">
+		<annotation>
+			<documentation>Struktura notifikační zprávy OZS odebírané prostřednictvím WS.</documentation>
+		</annotation>
+		<sequence>
+			<element name="rizeni" type="on:RizeniType">
+				<annotation>
+					<documentation>Řízení jehož události jsou obsahem notifikační zprávy.</documentation>
+				</annotation>
+			</element>
+			<element name="udalostList" type="on:UdalostListType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="RizeniType">
+		<annotation>
+			<documentation>Řízení jehož události jsou obsahem notifikační zprávy.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:RizeniType">
+				<sequence>
+					<element name="predmetRizeniList" type="on:PredmetRizeniListType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="UdalostListType">
+		<sequence>
+			<element name="udalost" type="on:UdalostType" minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="UdalostType">
+		<sequence>
+			<element name="typUdalosti" type="on:TypUdalostiType"/>
+			<element name="zmena" maxOccurs="unbounded" type="on:ZmenaType"/>
+		</sequence>
+
+		<attribute name="datumUdalosti" type="dateTime" use="required">
+			<annotation>
+				<documentation>Datum a čas vzniku události</documentation>
+			</annotation>
+		</attribute>
+
+	</complexType>
+
+	<complexType name="ZmenaType">
+		<choice>
+			<element name="parcela" type="on:ParcelaZpravaType"/>
+			<element name="stavba" type="on:stavbaZpravaType"/>
+			<element name="jednotka" type="on:JednotkaZpravaType"/>
+			<element name="pravoStavby" type="on:PravoStavbyZpravaType"/>
+			<element name="JPV" type="on:JpvZpravaType"/>
+			<element name="vlastnictvi" type="on:VlastnictviZpravaType"/>
+			<element name="operaceRizeni" type="on:OperaceRizeniZpravaType"/>
+			<element name="ucastnikRizeni" type="ct:OSBaseType"/>
+		</choice>
+		<attribute name="druhZmeny" type="on:DruhUdalostiType" use="required">
+			<annotation>
+				<documentation>Typ DML operace</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="ParcelaZpravaType">
+		<annotation>
+			<documentation>Rozšíření základních údajů parcely pro oznamovací službu.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:ParcelaType">
+				<sequence>
+					<element name="datumPlomby" type="dateTime" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="stavbaZpravaType">
+		<annotation>
+			<documentation>Rozšíření základních údajů stavby pro oznamovací službu.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:StavbaType">
+				<sequence>
+					<element name="datumPlomby" type="dateTime" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="JednotkaZpravaType">
+		<annotation>
+			<documentation>Rozšíření základních údajů jednotky pro oznamovací službu.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:JednotkaType">
+				<sequence>
+					<element name="datumPlomby" type="dateTime" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="PravoStavbyZpravaType">
+		<annotation>
+			<documentation>Rozšíření základních údajů práva stavby pro oznamovací službu.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:PravoStavbyType">
+				<sequence>
+					<element name="datumPlomby" type="dateTime" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="VlastnictviZpravaType">
+		<annotation>
+			<documentation>Rozšíření základních údajů vlastnictví pro oznamovací službu.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ct:VlastnictviType">
+				<sequence>
+					<choice>
+						<element name="os" type="ct:OSType"/>
+						<element name="parcela" type="ct:ParcelaIdentType">
+							<annotation>
+								<documentation>Identifikační údaje parcely přídatného spoluvlastnictví.</documentation>
+							</annotation>
+						</element>
+						<element name="stavba" type="ct:StavbaIdentType">
+							<annotation>
+								<documentation>Identifikační údaje stvby přídatného spoluvlastnictví.</documentation>
+							</annotation>
+						</element>
+						<element name="jednotka" type="ct:JednotkaIdentType">
+							<annotation>
+								<documentation>Identifikační údaje jednotky přídatného spoluvlastnictví.</documentation>
+							</annotation>
+						</element>
+						<element name="pravoStavby" type="ct:PravoStavbyIdentType">
+							<annotation>
+								<documentation>Identifikační údaje práva stavby přídatného spoluvlastnictví.</documentation>
+							</annotation>
+						</element>
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="OperaceRizeniZpravaType">
+		<annotation>
+			<documentation>Údaje operace řízení pro oznamovací službu.</documentation>
+		</annotation>
+		<sequence>
+			<element name="kodFunkce" type="bt:OperaceRizeniKodType"/>
+			<element name="kodOperace" type="bt:OperaceRizeniKodType"/>
+			<element name="nazevOperace" type="bt:OperaceRizeniNazevType"/>
+			<element name="datumUkonceniOperace" type="dateTime"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TypUdalostiType">
+		<sequence>
+			<element name="kodUdalosti" type="on:TypUdalostiKodType"/>
+			<element name="nazevTypuUdalosti" type="string"/>
+		</sequence>
+	</complexType>
+	<simpleType name="TypUdalostiKodType">
+		<annotation>
+			<documentation>
+U3:Ve sledovaných řízeních „V“ nebo „Z“ došlo k zapsání sledované operace. 
+U4:U vlastníka sledované nemovitosti došlo ke vzniku/ zániku JPV s vazbou pouze „k OS“ (např. prohlášení konkursu podle zákona o konkursu a vyrovnání, nařízení exekuce, ustanovení předběžného správce, zajištění majetku, …).
+U5:U sledované nemovitosti došlo ke změně nebo zániku vlastnictví, nebo u sledované nemovitosti došlo ke vzniku vlastnictví. Změnou se rozumí změna spoluvlastnického podílu na sledovaných nemovitostech nebo změna LV u sledované nemovitosti nebo změna výměry parcely. U sledované nemovitosti došlo ke změně/zániku PřSV nebo u sledované nemovitosti došlo ke vzniku PřSV. Změnou PřSV se rozumí změna spoluvlastnického podílu na sledovaných nemovitostech.
+U6:U sledované nemovitosti došlo k vzniku nebo zániku JPV s vazbou „pro nemovitost“ či „k nemovitosti“.
+U7:Došlo k zaplombování nebo odplombování sledované nemovitosti.
+U8:Vložení účastníka s vazbou na OS do řízení nebo jeho ověření v řízení, dotčený účastník řízení (OS) je uživatel oznamovací služby.
+U9:Zánik sledované nemovitosti (např. rozdělení stávající parcely na dvě nové, demolice budovy, zánik práva stavby, …).
+Zkratky:
+JPV: 	jiný právní vztah
+NEM:	nemovitost
+PřSV: 	přídatné spoluvlastnictví
+OS: 	oprávněný subjekt
+OZS: 	oznamovací služba
+</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="U3"/>
+			<enumeration value="U4"/>
+			<enumeration value="U5"/>
+			<enumeration value="U6"/>
+			<enumeration value="U7"/>
+			<enumeration value="U8"/>
+			<enumeration value="U9"/>
+		</restriction>
+
+	</simpleType>
+	<simpleType name="DruhUdalostiType">
+		<annotation>
+			<documentation>Druh DML operace (insert / update / delete).</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="INS"/>
+			<enumeration value="UPD"/>
+			<enumeration value="DEL"/>
+		</restriction>
+	</simpleType>
+	<complexType name="JpvZpravaType">
+		<annotation>
+			<documentation>Údaje JPV pro oznamovací službu. </documentation>
+		</annotation>
+		<sequence>
+			<element name="idJpv" type="bt:IdType"/>
+			<element name="typJpvKod" type="bt:TypPravnihoVztahuKodType">
+				<annotation>
+					<documentation>Kód typu právního vztahu.</documentation>
+				</annotation>
+			</element>
+			<element name="popisJpv" type="bt:TextType" minOccurs="0">
+				<annotation>
+					<documentation>Slovní popis právního vztahu.</documentation>
+				</annotation>
+			</element>
+			<element name="doplnkovyPopisJpv" type="bt:DoplnkovyPopisJpvType" minOccurs="0">
+				<annotation>
+					<documentation>Doplňkový popis právního vztahu.</documentation>
+				</annotation>
+			</element>
+
+			<element name="poradiCas" type="dateTime" minOccurs="0">
+				<annotation>
+					<documentation>Datum a čas vyjadřující pořadí jiného právního vztahu.</documentation>
+				</annotation>
+			</element>
+			<element name="poradiText" type="bt:PoradiTextJpvType" minOccurs="0">
+				<annotation>
+					<documentation>Text vyjadřující případné přednostní pořadí právního vztahu.</documentation>
+				</annotation>
+			</element>
+			<element name="datumUkonceni" type="date" minOccurs="0"/>
+			<element name="osVeVztahuK" type="ct:OSType" minOccurs="0"/>
+			<element name="osVeVztahuPro" type="ct:OSType" minOccurs="0"/>
+			<element name="osVeVztahuNadr" type="ct:OSType" minOccurs="0"/>
+			<element name="parcelaVeVztahuK" type="ct:ParcelaIdentType" minOccurs="0"/>
+			<element name="parcelaVeVztahuPro" type="ct:ParcelaIdentType" minOccurs="0"/>
+			<element name="stavbaVeVztahuK" type="ct:StavbaIdentType" minOccurs="0"/>
+			<element name="stavbaVeVztahuPro" type="ct:StavbaIdentType" minOccurs="0"/>
+			<element name="jednotkaVeVztahuK" type="ct:JednotkaIdentType" minOccurs="0"/>
+			<element name="jednotkaVeVztahuPro" type="ct:JednotkaIdentType" minOccurs="0"/>
+			<element name="pravoStavbyVeVztahuK" type="ct:PravoStavbyIdentType" minOccurs="0"/>
+			<element name="pravoStavbyVeVztahuPro" type="ct:PravoStavbyIdentType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="PredmetRizeniListType">
+		<sequence>
+			<element name="predmetRizeni" type="on:PredmetRizeniType" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<complexType name="PredmetRizeniType">
+		<sequence>
+			<element name="predmetRizeniKod" type="bt:PredmetRizeniKodType"/>
+			<element name="predmetRizeniNazev" type="bt:PredmetRizeniNazevType" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>

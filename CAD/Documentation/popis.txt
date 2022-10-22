@@ -1,0 +1,30 @@
+KOD  	Kód prvku prostorovıch dat
+VYZNAM 	Název prvku prostorovıch dat
+SKUP_KOD 	Kód skupiny prvkù prostorovıch dat
+SKUP_NAZEV 	Název skupiny prvkù prostorovıch dat
+CLEN_KOD 	Kód èlena skupiny prvkù prostorovıch dat
+CLEN_NAZEV 	Název èlena skupiny prvkù prostorovıch dat
+TUM_KOD 	Kód typu umístìní prvku prostorovıch dat
+TUM_NAZEV 	Název typu umístìní prvku prostorovıch dat
+POLOHOPIS 	Rozlišení, zda se jedná o polohopisnı prvek (a/n)
+EDITOVATELNY 	Definuje, zda je prvek editovatelnı v rámci editace polohopisnıch prvkù mapy (a/n)
+PLATNOST_OD 	Datum vzniku prvku
+PLATNOST_DO 	Datum zániku prvku
+MINULY_STAV 	Parametry pro zobrazení zrušenıch prvkù (prvky z minulosti). Jednotlivé hodnoty jsou od sebe oddìleny mezerou, jejich vıznam je následující:
+Pro liniové prvky: vrstva, barva, tlouška, styl linie, jméno znaèky na linii, posun v mm, perioda v mm (záporná hodnota = otoèení znaèky).
+Pro textové prvky: vrstva, barva, tlouška, styl, vıška v mm, èíslo fontu, vztanı bod, šíøka v mm.
+Pro bodové prvky: vrstva, barva, tlouška, styl.
+PRITOMNY_STAV 	Parametry pro zobrazení prvkù na tiskárnì nebo na plotru. Jednotlivé hodnoty jsou od sebe oddìleny mezerou, jejich vıznam je následující:
+Pro liniové prvky: vrstva, barva, tlouška, styl, jméno znaèky na linii, posun v mm, perioda v mm (záporná hodnota = otoèení znaèky).
+Pro textové prvky: vrstva, barva, tlouška, styl, vıška v mm, èíslo fontu, vztanı bod, šíøka v mm.
+Pro bodové prvky: vrstva, barva, tlouška, styl, jméno znaèkového symbolu.
+BUDOUCI_STAV 	Parametry pro zobrazení prvkù na obrazovce. Jednotlivé hodnoty jsou od sebe oddìleny mezerou, jejich vıznam je následující:
+Pro liniové prvky: vrstva, barva, tlouška, styl, jméno znaèky na linii, posun v mm, perioda v mm (záporná hodnota = otoèení znaèky).
+Pro textové prvky: vrstva, barva, tlouška, styl, vıška v mm, èíslo fontu, vztanı bod, šíøka v mm.
+Pro bodové prvky: vrstva, barva, tlouška, styl.
+PRISLUSNOST 	Definuje, zda má bıt topologicky urèena pøíslušnost k parcele (a/n)
+KRIVKA 	Definuje, zda prvek mùe bıt køivkou (a/n)
+TYP_PRVKU 	Typ prvku:
+1 ... liniovı prvek
+4 ... textovı prvek
+7 ... bodovı prvek (znaèka) 

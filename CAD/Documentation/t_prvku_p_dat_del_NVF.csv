@@ -1,0 +1,241 @@
+»ÌselnÌk SC_T_PRVKU_P_DAT;;;;;;;;;;;;;;;;;
+;;;;;;;;V˝znam: vrstva, barva, typ, tkouöùka, v˝öka textu, font, vzt. bod, öÌ¯ka textu;;;;;;;;;
+;;;;;;;;ZruöenÈ prvky-minulost;Tisk·rna, plotr;Obrazovka;;;;;;;
+KOD;SKUP_KOD;CLEN_KOD;TUM_KOD;POLOHOPIS;EDITOVATELNY;PLATNOST_OD;VYZNAM;MINULY_STAV;PRITOMNY_STAV;BUDOUCI_STAV;PRISLUSNOST;KRIVKA;TYP_PRVKU;PLATNOST_DO;;;Blok NVF
+21900;1;1;0;a;a;1.1.1998;Hranice parcely standardnÌ;1 146 1 0;1 0 1 0;1 2 1 0;n;n;1;;;;HP, SBP, SOBR
+21920;1;2;0;a;n;1.1.1998;Hranice parcely pohybliv·, nest·l·;1 146 1 0.10;1 0 1 0.10;1 2 1 0.10;n;n;1;;;;HP, SBP, SOBR
+21910;1;3;0;a;n;1.1.1998;Hranice parcely shora neviditeln·;1 146 1 0.02;1 0 1 0.02;1 2 1 0.02;n;n;1;;;;HP, SBP, SOBR
+21950;1;4;0;a;n;1.1.1998;Hranice parcely podzemnÌ;1 146 1 0.05;1 0 1 0.05;1 2 1 0.05;n;n;1;;;;HP, SBP, SOBR
+21930;1;5;0;a;n;1.1.1998;Hranice parcely p¯evzat·;1 146 1 0.12;1 0 1 0.12;1 2 1 0.12;n;n;1;;;;HP, SBP, SOBR
+21940;1;6;0;a;n;1.1.1998;Hranice parcely sporn·;1 146 1 0.13;1 0 1 0.13;1 2 1 0.13;n;n;1;;;;HP, SBP, SOBR
+18;2;7;0;n;n;1.1.1998;»Ìslo (def.bod) pozemkovÈ parcely;2 148 0 0 1.7 23 2 1.5;2 0 0 0 1.7 23 2 1.5;2 4 0 0 1.7 23 2 1.5;a;n;4;;;;OP
+28;2;8;0;n;n;1.1.1998;»Ìslo (def.bod) stavebnÌ parcely;2 147 0 0 1.7 23 2 1.5;2 0 0 0 1.7 23 2 1.5;2 3 0 0 1.7 23 2 1.5;a;n;4;;;;OP
+1018;2;9;0;n;a;1.1.1998;PopisnÈ parcelnÌ ËÌslo;7 144 0 0 1.7 23 2 1.5;7 0 0 0 1.7 23 2 1.5;7 0 0 0 1.7 23 2 1.5;a;n;4;;;;OP
+1032;2;70;0;n;a;1.1.1998;»·ra pro umÌstÏnÌ öipky;7 151 0 0;7 0 0 0;7 5 0 0;a;a;1;;;;OP,SBM
+1033;2;71;0;n;a;1.1.1998;äipka k parcelnÌmu ËÌslu;7 151 0 0 1029;7 0 0 0 1029;7 5 0 0 1029;a;n;7;;;;OP
+301;3;10;0;n;a;1.1.1998;Orn· p˘da;3 144 1 0 3.01;3 0 0 0 3.01;3 0 0 0 3.01;a;n;7;;;;OP
+302;3;11;0;n;a;1.1.1998;Chmelnice;3 144 1 0 3.02;3 0 0 0 3.02;3 0 0 0 3.02;a;n;7;;;;OP
+303;3;12;0;n;a;1.1.1998;Vinice;3 144 1 0 3.03;3 0 0 0 3.03;3 0 0 0 3.03;a;n;7;;;;OP
+304;3;13;0;n;a;1.1.1998;Zahrada;3 144 1 0 3.04;3 0 0 0 3.04;3 0 0 0 3.04;a;n;7;;;;OP
+305;3;14;0;n;a;1.1.1998;Ovocn˝ sad;3 144 1 0 3.05;3 0 0 0 3.05;3 0 0 0 3.05;a;n;7;;;;OP
+306;3;15;0;n;a;1.1.1998;trval˝ tr·vnÌ porost;3 144 1 0 3.06;3 0 0 0 3.06;3 0 0 0 3.06;a;n;7;;;;OP
+307;3;16;0;n;a;1.1.1998;Pastvina;3 144 1 0 3.07;3 0 0 0 3.07;3 0 0 0 3.07;a;n;7;22.1.2004;;;
+308;3;17;0;n;a;1.1.1998;LesnÌ p˘da bez rozliöenÌ porostu;3 144 1 0 3.08;3 0 0 0 3.08;3 0 0 0 3.08;a;n;7;;;;OP
+314;3;18;0;n;a;1.1.1998;Park, okrasn· zahrada;3 144 1 0 3.14;3 0 0 0 3.14;3 0 0 0 3.14;a;n;7;;;;OP
+315;3;19;0;n;a;1.1.1998;H¯bitov;3 144 1 0 3.15;3 0 0 0 3.15;3 0 0 0 3.15;a;n;7;;;;OP
+316;3;20;0;n;a;1.1.1998;Neplodn· p˘da;3 144 1 0 3.16;3 0 0 0 3.16;3 0 0 0 3.16;a;n;7;;;;OP
+701;3;21;0;n;a;1.1.1998;Povrchov· tÏûba nerost˘ a surovin;3 144 1 0 7.01;3 0 0 0 7.01;3 0 0 0 7.01;a;n;7;;;;OP
+703;3;22;0;n;a;1.1.1998;Loûisko slatin a raöelin;3 144 1 0 7.03;3 0 0 0 7.03;3 0 0 0 7.03;a;n;7;;;;OP
+802;3;23;0;n;a;1.1.1998;VodnÌ tok öiröÌ neû 2m;3 144 1 0 8.02;3 0 0 0 8.02;3 0 0 0 8.02;a;n;7;;;;OP
+803;3;24;0;n;a;1.1.1998;VodnÌ n·drû, rybnÌk;3 144 1 0 8.03;3 0 0 0 8.03;3 0 0 0 8.03;a;n;7;;;;OP
+804;3;25;0;n;a;1.1.1998;MoË·l, baûina;3 144 1 0 8.04;3 0 0 0 8.04;3 0 0 0 8.04;a;n;7;;;;OP
+318;3;26;0;n;a;1.1.1998;Nemovit· kulturnÌ pam·tka;3 144 1 0 3.18;3 0 0 0 3.18;3 0 0 0 3.18;n;n;7;;;;DPM
+21800;4;27;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba;4 148 0 0;4 0 0 0;4 4 0 0;a;a;1;;;;DPM, SBP, SOBR
+21820;4;28;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba pohybliv·, nest·l·;4 148 0 0.10;4 0 0 0.10;4 4 0 0.10;a;a;1;;;;DPM, SBP, SOBR
+21810;4;29;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba shora neviditeln·;4 148 0 0.02;4 0 0 0.02;4 4 0 0.02;a;a;1;;;;DPM, SBP, SOBR
+21850;4;30;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba podzemnÌ;4 148 0 0.05;4 0 0 0.05;4 4 0 0.05;a;a;1;;;;DPM, SBP, SOBR
+21830;4;31;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba p¯evzat·;4 148 0 0.12;4 0 0 0.12;4 4 0 0.12;a;a;1;;;;DPM, SBP, SOBR
+21840;4;32;0;a;n;1.1.1998;Hranice - vnit¯nÌ kresba sporn·;4 148 0 0.13;4 0 0 0.13;4 4 0 0.13;a;a;1;;;;DPM, SBP, SOBR
+50100;5;34;0;a;n;1.1.1998;Osa ûelezniËnÌ koleje norm.rozchodu;6 150 2 0;6 0 2 0;6 6 2 0;n;a;1;;;;DPM, SBP, SOBR
+52100;5;35;2;a;n;1.1.1998;Visut· lanov· dr·ha;6 150 2 5 5.21;6 0 2 5 5.2;6 6 2 5 5.2;n;a;1;;;;
+52200;5;36;1;a;n;1.1.1998;PozemnÌ lanov· dr·ha;6 150 2 0 5.22 10 10;6 0 2 0 5.2 10 10;6 6 2 0 5.2 10 10;n;a;1;;;;
+60500;5;37;0;a;n;1.1.1998;Osa nadzemnÌho vedenÌ;6 144 1 0.04;6 0 1 2;6 0 1 2;n;a;1;;;;DPM, SBP, SOBR
+60502;5;38;2;a;n;1.1.1998;VenkovnÌ silovÈ vedenÌ bez rozliöenÌ;6 144 1 2 6.59;6 0 1 2 6.59;6 0 1 2 6.59;n;a;1;;;;DPM, SBP, SOBR
+411;5;39;0;a;n;1.1.1998;P¯edmÏt malÈho rozsahu urËen˝ st¯edem;6 144 1 0 4.11;6 0 1 0 4.11;6 0 1 0 4.11;n;n;7;;;;DPM, SOBR
+601;5;40;0;a;n;1.1.1998;Kovov˝, betonov˝ stoû·r;6 144 1 0 6.01;6 0 1 0 6.01;6 0 1 0 6.01;n;n;7;;;;DPM, SOBR
+602;5;41;0;a;n;1.1.1998;P¯Ìhradov˝ stoû·r;6 144 1 0 6.02;6 0 1 0 6.02;6 0 1 0 6.02;n;n;7;;;;DPM, SOBR
+604;5;42;0;a;n;1.1.1998;Stoû·r vysÌlacÌ, retranslaËnÌ stanice;6 144 1 0 6.04;6 0 1 0 6.04;6 0 1 0 6.04;n;n;7;;;;DPM, SOBR
+811;5;43;0;a;n;1.1.1998;Ve¯ejn· studna;6 144 1 0 8.11;6 0 1 0 8.11;6 0 1 0 8.11;n;n;7;;;;DPM, SOBR
+420;5;44;0;a;n;1.1.1998;Most, propustek;4 144 0 0 4.20;4 0 0 0 4.20;4 0 0 0 4.20;n;n;7;;;;DPM, SOBR
+402;6;45;0;n;n;1.1.1998;Budova zdÏn·, betonov·, kovov·;5 144 1 0 4.02;5 0 1 0 4.02;5 0 1 0 4.02;a;n;7;;;;DPM
+403;6;46;0;n;n;1.1.1998;Budova d¯evÏn·;5 144 1 0 4.03;5 0 1 0 4.03;5 0 1 0 4.03;a;n;7;;;;DPM
+409;6;47;0;n;a;1.1.1998;Kostel, kaple nebo modlitebna;5 144 1 0 4.09;5 0 1 0 4.09;5 0 1 0 4.09;n;n;7;;;;DPM
+410;6;48;0;n;a;1.1.1998;Synagoga;5 144 1 0 4.10;5 0 1 0 4.10;5 0 1 0 4.10;n;n;7;;;;DPM
+412;6;49;0;n;a;1.1.1998;P¯edmÏt malÈho rozsahu bez rozliöenÌ;3 144 1 0 4.12;3 0 1 0 4.12;3 0 1 0 4.12;n;n;7;;;;DPM
+404;6;204;0;n;n;1.1.1998;Budova zdÏn·, betonov·, kovov· evidovan· v SPI;5 144 1 0 4.02;5 0 1 0 4.02;5 0 1 0 4.02;a;n;7;;;;OB
+405;6;205;0;n;n;1.1.1998;Budova d¯evÏn·  evidovan· v SPI;5 144 1 0 4.03;5 0 1 0 4.03;5 0 1 0 4.03;a;n;7;;;;OB
+21700;6;200;0;a;n;1.1.1998;Obvod budovy evidovanÈ v SPI;9 144 1 0;9 4 1 0;9 4 1 0;a;n;1;;;;OB, SBP, SOBR
+101;7;50;0;a;n;1.1.1998;Bod polohovÈho bodovÈho pole;8 146 1 0 1.01;8 0 1 0 1.01;8 2 1 0 1.01;n;n;7;;;;OBBP, SOBR
+102;7;51;0;a;n;1.1.1998;Bod PBP - pouze podzemnÌ znaËka;8 146 1 0 1.02;8 0 1 0 1.02;8 2 1 0 1.02;n;n;7;;;;OBBP, SOBR
+103;7;52;0;a;n;1.1.1998;Bod jednotnÈ nivelaËnÌ sÌtÏ;8 146 1 0 1.03;8 0 1 0 1.03;8 2 1 0 1.03;n;n;7;;;;OBBP, SOBR
+104;7;53;0;a;n;1.1.1998;Stabilizovan˝ bod technickÈ nivelace;8 146 1 0 1.04;8 0 1 0 1.04;8 2 1 0 1.04;n;n;7;;;;OBBP, SOBR
+105;7;54;0;a;n;1.1.1998;HraniËnÌ znak;8 146 1 0 1.05;8 0 1 0 1.05;8 2 1 0 1.05;n;n;7;;;;DPM, SOBR
+1016;7;55;0;n;a;1.1.1998;»Ìslo bodu bodovÈho pole;8 147 0 0 1.7 1 9 1.19;8 0 0 0 1.7 1 9 1.19;8 2 0 0 1.7 1 9 1.19;n;n;4;;;;OBBP
+1027;7;56;0;n;a;1.1.1998;»Ìslo hraniËnÌho znaku na st·tnÌ hranici;8 162 0 0 1.7 1 9 1.19;8 0 0 0 1.7 1 9 1.19;8 18 0 0 1.7 1 9 1.19;n;n;4;;;;
+1001;8;57;0;n;a;1.1.1998;N·zev mÏsta;7 151 2 0 8.5 1 2 5.95;7 0 2 0 8.5 1 2 5.95;7 5 2 0 8.5 1 2 5.95;n;n;4;;;;DPM
+1002;8;58;0;n;a;1.1.1998;N·zev mÏstskÈho obvodu nebo Ë·sti;7 151 2 0 5.0 1 2 3.5;7 0 2 0 5.0 1 2 3.5;7 5 2 0 5.0 1 2 3.5;n;n;4;;;;DPM
+1004;8;59;0;n;a;1.1.1998;N·zev obce;7 151 2 0 6.7 1 2 4.69;7 0 2 0 6.7 1 2 4.69;7 5 2 0 6.7 1 2 4.69;n;n;4;;;;DPM
+1005;8;60;0;n;a;1.1.1998;N·zev Ë·sti obce;7 151 2 0 4.4 1 2 3.08;7 0 2 0 4.4 1 2 3.08;7 5 2 0 4.4 1 2 3.08;n;n;4;;;;DPM
+1007;8;61;0;n;a;1.1.1998;N·zev n·mÏstÌ, parku;7 151 0 0 2.3 1 2 1.61;7 0 0 0 2.3 1 2 1.61;7 5 0 0 2.3 1 2 1.61;n;n;4;;;;DPM
+1008;8;62;0;n;a;1.1.1998;N·zev ulice;7 151 0 0 1.4 1 2 0.98;7 0 0 0 1.4 1 2 0.98;7 5 0 0 1.4 1 2 0.98;n;n;4;;;;DPM
+1009;8;63;0;n;a;1.1.1998;N·zev pozemkovÈ tratÏ;7 151 1 0 4.4 1 2 3.08;7 0 1 0 4.4 1 2 3.08;7 5 1 0 4.4 1 2 3.08;n;n;4;;;;DPM
+1010;8;64;0;n;a;1.1.1998;N·zev podruûnÈ pozemkovÈ tratÏ;7 151 1 0 2.9 1 2 2.03;7 0 1 0 2.9 1 2 2.03;7 5 1 0 2.9 1 2 2.03;n;n;4;;;;DPM
+1012;8;65;0;n;a;1.1.1998;N·zev sousednÌho st·tu;7 151 2 0 8.5 1 2 5.95;7 0 1 0 8.5 1 2 5.95;7 5 2 0 8.5 1 2 5.95;n;n;4;;;;
+1013;8;66;0;n;a;1.1.1998;N·zev ¯eky slouûÌcÌ k vodnÌ dopravÏ;7 197 1 0 4.4 1 2 3.08;7 0 1 0 4.4 1 2 3.08;7 53 1 0 4.4 1 2 3.08;n;n;4;;;;DPM
+1014;8;67;0;n;a;1.1.1998;N·zev ¯eky, jezera, vel.rybnÌku, p¯ehrady;7 181 1 0 3.4 1 2 2.38;7 0 1 0 3.4 1 2 2.38;7 37 1 0 3.4 1 2 2.38;n;n;4;;;;DPM
+1015;8;68;0;n;a;1.1.1998;N·zev potoka, rybnÌku;7 151 1 0 2.3 1 2 1.61;7 0 1 0 2.3 1 2 1.61;7 5 1 0 2.3 1 2 1.61;n;n;4;;;;DPM
+408;8;69;0;n;a;1.1.1998;»·ra jako v˝plÚ schodiötÏ;7 144 0 0;7 0 0 0;7 4 0 0;n;a;1;;;;DPM, SBM
+1060;8;215;0;n;a;1.1.1998;Symbol vodnÌho toku uûöÌho neû 2m;3 151 1 0 8.02;3 0 1 0 8.02;3 5 1 0 8.02;n;n;7;;;;
+20600;9;74;0;a;n;1.1.1998;Hranice kat.˙zemÌ (bez znaËky);1 147 2 0;1 0 1 0;1 3 2 0;n;n;1;;;;HP, SBP, SOBR
+20602;9;74;2;a;n;1.1.1998;Hranice kat.˙zemÌ (znaËka uprost¯ed);1 147 2 0 206;1 0 1 0 206;1 3 2 0 206;n;n;1;;;;HP, SBP, SOBR
+20603;9;74;3;a;n;1.1.1998;Hranice kat.˙zemÌ (znaËka na zaË·tku);1 147 2 0 206 3.5;1 0 1 0 206 3.5;1 3 2 0 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20604;9;74;4;a;n;1.1.1998;Hranice kat.˙zemÌ (znaËka na konci);1 147 2 0 206 3.5;1 0 1 0 206 3.5;1 3 2 0 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20605;9;74;5;a;n;1.1.1998;Hranice kat.˙zemÌ (na obou koncÌch);1 147 2 0 206 3.5;1 0 1 0 206 3.5;1 3 2 0 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20610;9;75;0;a;n;1.1.1998;Hranice kat.˙zemÌ shora neviditeln· (bez znaËky);1 147 2 0.02;1 0 1 0.02;1 3 2 0.02;n;n;1;;;;HP, SBP, SOBR
+20612;9;75;2;a;n;1.1.1998;Hranice kat.˙zemÌ shora neviditeln· (znaËka uprost¯ed);1 147 2 0.02 206;1 0 1 0.02 206;1 3 2 0.02 206;n;n;1;;;;HP, SBP, SOBR
+20613;9;75;3;a;n;1.1.1998;Hranice kat.˙zemÌ shora neviditeln· (znaËka na zaË·tku);1 147 2 0.02 206 3.5;1 0 1 0.02 206 3.5;1 3 2 0.02 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20614;9;75;4;a;n;1.1.1998;Hranice kat.˙zemÌ shora neviditeln· (znaËka na konci);1 147 2 0.02 206 3.5;1 0 1 0.02 206 3.5;1 3 2 0.02 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20615;9;75;5;a;n;1.1.1998;Hranice kat.˙zemÌ shora neviditeln· (na obou koncÌch);1 147 2 0.02 206 3.5;1 0 1 0.02 206 3.5;1 3 2 0.02 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20620;9;76;0;a;n;1.1.1998;Hranice kat.˙zemÌ pohybliv·, nest·l· (bez znaËky);1 147 2 0.10;1 0 1 0.10;1 3 2 0.10;n;n;1;;;;HP, SBP, SOBR
+20622;9;76;2;a;n;1.1.1998;Hranice kat.˙zemÌ pohybliv·, nest·l· (znaËka uprost¯ed);1 147 2 0.10 206;1 0 1 0.10 206;1 3 2 0.10 206;n;n;1;;;;HP, SBP, SOBR
+20623;9;76;3;a;n;1.1.1998;Hranice kat.˙zemÌ pohybliv·, nest·l· (znaËka na zaË·tku);1 147 2 0.10 206 3.5;1 0 1 0.10 206 3.5;1 3 2 0.10 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20624;9;76;4;a;n;1.1.1998;Hranice kat.˙zemÌ pohybliv·, nest·l· (znaËka na konci);1 147 2 0.10 206 3.5;1 0 1 0.10 206 3.5;1 3 2 0.10 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20625;9;76;5;a;n;1.1.1998;Hranice kat.˙zemÌ pohybliv·, nest·l· (na obou koncÌch);1 147 2 0.10 206 3.5;1 0 1 0.10 206 3.5;1 3 2 0.10 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20630;9;77;0;a;n;1.1.1998;Hranice kat.˙zemÌ p¯evzat· (bez znaËky);1 147 2 0.12;1 0 1 0.12;1 3 2 0.12;n;n;1;;;;HP, SBP, SOBR
+20632;9;77;2;a;n;1.1.1998;Hranice kat.˙zemÌ p¯evzat· (znaËka uprost¯ed);1 147 2 0.12 206;1 0 1 0.12 206;1 3 2 0.12 206;n;n;1;;;;HP, SBP, SOBR
+20633;9;77;3;a;n;1.1.1998;Hranice kat.˙zemÌ p¯evzat· (znaËka na zaË·tku);1 147 2 0.12 206 3.5;1 0 1 0.12 206 3.5;1 3 2 0.12 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20634;9;77;4;a;n;1.1.1998;Hranice kat.˙zemÌ p¯evzat· (znaËka na konci);1 147 2 0.12 206 3.5;1 0 1 0.12 206 3.5;1 3 2 0.12 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20635;9;77;5;a;n;1.1.1998;Hranice kat.˙zemÌ p¯evzat· (na obou koncÌch);1 147 2 0.12 206 3.5;1 0 1 0.12 206 3.5;1 3 2 0.12 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20640;9;78;0;a;n;1.1.1998;Hranice kat.˙zemÌ sporn· (bez znaËky);1 147 2 0.13;1 0 1 0.13;1 3 2 0.13;n;n;1;;;;HP, SBP, SOBR
+20642;9;78;2;a;n;1.1.1998;Hranice kat.˙zemÌ sporn· (znaËka uprost¯ed);1 147 2 0.13 206;1 0 1 0.13 206;1 3 2 0.13 206;n;n;1;;;;HP, SBP, SOBR
+20643;9;78;3;a;n;1.1.1998;Hranice kat.˙zemÌ sporn· (znaËka na zaË·tku);1 147 2 0.13 206 3.5;1 0 1 0.13 206 3.5;1 3 2 0.13 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20644;9;78;4;a;n;1.1.1998;Hranice kat.˙zemÌ sporn· (znaËka na konci);1 147 2 0.13 206 3.5;1 0 1 0.13 206 3.5;1 3 2 0.13 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20645;9;78;5;a;n;1.1.1998;Hranice kat.˙zemÌ sporn· (na obou koncÌch);1 147 2 0.13 206 3.5;1 0 1 0.13 206 3.5;1 3 2 0.13 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20650;9;79;0;a;n;1.1.1998;Hranice kat.˙zemÌ podzemnÌ (bez znaËky);1 147 2 0.05;1 0 1 0.05;1 3 2 0.05;n;n;1;;;;HP, SBP, SOBR
+20652;9;79;2;a;n;1.1.1998;Hranice kat.˙zemÌ podzemnÌ (znaËka uprost¯ed);1 147 2 0.05 206;1 0 1 0.05 206;1 3 2 0.05 206;n;n;1;;;;HP, SBP, SOBR
+20653;9;79;3;a;n;1.1.1998;Hranice kat.˙zemÌ podzemnÌ  (znaËka na zaË·tku);1 147 2 0.05 206 3.5;1 0 1 0.05 206 3.5;1 3 2 0.05 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20654;9;79;4;a;n;1.1.1998;Hranice kat.˙zemÌ podzemnÌ  (znaËka na konci);1 147 2 0.05 206 3.5;1 0 1 0.05 206 3.5;1 3 2 0.05 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20655;9;79;5;a;n;1.1.1998;Hranice kat.˙zemÌ podzemnÌ (na obou koncÌch);1 147 2 0.05 206 3.5;1 0 1 0.05 206 3.5;1 3 2 0.05 206 3.5;n;n;1;;;;HP, SBP, SOBR
+20500;10;80;0;a;n;1.1.1998;Hranice obce (bez znaËky);1 147 2 0;1 0 1 0;1 3 2 0;n;n;1;;;;HP, SBP, SOBR
+20502;10;80;2;a;n;1.1.1998;Hranice obce (znaËka uprost¯ed);1 147 2 0 205;1 0 1 0 205;1 3 2 0 205;n;n;1;;;;HP, SBP, SOBR
+20503;10;80;3;a;n;1.1.1998;Hranice obce (znaËka na zaË·tku);1 147 2 0 205 4.7;1 0 1 0 205 4.7;1 3 2 0 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20504;10;80;4;a;n;1.1.1998;Hranice obce (znaËka na konci);1 147 2 0 205 4.7;1 0 1 0 205 4.7;1 3 2 0 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20505;10;80;5;a;n;1.1.1998;Hranice obce (na obou koncÌch);1 147 2 0 205 4.7;1 0 1 0 205 4.7;1 3 2 0 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20510;10;81;0;a;n;1.1.1998;Hranice obce shora neviditeln· (bez znaËky);1 147 2 0.02;1 0 1 0.02;1 3 2 0.02;n;n;1;;;;HP, SBP, SOBR
+20512;10;81;2;a;n;1.1.1998;Hranice obce shora neviditeln· (znaËka uprost¯ed);1 147 2 0.02 205;1 0 1 0.02 205;1 3 2 0.02 205;n;n;1;;;;HP, SBP, SOBR
+20513;10;81;3;a;n;1.1.1998;Hranice obce shora neviditeln· (znaËka na zaË·tku);1 147 2 0.02 205 4.7;1 0 1 0.02 205 4.7;1 3 2 0.02 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20514;10;81;4;a;n;1.1.1998;Hranice obce shora neviditeln· (znaËka na konci);1 147 2 0.02 205 4.7;1 0 1 0.02 205 4.7;1 3 2 0.02 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20515;10;81;5;a;n;1.1.1998;Hranice obce shora neviditeln· (na obou koncÌch);1 147 2 0.02 205 4.7;1 0 1 0.02 205 4.7;1 3 2 0.02 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20520;10;82;0;a;n;1.1.1998;Hranice obce pohybliv·, nest·l· (bez znaËky);1 147 2 0.10;1 0 1 0.10;1 3 2 0.10;n;n;1;;;;HP, SBP, SOBR
+20522;10;82;2;a;n;1.1.1998;Hranice obce pohybliv·, nest·l· (znaËka uprost¯ed);1 147 2 0.10 205;1 0 1 0.10 205;1 3 2 0.10 205;n;n;1;;;;HP, SBP, SOBR
+20523;10;82;3;a;n;1.1.1998;Hranice obce pohybliv·, nest·l· (znaËka na zaË·tku);1 147 2 0.10 205 4.7;1 0 1 0.10 205 4.7;1 3 2 0.10 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20524;10;82;4;a;n;1.1.1998;Hranice obce pohybliv·, nest·l· (znaËka na konci);1 147 2 0.10 205 4.7;1 0 1 0.10 205 4.7;1 3 2 0.10 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20525;10;82;5;a;n;1.1.1998;Hranice obce pohybliv·, nest·l· (na obou koncÌch);1 147 2 0.10 205 4.7;1 0 1 0.10 205 4.7;1 3 2 0.10 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20530;10;83;0;a;n;1.1.1998;Hranice obce p¯evzat· (bez znaËky);1 147 2 0.12;1 0 1 0.12;1 3 2 0.12;n;n;1;;;;HP, SBP, SOBR
+20532;10;83;2;a;n;1.1.1998;Hranice obce p¯evzat· (znaËka uprost¯ed);1 147 2 0.12 205;1 0 1 0.12 205;1 3 2 0.12 205;n;n;1;;;;HP, SBP, SOBR
+20533;10;83;3;a;n;1.1.1998;Hranice obce p¯evzat· (znaËka na zaË·tku);1 147 2 0.12 205 4.7;1 0 1 0.12 205 4.7;1 3 2 0.12 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20534;10;83;4;a;n;1.1.1998;Hranice obce p¯evzat· (znaËka na konci);1 147 2 0.12 205 4.7;1 0 1 0.12 205 4.7;1 3 2 0.12 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20535;10;83;5;a;n;1.1.1998;Hranice obce p¯evzat· (na obou koncÌch);1 147 2 0.12 205 4.7;1 0 1 0.12 205 4.7;1 3 2 0.12 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20540;10;84;0;a;n;1.1.1998;Hranice obce sporn· (bez znaËky);1 147 2 5;1 0 1 5;1 3 2 5;n;n;1;;;;HP, SBP, SOBR
+20542;10;84;2;a;n;1.1.1998;Hranice obce sporn· (znaËka uprost¯ed);1 147 2 0.13 205;1 0 1 5 205;1 3 2 5 205;n;n;1;;;;HP, SBP, SOBR
+20543;10;84;3;a;n;1.1.1998;Hranice obce sporn· (znaËka na zaË·tku);1 147 2 0.13 205 4.7;1 0 1 5 205 4.7;1 3 2 5 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20544;10;84;4;a;n;1.1.1998;Hranice obce sporn· (znaËka na konci);1 147 2 0.13 205 4.7;1 0 1 5 205 4.7;1 3 2 5 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20545;10;84;5;a;n;1.1.1998;Hranice obce sporn· (na obou koncÌch);1 147 2 0.13 205 4.7;1 0 1 5 205 4.7;1 3 2 5 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20550;10;85;0;a;n;1.1.1998;Hranice obce podzemnÌ (bez znaËky);1 147 2 0.05;1 0 1 0.05;1 3 2 0.05;n;n;1;;;;HP, SBP, SOBR
+20552;10;85;2;a;n;1.1.1998;Hranice obce podzemnÌ (znaËka uprost¯ed);1 147 2 0.05 205;1 0 1 0.05 205;1 3 2 0.05 205;n;n;1;;;;HP, SBP, SOBR
+20553;10;85;3;a;n;1.1.1998;Hranice obce podzemnÌ (znaËka na zaË·tku);1 147 2 0.05 205 4.7;1 0 1 0.05 205 4.7;1 3 2 0.05 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20554;10;85;4;a;n;1.1.1998;Hranice obce podzemnÌ (znaËka na konci);1 147 2 0.05 205 4.7;1 0 1 0.05 205 4.7;1 3 2 0.05 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20555;10;85;5;a;n;1.1.1998;Hranice obce podzemnÌ (na obou koncÌch);1 147 2 0.05 205 4.7;1 0 1 0.05 205 4.7;1 3 2 0.05 205 4.7;n;n;1;;;;HP, SBP, SOBR
+20400;11;86;0;a;n;1.1.1998;Hranice okresu (bez znaËky);1 147 2 0;1 0 1 0;1 3 2 0;n;n;1;;;;HP, SBP, SOBR
+20402;11;86;2;a;n;1.1.1998;Hranice okresu (znaËka uprost¯ed);1 147 2 0 204;1 0 1 0 204;1 3 2 0 204;n;n;1;;;;HP, SBP, SOBR
+20403;11;86;3;a;n;1.1.1998;Hranice okresu (znaËka na zaË·tku);1 147 2 0 204 6.5;1 0 1 0 204 6.5;1 3 2 0 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20404;11;86;4;a;n;1.1.1998;Hranice okresu (znaËka na konci);1 147 2 0 204 6.5;1 0 1 0 204 6.5;1 3 2 0 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20405;11;86;5;a;n;1.1.1998;Hranice okresu (na obou koncÌch);1 147 2 0 204 6.5;1 0 1 0 204 6.5;1 3 2 0 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20410;11;87;0;a;n;1.1.1998;Hranice okresu shora neviditeln· (bez znaËky);1 147 2 0.02;1 0 1 0.02;1 3 2 0.02;n;n;1;;;;HP, SBP, SOBR
+20412;11;87;2;a;n;1.1.1998;Hranice okresu shora neviditeln· (znaËka uprost¯ed);1 147 2 0.02 204;1 0 1 0.02 204;1 3 2 0.02 204;n;n;1;;;;HP, SBP, SOBR
+20413;11;87;3;a;n;1.1.1998;Hranice okresu shora neviditeln· (znaËka na zaË·tku);1 147 2 0.02 204 6.5;1 0 1 0.02 204 6.5;1 3 2 0.02 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20414;11;87;4;a;n;1.1.1998;Hranice okresu shora neviditeln· (znaËka na konci);1 147 2 0.02 204 6.5;1 0 1 0.02 204 6.5;1 3 2 0.02 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20415;11;87;5;a;n;1.1.1998;Hranice okresu shora neviditeln· (na obou koncÌch);1 147 2 0.02 204 6.5;1 0 1 0.02 204 6.5;1 3 2 0.02 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20420;11;88;0;a;n;1.1.1998;Hranice okresu pohybliv·, nest·l· (bez znaËky);1 147 2 0.10;1 0 1 0.10;1 3 2 0.10;n;n;1;;;;HP, SBP, SOBR
+20422;11;88;2;a;n;1.1.1998;Hranice okresu pohybliv·, nest·l· (znaËka uprost¯ed);1 147 2 0.10 204;1 0 1 0.10 204;1 3 2 0.10 204;n;n;1;;;;HP, SBP, SOBR
+20423;11;88;3;a;n;1.1.1998;Hranice okresu pohybliv·, nest·l· (znaËka na zaË·tku);1 147 2 0.10 204 6.5;1 0 1 0.10 204 6.5;1 3 2 0.10 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20424;11;88;4;a;n;1.1.1998;Hranice okresu pohybliv·, nest·l· (znaËka na konci);1 147 2 0.10 204 6.5;1 0 1 0.10 204 6.5;1 3 2 0.10 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20425;11;88;5;a;n;1.1.1998;Hranice okresu pohybliv·, nest·l· (na obou koncÌch);1 147 2 0.10 204 6.5;1 0 1 0.10 204 6.5;1 3 2 0.10 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20430;11;89;0;a;n;1.1.1998;Hranice okresu p¯evzat· (bez znaËky);1 147 2 0.12;1 0 1 0.12;1 3 2 0.12;n;n;1;;;;HP, SBP, SOBR
+20432;11;89;2;a;n;1.1.1998;Hranice okresu p¯evzat· (znaËka uprost¯ed);1 147 2 0.12 204;1 0 1 0.12 204;1 3 2 0.12 204;n;n;1;;;;HP, SBP, SOBR
+20433;11;89;3;a;n;1.1.1998;Hranice okresu p¯evzat· (znaËka na zaË·tku);1 147 2 0.12 204 6.5;1 0 1 0.12 204 6.5;1 3 2 0.12 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20434;11;89;4;a;n;1.1.1998;Hranice okresu p¯evzat·  (znaËka na konci);1 147 2 0.12 204 6.5;1 0 1 0.12 204 6.5;1 3 2 0.12 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20435;11;89;5;a;n;1.1.1998;Hranice okresu p¯evzat· (na obou koncÌch);1 147 2 0.12 204 6.5;1 0 1 0.12 204 6.5;1 3 2 0.12 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20440;11;90;0;a;n;1.1.1998;Hranice okresu sporn· (bez znaËky);1 147 2 0.13;1 0 1 5;1 3 2 5;n;n;1;;;;HP, SBP, SOBR
+20442;11;90;2;a;n;1.1.1998;Hranice okresu sporn· (znaËka uprost¯ed);1 147 2 0.13 204;1 0 1 5 204;1 3 2 5 204;n;n;1;;;;HP, SBP, SOBR
+20443;11;90;3;a;n;1.1.1998;Hranice okresu sporn· (znaËka na zaË·tku);1 147 2 0.13 204 6.5;1 0 1 5 204 6.5;1 3 2 5 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20444;11;90;4;a;n;1.1.1998;Hranice okresu sporn· (znaËka na konci);1 147 2 0.13 204 6.5;1 0 1 5 204 6.5;1 3 2 5 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20445;11;90;5;a;n;1.1.1998;Hranice okresu sporn· (na obou koncÌch);1 147 2 0.13 204 6.5;1 0 1 5 204 6.5;1 3 2 5 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20450;11;91;0;a;n;1.1.1998;Hranice okresu podzemnÌ (bez znaËky);1 147 2 0.05;1 0 1 0.05;1 3 2 0.05;n;n;1;;;;HP, SBP, SOBR
+20452;11;91;2;a;n;1.1.1998;Hranice okresu podzemnÌ (znaËka uprost¯ed);1 147 2 0.05 204;1 0 1 0.05 204;1 3 2 0.05 204;n;n;1;;;;HP, SBP, SOBR
+20453;11;91;3;a;n;1.1.1998;Hranice okresu podzemnÌ (znaËka na zaË·tku);1 147 2 0.05 204 6.5;1 0 1 0.05 204 6.5;1 3 2 0.05 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20454;11;91;4;a;n;1.1.1998;Hranice okresu podzemnÌ (znaËka na konci);1 147 2 0.05 204 6.5;1 0 1 0.05 204 6.5;1 3 2 0.05 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20455;11;91;5;a;n;1.1.1998;Hranice okresu podzemnÌ (na obou koncÌch);1 147 2 0.05 204 6.5;1 0 1 0.05 204 6.5;1 3 2 0.05 204 6.5;n;n;1;;;;HP, SBP, SOBR
+20300;12;92;0;a;n;1.1.1998;Hranice kraje (bez znaËky);1 147 2 0;1 0 1 0;1 3 2 0;n;n;1;;;;HP, SBP, SOBR
+20302;12;92;2;a;n;1.1.1998;Hranice kraje (znaËka uprost¯ed);1 147 2 0 203;1 0 1 0 203;1 3 2 0 203;n;n;1;;;;HP, SBP, SOBR
+20303;12;92;3;a;n;1.1.1998;Hranice kraje (znaËka na zaË·tku);1 147 2 0 203 7.0;1 0 1 0 203 7.0;1 3 2 0 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20304;12;92;4;a;n;1.1.1998;Hranice kraje (znaËka na konci);1 147 2 0 203 7.0;1 0 1 0 203 7.0;1 3 2 0 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20305;12;92;5;a;n;1.1.1998;Hranice kraje (na obou koncÌch);1 147 2 0 203 7.0 -1;1 0 1 0 203 7.0 -1;1 3 2 0 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20310;12;93;0;a;n;1.1.1998;Hranice kraje shora neviditeln· (bez znaËky);1 147 2 0.02;1 0 1 0.02;1 3 2 0.02;n;n;1;;;;HP, SBP, SOBR
+20312;12;93;2;a;n;1.1.1998;Hranice kraje shora neviditeln· (znaËka uprost¯ed);1 147 2 0.02 203;1 0 1 0.02 203;1 3 2 0.02 203;n;n;1;;;;HP, SBP, SOBR
+20313;12;93;3;a;n;1.1.1998;Hranice kraje shora neviditeln· (znaËka na zaË·tku);1 147 2 0.02 203 7.0;1 0 1 0.02 203 7.0;1 3 2 0.02 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20314;12;93;4;a;n;1.1.1998;Hranice kraje shora neviditeln· (znaËka na konci);1 147 2 0.02 203 7.0;1 0 1 0.02 203 7.0;1 3 2 0.02 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20315;12;93;5;a;n;1.1.1998;Hranice kraje shora neviditeln· (na obou koncÌch);1 147 2 0.02 203 7.0;1 0 1 0.02 203 7.0 -1;1 3 2 0.02 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20320;12;94;0;a;n;1.1.1998;Hranice kraje pohybliv·, nest·l· (bez znaËky);1 147 2 0.10;1 0 1 0.10;1 3 2 0.10;n;n;1;;;;HP, SBP, SOBR
+20322;12;94;2;a;n;1.1.1998;Hranice kraje pohybliv·, nest·l· (znaËka uprost¯ed);1 147 2 0.10 203;1 0 1 0.10 203;1 3 2 0.10 203;n;n;1;;;;HP, SBP, SOBR
+20323;12;94;3;a;n;1.1.1998;Hranice kraje pohybliv·, nest·l· (znaËka na zaË·tku);1 147 2 0.10 203 7.0;1 0 1 0.10 203 7.0;1 3 2 0.10 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20324;12;94;4;a;n;1.1.1998;Hranice kraje pohybliv·, nest·l· (znaËka na konci);1 147 2 0.10 203 7.0;1 0 1 0.10 203 7.0;1 3 2 0.10 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20325;12;94;5;a;n;1.1.1998;Hranice kraje pohybliv·, nest·l· (na obou koncÌch);1 147 2 0.10 203 7.0;1 0 1 0.10 203 7.0 -1;1 3 2 0.10 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20330;12;95;0;a;n;1.1.1998;Hranice kraje p¯evzat· (bez znaËky);1 147 2 0.12;1 0 1 0.12;1 3 2 0.12;n;n;1;;;;HP, SBP, SOBR
+20332;12;95;2;a;n;1.1.1998;Hranice kraje p¯evzat· (znaËka uprost¯ed);1 147 2 0.12 203;1 0 1 0.12 203;1 3 2 0.12 203;n;n;1;;;;HP, SBP, SOBR
+20333;12;95;3;a;n;1.1.1998;Hranice kraje p¯evzat· (znaËka na zaË·tku);1 147 2 0.12 203 7.0;1 0 1 0.12 203 7.0;1 3 2 0.12 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20334;12;95;4;a;n;1.1.1998;Hranice kraje p¯evzat· (znaËka na konci);1 147 2 0.12 203 7.0;1 0 1 0.12 203 7.0;1 3 2 0.12 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20335;12;95;5;a;n;1.1.1998;Hranice kraje p¯evzat· (na obou koncÌch);1 147 2 0.12 203 7.0;1 0 1 0.12 203 7.0 -1;1 3 2 0.12 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20340;12;96;0;a;n;1.1.1998;Hranice kraje sporn· (bez znaËky);1 147 2 5;1 0 1 5;1 3 2 5;n;n;1;;;;HP, SBP, SOBR
+20342;12;96;2;a;n;1.1.1998;Hranice kraje sporn· (znaËka uprost¯ed);1 147 2 0.13 203;1 0 1 5 203;1 3 2 5 203;n;n;1;;;;HP, SBP, SOBR
+20343;12;96;3;a;n;1.1.1998;Hranice kraje sporn· (znaËka na zaË·tku);1 147 2 0.13 203 7.0;1 0 1 5 203 7.0;1 3 2 5 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20344;12;96;4;a;n;1.1.1998;Hranice kraje sporn· (znaËka na konci);1 147 2 0.13 203 7.0;1 0 1 5 203 7.0;1 3 2 5 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20345;12;96;5;a;n;1.1.1998;Hranice kraje sporn· (na obou koncÌch);1 147 2 0.13 203 7.0 -1;1 0 1 5 203 7.0 -1;1 3 2 5 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20350;12;97;0;a;n;1.1.1998;Hranice kraje podzemnÌ (bez znaËky);1 147 2 0.05;1 0 1 0.05;1 3 2 0.05;n;n;1;;;;HP, SBP, SOBR
+20352;12;97;2;a;n;1.1.1998;Hranice kraje podzemnÌ (znaËka uprost¯ed);1 147 2 0.05 203;1 0 1 0.05 203;1 3 2 0.05 203;n;n;1;;;;HP, SBP, SOBR
+20353;12;97;3;a;n;1.1.1998;Hranice kraje podzemnÌ (znaËka na zaË·tku);1 147 2 0.05 203 7.0;1 0 1 0.05 203 7.0;1 3 2 0.05 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20354;12;97;4;a;n;1.1.1998;Hranice kraje podzemnÌ (znaËka na konci);1 147 2 0.05 203 7.0;1 0 1 0.05 203 7.0;1 3 2 0.05 203 7.0;n;n;1;;;;HP, SBP, SOBR
+20355;12;97;5;a;n;1.1.1998;Hranice kraje podzemnÌ (na obou koncÌch);1 147 2 0.05 203 7.0;1 0 1 0.05 203 7.0 -1;1 3 2 0.05 203 7.0 -1;n;n;1;;;;HP, SBP, SOBR
+20100;13;98;0;a;n;1.1.1998;Hranice st·tnÌ (bez znaËky);1 147 2 0;1 0 1 0;1 3 2 0;n;n;1;;;;HP, SBP, SOBR
+20102;13;98;2;a;n;1.1.1998;Hranice st·tnÌ (znaËka uprost¯ed);1 147 2 0 201;1 0 1 0 201;1 3 2 0 201;n;n;1;;;;HP, SBP, SOBR
+20103;13;98;3;a;n;1.1.1998;Hranice st·tnÌ (znaËka na zaË·tku);1 147 2 0 201 7.0;1 0 1 0 201 7.0;1 3 2 0 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20104;13;98;4;a;n;1.1.1998;Hranice st·tnÌ (znaËka na konci);1 147 2 0 201 7.0;1 0 1 0 201 7.0;1 3 2 0 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20105;13;98;5;a;n;1.1.1998;Hranice st·tnÌ (na obou koncÌch);1 147 2 0 201 7.0;1 0 1 0 201 7.0;1 3 2 0 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20110;13;99;0;a;n;1.1.1998;Hranice st·tnÌ shora neviditeln· (bez znaËky);1 147 2 0.02;1 0 1 0.02;1 3 2 0.02;n;n;1;;;;HP, SBP, SOBR
+20112;13;99;2;a;n;1.1.1998;Hranice st·tnÌ shora neviditeln· (znaËka uprost¯ed);1 147 2 0.02 201;1 0 1 0.02 201;1 3 2 0.02 201;n;n;1;;;;HP, SBP, SOBR
+20113;13;99;3;a;n;1.1.1998;Hranice st·tnÌ shora neviditeln· (znaËka na zaË·tku);1 147 2 0.02 201 7.0;1 0 1 0.02 201 7.0;1 3 2 0.02 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20114;13;99;4;a;n;1.1.1998;Hranice st·tnÌ shora neviditeln· (znaËka na konci);1 147 2 0.02 201 7.0;1 0 1 0.02 201 7.0;1 3 2 0.02 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20115;13;99;5;a;n;1.1.1998;Hranice st·tnÌ shora neviditeln· (na obou koncÌch);1 147 2 0.02 201 7.0;1 0 1 0.02 201 7.0;1 3 2 0.02 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20120;13;100;0;a;n;1.1.1998;Hranice st·tnÌ pohybliv·, nest·l· (bez znaËky);1 147 2 0.10;1 0 1 0.10;1 3 2 0.10;n;n;1;;;;HP, SBP, SOBR
+20122;13;100;2;a;n;1.1.1998;Hranice st·tnÌ pohybliv·, nest·l· (znaËka uprost¯ed);1 147 2 0.10 201;1 0 1 0.10 201;1 3 2 0.10 201;n;n;1;;;;HP, SBP, SOBR
+20123;13;100;3;a;n;1.1.1998;Hranice st·tnÌ pohybliv·, nest·l· (znaËka na zaË·tku);1 147 2 0.10 201 7.0;1 0 1 0.10 201 7.0;1 3 2 0.10 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20124;13;100;4;a;n;1.1.1998;Hranice st·tnÌ pohybliv·, nest·l· (znaËka na konci);1 147 2 0.10 201 7.0;1 0 1 0.10 201 7.0;1 3 2 0.10 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20125;13;100;5;a;n;1.1.1998;Hranice st·tnÌ pohybliv·, nest·l· (na obou koncÌch);1 147 2 0.10 201 7.0;1 0 1 0.10 201 7.0;1 3 2 0.10 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20130;13;101;0;a;n;1.1.1998;Hranice st·tnÌ p¯evzat· (bez znaËky);1 147 2 0.12;1 0 1 0.12;1 3 2 0.12;n;n;1;;;;HP, SBP, SOBR
+20132;13;101;2;a;n;1.1.1998;Hranice st·tnÌ p¯evzat· (znaËka uprost¯ed);1 147 2 0.12 201;1 0 1 0.12 201;1 3 2 0.12 201;n;n;1;;;;HP, SBP, SOBR
+20133;13;101;3;a;n;1.1.1998;Hranice st·tnÌ p¯evzat· (znaËka na zaË·tku);1 147 2 0.12 201 7.0;1 0 1 0.12 201 7.0;1 3 2 0.12 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20134;13;101;4;a;n;1.1.1998;Hranice st·tnÌ p¯evzat· (znaËka na konci);1 147 2 0.12 201 7.0;1 0 1 0.12 201 7.0;1 3 2 0.12 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20135;13;101;5;a;n;1.1.1998;Hranice st·tnÌ p¯evzat· (na obou koncÌch);1 147 2 0.12 201 7.0;1 0 1 0.12 201 7.0;1 3 2 0.12 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20140;13;102;0;a;n;1.1.1998;Hranice st·tnÌ sporn· (bez znaËky);1 147 2 0.13;1 0 1 5;1 3 2 5;n;n;1;;;;HP, SBP, SOBR
+20142;13;102;2;a;n;1.1.1998;Hranice st·tnÌ sporn· (znaËka uprost¯ed);1 147 2 0.13 201;1 0 1 5 201;1 3 2 5 201;n;n;1;;;;HP, SBP, SOBR
+20143;13;102;3;a;n;1.1.1998;Hranice st·tnÌ sporn· (znaËka na zaË·tku);1 147 2 0.13 201 7.0;1 0 1 5 201 7.0;1 3 2 5 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20144;13;102;4;a;n;1.1.1998;Hranice st·tnÌ sporn· (znaËka na konci);1 147 2 0.13 201 7.0;1 0 1 5 201 7.0;1 3 2 5 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20145;13;102;5;a;n;1.1.1998;Hranice st·tnÌ sporn· (na obou koncÌch);1 147 2 0.13 201 7.0;1 0 1 5 201 7.0;1 3 2 5 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20150;13;103;0;a;n;1.1.1998;Hranice st·tnÌ podzemnÌ (bez znaËky);1 147 2 0.05;1 0 1 0.05;1 3 2 0.05;n;n;1;;;;HP, SBP, SOBR
+20152;13;103;2;a;n;1.1.1998;Hranice st·tnÌ podzemnÌ (znaËka uprost¯ed);1 147 2 0.05 201;1 0 1 0.05 201;1 3 2 0.05 201;n;n;1;;;;HP, SBP, SOBR
+20153;13;103;3;a;n;1.1.1998;Hranice st·tnÌ podzemnÌ (znaËka na zaË·tku);1 147 2 0.05 201 7.0;1 0 1 0.05 201 7.0;1 3 2 0.05 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20154;13;103;4;a;n;1.1.1998;Hranice st·tnÌ podzemnÌ (znaËka na konci);1 147 2 0.05 201 7.0;1 0 1 0.05 201 7.0;1 3 2 0.05 201 7.0;n;n;1;;;;HP, SBP, SOBR
+20155;13;103;5;a;n;1.1.1998;Hranice st·tnÌ podzemnÌ (na obou koncÌch);1 147 2 0.05 201 7.0;1 0 1 0.05 201 7.0;1 3 2 0.05 201 7.0;n;n;1;;;;HP, SBP, SOBR
+22300;14;104;0;n;a;1.1.1998;Hranice chr·nÏnÈho ˙zemÌ;4 149 0 0.18;4 0 0 0.18;4 5 0 0.18;n;a;1;;;;DPM, SBM
+22400;14;105;0;n;a;1.1.1998;Hranice ochrannÈho p·sma;4 149 0 0.19;4 0 0 0.19;4 5 0 0.19;n;a;1;;;;DPM, SBM
+1040;15;202;0;n;n;1.1.1998;Linie obvod˘ bonitovan˝ch a nebonitovan˝ch ploch;11 152 0 0;11 8 0 0;11 8 0 0;n;n;1;;;;HBPEJ, SBM
+1042;15;203;0;n;n;1.1.1998;KÛd BPEJ;11 152 0 0 2.5 23 2 1.75;11 8 0 0 2.5 23 2 1.75;11 8 0 0 2.5 23 2 1.75;n;n;4;;;;OBPEJ
+1043;15;207;0;n;n;1.1.1998;KÛd nebonitovanÈ plochy;11 152 1 0 2.5 23 2 1.75;11 8 1 0 2.5 23 2 1.75;11 8 1 0 2.5 23 2 1.75;a;n;4;;;;
+1050;16;210;0;n;n;1.1.1998;Neza¯azen· linie po migraci;12 153 1 0;12 9 1 0;12 9 1 0;n;n;1;1.1.1999;;;
+1051;16;211;0;n;n;1.1.1998;Neza¯azen˝ text po migraci;12 153 1 0 2.0 1 2 1.5;12 9 1 0 2.0 1 2 1.5;12 9 1 0 2.0 1 2 1.5;n;n;4;1.1.1999;;;
+1052;16;212;0;n;n;1.1.1998;Neza¯azen˝ symbol po migraci;12 153 1 0 999;12 9 1 0 999;12 9 1 0 999;n;n;7;1.1.1999;;;
+1019;16;209;0;n;a;1.1.1998;PopisnÈ parcelnÌ ËÌslo (volnÈ);7 144 0 0 1.7 23 2 1.5;7 0 0 0 1.7 23 2 1.5;7 0 0 0 1.7 23 2 1.5;n;n;4;1.1.1999;;;DPM
+1028;16;213;0;n;a;1.1.1998;»·ra pro umÌstÏnÌ öipky (voln·);7 151 0 0;7 0 0 0;7 5 0 0;n;a;1;1.1.1998;;;DPM, SBM
+1029;16;214;0;n;a;1.1.1998;äipka k parcelnÌmu ËÌslu (voln·);7 151 0 0 1029;7 0 0 0 1029;7 5 0 0 1029;n;n;7;1.1.1998;;;
+22000;4;33;0;a;n;18.12.2000;Hranice - vnit¯nÌ kresba bez topologie;4 148 0 0;4 0 0 0;4 4 0 0;a;a;1;;;;DPM, SBP, SOBR
+21999;1;300;0;a;a;17.12.2001;Hranice parcely p¯evzat· z map d¯ÌvÏjöÌch pozemkov˝ch evidencÌ;1 146 1 0;1 0 1 0;1 2 1 0;n;n;1;;;;HP, SBP, SOBR

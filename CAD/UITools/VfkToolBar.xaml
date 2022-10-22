@@ -1,0 +1,69 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.UITools.VfkToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" mc:Ignorable="d"
+                       d:DesignHeight="300"
+                       d:DesignWidth="300">
+    <UITools:GeoCadToolBar.CommandBindings>
+        <CommandBinding Command="UITools:VfkToolBar.VfkMultiLine"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+        <CommandBinding Command="UITools:VfkToolBar.VfkMark"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+        <CommandBinding Command="UITools:VfkToolBar.VfkText"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+        <CommandBinding Command="UITools:VfkToolBar.VfkLayerManger"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+        <CommandBinding Command="UITools:VfkToolBar.VfkMeasureArea"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+    </UITools:GeoCadToolBar.CommandBindings>
+    <ToggleButton Command="UITools:VfkToolBar.VfkMultiLine"
+                  ToolTip="Lines">
+        <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
+    </ToggleButton>
+    <ToggleButton Command="UITools:VfkToolBar.VfkMark"
+                  ToolTip="Marks">
+        <Image Source="/CAD;component/Icons/VfkMarks.png"></Image>
+    </ToggleButton>
+    <ToggleButton Command="UITools:VfkToolBar.VfkText"
+                  ToolTip="Numbers">
+        <Image Source="/CAD;component/Icons/VfkText.png"></Image>
+    </ToggleButton>
+    <ComboBox Width="100"
+              x:Name="_elementsGroup"
+              SelectedItem="{Binding Path=SelectedSubGroup}"
+              ItemsSource="{Binding Path=SubGroups}"
+              DisplayMemberPath="Description"
+              SelectedValuePath="Description"
+              SelectionChanged="OnReloadTool">
+    </ComboBox>
+    <ComboBox Width="100"
+              x:Name="_elementGroupSubCombo"
+              ItemsSource="{Binding ElementName=_elementsGroup,Path=SelectedItem.Elements}"
+              SelectedItem="{Binding ElementName=_elementsGroup, Path=SelectedItem.SelectedElement}"
+              DisplayMemberPath="Description"
+              SelectedValuePath="Description"
+              SelectionChanged="OnReloadTool" />
+    <ToggleButton loc:Translate.Uid="111"
+                  ToolTip="{loc:Translate Enable / disable view points}"
+                  IsChecked="{Binding Path=VfkShowPointsIsChecked}">
+        <Image Source="/CAD;component/Icons/VfkViewPoints.png"></Image>
+    </ToggleButton>
+    <Button loc:Translate.Uid="112"
+            ToolTip="{loc:Translate VfkLayerManager}"
+            Click="OnVfkLayerManger">
+        <Image Source="/CAD;component/Icons/VfkLevelManager.png"></Image>
+    </Button>
+    <ToggleButton Command="UITools:VfkToolBar.VfkMeasureArea"
+                  loc:Translate.Uid="139"
+                  ToolTip="{loc:Translate MeasureArea}">
+        <Image Source="/CAD;component/Icons/VfkVypocetVymer.png"></Image>
+    </ToggleButton>
+</UITools:GeoCadToolBar>

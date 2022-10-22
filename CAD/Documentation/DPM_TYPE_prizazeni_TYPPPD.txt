@@ -1,0 +1,30 @@
+'HCHU' (Hranice chránìného území) 
+typppd_kod = 22300
+
+
+'HOCHP' (Hranice ochranného pásma)
+typppd_kod = 22400
+
+
+'MEZ' (Hranièní znak)
+typppd_kod = 105
+
+
+'LDPP' (Liniový další prvek polohopisu)
+typ_prvku=1 AND polohopis='a'
+
+
+'LPP' (Liniový popisný prvek)
+typ_prvku=1 AND polohopis='n'
+
+
+'TPP' (Textový popisný prvek)
+typ_prvku=4
+
+
+'BDPP' (Bodový další prvek polohopisu)
+typ_prvku=7 AND polohopis='a'
+
+
+'BPP'  (Bodový popisný prvek)
+typ_prvku=7 AND polohopis='n'

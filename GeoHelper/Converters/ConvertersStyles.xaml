@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Converters="clr-namespace:GeoHelper.Converters"
+                    xmlns:Converters1="clr-namespace:GeoBase.Converters;assembly=GeoBase">
+    <Converters:CoordinateNumberConverter x:Key="CoordinateNumberConverter" />
+    <Converters:DoubleConverter x:Key="DoubleConverter" />
+    <Converters:CoordinateConverter x:Key="CoordinateConverter" />
+    <Converters:AngleConverter x:Key="AngleConverter" />
+    <Converters:LengthConverter x:Key="LengthConverter" />
+    <Converters:HeightConverter x:Key="HeightConverter" />
+    <Converters:AreaConverter x:Key="AreaConverter" />
+    <Converters:StringToIntWithInvisibleZero x:Key="UInt32ToStringZero" />
+    <Converters1:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
+    <Converters:InvertBoolConverter x:Key="InvertBoolConverter" />
+    <Converters:DebugConverter x:Key="DebugConverter" />
+    <Converters:LocalizedEnumConverter x:Key="LocalizedEnumConverter" />
+</ResourceDictionary>

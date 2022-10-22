@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Deviations>
+    <Value Id="DeviationFailed" Text=
+"Mezní odchylky stanovené pro práci v katastru nemovitostí nebyly dodrženy.
+Geometrické parametry stanovené pro práci v katastru nemovitostí nebyly dodrženy." />
+    <Value Id="DeviationSuccess" Text=
+"Mezní odchylky stanovené pro práci v katastru nemovitostí byly dodrženy.
+Geometrické parametry stanovené pro práci v katastru nemovitostí byly dodrženy." />
+    <Value Id="1" DeviationText="Polohova odchylka byla překročena. Vypočtená odchylka je:#vypoctena#. Mezní odchylka je:#mezni#." />
+    <Value Id="2" DeviationText="Úhlová odchylka byla překročena. Vypočtená odchylka je:#vypoctena#. Mezní odchylka je:#mezni#." />
+    <Value Id="3" DeviationText="Mezní délka polybonu byla překročena. Vypočtená délka je:#vypoctena#. Mezní délka je:#mezni#." />
+    <Value Id="4" DeviationText="Rozdíl naměřené a vypočtené orientace byl překročen. Vypočtená odchylka je:#vypoctena#. Mezní odchylka je:#mezni#." />
+    <Value Id="5" DeviationText="Mezní hodnota výškového uzávěru byla překročena. Vypočtená hodnota je:#vypoctena#. Mezní odchylka je:#mezni#." />
+    <Value Id="6" DeviationText="Minimální úhel protnutí    [g]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="7" DeviationText="Kratší určovací vzdálenost [m]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="8" DeviationText="Rozdíl v délce [m]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="9" DeviationText="Délka          [m]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="10" DeviationText="Oprava orientace [g]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="11" DeviationText="Rozdíl v délce [m]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#" />
+    <Value Id="12" DeviationText="Rozdíl v kontrolní oměrné [m]: Skutečná hodnota: #vypoctena#, Mezní hodnota: #mezni#." />
+    <Value Id="13" DeviationText="Minimální úhel protnutí    [g]: Skutečná hodnota:  #vypoctena#, Mezní hodnota:  #mezni#."/>
+    <Value Id="14" DeviationText="Kratší určovací vzdálenost [m]: Skutečná hodnota:    #vypoctena#, Mezní hodnota:  #mezni#."/>
+  </Deviations>
+</Localization>

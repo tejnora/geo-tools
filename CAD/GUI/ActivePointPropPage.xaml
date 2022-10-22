@@ -1,0 +1,10 @@
+﻿<custom:PpWindow x:Class="CAD.GUI.ActivePointPropPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:custom="clr-namespace:CAD.GUI"
+    xmlns:GeoBase="clr-namespace:CAD.Utils;assembly=GeoBase" Title="ActivePointPropPage">
+    <Grid>
+        <Label Height="23" Margin="6,17,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51">Radius:</Label>
+        <TextBox Height="20"  Name="_radius" GeoBase:TextBoxMaskBehavior.MinimumValue="0" GeoBase:TextBoxMaskBehavior.MaximumValue="360" GeoBase:TextBoxMaskBehavior.Mask="Decimal" VerticalAlignment="Top" SelectionChanged="onChanged" Margin="62,20,19,0"></TextBox>
+    </Grid>
+</custom:PpWindow>

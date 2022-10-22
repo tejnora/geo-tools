@@ -1,0 +1,63 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.UITools.EditToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       mc:Ignorable="d">
+   <UITools:GeoCadToolBar.CommandBindings>
+      <CommandBinding Command="UITools:EditToolBar.Select"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:EditToolBar.Pan"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:EditToolBar.Move"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:EditToolBar.Undo"
+                      CanExecute="OnCanExecuteUndo"
+                      Executed="OnExecuteUndo" />
+      <CommandBinding Command="UITools:EditToolBar.Redo"
+                      CanExecute="OnCanExecuteRedo"
+                      Executed="OnExecuteRedo" />
+      <CommandBinding Command="UITools:EditToolBar.FitView"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecuteFitView" />
+   </UITools:GeoCadToolBar.CommandBindings>
+   <UITools:GeoCadToolBar.InputBindings>
+      <KeyBinding Command="UITools:EditToolBar.Redo"
+                  Key="Y"
+                  Modifiers="Ctrl" />
+      <KeyBinding Command="UITools:EditToolBar.Undo"
+                  Key="Z"
+                  Modifiers="Ctrl" />
+      <KeyBinding Command="UITools:EditToolBar.FitView"
+                  Key="F" />
+   </UITools:GeoCadToolBar.InputBindings>
+   <ToggleButton Command="UITools:EditToolBar.Select"
+                 ToolTip="Select">
+      <Image Source="/CAD;component/Icons/Arrow.png" />
+   </ToggleButton>
+   <ToggleButton Command="UITools:EditToolBar.Pan"
+                 ToolTip="Pan">
+      <Image Source="/CAD;component/Icons/Hand.png" />
+   </ToggleButton>
+   <ToggleButton Command="UITools:EditToolBar.Move"
+                 ToolTip="Move">
+      <Image Source="/CAD;component/Icons/MoveCris.png" />
+   </ToggleButton>
+   <Button Command="UITools:EditToolBar.Undo"
+           ToolTip="Undo">
+      <Image Source="/CAD;component/Icons/Undo.png" />
+   </Button>
+   <Button Command="UITools:EditToolBar.Redo"
+           ToolTip="Redo">
+      <Image Source="/CAD;component/Icons/Redo.png" />
+   </Button>
+   <Button Command="UITools:EditToolBar.FitView"
+           Tag="FitView">
+      <Image Source="/CAD;component/Icons/FitView.png" />
+   </Button>
+
+</UITools:GeoCadToolBar>

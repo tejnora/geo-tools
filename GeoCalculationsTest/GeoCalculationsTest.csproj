@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{312A11E6-C1C5-4E46-AFC3-863C8BE768FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeoCalculationsTest</RootNamespace>
+    <AssemblyName>GeoCalculationsTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GeneralMatrix, Version=1.0.4355.30852, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GeneralMatrix\bin\Debug\GeneralMatrix.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Methods\BalancedDirectionAzimutExceptionTests.cs" />
+    <Compile Include="Methods\ConstractionDistanceTests.cs" />
+    <Compile Include="Methods\ControlDistanceTests.cs" />
+    <Compile Include="Methods\CordinateTransformationTests.cs" />
+    <Compile Include="Methods\ElevationDifferenceTests.cs" />
+    <Compile Include="Methods\OrtogonalniMetodaTests.cs" />
+    <Compile Include="Methods\PolarMethodTests.cs" />
+    <Compile Include="Methods\PolygonTraversTests.cs" />
+    <Compile Include="Methods\LengthIntersectionTests.cs" />
+    <Compile Include="Methods\DirectionIntersectionTests.cs" />
+    <Compile Include="Methods\LinesIntersectionTests.cs" />
+    <Compile Include="Methods\BasicCalculationTests.cs" />
+    <Compile Include="Methods\FreePointOfViewTests.cs" />
+    <Compile Include="Methods\SimpleCalculationTests.cs" />
+    <Compile Include="Protocol\ProtocolAssemblyScannerTests.cs" />
+    <Compile Include="Protocol\ProtocolExpressionEvaluatorTest.cs" />
+    <Compile Include="Protocol\ProtocolGeneratorTests.cs" />
+    <Compile Include="Protocol\ProtocolParserTest.cs" />
+    <Compile Include="Transformation\Affine2DTransformation.cs" />
+    <Compile Include="Transformation\Identity2DTransformation.cs" />
+    <Compile Include="Transformation\MatrixWrapperTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformation\Similar2DTransformation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoBase\GeoBase.csproj">
+      <Project>{ED2C0A40-579E-40A2-813A-E6D165D9FCE6}</Project>
+      <Name>GeoBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoCalculations\GeoCalculations.csproj">
+      <Project>{A85CF85A-15D5-4D93-A286-7B26D292579E}</Project>
+      <Name>GeoCalculations</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

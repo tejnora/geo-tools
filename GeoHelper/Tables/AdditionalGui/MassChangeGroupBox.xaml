@@ -1,0 +1,57 @@
+﻿<Gui:UserControlBase x:Class="GeoHelper.Tables.AdditionalGui.MassChangeGroupBox"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                     xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                     xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                     LanguageNamespace="MassChangeGroupBox"
+                     mc:Ignorable="d"
+                     x:Name="_this"
+                     d:DesignHeight="150"
+                     d:DesignWidth="150">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Converters/ConvertersStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <GroupBox Header="{Binding ElementName=_this, Path=GroupBoxHeader}">
+        <StackPanel>
+            <CheckBox loc:Translate.Uid="0"
+                      Content="{loc:Translate Change}"
+                      IsChecked="{Binding Path=IsEnabledCheckBox}"
+                      x:Name="_checkkBox" />
+            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                     x:Name="_textBox"
+                     IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"></TextBox>
+            <RadioButton loc:Translate.Uid="1"
+                         Content="{loc:Translate Set}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         Visibility="{Binding ElementName=_this, Path=GroupBoxVisibility}"
+                         IsChecked="{Binding Path=OperationType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=Set}" />
+            <RadioButton loc:Translate.Uid="2"
+                         Content="{loc:Translate Multiply}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         Visibility="{Binding ElementName=_this, Path=GroupBoxVisibility}"
+                         IsChecked="{Binding Path=OperationType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=Multiply}" />
+            <RadioButton loc:Translate.Uid="3"
+                         Content="{loc:Translate Add}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         Visibility="{Binding ElementName=_this, Path=GroupBoxVisibility}"
+                         IsChecked="{Binding Path=OperationType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=Add}" />
+        </StackPanel>
+    </GroupBox>
+</Gui:UserControlBase>

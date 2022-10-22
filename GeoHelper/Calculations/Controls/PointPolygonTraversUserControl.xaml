@@ -1,0 +1,79 @@
+﻿<Gui:UserControlBase x:Class="GeoHelper.Calculations.Controls.PointPolygonTraversUserControl"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                     xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                     xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                     mc:Ignorable="d"
+                     LanguageNamespace="TableNodePolygonTraversUserControl"
+                     d:DesignHeight="152"
+                     d:DesignWidth="300"
+                     x:Name="_this">
+    <Gui:UserControlBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Converters/ConvertersStyles.xaml" />
+                <ResourceDictionary Source="../CalculationStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:UserControlBase.Resources>
+    <GroupBox Grid.Column="0"
+              Header="{Binding ElementName=_this,Path=GroupBoxHeader}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+                   loc:Translate.Uid="0"
+                   Content="{loc:Translate Prefix:}" />
+            <TextBox Grid.Column="1"
+                     Grid.Row="0"
+                     Text="{Binding Path=Point.Predcisli}" />
+            <Label Grid.Column="0"
+                   Grid.Row="1"
+                   loc:Translate.Uid="1"
+                   Content="{loc:Translate Number:}" />
+            <TextBox Grid.Column="1"
+                     Grid.Row="1"
+                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                     Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                     Text="{Binding Path=Point.Cislo}" />
+            <Label Grid.Column="0"
+                   Grid.Row="2"
+                   loc:Translate.Uid="2"
+                   Content="{loc:Translate Y:}" />
+            <TextBox Grid.Column="1"
+                     Grid.Row="2"
+                     Utils:TextBoxMaskBehavior.Mask="Decimal"
+                     Text="{Binding Path=Point.Y, Converter={StaticResource CoordinateConverter}}" />
+            <Label Grid.Column="0"
+                   Grid.Row="3"
+                   loc:Translate.Uid="3"
+                   Content="{loc:Translate X:}" />
+            <TextBox Grid.Column="1"
+                     Grid.Row="3"
+                     Utils:TextBoxMaskBehavior.Mask="Decimal"
+                     Text="{Binding Path=Point.X, Converter={StaticResource CoordinateConverter}}" />
+            <Label Grid.Column="0"
+                   Grid.Row="4"
+                   loc:Translate.Uid="4"
+                   Content="{loc:Translate Z:}" />
+            <TextBox Grid.Column="1"
+                     Grid.Row="4"
+                     Utils:TextBoxMaskBehavior.Mask="Decimal"
+                     Text="{Binding Path=Point.Z, Converter={StaticResource CoordinateConverter}}" />
+        </Grid>
+    </GroupBox>
+</Gui:UserControlBase>

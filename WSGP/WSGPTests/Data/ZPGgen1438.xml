@@ -1,0 +1,162 @@
+﻿<?xml version="1.0"?>
+<enx xmlns="http://katastr.cuzk.cz/enx/content/v2.2" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:geo="http://katastr.cuzk.cz/geoCommmonTypes/v2.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <typyRizeni>
+        <typ>ZPG</typ>
+    </typyRizeni>
+    <extIdentifikace>876-1064/2017</extIdentifikace>
+    <pracoviste>
+        <kod>209</kod>
+    </pracoviste>
+    <katastralniUzemi>
+        <ku>
+            <ct:kod>700321</ct:kod>
+            <ct:nazev>Mukařov u Říčan</ct:nazev>
+        </ku>
+    </katastralniUzemi>
+    <parcely>
+        <ct:idParcely>3070494209</ct:idParcely>
+        <ct:idParcely>3270980209</ct:idParcely>
+        <ct:idParcely>31454808010</ct:idParcely>
+        <ct:idParcely>3070497209</ct:idParcely>
+        <ct:idParcely>4037997209</ct:idParcely>
+        <ct:idParcely>3070707209</ct:idParcely>
+        <ct:idParcely>3070708209</ct:idParcely>
+    </parcely>
+    <mapovyList>KMD</mapovyList>
+    <ucelZmeny>8</ucelZmeny>
+    <ucelZmeny>11</ucelZmeny>
+    <ucastnici num="2">
+        <ucastnik>
+            <ucastnikDruh>1</ucastnikDruh>
+            <ucastnikTyp>ZG</ucastnikTyp>
+            <obchodniJmeno>XY s.r.o.</obchodniJmeno>
+            <ico>12345678</ico>
+            <adresy>
+                <adresa>
+                    <adresaTyp>1</adresaTyp>
+                    <obecNazev>Lhota</obecNazev>
+                    <ulice>Bezručova</ulice>
+                    <cpCe>1</cpCe>
+                    <cisloDomovni>5</cisloDomovni>
+                    <psc>12345</psc>
+                </adresa>
+            </adresy>
+        </ucastnik>
+        <ucastnik>
+            <ucastnikDruh>2</ucastnikDruh>
+            <ucastnikTyp>OG</ucastnikTyp>
+            <jmeno>Josef</jmeno>
+            <prijmeni>Novák</prijmeni>
+            <rc>5606061234</rc>
+            <datumNarozeni>1956-06-06</datumNarozeni>
+            <titulPredJmenem>Ing.</titulPredJmenem>
+            <adresy>
+                <adresa>
+                    <adresaTyp>4</adresaTyp>
+                    <obecNazev>Lhota</obecNazev>
+                    <ulice>Horní</ulice>
+                    <cpCe>1</cpCe>
+                    <cisloDomovni>1234</cisloDomovni>
+                    <psc>54321</psc>
+                    <telefon>105106107</telefon>
+                    <email>novak@novak.cz</email>
+                </adresa>
+            </adresy>
+            <bankovniSpojeni>
+                <ct:cisloUctu>515515515</ct:cisloUctu>
+                <ct:kodBanky>0800</ct:kodBanky>
+                <ct:typUctu>I</ct:typUctu>
+            </bankovniSpojeni>
+        </ucastnik>
+    </ucastnici>
+    <listiny>
+        <listina>
+            <typKod>230</typKod>
+            <datumVyhotoveni>2017-05-03</datumVyhotoveni>
+            <priloha idPrilohy="1" jmenoSouboru="700321_GP.pdf"/>
+        </listina>
+        <listina>
+            <typKod>231</typKod>
+            <datumVyhotoveni>2017-05-03</datumVyhotoveni>
+            <priloha idPrilohy="2" jmenoSouboru="700321_ZPMZ.zip"/>
+            <doplnkoveUdajeZPMZ>
+                <katuzeKod>700321</katuzeKod>
+                <cisloZPMZ>876</cisloZPMZ>
+            </doplnkoveUdajeZPMZ>
+        </listina>
+        <listina>
+            <typKod>232</typKod>
+            <datumVyhotoveni>2017-05-03</datumVyhotoveni>
+            <priloha idPrilohy="3" jmenoSouboru="700321_Zadost.pdf"/>
+        </listina>
+    </listiny>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+<ds:Reference URI="" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:Transforms xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+<ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">nNgJJnB/kV3/xSbo+FRmhq2yMF6WbL5PPtNdpp8+Trg=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+YxY0JoAfrwZO/ecLu5jgWdfRDY1kxCL78XYjRfpwqohzqIQyyNp+cTlNxAy7OKf0/IModYDVdYLO
+fdNqGfSeNB+U1wqOMbnCMHs5Q8EH6pJKEJ7plCvcX+lB2FwYcTABiqJpzUQjEdDvxPaNXdlZXJ5T
+xZP0s7YAOnw6IyhKvhgZIFQacbmSK8ldzS/xZjU8TojfZw33QgxmNaStw3l2YM5SsWDXCtRzx4hm
+0qzqSNldyZKuS7X8LWsTr9MYXNj3Ogouval6tkCBPJTMoCK6r2HAAqAyy0P1fQwz1eIU622uL0Ny
+6dnaf1S0hZqU3wuC2qAncK+Bq1FAmUI5aB04gg==
+</ds:SignatureValue>
+<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:X509Data xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:X509SubjectName xmlns:ds="http://www.w3.org/2000/09/xmldsig#">T=Správce ISKN,SERIALNUMBER=P256344,CN=Jiří Lafek,OU=100001,O=ČR - Český úřad zeměměřický a katastrální [IČ 00025712],C=CZ</ds:X509SubjectName>
+<ds:X509Certificate xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+MIIGxjCCBa6gAwIBAgIDHldMMA0GCSqGSIb3DQEBCwUAMF8xCzAJBgNVBAYTAkNaMSwwKgYDVQQK
+DCPEjGVza8OhIHBvxaF0YSwgcy5wLiBbScSMIDQ3MTE0OTgzXTEiMCAGA1UEAxMZUG9zdFNpZ251
+bSBRdWFsaWZpZWQgQ0EgMjAeFw0xNjA1MjAwNzU1MTBaFw0xNzA2MDkwNzU1MTBaMIGtMQswCQYD
+VQQGEwJDWjFMMEoGA1UECgxDxIxSIC0gxIxlc2vDvSDDusWZYWQgemVtxJttxJvFmWlja8O9IGEg
+a2F0YXN0csOhbG7DrSBbScSMIDAwMDI1NzEyXTEPMA0GA1UECxMGMTAwMDAxMRUwEwYDVQQDDAxK
+acWZw60gTGFmZWsxEDAOBgNVBAUTB1AyNTYzNDQxFjAUBgNVBAwMDVNwcsOhdmNlIElTS04wggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCiJ6Je9sX8OkAcJE/I92urPzOwCfpkJKH2bBC6
+DKV2wm+F5CkhBkvBGqyQBWmY93NxRt7mENGgTLkSt52kEQ3cvWmWXi7vtpaqlB4eIskjn/9hZs2h
+BW67UW1LFsr0DKXZ6NW34OYan0uq/DvyiAMaRK1IHMCogmMvCqG3ADqtqh9b/D9j8We97uP8rBwd
+7zjUG0n+egChsFovMxqIPtnUcJqm6d0cra0c7GIX82igUacVxg5G0NKGYg2HaiFFBLmFasyQLGjh
+LFIKIPZRdgMq2yQGPfU29y6Le8Rl8yZkgEoA/HMo/sSTPvC1Fc4yITQhbtwCD8M1GceHkyfKCWft
+AgMBAAGjggM6MIIDNjA5BgNVHREEMjAwgRJqaXJpLmxhZmVrQGN1emsuY3qgDwYJKwYBBAHcGQIB
+oAITAKAJBgNVBA2gAhMAMIIBDgYDVR0gBIIBBTCCAQEwgf4GCWeBBgEEAQeCLDCB8DCBxwYIKwYB
+BQUHAgIwgboagbdUZW50byBrdmFsaWZpa292YW55IGNlcnRpZmlrYXQgYnlsIHZ5ZGFuIHBvZGxl
+IHpha29uYSAyMjcvMjAwMFNiLiBhIG5hdmF6bnljaCBwcmVkcGlzdS4vVGhpcyBxdWFsaWZpZWQg
+Y2VydGlmaWNhdGUgd2FzIGlzc3VlZCBhY2NvcmRpbmcgdG8gTGF3IE5vIDIyNy8yMDAwQ29sbC4g
+YW5kIHJlbGF0ZWQgcmVndWxhdGlvbnMwJAYIKwYBBQUHAgEWGGh0dHA6Ly93d3cucG9zdHNpZ251
+bS5jejAYBggrBgEFBQcBAwQMMAowCAYGBACORgEBMIHIBggrBgEFBQcBAQSBuzCBuDA7BggrBgEF
+BQcwAoYvaHR0cDovL3d3dy5wb3N0c2lnbnVtLmN6L2NydC9wc3F1YWxpZmllZGNhMi5jcnQwPAYI
+KwYBBQUHMAKGMGh0dHA6Ly93d3cyLnBvc3RzaWdudW0uY3ovY3J0L3BzcXVhbGlmaWVkY2EyLmNy
+dDA7BggrBgEFBQcwAoYvaHR0cDovL3Bvc3RzaWdudW0udHRjLmN6L2NydC9wc3F1YWxpZmllZGNh
+Mi5jcnQwDgYDVR0PAQH/BAQDAgXgMB8GA1UdIwQYMBaAFInoTN+LJjk+1yQuEg565+Yn5daXMIGx
+BgNVHR8EgakwgaYwNaAzoDGGL2h0dHA6Ly93d3cucG9zdHNpZ251bS5jei9jcmwvcHNxdWFsaWZp
+ZWRjYTIuY3JsMDagNKAyhjBodHRwOi8vd3d3Mi5wb3N0c2lnbnVtLmN6L2NybC9wc3F1YWxpZmll
+ZGNhMi5jcmwwNaAzoDGGL2h0dHA6Ly9wb3N0c2lnbnVtLnR0Yy5jei9jcmwvcHNxdWFsaWZpZWRj
+YTIuY3JsMB0GA1UdDgQWBBSAuaMI2vtH4wMs6cyuVaDJbzQ3CjANBgkqhkiG9w0BAQsFAAOCAQEA
+RGEgTpQlhIb5w4DVKG5VUv8oguAiPHyAbdQOm8mJ6iKDWnXvJ3uDgZ4099UtkKtgisYoIruvtn3r
+NXYNNbibxASN+cpUv2q2BIynNpJugiZqJ/MtA8EqcdTw1sHu93+FYh0ilMDuAGoeVzTta6oEp0O2
+EKWdItbHe92KSX62Vnqw5AS5m8D2BAlOoIXLme2Om1pgQMSGBBo283coYVVoEZI+5XAlI04T2Cr4
+yezMRdJzR1Yo7urYxDOoh/o8ySCWP3l3pTF6qNaTPBwmX9SNk5AOejrwT+BWhMkfSqs+beAkmvOZ
+IjjeGXlEEBkDWSacg6So8lVH+qED045d1ahX/w==
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:RSAKeyValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:Modulus xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+oieiXvbF/DpAHCRPyPdrqz8zsAn6ZCSh9mwQugyldsJvheQpIQZLwRqskAVpmPdzcUbe5hDRoEy5
+EredpBEN3L1pll4u77aWqpQeHiLJI5//YWbNoQVuu1FtSxbK9Ayl2ejVt+DmGp9Lqvw78ogDGkSt
+SBzAqIJjLwqhtwA6raofW/w/Y/Fnve7j/KwcHe841BtJ/noAobBaLzMaiD7Z1HCapundHK2tHOxi
+F/NooFGnFcYORtDShmINh2ohRQS5hWrMkCxo4SxSCiD2UXYDKtskBj31Nvcui3vEZfMmZIBKAPxz
+KP7Ekz7wtRXOMiE0IW7cAg/DNRnHh5Mnygln7Q==
+</ds:Modulus>
+<ds:Exponent xmlns:ds="http://www.w3.org/2000/09/xmldsig#">AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+</ds:Signature></enx>

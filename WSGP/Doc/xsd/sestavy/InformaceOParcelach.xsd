@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="base.xsd"/> 
+  <!-- Verze: 1.05 -->
+  <xs:element name="InformaceOParcelach">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="KATASTRY">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KATASTR" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OKRES">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="nuts4" type="xs:string"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="OBEC">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="kod" type="xs:unsignedInt"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="KATUZE">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="kod" type="xs:unsignedInt"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="PARCELY_KN">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="PARCELA_KN" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="POCET_1" type="xs:unsignedInt" minOccurs="0"/>
+                                <xs:element name="DIL" type="xs:string"/>
+                                <xs:element name="PARCELNI_CISLO">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="parcela" type="ParcelaType"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="VYMERA_PARCELY" type="xs:unsignedInt"/>
+                                <xs:element name="URC_VYMERY" type="xs:string"/>
+                                <xs:element name="DRUH_POZEMKU" type="xs:string"/>
+                                <xs:element name="ZP_VYUZITI" type="xs:string" minOccurs="0"/>
+                                <xs:element name="OCHRANA">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element  name="zpochr" type="xs:string"  maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="MAPA" type="xs:string"/>
+                                <xs:element name="RIZENI" type="RizeniType"/>
+                                <xs:element name="KATUZE_KOD" type="xs:unsignedInt"/>
+                                <xs:element name="ZPURVY_KOD" type="xs:unsignedByte"/>
+                                <xs:element name="SOUCASTI_STAVBA">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="stavba" type="StavbaType"/>
+                                      <xs:element name="docasna" minOccurs="0" type="xs:string"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="STAVBA_NA_PARCELE" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="stavba" type="StavbaType"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="VLASTNICTVI">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="LV">
+                                        <xs:complexType>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="tel_id" type="ID_TYPE"/>
+                                            <xs:element name="cislo_tel" type="xs:string"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="SUBJEKTY">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="SUBJEKT" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="VLA_IDENT">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:element name="oprav_subjekt" type="OpsubIdentType"/>
+                                                          <xs:element name="parcela" type="ParcelaType"/>
+                                                          <xs:element name="stavba" type="StavbaType"/>
+                                                          <xs:element name="jednotka" type="JednotkaType"/>
+                                                          <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+                                                        </xs:choice>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="PODIL" type="PodilType"/>
+                                                  <xs:element name="TYPRAV_NAZEV" type="xs:string"/>
+                                                  <xs:element name="CHAROS" type="xs:string"/>
+                                                  <xs:element name="VLA_IDENT2" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:element name="oprav_subjekt" type="OpsubIdentType"/>
+                                                          <xs:element name="parcela" type="ParcelaType"/>
+                                                          <xs:element name="stavba" type="StavbaType"/>
+                                                          <xs:element name="jednotka" type="JednotkaType"/>
+                                                          <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+                                                        </xs:choice>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="PLOMBY_RIZENI_KN">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="PLOMBA_RIZENI_KN" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="PAR_ID3" type="xs:unsignedLong" minOccurs="0"/>
+                                            <xs:element name="PLOMBA_RIZENI_KN" type="RizeniType"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BONITY_KN">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="BDP_KN" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="BPEJ_KOD" type="xs:string"/>
+                                            <xs:element name="VYMERA" type="xs:unsignedInt"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:all>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ZDROJE">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="ZDROJ">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ZE_KOD" type="xs:unsignedInt"/>
+                                <xs:element name="PUVOD" type="xs:string"/>
+                                <xs:element name="PARCELY_ZE">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="PARCELA_ZE" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:all>
+                                            <xs:element name="KATUZE_KOD" type="xs:unsignedInt"/>
+                                            <xs:element name="KATUZE_KOD_PUV" type="xs:string"/>
+                                            <xs:element name="PARCELNI_CISLO">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="parcela" type="ParcelaType"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="DIL_PARCELY" type="xs:string"/>
+                                            <xs:element name="PUVODNI_KU">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="nazev" type="xs:string"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="TYP" type="xs:string"/>
+                                            <xs:element name="PARCELA_KN">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="parcela" type="ParcelaType"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="VYMERA_PARCELY" type="xs:unsignedInt"/>
+                                            <xs:element name="RIZENI" type="RizeniType"/>
+                                            <xs:element name="PLOMBY_RIZENI_ZE">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="PLOMBA_RIZENI_ZE" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence minOccurs="0">
+                                                        <xs:element name="PAR_ID3" type="xs:unsignedLong" minOccurs="0"/>
+                                                        <xs:element name="PLOMBA_RIZENI_ZE" type="RizeniType" maxOccurs="unbounded"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="VLASTNICTVI">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="LV">
+                                                    <xs:complexType>
+                                                      <xs:sequence minOccurs="0">
+                                                        <xs:element name="tel_id" type="ID_TYPE"/>
+                                                        <xs:element name="cislo_tel" type="xs:string"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="SUBJEKTY">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="SUBJEKT" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="VLA_IDENT">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                                                      <xs:element name="oprav_subjekt" type="OpsubIdentType"/>
+                                                                      <xs:element name="parcela" type="ParcelaType"/>
+                                                                      <xs:element name="stavba" type="StavbaType"/>
+                                                                      <xs:element name="jednotka" type="JednotkaType"/>
+                                                                      <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+                                                                    </xs:choice>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element name="PODIL" type="PodilType"/>
+                                                              <xs:element name="TYPRAV_NAZEV" type="xs:string"/>
+                                                              <xs:element name="CHAROS" type="xs:string"/>
+                                                              <xs:element name="VLA_IDENT2" maxOccurs="unbounded">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                                                      <xs:element name="oprav_subjekt" type="OpsubIdentType"/>
+                                                                      <xs:element name="parcela" type="ParcelaType"/>
+                                                                      <xs:element name="stavba" type="StavbaType"/>
+                                                                      <xs:element name="jednotka" type="JednotkaType"/>
+                                                                      <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+                                                                    </xs:choice>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="BONITY_ZE">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="BDP_ZE" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="BPEJ_KOD" type="xs:unsignedInt"/>
+                                                        <xs:element name="VYMERA" type="xs:unsignedInt"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:all>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PLATNOST" type="xs:string"/>
+        <xs:element name="VYHOTOVENO" type="xs:string"/>
+        <xs:element name="CS_POCET_PARCEL1" type="xs:string"/>
+        <xs:element name="CS_POCET_PARCEL" type="xs:string"/>
+        <xs:element name="VYHOTOVIL" type="xs:string"/>
+        <xs:element name="BEZPL_PRISTUP" type="xs:string"/>
+        <xs:element name="INFO_VYSTUP" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

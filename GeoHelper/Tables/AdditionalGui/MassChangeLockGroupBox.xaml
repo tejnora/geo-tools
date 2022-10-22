@@ -1,0 +1,46 @@
+﻿<Gui:UserControlBase x:Class="GeoHelper.Tables.AdditionalGui.MassChangeLockGroupBox"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                     xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                     LanguageNamespace="MassChangeLockGroupBox"
+                     mc:Ignorable="d"
+                     x:Name="_this"
+                     d:DesignHeight="300"
+                     d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Converters/ConvertersStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <GroupBox Header="{Binding ElementName=_this, Path=GroupBoxHeader}">
+        <StackPanel>
+            <RadioButton loc:Translate.Uid="0"
+                         Content="{loc:Translate DontChange}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         IsChecked="{Binding Path=LockType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=NotChange}" />
+            <RadioButton loc:Translate.Uid="1"
+                         Content="{loc:Translate Unlock}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         IsChecked="{Binding Path=LockType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=Unlock}" />
+            <RadioButton loc:Translate.Uid="2"
+                         Content="{loc:Translate Lock}"
+                         GroupName="{Binding ElementName=_this,Path=GroupBoxHeader}"
+                         IsEnabled="{Binding ElementName=_checkkBox, Path=IsChecked}"
+                         IsChecked="{Binding Path=LockType, Mode=TwoWay, 
+                                     Converter={StaticResource EnumMatchToBooleanConverter},
+                                     ConverterParameter=Lock}" />
+        </StackPanel>
+    </GroupBox>
+</Gui:UserControlBase>

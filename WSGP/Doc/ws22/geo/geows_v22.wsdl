@@ -1,0 +1,302 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://katastr.cuzk.cz/geows/v2.2"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:etype="http://katastr.cuzk.cz/geows/types/v2.2"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wspol="http://www.w3.org/ns/ws-policy"
+	xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	targetNamespace="http://katastr.cuzk.cz/geows/v2.2">
+	<!-- Verze WSDL: 2.2.0 -->
+
+	<wsp:Policy wsu:Id="IsknWSMTOMPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsoma:OptimizedMimeSerialization
+					xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+
+	<wsp:Policy name="UsernameToken" wsu:Id="IsknWSSecurityPolicy">
+		<sp:SupportingTokens>
+			<wsp:Policy>
+				<sp:UsernameToken
+					sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+					<wsp:Policy>
+						<sp:WssUsernameToken11 />
+					</wsp:Policy>
+				</sp:UsernameToken>
+			</wsp:Policy>
+		</sp:SupportingTokens>
+	</wsp:Policy> 	
+
+	<types>
+		<xsd:schema targetNamespace="http://katastr.cuzk.cz/geows/types/v2.2" elementFormDefault="qualified">
+			<xsd:include schemaLocation="geows_v22.xsd"/>
+		</xsd:schema>
+	</types>
+
+	<message name="zalozRizeniPMRequest">
+		<part name="input" element="etype:ZalozRizeniPMRequest"/>
+	</message>
+	<message name="zalozRizeniPMResponse">
+		<part name="output" element="etype:ZalozRizeniPMResponse"/>
+	</message>
+
+	<message name="zrusRezervaciPrvkuRequest">
+		<part name="input" element="etype:ZrusRezervaciPrvkuRequest"/>
+	</message>
+	<message name="zrusRezervaciPrvkuResponse">
+		<part name="output" element="etype:ZrusRezervaciPrvkuResponse"/>
+	</message>
+
+	<message name="zrusRezervaciZPMZRequest">
+		<part name="input" element="etype:ZrusRezervaciZPMZRequest"/>
+	</message>
+	<message name="zrusRezervaciZPMZResponse">
+		<part name="output" element="etype:ZrusRezervaciZPMZResponse"/>
+	</message>
+
+	<message name="vytvorRezervaciPrvkuRequest">
+		<part name="input" element="etype:VytvorRezervaciPrvkuRequest"/>
+	</message>
+	<message name="vytvorRezervaciPrvkuResponse">
+		<part name="output" element="etype:VytvorRezervaciPrvkuResponse"/>
+	</message>
+
+	<message name="mylneRizeniPMRequest">
+		<part name="input" element="etype:MylneRizeniPMRequest"/>
+	</message>
+	<message name="mylneRizeniPMResponse">
+		<part name="output" element="etype:MylneRizeniPMResponse"/>
+	</message>
+
+	<message name="seznamRizeniPMRequest">
+		<part name="input" element="etype:SeznamRizeniPMRequest"/>
+	</message>
+	<message name="seznamRizeniPMResponse">
+		<part name="output" element="etype:SeznamRizeniPMResponse"/>
+	</message>
+
+	<message name="detailRizeniPMRequest">
+		<part name="input" element="etype:DetailRizeniPMRequest"/>
+	</message>
+	<message name="detailRizeniPMResponse">
+		<part name="output" element="etype:DetailRizeniPMResponse"/>
+	</message>
+
+	<message name="exportVFRequest">
+		<part name="input" element="etype:ExportVFRequest"/>
+	</message>
+	<message name="exportVFResponse">
+		<part name="output" element="etype:ExportVFResponse"/>
+	</message>
+
+	<message name="exportVFStatusRequest">
+		<part name="input" element="etype:ExportVFStatusRequest"/>
+	</message>
+	<message name="exportVFStatusResponse">
+		<part name="output" element="etype:ExportVFStatusResponse"/>
+	</message>	
+
+	<message name="vytvorRezervaciZPMZRequest">
+		<part name="input" element="etype:VytvorRezervaciZPMZRequest" />
+	</message>
+	<message name="vytvorRezervaciZPMZResponse">
+		<part name="output" element="etype:VytvorRezervaciZPMZResponse" />
+	</message>
+
+	<message name="zalozNavrhZPGRequest">
+		<part name="input" element="etype:ZalozNavrhZPGRequest" />
+	</message>
+	<message name="zalozNavrhZPGResponse">
+		<part name="output" element="etype:ZalozNavrhZPGResponse" />
+	</message>
+
+	<message name="zalozNavrhZDPRequest">
+		<part name="input" element="etype:ZalozNavrhZDPRequest" />
+	</message>
+	<message name="zalozNavrhZDPResponse">
+		<part name="output" element="etype:ZalozNavrhZDPResponse" />
+	</message>
+
+	<portType name="geo">
+		<operation name="zalozRizeniPM">
+			<input message="tns:zalozRizeniPMRequest"/>
+			<output message="tns:zalozRizeniPMResponse"/>
+		</operation>
+		<operation name="vytvorRezervaciZPMZ">
+			<input message="tns:vytvorRezervaciZPMZRequest" />
+			<output message="tns:vytvorRezervaciZPMZResponse" />
+		</operation>
+		<operation name="zrusRezervaciZPMZ">
+			<input message="tns:zrusRezervaciZPMZRequest"/>
+			<output message="tns:zrusRezervaciZPMZResponse"/>
+		</operation>
+		<operation name="vytvorRezervaciPrvku">
+			<input message="tns:vytvorRezervaciPrvkuRequest"/>
+			<output message="tns:vytvorRezervaciPrvkuResponse"/>
+		</operation>
+		<operation name="zrusRezervaciPrvku">
+			<input message="tns:zrusRezervaciPrvkuRequest"/>
+			<output message="tns:zrusRezervaciPrvkuResponse"/>
+		</operation>
+		<operation name="mylneRizeniPM">
+			<input message="tns:mylneRizeniPMRequest"/>
+			<output message="tns:mylneRizeniPMResponse"/>
+		</operation>
+		<operation name="seznamRizeniPM">
+			<input message="tns:seznamRizeniPMRequest" />
+			<output message="tns:seznamRizeniPMResponse" />
+		</operation>
+		<operation name="detailRizeniPM">
+			<input message="tns:detailRizeniPMRequest" />
+			<output message="tns:detailRizeniPMResponse" />
+		</operation>
+		<operation name="exportVF">
+			<input message="tns:exportVFRequest"/>
+			<output message="tns:exportVFResponse"/>
+		</operation>
+		<operation name="exportVFStatus">
+			<input message="tns:exportVFStatusRequest"/>
+			<output message="tns:exportVFStatusResponse"/>
+		</operation>
+		<operation name="zalozNavrhZPG">
+			<input message="tns:zalozNavrhZPGRequest"/>
+			<output message="tns:zalozNavrhZPGResponse"/>
+		</operation>
+		<operation name="zalozNavrhZDP">
+			<input message="tns:zalozNavrhZDPRequest"/>
+			<output message="tns:zalozNavrhZDPResponse"/>
+		</operation>
+	</portType>
+    <binding name="GeoWSSoapBinding" type="tns:geo">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsp:PolicyReference URI="#IsknWSSecurityPolicy"/>
+		<wsp:PolicyReference URI="#IsknWSMTOMPolicy"/>
+		<operation name="zalozRizeniPM">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/zalozRizeniPM" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="vytvorRezervaciZPMZ">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/vytvorRezervaciZPMZ" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="zrusRezervaciZPMZ">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/zrusRezervaciZPMZ" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="vytvorRezervaciPrvku">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/vytvorRezervaciPrvku" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="zrusRezervaciPrvku">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/zrusRezervaciPrvku" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="mylneRizeniPM">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/mylneRizeniPM" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="exportVF">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/exportNVF" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="exportVFStatus">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/exportVFStatus" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="seznamRizeniPM">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/seznamRizeniPM" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="detailRizeniPM">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/detailRizeniPM" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+
+
+		<operation name="zalozNavrhZPG">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/zalozNavrhZPG" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="zalozNavrhZDP">
+			<soap:operation soapAction="http://katastr.cuzk.cz/geows/zalozNavrhZDP" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="geo">
+		<port name="GeoWSSoapHttpPort" binding="tns:GeoWSSoapBinding">
+			<soap:address location="https://katastr.cuzk.cz/ws/geo/2.2/geo"/>
+		</port>
+	</service>
+
+</definitions>

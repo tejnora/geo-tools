@@ -1,0 +1,34 @@
+﻿<Gui:DialogBase x:Class="GeoHelper.Options.OptionsDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                LanguageNamespace="OptionsDialog"
+                loc:Translate.Uid="0"
+                Title="{loc:Translate Settings}"
+                Height="{loc:Translate 500}"
+                Width="{loc:Translate 700}"
+                Buttons="Cancel,Ok"
+                DefaultButton="Cancel">
+    <Gui:DialogBase.DialogContent>
+        <StackPanel Orientation="Horizontal">
+            <TreeView Margin="0,0,0,28"
+                      HorizontalAlignment="Left"
+                      Width="177"
+                      x:Name="_treeView"
+                      SelectedItemChanged="OnSelectedItemChanged">
+                <TreeViewItem loc:Translate.Uid="1"
+                              Header="{loc:Translate Data}"
+                              IsExpanded="True">
+                    <TreeViewItem loc:Translate.Uid="2"
+                                  Header="{loc:Translate VystupFormat}"
+                                  Tag="FileInputOutputOptions" />
+                    <TreeViewItem loc:Translate.Uid="3"
+                                  Header="{loc:Translate Units}"
+                                  Tag="UnitsOptions" />
+                </TreeViewItem>
+            </TreeView>
+            <Grid x:Name="_content" />
+        </StackPanel>
+    </Gui:DialogBase.DialogContent>
+</Gui:DialogBase>

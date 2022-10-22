@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7748DE99-F7A6-4EF4-8252-7B35B76AF97D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAD</RootNamespace>
+    <AssemblyName>CAD</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\192.168.1.2\10000000\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\192.168.1.2\10000000\</InstallUrl>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>GeoCad</ProductName>
+    <PublisherName>Jitka Tejnorova</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>94BBCC0D148845C499635F9CD538AB19DC8178EA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CAD_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Document.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\AboutBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ActivePointPropPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\DrawLayerProp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\TextBoxPropPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\VFKNumberPropPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InfoTools\VfkMeasureArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DocumentViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Frame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\NavigationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ResizeGrip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Separator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\StatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DataGrid.Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITools\AttributesToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITools\DocumentToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITools\DrawToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITools\EditToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITools\VfkToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\Converters\VfkConverters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\GUI\AddNewParcelDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\ElementsProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\ExportInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\GUI\ExportSouradnicDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\GUI\GenerateSIP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\ImportInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\ImportSouradnicDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\GUI\KatastralniUzemiDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\SeznamSouradnic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\SouradniceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VFK\GUI\VFKEdidOfParcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\VFKExportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VFK\GUI\VFKImportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Canvas\CanvasExtensionMethods.cs" />
+    <Compile Include="Canvas\DefaultColors.cs" />
+    <Compile Include="Converters\PlochaConverter.cs" />
+    <Compile Include="Export\DxfExport.cs" />
+    <Compile Include="Export\IExport.cs" />
+    <Compile Include="GUI\AboutBox.xaml.cs">
+      <DependentUpon>AboutBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoTools\InfoPropPage.cs" />
+    <Compile Include="InfoTools\VfkMeasureArea.xaml.cs">
+      <DependentUpon>VfkMeasureArea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWin.xaml.cs">
+      <DependentUpon>MainWin.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="VFK\GUI\VfkLayerManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackgrounImages\BackgrounImage.cs" />
+    <Compile Include="BackgrounImages\CitReader.cs" />
+    <Compile Include="BackgrounImages\IImage.cs" />
+    <Compile Include="Canvas\Canvas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Canvas\Canvas.Designer.cs">
+      <DependentUpon>Canvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Canvas\CanvasInterfaces.cs" />
+    <Compile Include="Document.xaml.cs">
+      <DependentUpon>Document.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrawTools\ActivePoint.cs" />
+    <Compile Include="DrawTools\ArcCircle3PointTool.cs" />
+    <Compile Include="DrawTools\ArcCircleTool.cs" />
+    <Compile Include="DrawTools\DrawToolsUtils.cs" />
+    <Compile Include="DrawTools\TextBoxTool.cs" />
+    <Compile Include="DrawTools\LineTool.cs" />
+    <Compile Include="DrawTools\SnapPoints.cs" />
+    <Compile Include="VFK\Converters\VfkBoolConverter.cs" />
+    <Compile Include="VFK\DrawTools\VFKActivePoint.cs" />
+    <Compile Include="GUI\ActivePointPropPage.xaml.cs">
+      <DependentUpon>ActivePointPropPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DrawLayerProp.xaml.cs">
+      <DependentUpon>DrawLayerProp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PPWindow.cs" />
+    <Compile Include="GUI\TextBoxPropPage.xaml.cs">
+      <DependentUpon>TextBoxPropPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VFKNumberPropPage.xaml.cs">
+      <DependentUpon>VFKNumberPropPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\BackgroundLayer.cs" />
+    <Compile Include="Layers\DrawingLayer.cs" />
+    <Compile Include="Layers\GridLayer.cs" />
+    <Compile Include="Layers\ImageBackgroundLayer.cs" />
+    <Compile Include="Layers\VFKDrawingLayerMain.cs" />
+    <Compile Include="Layers\VFKDrawinLayer.cs" />
+    <Compile Include="MainWinInterface.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources\CursorCollection.cs" />
+    <Compile Include="Tools\NameObject.cs" />
+    <Compile Include="Tools\PropertyUtil.cs" />
+    <Compile Include="Tools\Tracing.cs" />
+    <Compile Include="UITools\AttributesToolBar.xaml.cs">
+      <DependentUpon>AttributesToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITools\DocumentToolBar.xaml.cs">
+      <DependentUpon>DocumentToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITools\DrawToolBar.xaml.cs">
+      <DependentUpon>DrawToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITools\EditToolBar.xaml.cs">
+      <DependentUpon>EditToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITools\GeoCadRoutedCommand.cs" />
+    <Compile Include="UITools\GeoCadToolBarManager.cs" />
+    <Compile Include="UITools\GeoCadToolBar.cs" />
+    <Compile Include="UITools\VfkToolBar.xaml.cs">
+      <DependentUpon>VfkToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CloneObject.cs" />
+    <Compile Include="Utils\GDIWrapper.cs" />
+    <Compile Include="Utils\SerializeUtil.cs" />
+    <Compile Include="Utils\Singletons.cs" />
+    <Compile Include="Utils\TreeViewBehavior.cs" />
+    <Compile Include="Utils\Undo.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Utils\WPFToFormConverter.cs" />
+    <Compile Include="Validators\ParcelNumberValidator.cs" />
+    <Compile Include="VFK\Definition.cs" />
+    <Compile Include="VFK\DeterminateeAreaType.cs" />
+    <Compile Include="VFK\DrawTools\VfkDrawObjectBase.cs" />
+    <Compile Include="VFK\GUI\AddNewParcelDialog.xaml.cs">
+      <DependentUpon>AddNewParcelDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\AutoCommitCheckBoxColumn.cs" />
+    <Compile Include="VFK\GUI\ElementsProperties.xaml.cs">
+      <DependentUpon>ElementsProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\ExportInfoDialog.xaml.cs">
+      <DependentUpon>ExportInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\ExportSouradnicDialog.xaml.cs">
+      <DependentUpon>ExportSouradnicDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\ExtendedTextBoxColumn.cs" />
+    <Compile Include="VFK\GUI\GenerateSIP.xaml.cs">
+      <DependentUpon>GenerateSIP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\ImportInfoDialog.xaml.cs">
+      <DependentUpon>ImportInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\ImportSouradnicDialog.xaml.cs">
+      <DependentUpon>ImportSouradnicDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\KatasterNamesTreeModel.cs" />
+    <Compile Include="VFK\GUI\KatastralniUzemiDialog.xaml.cs">
+      <DependentUpon>KatastralniUzemiDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\LabelTextBoxColumn.cs" />
+    <Compile Include="VFK\GUI\LandType.cs" />
+    <Compile Include="VFK\GUI\SeznamSouradnic.xaml.cs">
+      <DependentUpon>SeznamSouradnic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\SouradniceDialog.xaml.cs">
+      <DependentUpon>SouradniceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\VFKEdidOfParcel.xaml.cs">
+      <DependentUpon>VFKEdidOfParcel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\VFKExportDialog.xaml.cs">
+      <DependentUpon>VFKExportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\VFKImportDialog.xaml.cs">
+      <DependentUpon>VFKImportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\GUI\VfkLayerManager.xaml.cs">
+      <DependentUpon>VfkLayerManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VFK\IVFKModel.cs" />
+    <Compile Include="VFK\DrawTools\VfkMark.cs" />
+    <Compile Include="VFK\DrawTools\VfkMultiLine.cs" />
+    <Compile Include="VFK\ProxyElements\VFKProxyActivePoint.cs" />
+    <Compile Include="VFK\ProxyElements\VFKRegisterIface.cs" />
+    <Compile Include="VFK\Tables\Header.cs" />
+    <Compile Include="VFK\Tables\IVFKDataTable.cs" />
+    <Compile Include="VFK\Tables\VFKOBPEJTable.cs" />
+    <Compile Include="VFK\Tables\VFKBDPTable.cs" />
+    <Compile Include="VFK\Tables\VFKBUDTable.cs" />
+    <Compile Include="VFK\Tables\VFKDPMTable.cs" />
+    <Compile Include="VFK\Tables\VFKHBPEJTable.cs" />
+    <Compile Include="VFK\Tables\VFKHPTable.cs" />
+    <Compile Include="VFK\Tables\VFKKATUZETable.cs" />
+    <Compile Include="VFK\Tables\VFKMAPLIS.cs" />
+    <Compile Include="VFK\Tables\VFKOBBPTable.cs" />
+    <Compile Include="VFK\Tables\VFKOBTable.cs" />
+    <Compile Include="VFK\Tables\VFKOPTable.cs" />
+    <Compile Include="VFK\Tables\VFKPARTable.cs" />
+    <Compile Include="VFK\Tables\VFKRZOTable.cs" />
+    <Compile Include="VFK\Tables\VFKSBMTable.cs" />
+    <Compile Include="VFK\Tables\VFKSBPTable.cs" />
+    <Compile Include="VFK\Tables\VFKSOBRTable.cs" />
+    <Compile Include="VFK\Tables\VFKSPOLTable.cs" />
+    <Compile Include="VFK\Tables\VFKTELTable.cs" />
+    <Compile Include="VFK\Tables\VFKZPMZTable.cs" />
+    <Compile Include="VFK\Tables\VFKZVBTable.cs" />
+    <Compile Include="VFK\Utils.cs" />
+    <Compile Include="VFK\VFKDomen.cs" />
+    <Compile Include="VFK\DrawTools\VFKText.cs" />
+    <Compile Include="VFK\VFKElements.cs" />
+    <Compile Include="VFK\VfkExceptions.cs" />
+    <Compile Include="VFK\VFKMain.cs" />
+    <Compile Include="VFK\VFKMainEnums.cs" />
+    <Compile Include="VFK\VFKModifyParcelContext.cs" />
+    <Compile Include="VFK\VFKReader.cs" />
+    <Compile Include="VFK\VFKWriter.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Canvas\Canvas.resx">
+      <DependentUpon>Canvas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\hmove.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Arc2Point.png" />
+    <Resource Include="Icons\ArcCenterRadius.png" />
+    <Resource Include="Icons\Arrow.png" />
+    <Resource Include="Icons\Circle2Points.png" />
+    <Resource Include="Icons\CircleCenterRadius.png" />
+    <Resource Include="Icons\Hand.png" />
+    <Resource Include="Icons\Line.png" />
+    <Resource Include="Icons\Lines.png" />
+    <Resource Include="Icons\MoveCris.png" />
+    <Resource Include="Icons\New.png" />
+    <Resource Include="Icons\Open.png" />
+    <Resource Include="Icons\Redo.png" />
+    <Resource Include="Icons\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\TextBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\AddLayer.png" />
+    <Resource Include="Icons\EditLayer.png" />
+    <Resource Include="Icons\RemoveLayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\SaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\active_point.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Element Information.png" />
+    <Resource Include="Icons\FitView.png" />
+    <Resource Include="Icons\Marks.png" />
+    <Resource Include="Icons\Measure Angle Between Lines.png" />
+    <Resource Include="Icons\Measure Area.png" />
+    <Resource Include="Icons\MeasureDistance.png" />
+    <Resource Include="Icons\MeasureRadius.png" />
+    <Resource Include="Icons\Modify.png" />
+    <Resource Include="Icons\VfkLine.png" />
+    <Resource Include="Icons\VfkMarks.png" />
+    <Resource Include="Icons\VfkText.png" />
+    <Resource Include="Icons\VfkViewPoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Localization\cs-CZ.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AvalonDock\AvalonDock\AvalonDock.csproj">
+      <Project>{2FF700C2-A38A-48BD-A637-8CAFD4FE6237}</Project>
+      <Name>AvalonDock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DxfLibrary\DxfLibrary.csproj">
+      <Project>{69CA75D0-CB87-45FE-B462-8C92A0D4A489}</Project>
+      <Name>DxfLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoBase\GeoBase.csproj">
+      <Project>{ED2C0A40-579E-40A2-813A-E6D165D9FCE6}</Project>
+      <Name>GeoBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GUI\AboutLogo.png">
+      <SubType>Image</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\VfkLevelManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\VfkVypocetVymer.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)Localization\*  $(ProjectDir)bin\Debug\Languages\</PostBuildEvent>
+  </PropertyGroup>
+</Project>

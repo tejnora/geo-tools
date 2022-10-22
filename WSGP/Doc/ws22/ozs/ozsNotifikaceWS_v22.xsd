@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://katastr.cuzk.cz/ozsNotifikaceWS/types/v2.2"
+    xmlns:on="http://katastr.cuzk.cz/ozsNotifikaceWS/types/v2.2" elementFormDefault="qualified"
+    xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2"
+    xmlns:no2="http://katastr.cuzk.cz/ozsNotifikace/types/v2.2"
+    version="2.2.0"
+    >
+
+    <import namespace="http://katastr.cuzk.cz/ozsNotifikace/types/v2.2" schemaLocation="../../xsd/ozsNotifikace_v22.xsd" />
+
+    <import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../../xsd/baseTypes_v22.xsd"/>
+
+    <import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../../xsd/commonTypes_v22.xsd"/>
+
+    <element name="vratNeodebraneZpravyRequest" type="on:VratNeodebraneZpravyRequestType">
+        <annotation>
+            <documentation>Požadavek na vrácení seznamu neodebraných notifikačních zpráv.
+Lze definovat maximální počet vracených zpráv (až do aplikačního omezení).
+Lze vyžádat opakovaný přenos předchozího setu.</documentation>
+        </annotation>
+    </element>
+
+    <element name="vratNeodebraneZpravyResponse" type="on:VratZpravyResponseType"/>
+
+    <element name="vratOdebraneZpravyRequest" type="on:VratOdebraneZpravyRequestType">
+        <annotation>
+            <documentation>Požadavek na vrácení seznamu odebraných notifikačních zpráv (ve stavu POTVRZENA). Je nutno specifikovat číslo zprávy nedo datum  a čas od kterého bude seznam vracen.
+Lze definovat maximální počet vracených zpráv (až do aplikačního omezení).</documentation>
+        </annotation>
+    </element>
+
+    <element name="vratOdebraneZpravyResponse" type="on:VratZpravyResponseType"/>
+
+    <complexType name="VratNeodebraneZpravyRequestType">
+        <sequence>
+            <element name="maxPocet" minOccurs="0" type="bt:UdalostiMaxPolozekType">
+                <annotation>
+                    <documentation>Maximální požadovaný počet vracených zpráv (až do aplikačního omezení).</documentation>
+                </annotation>
+            </element>
+            <element name="opakuj" type="bt:AnoNeType">
+                <annotation>
+                    <documentation>Ano - zopakuje přechozí set.
+Ne - potvrdí předchozí set a pošle nový.</documentation>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="VratOdebraneZpravyRequestType">
+        <sequence>
+            <choice>
+                <element name="idOd" type="bt:IdType">
+                    <annotation>
+                        <documentation>ID zprávy (včetně) od které je požadováno vracet seznam zpráv.</documentation>
+                    </annotation>
+                </element>
+                <element name="datumOd" type="dateTime">
+                    <annotation>
+                        <documentation>Datum a čas zpřístupnění zprávy od kterého je požadováno vracet seznam zpráv.</documentation>
+                    </annotation>
+                </element>
+            </choice>
+            <element name="maxPocet" minOccurs="0" type="bt:UdalostiMaxPolozekType">
+                <annotation>
+                    <documentation>Maximální požadovaný počet vracených zpráv (až do aplikačního omezení).</documentation>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="VratZpravyResponseType">
+        <sequence>
+            <element name="vysledek" type="ct:ResponseInfoType"/>
+            <element name="dalsi" type="bt:AnoNeType"/>
+	        <element ref="on:zprava" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+	<element name="zprava" type="on:ZpravaType" />
+
+    <complexType name="ZpravaType">
+        <sequence>
+            <element ref="no2:notifikace" />
+        </sequence>
+        <attribute name="id" type="bt:IdType">
+            <annotation>
+                <documentation>Identifikátor zprávy oznamovací služby.</documentation>
+            </annotation>
+        </attribute>
+        <attribute name="datumZpristupneni" type="dateTime">
+            <annotation>
+                <documentation>Datum a čas zpřístupnění zprávy notifikační služby.</documentation>
+            </annotation>
+        </attribute>
+    </complexType>
+</schema>

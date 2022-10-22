@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Nampespace Value="PolarMethodDialog">
+      <Value Id="1" Header="[1] Polární metoda" Title="[1] Polární metoda" NewButtomContent="Nové stanovisko"/>
+      <Value Id="2" Header="Stanovisko" />
+      <Value Id="3" Header="Stanovisko" />
+      <Value Id="4" Content="Předčíslí:" />
+      <Value Id="5" Content="Číslo:" />
+      <Value Id="6" Content="Vyška stroje:" />
+      <Value Id="7" Content="Y:" />
+      <Value Id="8" Content="X:" />
+      <Value Id="9" Content="Z:" />
+      <Value Id="10" Header="Orientace" />
+      <Value Id="11" Header="Body" />
+      <Value Id="12" Header="V Orientace" />
+      <Value Id="13" Header="V Délka" />
+      <Value Id="14" Content="Předčíslí:" />
+      <Value Id="15" Content="Číslo:" />
+      <Value Id="16" Content="Směr:" />
+      <Value Id="17" Content="Délka:" />
+      <Value Id="18" Content="X:" />
+      <Value Id="19" Content="Y:" />
+      <Value Id="20" Content="Přidat" />
+      <Value Id="21" Content="Odebrat" />
+      <Value Id="22" Header="Měřené hodnoty" />
+      <Value Id="23" Header="Vypočtené souřadnice" />
+      <Value Id="24" Content="Předčis:" />
+      <Value Id="25" Content="Číslo:" />
+      <Value Id="26" Content="Směr:" />
+      <Value Id="27" Content="Délka:" />
+      <Value Id="28" Content="Převýšení:" />
+      <Value Id="29" Content="Zenitový úhel:" />
+      <Value Id="30" Content="Výška cíle:" />
+      <Value Id="31" Content="Popis:" />
+      <Value Id="32" Header="Vypočtené souřadnice" />
+      <Value Id="33" Content="X:" />
+      <Value Id="34" Content="Y:" />
+      <Value Id="35" Content="Z:" />
+    </Nampespace>
+    <Namespace Value="OrtogonalMethodDialog">
+      <Value Id="1" Header="[0] Orotgonální metoda" Title="[0] Orotgonální metoda" NewButtomContent="Nová prímka"/>
+      <Value Id="2" Header="Itentické body" />
+      <Value Id="3" Header="Číslo:" />
+      <Value Id="4" Header="dX" />
+      <Value Id="5" Header="dY" />
+      <Value Id="6" Content="Předčíslí:" />
+      <Value Id="7" Content="Číslo:" />
+      <Value Id="8" Content="Y:" />
+      <Value Id="9" Content="X:" />
+      <Value Id="10" Content="Staničení:" />
+      <Value Id="11" Content="Kolmice:" />
+      <Value Id="12" Content="Klíč" />
+      <Value Id="13" Content="Přidat" />
+      <Value Id="14" Content="Odebrat " />
+      <Value Id="15" Header="Určovaný bod" />
+      <Value Id="16" Content="Předčíslí:" />
+      <Value Id="17" Content="Číslo:" />
+      <Value Id="18" Content="Staničení:" />
+      <Value Id="19" Content="Kolmice:" />
+      <Value Id="20" Content="Y:" />
+      <Value Id="21" Content="X:" />
+      <Value Id="25" Text="Oprava delky mezi 1. a 2. bodem:  " />
+      <Value Id="26" Text="Byla překročena mezní odchylka stanovená pro práci v katastru nemovitostí. Maximalni hodnota je 2000m" Caption="Pozor" />
+    </Namespace>
+    <Namespace Value="PolarMethodBatch">
+      <Value Id="1" Title="[1] Polární metoda dávkou" Header="[1] Polární metoda dávkou" />
+      <Value Id="2" Header="Soubory" />
+      <Value Id="3" Content="Vstup:" />
+      <Value Id="4" Content="Výstup:" />
+      <Value Id="5" Header="Volby" />
+      <Value Id="6" Content="Používat pouze označené hodnoty" />
+      <Value Id="7" Content="Editovat orientace" />
+      <Value Id="8" Content="Počítat volná stanoviska v dávce" />
+      <Value Id="9" Header="Celkový stav výpočtů" />
+      <Value Id="10" Content="Vypočteno:" />
+      <Value Id="11" Content="Nepoužito:" />
+      <Value Id="12" Content="stanovisek" />
+      <Value Id="13" Content="podrobných bodů" />
+      <Value Id="14" Content="měření" />
+      <Value Id="15" Text="Neuložený soubor." />
+    </Namespace>
+    <Namespace Value="FreePointOfViewDialog">
+      <Value Id="1" Header="[8] Volné stanovisko" Title="[8] Volné stanovisko" NewButtomContent="Nové stanovisko"/>
+      <Value Id="2" Header="PointOfView" />
+      <Value Id="3" Content="Předčíslí" />
+      <Value Id="4" Content="Číslo:" />
+      <Value Id="5" Content="X:" />
+      <Value Id="6" Content="Y:" />
+      <Value Id="7" Content="Z:" />
+      <Value Id="8" Content="Směr:" />
+      <Value Id="9" Content="Délka:" />
+      <Value Id="10" Content="Zen. úhel:" />
+      <Value Id="11" Content="dH:" />
+      <Value Id="12" Content="Výška:" />
+      <Value Id="13" Header="Body" />
+      <Value Id="14" Header="V Orientace" />
+      <Value Id="15" Header="V Délka" />
+      <Value Id="16" Header="V Převýšení" />
+      <Value Id="17" Content="Přidat" />
+      <Value Id="18" Content="Odebrat" />
+      <Value Id="19" Header="Určovaný bod" />
+      <Value Id="20" Content="Předčíslí" />
+      <Value Id="21" Content="Číslo:" />
+      <Value Id="22" Content="Výška stroje" />
+      <Value Id="23" Content="Kód:" />
+      <Value Id="24" Content="Y:" />
+      <Value Id="25" Content="X:" />
+      <Value Id="26" Content="Z" />
+    </Namespace>
+    <Namespace Value="LengthIntersectionDialog">
+      <Value Id="1" Header="[5] Protínaní z délek" Title="[5] Protínaní z délek" NewButtomContent="Nový výpočet"/>
+      <Value Id="2" Header="Levé stanovisko" />
+      <Value Id="3" Content="Předčíslí:" />
+      <Value Id="4" Content="Číslo:" />
+      <Value Id="5" Content="Délka:" />
+      <Value Id="6" Content="Y:" />
+      <Value Id="7" Content="X:" />
+      <Value Id="8" Header="Pravé stanovisko" />
+      <Value Id="9" Header="Určovaný bod" />
+      <Value Id="10" Content="Předčíslí" />
+      <Value Id="11" Content="Číslo:" />
+      <Value Id="12" Content="Kód:" />
+    </Namespace>
+    <Namespace Value="DirectionIntersectionDialog">
+      <Value Id="1" Header="[53] Protínaní ze směrů" Title="[53] Protínaní ze směrů" NewButtomContent="Nový výpočet"/>
+      <Value Id="2" Header="Stanovisko" />
+      <Value Id="3" Content="Předčíslí:" />
+      <Value Id="4" Content="Číslo:" />
+      <Value Id="5" Content="Y:" />
+      <Value Id="6" Content="X:" />
+      <Value Id="7" Header="Orientace" />
+      <Value Id="8" Header="Body" />
+      <Value Id="9" Header="V Orientace" />
+      <Value Id="10" Content="Předčíslí:" />
+      <Value Id="11" Content="Číslo:" />
+      <Value Id="12" Content="Výška stroje:" />
+      <Value Id="13" Content="X:" />
+      <Value Id="14" Content="Y:" />
+      <Value Id="15" Content="Přídat" />
+      <Value Id="16" Content="Odebrad" />
+      <Value Id="17" Header="Určovaný bod" />
+      <Value Id="18" Content="Předčíslí" />
+      <Value Id="19" Content="Číslo:" />
+      <Value Id="20" Content="Kód:" />
+      <Value Id="21" Content="X:" />
+      <Value Id="22" Content="Y:" />
+      <Value Id="23" Content="Směr z A:" />
+      <Value Id="24" Content="Směr z B:" />
+      <Value Id="25" Content="Směr:" />
+    </Namespace>
+    <Namespace Value="LineIntersectionDialog">
+      <Value Id="0" Header="[3] PRŮSEČÍK PŘÍMEK" Title="[3] PRŮSEČÍK PŘÍMEK" NewButtomContent="Nový průsečík"/>
+      <Value Id="2" Header="První přímka" />
+      <Value Id="3" Header="Bod A" />
+      <Value Id="4" Content="Předčíslí:" />
+      <Value Id="5" Content="Číslo:" />
+      <Value Id="6" Content="Y:" />
+      <Value Id="7" Content="X:" />
+      <Value Id="8" Header="Bod B" />
+      <Value Id="9" Header="Druhá přímka" />
+      <Value Id="10" Header="Průsečík" />
+    </Namespace>
+    <Namespace Value="DirectionAzimutAndLengthDialog">
+      <Value Id="0" Title="[5] Směrník a délka" Header="[5] Směrník a délka" NewButtomContent="Nová přímka"/>
+      <Value Id="1" Header="Stanovisko" />
+      <Value Id="2" Content="Předčíslí:" />
+      <Value Id="3" Content="Číslo:" />
+      <Value Id="4" Content="Y:" />
+      <Value Id="5" Content="X:" />
+      <Value Id="6" Content="Z:" />
+      <Value Id="7" Header="Orientace" />
+      <Value Id="8" Header="Směrník a délka" />
+      <Value Id="9" Content="Směrník:" />
+      <Value Id="10" Content="Převýšení:" />
+      <Value Id="11" Content="Sklon(úhel):" />
+      <Value Id="12" Content="Vodorovná déka:" />
+      <Value Id="13" Content="Šikmá délka:" />
+      <Value Id="14" Content="Spád" />
+    </Namespace>
+    <Namespace Value="ControlDistanceDialog">
+      <Value Id="0" Title="[9] Kontrolní odměrné" Header="[9] Kontrolní odměrné" NewButtomContent="Nový výpočet"/>
+      <Value Id="1" Header="Bod" />
+      <Value Id="2" Header="Vzdálenost" />
+      <Value Id="3" Header="Rozdíl" />
+      <Value Id="4" Content="Přidat" />
+      <Value Id="5" Content="Odebrat" />
+      <Value Id="6" Content="Předč:" />
+      <Value Id="7" Content="Číslo:" />
+      <Value Id="8" Content="Délka:" />
+      <Value Id="9" Header="Y:" />
+      <Value Id="10" Header="X:" />
+    </Namespace>
+    <Namespce Value="ConstuctionDistanceDialog">
+      <Value Id="0" Title="[4] Konstrukční odměrné" Header="[4] Konstrukční odměrné" NewButtomContent="Nový výpočet"/>
+      <Value Id="1" Header="Identické body:" />
+      <Value Id="2" Header="Body" />
+      <Value Id="3" Header="dY" />
+      <Value Id="4" Header="dX" />
+      <Value Id="5" Content="Předč:" />
+      <Value Id="6" Content="Číslo:" />
+      <Value Id="7" Content="Délka:" />
+      <Value Id="8" Header="Y:" />
+      <Value Id="9" Header="X:" />
+      <Value Id="10" Header="Klíč" />
+      <Value Id="11" Content="Přidat" />
+      <Value Id="12" Content="Odebrat" />
+      <Value Id="13" Header="Vypočtené body:" />
+      <Value Id="14" Header="Y" />
+      <Value Id="15" Header="X" />
+      <Value Id="16" Text="Nebyla zadána delka." Caption="Chyba" />
+    </Namespce>
+    <Namespace Value="TransfromCoordinatesDialog">
+      <Value Id="0" Title="Transformace souřadnic" Header="Transformace souřadnic"  NewButtomContent="Nový výpočet"/>
+      <Value Id="1" Header="Identické body" />
+      <Value Id="2" Header="Body" />
+      <Value Id="3" Header="dY" />
+      <Value Id="4" Header="dX" />
+      <Value Id="5" Content="Předč:" />
+      <Value Id="6" Content="Číslo:" />
+      <Value Id="7" Header="Y:" />
+      <Value Id="8" Header="X:" />
+      <Value Id="9" Header="Seznam souřadnic:" />
+      <Value Id="10" Content="Vstup" />
+      <Value Id="11" Content="Výstup" />
+      <Value Id="12" Text="Nebyly zadány všechny potřebné hodnoty." Caption="Pozor" />
+      <Value Id="13" Header="Type Transformace" />
+      <Value Id="14" Content="Podobnostní" />
+      <Value Id="15" Content="Přidat" />
+      <Value Id="16" Content="Odebrat" />
+      <Value Id="17" Content="Podobnostní(Helmert)" />
+      <Value Id="18" Content="Shodnostni" />
+      <Value Id="19" Content="Afinní" />
+      <Value Id="20" Text="Nepojmenovaný" />
+    </Namespace>
+    <Namespace Value="PolygonTraverseDialog">
+      <Value Id="0" Title="Polygonový pořad" Header="Polygonový pořad" NewButtomContent="Nový pořad"/>
+      <Value Id="1" Header="Počáteční bod" />
+      <Value Id="2" GroupBoxHeader="Počáteční bod" />
+      <Value Id="3" Header="Koncový bod" />
+      <Value Id="4" GroupBoxHeader="Koncový bod" />
+      <Value Id="5" Header="Měřená data" />
+      <Value Id="6" Header="Výsledky" />
+      <Value Id="7" Header="Body" />
+      <Value Id="8" Content="Úhlový uzávěr:" />
+      <Value Id="9" Content="Odchylka X/Y:" />
+      <Value Id="10" Content="Polohová odchylka:" />
+      <Value Id="11" Content="Vyskový uzávěr:" />
+      <Value Id="12" Content="Type pořadu:" 
+                None="Nelze určit" 
+                Free="Volný polygonový pořad"
+                Fixed="Vetknutý polygonový pořad"
+                MutuallyConnectedAndOneSideFixed="Oboustraně připojený a jednostraně vetknutý"
+                MutuallyConnectedAndMutuallyFixed="Oboustraně připojený a oboustraně vetknutý" />
+      <Value Id="13" Content="Výškový výpočet." />
+      <Value Id="14" Header="Input/Output" />
+      <Value Id="15" Content="Načíst pořad ze souboru..." />
+      <Value Id="16" Content="Uložit pořad do souboru..." />
+    </Namespace>
+    <Namespace Value="MeasuredPolygonTraversUserControl">
+      <Value Id="0" Header="Body" />
+      <Value Id="1" Header="PointOfView" />
+      <Value Id="2" Content="Předčíslí:" />
+      <Value Id="3" Content="Číslo:" />
+      <Value Id="4" Content="Výška stroje:" />
+      <Value Id="5" Content="Přidat" />
+      <Value Id="6" Content="Odebrat" />
+      <Value Id="7" Header="Měření zpět" />
+      <Value Id="8" Content="Směr:" />
+      <Value Id="9" Content="Délka:" />
+      <Value Id="10" Content="Z:" />
+      <Value Id="11" Content="dH:" />
+      <Value Id="12" Content="Signal" />
+      <Value Id="13" Header="Měření vpřed" />
+    </Namespace>
+    <Namspace Value="OrientationPolygonTraversUserControl">
+      <Value Id="0" Header="Orientace:" />
+      <Value Id="1" Content="Předčíslí:" />
+      <Value Id="2" Content="Číslo:" />
+      <Value Id="3" Content="Y:" />
+      <Value Id="4" Content="X:" />
+      <Value Id="5" Content="Směr:" />
+      <Value Id="6" Content="Přidat" />
+      <Value Id="7" Content="Odebrat" />
+    </Namspace>
+    <Namespace Value="PointPolygonTraversUserControl">
+      <Value Id="0" Content="Předčíslí:" />
+      <Value Id="1" Content="Číslo:" />
+      <Value Id="2" Content="Y:" />
+      <Value Id="3" Content="X:" />
+      <Value Id="4" Content="Z:" />
+    </Namespace>
+  </Gui>
+</Localization>

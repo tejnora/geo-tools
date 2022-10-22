@@ -1,0 +1,316 @@
+﻿<Calculations:CalculationDialogBase x:Class="GeoHelper.Calculations.LinesIntersectionDialog"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                                    xmlns:Calculations="clr-namespace:GeoHelper.Calculations"
+                                    xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                                    LanguageNamespace="LineIntersectionDialog"
+                                    loc:Translate.Uid="0"
+                                    Title="{loc:Translate PrusecikPrimekDialog}"
+                                    NewButtomContent="{loc:Translate NewLengthIntersection}"
+                                    SizeToContent="Height"
+                                    Width="300">
+    <Calculations:CalculationDialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Converters/ConvertersStyles.xaml" />
+                <ResourceDictionary Source="CalculationStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Calculations:CalculationDialogBase.Resources>
+    <Calculations:CalculationDialogBase.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <GroupBox loc:Translate.Uid="2"
+                      Header="{loc:Translate FirstLine}"
+                      Margin="0,0,0,10">
+                <Grid DataContext="{Binding Path=CalculationContext.FirstLine}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox loc:Translate.Uid="3"
+                              Grid.Column="0"
+                              Header="{loc:Translate PointA}"
+                              Margin="0,0,0,10"
+                              PreviewDragOver="OnDragEnter"
+                              PreviewDragEnter="OnDragEnter"
+                              Drop="OnDropFirstLinePointA"
+                              AllowDrop="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label loc:Translate.Uid="4"
+                                   Content="{loc:Translate Prefix:}" />
+                            <TextBox Grid.Column="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                                     Text="{Binding Path=StartPoint.Prefix}" />
+                            <Label Grid.Row="1"
+                                   loc:Translate.Uid="5"
+                                   Content="{loc:Translate Cislo:}" />
+                            <TextBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                                     Text="{Binding Path=StartPoint.Number}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   loc:Translate.Uid="6"
+                                   Content="{loc:Translate Y:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="2"
+                                     Text="{Binding Path=StartPoint.Y, Converter={StaticResource CoordinateConverter}}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="3"
+                                   loc:Translate.Uid="7"
+                                   Content="{loc:Translate X:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="3"
+                                     Text="{Binding Path=StartPoint.X, Converter={StaticResource CoordinateConverter}}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox loc:Translate.Uid="8"
+                              Grid.Column="1"
+                              Header="{loc:Translate PointB}"
+                              Margin="0,0,0,10"
+                              PreviewDragOver="OnDragEnter"
+                              PreviewDragEnter="OnDragEnter"
+                              Drop="OnDropFirstLinePointB"
+                              AllowDrop="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label loc:Translate.Uid="4"
+                                   Content="{loc:Translate Prefix:}" />
+                            <TextBox Grid.Column="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                                     Text="{Binding Path=EndPoint.Prefix}" />
+                            <Label Grid.Row="1"
+                                   loc:Translate.Uid="5"
+                                   Content="{loc:Translate Number:}" />
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                                     Text="{Binding Path=EndPoint.Number}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   loc:Translate.Uid="6"
+                                   Content="{loc:Translate Y:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="2"
+                                     Text="{Binding Path=EndPoint.Y, Converter={StaticResource CoordinateConverter}}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="3"
+                                   loc:Translate.Uid="7"
+                                   Content="{loc:Translate X:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="3"
+                                     Text="{Binding Path=EndPoint.X, Converter={StaticResource CoordinateConverter}}" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1"
+                      loc:Translate.Uid="9"
+                      Header="{loc:Translate SecondLine}"
+                      Margin="0,0,0,10">
+                <Grid DataContext="{Binding Path=CalculationContext.SecondLine}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox loc:Translate.Uid="3"
+                              Grid.Column="0"
+                              Header="{loc:Translate PointA}"
+                              Margin="0,0,0,10"
+                              PreviewDragOver="OnDragEnter"
+                              PreviewDragEnter="OnDragEnter"
+                              Drop="OnDropSecondLinePointA"
+                              AllowDrop="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label loc:Translate.Uid="4"
+                                   Content="{loc:Translate Prefix:}" />
+                            <TextBox Grid.Column="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                                     Text="{Binding Path=StartPoint.Prefix}" />
+                            <Label Grid.Row="1"
+                                   loc:Translate.Uid="5"
+                                   Content="{loc:Translate Number:}" />
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                                     Text="{Binding Path=StartPoint.Number}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   loc:Translate.Uid="6"
+                                   Content="{loc:Translate Y:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="2"
+                                     Text="{Binding Path=StartPoint.Y, Converter={StaticResource CoordinateConverter}}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="3"
+                                   loc:Translate.Uid="7"
+                                   Content="{loc:Translate X:}" />
+                            <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Grid.Column="1"
+                                     Grid.Row="3"
+                                     Text="{Binding Path=StartPoint.X, Converter={StaticResource CoordinateConverter}}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox loc:Translate.Uid="8"
+                              Grid.Column="1"
+                              Header="{loc:Translate PointB}"
+                              Margin="0,0,0,10"
+                              PreviewDragOver="OnDragEnter"
+                              PreviewDragEnter="OnDragEnter"
+                              Drop="OnDropSecondLinePoint2"
+                              AllowDrop="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label loc:Translate.Uid="4"
+                                   Content="{loc:Translate Prefix:}" />
+                            <TextBox Grid.Column="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                                     Text="{Binding Path=EndPoint.Prefix}" />
+                            <Label Grid.Row="1"
+                                   loc:Translate.Uid="5"
+                                   Content="{loc:Translate Number:}" />
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="1"
+                                     Utils:TextBoxMaskBehavior.Mask="Integer"
+                                     Utils:TextBoxMaskBehavior.MinimumValue="0"
+                                     Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                                     Text="{Binding Path=EndPoint.Number}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   loc:Translate.Uid="6"
+                                   Content="{loc:Translate Y:}" />
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="2"
+                                     Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Text="{Binding Path=EndPoint.Y, Converter={StaticResource CoordinateConverter}}" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="3"
+                                   loc:Translate.Uid="7"
+                                   Content="{loc:Translate X:}" />
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="3"
+                                     Utils:TextBoxMaskBehavior.Mask="Decimal"
+                                     Text="{Binding Path=EndPoint.X, Converter={StaticResource CoordinateConverter}}" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+            <GroupBox loc:Translate.Uid="1"
+                      Grid.Row="2"
+                      Header="{loc:Translate Intersection}"
+                      Margin="0,0,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label loc:Translate.Uid="4"
+                           Content="{loc:Translate Prefix:}" />
+                    <TextBox Grid.Column="1"
+                             Utils:TextBoxMaskBehavior.Mask="Integer"
+                             Utils:TextBoxMaskBehavior.MinimumValue="0"
+                             Utils:TextBoxMaskBehavior.MaximumValue="99999999"
+                             Text="{Binding Path=CalculatedPoint.Prefix}" />
+                    <Label Grid.Row="1"
+                           loc:Translate.Uid="5"
+                           Content="{loc:Translate Number:}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             Utils:TextBoxMaskBehavior.Mask="Integer"
+                             Utils:TextBoxMaskBehavior.MinimumValue="0"
+                             Utils:TextBoxMaskBehavior.MaximumValue="9999"
+                             Text="{Binding Path=CalculatedPoint.Number}" />
+                    <Label Grid.Column="6"
+                           Grid.Row="0"
+                           loc:Translate.Uid="227"
+                           Content="{loc:Translate Y:}" />
+                    <TextBox Utils:TextBoxMaskBehavior.Mask="Decimal"
+                             Grid.Column="3"
+                             Grid.Row="0"
+                             IsEnabled="False"
+                             Text="{Binding Path=CalculatedPoint.Y, Converter={StaticResource DoubleConverter}}" />
+                    <Label Grid.Column="2"
+                           Grid.Row="1"
+                           loc:Translate.Uid="7"
+                           Content="{loc:Translate X:}" />
+                    <TextBox Grid.Column="4"
+                             Grid.Row="1"
+                             Utils:TextBoxMaskBehavior.Mask="Decimal"
+                             IsEnabled="False"
+                             Text="{Binding Path=CalculatedPoint.X, Converter={StaticResource DoubleConverter}}" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Calculations:CalculationDialogBase.DialogContent>
+</Calculations:CalculationDialogBase>
+    

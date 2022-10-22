@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Converters1="clr-namespace:GeoBase.Converters;assembly=GeoBase"
+                    xmlns:Converters="clr-namespace:CAD.Converters">
+    <Converters1:EnumMatchToBooleanConverter x:Key="enumConverter" />
+    <Converters:PlochaConverter x:Key="PlochaConverter" />
+</ResourceDictionary>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://katastr.cuzk.cz/enx/content/v2.2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2"
+	targetNamespace="http://katastr.cuzk.cz/enx/content/v2.2"
+	elementFormDefault="qualified" version="2.2.0">
+
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../baseTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../commonTypes_v22.xsd"/>
+
+	<xs:include schemaLocation="podaniIntCommon_v22.xsd" />
+
+	<xs:element name="enx" type="ENXType" />
+
+	<xs:complexType name="ENXType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ XML návrhu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typyRizeni" type="RizeniTypeENX" />
+			<xs:element name="predmety" type="PredmetyListType" />
+			<xs:element name="udajeKPlatbe" type="UdajeKPlatbeType" minOccurs="0"/>
+			<xs:element name="extIdentifikace" type="ExtIdentifikaceType" minOccurs="0"/>
+
+			<xs:element name="pracoviste" type="PracovisteType" />
+			<xs:element name="poznamky" type="PoznamkyListType" minOccurs="0" />
+			<xs:element name="ucastnici" type="UcastniciListType" />
+			<xs:element name="listiny" type="ListinyListType" minOccurs="1" />
+			<xs:element ref="ds:Signature" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniTypeENX">
+		<xs:annotation>
+			<xs:documentation>Typ řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typ" type="TypRizeniENXType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UcastniciListType">
+		<xs:annotation>
+			<xs:documentation>Seznam účastníků</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ucastnik" type="UcastnikType" minOccurs="2"
+				maxOccurs="2" />
+		</xs:sequence>
+		<xs:attribute name="num" type="xs:nonNegativeInteger" />
+	</xs:complexType>
+
+	<xs:complexType name="ListinyListType">
+		<xs:annotation>
+			<xs:documentation>Seznam listin</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="listina" type="ListinaEnxType" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:simpleType name="TypRizeniENXType">
+		<xs:annotation>
+			<xs:documentation>Výčtový typ pro typy řízení v ENX - exekuce
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:TypRizeniKodType">
+			<xs:enumeration value="ZPZ" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TypUcastnikaENXKodType">
+		<xs:restriction base="bt:TypUcastnikaKodType">
+			<xs:enumeration value="EX">
+				<xs:annotation>
+					<xs:documentation>Exekutor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PO">
+				<xs:annotation>
+					<xs:documentation>Povinný</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="UcastnikType">
+		<xs:annotation>
+			<xs:documentation>Účastník řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ucastnikDruh" type="bt:DruhUcastnikaType" />
+			<xs:element name="ucastnikTyp" type="TypUcastnikaENXKodType" />
+			<xs:choice>
+				<xs:group ref="FOParametryGroup" />
+				<xs:group ref="POParametryGroup" />
+			</xs:choice>
+			<xs:group ref="UcastnikOstatniGroup" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Jednoznačný
+					identifikátor účastníka v rámci požadavku. Identifikátor slouží k
+					propojení dvou účastníků v případě, že jeden účastník je zastupován
+					jiným. V jiných případech nemá význam.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="zastupovan" type="xs:IDREF">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Odkaz na
+					jiného účastníka řízení v rámci požadavku, kterým je aktuální
+					účastník zastupován.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="popis" type="bt:TextType">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Popis
+					účastníka.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ListinaEnxType">
+		<xs:annotation>
+			<xs:documentation>Listina k podání</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typKod" type="TypListinyKodENXType" />
+			<xs:element name="datumVyhotoveni" type="xs:date" />
+			<xs:element name="textCislaJednaciho" type="bt:CisloJednaciType" minOccurs="0" />
+			<xs:element name="stran" type="xs:positiveInteger" minOccurs="0" />
+			<xs:element name="popis" type="bt:TextType" minOccurs="0" />
+			<xs:element name="pravniMoc" type="xs:string" minOccurs="0" />
+			<xs:element name="druhListinyKod" type="bt:DruhListinyKodType" minOccurs="0" />
+			<xs:element name="priloha" type="ct:PrilohaWSType" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="TypListinyKodENXType">
+		<xs:restriction base="bt:TypListinyKodType">
+			<xs:enumeration value="107">
+				<xs:annotation>
+					<xs:documentation>Ohlášení</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="132">
+				<xs:annotation>
+					<xs:documentation>Usnesení soudu</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="205">
+				<xs:annotation>
+					<xs:documentation>Vyrozumění soudního exekutora</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
+
+

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Nampespace Value="MainWindow">
+      <Value Id="0" Title="Geo helper" Width="1200" Height="800" />
+      <Value Id="1" Header="Soubor" />
+      <Value Id="2" Header="Otevřít" />
+      <Value Id="3" Header="Nový" />
+      <Value Id="4" Header="Uložit" />
+      <Value Id="5" Header="Uložit jako" />
+      <Value Id="6" Header="Aktuální seznam souřadnic..." />
+      <Value Id="7" Header="Tisk" />
+      <Value Id="8" Header="Nastavení..." />
+      <Value Id="9" Header="Konec" />
+      <Value Id="10" Header="Editace" />
+      <Value Id="11" Header="Zpět" />
+      <Value Id="12" Header="Dopředu" />
+      <Value Id="13" Header="Přenes" />
+      <Value Id="14" Header="Kopíru" />
+      <Value Id="15" Header="Vlož" />
+      <Value Id="16" Header="Vymaž" />
+      <Value Id="17" Header="[1] Polární metoda" />
+      <Value Id="18" Header="[0] Orotgonální metoda" />
+      <Value Id="19" Header="[1] Polární metoda dávkou" />
+      <Value Id="20" Header="[8] Volné stanovisko" />
+      <Value Id="21" Header="[5] Protínaní z délek" />
+      <Value Id="22" Header="[53] Protínaní ze směrů" />
+      <Value Id="23" Header="[3] Průsečík přímek" />
+      <Value Id="24" Header="Polygonový pořad" />
+      <Value Id="25" Header="Transformace souřadnic" />
+      <Value Id="26" Header="[5] Směrník a délka" />
+      <Value Id="27" Header="[9] Kontrolní odměrné" />
+      <Value Id="28" Header="[4] Konstrukční odměrné" />
+      <Value Id="29" Header="Nástroje" />
+      <Value Id="30" Header="Přenos souborů..." />
+    </Nampespace>
+    <Namespace Value="Texts">
+      <Value Id="1" Title="Chyba" Content="Řtězec:#value# nelze převest na číslo."/>
+    </Namespace>
+  </Gui>
+</Localization>

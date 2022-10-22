@@ -1,0 +1,69 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.UITools.AttributesToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       mc:Ignorable="d"
+                       d:DesignHeight="300"
+                       d:DesignWidth="300">
+   <UITools:GeoCadToolBar.Resources>
+      <DataTemplate x:Key="SolidColorTemplate"
+                    DataType="{x:Type SolidColorBrush}">
+         <DockPanel Margin="1">
+            <Border Background="{Binding Path=Object2}"
+                    Width="15"
+                    Height="15"
+                    DockPanel.Dock="Left" />
+            <TextBlock Text="{Binding Path=Name}"
+                       Margin="5,0,0,0" />
+         </DockPanel>
+      </DataTemplate>
+      <DataTemplate x:Key="WidthColorTemplate">
+         <StackPanel Orientation="Horizontal">
+            <Border Background="Black"
+                    Width="30"
+                    Height="{Binding Object}" />
+            <TextBlock Text="{Binding Name}"
+                       Margin="5,0,0,0" />
+         </StackPanel>
+      </DataTemplate>
+   </UITools:GeoCadToolBar.Resources>
+   <UITools:GeoCadToolBar.CommandBindings>
+      <CommandBinding Command="UITools:AttributesToolBar.AddLayer"
+                      CanExecute="OnCanExecute"
+                      Executed="OnAddLayer" />
+      <CommandBinding Command="UITools:AttributesToolBar.RemoveLayer"
+                      CanExecute="OnCanRemove"
+                      Executed="OnRemoveLayer" />
+      <CommandBinding Command="UITools:AttributesToolBar.EditLayer"
+                      CanExecute="OnCanExecute"
+                      Executed="OnEditLayer" />
+   </UITools:GeoCadToolBar.CommandBindings>
+   <ComboBox x:Name="_colorComboBox"
+             Width="100"
+             Height="20"
+             ItemTemplate="{StaticResource ResourceKey=SolidColorTemplate}"
+             ItemsSource="{Binding Colors}"
+             SelectedItem="{Binding SelectedColor}">
+   </ComboBox>
+   <ComboBox  x:Name="_widthComboBox"
+              Width="100"
+              Height="20"
+              ItemTemplate="{StaticResource ResourceKey=WidthColorTemplate}"
+              ItemsSource="{Binding LinesWidth}"
+              SelectedValue="{Binding SelectedLineWidth}" />
+   <ComboBox Height="20"
+             Width="100"
+             ItemsSource="{Binding Layers}"
+             SelectedItem="{Binding SelectedLayer}" />
+   <Button Command="UITools:AttributesToolBar.AddLayer">
+      <Image Source="/CAD;component/Icons/AddLayer.png" />
+   </Button>
+   <Button Command="UITools:AttributesToolBar.RemoveLayer">
+      <Image Source="/CAD;component/Icons/RemoveLayer.png" />
+   </Button>
+   <Button Command="UITools:AttributesToolBar.EditLayer">
+      <Image Source="/CAD;component/Icons/EditLayer.png" />
+   </Button>
+</UITools:GeoCadToolBar>

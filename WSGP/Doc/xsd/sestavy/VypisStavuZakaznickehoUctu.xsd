@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Verze: 1.00 -->
+  <xs:element name="VypisStavuZakaznickehoUctu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UCET">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UCET_USERNAME" type="xs:string"/>
+              <xs:element name="CISLO_UCTU">
+                <xs:simpleType>
+                  <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value='30'/>
+                    <xs:fractionDigits value='0'/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_RIZENI">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="typriz_kod" type="xs:string"/>
+                    <xs:element name="poradove_cislo" type="xs:unsignedInt"/>
+                    <xs:element name="rok" type="xs:unsignedShort"/>
+                    <xs:element name="prares_kod" type="xs:unsignedShort"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DAT_FAKTURACE" type="xs:string"/>
+              <xs:element name="KREDIT" type="xs:string"/>
+              <xs:element name="UCASTNIK">
+                <xs:complexType>
+                  <xs:choice>
+                    <xs:sequence>
+                      <xs:element name="titul_pred_jmenem" type="xs:string" minOccurs="0"/>
+                      <xs:element name="prijmeni" type="xs:string"/>
+                      <xs:element name="jmeno" type="xs:string"/>
+                      <xs:element name="titul_za_jmenem" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                    <xs:element name="obchodni_jmeno" type="xs:string"/>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RADKY">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element maxOccurs="unbounded" name="RADEK">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="UZIVP_USERNAME" type="xs:string"/>
+                          <xs:element name="CJ" type="xs:string"/>
+                          <xs:element name="UCEL" type="xs:string"/>
+                          <xs:element name="IDENT" type="xs:unsignedLong"/>
+                          <xs:element name="DAT_SPUST" type="xs:string"/>
+                          <xs:element name="ZC_UCTU">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value='30'/>
+                                <xs:fractionDigits value='0'/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FUNKCE" type="xs:string"/>
+                          <xs:element name="MJ" type="xs:unsignedInt"/>
+                          <xs:element name="STRANY" type="xs:string"/>
+                          <xs:element name="CENA">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal">
+                                <xs:fractionDigits value='2'/>
+                              </xs:restriction>
+                            </xs:simpleType>
+		                  </xs:element>
+                          <xs:element name="KOD" type="xs:unsignedShort"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CENA_CELKEM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:decimal">
+                    <xs:fractionDigits value='2'/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DATUM_OD" type="xs:string"/>
+        <xs:element name="DATUM_DO" type="xs:string"/>
+        <xs:element name="VYHOTOVIL" type="xs:string"/>
+	<xs:element name="VYHOTOVENO" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

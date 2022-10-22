@@ -1,0 +1,119 @@
+﻿<Calculations:CalculationDialogBase x:Class="GeoHelper.Calculations.PolarMethodBatchDialog"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:Calculations="clr-namespace:GeoHelper.Calculations"
+                                    xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                                    LanguageNamespace="PolarMethodBatch"
+                                    loc:Translate.Uid="1"
+                                    Title="{loc:Translate PolarMethodBatch}"
+                                    SizeToContent="Height"
+                                    Width="300">
+    <Calculations:CalculationDialogBase.DialogContent>
+        <Grid DataContext="{Binding Path=CalculationContext}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupBox loc:Translate.Uid="2"
+                      Header="{loc:Translate File}"
+                      AllowDrop="True"
+                      Drop="OnFileDrop">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           loc:Translate.Uid="3"
+                           Content="{loc:Translate Input}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             IsEnabled="False"
+                             DragEnter="OnInputFileDragEnter"
+                             Text="{Binding Path=InputFileName}" />
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           loc:Translate.Uid="4"
+                           Content="{loc:Translate Output}" />
+                    <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             IsEnabled="False"
+                             DragEnter="OnOutputFileDragEnter"
+                             Text="{Binding Path=OutputFileName}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1"
+                      loc:Translate.Uid="5"
+                      Header="{loc:Translate Options}">
+                <StackPanel>
+                    <CheckBox loc:Translate.Uid="6"
+                              Content="{loc:Translate UseOnlySelectedNodes }"
+                              IsChecked="{Binding Path=UseOnlySelectedNodes}" />
+                    <CheckBox loc:Translate.Uid="7"
+                              Content="{loc:Translate EditOrientation}"
+                              IsChecked="{Binding Path=EditOrientation}" />
+                    <CheckBox loc:Translate.Uid="8"
+                              Content="{loc:Translate CalculateFreePointOfView}"
+                              IsChecked="{Binding Path=CalculateFreePointOfView}" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="2"
+                      loc:Translate.Uid="9"
+                      Header="{loc:Translate CalculationProgress}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           loc:Translate.Uid="10"
+                           Content="{loc:Translate Calculated}" />
+                    <Label Grid.Column="0"
+                           Grid.Row="2"
+                           loc:Translate.Uid="11"
+                           Content="{loc:Translate NotUse}" />
+                    <Label Grid.Column="1"
+                           Grid.Row="0"
+                           HorizontalAlignment="Right"
+                           Content="{Binding Path=NumberOfPointOfViews}" />
+                    <Label Grid.Column="1"
+                           Grid.Row="1"
+                           HorizontalAlignment="Right"
+                           Content="{Binding Path=NumberOfDetailedPoints}" />
+                    <Label Grid.Column="1"
+                           Grid.Row="2"
+                           HorizontalAlignment="Right"
+                           Content="{Binding Path=NumberOfUnusedMeasuringPoints}" />
+                    <Label Grid.Column="2"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left"
+                           loc:Translate.Uid="12"
+                           Content="{loc:Translate NumberOfPointOfViews}" />
+                    <Label Grid.Column="2"
+                           Grid.Row="1"
+                           HorizontalAlignment="Left"
+                           loc:Translate.Uid="13"
+                           Content="{loc:Translate NumberOfDetailedPoints}" />
+                    <Label Grid.Column="2"
+                           Grid.Row="2"
+                           HorizontalAlignment="Left"
+                           loc:Translate.Uid="14"
+                           Content="{loc:Translate NumberOfUnusedMeasuringPoints}" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Calculations:CalculationDialogBase.DialogContent>
+</Calculations:CalculationDialogBase>

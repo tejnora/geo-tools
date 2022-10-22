@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LocalizationSettings>
+  <CultureName>Czech</CultureName>
+  <Culture>cs-CZ</Culture>
+  <EnglishName>English</EnglishName>
+  <GuiElements>
+    <File>MainWindow.xml</File>
+    <File>Controls.xml</File>
+    <File>Dialogs.xml</File>
+    <File>Tables.xml</File>
+    <File>Protocols.xml</File>
+    <File>Deviations.xml</File>
+    <File>CalculationDialogs.xml</File>
+    <File>Exceptions.xml</File>
+  </GuiElements>
+</LocalizationSettings>

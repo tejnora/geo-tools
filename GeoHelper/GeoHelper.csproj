@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7C916BD9-C215-41B7-919B-3EF9A9BD431C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeoHelper</RootNamespace>
+    <AssemblyName>GeoHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Calculations\CoordinatePointAdapter.cs" />
+    <Compile Include="Calculations\MeasurePointAdapter.cs" />
+    <Compile Include="Controls\ActiveListOfCoordinates.xaml.cs">
+      <DependentUpon>ActiveListOfCoordinates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ActiveListOfCoordinatesNode.cs" />
+    <Compile Include="Controls\ActiveListOfCoordinatesNodeBase.cs" />
+    <Compile Include="Controls\CustomExportDialog.xaml.cs">
+      <DependentUpon>CustomExportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomImportDialog.xaml.cs">
+      <DependentUpon>CustomImportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressBarDialog.xaml.cs">
+      <DependentUpon>ProgressBarDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\LengthConverter.cs" />
+    <Compile Include="Converters\InvertBoolConverter.cs" />
+    <Compile Include="Converters\LocalizedEnumConverter.cs" />
+    <Compile Include="Converters\AreaConverter.cs" />
+    <Compile Include="Converters\CoordinateConverter.cs" />
+    <Compile Include="Converters\AngleConverter.cs" />
+    <Compile Include="Converters\HeightConverter.cs" />
+    <Compile Include="ExtensionMethods\DoubleExtensions.cs" />
+    <Compile Include="ExtensionMethods\StringExtensions.cs" />
+    <Compile Include="ExtensionMethods\UIntExtension.cs" />
+    <Compile Include="FileExport\Exceptions.cs" />
+    <Compile Include="FileExport\IUserExportIface.cs" />
+    <Compile Include="FileExport\UserExportToTextFile.cs" />
+    <Compile Include="FileParses\GromaCrdFileParser.cs" />
+    <Compile Include="FileParses\GromaMesFileParser.cs" />
+    <Compile Include="FileParses\GromaParserBase.cs" />
+    <Compile Include="FileParses\IUserPattern.cs" />
+    <Compile Include="FileParses\ParserExceptions.cs" />
+    <Compile Include="FileParses\ParserTokens.cs" />
+    <Compile Include="FileParses\UserFormatParser.cs" />
+    <Compile Include="IMainWindow.cs" />
+    <Content Include="Localization\CZ\CalculationDialogs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Localization\CZ\Controls.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\CZ\Deviations.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\CZ\Dialogs.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Options\UnitsOptions.xaml.cs">
+      <DependentUpon>UnitsOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\MicrostationPlugin.cs" />
+    <Compile Include="Printing\PrintDialog.xaml.cs">
+      <DependentUpon>PrintDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PrintSetting.cs" />
+    <Compile Include="Protocols\ConstructionDistanceProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\ControlDistanceProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\DirectionAzimutAndLengthProtocolContext.cs" />
+    <Compile Include="Protocols\DirectionIntersectionProtocol.cs" />
+    <Compile Include="Protocols\FreePointOfViewProtocolContext.cs" />
+    <Compile Include="Protocols\Gui\ProtocolDialog.xaml.cs">
+      <DependentUpon>ProtocolDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Protocols\IProtocolContext.cs" />
+    <Compile Include="Protocols\LengthIntersectionProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\LinesIntersectionProtocolContext.cs" />
+    <Compile Include="Protocols\OrtogonalMethodProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\PolarMethodBatchProtocolContext.cs" />
+    <Compile Include="Protocols\PolarMethodProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\PolygonTraverseProtocolContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\ProtocolContextBase.cs" />
+    <Compile Include="Protocols\TransformCoordinatesProtocolContex.cs" />
+    <Compile Include="Tables\AdditionalGui\ExistingPointInCoordinatesDialog.xaml.cs">
+      <DependentUpon>ExistingPointInCoordinatesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\FindPointDialog.xaml.cs">
+      <DependentUpon>FindPointDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MassChangeGroupBox.xaml.cs">
+      <DependentUpon>MassChangeGroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MassChangeLockGroupBox.xaml.cs">
+      <DependentUpon>MassChangeLockGroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MassChangeMeasureDialog.xaml.cs">
+      <DependentUpon>MassChangeMeasureDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MassChangeCoordinateDialog.xaml.cs">
+      <DependentUpon>MassChangeCoordinateDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MassChangeChangeGroupBox.xaml.cs">
+      <DependentUpon>MassChangeChangeGroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\MeasureTableSettingsDialog.xaml.cs">
+      <DependentUpon>MeasureTableSettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\AdditionalGui\CoordinateTableSttingsDialog.xaml.cs">
+      <DependentUpon>CoordinateTableSttingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\IEditMenu.cs" />
+    <Compile Include="Tables\ITableBase.cs" />
+    <Compile Include="Tables\IUndoRedo.cs" />
+    <Compile Include="Tables\MeasureListInfoDialog.xaml.cs">
+      <DependentUpon>MeasureListInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\TableBase.cs" />
+    <Compile Include="Tables\TableInfoContext.cs" />
+    <Compile Include="Tables\TableNodes\TableCoordinateListNode.cs" />
+    <Compile Include="Tables\TableNodes\TableDoubleCoordinateListNode.cs" />
+    <Compile Include="Tables\TableNodes\TableMeasureListNode.cs" />
+    <Compile Include="Tables\TableNodes\TableNodesBase.cs" />
+    <Compile Include="Tables\TablePrintingElements\TableDoubleCoordinatePrintSetting.cs" />
+    <Compile Include="Tables\TablePrintingElements\TableCoordinatePrintSetting.cs" />
+    <Compile Include="Tables\TablePrintingElements\TableMeasurePrintSetting.cs" />
+    <Compile Include="Tables\TablePrintingElements\TablePrintSettingBase.cs" />
+    <Compile Include="Tables\UndoRedo.cs" />
+    <Compile Include="Tools\FileTransfer\FileTransferSettingsDialog.xaml.cs">
+      <DependentUpon>FileTransferSettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\FileTransfer\FileTransferDialog.xaml.cs">
+      <DependentUpon>FileTransferDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\FileTransfer\FileTransferDownloadDialog.xaml.cs">
+      <DependentUpon>FileTransferDownloadDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\Controls\PointPolygonTraversUserControl.xaml.cs">
+      <DependentUpon>PointPolygonTraversUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\Controls\MeasuredPolygonTraversUserControl.xaml.cs">
+      <DependentUpon>MeasuredPolygonTraversUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\Controls\OrientationPolygonTraversUserControl.xaml.cs">
+      <DependentUpon>OrientationPolygonTraversUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\ConstructionDistanceDialog.xaml.cs">
+      <DependentUpon>ConstructionDistanceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\ControlDistanceDialog.xaml.cs">
+      <DependentUpon>ControlDistanceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\PolarMethodBatchDialog.xaml.cs">
+      <DependentUpon>PolarMethodBatchDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\PolarMethodDialog.xaml.cs">
+      <DependentUpon>PolarMethodDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\PolygonTraverseDialog.xaml.cs">
+      <DependentUpon>PolygonTraverseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\DirectionIntersectionDialog.xaml.cs">
+      <DependentUpon>DirectionIntersectionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\LengthIntersectionDialog.xaml.cs">
+      <DependentUpon>LengthIntersectionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\LinesIntersectionDialog.xaml.cs">
+      <DependentUpon>LinesIntersectionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\DirectionAzimutAndLengthDialog.xaml.cs">
+      <DependentUpon>DirectionAzimutAndLengthDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\FreePointOfViewDialog.xaml.cs">
+      <DependentUpon>FreePointOfViewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\TransformCoordinatesDialog.xaml.cs">
+      <DependentUpon>TransformCoordinatesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\CalculationDialogBase.cs" />
+    <Compile Include="Calculations\CalculationExporter.cs" />
+    <Compile Include="Calculations\PolygonTraversImporter.cs" />
+    <Compile Include="Calculations\DeviationDialog.xaml.cs">
+      <DependentUpon>DeviationDialog.xaml</DependentUpon>
+    </Compile>
+    <None Include="Localization\CZ\Protocols.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Localization\CZ\Exceptions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\CZ\Tables.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\CZ\Options.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Page Include="Controls\ActiveListOfCoordinates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomExportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomImportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressBarDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Converters\ConvertersStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Options\UnitsOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Printing\PrintDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Protocols\Gui\ProtocolDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\AdditionalGui\ExistingPointInCoordinatesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\FindPointDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MassChangeGroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MassChangeLockGroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MassChangeMeasureDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MassChangeCoordinateDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MassChangeChangeGroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\MeasureTableSettingsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\AdditionalGui\CoordinateTableSttingsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\MeasureListInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\MeasureListTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\MeasureListEditDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NewFileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\TableStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\GlobalApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tools\FileTransfer\FileTransferSettingsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tools\FileTransfer\FileTransferDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tools\FileTransfer\FileTransferDownloadDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\Controls\PointPolygonTraversUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\Controls\MeasuredPolygonTraversUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\Controls\OrientationPolygonTraversUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\ConstructionDistanceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\ControlDistanceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\OrtogonalMethodDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Protokol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\CoordinateListTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\CoordinateListInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\DoubleCoordinateListTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\CoordinateListEditDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tables\DoubleCoordinateEditDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\OptionsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\FileInputOutputOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DataGrid.Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Calculations\PolarMethodBatchDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\PolarMethodDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\PolygonTraverseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\DirectionIntersectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\LengthIntersectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\LinesIntersectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\DirectionAzimutAndLengthDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\FreePointOfViewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\TransformCoordinatesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\DeviationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculations\CalculationStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\AutoCommitCheckBoxColumn.cs" />
+    <Compile Include="Controls\ExtendedTextBoxColumn.cs" />
+    <Compile Include="Controls\IManipulateItems.cs" />
+    <Compile Include="Controls\ILoadSaveMdi.cs" />
+    <Compile Include="Controls\LabelTextBoxColumn.cs" />
+    <Compile Include="Tables\MeasureListTable.xaml.cs">
+      <DependentUpon>MeasureListTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\MeasureListEditDialog.xaml.cs">
+      <DependentUpon>MeasureListEditDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewFileDialog.xaml.cs">
+      <DependentUpon>NewFileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculations\OrtogonalMethodDialog.xaml.cs">
+      <DependentUpon>OrtogonalMethodDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protokol.xaml.cs">
+      <DependentUpon>Protokol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\CoordinateListTable.xaml.cs">
+      <DependentUpon>CoordinateListTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\CoordinateListInfoDialog.xaml.cs">
+      <DependentUpon>CoordinateListInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\DoubleCoordinateListTable.xaml.cs">
+      <DependentUpon>DoubleCoordinateListTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\CoordinateListEditDialog.xaml.cs">
+      <DependentUpon>CoordinateListEditDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\DoubleCoordinateEditDialog.xaml.cs">
+      <DependentUpon>DoubleCoordinateEditDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\DebugConverter.cs" />
+    <Compile Include="Converters\DoubleConverter.cs" />
+    <Compile Include="Converters\StringToIntWithInvisibleZero.cs" />
+    <Compile Include="FileParses\IParseIface.cs" />
+    <Compile Include="FileParses\NiconRowParser.cs" />
+    <Compile Include="FileParses\YXZTextParser.cs" />
+    <Compile Include="Converters\CoordinateNumberConverter.cs" />
+    <Compile Include="Options\IOptionItem.cs" />
+    <Compile Include="Options\OptionsDialog.xaml.cs">
+      <DependentUpon>OptionsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\FileInputOutputOptions.xaml.cs">
+      <DependentUpon>FileInputOutputOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\IPageElement.cs" />
+    <Compile Include="Printing\IPrinting.cs" />
+    <Compile Include="Printing\PageElement.cs" />
+    <Compile Include="Printing\PrintingPaginator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utils\DataGridDragDropManager.cs" />
+    <Compile Include="Singletons.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneralMatrix\GeneralMatrix.csproj">
+      <Project>{6ABA6EAD-58B0-4FCE-A97F-BC884281A170}</Project>
+      <Name>GeneralMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoBase\GeoBase.csproj">
+      <Project>{ED2C0A40-579E-40A2-813A-E6D165D9FCE6}</Project>
+      <Name>GeoBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoCalculations\GeoCalculations.csproj">
+      <Project>{A85CF85A-15D5-4D93-A286-7B26D292579E}</Project>
+      <Name>GeoCalculations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPF.MDI\WPF.MDI.csproj">
+      <Project>{be1ed569-5e0b-4df0-8964-33ad2aae4c4a}</Project>
+      <Name>WPF.MDI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localization\cs-CZ-old.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DragInsert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\zamek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localization\CZ\MainWindow.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localization\CZ\LocalizationSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

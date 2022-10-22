@@ -1,0 +1,13 @@
+﻿<ad:DocumentContent x:Class="CAD.Document"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+    xmlns:int="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+    xmlns:cs="clr-namespace:CAD.Canvas"
+    Title="Document" IsLocked="True" IsFloatingAllowed="True">
+    <DockPanel LastChildFill="True">
+        <WindowsFormsHost>
+        <cs:CanvasCtrl x:Name="_Canvas" ></cs:CanvasCtrl>
+        </WindowsFormsHost>
+    </DockPanel>
+</ad:DocumentContent>

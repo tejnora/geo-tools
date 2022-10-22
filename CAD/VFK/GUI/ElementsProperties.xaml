@@ -1,0 +1,64 @@
+﻿<Window x:Class="VFK.GUI.ElementsProperties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Uživatelské nastavní vlastností elementů"
+        Height="548"
+        Width="884">
+   <Window.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="..\..\Themes\DataGrid.Generic.xaml" />
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </Window.Resources>
+   <Grid>
+      <DataGrid x:Name="_mDataGrid"
+                   AutoGenerateColumns="False"
+                   HorizontalScrollBarVisibility="Hidden"
+                   SelectionMode="Extended"
+                   CanUserAddRows="False"
+                   CanUserDeleteRows="False"
+                   CanUserResizeRows="True"
+                   CanUserSortColumns="True"
+                   RowHeaderWidth="17"
+                   RowHeight="25"
+                   ItemsSource="{Binding Path=DataGridItems}"
+                   Margin="0,23,0,-1">
+          
+         <DataGrid.Columns>
+            <DataGridTextColumn Header="Kód"
+                                   Binding="{Binding Path=TYPPPD_KOD}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="Význam"
+                                   Binding="{Binding Path=Description}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="Barva"
+                                   Binding="{Binding Path=Color}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="Tloušťka"
+                                   Binding="{Binding Path=LineWidth}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="Výška"
+                                   Binding="{Binding Path=Velikost}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="Font"
+                                   Binding="{Binding Path=FontName}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+            <DataGridTextColumn Header="VFK typ"
+                                   Binding="{Binding Path=ProxyType}"
+                                   IsReadOnly="True"
+                                   Width="1*" />
+         </DataGrid.Columns>
+      </DataGrid>
+      <Label Height="28"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             Width="120">Seznam prvků:</Label>
+   </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Gui:DialogBase x:Class="GeoHelper.Controls.ProgressBarDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" Title="ProgressBar" SizeToContent="WidthAndHeight"
+                ResizeMode="NoResize" Loaded="OnLoaded">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="50" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <ProgressBar Grid.Row="1" Height="30" Value="{Binding Path=ProgressBarValue}" Minimum="0" Maximum="100"
+                 Margin="20,0,20,0" />
+    <Viewbox Grid.Row="1" Height="30" Margin="12,0,0,0">
+      <TextBlock loc:Translate.Uid="371" Text="{loc:Translate Loading..}" />
+    </Viewbox>
+    <Button Grid.Row="3" loc:Translate.Uid="370" Content="{loc:Translate Cancle}" Margin="152,0,176,0"
+            Click="Button_Click" />
+  </Grid>
+</Gui:DialogBase>

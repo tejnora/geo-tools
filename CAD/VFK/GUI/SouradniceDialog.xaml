@@ -1,0 +1,160 @@
+﻿<Gui:DialogBase x:Class="CAD.VFK.GUI.SouradniceDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                Title="SouradniceDialog"
+                ResizeMode="NoResize"
+                Height="300"
+                Width="287">
+    <Gui:DialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:DialogBase.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0"
+               Grid.Row="0"
+               loc:Translate.Uid="124"
+               Content="{loc:Translate UplneCisloBodu}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 Text="{Binding Path=SobrUplneCisloBodu,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                 Utils:TextBoxMaskBehavior.Mask="Integer"
+                 Utils:TextBoxMaskBehavior.MinimumValue="0"
+                 Utils:TextBoxMaskBehavior.MaximumValue="999999999"
+                 IsEnabled="{Binding Path=SobrIsEnabled}" />
+        <GroupBox Grid.Column="0"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  loc:Translate.Uid="125"
+                  Header="{loc:Translate SOBR}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       loc:Translate.Uid="126"
+                       Content="{loc:Translate Y:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="0"
+                         Text="{Binding Path=SobrY}"
+                         Utils:TextBoxMaskBehavior.Mask="Decimal"
+                         IsEnabled="{Binding Path=SobrIsEnabled}" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       loc:Translate.Uid="127"
+                       Content="{loc:Translate X:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="1"
+                         Text="{Binding Path=SobrX}"
+                         Utils:TextBoxMaskBehavior.Mask="Decimal"
+                         IsEnabled="{Binding Path=SobrIsEnabled}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="0"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="2"
+                  loc:Translate.Uid="128"
+                  Header="{loc:Translate SPOL}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       loc:Translate.Uid="126"
+                       Content="{loc:Translate Y:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="0"
+                         Text="{Binding Path=SpolY}"
+                         Utils:TextBoxMaskBehavior.Mask="Decimal"
+                         IsEnabled="{Binding Path=SpolIsEnabled}" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       loc:Translate.Uid="127"
+                       Content="{loc:Translate X:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="1"
+                         Text="{Binding Path=SpolX}"
+                         Utils:TextBoxMaskBehavior.Mask="Decimal"
+                         IsEnabled="{Binding Path=SpolIsEnabled}" />
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       loc:Translate.Uid="130"
+                       Content="{loc:Translate KatuzeKodMereni:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="2"
+                         Text="{Binding Path=SpolKatuzeKodMereni}"
+                         Utils:TextBoxMaskBehavior.Mask="Integer"
+                         Utils:TextBoxMaskBehavior.MinimumValue="0"
+                         Utils:TextBoxMaskBehavior.MaximumValue="999999"
+                         IsEnabled="{Binding Path=SpolIsEnabled}" />
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       loc:Translate.Uid="131"
+                       Content="{loc:Translate CisloZPMZMer:}" />
+                <TextBox Grid.Column="1"
+                         Grid.Row="3"
+                         Text="{Binding Path=SpolCisloZpmzMer}"
+                         Utils:TextBoxMaskBehavior.Mask="Integer"
+                         Utils:TextBoxMaskBehavior.MinimumValue="0"
+                         Utils:TextBoxMaskBehavior.MaximumValue="99999"
+                         IsEnabled="{Binding Path=SpolIsEnabled}" />
+            </Grid>
+        </GroupBox>
+        <Label Grid.Column="0"
+               Grid.Row="3"
+               loc:Translate.Uid="129"
+               Content="{loc:Translate KodKvality}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="3"
+                 Text="{Binding Path=SobrKodChyb}"
+                 Utils:TextBoxMaskBehavior.Mask="Integer"
+                 Utils:TextBoxMaskBehavior.MinimumValue="1"
+                 Utils:TextBoxMaskBehavior.MaximumValue="8"
+                 IsEnabled="{Binding Path=SobrIsEnabled}" />
+        <StackPanel Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button loc:Translate.Uid="43"
+                    Content="{loc:Translate Ok}"
+                    Click="OnOkButtonClick"
+                    IsDefault="True"
+                    IsEnabled="{Binding Path=IsEnabledAny}" />
+            <Button loc:Translate.Uid="44"
+                    Content="{loc:Translate Cancle}"
+                    Click="OnCancelButtonClick"
+                    IsDefault="True" />
+        </StackPanel>
+    </Grid>
+</Gui:DialogBase>

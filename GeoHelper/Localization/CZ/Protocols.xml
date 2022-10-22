@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Protocols>
+    <Protocol MethodName="PolarMethod">
+      <Text>
+        <if Variable="{{IsNotFromBatch}}">
+          [0] POLÁRNÍ METODA<EOL/>
+          ==================<EOL/>
+        </if>
+        Orientation osnovy na bode {{PointOfView.NumberWithPrefix}}:<EOL/>
+        -------------------------------------<EOL/>
+        <table CellSpace="5"  LastLine="-">
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr>
+            <td>{{PointOfView.NumberWithPrefix}}</td>
+            <td>{{PointOfView.Y}}</td>
+            <td>{{PointOfView.X}}</td>
+            <td>{{PointOfView.Z}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Orientace:<EOL/>
+        ----------<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr Variable="Orientation.Items">
+            <td>{{Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{Orientation.Items.Y}}</td>
+            <td>{{Orientation.Items.X}}</td>
+            <td>{{Orientation.Items.Z}}</td>
+          </tr>
+        </table>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz</th>
+            <th>Smerník</th>
+            <th>V or.</th>
+            <th>Délka</th>
+            <th>V délky</th>
+          </tr>
+          <tr Variable="Orientation.Items">
+            <td>{{Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{Orientation.Items.Hz}}</td>
+            <td>{{Orientation.Items.DirectionAzimut}}</td>
+            <td>{{Orientation.Items.VerticalOrientation}}</td>
+            <td>{{Orientation.Items.Distance}}</td>
+            <td>{{Orientation.Items.VerticalDistance}}</td>
+          </tr>
+        </table>
+        Orientacní posun       :   {{Orientation.OrientationMovement}}g<EOL/>
+        <if Variable="{{Orientation.Items.Count>1}}">
+          m0 = SQRT([vv]/(n-1))  :   {{Orientation.m0}}g<EOL/>
+          SQRT( [vv]/(n*(n-1)) ) :   {{Orientation.m1}}g<EOL/>
+        </if>
+        <EOL/>
+        <deviations Variable="Deviations" Name="PolarMethod" Header="Test polární metody:"/><EOL/>
+        <EOL/>
+        <table CellSpace="5">
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz</th>
+            <th>Délka</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString" >
+            <td>{{CalculatedPoints.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoints.Hz}}</td>
+            <td>{{CalculatedPoints.Distance}}</td>
+            <td>{{CalculatedPoints.Y}}</td>
+            <td>{{CalculatedPoints.X}}</td>
+            <td>{{CalculatedPoints.Z}}</td>
+          </tr>
+        </table>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="OrtogonalMethod">
+      <Text>
+        [0] ORTOGONÁLNÍ METODA<EOL/>
+        ======================<EOL/>
+        Identické body:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Vertical</th>
+            <th>Staničení</th>
+          </tr>
+          <tr Variable="IdenticallyPoints.Items">
+            <td>{{IdenticallyPoints.Items.NumberWithPrefix}}</td>
+            <td>{{IdenticallyPoints.Items.Y}}</td>
+            <td>{{IdenticallyPoints.Items.X}}</td>
+            <td>{{IdenticallyPoints.Items.Vertical}}</td>
+            <td>{{IdenticallyPoints.Items.Stationing}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Transformační parametry:<EOL/>
+        Měřítko  : {{IdenticallyPoints.Scale}}  ({{-(1-IdenticallyPoints.Scale)*1000*100}} mm/100m)<EOL/>
+        <EOL/>
+        <if Variable="{{IdenticallyPoints.Items.Count&gt;2}}">
+          Souřadnicové opravy na identických bodech:<EOL/>
+          <table CellSpace="5" LastLine="-" >
+            <tr Line="-">
+              <th>Bod</th>
+              <th>vY</th>
+              <th>vX</th>
+            </tr>
+            <tr Variable="IdenticallyPoints.Items">
+              <td>{{IdenticallyPoints.Items.NumberWithPrefix}}</td>
+              <td>{{IdenticallyPoints.Items.dY}}</td>
+              <td>{{IdenticallyPoints.Items.dX}}</td>
+            </tr>
+          </table>
+          SQRT( [vv]/(n-1) ):        mY: {{IdenticallyPoints.ResiduesMiddleDeviationY}}   mX: {{IdenticallyPoints.ResiduesMiddleDeviationX}}<EOL/>
+          Střední souřadnicová chyba m0: {{IdenticallyPoints.ResiduesMiddleDeviation}}<EOL/>
+          <EOL/>
+        </if>
+        <deviations Variable="IdenticallyPoints.Deviations" Name="OrthogonalMethod" Header="Test měřické přímky:"/><EOL/>
+        <EOL/>
+        Vypočtené body:<EOL/>
+        <EOL/>
+        <table CellSpace="5">
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Kolmice</th>
+            <th>Staničení</th>
+          </tr>
+          <tr Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString">
+            <td>{{CalculatedPoints.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoints.Y}}</td>
+            <td>{{CalculatedPoints.X}}</td>
+            <td>{{CalculatedPoints.Vertical}}</td>
+            <td>{{CalculatedPoints.Stationing}}</td>
+          </tr>
+        </table>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="PolarMethodBatch">
+      <Text>
+        [1] POLÁRNÍ METODA DÁVKOU<EOL/>
+        =========================<EOL/>
+        {{ConcatenatedResults}}
+      </Text>
+    </Protocol>
+    <Protocol MethodName="FreePointOfViewMethod">
+      <Text>
+        <if Variable="{{IsNotFromBatch}}">
+          [8] VOLNÉ STANOVISKO<EOL/>
+          ====================<EOL/>
+        </if>
+        Volné stanovisko: {{PointOfView.NumberWithPrefix}}<EOL/>
+        Transformační parametry:<EOL/>
+        ------------------------<EOL/>
+        Měřítko: {{Orientation.Scale}} ({{-(1-Orientation.Scale)*1000*100}} mm/100m)<EOL/>
+        <EOL/>
+        Souřadnicové opravy na identických bodech:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>vY</th>
+            <th>vX</th>
+          </tr>
+          <tr Variable="Orientation.Items">
+            <td>{{Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{Orientation.Items.vY}}</td>
+            <td>{{Orientation.Items.vX}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Výsledné souřadnice:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr AdditionalMessageAfterRow="GetConversionString">
+            <td>{{PointOfView.NumberWithPrefix}}</td>
+            <td>{{PointOfView.Y}}</td>
+            <td>{{PointOfView.X}}</td>
+            <td>{{PointOfView.Z}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Orientation osnovy na bodě: {{PointOfView.NumberWithPrefix}}<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr>
+            <td>{{PointOfView.NumberWithPrefix}}</td>
+            <td>{{PointOfView.Y}}</td>
+            <td>{{PointOfView.X}}</td>
+            <td>{{PointOfView.Z}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Orientation:<EOL/>
+        ----------<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr Variable="Orientation.Items">
+            <td>{{Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{Orientation.Items.Y}}</td>
+            <td>{{Orientation.Items.X}}</td>
+            <td>{{Orientation.Items.Z}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz</th>
+            <th>Smerník</th>
+            <th>V or.</th>
+            <th>Délka</th>
+            <th>V délky</th>
+          </tr>
+          <tr Variable="Orientation.Items">
+            <td>{{Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{Orientation.Items.Hz}}</td>
+            <td>{{Orientation.Items.DirectionAzimut}}</td>
+            <td>{{Orientation.Items.VerticalOrientation}}</td>
+            <td>{{Orientation.Items.Distance}}</td>
+            <td>{{Orientation.Items.VerticalDistance}}</td>
+          </tr>
+        </table>
+        Orientacní posun       :   {{Orientation.OrientationMovement}}g<EOL/>
+        <if Variable="{{Orientation.Items.Count>1}}">
+          m0 = SQRT([vv]/(n-1))  :   {{Orientation.m0}}g<EOL/>
+          SQRT( [vv]/(n*(n-1)) ) :   {{Orientation.m1}}g<EOL/>
+        </if>
+        <EOL/>
+        <deviations Variable="Deviations" Name="PolarMethod" Header="Test polární metody:"/><EOL/>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="LengthIntersectionMethod">
+      <Text>
+        [5] PROTÍNÁNÍ Z DÉLEK<EOL/>
+        =====================<EOL/>
+        Levé stanovisko:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr>
+            <td>{{LeftPointOfView.NumberWithPrefix}}</td>
+            <td>{{LeftPointOfView.Y}}</td>
+            <td>{{LeftPointOfView.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Pravé stanovisko:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr>
+            <td>{{RightPointOfView.NumberWithPrefix}}</td>
+            <td>{{RightPointOfView.Y}}</td>
+            <td>{{RightPointOfView.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Výsledné souřadnice:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Sa</th>
+            <th>Sb</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString" >
+            <td>{{CalculatedPoints.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoints.Sa}}</td>
+            <td>{{CalculatedPoints.Sb}}</td>
+            <td>{{CalculatedPoints.Y}}</td>
+            <td>{{CalculatedPoints.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        <deviations Variable="Deviations" Name="LengthIntersection" Header="Test protínání:"/><EOL/>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="DirectionIntersectionMethod">
+      <Text>
+        [53] PROTÍNÁNÍ ZE SMĚRŮ<EOL/>
+        =======================<EOL/>
+        Orientation osnovy na bodě: {{A.PointOfView.NumberWithPrefix}}<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr Variable="A.Orientation.Items">
+            <td>{{A.Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{A.Orientation.Items.Y}}</td>
+            <td>{{A.Orientation.Items.X}}</td>
+            <td>{{A.Orientation.Items.Z}}</td>
+          </tr>
+        </table>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz</th>
+            <th>Směrník</th>
+            <th>V or.</th>
+            <th>Délka</th>
+            <th>V délky</th>
+            <th>V přev.</th>
+          </tr>
+          <tr Variable="A.Orientation.Items">
+            <td>{{A.Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{A.Orientation.Items.Hz}}</td>
+            <td>{{A.Orientation.Items.DirectionAzimut}}</td>
+            <td>{{A.Orientation.Items.VerticalOrientation}}</td>
+            <td>{{A.Orientation.Items.Distance}}</td>
+            <td>{{A.Orientation.Items.VerticalDistance}}</td>
+            <td>{{A.Orientation.Items.ElevationDifference}}</td>
+          </tr>
+        </table>
+        Orientační posun: {{A.Orientation.OrientationMovement}}g<EOL/>
+        <EOL/>
+        Orientation osnovy na bodě: {{B.PointOfView.NumberWithPrefix}}<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr Variable="B.Orientation.Items">
+            <td>{{B.Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{B.Orientation.Items.Y}}</td>
+            <td>{{B.Orientation.Items.X}}</td>
+            <td>{{B.Orientation.Items.Z}}</td>
+          </tr>
+        </table>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz</th>
+            <th>Směrník</th>
+            <th>V or.</th>
+            <th>Délka</th>
+            <th>V délky</th>
+            <th>V přev.</th>
+          </tr>
+          <tr Variable="A.Orientation.Items">
+            <td>{{B.Orientation.Items.NumberWithPrefix}}</td>
+            <td>{{B.Orientation.Items.Hz}}</td>
+            <td>{{B.Orientation.Items.DirectionAzimut}}</td>
+            <td>{{B.Orientation.Items.VerticalOrientation}}</td>
+            <td>{{B.Orientation.Items.Distance}}</td>
+            <td>{{B.Orientation.Items.VerticalDistance}}</td>
+            <td>{{B.Orientation.Items.ElevationDifference}}</td>
+          </tr>
+        </table>
+        Orientační posun: {{B.Orientation.OrientationMovement}}g<EOL/>
+        <EOL/>
+        Určované body:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Hz A</th>
+            <th>Hz B</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr  Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString">
+            <td>{{CalculatedPoint.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoint.DirectionFromA}}</td>
+            <td>{{CalculatedPoint.DirectionFromB}}</td>
+            <td>{{CalculatedPoint.Y}}</td>
+            <td>{{CalculatedPoint.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        <deviations Variable="Deviations" Name="DirectionIntersection" Header="Test protínání:"/><EOL/>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="LinesIntersectionMethod">
+      <Text>
+        [3] PRŮSEČÍK PŘÍMEK<EOL/>
+        ===================<EOL/>
+        Přímka I:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr>
+            <td>{{FirstLine.StartPoint.NumberWithPrefix}}</td>
+            <td>{{FirstLine.StartPoint.Y}}</td>
+            <td>{{FirstLine.StartPoint.X}}</td>
+          </tr>
+          <tr>
+            <td>{{FirstLine.EndPoint.NumberWithPrefix}}</td>
+            <td>{{FirstLine.EndPoint.Y}}</td>
+            <td>{{FirstLine.EndPoint.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Přímka II:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr>
+            <td>{{SecondLine.StartPoint.NumberWithPrefix}}</td>
+            <td>{{SecondLine.StartPoint.Y}}</td>
+            <td>{{SecondLine.StartPoint.X}}</td>
+          </tr>
+          <tr>
+            <td>{{SecondLine.EndPoint.NumberWithPrefix}}</td>
+            <td>{{SecondLine.EndPoint.Y}}</td>
+            <td>{{SecondLine.EndPoint.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Průsečík:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+          </tr>
+          <tr  Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString">
+            <td>{{CalculatedPoint.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoint.Y}}</td>
+            <td>{{CalculatedPoint.X}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Průsečík leží na obou úsečkách
+      </Text>
+    </Protocol>
+     <Protocol MethodName="DirectionAzimutAndLengthMethod">
+      <Text>
+        [50] SMĚRNÍK A DÉLKA<EOL/>
+        ====================<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Z</th>
+          </tr>
+          <tr>
+            <td>{{PointOfView.NumberWithPrefix}}</td>
+            <td>{{PointOfView.Y}}</td>
+            <td>{{PointOfView.X}}</td>
+            <td>{{PointOfView.Z}}</td>
+          </tr>
+          <tr>
+            <td>{{Orientation.NumberWithPrefix}}</td>
+            <td>{{Orientation.Y}}</td>
+            <td>{{Orientation.X}}</td>
+            <td>{{Orientation.Z}}</td>
+          </tr>
+        </table>
+        <table CellSpace="5">
+          <tr Line="-">
+            <th>Směrník</th>
+            <th>Délka</th>
+            <th>Převýšení</th>
+            <th>Sklon</th>
+            <th>Šikmá</th>
+            <th>Spád</th>
+          </tr>
+          <tr Variable="CalculatedPoints">
+            <th>{{CalculatedPoint.DirectionAzimut}}g</th>
+            <th>{{CalculatedPoint.Distance}}m</th>
+            <th>{{CalculatedPoint.ElevationDifference}}m</th>
+            <th>{{CalculatedPoint.Slope}}g</th>
+            <th>{{CalculatedPoint.ObliqueLength}}m</th>
+            <th>{{CalculatedPoint.Gradient}}%</th>
+          </tr>
+        </table>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="ControlDistanceMethod">
+      <Text>
+        [9] KONTROLNÍ OMĚRNÉ<EOL/>
+        ====================<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>Y</th>
+            <th>X</th>
+            <th>Vzdál.</th>
+            <th>Oměrná</th>
+            <th>Rozdíl</th>
+            <th>Mez. r.</th>
+          </tr>
+          <tr Variable="ControlDistance.Items">
+            <td>{{ControlDistance.Items.NumberWithPrefix}}</td>
+            <td>{{ControlDistance.Items.Y}}</td>
+            <td>{{ControlDistance.Items.X}}</td>
+            <td>{{ControlDistance.Items.CoordinateLength}}</td>
+            <td>{{ControlDistance.Items.MeasureLength}}</td>
+            <td>{{ControlDistance.Items.LengthDifference}}</td>
+            <td>{{ControlDistance.Items.LimitDeviation}}</td>
+          </tr>
+        </table>
+        <deviations Variable="Deviations" Name=""/><EOL/>
+      </Text>
+    </Protocol>
+    <Protocol MethodName="TransformCoordinatesMethod">
+      <Text>
+        [67] TRANSFORMACE SOUŘADNIC<EOL/>
+        ===========================<EOL/>
+        Identické body:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>I. Y</th>
+            <th>I. X</th>
+            <th>II. Y</th>
+            <th>II. X</th>
+          </tr>
+          <tr Variable="IdenticallyPoints.Items">
+            <td>{{IdenticallyPoints.Items.NumberWithPrefix}}</td>
+            <td>{{IdenticallyPoints.Items.Y}}</td>
+            <td>{{IdenticallyPoints.Items.X}}</td>
+            <td>{{IdenticallyPoints.Items.YLocal}}</td>
+            <td>{{IdenticallyPoints.Items.XLocal}}</td>
+          </tr>
+        </table>
+        <EOL/>
+        Transformační parametry:<EOL/>
+        -----------------------<EOL/>
+        Rotace   : {{IdenticallyPoints.Rotation}}<EOL/>
+        Měřítko  : {{IdenticallyPoints.Scale}} ({{-(1-IdenticallyPoints.Scale)*1000*100}} mm/100m)<EOL/>
+        <EOL/>
+        Souřadnicové opravy na identických bodech:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>Bod</th>
+            <th>vY</th>
+            <th>vX</th>
+            <th>m0</th>
+          </tr>
+          <tr Variable="IdenticallyPoints.Items">
+            <td>{{IdenticallyPoints.Items.NumberWithPrefix}}</td>
+            <td>{{IdenticallyPoints.Items.vY}}</td>
+            <td>{{IdenticallyPoints.Items.vX}}</td>
+            <td>{{IdenticallyPoints.Items.m0}}</td>
+          </tr>
+        </table>
+        SQRT( [vv]/(n-1) ):        mY: {{IdenticallyPoints.ResiduesMiddleDeviationY}}   mX: {{IdenticallyPoints.ResiduesMiddleDeviationX}}<EOL/>
+        Střední souřadnicová chyba m0: {{IdenticallyPoints.ResiduesMiddleDeviation}}<EOL/>
+        <EOL/>
+        Transformované body:<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr Line="-">
+            <th>I. Y</th>
+            <th>I. X</th>
+            <th>II. Y</th>
+            <th>II. X</th>
+          </tr>
+          <tr Variable="CalculatedPoints" AdditionalMessageAfterRow="GetConversionString">
+            <td>{{CalculatedPoints.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoints.Y}}</td>
+            <td>{{CalculatedPoints.X}}</td>
+            <td>{{CalculatedPoints.YLocal}}</td>
+            <td>{{CalculatedPoints.XLocal}}</td>
+          </tr>
+        </table>
+
+      </Text>
+    </Protocol>
+    <Protocol MethodName="ConstructionDistanceMethod">
+      <Text>
+        POLYGONOVÝ POŘAD<EOL/>
+        ================<EOL/>
+        <EOL/>
+        Naměřené hodnoty:<EOL/>
+        -----------------<EOL/>
+        <table CellSpace="5" LastLine="-" >
+          <tr>
+            <th>Bod</th>
+            <th>S zpět</th>
+            <th>S vpřed</th>
+            <th>Úhel</th>
+            <th>V úhlu</th>
+            <th>
+              <SPACE/>
+            </th>
+          </tr>
+          <tr Line="-">
+            <th>
+              <SPACE/>
+            </th>
+            <th>Směrník</th>
+            <th>D vpřed</th>
+            <th>D zpět</th>
+            <th>D</th>
+            <th>Dp - Dz</th>
+          </tr>
+          <tr Variable="MeasuringData.Items">
+            <td>{{MeasuringData.Items.MeasuringBack.NumberWithPrefix}}</td>
+            <td>{{CalculatedPoint.Items.MeasuringForward.Hz}}</td>
+            <td>{{MeasuringData.Items.MeasuringBack.Hz}}</td>
+            <td>{{MeasuringData.Items.MeasuringBack.Hz}}</td>
+            <td>{{MeasuringData.Items.MeasuringBack.Hz}}</td>
+          </tr>
+        </table>
+        <EOL/>
+      </Text>
+    </Protocol>
+    <ProtocolTemplate MethodName="CoordinateCorrection">
+      <Text>
+        <EOL/>
+        <if Variable="WasPointRenamed">
+          Změna čísla bodu: bod {{OldCoordinates.NumberWithPrefix}} uložen pod novým číslem {{SavedCoordinates.NumberWithPrefix}}.
+        </if>
+        <else>
+          Oprava souřadnic bodu číslo {{OldCoordinates.NumberWithPrefix}}<EOL/>
+          --------------------------------------<EOL/>
+          <table CellSpace="5" Line="-" >
+            <tr>
+              <th>Bod</th>
+              <th>Y</th>
+              <th>X</th>
+              <th>Z</th>
+            </tr>
+            <tr>
+              <td>Starý</td>
+              <td>{{OldCoordinates.Y}}</td>
+              <td>{{OldCoordinates.X}}</td>
+              <td>{{OldCoordinates.Z}}</td>
+            </tr>
+            <tr>
+              <td>Nový</td>
+              <td>{{NewCoordinates.Y}}</td>
+              <td>{{NewCoordinates.X}}</td>
+              <td>{{NewCoordinates.Z}}</td>
+            </tr>
+            <tr Line="-">
+              <td>Rozdíl</td>
+              <td>{{CoordinateDifferenceY}}</td>
+              <td>{{CoordinateDifferenceX}}</td>
+              <td>{{CoordinateDifferenceZ}}</td>
+            </tr>
+            <tr>
+              <td>Uložený</td>
+              <td>{{SavedCoordinates.Y}}</td>
+              <td>{{SavedCoordinates.X}}</td>
+              <td>{{SavedCoordinates.Z}}</td>
+            </tr>
+          </table>
+          <EOL/>
+        </else>
+      </Text>
+    </ProtocolTemplate>
+  </Protocols>
+</Localization>

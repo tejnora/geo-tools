@@ -1,0 +1,891 @@
+&HVERZE;"3.6"
+&HVYTVORENO;"08.03.2010 11:52:05"
+&HPUVOD;"ISKN"
+&HCODEPAGE;"WE8ISO8859P2"
+&HSKUPINA;"NEMO";"BDPA";"VLST";"JPVZ";"PKMP";"BPEJ";"GMPL";"REZE"
+&HJMENO;"Metelková Jarmila"
+&HPLATNOST;"08.03.2010 11:50:39";"08.03.2010 11:50:39"
+&HZMENY;0
+&HNAVRHY;1
+&HPOLYG;1
+&HPOLYGDATA;694006.51;1035703.7
+&HPOLYGDATA;693676.32;1035703.7
+&HPOLYGDATA;693676.32;1035950.32
+&HPOLYGDATA;694006.51;1035950.32
+&HPOLYGDATA;694006.51;1035703.7
+&HKATUZE;KOD N6;OBCE_KOD N6;NAZEV T48;PLATNOST_OD D;PLATNOST_DO D
+&HOPSUB;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;ID_JE_1_PARTNER_BSM N30;ID_JE_2_PARTNER_BSM N30;ID_ZDROJ N30;OPSUB_TYPE T10;CHAROS_KOD N2;ICO N8;DOPLNEK_ICO N3;NAZEV T255;NAZEV_U T255;RODNE_CISLO T10;TITUL_PRED_JMENEM T35;JMENO T24;JMENO_U T24;PRIJMENI T35;PRIJMENI_U T35;TITUL_ZA_JMENEM T10;CISLO_DOMOVNI N4;CISLO_ORIENTACNI T4;NAZEV_ULICE T32;CAST_OBCE T48;OBEC T48;OKRES T32;STAT T23;PSC N5;MESTSKA_CAST T48;CP_CE N1
+&HPAR;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;PKN_ID N30;PAR_TYPE T10;KATUZE_KOD N6;KATUZE_KOD_PUV N6;DRUH_CISLOVANI_PAR N1;KMENOVE_CISLO_PAR N5;ZDPAZE_KOD N1;PODDELENI_CISLA_PAR N3;DIL_PARCELY N1;MAPLIS_KOD N30;ZPURVY_KOD N1;DRUPOZ_KOD N2;ZPVYPA_KOD N4;TYP_PARCELY N1;VYMERA_PARCELY N9;CENA_NEMOVITOSTI N14.2;DEFINICNI_BOD_PAR T100;TEL_ID N30;PAR_ID N30;BUD_ID N30;IDENT_BUD T1
+&DPAR;1963566208;0;"02.12.1996 00:00:00";"";3;2624562208;;;"PZE";651184;;2;436;4;12;;;;;;1;152;;"";985334208;;;"n"
+&DPAR;1963794208;0;"31.12.1963 00:00:00";"";3;2624689208;;;"PZE";651184;;2;590;4;;;;;;;1;359;;"";985313208;;;"n"
+&DPAR;2115243208;0;"24.05.2004 09:32:24";"";3;3053522208;;;"PKN";651184;;2;590;;1;;9781;0;14;17;;463;;"";;;;"n"
+&BPAR;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;PKN_ID N30;PAR_TYPE T10;KATUZE_KOD N6;KATUZE_KOD_PUV N6;DRUH_CISLOVANI_PAR N1;KMENOVE_CISLO_PAR N5;ZDPAZE_KOD N1;PODDELENI_CISLA_PAR N3;DIL_PARCELY N1;MAPLIS_KOD N30;ZPURVY_KOD N1;DRUPOZ_KOD N2;ZPVYPA_KOD N4;TYP_PARCELY N1;VYMERA_PARCELY N9;CENA_NEMOVITOSTI N14.2;DEFINICNI_BOD_PAR T100;TEL_ID N30;PAR_ID N30;BUD_ID N30;IDENT_BUD T1
+&DPAR;1963566208;0;"02.12.1996 00:00:00";"";3;2624562208;;;"PZE";651184;;2;436;4;12;;;;;;1;152;;"";985334208;;;"n"
+&DPAR;1963794208;0;"31.12.1963 00:00:00";"";3;2624689208;;;"PZE";651184;;2;590;4;;;;;;;1;359;;"";985313208;;;"n"
+&DPAR;2115243208;0;"24.05.2004 09:32:24";"";3;3053522208;;;"PKN";651184;;2;590;;1;;9781;0;14;17;;463;;"";;;;"n"
+&BBUD;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPBUD_KOD N1;CAOBCE_KOD N6;CISLO_DOMOVNI N4;CENA_NEMOVITOSTI N14.2;ZPVYBU_KOD N4;TEL_ID N30
+&BZPOCHN;KOD N4;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D;POZEMEK T1;BUDOVA T1;JEDNOTKA T1;NEMOCHR N3
+&DZPOCHN;1;"men¹í chránìné území";"01.01.1993 00:00:00";"";"a";"a";"a";1
+&DZPOCHN;2;"rozsáhlé chránìné území";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;3;"vnitø.lázeò.území, lo¾is.slatin a ra¹eliny, ochr.pásmo 1.st.";"01.01.1993 00:00:00";"";"a";"a";"a";10
+&DZPOCHN;4;"památkovì chránìné území";"01.01.1993 00:00:00";"";"a";"a";"a";200
+&DZPOCHN;5;"znaèka geodetického bodu a její chránìné území";"01.01.1993 00:00:00";"31.12.1999 00:00:00";"a";"n";"n";400
+&DZPOCHN;6;"národní park - I.zóna";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;7;"národní park - II.zóna";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;8;"národní park - III.zóna";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;9;"ochranné pásmo národního parku";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;10;"chránìná krajinná oblast - I.zóna";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;11;"chránìná krajinná oblast - II.-IV.zóna";"01.01.1993 00:00:00";"";"a";"a";"a";2
+&DZPOCHN;12;"národní pøírodní rezervace nebo národní pøírodní památka";"15.10.1998 00:00:00";"";"a";"a";"a";1
+&DZPOCHN;13;"pøírodní rezervace nebo pøírodní památka";"15.10.1998 00:00:00";"";"a";"a";"a";1
+&DZPOCHN;14;"ochr. pásmo jiného zvlá¹» chrán. území nebo pam.stromu";"15.10.1998 00:00:00";"";"a";"a";"a";1
+&DZPOCHN;15;"nemovitá národní kulturní památka";"15.10.1998 00:00:00";"";"a";"a";"a";300
+&DZPOCHN;16;"pam. rezervace - budova, pozemek v památkové rezervaci";"15.10.1998 00:00:00";"";"a";"a";"a";200
+&DZPOCHN;17;"pam. zóna - budova, pozemek v památkové zónì";"15.10.1998 00:00:00";"";"a";"a";"a";200
+&DZPOCHN;18;"nemovitá kulturní památka";"15.10.1998 00:00:00";"";"a";"a";"a";100
+&DZPOCHN;19;"ochr.pásmo nem.kult.pam.,pam.zóny,rezervace,nem.nár.kult.pam";"15.10.1998 00:00:00";"";"a";"a";"a";200
+&DZPOCHN;20;"vnitøní lázeòské území";"15.10.1998 00:00:00";"";"a";"a";"a";10
+&DZPOCHN;21;"pøír. léè. zdroj nebo zdroj pøír. miner. vody";"15.10.1998 00:00:00";"";"a";"a";"a";10
+&DZPOCHN;22;"ochr. pásmo pøír. léèiv. zdroje nebo zdroje pøír. miner.vody";"15.10.1998 00:00:00";"";"a";"a";"a";10
+&DZPOCHN;23;"chr.lo¾.území,dob.prostor,chr.území pro zvl.zásahy do z.kùry";"15.10.1998 00:00:00";"";"a";"a";"a";10
+&DZPOCHN;24;"chránìná znaèka geodetického bodu";"15.10.1998 00:00:00";"";"a";"a";"a";400
+&DZPOCHN;25;"chránìné území znaèky geodetického bodu";"15.10.1998 00:00:00";"";"a";"n";"n";400
+&DZPOCHN;26;"pozemek urèený k plnìní funkcí lesa";"15.10.1998 00:00:00";"";"a";"n";"n";20
+&DZPOCHN;27;"zemìdìlský pùdní fond";"15.10.1998 00:00:00";"";"a";"n";"n";40
+&DZPOCHN;28;"ochranné pásmo vodního díla";"01.01.2002 00:00:00";"";"a";"a";"a";
+&DZPOCHN;29;"ochranné pásmo vodního zdroje";"01.01.2002 00:00:00";"21.04.2002 00:00:00";"a";"a";"a";
+&DZPOCHN;30;"ochranné pásmo vodního díla 1.stupnì";"22.04.2002 00:00:00";"13.02.2006 00:00:00";"a";"a";"a";
+&DZPOCHN;31;"ochranné pásmo vodního díla 2.stupnì";"22.04.2002 00:00:00";"13.02.2006 00:00:00";"a";"a";"a";
+&DZPOCHN;32;"ochranné pásmo vodního zdroje 1.stupnì";"22.04.2002 00:00:00";"";"a";"a";"a";
+&DZPOCHN;33;"ochranné pásmo vodního zdroje 2.stupnì";"22.04.2002 00:00:00";"";"a";"a";"a";
+&DZPOCHN;34;"evropsky významná lokalita";"01.03.2007 00:00:00";"";"a";"a";"a";1
+&DZPOCHN;35;"ptaèí oblast";"01.03.2007 00:00:00";"";"a";"a";"a";1
+&BDRUPOZ;KOD N2;NAZEV T60;ZEMEDELSKA_KULTURA T1;PLATNOST_OD D;TYPPPD_KOD N10;PLATNOST_DO D;ZKRATKA T9;STAVEBNI_PARCELA T1
+&DDRUPOZ;2;"orná pùda";"a";"01.01.1993 00:00:00";;"";"orná pùda";"n"
+&DDRUPOZ;3;"chmelnice";"a";"01.01.1993 00:00:00";302;"";"chmelnice";"n"
+&DDRUPOZ;4;"vinice";"a";"01.01.1993 00:00:00";303;"";"vinice";"n"
+&DDRUPOZ;5;"zahrada";"a";"01.01.1993 00:00:00";304;"";"zahrada";"n"
+&DDRUPOZ;6;"ovocný sad";"a";"01.01.1993 00:00:00";305;"";"ovoc. sad";"n"
+&DDRUPOZ;7;"trvalý travní porost";"a";"01.01.1993 00:00:00";306;"";"travní p.";"n"
+&DDRUPOZ;8;"trvalý travní porost";"a";"01.01.1993 00:00:00";307;"01.09.2000 00:00:00";"travní p.";"n"
+&DDRUPOZ;10;"lesní pozemek";"n";"01.01.1993 00:00:00";308;"";"lesní poz";"n"
+&DDRUPOZ;11;"vodní plocha";"n";"01.01.1993 00:00:00";;"";"vodní pl.";"n"
+&DDRUPOZ;13;"zastavìná plocha a nádvoøí";"n";"01.01.1993 00:00:00";;"";"zast. pl.";"a"
+&DDRUPOZ;14;"ostatní plocha";"n";"01.01.1993 00:00:00";;"";"ostat.pl.";"n"
+&BZPVYPO;KOD N4;NAZEV T60;PLATNOST_OD D;TYPPPD_KOD N10;PLATNOST_DO D;ZKRATKA T16
+&DZPVYPO;1;"skleník, paøeni¹tì";"01.01.1993 00:00:00";;"";"skleník-paøeni¹."
+&DZPVYPO;2;"¹kolka";"01.01.1993 00:00:00";;"";"¹kolka"
+&DZPVYPO;3;"plantá¾ døevin";"15.10.1998 00:00:00";;"";"plantá¾ døevin"
+&DZPVYPO;4;"les jiný ne¾ hospodáøský";"01.01.1993 00:00:00";;"";"les(ne hospodáø)"
+&DZPVYPO;5;"lesní pozemek, na kterém je budova";"01.01.1993 00:00:00";;"";"les s budovou"
+&DZPVYPO;6;"rybník";"01.01.1993 00:00:00";803;"";"rybník"
+&DZPVYPO;7;"koryto vodního toku pøirozené nebo upravené";"01.01.1993 00:00:00";802;"";"tok pøirozený"
+&DZPVYPO;8;"koryto vodního toku umìlé";"01.01.1993 00:00:00";802;"";"tok umìlý"
+&DZPVYPO;9;"vodní nádr¾ pøírodní";"01.01.1993 00:00:00";803;"";"nádr¾ pøírodní"
+&DZPVYPO;10;"vodní nádr¾ umìlá";"01.01.1993 00:00:00";803;"";"nádr¾ umìlá"
+&DZPVYPO;11;"zamokøená plocha";"01.01.1993 00:00:00";804;"";"zamokøená pl."
+&DZPVYPO;12;"spoleèný dvùr";"01.01.1993 00:00:00";319;"";"spoleèný dvùr"
+&DZPVYPO;13;"zboøeni¹tì";"01.01.1993 00:00:00";319;"";"zboøeni¹tì"
+&DZPVYPO;14;"dráha";"01.01.1993 00:00:00";;"";"dráha"
+&DZPVYPO;15;"dálnice";"01.01.1993 00:00:00";;"";"dálnice"
+&DZPVYPO;16;"silnice";"01.01.1993 00:00:00";;"";"silnice"
+&DZPVYPO;17;"ostatní komunikace";"01.01.1993 00:00:00";;"";"ostat.komunikace"
+&DZPVYPO;18;"ostatní dopravní plocha";"01.01.1993 00:00:00";;"";"ost.dopravní pl."
+&DZPVYPO;19;"zeleò";"01.01.1993 00:00:00";314;"";"zeleò"
+&DZPVYPO;20;"sportovi¹tì a rekreaèní plocha";"01.01.1993 00:00:00";;"";"sport.a rekr.pl."
+&DZPVYPO;21;"høbitov, urnový háj";"01.01.1993 00:00:00";315;"";"høbitov-urn.háj"
+&DZPVYPO;22;"kulturní a osvìtová plocha";"01.01.1993 00:00:00";;"";"kult.a osvìt.pl."
+&DZPVYPO;23;"manipulaèní plocha";"01.01.1993 00:00:00";;"";"manipulaèní pl."
+&DZPVYPO;24;"dobývací prostor";"01.01.1993 00:00:00";701;"";"dobývací prost."
+&DZPVYPO;25;"skládka";"01.01.1993 00:00:00";;"";"skládka"
+&DZPVYPO;26;"jiná plocha";"01.01.1993 00:00:00";;"";"jiná plocha"
+&DZPVYPO;27;"neplodná pùda";"01.01.1993 00:00:00";316;"";"neplodná pùda"
+&DZPVYPO;28;"vodní plocha, na které je budova";"01.03.2007 00:00:00";;"";"vod.pl.s budovou"
+&BZDPAZE;KOD N1;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D;ZKRATKA T2
+&DZDPAZE;3;"Evidence nemovitostí";"01.01.1993 00:00:00";"";"EN"
+&DZDPAZE;4;"Pozemkový katastr";"01.01.1993 00:00:00";"";"PK"
+&DZDPAZE;6;"Pøídìlový plán nebo jiný podklad";"01.01.1993 00:00:00";"";"GP"
+&BZPURVY;KOD N1;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D
+&DZPURVY;0;"Graficky nebo v digitalizované mapì";"01.01.1993 00:00:00";""
+&DZPURVY;1;"Jiným èíselným zpùsobem";"01.01.1993 00:00:00";""
+&DZPURVY;2;"Ze souøadnic v S-JTSK";"01.01.1993 00:00:00";""
+&BTYPBUD;KOD N1;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D;ZADANI_CD T1;ZKRATKA T9
+&DTYPBUD;1;"budova s èíslem popisným";"01.01.1993 00:00:00";"";"a";"è.p."
+&DTYPBUD;2;"budova s èíslem evidenèním";"01.01.1993 00:00:00";"";"a";"è.e."
+&DTYPBUD;3;"budova bez èísla popisného nebo evidenèního";"01.01.1993 00:00:00";"";"n";"bez èp/èe"
+&DTYPBUD;4;"rozestavìná budova";"01.01.1993 00:00:00";"";"n";"rozestav."
+&DTYPBUD;5;"poschoïová gará¾";"01.01.1993 00:00:00";"31.12.1999 00:00:00";"n";"posch.gar"
+&DTYPBUD;6;"vodní dílo";"01.01.2007 00:00:00";"";"n";"vod.dílo"
+&BMAPLIS;ID N30;OZNACENI_MAPOVEHO_LISTU T100;PLATNOST_OD D;PLATNOST_DO D;MAPA T5
+&DMAPLIS;9781;"GUST2880,V.S.IX-14-04";"01.01.1993 00:00:00";"";""
+&BKATUZE;KOD N6;OBCE_KOD N6;NAZEV T48;PLATNOST_OD D;PLATNOST_DO D
+&DKATUZE;651184;599620;"Chleby";"06.01.1999 00:00:00";""
+&DKATUZE;671355;537039;"Kovansko";"04.06.1991 00:00:00";""
+&BOBCE;KOD N6;OKRESY_KOD N4;NAZEV T48;PLATNOST_OD D;PLATNOST_DO D
+&BCABU;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;BUD_ID N30;TYPBUD_KOD N1;CISLO_DOMOVNI N4;CENA_NEMOVITOSTI N14.2
+&BCASOBC;KOD N6;OBCE_KOD N6;NAZEV T48;PLATNOST_OD D;PLATNOST_DO D
+&BOKRESY;KOD N4;KRAJE_KOD N2;NAZEV T32;PLATNOST_OD D;PLATNOST_DO D;NUTS4 T6;NKRAJE_KOD N3
+&BKRAJE;KOD N2;NAZEV T20;PLATNOST_OD D;PLATNOST_DO D
+&BNKRAJE;KOD N3;NAZEV T32;NUTS3 T5;PLATNOST_OD D;PLATNOST_DO D
+&BRZO;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;ZPOCHR_KOD N4;PAR_ID N30;BUD_ID N30;JED_ID N30
+&BZPVYBU;KOD N4;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D;ZKRATKA T8
+&DZPVYBU;1;"prùmyslový objekt";"01.01.1993 00:00:00";"";"prùm.obj"
+&DZPVYBU;2;"zemìdìlská usedlost";"01.01.1993 00:00:00";"";"zem.used"
+&DZPVYBU;3;"objekt k bydlení";"01.01.1993 00:00:00";"";"bydlení"
+&DZPVYBU;4;"objekt lesního hospodáøství";"01.01.1993 00:00:00";"";"les.hosp"
+&DZPVYBU;5;"objekt obèanské vybavenosti";"01.01.1993 00:00:00";"";"obè.vyb"
+&DZPVYBU;6;"bytový dùm";"01.01.1993 00:00:00";"";"byt.dùm"
+&DZPVYBU;7;"rodinný dùm";"01.01.1993 00:00:00";"";"rod.dùm"
+&DZPVYBU;8;"stavba pro rodinnou rekreaci";"01.01.1993 00:00:00";"";"rod.rekr"
+&DZPVYBU;9;"stavba pro shroma¾ïování vìt¹ího poètu osob";"01.01.1993 00:00:00";"";"shroma¾."
+&DZPVYBU;10;"stavba pro obchod";"01.01.1993 00:00:00";"";"obchod"
+&DZPVYBU;11;"stavba ubytovacího zaøízení";"01.01.1993 00:00:00";"";"ubyt.zaø"
+&DZPVYBU;12;"stavba pro výrobu a skladování";"01.01.1993 00:00:00";"";"výroba"
+&DZPVYBU;13;"zemìdìlská stavba";"01.01.1993 00:00:00";"";"zem.stav"
+&DZPVYBU;14;"stavba pro administrativu";"01.01.1993 00:00:00";"";"adminis."
+&DZPVYBU;15;"stavba obèanského vybavení";"01.01.1993 00:00:00";"";"obè.vyb."
+&DZPVYBU;16;"stavba technického vybavení";"01.01.1993 00:00:00";"";"tech.vyb"
+&DZPVYBU;17;"stavba pro dopravu";"01.01.1993 00:00:00";"";"doprava"
+&DZPVYBU;18;"gará¾";"01.01.1993 00:00:00";"";"gará¾"
+&DZPVYBU;19;"jiná stavba";"01.01.1993 00:00:00";"";"jiná st."
+&DZPVYBU;20;"víceúèelová stavba";"01.03.2007 00:00:00";"";"víceúèel"
+&DZPVYBU;21;"skleník";"01.03.2007 00:00:00";"";"skleník"
+&DZPVYBU;22;"pøehrada";"01.01.2007 00:00:00";"";"pøehrada"
+&DZPVYBU;23;"hráz pøehrazující vodní tok nebo údolí";"01.01.2007 00:00:00";"";"hráz pø."
+&DZPVYBU;24;"hráz k ochranì nemovitostí pøed zaplavením pøi povodni";"01.01.2007 00:00:00";"";"hráz pod"
+&DZPVYBU;25;"hráz ohrazující umìlou vodní nádr¾";"01.01.2007 00:00:00";"";"hráz ohr"
+&DZPVYBU;26;"jez";"01.01.2007 00:00:00";"";"jez"
+&DZPVYBU;27;"stavba k plaveb.úèelùm v korytech nebo na bøezích vod.tokù";"01.01.2007 00:00:00";"";"plav.úè."
+&DZPVYBU;28;"stavba k vyu¾ití vodní energie (vodní elektrárna)";"01.01.2007 00:00:00";"";"vodní el"
+&DZPVYBU;29;"stavba odkali¹tì";"01.01.2007 00:00:00";"";"odkali¹."
+&BBDP;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;PAR_ID N30;BPEJ_KOD T5;VYMERA N9
+&BOPSUB;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;ID_JE_1_PARTNER_BSM N30;ID_JE_2_PARTNER_BSM N30;ID_ZDROJ N30;OPSUB_TYPE T10;CHAROS_KOD N2;ICO N8;DOPLNEK_ICO N3;NAZEV T255;NAZEV_U T255;RODNE_CISLO T10;TITUL_PRED_JMENEM T35;JMENO T24;JMENO_U T24;PRIJMENI T35;PRIJMENI_U T35;TITUL_ZA_JMENEM T10;CISLO_DOMOVNI N4;CISLO_ORIENTACNI T4;NAZEV_ULICE T32;CAST_OBCE T48;OBEC T48;OKRES T32;STAT T23;PSC N5;MESTSKA_CAST T48;CP_CE N1
+&DOPSUB;788179208;0;"21.08.1997 00:00:00";"";3;2576132208;;;;;"OPO";11;876071;;"Obec Chleby";"OBEC CHLEBY";"";"";"";"";"";"";"";;"";"";"";"Chleby";"";"";28931;"";
+&DOPSUB;809373208;0;"27.01.2010 07:43:42";"";3;3453162208;;;;;"OFO";2;;;"";"";"441010019";"";"Pavel";"PAVEL";"©tefl";"STEFL";"";5;"";"";"Draho";"Chleby";"Nymburk";"";28802;"";1
+&BVLA;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;OPSUB_ID N30;TYPRAV_KOD T4;TEL_ID N30;PODIL_CITATEL N30;PODIL_JMENOVATEL N30
+&DVLA;1767676208;0;"21.08.1997 00:00:00";"";3;2576132208;;788179208;"30";985313208;1;1
+&DVLA;1767706208;0;"05.11.1996 00:00:00";"";3;2585553208;;809373208;"30";985334208;1;1
+&BCHAROS;KOD N2;NAZEV T60;OPSUB_TYPE T10;PLATNOST_OD D;PLATNOST_DO D;ZKRATKA T3
+&DCHAROS;1;"man¾elé v SJM";"BSM";"09.10.1998 00:00:00";"";"SJM"
+&DCHAROS;2;"oprávnìná fyzická osoba";"OFO";"09.10.1998 00:00:00";"";""
+&DCHAROS;3;"Èeská republika";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;4;"organizaèní slo¾ka státu a právnická osoba zøízená orgány ÈR";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;5;"slo¾ka právnické osoby";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;6;"Fond národního majetku ÈR";"OPO";"09.10.1998 00:00:00";"05.02.2001 00:00:00";""
+&DCHAROS;7;"Pozemkový fond ÈR";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;8;"Fond dìtí a mláde¾e ÈR";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;9;"obec";"OPO";"09.10.1998 00:00:00";"05.02.2001 00:00:00";""
+&DCHAROS;10;"mìstská èást";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;11;"jiná právnická osoba (vè. obce a kraje)";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;12;"slo¾ka jiné právnické osoby";"OPO";"09.10.1998 00:00:00";"05.02.2001 00:00:00";""
+&DCHAROS;13;"cizí stát, právnická osoba cizího práva";"OPO";"09.10.1998 00:00:00";"";""
+&DCHAROS;14;"jiná právnická osoba cizího práva";"OPO";"09.10.1998 00:00:00";"05.02.2001 00:00:00";""
+&DCHAROS;15;"organiz.slo¾ka nebo pøíspìv.org.obce, kraje (vè.svazku obcí)";"OPO";"01.01.2000 00:00:00";"";""
+&DCHAROS;16;"man¾elé cizího práva";"BSM";"19.08.2004 00:00:00";"";""
+&DCHAROS;17;"podílový fond";"OPO";"15.08.2008 00:00:00";"";""
+&DCHAROS;18;"investièní spoleènost";"OPO";"15.08.2008 00:00:00";"";""
+&DCHAROS;99;"bývalé federální orgány";"OPO";"09.10.1998 00:00:00";"31.12.1999 00:00:00";""
+&BTEL;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;KATUZE_KOD N6;CISLO_TEL N6
+&DTEL;985313208;0;"04.12.1996 00:00:00";"";3;2576132208;;651184;1
+&DTEL;985334208;0;"05.11.1996 00:00:00";"";3;2585553208;;651184;22
+&BJPV;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;PAR_ID_PRO N30;BUD_ID_PRO N30;JED_ID_PRO N30;PAR_ID_K N30;BUD_ID_K N30;JED_ID_K N30;TYPRAV_KOD T4;POPIS_PRAVNIHO_VZTAHU T4000;TEL_ID N30;OPSUB_ID_PRO N30;OPSUB_ID_K N30;PODIL_POHLEDAVKA T60;HJPV_ID N30
+&BTYPRAV;KOD T4;TPR_KOD N8;NAZEV T60;VLASTNICTVI T1;PRO_OS T1;PRO_NEMOVITOST T1;K_NEMOVITOSTI T1;PLATNOST_OD D;SEKCE T1;PLATNOST_DO D;VLVZTAH N1;K_OS T1;PODIL_VERITELE T1
+&DTYPRAV;"1";1;"Podíl";"n";"n";"n";"n";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"10";1;"Pohledávka obèana";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"100";18;"Naøízení výkonu rozhodnutí prodejem podniku";"n";"n";"n";"a";"05.02.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"101";5;"Vìcné bøemeno podle § 28d zák.è.42/92 Sb., z.op.è.297/92 Sb.";"n";"a";"n";"a";"05.02.2001 00:00:00";"C";"";;"n";""
+&DTYPRAV;"102";5;"Vìcné bøemeno u¾ívání bytu podle § 27 zák.è. 72/94 Sb.";"n";"a";"n";"a";"05.02.2001 00:00:00";"C";"";;"n";""
+&DTYPRAV;"103";3;"Zástavní právo z rozhodnutí správního orgánu";"n";"a";"n";"a";"18.06.2001 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"104";18;"Naøízení exekuce";"n";"n";"n";"n";"18.06.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"105";18;"Exekuèní pøíkaz k prodeji nemovitosti";"n";"n";"n";"a";"18.06.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"106";18;"Exekuèní pøíkaz k prodeji podniku";"n";"n";"n";"a";"18.06.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"107";5;"Vìcné bøemeno zøizování a provozování vedení";"n";"a";"n";"a";"18.06.2001 00:00:00";"C";"";;"n";""
+&DTYPRAV;"108";5;"Vìcné bøemeno zatì¾ující spoluvlastnický podíl";"n";"a";"n";"a";"18.06.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"109";47;"Právo hospodaøit s majetkem státu";"a";"n";"n";"n";"18.06.2001 00:00:00";"3";"";;"n";""
+&DTYPRAV;"11";1;"Zahájeno konkursní øízení";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"110";18;"Dra¾ební vyhlá¹ka";"n";"n";"n";"a";"18.06.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"111";48;"Budova ve více katastrálních územích";"n";"n";"n";"a";"21.09.2001 00:00:00";"D";"";;"n";""
+&DTYPRAV;"112";18;"Zapsáno do soupisu konkursní podstaty";"n";"n";"n";"a";"21.09.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"113";49;"Spoleèná zeï a ¹tít budov podle pozemkové knihy";"n";"n";"a";"n";"21.09.2001 00:00:00";"C";"";;"n";""
+&DTYPRAV;"114";18;"Ustanovení pøedbì¾ného správce";"n";"n";"n";"n";"21.11.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"115";2;"Vlastnictví zvlá¹tních hmotných èástí budovy";"a";"n";"n";"n";"01.01.2002 00:00:00";"2";"";;"n";""
+&DTYPRAV;"116";2;"Vlastnictví zvlá¹tní hmotné èásti budovy";"n";"n";"a";"n";"01.01.2002 00:00:00";"";"";;"a";""
+&DTYPRAV;"117";5;"Vìcné bøemeno spoluu¾ívání zastavìného pozemku";"n";"n";"a";"a";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"118";5;"Vìcné bøemeno k výkonu vlastnického práva ke stavbì";"n";"a";"a";"a";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"119";5;"Vìcné bøemeno k nemovitosti z jiného katastrálního území";"n";"n";"a";"n";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"12";1;"Pozemky v u¾ívání organizace";"n";"a";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"120";5;"Vìcné bøemeno pro nemovitost z jiného katastrálního území";"n";"n";"n";"a";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"121";5;"Vìcné bøemeno zøízení plotu";"n";"a";"a";"a";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"122";5;"Vìcné bøemeno zøízení zdi";"n";"a";"a";"a";"01.01.2002 00:00:00";"C";"";;"n";""
+&DTYPRAV;"123";18;"Vylouèeno ze soupisu konkursní podstaty";"n";"n";"n";"a";"13.09.2002 00:00:00";"D";"";;"a";""
+&DTYPRAV;"124";18;"Podaná ¾aloba ve vìci vkladu práva k nemovitosti";"n";"n";"n";"a";"08.01.2003 00:00:00";"D";"";;"a";""
+&DTYPRAV;"125";18;"Odklad vykonatelnosti rozhodnutí katastrálního úøadu";"n";"n";"n";"a";"08.01.2003 00:00:00";"D";"";;"a";""
+&DTYPRAV;"126";18;"Odklad právní moci rozhodnutí katastrálního úøadu";"n";"n";"n";"a";"08.01.2003 00:00:00";"D";"";;"a";""
+&DTYPRAV;"127";18;"Naøízení prodeje zástavy";"n";"n";"n";"a";"30.06.2003 00:00:00";"C";"";;"a";""
+&DTYPRAV;"128";18;"Naøízení výkonu rozhodnutí prodejem zástavy";"n";"n";"n";"a";"30.06.2003 00:00:00";"C";"";;"a";""
+&DTYPRAV;"129";18;"Omezení pøevodu pozemkù podle § 29 zákona è. 229/1991 Sb.";"n";"n";"n";"a";"30.06.2003 00:00:00";"C";"";;"n";""
+&DTYPRAV;"13";1;"Pozemky v soukromém vlastnictví";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"130";3;"Zástavní právo podle dìdické dohody";"n";"a";"n";"a";"30.04.2004 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"131";5;"Vìcné bøemeno ve prospìch nemovitosti neevidované v katastru";"n";"n";"n";"a";"01.04.2004 00:00:00";"C";"";;"n";""
+&DTYPRAV;"133";18;"Odklad vykonatelnosti rozhodnutí správního orgánu";"n";"n";"n";"a";"19.08.2004 00:00:00";"D";"";;"a";""
+&DTYPRAV;"134";18;"Odklad právní moci rozhodnutí správního orgánu";"n";"n";"n";"a";"19.08.2004 00:00:00";"D";"";;"a";""
+&DTYPRAV;"135";18;"Naøízení exekuce k nemovitosti";"n";"n";"n";"a";"19.08.2004 00:00:00";"C";"05.08.2009 00:00:00";;"a";""
+&DTYPRAV;"137";18;"Zaji¹tìní majetku";"n";"n";"n";"n";"23.05.2005 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"138";18;"Zaji¹tìní nemovitosti";"n";"n";"n";"a";"23.05.2005 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"139";18;"Zahájené øízení o vyvlastnìní práv";"n";"a";"n";"a";"16.03.2007 00:00:00";"C";"";;"a";"n"
+&DTYPRAV;"14";1;"Náhradní u¾ívání";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"140";6;"Pøedkupní právo podle § 101 zákona è. 183/2006 Sb.";"n";"a";"n";"a";"16.03.2007 00:00:00";"C";"";;"a";"n"
+&DTYPRAV;"141";5;"Vìcné bøemeno umístìní a provoz. elektrorozvodného zaøízení";"n";"a";"n";"a";"04.06.2007 00:00:00";"C";"";;"n";"n"
+&DTYPRAV;"142";5;"Vìcné bøemeno elektric.vedení a oprávnìní (zák.è.79/1957 Sb)";"n";"a";"n";"a";"04.06.2007 00:00:00";"C";"";;"n";"n"
+&DTYPRAV;"143";2;"Vlastnické právo podílníkù";"a";"n";"n";"n";"02.08.2007 00:00:00";"1";"";;"n";"a"
+&DTYPRAV;"144";30;"Obhospodaøování majetku v podílovém fondu";"a";"n";"n";"n";"02.08.2007 00:00:00";"3";"";;"n";"n"
+&DTYPRAV;"145";18;"Rozhodnutí o úpadku (§ 136 odst. 1 insolvenèního zákona)";"n";"n";"n";"n";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"146";18;"Prohlá¹ení konkursu podle insolvenèního zákona";"n";"n";"n";"n";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"147";18;"Zákaz nakládat s celou majetkovou podstatou";"n";"n";"n";"n";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"148";18;"Zákaz nakládat s èástí majetkové podstaty";"n";"n";"n";"a";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"149";18;"Nakládat s majet.podst.jen se souhl. správce dle insolv.zák.";"n";"n";"n";"n";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"15";1;"Výkup ze sdru¾ených pozemkù";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"150";18;"Nakládat s èástí maj.podst.jen se souhl.správce dle ins.zák.";"n";"n";"n";"a";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"151";18;"Nakládat s majet. podstatou jen se souhlasem insolv. správce";"n";"n";"n";"n";"02.01.2008 00:00:00";"";"24.04.2008 00:00:00";;"a";"a"
+&DTYPRAV;"152";18;"Nakládat s èástí maj. podst. jen se souhlasem insol. správce";"n";"n";"n";"a";"02.01.2008 00:00:00";"";"24.04.2008 00:00:00";;"a";"a"
+&DTYPRAV;"153";18;"Zapsáno do soupisu majetkové podstaty (zák. è. 182/2006 Sb.)";"n";"n";"n";"a";"02.01.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"154";18;"Schváleno oddlu¾ení";"n";"n";"n";"a";"24.04.2008 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"155";75;"Funkèní celek s vlastnictvím jednotky";"n";"n";"a";"a";"24.04.2008 00:00:00";"C";"";;"n";"a"
+&DTYPRAV;"156";5;"Oprávnìní z vìcného bøemene pøevzaté z pozemkové knihy";"n";"n";"a";"n";"17.07.2008 00:00:00";"C";"";;"n";"n"
+&DTYPRAV;"157";5;"Vìcné bøemeno pøevzaté z pozemkové knihy";"n";"n";"n";"a";"17.07.2008 00:00:00";"C";"";;"n";"n"
+&DTYPRAV;"158";75;"Upozornìní na související údaje katastru nem. k nemovitosti";"n";"n";"n";"a";"17.07.2008 00:00:00";"D";"";;"n";"n"
+&DTYPRAV;"159";75;"Upozornìní na související údaje katastru nem. pro nemovitost";"n";"n";"a";"n";"17.07.2008 00:00:00";"D";"";;"n";"n"
+&DTYPRAV;"16";1;"Zahájení vyvlastòovacího øízení";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"160";45;"Hospodaøení se svìøeným majetkem kraje";"a";"n";"n";"n";"09.04.2009 00:00:00";"3";"";;"n";"a"
+&DTYPRAV;"161";46;"Hospodaøení se svìøeným majetkem obce";"a";"n";"n";"n";"09.04.2009 00:00:00";"3";"";;"n";"a"
+&DTYPRAV;"162";75;"Upozornìní na spornou hranici mezi pozemky";"n";"n";"n";"a";"07.08.2009 00:00:00";"D";"";;"n";"n"
+&DTYPRAV;"163";3;"Zástavní právo exekutorské";"n";"a";"n";"a";"02.11.2009 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"17";1;"Zákaz stavby";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"18";1;"Zpìtná koupì objektu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"19";1;"Pøislouèena èást cizí parcely";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"2";1;"Omezení pøevodu nemovitosti";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"20";1;"Doèasné u¾ívání za úplatu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"21";1;"Urèení právního vztahu soudem";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"22";1;"Nájem, výpùjèka";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"23";1;"Návaznost na list vlastnictví";"n";"a";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"24";2;"Duplicitní zápis vlastnictví";"a";"n";"n";"n";"01.01.1993 00:00:00";"2";"";;"n";""
+&DTYPRAV;"25";2;"Duplicitní zápis vlastnictví pouze pro vlastníka";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"a";""
+&DTYPRAV;"26";1;"Man¾el(ka)";"n";"n";"n";"n";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"27";1;"Budova na více parcelách";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"28";1;"Vlastnictví stavby bez parcelního èísla";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"29";1;"Vlastnictví podzemní stavby";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"31.12.1999 00:00:00";;"n";""
+&DTYPRAV;"3";1;"Pùjèka od ÈSTSP";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"30";2;"Vlastnické právo";"a";"n";"n";"n";"01.01.1993 00:00:00";"1";"";;"n";""
+&DTYPRAV;"31";3;"Zástavní právo";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";"a"
+&DTYPRAV;"32";3;"Zástavní právo smluvní";"n";"a";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"33";3;"Zástavní právo zákonné";"n";"a";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"34";3;"Zástavní právo soudcovské";"n";"a";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";"a"
+&DTYPRAV;"35";4;"Podzástavní právo";"n";"a";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";""
+&DTYPRAV;"36";5;"Vìcné bøemeno (podle listiny)";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"37";5;"Vìcné bøemeno cesty";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"38";5;"Vìcné bøemeno chùze";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"39";5;"Vìcné bøemeno jízdy";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"4";1;"Pùjèka od organizace";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"40";5;"Vìcné bøemeno oprav a údr¾by";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"41";5;"Vìcné bøemeno vedení";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"42";5;"Vìcné bøemeno zøízení plotu, zdi";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"43";5;"Vìcné bøemeno ¹títové zdi";"n";"n";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"44";5;"Vìcné bøemeno spoluu¾ívání";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"45";5;"Vìcné bøemeno braní vody";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"46";5;"Vìcné bøemeno dolování";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"47";5;"Vìcné bøemeno chùze a jízdy";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"48";5;"Vìcné bøemeno bytu";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"49";5;"Vìcné bøemeno výmìnku";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"5";1;"Pùjèka od obèana";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"50";5;"Vìcné bøemeno u¾ívání";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"51";5;"Vìcné bøemeno po¾ívání";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"52";5;"Vìcné bøemeno povinnosti vyplácet dùchod";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"53";5;"Vìcné bøemeno ochrany vodního zdroje";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"54";6;"Pøedkupní právo";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"55";2;"Vlastnictví jednotek";"n";"n";"n";"a";"01.06.1999 00:00:00";"D";"";;"n";""
+&DTYPRAV;"56";2;"Výstavba domu s jednotkami";"n";"a";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"57";9;"Právo hospodaøení s majetkem státu";"a";"n";"n";"n";"01.01.1993 00:00:00";"3";"";;"n";""
+&DTYPRAV;"58";10;"Právo trvalého u¾ívání";"a";"n";"n";"n";"01.01.1993 00:00:00";"4";"";4;"n";""
+&DTYPRAV;"59";11;"Správa nemovitostí ve vlastnictví státu";"a";"n";"n";"n";"01.06.1999 00:00:00";"3";"";;"n";""
+&DTYPRAV;"6";1;"Pohledávka finanèní správy";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"60";11;"Prozatímní správa";"a";"n";"n";"n";"01.01.1993 00:00:00";"3";"";1;"n";""
+&DTYPRAV;"61";16;"Národní správa";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"62";12;"Oprávnìní hospodaøit se svìøeným majetkem obce";"a";"n";"n";"n";"01.06.1999 00:00:00";"5";"";;"n";""
+&DTYPRAV;"63";13;"Pøíslu¹nost k organizaèní slo¾ce právnické osoby";"a";"n";"n";"n";"01.06.1999 00:00:00";"6";"";;"n";""
+&DTYPRAV;"64";14;"Právo stavby";"n";"a";"a";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"65";15;"Závada - právo stavby";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"15.03.2000 00:00:00";;"n";""
+&DTYPRAV;"66";16;"Omezení dispozièních práv";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"67";17;"Právo zpìtné koupì";"n";"a";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"68";18;"Naøízení výkonu rozhodnutí prodejem nemovitosti";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"a";""
+&DTYPRAV;"69";18;"Povolení ochranné lhùty v konkursním øízení";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"a";""
+&DTYPRAV;"7";1;"Pohledávka justièní správy";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"70";18;"Prohlá¹ení konkursu podle zákona o konkursu a vyrovnání";"n";"n";"n";"n";"01.06.1999 00:00:00";"C";"";;"a";""
+&DTYPRAV;"71";18;"Podaný návrh na vyrovnání";"n";"n";"n";"a";"01.06.1999 00:00:00";"D";"";;"a";""
+&DTYPRAV;"72";18;"Naøízení pøedbì¾ného opatøení";"n";"n";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";""
+&DTYPRAV;"73";18;"Jiné rozhodnutí, kterým se omezují dispoziè.práva vlastníka";"n";"n";"n";"a";"01.06.1999 00:00:00";"C";"";;"a";""
+&DTYPRAV;"74";18;"Podaná ¾aloba";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"a";""
+&DTYPRAV;"75";18;"Podaná ¾aloba na urèení vìcného bøemene";"n";"a";"a";"a";"01.06.1999 00:00:00";"D";"";;"n";""
+&DTYPRAV;"76";18;"Podaná ¾aloba na urèení vìcného pøedkupního práva";"n";"a";"n";"a";"01.06.1999 00:00:00";"D";"";;"a";""
+&DTYPRAV;"77";18;"Podaná ¾aloba na urèení zástavního práva";"n";"a";"n";"a";"01.06.1999 00:00:00";"D";"";;"a";"a"
+&DTYPRAV;"78";18;"Podán návrh na naøíz.výkonu rozh.zøízením soudc.zástav.práva";"n";"a";"n";"a";"01.06.1999 00:00:00";"D";"";;"a";"a"
+&DTYPRAV;"79";20;"Zmìna hranice k.ú.";"n";"n";"n";"a";"01.06.1999 00:00:00";"D";"";;"n";""
+&DTYPRAV;"8";1;"Pohledávka penì¾ního ústavu";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"80";21;"Oprava chyby v katastrálním operátu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"81";25;"Zmìna výmìr obnovou operátu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"82";25;"Zmìna èíslování parcel";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"83";26;"Námitka vùèi obnovenému katastrálnímu operátu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"85";37;"Zahájeny pozemkové úpravy";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"86";37;"Schválené pozemkové úpravy";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"";;"n";""
+&DTYPRAV;"87";38;"Záznam pro dal¹í øízení";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"a";""
+&DTYPRAV;"88";40;"Obnova øízení správního orgánu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"a";""
+&DTYPRAV;"89";18;"Poskytnutí stát.stavebního pøíspìvku na pozemek";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"9";1;"Pohledávka organizace";"n";"n";"n";"a";"01.01.1993 00:00:00";"C";"31.12.1999 00:00:00";;"a";""
+&DTYPRAV;"90";18;"Poskytnutí stát.stavebního pøíspìvku na budovu";"n";"n";"n";"a";"01.01.1993 00:00:00";"D";"";;"n";""
+&DTYPRAV;"91";5;"Právo k nemovitosti (podle listiny)";"n";"n";"a";"a";"01.01.1993 00:00:00";"B";"31.12.2000 00:00:00";;"n";""
+&DTYPRAV;"92";44;"Pøíslu¹nost hospodaøit s majetkem státu";"a";"n";"n";"n";"05.02.2001 00:00:00";"3";"";;"n";""
+&DTYPRAV;"93";45;"Správa nemovitostí ve vlastnictví kraje";"a";"n";"n";"n";"05.02.2001 00:00:00";"3";"";;"n";""
+&DTYPRAV;"94";46;"Svìøená správa nemovitostí ve vlastnictví obce";"a";"n";"n";"n";"05.02.2001 00:00:00";"3";"";;"n";""
+&DTYPRAV;"95";46;"Správa nemovitostí ve vlastnictví obce";"a";"n";"n";"n";"05.02.2001 00:00:00";"3";"";;"n";""
+&DTYPRAV;"96";46;"Hospodaøení s majetkem obce";"a";"n";"n";"n";"05.02.2001 00:00:00";"3";"09.04.2009 00:00:00";;"n";""
+&DTYPRAV;"97";18;"Uzavøení smlouvy o provedení dra¾by nedobrovolné";"n";"n";"n";"a";"05.02.2001 00:00:00";"C";"";;"a";""
+&DTYPRAV;"98";18;"Podán návrh na naøíz. výkonu rozh. prodejem nemovitosti";"n";"n";"n";"a";"05.02.2001 00:00:00";"D";"";;"a";""
+&DTYPRAV;"99";18;"Podaná ¾aloba na urèení vlastnického práva";"n";"n";"n";"a";"05.02.2001 00:00:00";"D";"";;"a";""
+&BSOBR;ID N30;STAV_DAT N2;KATUZE_KOD N6;CISLO_ZPMZ N5;CISLO_TL N4;CISLO_BODU N12;UPLNE_CISLO N12;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;KODCHB_KOD N2
+&DSOBR;977193208;0;651184;146;;154;92001460154;693932.33;1035947.8;
+&DSOBR;977054208;0;651184;146;;15;92001460015;693933.79;1035948.15;
+&DSOBR;977431208;0;651184;146;;392;92001460392;693935.25;1035948.5;
+&DSOBR;977194208;0;651184;146;;155;92001460155;693938.16;1035922.87;
+&DSOBR;977055208;0;651184;146;;16;92001460016;693939.62;1035923.21;
+&DSOBR;977430208;0;651184;146;;391;92001460391;693941.08;1035923.55;
+&DSOBR;970284208;0;651184;142;;60;92001420060;693815.93;1035893.02;
+&DSOBR;970319208;0;651184;142;;95;92001420095;693815.17;1035894.31;
+&DSOBR;970244208;0;651184;142;;20;92001420020;693814.41;1035895.6;
+&DSOBR;970285208;0;651184;142;;61;92001420061;693841.88;1035909.84;
+&DSOBR;970320208;0;651184;142;;96;92001420096;693841.05;1035911.09;
+&DSOBR;970243208;0;651184;142;;19;92001420019;693840.22;1035912.34;
+&DSOBR;970335208;0;651184;142;;111;92001420111;693859.08;1035919.2;
+&DSOBR;970286208;0;651184;142;;62;92001420062;693861.45;1035923.04;
+&DSOBR;970321208;0;651184;142;;97;92001420097;693860.61;1035924.28;
+&DSOBR;970242208;0;651184;142;;18;92001420018;693859.77;1035925.53;
+&DSOBR;970276208;0;651184;142;;52;92001420052;693699.65;1035879.95;
+&DSOBR;970313208;0;651184;142;;89;92001420089;693699.83;1035881.44;
+&DSOBR;970252208;0;651184;142;;28;92001420028;693700.01;1035882.93;
+&DSOBR;970277208;0;651184;142;;53;92001420053;693720.33;1035877.34;
+&DSOBR;970312208;0;651184;142;;88;92001420088;693720.52;1035878.83;
+&DSOBR;970251208;0;651184;142;;27;92001420027;693720.71;1035880.32;
+&DSOBR;970311208;0;651184;142;;87;92001420087;693743.85;1035875.91;
+&DSOBR;970250208;0;651184;142;;26;92001420026;693744.1;1035877.39;
+&DSOBR;970345208;0;651184;142;;4003;92001424003;693745.05;1035876.24;
+&DSOBR;970248208;0;651184;142;;24;92001420024;693766.15;1035874.52;
+&DSOBR;970247208;0;651184;142;;23;92001420023;693771.63;1035876.22;
+&DSOBR;970308208;0;651184;142;;84;92001420084;693772.12;1035874.8;
+&DSOBR;970246208;0;651184;142;;22;92001420022;693785.33;1035881.54;
+&DSOBR;970317208;0;651184;142;;93;92001420093;693785.9;1035880.15;
+&DSOBR;970282208;0;651184;142;;58;92001420058;693786.47;1035878.76;
+&DSOBR;970344208;0;651184;142;;4002;92001424002;693800.71;1035887.25;
+&DSOBR;970245208;0;651184;142;;21;92001420021;693800.79;1035888.35;
+&DSOBR;970318208;0;651184;142;;94;92001420094;693801.45;1035887;
+&DSOBR;970283208;0;651184;142;;59;92001420059;693802.11;1035885.65;
+&DSOBR;970338208;0;651184;142;;114;92001420114;693740.37;1035869.27;
+&DSOBR;970337208;0;651184;142;;113;92001420113;693740.56;1035873.67;
+&DSOBR;970278208;0;651184;142;;54;92001420054;693743.6;1035874.43;
+&DSOBR;970279208;0;651184;142;;55;92001420055;693758.05;1035871.38;
+&DSOBR;970310208;0;651184;142;;86;92001420086;693758.19;1035872.88;
+&DSOBR;970249208;0;651184;142;;25;92001420025;693758.33;1035874.38;
+&DSOBR;970309208;0;651184;142;;85;92001420085;693766.39;1035873.02;
+&DSOBR;970280208;0;651184;142;;56;92001420056;693766.63;1035871.52;
+&DSOBR;970281208;0;651184;142;;57;92001420057;693772.62;1035873.38;
+&DSOBR;994720208;1;651184;104;;10;92001040010;693843.96;1035858.04;
+&DSOBR;994719208;1;651184;104;;9;92001040009;693849.97;1035857.39;
+&DSOBR;970294208;0;651184;142;;70;92001420070;693929.97;1035883.25;
+&DSOBR;970330208;0;651184;142;;106;92001420106;693931.43;1035883.58;
+&DSOBR;843450208;0;671355;93;;21;12000930021;693931.84;1035872.62;
+&DSOBR;970229208;0;651184;142;;5;92001420005;693932.89;1035883.91;
+&DSOBR;970295208;0;651184;142;;71;92001420071;693937.32;1035851.37;
+&DSOBR;843449208;0;671355;93;;20;12000930020;693938.73;1035841.65;
+&DSOBR;970329208;0;651184;142;;105;92001420105;693938.78;1035851.73;
+&DSOBR;970228208;0;651184;142;;4;92001420004;693940.24;1035852.09;
+&DSOBR;977196208;0;651184;146;;157;92001460157;693943.02;1035886.52;
+&DSOBR;977487208;0;651184;146;;4055;92001464055;693943.42;1035872.17;
+&DSOBR;977197208;0;651184;146;;158;92001460158;693943.74;1035883.6;
+&DSOBR;977057208;0;651184;146;;18;92001460018;693944.84;1035885.42;
+&DSOBR;977195208;0;651184;146;;156;92001460156;693946.25;1035887.31;
+&DSOBR;977198208;0;651184;146;;159;92001460159;693946.91;1035884.39;
+&DSOBR;977056208;0;651184;146;;17;92001460017;693948.04;1035886.21;
+&DSOBR;977199208;0;651184;146;;160;92001460160;693948.27;1035878.28;
+&DSOBR;977429208;0;651184;146;;390;92001460390;693949.51;1035886.52;
+&DSOBR;977058208;0;651184;146;;19;92001460019;693949.73;1035878.61;
+&DSOBR;977428208;0;651184;146;;389;92001460389;693951.19;1035878.94;
+&DSOBR;994723208;1;651184;104;;13;92001040013;693676.88;1035826.93;
+&DSOBR;994722208;1;651184;104;;12;92001040012;693754.38;1035823.2;
+&DSOBR;994721208;1;651184;104;;11;92001040011;693797.05;1035820.08;
+&DSOBR;994743208;1;651184;104;;33;92001040033;693852.76;1035809.22;
+&DSOBR;994718208;1;651184;104;;8;92001040008;693878.2;1035808.02;
+&DSOBR;994742208;1;651184;104;;32;92001040032;693888.79;1035804.24;
+&DSOBR;970296208;0;651184;142;;72;92001420072;693944.75;1035823.75;
+&DSOBR;970328208;0;651184;142;;104;92001420104;693946.2;1035824.11;
+&DSOBR;970227208;0;651184;142;;3;92001420003;693947.66;1035824.48;
+&DSOBR;970341208;0;651184;142;;117;92001420117;693949.25;1035796.12;
+&DSOBR;994717208;1;651184;104;;7;92001040007;693949.34;1035796.29;
+&DSOBR;970225208;0;651184;142;;1;92001420001;693951.28;1035795.34;
+&DSOBR;970327208;0;651184;142;;103;92001420103;693952.49;1035797.08;
+&DSOBR;970226208;0;651184;142;;2;92001420002;693954.24;1035795.87;
+&DSOBR;994716208;1;651184;104;;6;92001040006;693956.46;1035795.22;
+&DSOBR;977200208;0;651184;146;;161;92001460161;693960.58;1035824.25;
+&DSOBR;977059208;0;651184;146;;20;92001460020;693962.04;1035824.59;
+&DSOBR;977427208;0;651184;146;;388;92001460388;693963.5;1035824.93;
+&DSOBR;994748208;1;651184;104;;38;92001040038;693711.87;1035777.35;
+&DSOBR;994727208;1;651184;104;;17;92001040017;693715.72;1035775.57;
+&DSOBR;994751208;1;651184;104;;4001;92001044001;693807.13;1035762.92;
+&DSOBR;977204208;0;651184;146;;165;92001460165;693946.53;1035779.2;
+&DSOBR;977203208;0;651184;146;;164;92001460164;693947.99;1035780.79;
+&DSOBR;977066208;0;651184;146;;27;92001460027;693948.18;1035778.78;
+&DSOBR;977065208;0;651184;146;;26;92001460026;693948.82;1035779.47;
+&DSOBR;977423208;0;651184;146;;384;92001460384;693949.87;1035778.22;
+&DSOBR;977064208;0;651184;146;;25;92001460025;693951.59;1035780.32;
+&DSOBR;977205208;0;651184;146;;166;92001460166;693952.63;1035755;
+&DSOBR;977202208;0;651184;146;;163;92001460163;693953.41;1035782.35;
+&DSOBR;977063208;0;651184;146;;24;92001460024;693953.79;1035780.9;
+&DSOBR;977067208;0;651184;146;;28;92001460028;693954.02;1035755.61;
+&DSOBR;977424208;0;651184;146;;385;92001460385;693954.17;1035779.45;
+&DSOBR;977422208;0;651184;146;;383;92001460383;693955.41;1035756.22;
+&DSOBR;977478208;0;651184;146;;4006;92001464006;693958.33;1035778.62;
+&DSOBR;977062208;0;651184;146;;23;92001460023;693967.23;1035784.43;
+&DSOBR;977201208;0;651184;146;;162;92001460162;693969.62;1035786.53;
+&DSOBR;977061208;0;651184;146;;22;92001460022;693970.97;1035785.3;
+&DSOBR;977060208;0;651184;146;;21;92001460021;693971.26;1035786.12;
+&DSOBR;977425208;0;651184;146;;386;92001460386;693972.11;1035784.03;
+&DSOBR;977426208;0;651184;146;;387;92001460387;693972.82;1035786.04;
+&DSOBR;994715208;1;651184;104;;5;92001040005;693974.42;1035746.45;
+&DSOBR;977206208;0;651184;146;;167;92001460167;693984.76;1035706.44;
+&DSOBR;977068208;0;651184;146;;29;92001460029;693986.01;1035707.26;
+&DSOBR;977421208;0;651184;146;;382;92001460382;693987.26;1035708.09;
+&DSOBR;970287208;0;651184;142;;63;92001420063;693882.64;1035937.25;
+&DSOBR;970322208;0;651184;142;;98;92001420098;693881.81;1035938.5;
+&DSOBR;970241208;0;651184;142;;17;92001420017;693880.99;1035939.75;
+&DSOBR;843451208;0;671355;93;;22;12000930022;693924.64;1035903.88;
+&DSOBR;970293208;0;651184;142;;69;92001420069;693923.83;1035910.31;
+&DSOBR;970331208;0;651184;142;;107;92001420107;693925.29;1035910.66;
+&DSOBR;970230208;0;651184;142;;6;92001420006;693926.75;1035911.01;
+&DSOBR;970342208;0;651184;142;;118;92001420118;693920.01;1035922.99;
+&DSOBR;970292208;0;651184;142;;68;92001420068;693920.68;1035923;
+&DSOBR;970326208;0;651184;142;;102;92001420102;693922.13;1035923.37;
+&DSOBR;970231208;0;651184;142;;7;92001420007;693923.58;1035923.74;
+&DSOBR;970291208;0;651184;142;;67;92001420067;693914.27;1035947.51;
+&DSOBR;970325208;0;651184;142;;101;92001420101;693915.69;1035948.01;
+&DSOBR;970297208;0;651184;142;;73;92001420073;693913.87;1035948.4;8
+&DSOBR;970232208;0;651184;142;;8;92001420008;693917.11;1035948.51;
+&DSOBR;970336208;0;651184;142;;112;92001420112;693693.37;1035889.14;
+&BSBP;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;BP_ID N30;PORADOVE_CISLO_BODU N38;OB_ID N30;HP_ID N30;DPM_ID N30;PARAMETRY_SPOJENI T100;ZVB_ID N30
+&BSBM;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;PORADOVE_CISLO_BODU N38;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;OP_ID N30;DPM_ID N30;HBPEJ_ID N30;PARAMETRY_SPOJENI T100
+&BKODCHB;KOD N2;NAZEV T60;PLATNOST_OD D;PLATNOST_DO D
+&DKODCHB;1;"Bod urèený se støední souøadnicovou chybou 0.04 m";"01.01.1993 00:00:00";""
+&DKODCHB;2;"Bod urèený se støední souøadnicovou chybou 0.08 m";"01.01.1993 00:00:00";""
+&DKODCHB;3;"Bod urèený se støední souøadnicovou chybou 0.14 m";"01.01.1993 00:00:00";""
+&DKODCHB;4;"Bod urèený se støední souøadnicovou chybou 0.26 m";"01.01.1993 00:00:00";""
+&DKODCHB;5;"Bod urèený se støední souøadnicovou chybou 0.50 m";"01.01.1993 00:00:00";""
+&DKODCHB;6;"Bod digital.z mapy mìø.1:1000 se stø.souø.chybou 0.21 m";"01.01.1993 00:00:00";""
+&DKODCHB;7;"Bod digital.z mapy mìø.1:2000 se stø.souø.chybou 0.42 m";"01.01.1993 00:00:00";""
+&DKODCHB;8;"Bod digital.z mapy mìø.1:2880 a jiné (kromì 1000 a 2000)";"01.01.1993 00:00:00";""
+&BTYPSOS;KOD N1;NAZEV T20;PLATNOST_OD D;PLATNOST_DO D
+&DTYPSOS;1;"S-JTSK";"01.01.1993 00:00:00";""
+&DTYPSOS;2;"gusterbergský";"01.01.1993 00:00:00";""
+&DTYPSOS;3;"svato¹tìpánský";"01.01.1993 00:00:00";""
+&DTYPSOS;4;"místní";"01.01.1993 00:00:00";""
+&BHP;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;PAR_ID_1 N30;PAR_ID_2 N30
+&BOP;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;TEXT T255;VELIKOST N10.2;UHEL N10.4;PAR_ID N30;OPAR_TYPE T10;VZTAZNY_BOD N2
+&BOB;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;VELIKOST N10.2;UHEL N10.4;BUD_ID N30;OBRBUD_TYPE T10
+&BDPM;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU T240;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;TEXT T255;VELIKOST N10.2;UHEL N10.4;BP_ID N30;DPM_TYPE T10;VZTAZNY_BOD N2;KATUZE_KOD N6
+&BOBBP;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;TEXT T255;VELIKOST N10.2;UHEL N10.4;BP_ID N30;OBBP_TYPE T10;VZTAZNY_BOD N2
+&BTYPPPD;KOD N10;POLOHOPIS T1;EDITOVATELNY T1;PLATNOST_OD D;VYZNAM T240;KRIVKA T1;TYP_PRVKU N1;PLATNOST_DO D
+&DTYPPPD;21900;"a";"a";"01.01.1998 00:00:00";"Hranice parcely standardní";"n";1;""
+&DTYPPPD;21920;"a";"n";"01.01.1998 00:00:00";"Hranice parcely pohyblivá, nestálá";"n";1;""
+&DTYPPPD;21910;"a";"n";"01.01.1998 00:00:00";"Hranice parcely shora neviditelná";"n";1;""
+&DTYPPPD;21950;"a";"n";"01.01.1998 00:00:00";"Hranice parcely podzemní";"n";1;""
+&DTYPPPD;21930;"a";"n";"01.01.1998 00:00:00";"Hranice parcely pøevzatá";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;21940;"a";"n";"01.01.1998 00:00:00";"Hranice parcely sporná";"n";1;""
+&DTYPPPD;18;"n";"n";"01.01.1998 00:00:00";"Èíslo (def.bod) pozemkové parcely";"n";4;""
+&DTYPPPD;28;"n";"n";"01.01.1998 00:00:00";"Èíslo (def.bod) stavební parcely";"n";4;""
+&DTYPPPD;1018;"n";"a";"01.01.1998 00:00:00";"Popisné parcelní èíslo";"n";4;""
+&DTYPPPD;1032;"n";"a";"01.01.1998 00:00:00";"Èára pro umístìní ¹ipky";"a";1;""
+&DTYPPPD;1033;"n";"a";"01.01.1998 00:00:00";"©ipka k parcelnímu èíslu";"n";7;""
+&DTYPPPD;301;"n";"a";"01.01.1998 00:00:00";"Orná pùda";"n";7;""
+&DTYPPPD;302;"n";"a";"01.01.1998 00:00:00";"Chmelnice";"n";7;""
+&DTYPPPD;303;"n";"a";"01.01.1998 00:00:00";"Vinice";"n";7;""
+&DTYPPPD;304;"n";"a";"01.01.1998 00:00:00";"Zahrada";"n";7;""
+&DTYPPPD;305;"n";"a";"01.01.1998 00:00:00";"Ovocný sad";"n";7;""
+&DTYPPPD;306;"n";"a";"01.01.1998 00:00:00";"trvalý travní porost";"n";7;""
+&DTYPPPD;307;"n";"a";"01.01.1998 00:00:00";"Pastvina";"n";7;"22.01.2004 00:00:00"
+&DTYPPPD;308;"n";"a";"01.01.1998 00:00:00";"Lesní pùda bez rozli¹ení porostu";"n";7;""
+&DTYPPPD;314;"n";"a";"01.01.1998 00:00:00";"Park, okrasná zahrada";"n";7;""
+&DTYPPPD;315;"n";"a";"01.01.1998 00:00:00";"Høbitov";"n";7;""
+&DTYPPPD;316;"n";"a";"01.01.1998 00:00:00";"Neplodná pùda";"n";7;""
+&DTYPPPD;701;"n";"a";"01.01.1998 00:00:00";"Povrchová tì¾ba nerostù a surovin";"n";7;""
+&DTYPPPD;703;"n";"a";"01.01.1998 00:00:00";"Lo¾isko slatin a ra¹elin";"n";7;""
+&DTYPPPD;802;"n";"a";"01.01.1998 00:00:00";"Vodní tok ¹ir¹í ne¾ 2m";"n";7;""
+&DTYPPPD;803;"n";"a";"01.01.1998 00:00:00";"Vodní nádr¾, rybník";"n";7;""
+&DTYPPPD;804;"n";"a";"01.01.1998 00:00:00";"Moèál, ba¾ina";"n";7;""
+&DTYPPPD;318;"n";"a";"01.01.1998 00:00:00";"Nemovitá kulturní památka";"n";7;""
+&DTYPPPD;21800;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba";"a";1;""
+&DTYPPPD;21820;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba pohyblivá, nestálá";"a";1;""
+&DTYPPPD;21810;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba shora neviditelná";"a";1;""
+&DTYPPPD;21850;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba podzemní";"a";1;""
+&DTYPPPD;21830;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba pøevzatá";"a";1;"30.06.2009 00:00:00"
+&DTYPPPD;21840;"a";"n";"01.01.1998 00:00:00";"Hranice - vnitøní kresba sporná";"a";1;""
+&DTYPPPD;50100;"a";"n";"01.01.1998 00:00:00";"Osa ¾eleznièní koleje norm.rozchodu";"a";1;""
+&DTYPPPD;52100;"a";"n";"01.01.1998 00:00:00";"Visutá lanová dráha";"a";1;""
+&DTYPPPD;52200;"a";"n";"01.01.1998 00:00:00";"Pozemní lanová dráha";"a";1;""
+&DTYPPPD;60500;"a";"n";"01.01.1998 00:00:00";"Osa nadzemního vedení";"a";1;""
+&DTYPPPD;60502;"a";"n";"01.01.1998 00:00:00";"Vedení vysokého a velmi vysokého napìtí";"a";1;""
+&DTYPPPD;411;"a";"n";"01.01.1998 00:00:00";"Pøedmìt malého rozsahu urèený støedem";"n";7;""
+&DTYPPPD;601;"a";"n";"01.01.1998 00:00:00";"Kovový, betonový sto¾ár";"n";7;""
+&DTYPPPD;602;"a";"n";"01.01.1998 00:00:00";"Pøíhradový sto¾ár";"n";7;""
+&DTYPPPD;604;"a";"n";"01.01.1998 00:00:00";"Sto¾ár vysílací, retranslaèní stanice";"n";7;""
+&DTYPPPD;811;"a";"n";"01.01.1998 00:00:00";"Veøejná studna";"n";7;""
+&DTYPPPD;420;"a";"n";"01.01.1998 00:00:00";"Most, propustek";"n";7;""
+&DTYPPPD;402;"n";"n";"01.01.1998 00:00:00";"Budova zdìná, betonová, kovová";"n";7;""
+&DTYPPPD;403;"n";"n";"01.01.1998 00:00:00";"Budova døevìná";"n";7;""
+&DTYPPPD;409;"n";"a";"01.01.1998 00:00:00";"Kostel, kaple nebo modlitebna";"n";7;""
+&DTYPPPD;410;"n";"a";"01.01.1998 00:00:00";"Synagoga";"n";7;""
+&DTYPPPD;412;"n";"a";"01.01.1998 00:00:00";"Pøedmìt malého rozsahu bez rozli¹ení";"n";7;""
+&DTYPPPD;404;"n";"n";"01.01.1998 00:00:00";"Budova zdìná, betonová, kovová evidovaná v SPI";"n";7;""
+&DTYPPPD;405;"n";"n";"01.01.1998 00:00:00";"Budova døevìná  evidovaná v SPI";"n";7;""
+&DTYPPPD;21700;"a";"n";"01.01.1998 00:00:00";"Obvod budovy evidované v SPI";"n";1;""
+&DTYPPPD;101;"a";"n";"01.01.1998 00:00:00";"Bod polohového bodového pole";"n";7;""
+&DTYPPPD;102;"a";"n";"01.01.1998 00:00:00";"Bod PBP - pouze podzemní znaèka";"n";7;""
+&DTYPPPD;103;"a";"n";"01.01.1998 00:00:00";"Bod jednotné nivelaèní sítì";"n";7;""
+&DTYPPPD;104;"a";"n";"01.01.1998 00:00:00";"Stabilizovaný bod technické nivelace";"n";7;""
+&DTYPPPD;105;"a";"n";"01.01.1998 00:00:00";"Hranièní znak";"n";7;""
+&DTYPPPD;1016;"n";"a";"01.01.1998 00:00:00";"Èíslo bodu bodového pole";"n";4;""
+&DTYPPPD;1027;"n";"a";"01.01.1998 00:00:00";"Èíslo hranièního znaku na státní hranici";"n";4;""
+&DTYPPPD;1001;"n";"a";"01.01.1998 00:00:00";"Název mìsta";"n";4;""
+&DTYPPPD;1002;"n";"a";"01.01.1998 00:00:00";"Název mìstského obvodu nebo èásti";"n";4;""
+&DTYPPPD;1004;"n";"a";"01.01.1998 00:00:00";"Název obce";"n";4;""
+&DTYPPPD;1005;"n";"a";"01.01.1998 00:00:00";"Název èásti obce";"n";4;""
+&DTYPPPD;1007;"n";"a";"01.01.1998 00:00:00";"Název námìstí, parku";"n";4;""
+&DTYPPPD;1008;"n";"a";"01.01.1998 00:00:00";"Název ulice,nábøe¾í,tr¾i¹tì,most";"n";4;""
+&DTYPPPD;1009;"n";"a";"01.01.1998 00:00:00";"Název pozemkové tratì";"n";4;""
+&DTYPPPD;1010;"n";"a";"01.01.1998 00:00:00";"Název podru¾né pozemkové tratì";"n";4;""
+&DTYPPPD;1012;"n";"a";"01.01.1998 00:00:00";"Název sousedního státu";"n";4;""
+&DTYPPPD;1013;"n";"a";"01.01.1998 00:00:00";"Název øeky slou¾ící k vodní dopravì";"n";4;""
+&DTYPPPD;1014;"n";"a";"01.01.1998 00:00:00";"Název øeky, jezera, vel.rybníku, pøehrady";"n";4;""
+&DTYPPPD;1015;"n";"a";"01.01.1998 00:00:00";"Název potoka, rybníku";"n";4;""
+&DTYPPPD;408;"n";"a";"01.01.1998 00:00:00";"Èára jako výplò schodi¹tì";"a";1;""
+&DTYPPPD;1060;"n";"a";"01.01.1998 00:00:00";"Symbol vodního toku u¾¹ího ne¾ 2m";"n";7;""
+&DTYPPPD;20600;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území (bez znaèky)";"n";1;""
+&DTYPPPD;20602;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20603;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20604;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území (znaèka na konci)";"n";1;""
+&DTYPPPD;20605;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území (na obou koncích)";"n";1;""
+&DTYPPPD;20610;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území shora neviditelná (bez znaèky)";"n";1;""
+&DTYPPPD;20612;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území shora neviditelná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20613;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území shora neviditelná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20614;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území shora neviditelná (znaèka na konci)";"n";1;""
+&DTYPPPD;20615;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území shora neviditelná (na obou koncích)";"n";1;""
+&DTYPPPD;20620;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pohyblivá, nestálá (bez znaèky)";"n";1;""
+&DTYPPPD;20622;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pohyblivá, nestálá (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20623;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pohyblivá, nestálá (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20624;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pohyblivá, nestálá (znaèka na konci)";"n";1;""
+&DTYPPPD;20625;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pohyblivá, nestálá (na obou koncích)";"n";1;""
+&DTYPPPD;20630;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pøevzatá (bez znaèky)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20632;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pøevzatá (znaèka uprostøed)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20633;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pøevzatá (znaèka na zaèátku)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20634;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pøevzatá (znaèka na konci)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20635;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území pøevzatá (na obou koncích)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20640;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území sporná (bez znaèky)";"n";1;""
+&DTYPPPD;20642;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území sporná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20643;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území sporná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20644;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území sporná (znaèka na konci)";"n";1;""
+&DTYPPPD;20645;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území sporná (na obou koncích)";"n";1;""
+&DTYPPPD;20650;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území podzemní (bez znaèky)";"n";1;""
+&DTYPPPD;20652;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území podzemní (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20653;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území podzemní  (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20654;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území podzemní  (znaèka na konci)";"n";1;""
+&DTYPPPD;20655;"a";"n";"01.01.1998 00:00:00";"Hranice kat.území podzemní (na obou koncích)";"n";1;""
+&DTYPPPD;20500;"a";"n";"01.01.1998 00:00:00";"Hranice obce (bez znaèky)";"n";1;""
+&DTYPPPD;20502;"a";"n";"01.01.1998 00:00:00";"Hranice obce (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20503;"a";"n";"01.01.1998 00:00:00";"Hranice obce (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20504;"a";"n";"01.01.1998 00:00:00";"Hranice obce (znaèka na konci)";"n";1;""
+&DTYPPPD;20505;"a";"n";"01.01.1998 00:00:00";"Hranice obce (na obou koncích)";"n";1;""
+&DTYPPPD;20510;"a";"n";"01.01.1998 00:00:00";"Hranice obce shora neviditelná (bez znaèky)";"n";1;""
+&DTYPPPD;20512;"a";"n";"01.01.1998 00:00:00";"Hranice obce shora neviditelná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20513;"a";"n";"01.01.1998 00:00:00";"Hranice obce shora neviditelná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20514;"a";"n";"01.01.1998 00:00:00";"Hranice obce shora neviditelná (znaèka na konci)";"n";1;""
+&DTYPPPD;20515;"a";"n";"01.01.1998 00:00:00";"Hranice obce shora neviditelná (na obou koncích)";"n";1;""
+&DTYPPPD;20520;"a";"n";"01.01.1998 00:00:00";"Hranice obce pohyblivá, nestálá (bez znaèky)";"n";1;""
+&DTYPPPD;20522;"a";"n";"01.01.1998 00:00:00";"Hranice obce pohyblivá, nestálá (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20523;"a";"n";"01.01.1998 00:00:00";"Hranice obce pohyblivá, nestálá (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20524;"a";"n";"01.01.1998 00:00:00";"Hranice obce pohyblivá, nestálá (znaèka na konci)";"n";1;""
+&DTYPPPD;20525;"a";"n";"01.01.1998 00:00:00";"Hranice obce pohyblivá, nestálá (na obou koncích)";"n";1;""
+&DTYPPPD;20530;"a";"n";"01.01.1998 00:00:00";"Hranice obce pøevzatá (bez znaèky)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20532;"a";"n";"01.01.1998 00:00:00";"Hranice obce pøevzatá (znaèka uprostøed)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20533;"a";"n";"01.01.1998 00:00:00";"Hranice obce pøevzatá (znaèka na zaèátku)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20534;"a";"n";"01.01.1998 00:00:00";"Hranice obce pøevzatá (znaèka na konci)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20535;"a";"n";"01.01.1998 00:00:00";"Hranice obce pøevzatá (na obou koncích)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20540;"a";"n";"01.01.1998 00:00:00";"Hranice obce sporná (bez znaèky)";"n";1;""
+&DTYPPPD;20542;"a";"n";"01.01.1998 00:00:00";"Hranice obce sporná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20543;"a";"n";"01.01.1998 00:00:00";"Hranice obce sporná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20544;"a";"n";"01.01.1998 00:00:00";"Hranice obce sporná (znaèka na konci)";"n";1;""
+&DTYPPPD;20545;"a";"n";"01.01.1998 00:00:00";"Hranice obce sporná (na obou koncích)";"n";1;""
+&DTYPPPD;20550;"a";"n";"01.01.1998 00:00:00";"Hranice obce podzemní (bez znaèky)";"n";1;""
+&DTYPPPD;20552;"a";"n";"01.01.1998 00:00:00";"Hranice obce podzemní (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20553;"a";"n";"01.01.1998 00:00:00";"Hranice obce podzemní (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20554;"a";"n";"01.01.1998 00:00:00";"Hranice obce podzemní (znaèka na konci)";"n";1;""
+&DTYPPPD;20555;"a";"n";"01.01.1998 00:00:00";"Hranice obce podzemní (na obou koncích)";"n";1;""
+&DTYPPPD;20400;"a";"n";"01.01.1998 00:00:00";"Hranice okresu (bez znaèky)";"n";1;""
+&DTYPPPD;20402;"a";"n";"01.01.1998 00:00:00";"Hranice okresu (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20403;"a";"n";"01.01.1998 00:00:00";"Hranice okresu (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20404;"a";"n";"01.01.1998 00:00:00";"Hranice okresu (znaèka na konci)";"n";1;""
+&DTYPPPD;20405;"a";"n";"01.01.1998 00:00:00";"Hranice okresu (na obou koncích)";"n";1;""
+&DTYPPPD;20410;"a";"n";"01.01.1998 00:00:00";"Hranice okresu shora neviditelná (bez znaèky)";"n";1;""
+&DTYPPPD;20412;"a";"n";"01.01.1998 00:00:00";"Hranice okresu shora neviditelná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20413;"a";"n";"01.01.1998 00:00:00";"Hranice okresu shora neviditelná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20414;"a";"n";"01.01.1998 00:00:00";"Hranice okresu shora neviditelná (znaèka na konci)";"n";1;""
+&DTYPPPD;20415;"a";"n";"01.01.1998 00:00:00";"Hranice okresu shora neviditelná (na obou koncích)";"n";1;""
+&DTYPPPD;20420;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pohyblivá, nestálá (bez znaèky)";"n";1;""
+&DTYPPPD;20422;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pohyblivá, nestálá (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20423;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pohyblivá, nestálá (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20424;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pohyblivá, nestálá (znaèka na konci)";"n";1;""
+&DTYPPPD;20425;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pohyblivá, nestálá (na obou koncích)";"n";1;""
+&DTYPPPD;20430;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pøevzatá (bez znaèky)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20432;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pøevzatá (znaèka uprostøed)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20433;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pøevzatá (znaèka na zaèátku)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20434;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pøevzatá  (znaèka na konci)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20435;"a";"n";"01.01.1998 00:00:00";"Hranice okresu pøevzatá (na obou koncích)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20440;"a";"n";"01.01.1998 00:00:00";"Hranice okresu sporná (bez znaèky)";"n";1;""
+&DTYPPPD;20442;"a";"n";"01.01.1998 00:00:00";"Hranice okresu sporná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20443;"a";"n";"01.01.1998 00:00:00";"Hranice okresu sporná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20444;"a";"n";"01.01.1998 00:00:00";"Hranice okresu sporná (znaèka na konci)";"n";1;""
+&DTYPPPD;20445;"a";"n";"01.01.1998 00:00:00";"Hranice okresu sporná (na obou koncích)";"n";1;""
+&DTYPPPD;20450;"a";"n";"01.01.1998 00:00:00";"Hranice okresu podzemní (bez znaèky)";"n";1;""
+&DTYPPPD;20452;"a";"n";"01.01.1998 00:00:00";"Hranice okresu podzemní (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20453;"a";"n";"01.01.1998 00:00:00";"Hranice okresu podzemní (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20454;"a";"n";"01.01.1998 00:00:00";"Hranice okresu podzemní (znaèka na konci)";"n";1;""
+&DTYPPPD;20455;"a";"n";"01.01.1998 00:00:00";"Hranice okresu podzemní (na obou koncích)";"n";1;""
+&DTYPPPD;20300;"a";"n";"01.01.1998 00:00:00";"Hranice kraje (bez znaèky)";"n";1;""
+&DTYPPPD;20302;"a";"n";"01.01.1998 00:00:00";"Hranice kraje (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20303;"a";"n";"01.01.1998 00:00:00";"Hranice kraje (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20304;"a";"n";"01.01.1998 00:00:00";"Hranice kraje (znaèka na konci)";"n";1;""
+&DTYPPPD;20305;"a";"n";"01.01.1998 00:00:00";"Hranice kraje (na obou koncích)";"n";1;""
+&DTYPPPD;20310;"a";"n";"01.01.1998 00:00:00";"Hranice kraje shora neviditelná (bez znaèky)";"n";1;""
+&DTYPPPD;20312;"a";"n";"01.01.1998 00:00:00";"Hranice kraje shora neviditelná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20313;"a";"n";"01.01.1998 00:00:00";"Hranice kraje shora neviditelná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20314;"a";"n";"01.01.1998 00:00:00";"Hranice kraje shora neviditelná (znaèka na konci)";"n";1;""
+&DTYPPPD;20315;"a";"n";"01.01.1998 00:00:00";"Hranice kraje shora neviditelná (na obou koncích)";"n";1;""
+&DTYPPPD;20320;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pohyblivá, nestálá (bez znaèky)";"n";1;""
+&DTYPPPD;20322;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pohyblivá, nestálá (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20323;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pohyblivá, nestálá (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20324;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pohyblivá, nestálá (znaèka na konci)";"n";1;""
+&DTYPPPD;20325;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pohyblivá, nestálá (na obou koncích)";"n";1;""
+&DTYPPPD;20330;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pøevzatá (bez znaèky)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20332;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pøevzatá (znaèka uprostøed)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20333;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pøevzatá (znaèka na zaèátku)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20334;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pøevzatá (znaèka na konci)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20335;"a";"n";"01.01.1998 00:00:00";"Hranice kraje pøevzatá (na obou koncích)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20340;"a";"n";"01.01.1998 00:00:00";"Hranice kraje sporná (bez znaèky)";"n";1;""
+&DTYPPPD;20342;"a";"n";"01.01.1998 00:00:00";"Hranice kraje sporná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20343;"a";"n";"01.01.1998 00:00:00";"Hranice kraje sporná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20344;"a";"n";"01.01.1998 00:00:00";"Hranice kraje sporná (znaèka na konci)";"n";1;""
+&DTYPPPD;20345;"a";"n";"01.01.1998 00:00:00";"Hranice kraje sporná (na obou koncích)";"n";1;""
+&DTYPPPD;20350;"a";"n";"01.01.1998 00:00:00";"Hranice kraje podzemní (bez znaèky)";"n";1;""
+&DTYPPPD;20352;"a";"n";"01.01.1998 00:00:00";"Hranice kraje podzemní (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20353;"a";"n";"01.01.1998 00:00:00";"Hranice kraje podzemní (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20354;"a";"n";"01.01.1998 00:00:00";"Hranice kraje podzemní (znaèka na konci)";"n";1;""
+&DTYPPPD;20355;"a";"n";"01.01.1998 00:00:00";"Hranice kraje podzemní (na obou koncích)";"n";1;""
+&DTYPPPD;20100;"a";"n";"01.01.1998 00:00:00";"Hranice státní (bez znaèky)";"n";1;""
+&DTYPPPD;20102;"a";"n";"01.01.1998 00:00:00";"Hranice státní (znaèka uprostøed) ";"n";1;""
+&DTYPPPD;20103;"a";"n";"01.01.1998 00:00:00";"Hranice státní (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20104;"a";"n";"01.01.1998 00:00:00";"Hranice státní (znaèka na konci)";"n";1;""
+&DTYPPPD;20105;"a";"n";"01.01.1998 00:00:00";"Hranice státní (na obou koncích)";"n";1;""
+&DTYPPPD;20110;"a";"n";"01.01.1998 00:00:00";"Hranice státní shora neviditelná (bez znaèky)";"n";1;""
+&DTYPPPD;20112;"a";"n";"01.01.1998 00:00:00";"Hranice státní shora neviditelná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20113;"a";"n";"01.01.1998 00:00:00";"Hranice státní shora neviditelná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20114;"a";"n";"01.01.1998 00:00:00";"Hranice státní shora neviditelná (znaèka na konci)";"n";1;""
+&DTYPPPD;20115;"a";"n";"01.01.1998 00:00:00";"Hranice státní shora neviditelná (na obou koncích)";"n";1;""
+&DTYPPPD;20120;"a";"n";"01.01.1998 00:00:00";"Hranice státní pohyblivá, nestálá (bez znaèky)";"n";1;""
+&DTYPPPD;20122;"a";"n";"01.01.1998 00:00:00";"Hranice státní pohyblivá, nestálá (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20123;"a";"n";"01.01.1998 00:00:00";"Hranice státní pohyblivá, nestálá (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20124;"a";"n";"01.01.1998 00:00:00";"Hranice státní pohyblivá, nestálá (znaèka na konci)";"n";1;""
+&DTYPPPD;20125;"a";"n";"01.01.1998 00:00:00";"Hranice státní pohyblivá, nestálá (na obou koncích)";"n";1;""
+&DTYPPPD;20130;"a";"n";"01.01.1998 00:00:00";"Hranice státní pøevzatá (bez znaèky)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20132;"a";"n";"01.01.1998 00:00:00";"Hranice státní pøevzatá (znaèka uprostøed)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20133;"a";"n";"01.01.1998 00:00:00";"Hranice státní pøevzatá (znaèka na zaèátku)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20134;"a";"n";"01.01.1998 00:00:00";"Hranice státní pøevzatá (znaèka na konci)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20135;"a";"n";"01.01.1998 00:00:00";"Hranice státní pøevzatá (na obou koncích)";"n";1;"30.06.2009 00:00:00"
+&DTYPPPD;20140;"a";"n";"01.01.1998 00:00:00";"Hranice státní sporná (bez znaèky)";"n";1;""
+&DTYPPPD;20142;"a";"n";"01.01.1998 00:00:00";"Hranice státní sporná (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20143;"a";"n";"01.01.1998 00:00:00";"Hranice státní sporná (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20144;"a";"n";"01.01.1998 00:00:00";"Hranice státní sporná (znaèka na konci)";"n";1;""
+&DTYPPPD;20145;"a";"n";"01.01.1998 00:00:00";"Hranice státní sporná (na obou koncích)";"n";1;""
+&DTYPPPD;20150;"a";"n";"01.01.1998 00:00:00";"Hranice státní podzemní (bez znaèky)";"n";1;""
+&DTYPPPD;20152;"a";"n";"01.01.1998 00:00:00";"Hranice státní podzemní (znaèka uprostøed)";"n";1;""
+&DTYPPPD;20153;"a";"n";"01.01.1998 00:00:00";"Hranice státní podzemní (znaèka na zaèátku)";"n";1;""
+&DTYPPPD;20154;"a";"n";"01.01.1998 00:00:00";"Hranice státní podzemní (znaèka na konci)";"n";1;""
+&DTYPPPD;20155;"a";"n";"01.01.1998 00:00:00";"Hranice státní podzemní (na obou koncích)";"n";1;""
+&DTYPPPD;22300;"n";"a";"01.01.1998 00:00:00";"Hranice chránìného území";"a";1;""
+&DTYPPPD;22400;"n";"a";"01.01.1998 00:00:00";"Hranice ochranného pásma";"a";1;""
+&DTYPPPD;1040;"n";"n";"01.01.1998 00:00:00";"Linie obvodù bonitovaných a nebonitovaných ploch";"n";1;""
+&DTYPPPD;1042;"n";"n";"01.01.1998 00:00:00";"Kód BPEJ";"n";4;""
+&DTYPPPD;1043;"n";"n";"01.01.1998 00:00:00";"Kód nebonitované plochy";"n";4;""
+&DTYPPPD;1050;"n";"n";"01.01.1998 00:00:00";"Nezaøazená linie po migraci";"n";1;"01.01.1999 00:00:00"
+&DTYPPPD;1051;"n";"n";"01.01.1998 00:00:00";"Nezaøazený text po migraci";"n";4;"01.01.1999 00:00:00"
+&DTYPPPD;1052;"n";"n";"01.01.1998 00:00:00";"Nezaøazený symbol po migraci";"n";7;"01.01.1999 00:00:00"
+&DTYPPPD;1019;"n";"a";"01.01.1998 00:00:00";"Popisné parcelní èíslo (volné)";"n";4;"01.01.1999 00:00:00"
+&DTYPPPD;1028;"n";"a";"01.01.1998 00:00:00";"Èára pro umístìní ¹ipky (volná)";"a";1;"01.01.1998 00:00:00"
+&DTYPPPD;1029;"n";"a";"01.01.1998 00:00:00";"©ipka k parcelnímu èíslu (volná)";"n";7;"01.01.1998 00:00:00"
+&DTYPPPD;22000;"a";"n";"18.12.2000 00:00:00";"Hranice - vnitøní kresba bez topologie";"a";1;""
+&DTYPPPD;21999;"a";"a";"17.12.2001 00:00:00";"Hranice parcely pøevzatá z map døívìj¹ích pozemkových evidencí";"n";1;""
+&DTYPPPD;23100;"a";"a";"08.03.2006 00:00:00";"První bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;23200;"a";"a";"08.03.2006 00:00:00";"Druhé bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;23300;"a";"a";"08.03.2006 00:00:00";"Tøetí bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;100018;"n";"n";"08.03.2006 00:00:00";"Definièní bod pozemkové parcely";"n";4;""
+&DTYPPPD;100028;"n";"n";"08.03.2006 00:00:00";"Definièní bod stavební parcely";"n";4;""
+&DTYPPPD;100038;"n";"n";"08.03.2006 00:00:00";"Definièní bod parcely ZE";"n";4;""
+&DTYPPPD;100101;"n";"n";"08.03.2006 00:00:00";"Definièní bod budovy";"n";7;""
+&DTYPPPD;23400;"a";"a";"19.09.2006 00:00:00";"Ètvrté bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;23500;"a";"a";"19.09.2006 00:00:00";"Páté bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;23600;"a";"a";"19.09.2006 00:00:00";"©esté bøemeno";"n";1;"16.11.2007 00:00:00"
+&DTYPPPD;424;"n";"a";"01.04.2007 00:00:00";"Vodní dílo";"n";7;""
+&DTYPPPD;23700;"a";"a";"01.04.2007 00:00:00";"Vìcné bøemeno";"n";1;""
+&DTYPPPD;1006;"n";"a";"13.05.2008 00:00:00";"Název místní èásti";"n";4;""
+&DTYPPPD;319;"n";"a";"01.11.2009 00:00:00";"Zboøeni¹tì,spoleèný dvùr";"n";7;""
+&BZVB;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;KATUZE_KOD N6;HJPV_ID N30
+&BPOM;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N30;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;TEXT T255;VELIKOST N10.2;UHEL N10.4;VZTAZNY_BOD N2;KATUZE_KOD N6
+&BSPOM;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N30;PORADOVE_CISLO_BODU N30;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;POM_ID N30;PARAMETRY_SPOJENI T100
+&BSPOL;ID N30;STAV_DAT N2;KATUZE_KOD N6;CISLO_ZPMZ N5;CISLO_TL N4;CISLO_BODU N12;UPLNE_CISLO N12;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;KODCHB_KOD N2;KATUZE_KOD_MER N6;CISLO_ZPMZ_MER N5
+&DSPOL;843449208;0;671355;93;;20;12000930020;693938.73;1035841.65;3;671355;93
+&DSPOL;843450208;0;671355;93;;21;12000930021;693931.84;1035872.62;3;671355;93
+&DSPOL;843451208;0;671355;93;;22;12000930022;693924.64;1035903.88;3;671355;93
+&DSPOL;970225208;0;651184;142;;1;92001420001;693951.28;1035795.34;3;651184;142
+&DSPOL;970226208;0;651184;142;;2;92001420002;693954.24;1035795.87;3;651184;142
+&DSPOL;970227208;0;651184;142;;3;92001420003;693947.66;1035824.48;3;651184;142
+&DSPOL;970228208;0;651184;142;;4;92001420004;693940.24;1035852.09;3;651184;142
+&DSPOL;970229208;0;651184;142;;5;92001420005;693932.89;1035883.91;3;651184;142
+&DSPOL;970230208;0;651184;142;;6;92001420006;693926.75;1035911.01;3;651184;142
+&DSPOL;970231208;0;651184;142;;7;92001420007;693923.58;1035923.74;3;651184;142
+&DSPOL;970232208;0;651184;142;;8;92001420008;693917.11;1035948.51;3;651184;142
+&DSPOL;970241208;0;651184;142;;17;92001420017;693880.99;1035939.75;3;651184;142
+&DSPOL;970242208;0;651184;142;;18;92001420018;693859.77;1035925.53;3;651184;142
+&DSPOL;970243208;0;651184;142;;19;92001420019;693840.22;1035912.34;3;651184;142
+&DSPOL;970244208;0;651184;142;;20;92001420020;693814.41;1035895.6;3;651184;142
+&DSPOL;970245208;0;651184;142;;21;92001420021;693800.79;1035888.35;3;651184;142
+&DSPOL;970246208;0;651184;142;;22;92001420022;693785.33;1035881.54;3;651184;142
+&DSPOL;970247208;0;651184;142;;23;92001420023;693771.63;1035876.22;3;651184;142
+&DSPOL;970248208;0;651184;142;;24;92001420024;693766.15;1035874.52;3;651184;142
+&DSPOL;970249208;0;651184;142;;25;92001420025;693758.33;1035874.38;3;651184;142
+&DSPOL;970250208;0;651184;142;;26;92001420026;693744.1;1035877.39;3;651184;142
+&DSPOL;970251208;0;651184;142;;27;92001420027;693720.71;1035880.32;3;651184;142
+&DSPOL;970252208;0;651184;142;;28;92001420028;693700.01;1035882.93;3;651184;142
+&DSPOL;970276208;0;651184;142;;52;92001420052;693699.65;1035879.95;3;651184;142
+&DSPOL;970277208;0;651184;142;;53;92001420053;693720.33;1035877.34;3;651184;142
+&DSPOL;970278208;0;651184;142;;54;92001420054;693743.6;1035874.43;3;651184;142
+&DSPOL;970279208;0;651184;142;;55;92001420055;693758.05;1035871.38;3;651184;142
+&DSPOL;970280208;0;651184;142;;56;92001420056;693766.63;1035871.52;3;651184;142
+&DSPOL;970281208;0;651184;142;;57;92001420057;693772.62;1035873.38;3;651184;142
+&DSPOL;970282208;0;651184;142;;58;92001420058;693786.47;1035878.76;3;651184;142
+&DSPOL;970283208;0;651184;142;;59;92001420059;693802.11;1035885.65;3;651184;142
+&DSPOL;970284208;0;651184;142;;60;92001420060;693815.93;1035893.02;3;651184;142
+&DSPOL;970285208;0;651184;142;;61;92001420061;693841.88;1035909.84;3;651184;142
+&DSPOL;970286208;0;651184;142;;62;92001420062;693861.45;1035923.04;3;651184;142
+&DSPOL;970287208;0;651184;142;;63;92001420063;693882.64;1035937.25;3;651184;142
+&DSPOL;970291208;0;651184;142;;67;92001420067;693914.27;1035947.51;3;651184;142
+&DSPOL;970292208;0;651184;142;;68;92001420068;693920.68;1035923;3;651184;142
+&DSPOL;970293208;0;651184;142;;69;92001420069;693923.83;1035910.31;3;651184;142
+&DSPOL;970294208;0;651184;142;;70;92001420070;693929.97;1035883.25;3;651184;142
+&DSPOL;970295208;0;651184;142;;71;92001420071;693937.32;1035851.37;3;651184;142
+&DSPOL;970296208;0;651184;142;;72;92001420072;693944.75;1035823.75;3;651184;142
+&DSPOL;970308208;0;651184;142;;84;92001420084;693772.12;1035874.8;3;651184;142
+&DSPOL;970309208;0;651184;142;;85;92001420085;693766.39;1035873.02;3;651184;142
+&DSPOL;970310208;0;651184;142;;86;92001420086;693758.19;1035872.88;3;651184;142
+&DSPOL;970311208;0;651184;142;;87;92001420087;693743.85;1035875.91;3;651184;142
+&DSPOL;970312208;0;651184;142;;88;92001420088;693720.52;1035878.83;3;651184;142
+&DSPOL;970313208;0;651184;142;;89;92001420089;693699.83;1035881.44;3;651184;142
+&DSPOL;970317208;0;651184;142;;93;92001420093;693785.9;1035880.15;3;651184;142
+&DSPOL;970318208;0;651184;142;;94;92001420094;693801.45;1035887;3;651184;142
+&DSPOL;970319208;0;651184;142;;95;92001420095;693815.17;1035894.31;3;651184;142
+&DSPOL;970320208;0;651184;142;;96;92001420096;693841.05;1035911.09;3;651184;142
+&DSPOL;970321208;0;651184;142;;97;92001420097;693860.61;1035924.28;3;651184;142
+&DSPOL;970322208;0;651184;142;;98;92001420098;693881.81;1035938.5;3;651184;142
+&DSPOL;970325208;0;651184;142;;101;92001420101;693915.69;1035948.01;3;651184;142
+&DSPOL;970326208;0;651184;142;;102;92001420102;693922.13;1035923.37;3;651184;142
+&DSPOL;970327208;0;651184;142;;103;92001420103;693952.49;1035797.08;3;651184;142
+&DSPOL;970328208;0;651184;142;;104;92001420104;693946.2;1035824.11;3;651184;142
+&DSPOL;970329208;0;651184;142;;105;92001420105;693938.78;1035851.73;3;651184;142
+&DSPOL;970330208;0;651184;142;;106;92001420106;693931.43;1035883.58;3;651184;142
+&DSPOL;970331208;0;651184;142;;107;92001420107;693925.29;1035910.66;3;651184;142
+&DSPOL;970335208;0;651184;142;;111;92001420111;693859.08;1035919.2;3;651184;142
+&DSPOL;970336208;0;651184;142;;112;92001420112;693693.37;1035889.14;3;651184;142
+&DSPOL;970337208;0;651184;142;;113;92001420113;693740.56;1035873.67;3;651184;142
+&DSPOL;970338208;0;651184;142;;114;92001420114;693740.37;1035869.27;3;651184;142
+&DSPOL;970341208;0;651184;142;;117;92001420117;693949.25;1035796.12;3;651184;142
+&DSPOL;970342208;0;651184;142;;118;92001420118;693920.01;1035922.99;3;651184;142
+&DSPOL;970344208;0;651184;142;;4002;92001424002;693800.71;1035887.25;3;651184;142
+&DSPOL;970345208;0;651184;142;;4003;92001424003;693745.05;1035876.24;3;651184;142
+&DSPOL;977054208;0;651184;146;;15;92001460015;693933.79;1035948.15;3;651184;146
+&DSPOL;977055208;0;651184;146;;16;92001460016;693939.62;1035923.21;3;651184;146
+&DSPOL;977056208;0;651184;146;;17;92001460017;693948.04;1035886.21;3;651184;146
+&DSPOL;977057208;0;651184;146;;18;92001460018;693944.84;1035885.42;3;651184;146
+&DSPOL;977058208;0;651184;146;;19;92001460019;693949.73;1035878.61;3;651184;146
+&DSPOL;977059208;0;651184;146;;20;92001460020;693962.04;1035824.59;3;651184;146
+&DSPOL;977060208;0;651184;146;;21;92001460021;693971.26;1035786.12;3;651184;146
+&DSPOL;977061208;0;651184;146;;22;92001460022;693970.97;1035785.3;3;651184;146
+&DSPOL;977062208;0;651184;146;;23;92001460023;693967.23;1035784.43;3;651184;146
+&DSPOL;977063208;0;651184;146;;24;92001460024;693953.79;1035780.9;3;651184;146
+&DSPOL;977064208;0;651184;146;;25;92001460025;693951.59;1035780.32;3;651184;146
+&DSPOL;977065208;0;651184;146;;26;92001460026;693948.82;1035779.47;3;651184;146
+&DSPOL;977066208;0;651184;146;;27;92001460027;693948.18;1035778.78;3;651184;146
+&DSPOL;977067208;0;651184;146;;28;92001460028;693954.02;1035755.61;3;651184;146
+&DSPOL;977068208;0;651184;146;;29;92001460029;693986.01;1035707.26;3;651184;146
+&DSPOL;977193208;0;651184;146;;154;92001460154;693932.33;1035947.8;3;651184;146
+&DSPOL;977194208;0;651184;146;;155;92001460155;693938.16;1035922.87;3;651184;146
+&DSPOL;977195208;0;651184;146;;156;92001460156;693946.25;1035887.31;3;651184;146
+&DSPOL;977196208;0;651184;146;;157;92001460157;693943.02;1035886.52;3;651184;146
+&DSPOL;977197208;0;651184;146;;158;92001460158;693943.74;1035883.6;3;651184;146
+&DSPOL;977198208;0;651184;146;;159;92001460159;693946.91;1035884.39;3;651184;146
+&DSPOL;977199208;0;651184;146;;160;92001460160;693948.27;1035878.28;3;651184;146
+&DSPOL;977200208;0;651184;146;;161;92001460161;693960.58;1035824.25;3;651184;146
+&DSPOL;977201208;0;651184;146;;162;92001460162;693969.62;1035786.53;3;651184;146
+&DSPOL;977202208;0;651184;146;;163;92001460163;693953.41;1035782.35;3;651184;146
+&DSPOL;977203208;0;651184;146;;164;92001460164;693947.99;1035780.79;3;651184;146
+&DSPOL;977204208;0;651184;146;;165;92001460165;693946.53;1035779.2;3;651184;146
+&DSPOL;977205208;0;651184;146;;166;92001460166;693952.63;1035755;3;651184;146
+&DSPOL;977206208;0;651184;146;;167;92001460167;693984.76;1035706.44;3;651184;146
+&DSPOL;977421208;0;651184;146;;382;92001460382;693987.26;1035708.09;3;651184;146
+&DSPOL;977422208;0;651184;146;;383;92001460383;693955.41;1035756.22;3;651184;146
+&DSPOL;977423208;0;651184;146;;384;92001460384;693949.87;1035778.22;3;651184;146
+&DSPOL;977424208;0;651184;146;;385;92001460385;693954.17;1035779.45;3;651184;146
+&DSPOL;977425208;0;651184;146;;386;92001460386;693972.11;1035784.03;3;651184;146
+&DSPOL;977426208;0;651184;146;;387;92001460387;693972.82;1035786.04;3;651184;146
+&DSPOL;977427208;0;651184;146;;388;92001460388;693963.5;1035824.93;3;651184;146
+&DSPOL;977428208;0;651184;146;;389;92001460389;693951.19;1035878.94;3;651184;146
+&DSPOL;977429208;0;651184;146;;390;92001460390;693949.51;1035886.52;3;651184;146
+&DSPOL;977430208;0;651184;146;;391;92001460391;693941.08;1035923.55;3;651184;146
+&DSPOL;977431208;0;651184;146;;392;92001460392;693935.25;1035948.5;3;651184;146
+&DSPOL;977478208;0;651184;146;;4006;92001464006;693958.33;1035778.62;3;651184;146
+&DSPOL;977487208;0;651184;146;;4055;92001464055;693943.42;1035872.17;3;651184;146
+&DSPOL;994715208;1;651184;104;;5;92001040005;693974.42;1035746.45;3;651184;104
+&DSPOL;994716208;1;651184;104;;6;92001040006;693956.46;1035795.22;3;651184;104
+&DSPOL;994717208;1;651184;104;;7;92001040007;693949.34;1035796.29;3;651184;104
+&DSPOL;994718208;1;651184;104;;8;92001040008;693878.2;1035808.02;3;651184;104
+&DSPOL;994719208;1;651184;104;;9;92001040009;693849.97;1035857.39;3;651184;104
+&DSPOL;994720208;1;651184;104;;10;92001040010;693843.96;1035858.04;3;651184;104
+&DSPOL;994721208;1;651184;104;;11;92001040011;693797.05;1035820.08;3;651184;104
+&DSPOL;994722208;1;651184;104;;12;92001040012;693754.38;1035823.2;3;651184;104
+&DSPOL;994723208;1;651184;104;;13;92001040013;693676.88;1035826.93;3;651184;104
+&DSPOL;994727208;1;651184;104;;17;92001040017;693715.72;1035775.57;3;651184;104
+&DSPOL;994742208;1;651184;104;;32;92001040032;693888.79;1035804.24;3;651184;104
+&DSPOL;994743208;1;651184;104;;33;92001040033;693852.76;1035809.22;3;651184;104
+&DSPOL;994748208;1;651184;104;;38;92001040038;693711.87;1035777.35;3;651184;104
+&DSPOL;994751208;1;651184;104;;4001;92001044001;693807.13;1035762.92;3;651184;104
+&BHBPEJ;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;BPEJ_KOD_HRANICE_1 N30;BPEJ_KOD_HRANICE_2 N30;KATUZE_KOD N6
+&BOBPEJ;ID N30;STAV_DAT N2;DATUM_VZNIKU D;DATUM_ZANIKU D;PRIZNAK_KONTEXTU N1;RIZENI_ID_VZNIKU N30;RIZENI_ID_ZANIKU N30;TYPPPD_KOD N10;SOURADNICE_Y N10.2;SOURADNICE_X N10.2;TEXT T255;VELIKOST N10.2;UHEL N10.4;BPEJ_KOD T5;KATUZE_KOD N6;VZTAZNY_BOD N2
+&BNZ;ID N30;STAV_NZ N1;NZ_TYPE T10;PORIZENI_DAT_NZ T1;RIZENI_ID N30;CISLO_PLANU T60;VYHOTOVIL T60;OZNACENI_MAPOVEHO_LISTU T60
+&BZPMZ;KATUZE_KOD N6;CISLO_ZPMZ N5;PPZ_ID N30;STAV_ZPMZ N1;MERICKY_NACRT T1;ZAPISNIK_PODROB_MERENI T1;VYPOCET_PROTOKOL_VYMER T1;TYPSOS_KOD N1
+&DZPMZ;651184;194;;1;"";"";"";
+&BNZZP;NZ_ID N30;ZPMZ_CISLO_ZPMZ N5;ZPMZ_KATUZE_KOD N6
+&BRECI;KATUZE_KOD N6;KMENOVE_CISLO_PAR N5;DRUH_CISLOVANI_PAR N3;PODDELENI_CISLA_PAR N3;REZZPMZ_CISLO_ZPMZ N5
+&DRECI;651184;590;2;4;194
+&BDOCI;KATUZE_KOD N6;KMENOVE_CISLO_PAR N5;PODDELENI_CISLA_PAR N3;DRUH_CISLOVANI_PAR N1
+&BREZBP;CISLO_BODU N4;KATUZE_KOD N6;REZZPMZ_CISLO_ZPMZ N5;RIZENI_ID N30
+&BDOHICI;KATUZE_KOD N6;PARCIS N5;PARPOD N3;PARSKUP N1
+&K

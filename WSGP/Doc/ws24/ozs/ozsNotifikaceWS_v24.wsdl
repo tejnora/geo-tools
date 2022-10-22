@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ozsNotifikaceWS"
+	targetNamespace="http://katastr.cuzk.cz/ozsNotifikaceWS/v2.4"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://katastr.cuzk.cz/ozsNotifikaceWS/v2.4"
+	xmlns:types="http://katastr.cuzk.cz/ozsNotifikaceWS/types/v2.4"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsp:Policy name="UsernameToken" wsu:Id="OzsWSSecurityPolicy">
+        <sp:SupportingTokens>
+            <wsp:Policy>
+                <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                    <wsp:Policy>
+                        <sp:WssUsernameToken11/>
+                    </wsp:Policy>
+                </sp:UsernameToken>
+            </wsp:Policy>
+        </sp:SupportingTokens>
+    </wsp:Policy>
+
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://katastr.cuzk.cz/ozsNotifikaceWS/types/v2.4" schemaLocation="ozsNotifikaceWS_v24.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="vratOdebraneZpravyRequestMsg">
+		<wsdl:part name="request" element="types:vratOdebraneZpravyRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="vratOdebraneZpravyResponseMsg">
+		<wsdl:part name="response" element="types:vratOdebraneZpravyResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="vratNeodebraneZpravyRequestMsg">
+		<wsdl:part name="request" element="types:vratNeodebraneZpravyRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="vratNeodebraneZpravyResponseMsg">
+		<wsdl:part name="response" element="types:vratNeodebraneZpravyResponse"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="OzsNotifikacePort">
+		<wsdl:operation name="vratOdebraneZpravy">
+			<wsdl:input message="tns:vratOdebraneZpravyRequestMsg" />
+			<wsdl:output message="tns:vratOdebraneZpravyResponseMsg" />
+		</wsdl:operation>
+		<wsdl:operation name="vratNeodebraneZpravy">
+			<wsdl:input message="tns:vratNeodebraneZpravyRequestMsg"></wsdl:input>
+			<wsdl:output message="tns:vratNeodebraneZpravyResponseMsg"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="OzsNotifikaceSOAP" type="tns:OzsNotifikacePort">
+        <wsp:PolicyReference URI="#OzsWSSecurityPolicy"/>
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="vratOdebraneZpravy">
+			<soap:operation soapAction="http://katastr.cuzk.cz/ozsNotifikaceWS/vratOdebraneZpravy" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="vratNeodebraneZpravy">
+			<soap:operation soapAction="http://katastr.cuzk.cz/ozsNotifikaceWS/vratNeodebraneZpravy" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="ozs">
+		<wsdl:port name="OzsNotifikacePort" binding="tns:OzsNotifikaceSOAP">
+			<soap:address location="https://ozs.cuzk.cz/ws/ozs/2.4/ozs" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,51 @@
+﻿<Gui:DialogBase x:Class="GeoHelper.Controls.CustomExportDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                Title="CustomExportDialog"
+                Height="95"
+                Width="300">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="20,5,20,5" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label loc:Translate.Uid="251"
+                   Content="{loc:Translate Pattern}" />
+            <ComboBox Grid.Column="1"
+                      x:Name="_pattern"
+                      Margin="20,0,20,0"
+                      ItemsSource="{Binding Path=ComboContext.Nodes}"
+                      SelectedItem="{Binding Path=ComboContext.SelectedNode}"
+                      DisplayMemberPath="Name" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    loc:Translate.Uid="29"
+                    Content="{loc:Translate Ok}"
+                    Click="OnOkButtonClick" />
+            <Button Grid.Column="1"
+                    loc:Translate.Uid="30"
+                    Content="{loc:Translate Cancle}"
+                    Click="OnCancelButtonClick" />
+        </Grid>
+    </Grid>
+</Gui:DialogBase>

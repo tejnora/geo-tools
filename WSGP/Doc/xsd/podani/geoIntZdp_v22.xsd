@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://katastr.cuzk.cz/enx/content/v2.2" xmlns:geo="http://katastr.cuzk.cz/geoCommmonTypes/v2.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" targetNamespace="http://katastr.cuzk.cz/enx/content/v2.2"
+	elementFormDefault="qualified" version="2.2.0">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../baseTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../commonTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/geoCommmonTypes/v2.2" schemaLocation="../geo/geoCommonTypes_v22.xsd"/>
+
+	<xs:include schemaLocation="podaniIntCommon_v22.xsd" />
+
+	<xs:element name="enx" type="ENXType"/>
+
+	<xs:complexType name="ENXType">
+	  <xs:annotation>
+		   <xs:documentation>Komplexní typ XML návrhu</xs:documentation>
+		</xs:annotation> 
+		<xs:sequence>
+			<xs:element name="typyRizeni" type="RizeniTypeENX" />
+
+			<xs:element name="extIdentifikace" type="ExtIdentifikaceType" minOccurs="0"/>
+
+			<xs:element name="poznamky" type="PoznamkyListType" minOccurs="0"/>
+
+			<xs:element name="rizeniTyp" type="TypeRizeniPgpKodType" />
+			<xs:element name="poradoveCislo" type="bt:RizeniPoradoveCisloType"/>
+			<xs:element name="rok" type="bt:RizeniRokType"/>
+			<xs:element name="praresKod" type="bt:RizeniPraresKodType"/>
+			
+			<xs:element name="listiny" type="ListinyListType" minOccurs="1"/>
+			<xs:element ref="ds:Signature" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ListinyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam listin</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="listina" type="ListinaEnxType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ListinaEnxType">
+		<xs:annotation>
+			<xs:documentation>Listina k podání</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typKod" type="TypListinyKodENXType"/>
+			<xs:element name="datumVyhotoveni" type="xs:date"/>
+			<xs:element name="textCislaJednaciho" type="bt:CisloJednaciType" minOccurs="0"/>
+			<xs:element name="stran" type="xs:positiveInteger" minOccurs="0"/>
+			<xs:element name="popis" type="bt:TextType" minOccurs="0"/>
+			<xs:element name="druhListinyKod" type="bt:DruhListinyKodType" minOccurs="0"/>
+			<xs:element name="priloha" type="ct:PrilohaWSType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="doplnkoveUdajeZPMZ" type="DoplnkoveUdajeListinZMPZEnxType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniTypeENX">
+		<xs:annotation>
+			<xs:documentation>Typ řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typ" type="TypRizeniENXType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="TypListinyKodENXType">
+		<xs:restriction base="bt:TypListinyKodType">
+			<xs:enumeration value="230">
+				<xs:annotation>
+					<xs:documentation>Geometrický plán k potvrzení</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="231">
+				<xs:annotation>
+					<xs:documentation>Soubory ZPMZ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="232">
+				<xs:annotation>
+					<xs:documentation>Žádost o potvrzení GP</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TypRizeniENXType">
+		<xs:annotation>
+			<xs:documentation> Výčtový typ pro typy řízení v ENX </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:TypRizeniKodType">
+			<xs:enumeration value="ZDP"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TypeRizeniPgpKodType">
+		<xs:restriction base="bt:TypRizeniKodType">
+			<xs:enumeration value="PGP" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+
+

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://katastr.cuzk.cz/enx/content/v2.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" targetNamespace="http://katastr.cuzk.cz/enx/content/v2.2"
+	elementFormDefault="qualified" version="2.2.0">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../baseTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../commonTypes_v22.xsd"/>
+
+	<xs:group name="FOParametryGroup">
+		<xs:annotation>
+			<xs:documentation>Informace o účastníkovi, který je fyzickou osobou.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="jmeno" type="bt:JmenoType">
+				<xs:annotation>
+					<xs:documentation>Jméno účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prijmeni" type="bt:PrijmeniType">
+				<xs:annotation>
+					<xs:documentation>Příjmení účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rodnePrijmeni" type="bt:PrijmeniType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rodné příjmení účastníka.</xs:documentation>
+				</xs:annotation>						
+			</xs:element>
+			<xs:element name="rc" type="bt:RcType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rodné číslo účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datumNarozeni" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum narození účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="titulPredJmenem" type="bt:TitulPredJmenemType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Titul před jménem účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="titulZaJmenem" type="bt:TitulZaJmenemType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Titul za jménem účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="doklad" type="DokladENXType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Doklad účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="POParametryGroup">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Informace o účastníkovi, který je právnickou osobou.</xs:documentation>
+			</xs:annotation>
+			<xs:element name="obchodniJmeno" type="bt:NazevFirmyType">
+				<xs:annotation>
+					<xs:documentation>Název účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ico" type="bt:IcoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>IČ účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="doplnekIco" type="bt:DoplnekIcoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Doplněk IČ účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dic" type="bt:DicType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DIČ účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jednajiciOsoba" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Jméno osoby, která zastupuje účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:group>
+
+	<xs:group name="UcastnikOstatniGroup">
+		<xs:sequence>
+			<xs:element name="notifikacniKontakty" type="NotifikacniKontaktyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kontakty pro bezplatnou oznamovací službu.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idDS" type="bt:DatovaSchrankaIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Identifikátor datové schránky.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adresy" type="AdresyListENXType">
+				<xs:annotation>
+					<xs:documentation>Seznam adres účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bankovniSpojeni" type="ct:BankovniSpojeniType" minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="DoplnkoveUdajeListinZMPZEnxType">
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PredmetType">
+		<xs:annotation>
+			<xs:documentation>Předmět řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kod" type="bt:PredmetRizeniKodType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PoznamkyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam poznámek</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="poznamka" type="bt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PracovisteType">
+		<xs:annotation>
+			<xs:documentation>Pracoviště</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kod" type="bt:PracovisteKodType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PredmetyListType">
+		<xs:annotation>
+			<xs:documentation>Seznam předmětů řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="predmet" type="PredmetType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AdresaENXType">
+		<xs:annotation>
+			<xs:documentation>Adresa účastníka.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="adresaTyp" type="AdresaTypENXType"/>
+			<xs:element name="statNazev" type="bt:StatNazevType" minOccurs="0"/>
+			<xs:element name="okresNazev" type="bt:OkresNazevType" minOccurs="0"/>
+			<xs:element name="obecNazev" type="bt:ObecNazevType" minOccurs="0"/>
+			<xs:element name="castObceNazev" type="bt:CastObceNazevType" minOccurs="0"/>
+			<xs:element name="mestskaCastNazev" type="bt:MestskaCastNazevType" minOccurs="0"/>
+			<xs:element name="mestskyObvodNazev" type="bt:MestskyObvodNazevType" minOccurs="0"/>
+			<xs:element name="ulice" type="bt:UliceNazevType" minOccurs="0"/>
+			<xs:element name="cpCe" type="bt:CpCeType" minOccurs="0"/>
+			<xs:element name="cisloDomovni" type="bt:CisloEvidencniType" minOccurs="0"/>
+			<xs:element name="psc" type="ENXPSCType" minOccurs="0"/>
+			<xs:element name="cisloOrientacni" type="ENXCisloOrientacni" minOccurs="0"/>
+			<xs:element name="telefon" type="bt:FaxTelefonType" minOccurs="0"/>
+			<xs:element name="email" type="bt:EmailType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DokladENXType">
+		<xs:annotation>
+			<xs:documentation>Doklad pro OFO</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dokladuTyp" type="ENXDokladType"/>
+			<xs:element name="dokladCislo" type="bt:DokladCisloType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UdajeKPlatbeType">
+		<xs:annotation>
+			<xs:documentation>Údaje k platbě</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="zpusobUhrady" type="bt:ZpusobUhradyType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AdresyListENXType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam adres</xs:documentation>
+		</xs:annotation>  
+		<xs:sequence>
+			<xs:element name="adresa" type="AdresaENXType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="NotifikacniKontaktyType">
+		<xs:annotation>
+			<xs:documentation>Kontakty pro bezplatnou oznamovaci sluzbu.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="telefon" type="bt:FaxTelefonType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kontaktní telefon účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="email" type="bt:EmailType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kontaktní email účsatníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KatastralniUzemiListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam katastrálních území</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ku" type="ct:KatuzeType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="ExtIdentifikaceType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AdresaTypENXType">
+		<xs:annotation>
+			<xs:documentation>Typ adresy</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:AdresaTypType">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>adresa organizace</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>adresa provozní jednotky</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>adresa pracoviště</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>trvalý pobyt, bydliště v cizině</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>doručovací adresa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ENXDokladType">
+		<xs:annotation>
+			<xs:documentation>Typ dokladu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:DokladTypType">
+			<xs:enumeration value="P">
+				<xs:annotation>
+					<xs:documentation>pas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ID">
+				<xs:annotation>
+					<xs:documentation>občanský průkaz</xs:documentation>				
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IR">
+				<xs:annotation>
+					<xs:documentation>povolení k pobytu</xs:documentation>				
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VS">
+				<xs:annotation>
+					<xs:documentation>vízový štítek</xs:documentation>				
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PS">
+				<xs:annotation>
+					<xs:documentation>pobytový štítek</xs:documentation>				
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>	
+	</xs:simpleType>
+
+	<xs:simpleType name="ENXPSCType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ENXCisloOrientacni">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A85CF85A-15D5-4D93-A286-7B26D292579E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeoCalculations</RootNamespace>
+    <AssemblyName>GeoCalculations</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GeneralMatrix, Version=1.0.4355.30852, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GeneralMatrix\bin\Debug\GeneralMatrix.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicTypes\Path2D.cs" />
+    <Compile Include="BasicTypes\Line.cs" />
+    <Compile Include="BasicTypes\Path.cs" />
+    <Compile Include="CalculationContexts\CalculationContextWithSimpleTable.cs" />
+    <Compile Include="CalculationContexts\ConstructionDistanceContex.cs" />
+    <Compile Include="CalculationContexts\ControlDistanceContex.cs" />
+    <Compile Include="CalculationContexts\CoordinatesTransformationContex.cs" />
+    <Compile Include="CalculationContexts\DirectionAzimutAndLengthContext.cs" />
+    <Compile Include="CalculationContexts\DirectionIntersectionContext.cs" />
+    <Compile Include="CalculationContexts\LengthIntersectionContext.cs" />
+    <Compile Include="CalculationContexts\LinesIntersectionContext.cs" />
+    <Compile Include="CalculationContexts\MeasuredPointsContext.cs" />
+    <Compile Include="CalculationContexts\OrientationContext.cs" />
+    <Compile Include="CalculationContexts\OrtogonalContext.cs" />
+    <Compile Include="CalculationContexts\PolarContex.cs" />
+    <Compile Include="CalculationContexts\PolarMethodBatchContext.cs" />
+    <Compile Include="CalculationContexts\PolygonTraverseContext.cs" />
+    <Compile Include="CalculationResultContexts\CoordinateTransformationResultContext.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Contours\ContourNode.cs" />
+    <Compile Include="Contours\ContoursCompouser.cs" />
+    <Compile Include="Contours\ContoursFileParser.cs" />
+    <Compile Include="Contours\ContourTriangulationCell.cs" />
+    <Compile Include="Contours\CotoursCreater.cs" />
+    <Compile Include="ConvexHull\Collections.cs" />
+    <Compile Include="ConvexHull\ConvexFace.cs" />
+    <Compile Include="ConvexHull\ConvexFaceInternal.cs" />
+    <Compile Include="ConvexHull\ConvexHull.cs" />
+    <Compile Include="ConvexHull\ConvexHullInternal.cs" />
+    <Compile Include="ConvexHull\IVertex.cs" />
+    <Compile Include="ConvexHull\VertexSort.cs" />
+    <Compile Include="Curves\PathTo.cs" />
+    <Compile Include="Deviations\ControlDistanceDeviation.cs" />
+    <Compile Include="Deviations\DeviationBase.cs" />
+    <Compile Include="Deviations\ConstructionDistanceDeviation.cs" />
+    <Compile Include="Deviations\DirectionIntersectionDeviation.cs" />
+    <Compile Include="Deviations\OrthogonalMethodDeviation.cs" />
+    <Compile Include="Deviations\PolarMethodDeviation.cs" />
+    <Compile Include="Deviations\PolygonLengthDeviation.cs" />
+    <Compile Include="Deviations\PolygonPositionDeviation.cs" />
+    <Compile Include="Deviations\PolygonAngleDeviation.cs" />
+    <Compile Include="Deviations\PolygonHeightClosureDeviation.cs" />
+    <Compile Include="Deviations\LengthIntersectionDeviation.cs" />
+    <Compile Include="Deviations\BalancedDirectionAzimutDeviation.cs" />
+    <Compile Include="Deviations\CalculationDeviation.cs" />
+    <Compile Include="Exceptions\BalancedDirectionAzimutException.cs" />
+    <Compile Include="Exceptions\CalculationException.cs" />
+    <Compile Include="Exceptions\ConstructionDistanceCalculationException.cs" />
+    <Compile Include="Exceptions\ControlDistanceException.cs" />
+    <Compile Include="Exceptions\CoordinateTransformationCalculationException.cs" />
+    <Compile Include="Exceptions\DirectIntersectionCalculationException.cs" />
+    <Compile Include="Exceptions\FreePointOfViewCalculationException.cs" />
+    <Compile Include="Exceptions\HeightCalculationException.cs" />
+    <Compile Include="Exceptions\LengthIntersectionCalculationException.cs" />
+    <Compile Include="Exceptions\LinesIntersectionException.cs" />
+    <Compile Include="Exceptions\OrtogonalMethodCalculationException.cs" />
+    <Compile Include="Exceptions\PolarMethodBatchException.cs" />
+    <Compile Include="Exceptions\PolarMethodCalculationException.cs" />
+    <Compile Include="Exceptions\PolygonCalculationException.cs" />
+    <Compile Include="CalculationResultContexts\ConstructionDistanceResultContext.cs" />
+    <Compile Include="CalculationResultContexts\CalculationResultContextWithtNodes.cs" />
+    <Compile Include="CalculationContexts\CalculationContextBase.cs" />
+    <Compile Include="Exceptions\SilentAbortCalculation.cs" />
+    <Compile Include="MethodPoints\CordinateTransformationCalculatedPoint.cs" />
+    <Compile Include="Methods\BalancedDirectionAzimut.cs" />
+    <Compile Include="Methods\ConstructionDistanceMethod.cs" />
+    <Compile Include="Methods\ControlDistanceMethod.cs" />
+    <Compile Include="Methods\DirectionAzimutAndLengthMethod.cs" />
+    <Compile Include="Methods\ElevationDifference .cs" />
+    <Compile Include="Methods\FreePointOfView.cs" />
+    <Compile Include="Methods\DirectionIntersectionMethod.cs" />
+    <Compile Include="Methods\LengthIntersectionMethod.cs" />
+    <Compile Include="Methods\LinesIntersectionMethod.cs" />
+    <Compile Include="Methods\PolygonTraverseMethod.cs" />
+    <Compile Include="Methods\SimpleCalculation.cs" />
+    <Compile Include="Methods\PolarMethod.cs" />
+    <Compile Include="Methods\TransformationMethod.cs" />
+    <Compile Include="MethodPoints\ConstructionDistancePoint.cs" />
+    <Compile Include="MethodPoints\ControlDistancePoint.cs" />
+    <Compile Include="MethodPoints\CordinateTransformationPoint.cs" />
+    <Compile Include="MethodPoints\DirectionAzimutAndLengthCalculatedPoint.cs" />
+    <Compile Include="MethodPoints\DirectionIntersectionCalculatedPoint.cs" />
+    <Compile Include="MethodPoints\IPointLoadAdapter.cs" />
+    <Compile Include="MethodPoints\LengthIntersectionCalculatedPoint.cs" />
+    <Compile Include="MethodPoints\MeasuredPoint.cs" />
+    <Compile Include="MethodPoints\PointBaseEx.cs" />
+    <Compile Include="MethodPoints\PolygonCalculatedPoint.cs" />
+    <Compile Include="MethodPoints\PolygonCalculatedPoints.cs" />
+    <Compile Include="MethodPoints\PolygonTraverseCalculatedPoint.cs" />
+    <Compile Include="MethodPoints\SimplePoint.cs" />
+    <Compile Include="MethodPoints\PointBase.cs" />
+    <Compile Include="MethodPoints\OrientationPoint.cs" />
+    <Compile Include="MethodPoints\Line.cs" />
+    <Compile Include="MethodPoints\IPointExport.cs" />
+    <Compile Include="MethodPoints\IPointExporter.cs" />
+    <Compile Include="MethodPoints\IPointImport.cs" />
+    <Compile Include="BasicTypes\Point.cs" />
+    <Compile Include="MethodPoints\CalculatedPointBase.cs" />
+    <Compile Include="Methods\OrthogonalMethod.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolExpressionEvaluator.cs" />
+    <Compile Include="Protocol\IProtocolPlugin.cs" />
+    <Compile Include="Protocol\ProtocolCoordinateReplaceContext.cs" />
+    <Compile Include="Protocol\ProtocolMethodAttribute.cs" />
+    <Compile Include="Protocol\ProtocolPropertyValueTypeAttribute.cs" />
+    <Compile Include="Protocol\ProtocolRootDataAttribute.cs" />
+    <Compile Include="Protocol\ProtocolGenerator.cs" />
+    <Compile Include="Protocol\ProtocolGrammar.cs" />
+    <Compile Include="Protocol\ProtocolPropertyDataAttribute.cs" />
+    <Compile Include="Protocol\ProtocolUnitsPlugin.cs" />
+    <Compile Include="Protocol\ScanProtocolResultData.cs" />
+    <Compile Include="StarMath\StarMathLibrary.cs" />
+    <Compile Include="TransformationWrappers\Affine2DTransformationWrapper.cs" />
+    <Compile Include="TransformationWrappers\Identity2DTransformationWrapper.cs" />
+    <Compile Include="TransformationWrappers\MatrixWrapper.cs" />
+    <Compile Include="TransformationWrappers\Settings.cs" />
+    <Compile Include="TransformationWrappers\Similarity2DTransformationWrapper.cs" />
+    <Compile Include="TransformationWrappers\TransformationBaseWrapper.cs" />
+    <Compile Include="TransformationWrappers\TransformationReportWrapper.cs" />
+    <Compile Include="Triangulation\DelaunayTriangulation.cs" />
+    <Compile Include="Triangulation\Triangulation.cs" />
+    <Compile Include="Triangulation\TriangulationCell.cs" />
+    <Compile Include="Triangulation\VoronoiEdge.cs" />
+    <Compile Include="Triangulation\VoronoiMesh.cs" />
+    <Compile Include="Utils\Swap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoBase\GeoBase.csproj">
+      <Project>{ED2C0A40-579E-40A2-813A-E6D165D9FCE6}</Project>
+      <Name>GeoBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

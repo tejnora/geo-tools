@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://katastr.cuzk.cz/enx/content/v2.2" xmlns:geo="http://katastr.cuzk.cz/geoCommmonTypes/v2.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" targetNamespace="http://katastr.cuzk.cz/enx/content/v2.2"
+	elementFormDefault="qualified" version="2.2.0">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../baseTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../commonTypes_v22.xsd"/>
+
+	<xs:include schemaLocation="podaniIntCommon_v22.xsd" />
+
+	<xs:element name="enx" type="ENXType"/>
+
+	<xs:complexType name="ENXType">
+    	<xs:annotation>
+		   <xs:documentation>Komplexní typ XML návrhu</xs:documentation>
+		</xs:annotation>			  
+		<xs:sequence>
+			<xs:element name="typyRizeni" type="RizeniTypeENX" />
+
+			<xs:element name="predmety" type="PredmetyListType"/>
+			<xs:element name="udajeKPlatbe" type="UdajeKPlatbeType" minOccurs="0"/>
+			<xs:element name="extIdentifikace" type="ExtIdentifikaceType" minOccurs="0"/>
+
+			<xs:element name="pracoviste" type="PracovisteType"/>
+			<xs:element name="katastralniUzemi" type="KatastralniUzemiListType" minOccurs="0"/>
+			<xs:element name="poznamky" type="PoznamkyListType" minOccurs="0"/>
+
+			<xs:element name="parcely" type="ct:IdParcelyListType" minOccurs="0"/>
+			<xs:element name="stavby" type="ct:IdStavbyListType" minOccurs="0"/>
+			<xs:element name="jednotky" type="ct:IdJednotkyListType" minOccurs="0"/>
+			<xs:element name="pravoStavby" type="ct:IdPravaStavbyListType" minOccurs="0"/>
+
+			<xs:element name="ucastnici" type="UcastniciListType"/>
+			<xs:element name="listiny" type="ListinyListType" minOccurs="0"/>
+			<xs:element ref="ds:Signature" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniTypeENX">
+	  <xs:annotation>
+		   <xs:documentation>Typ řízení</xs:documentation>
+		</xs:annotation> 
+		<xs:sequence>
+			<xs:element name="typ" type="TypRizeniENXType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ParcelyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="parcela" type="bt:IdType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="JednotkyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam jednotek</xs:documentation>
+		</xs:annotation>  
+		<xs:sequence>
+			<xs:element name="jednotka" type="bt:IdType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UcastniciListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam účastníků</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ucastnik" type="UcastnikType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="num" type="xs:nonNegativeInteger"/>
+	</xs:complexType>
+
+	<xs:complexType name="StavbyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam staveb</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="stavba" type="bt:IdType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PravoStavbyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam práv staveb</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pravoStavby" type="bt:IdType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ListinyListType">
+	  <xs:annotation>
+		   <xs:documentation>Seznam listin</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="listina" type="ListinaEnxType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="TypRizeniENXType">
+		<xs:annotation>
+			<xs:documentation> Výčtový typ pro typy řízení v ENX </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:TypRizeniKodType">
+			<xs:enumeration value="ZPP"/>
+			<xs:enumeration value="ZPV"/>
+			<xs:enumeration value="ZPZ"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TypUcastnikaENXKodType">
+		<xs:restriction base="bt:TypUcastnikaKodType">
+			<xs:enumeration value="OG">
+				<xs:annotation>
+					<xs:documentation>Oprávněný inženýr</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LI">
+				<xs:annotation>
+					<xs:documentation>Likvidátor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NA">
+				<xs:annotation>
+					<xs:documentation>Nabyvate</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NV">
+				<xs:annotation>
+					<xs:documentation>Navrhovatel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OP">
+				<xs:annotation>
+					<xs:documentation>Oprávněný</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OT">
+				<xs:annotation>
+					<xs:documentation>Ostatní</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OU">
+				<xs:annotation>
+					<xs:documentation>Okresní poz. úřad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OZ">
+				<xs:annotation>
+					<xs:documentation>Ohlašovatel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PF">
+				<xs:annotation>
+					<xs:documentation>Pozemkový fond</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PL">
+				<xs:annotation>
+					<xs:documentation>Poplatník</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PO">
+				<xs:annotation>
+					<xs:documentation>Povinný</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PR">
+				<xs:annotation>
+					<xs:documentation>Převodce</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PZ">
+				<xs:annotation>
+					<xs:documentation>Právní zástupce</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SK">
+				<xs:annotation>
+					<xs:documentation>Správce k. podstaty</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VL">
+				<xs:annotation>
+					<xs:documentation>Vyhotovitel listiny</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZG">
+				<xs:annotation>
+					<xs:documentation>Zhotovitel GP</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZS">
+				<xs:annotation>
+					<xs:documentation>Zástavce</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZV">
+				<xs:annotation>
+					<xs:documentation>Zástavní věřitel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EX">
+				<xs:annotation>
+					<xs:documentation>Soudní exekutor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OK">
+				<xs:annotation>
+					<xs:documentation>Obce a kraje</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JO">
+				<xs:annotation>
+					<xs:documentation>Jednající osoba</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NT">
+				<xs:annotation>
+					<xs:documentation>Notář</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AD">
+				<xs:annotation>
+					<xs:documentation>Advokát</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DP">
+				<xs:annotation>
+					<xs:documentation>Daňový poradce</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VZ">
+				<xs:annotation>
+					<xs:documentation>Vyhotovitel ZPMZ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IS">
+				<xs:annotation>
+					<xs:documentation>Insolvenční správce</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="UcastnikType">
+		<xs:annotation>
+			<xs:documentation>Účastník řízení.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ucastnikDruh" type="bt:DruhUcastnikaType"/>
+			<xs:element name="ucastnikTyp" type="TypUcastnikaENXKodType" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:group ref="FOParametryGroup" />
+				<xs:group ref="POParametryGroup" />
+			</xs:choice>
+			<xs:group ref="UcastnikOstatniGroup" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Jednoznačný identifikátor účastníka v rámci požadavku. Identifikátor slouží k propojení dvou účastníků v případě, že jeden účastník je zastupován jiným. V jiných případech nemá význam.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="zastupovan" type="xs:IDREF">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Odkaz na jiného účastníka řízení v rámci požadavku, kterým je aktuální účastník zastupován.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="popis" type="bt:TextType">
+			<xs:annotation>
+				<xs:documentation>POZOR! V současné době se nevyužívá. Popis účastníka.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ListinaEnxType">
+		<xs:annotation>
+			<xs:documentation>Listina.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="typKod" type="TypListinyKodEnxType"/>
+			<xs:element name="datumVyhotoveni" type="xs:date" minOccurs="0"/>
+			<xs:element name="textCislaJednaciho" type="bt:CisloJednaciType" minOccurs="0"/>
+			<xs:element name="stran" type="bt:PocetStranType" minOccurs="0"/>
+			<xs:element name="popis" type="bt:TextType" minOccurs="0"/>
+			<xs:element name="pravniMoc" type="xs:string" minOccurs="0"/>
+			<xs:element name="druhListinyKod" type="bt:DruhListinyKodType" minOccurs="0"/>
+			<xs:element name="priloha" type="ct:PrilohaWSType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="TypListinyKodEnxType">
+		<xs:annotation>
+			<xs:documentation>Kód typu listiny podle číselníku SC_T_LISTIN.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bt:TypListinyKodType" />
+	</xs:simpleType>
+
+</xs:schema>
+

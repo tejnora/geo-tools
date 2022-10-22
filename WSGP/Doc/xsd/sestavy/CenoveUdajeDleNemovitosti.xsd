@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="base.xsd"/> 
+  <!-- Verze: 1.02 -->
+  <xs:element name="CenoveUdajeDleNemovitosti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="KATASTRY">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KATASTR" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OKRES">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="nuts4" type="xs:string"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="OBEC">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="kod" type="xs:unsignedInt"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="KATUZE">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="kod" type="xs:unsignedInt"/>
+                          <xs:element name="nazev" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="NEMOVITOSTI">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="NEMOVITOST" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="TYP_NEM_TEXT" type="xs:string" minOccurs="0"/>
+                                <xs:element name="NEM_IDENT" type="NemIdentType"/>
+                                <xs:element name="NADRAZENE_NEMOVITOSTI">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="NADRAZENA_NEMOVITOST" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="TYP_NEM_TEXT" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="NEM_IDENT" type="NemIdentType"/>
+                                            <xs:element name="LISTINY">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="LISTINA" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="CENA_Z_LISTINY" type="xs:string"/> 
+                                                        <xs:element name="IDENT_RIZENI" type="RizeniType"/>
+                                                        <xs:element name="MENA_KOD" type="xs:string"/>
+                                                        <xs:element name="LISTINA_INFO" type="NazevListType"/>
+                                                        <xs:element name="SOUVISEJICI_TYPY">
+                                                          <xs:complexType>
+                                                            <xs:sequence minOccurs="0">
+                                                              <xs:element name="SOUVISEJICI_TYP" maxOccurs="unbounded">
+                                                                <xs:complexType>
+                                                                  <xs:sequence minOccurs="0">
+                                                                    <xs:element name="TYP_TEXT" type="xs:string"/>
+                                                                    <xs:element name="SOUVISEJICI_NEMOVISTOSTI">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence minOccurs="0">
+                                                                          <xs:element name="SOUVISEJICI_NEMOVISTOST" maxOccurs="unbounded">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence minOccurs="0">
+                                                                                <xs:element name="NEM_IDENT" type="NemIdentType"/> 
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:all>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BEZPL_PRISTUP" type="xs:string"/>
+        <xs:element name="PLATNOST" type="xs:string"/>
+        <xs:element name="VYHOTOVIL" type="xs:string"/>
+        <xs:element name="INFO_VYSTUP" type="xs:string"/>
+        <xs:element name="VYHOTOVENO" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

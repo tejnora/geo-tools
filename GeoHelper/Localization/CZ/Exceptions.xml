@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Exceptions>
+    <Value Id="E1" Description="Počáteční bod musi být vyplněn." />
+    <Value Id="E2" Description="U počátečního budu neni zadaná žádná orientace pro volný polygonvoý pořad." />
+    <Value Id="E3" Description="Některý z bodu orientace u počátečního bodu má špatně nastavený hodnoty." />
+    <Value Id="E4" Description="Některá hodnotu u měřených dat není správná." />
+    <Value Id="E5" Description="Volný polygonový pořad může mít maximalně tři body." />
+    <Value Id="E6" Description="Nejsou nastavené žadné orientace." />
+    <Value Id="E7" Description="U koncového budu neni zadaná žádná orientace pro volný polygonvoý pořad." />
+    <Value Id="E8" Description="Některý z bodu orientace u koncového bodu má špatně nastavený hodnoty." />
+    <Value Id="E9" Description="Není dostatek měřených bodu." />
+    <Value Id="E10" Description="Nebyla zadána počáteční souřadnice Z." />
+    <Value Id="E11" Description="Uzavřený polygonový přad má odlišnou souřadnici Z." />
+    <Value Id="E12" Description="Nebyla zadána koncová souřadnice Z." />
+    <Value Id="E13" Description="Není nastaven úhel Z u měřených dat." />
+    <Value Id="E14" Description="Délka, nebo souřadnice Z u měření není zadána." />
+    <Value Id="E15" Description="Nemůže být zadán úhel 0, nebo 200g." />
+    <Value Id="E16" Description="Nebyla zadána výška stroje, nebo signálu." />
+    <Value Id="E17" Description="Pro výpočet volného stanovisko musí být zadány alespoň dvě hodnoty." />
+    <Value Id="E18" Description="Nepodařilo se vypočítat transformační matici." />
+    <Value Id="E19" Description="Některý z bodů nemá zadaný zenitový úhel, nebo délku." />
+    <Value Id="E20" Description="U stanoviska nebyla zadána správná délka." />
+    <Value Id="E21" Description="Určovaný bod nelze spočitat. Byly zadány nesprávné hodnoty." />
+    <Value Id="E22" Description="Určovaný bod nelze spočitat. Byly zadány nesprávné hodnoty." />
+    <Value Id="E23" Description="Určovaný bod nelze spočitat. Musí být zadány alespoň dvě hodnoty." />
+    <Value Id="E24" Description="Určovaný bod nelze spočitat. Nepodařilo se vypočítat transformační matici." />
+    <Value Id="E25" Description="Určovaný bod nelze spočitat. Nemá zadané staničení, nebo kolmici." />
+    <Value Id="E26" Description="Určovaný bod nelze spočitat. Nemá zadané počateční a koncové souřadnice." />
+    <Value Id="E27" Description="Určované body nelze spočitat. Nemá zadané počateční a koncové souřadnice." />
+    <Value Id="E28" Description="Určované body nelze spočitat. Bod #point# nemá zadanou jednu ze souřadnice." />
+    <Value Id="E29" Description="Určované body nelze spočitat. První bodu musí mít kladnou hodnotu." />
+    <Value Id="E30" Description="Určované body nelze spočitat. Bod #point# nemá zadanou délku." />
+    <Value Id="E31" Description="Transformci nelze spočitat. Bod '#number#' nemá zadané všechny položky." />
+    <Value Id="E32" Description="Transformci nelze spočitat. Nepodařilo se vypočítat matici. Nemá řešení." />
+    <Value Id="E33" Description="Nepodařilo se vypočitat některý z určovaných bodu." />
+    <Value Id="E34" Description="Distance vypočtená, nebo změřená není validni u bodu '#number#'." />
+    <Value Id="E35" Description="Nebyl zadán vstupní, nebo výstupni soubor." />
+    <Value Id="E36" Description="Hodnota Hz nemuze byt u počítaného souboru prazdná." />
+    <Value Id="E37" Description="Nebylo zadáno číslo bodu." />
+    <Value Id="E38" Description="Nepodařilo se nalést prusečík přímek." />
+    <Value Id="E39" Description="Nebylo zadáno číslo bodu." />
+    <Value Id="E40" Description="Nebyl zadán vstupní, nebo výstupni soubor." />
+  </Exceptions>
+</Localization>

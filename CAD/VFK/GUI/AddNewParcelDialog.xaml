@@ -1,0 +1,74 @@
+﻿<Gui:DialogBase x:Class="VFK.GUI.AddNewParcelDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:GeoBase="clr-namespace:CAD.Utils;assembly=GeoBase"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                loc:Translate.Uid="73"
+                Title="{loc:Translate AddNewParcel}"
+                Height="171"
+                Width="279">
+    <Gui:DialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:DialogBase.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0"
+               Grid.Row="0"
+               loc:Translate.Uid="74"
+               Content="{loc:Translate ParcelType}" />
+        <ComboBox Grid.Column="1"
+                  Grid.Row="0"
+                  x:Name="_parcelType"
+                  SelectedIndex="0">
+            <ComboBoxItem loc:Translate.Uid="79"
+                          Content="{loc:Translate KN p}" />
+            <ComboBoxItem loc:Translate.Uid="80"
+                          Content="{loc:Translate KN s}" />
+        </ComboBox>
+        <Label Grid.Column="0"
+               Grid.Row="1"
+               loc:Translate.Uid="75"
+               Content="{loc:Translate FSU}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="1"
+                 Name="_FSU"
+                 GeoBase:TextBoxMaskBehavior.Mask="Integer" />
+        <Label Grid.Column="0"
+               Grid.Row="2"
+               loc:Translate.Uid="76"
+               Content="{loc:Translate ParcelNumber}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="2"
+                 x:Name="_ParcelNumber">
+        </TextBox>
+        <StackPanel Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button loc:Translate.Uid="77"
+                    Content="{loc:Translate Add}"
+                    Click="OnAddNewParcel"
+                    IsDefault="True" />
+            <Button loc:Translate.Uid="78"
+                    Content="{loc:Translate EndAdd}"
+                    IsCancel="True"
+                    Click="OnCancelButtonClick" />
+
+        </StackPanel>
+    </Grid>
+</Gui:DialogBase>

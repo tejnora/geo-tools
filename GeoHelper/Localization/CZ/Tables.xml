@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Namespace Value="TableBase">
+      <Value Id="0" Text="Bude vymazany #count# položky ze seznamu." Caption="Pozor" />
+      <Value Id="1" Text="Opravdu chcete smazat označené položky?" Caption="Pozor" />
+      <Value Id="2" Text="Bod je zamčený a nemůže být odstraněn." Caption="Upozornění" />
+      <Value Id="3" Text="Přidej položku" />
+      <Value Id="4" Text="Uber položku" />
+      <Value Id="5" Text="Edituj polužku" />
+      <Value Id="6" Text="Najdi položku" />
+      <Value Id="7" Text="Informace o souboru" />
+    </Namespace>
+    <Namespace Value="MeasureListTable">
+      <Value Id="0" Header="Číslo" />
+      <Value Id="1" Header="Hz" />
+      <Value Id="2" Header="Z" />
+      <Value Id="3" Header="Vod. delka" />
+      <Value Id="4" Header="dH" />
+      <Value Id="5" Header="Signal" />
+      <Value Id="6" Header="Popis" />
+      <Value Id="7" Text="Seznam měření(*.mpl)|*.mpl"/>
+      <Value Id="8" Text="Hromadná změna" />
+      <Value Id="9" Text="Parametry zobrazení..." />
+      <Value Id="10" Text="Měření" />
+    </Namespace>
+    <Namespace Value="CoordinateListTable">
+      <Value Id="0" Header="Číslo" />
+      <Value Id="1" Header="Y" />
+      <Value Id="2" Header="X" />
+      <Value Id="3" Header="Z" />
+      <Value Id="4" Header="Kv." />
+      <Value Id="5" Header="Popis" />
+      <Value Id="6" Text="Seznam souřadnic (*.s)|*.s"/>
+      <Value Id="7" Text="Hromadná změna" />
+      <Value Id="8" Text="Dvojí souřadnice" />
+      <Value Id="9" Text="Parametry zobrazení..." />
+      <Value Id="10" Text="Poslat souřadnice do Microstation" />
+      <Value Id="11" Text="Souřadnice" />
+    </Namespace>
+    <Namespace Value="TwoCoordinateListTable">
+      <Value Id="0" Content="Souřadnice obrazu" />
+      <Value Id="1" Content="Souřadnice polohy" />
+      <Value Id="2" Header="Číslo" />
+      <Value Id="3" Header="Y" />
+      <Value Id="4" Header="X" />
+      <Value Id="5" Header="Kv." />
+      <Value Id="6" Header="Y" />
+      <Value Id="7" Header="X" />
+      <Value Id="8" Header="Kv." />
+      <Value Id="9" Text="Parametry zobrazení..." />
+      <Value Id="10" Text="Souřadnice dvojí" />
+    </Namespace>
+  </Gui>
+</Localization>

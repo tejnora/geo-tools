@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Verze: 1.00 -->
+  <xs:element name="SeznamDefinicnichBoduParcel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LIST_G_SOURADNICE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="G_SOURADNICE">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SOURADNICE_Y" type="xs:string"/>
+                    <xs:element name="SOURADNICE_X" type="xs:string"/>
+                    <xs:element name="KATUZE_KOD" type="xs:string"/>
+                    <xs:element name="PAR_ID" type="xs:string"/>
+                    <xs:element name="CAOBCE_KOD" type="xs:string"/>
+                    <xs:element name="STA_ID" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PLATNOST" type="xs:string"/>
+        <xs:element name="VYHOTOVIL" type="xs:string"/>  
+        <xs:element name="BEZPL_PRISTUP" type="xs:string"/>
+        <xs:element name="VYHOTOVENO" type="xs:string"/>  
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

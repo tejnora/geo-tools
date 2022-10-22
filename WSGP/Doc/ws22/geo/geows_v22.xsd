@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://katastr.cuzk.cz/geows/types/v2.2"
+	xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.2" xmlns:geo="http://katastr.cuzk.cz/geoCommmonTypes/v2.2"
+	xmlns:ct="http://katastr.cuzk.cz/commonTypes/v2.2" xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://katastr.cuzk.cz/geows/types/v2.2"
+	elementFormDefault="qualified" version="2.2.0">
+
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.2" schemaLocation="../../xsd/baseTypes_v22.xsd"/>
+	<xs:import namespace="http://katastr.cuzk.cz/commonTypes/v2.2" schemaLocation="../../xsd/commonTypes_v22.xsd"/>
+	<!-- 
+	 -->
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../ext/gml/gml.xsd" />
+	<xs:import namespace="http://katastr.cuzk.cz/geoCommmonTypes/v2.2" schemaLocation="../../xsd/geo/geoCommonTypes_v22.xsd"/>
+	
+	<!-- Request / response elementy -->	
+	<xs:element name="ZalozRizeniPMRequest" type="ZalozRizeniPMRequestType" />
+	<xs:element name="ZalozRizeniPMResponse" type="ZalozRizeniPMResponseType" />
+
+	<xs:element name="VytvorRezervaciZPMZRequest" type="VytvorRezervaciZPMZRequestType" />
+	<xs:element name="VytvorRezervaciZPMZResponse" type="VytvorRezervaciZPMZResponseType" />
+
+	<xs:element name="VytvorRezervaciPrvkuRequest" type="VytvorRezervaciPrvkuRequestType"/>
+	<xs:element name="VytvorRezervaciPrvkuResponse" type="VytvorRezervaciPrvkuResponseType"/>
+
+	<xs:element name="ZrusRezervaciPrvkuRequest" type="ZrusRezervaciPrvkuRequestType"/>
+	<xs:element name="ZrusRezervaciPrvkuResponse" type="ZrusRezervaciPrvkuResponseType"/>
+
+	<xs:element name="ZrusRezervaciZPMZRequest" type="ZrusRezervaciZPMZRequestType"/>
+	<xs:element name="ZrusRezervaciZPMZResponse" type="ZrusRezervaciZPMZResponseType"/>
+
+	<xs:element name="MylneRizeniPMRequest" type="MylneRizeniPMRequestType"/>
+	<xs:element name="MylneRizeniPMResponse" type="MylneRizeniPMResponseType"/>
+
+	<xs:element name="SeznamRizeniPMRequest" type="SeznamRizeniPMRequestType"/>
+	<xs:element name="SeznamRizeniPMResponse" type="SeznamRizeniPMResponseType"/>
+
+	<xs:element name="DetailRizeniPMRequest" type="DetailRizeniPMRequestType"/>
+	<xs:element name="DetailRizeniPMResponse" type="DetailRizeniPMResponseType"/>
+
+	<xs:element name="ExportVFRequest" type="ExportVFRequestType"/>
+	<xs:element name="ExportVFResponse" type="ExportVFResponseType"/>
+
+	<xs:element name="ExportVFStatusRequest" type="ExportVFStatusRequestType"/>
+	<xs:element name="ExportVFStatusResponse" type="ExportVFStatusResponseType"/>
+
+	<xs:element name="ZalozNavrhZPGRequest" type="ZalozNavrhZPGRequestType" />
+	<xs:element name="ZalozNavrhZPGResponse" type="ZalozNavrhResponseType" />
+
+	<xs:element name="ZalozNavrhZDPRequest" type="ZalozNavrhZDPRequestType" />
+	<xs:element name="ZalozNavrhZDPResponse" type="ZalozNavrhResponseType" />
+	
+	<!-- Request / response typy -->
+	<xs:complexType name="ZalozRizeniPMRequestType">
+		<xs:annotation>
+			<xs:documentation>
+            Komplexní typ pro požadavek na synchronní založení řízení typu PM.
+        </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cisloZakazky" type="geo:CisloZakazkyType"/>
+			<xs:element name="katuzeKodList" type="ct:KatuzeKodListType" />
+			<xs:element name="dotceneParcely" type="ct:IdParcelyListType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZalozRizeniPMResponseType">
+		<xs:annotation>
+			<xs:documentation>
+            Komplexní typ pro odpověď na synchronní založení řízení typu PM
+        </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="rizeniPM" type="IdentifikaceRizeniType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VytvorRezervaciZPMZRequestType">
+		<xs:annotation>
+			<xs:documentation>Rezervace ZPMZ pro jedno katastální uzemí</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType"/>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VytvorRezervaciZPMZResponseType">
+		<xs:annotation>
+			<xs:documentation>Odpověď rezervace ZPMZ pro jedno katastální uzemí </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="rezervCisloZPMZ" type="RezervCisloZPMZType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VytvorRezervaciPrvkuRequestType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro požadavek na vytvoření rezervace v rámci řízení typu PM</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType"/>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:choice>
+				<xs:element name="rezervaceParcela" type="RezervaceParcelType"/>
+				<xs:element name="rezervacePoddeleni" type="RezervacePoddeleniType"/>
+				<xs:element name="rezervacePBPP" type="RezervacePBPP"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VytvorRezervaciPrvkuResponseType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro odpověď na vytvoření rezervace v rámci řízení typu PM</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="rezervParcely" type="RezervParcelyType" />
+				<xs:element name="rezervPoddeleni" type="RezervPoddeleniType" />
+				<xs:element name="rezervBodyPBPP" type="RezervBodyPBPPType" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZrusRezervaciZPMZRequestType">
+		<xs:annotation>
+			<xs:documentation>Zrušení rezervace ZPMZ v řízení PM - požadavek</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType"/>
+			<xs:element name="rezervCisloZPMZ" type="RezervCisloZPMZType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZrusRezervaciZPMZResponseType">
+		<xs:annotation>
+			<xs:documentation>Zrušení rezervace ZPMZ v řízení PM - odpověď</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZrusRezervaciPrvkuRequestType">
+		<xs:annotation>
+			<xs:documentation>Zrušení rezervace v řízení PM - požadavek</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType"/>
+			<xs:choice>
+				<xs:element name="rezervParcely" type="RezervParcelyType" />
+				<xs:element name="rezervPoddeleni" type="RezervPoddeleniType" />
+				<xs:element name="rezervBodyPBPP" type="RezervBodyPBPPType" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZrusRezervaciPrvkuResponseType">
+		<xs:annotation>
+			<xs:documentation>Zrušení rezervace v řízení PM - odpověď</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MylneRizeniPMRequestType">
+		<xs:annotation>
+			<xs:documentation>Označení řízení PM za mylné - požadavek</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType"/>
+			<xs:element name="popis" type="geo:DuvodMylnehoRizeniType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MylneRizeniPMResponseType">
+		<xs:annotation>
+			<xs:documentation>Označení řízení PM za mylné - odpověď</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SeznamRizeniPMRequestType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro získání seznamu aktuálních řízení pro daného uživatele</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+
+	<xs:complexType name="SeznamRizeniPMResponseType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ řízení.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="rizeniPMList" type="RizeniPMListType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniPMListType">
+		<xs:annotation>
+			<xs:documentation>Seznam řízení PM</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rizeniPM" type="RizeniPMType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+	<xs:complexType name="DetailRizeniPMRequestType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro požadavek na detail řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType" />
+			<xs:element name="rezervace" type="xs:boolean" >
+				<xs:annotation>
+					<xs:documentation>Příznak, zda-li se mají do odpovědi přidat i veškeré rezervace v daném řízení</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DetailRizeniPMResponseType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ detailu řízení PM</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="idRizeniPM" type="bt:IdType" minOccurs="0"/>
+			<xs:element name="cisloRizeni" type="bt:RizeniCisloType" minOccurs="0"/>
+			<xs:element name="cisloZakazky" type="geo:CisloZakazkyType" minOccurs="0"/>
+			<xs:element name="katuzeKodList" type="ct:KatuzeKodListType" minOccurs="0"/>
+			<xs:element name="dotceneParcely" type="ct:IdParcelyListType" minOccurs="0"/>
+			<!-- Rezervace -->
+			<xs:element name="rezervCislaZPMZList" type="RezervCisloZPMZListType" minOccurs="0" />
+			<xs:element name="rezervParCislaList" type="RezervParcelyListType" minOccurs="0" />
+			<xs:element name="rezervPoddeleniList" type="RezervPoddeleniListType" minOccurs="0" />
+			<xs:element name="rezervPBPPList" type="RezervBodyPBPPListType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ExportVFRequestType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ požadavku na export výměného formátu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeni" type="bt:IdType" />
+			<xs:element name="charset" type="geo:ZnakovaSadaVFType">
+				<xs:annotation>
+					<xs:documentation>Požadovaná znaková sada výstupu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="email" type="bt:EmailType">
+				<xs:annotation>
+					<xs:documentation>Adresa pro zaslání notifikace o vygenerování souboru VF</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element ref="gml:Polygon" />
+
+			<!-- Datové skupiny výstupu -->
+			<xs:element name="skNemo" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Nemovitosti (parcely, budovy)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skBdpa" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bonitní díly parcely</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skVlst" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Vlastnictví (LV a vlastníci)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skJpvz" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Jiné právní vztahy (kromě vlastnictví)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skPkmp" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Prvky kat. mapy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skBpej" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>BPEJ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skGmpl" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Geometrický plán</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skReze" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rezervovaná čísla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="skDebo" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Definiční body</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ExportVFResponseType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ odpovědi export výměnných formátů</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="behId" type="bt:IdType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ExportVFStatusRequestType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ dotazu na stav exportu výměnných formátů</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="behId" type="bt:IdType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ExportVFStatusResponseType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ stavu exportu výměnných formátů</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType"/>
+			<xs:element name="stavBehu" type="geo:StavExportuVF" minOccurs="0" />
+			<xs:element name="linkVF" type="geo:LinkVFType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="ZalozNavrhZPGRequestType">
+		<xs:annotation>
+			<xs:documentation> Komplexní typ pro zaslání návrhu
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="XMLNavrhu" type="xs:base64Binary" xmime:expectedContentTypes="text/xml">
+				<xs:annotation>
+					<xs:documentation>Soubor se samotným XML návrhu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hashNavrhu" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Hash souboru návrhu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prilohaNavrhu" type="PrilohaNavrhuType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZalozNavrhZDPRequestType">
+		<xs:annotation>
+			<xs:documentation> Komplexní typ pro zaslání návrhu
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="XMLNavrhu" type="xs:base64Binary" xmime:expectedContentTypes="text/xml">
+				<xs:annotation>
+					<xs:documentation>Soubor se samotným XML návrhu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hashNavrhu" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Hash souboru návrhu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prilohaNavrhu" type="PrilohaNavrhuType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ZalozNavrhResponseType">
+		<xs:annotation>
+			<xs:documentation> Komplexní typ pro odpověď na zaslání návrhu
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vysledek" type="ct:ResponseInfoType" />
+			<xs:element name="rizeni" type="ct:RizeniPomocneType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- komplexni elementy -->
+	<xs:complexType name="PrilohaNavrhuType">
+		<xs:sequence>
+			<xs:element name="prilohaNavrhu" type="xs:base64Binary" minOccurs="1" maxOccurs="1" xmime:expectedContentTypes="application/octet-stream">
+				<xs:annotation>
+					<xs:documentation>Jednotlivé přílohy k návrhu ve formátu PDF, ZIP, GZIP.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="idPrilohy" type="bt:IdPrilohyWSType" use="required">
+			<xs:annotation>
+				<xs:documentation>ID přílohy, jehož existence se kontroluje v těle podání (listina - příloha)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="typKompresePDF" type="bt:TypKompreseType">
+			<xs:annotation>
+				<xs:documentation>Typ komprese souboru PDF</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniPMType">
+		<xs:annotation>
+			<xs:documentation>Základní popisné atributy řízení PM</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeniPM" type="bt:IdType" />
+			<xs:element name="cisloRizeni" type="bt:RizeniCisloType" />
+			<xs:element name="cisloZakazky" type="geo:CisloZakazkyType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervaceParcelType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro požadavek  na rezervaci parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType"/>
+			<xs:element name="pocetRezParcel" type="xs:positiveInteger"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervParcelyListType">
+		<xs:annotation>
+			<xs:documentation>List rezervovaných parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rezervParcely" type="RezervParcelyType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervParcelyType">
+		<xs:annotation>
+			<xs:documentation>Rezervované parcely</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType"/>
+			<xs:element name="kmenoveCislo" type="bt:ParcelaKmenoveCisloType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervacePoddeleniType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro požadavek  na rezervaci poddělení parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType"/>
+			<xs:element name="kmenoveCislo" type="bt:ParcelaKmenoveCisloType"/>
+			<xs:element name="pocetRezPoddeleni" type="xs:positiveInteger"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervPoddeleniListType">
+		<xs:annotation>
+			<xs:documentation>List rezervovaných poddělení parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rezervPoddeleni" type="RezervPoddeleniType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RezervPoddeleniType">
+		<xs:annotation>
+			<xs:documentation>Rezervované poddělení parcel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType"/>
+			<xs:element name="kmenoveCislo" type="bt:ParcelaKmenoveCisloType"/>
+			<xs:element name="poddeleniCisla" type="bt:ParcelaPoddeleniType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervacePBPP">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro požadavek na rezervaci bodů PBPP</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pocetRezPBPP" type="xs:positiveInteger" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervBodyPBPPListType">
+		<xs:annotation>
+			<xs:documentation>List rezervovaných bodů PBPP</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rezervBodyPBPP" type="RezervBodyPBPPType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervBodyPBPPType">
+		<xs:annotation>
+			<xs:documentation>Rezervované body PBPP</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="cisloPBPP" type="bt:CisloPBPPType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="IdentifikaceRizeniType">
+		<xs:annotation>
+			<xs:documentation> Komplexní typ pro identifikátor řízení </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeni" type="bt:IdType"/>
+
+			<!-- Slozeny tvar -->
+			<xs:element name="cisloRizeni" type="bt:RizeniCisloType"/>
+
+			<!-- Rozlozeny tvar -->
+			<xs:element name="praresKod" type="bt:RizeniPraresKodType"/>
+			<xs:element name="rizeniTyp" type="bt:TypRizeniKodType"/>
+			<xs:element name="poradoveCislo" type="bt:RizeniPoradoveCisloType"/>
+			<xs:element name="rok" type="bt:RizeniRokType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervCisloZPMZListType">
+		<xs:annotation>
+			<xs:documentation>Seznam rezervovaných čísel ZPMZ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rezervCisloZPMZ" type="RezervCisloZPMZType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RezervCisloZPMZType">
+		<xs:annotation>
+			<xs:documentation> Rezervované číslo ZPMZ </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="cisloZPMZ" type="bt:CisloZPMZType" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>

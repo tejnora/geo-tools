@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Dictionary EnglishName="English" CultureName="English" Culture="en-US">
+  <Value Id="0" Title="Geo helper" Width="1200" Height="800" />
+  <Value Id="1" Header="Soubor" />
+  <Value Id="2" Header="Otevřít" />
+  <Value Id="3" Text="Soubor nelze otevřít." />
+  <Value Id="4" Text="Špatný format souboru." />
+  <Value Id="5" Text="Seznam měření" />
+  <Value Id="6" Header="Číslo" />
+  <Value Id="7" Header="Hz" />
+  <Value Id="8" Header="Z" />
+  <Value Id="9" Header="Vod. delka" />
+  <Value Id="10" Header="dH" />
+  <Value Id="11" Header="Signal" />
+  <Value Id="12" Header="Description" />
+  <Value Id="13" Header="Naměřené údaje" />
+  <Value Id="14" Content="Předčíslí:" />
+  <Value Id="15" Content="Číslo:" />
+  <Value Id="16" Content="Hz:" />
+  <Value Id="17" Content="Délka:" />
+  <Value Id="18" Content="Polární kolmice:" />
+  <Value Id="19" Content="Zenitový úhel:" />
+  <Value Id="20" Content="dH:" />
+  <Value Id="21" Content="Signal:" />
+  <Value Id="22" Content="Kod:" />
+  <Value Id="23" Content="Doměrek" />
+  <Value Id="24" Content="váha" />
+  <Value Id="25" Header="Typ bodu" />
+  <Value Id="26" Content="Staniceni" />
+  <Value Id="27" Content="Orientation" />
+  <Value Id="28" Content="Měřený bod" />
+  <Value Id="29" Content="Ok" />
+  <Value Id="30" Content="Zrušit" />
+  <Value Id="31" Header="Uložit jako" />
+  <Value Id="32" Header="Uložit" />
+  <Value Id="33" Text="Souřadnice" />
+  <Value Id="34" Header="Číslo" />
+  <Value Id="35" Header="Y" />
+  <Value Id="36" Header="X" />
+  <Value Id="37" Header="Z" />
+  <Value Id="38" Header="Typ" />
+  <Value Id="39" Header="Kv." />
+  <Value Id="40" Header="Description" />
+  <Value Id="41" Header="Souřadnice" />
+  <Value Id="42" Content="Předčíslí:" />
+  <Value Id="43" Content="Číslo:" />
+  <Value Id="44" Content="Kvalita" />
+  <Value Id="45" Content="Zamčený" />
+  <Value Id="46" Text="Bod je zamčený a nemůže být odstraněn." Caption="Upozornění" />
+  <Value Id="47" Text="Konvertovat do dvojích souřadnic" />
+  <Value Id="48" Text="Seznam souřadni dvojích" />
+  <Value Id="49" Text="Seznam souřadnic" />
+  <Value Id="50" Header="Spol Y:" />
+  <Value Id="51" Header="Spol X:" />
+  <Value Id="52" Header="Měření" />
+  <Value Id="53" Header="Přidej položku" />
+  <Value Id="54" Header="Uber položku" />
+  <Value Id="55" Header="Edituj polužku" />
+  <Value Id="56" Text="Opravdu chcete smazat označené položky?" />
+  <Value Id="57" Text="Pozor" />
+  <Value Id="58" Text="Výpočty" />
+  <Value Id="59" Header="[0] Ortogonální metoda" />
+  <Value Id="60" Header="Nový" />
+  <Value Id="61" Content="Seznam souřadnic" />
+  <Value Id="62" Content="Seznam souřadnic - dvojí" />
+  <Value Id="63" Content="Seznam měření" />
+  <Value Id="64" Content="ProtocolDialog" Text="ProtocolDialog" />
+  <Value Id="65" Header="Y" />
+  <Value Id="66" Header="X" />
+  <Value Id="67" Header="Itentické body" />
+  <Value Id="68" Header="Body" />
+  <Value Id="69" Header="dX" />
+  <Value Id="70" Header="dY" />
+  <Value Id="71" Content="Předč:" />
+  <Value Id="72" Content="Číslo:" />
+  <Value Id="73" Content="Y:" />
+  <Value Id="74" Content="X:" />
+  <Value Id="75" Content="Stan:" />
+  <Value Id="76" Content="Kolm:" />
+  <Value Id="77" Content="Klíč" />
+  <Value Id="78" Content="Přidat" />
+  <Value Id="79" Content="Odebrat" />
+  <Value Id="80" Text="Byla překročena mezní odchylka stanovená pro práci v katastru nemovitostí. Maximalni hodnota je 2000m" />
+  <Value Id="81" Text="Oprava delky mezi 1. a 2. bodem:  " />
+  <Value Id="82" Content="Určovaný bod" />
+  <Value Id="83" Content="Protokol" />
+  <Value Id="84" Content="Nová prímka" />
+  <Value Id="85" Content="Výpočet" />
+  <Value Id="86" Content="Vypráznit" />
+  <Value Id="87" Content="Uložit" />
+  <Value Id="88" Text="Mezní odchylka byla překročena." />
+  <Value Id="89" Header="Tisk" />
+  <Value Id="90" Title="Seznam souřadnic:" />
+  <Value Id="91" Content="Název souboru:" />
+  <Value Id="92" Content="Description souboru:" />
+  <Value Id="93" Content="Zakázka:" />
+  <Value Id="94" Content="Lokalita:" />
+  <Value Id="95" Content="Souřadnicový system:" />
+  <Value Id="96" Content="Výškový system:" />
+  <Value Id="97" Content="Poznámky:" />
+  <Value Id="98" Content="Ok" />
+  <Value Id="99" Content="Zrusit" />
+  <Value Id="100" Header="Informace o souboru" />
+  <Value Id="101" Header="Protokol" Title="Protokol" />
+  <Value Id="102" Text="Může být otevřen pouze jeden protokol." />
+  <Value Id="103" Title="Nastavení" />
+  <Value Id="104" Header="Data" />
+  <Value Id="105" Header="Výst/vstu souřadnice" Content="Výstupní/vstupní formát souřadnic" />
+  <Value Id="106" Header="Nastavení..." />
+  <Value Id="107" Header="Format" />
+  <Value Id="108" Content="Název" />
+  <Value Id="109" Content="Předpis formatu" />
+  <Value Id="110" Content="Volby" />
+  <Value Id="111" Content="Nedefinované nahradit nulami" />
+  <Value Id="150" Header="[0] Orotgonální metoda" Title="[0] Orotgonální metoda" />
+  
+  <!-- Polarni metoda-->
+  <Value Id="112" Content="Nové stanovisko" />
+  <Value Id="113" Header="PointOfView" />
+  <Value Id="114" Header="PointOfView" />
+  <Value Id="115" Content="Vyška stroje:" />
+  <Value Id="116" Content="X:" />
+  <Value Id="117" Content="Y:" />
+  <Value Id="118" Content="Z:" />
+  <Value Id="119" Content="Předčis:" />
+  <Value Id="120" Content="Číslo:" />
+  <Value Id="121" Header="Orientation" />
+  <Value Id="122" Header="Body" />
+  <Value Id="123" Header="V Orientation" />
+  <Value Id="124" Header="V Délka" />
+  <Value Id="125" Content="Předčíslí:" />
+  <Value Id="126" Content="Číslo:" />
+  <Value Id="127" Content="Směr:" />
+  <Value Id="128" Content="Délka:" />
+  <Value Id="129" Content="X:" />
+  <Value Id="130" Content="Y:" />
+  <Value Id="131" Content="Přidat" />
+  <Value Id="132" Content="Odebrat" />
+  <Value Id="133" Header="Určovaný bod" />
+  <Value Id="134" Header="Měřené hodnoty" />
+  <Value Id="135" Content="Předčis:" />
+  <Value Id="136" Content="Číslo:" />
+  <Value Id="137" Content="Směr:" />
+  <Value Id="138" Content="Délka:" />
+  <Value Id="139" Content="Převýšení:" />
+  <Value Id="140" Content="Zenitový úhel:" />
+  <Value Id="141" Content="Výška cíle:" />
+  <Value Id="142" Content="Kód:" />
+  <Value Id="143" Header="Vypočtené souřadnice" />
+  <Value Id="144" Content="X:" />
+  <Value Id="145" Content="Y:" />
+  <Value Id="146" Content="Z:" />
+  <Value Id="147" Content="Výpočet ze směrníků:" />
+  <Value Id="148" Content="Výpočet pro bodové pole:" />
+  <Value Id="149" Header="[1] Polární metoda" Title="[1] Polární metoda" />
+  <!--Volne stanovkso-->/>
+  <Value Id="151" Header="[8] Volné stanovisko" Title="[8] Volné stanovisko" />
+  <Value Id="152" Header="PointOfView" />
+  <Value Id="153" Content="Předčíslí" />
+  <Value Id="154" Content="Číslo:" />
+  <Value Id="155" Content="X:" />
+  <Value Id="156" Content="Y:" />
+  <Value Id="157" Content="Z:" />
+  <Value Id="158" Content="Směr:" />
+  <Value Id="159" Content="Délka:" />
+  <Value Id="160" Content="Zen. úhel:" />
+  <Value Id="161" Content="dH:" />
+  <Value Id="162" Content="Výška:" />
+  <Value Id="163" Header="Body" />
+  <Value Id="164" Header="V Orientation" />
+  <Value Id="165" Header="V Délka" />
+  <Value Id="166" Header="V Převýšení" />
+  <Value Id="167" Content="Přidat" />
+  <Value Id="168" Content="Odebrat" />
+  <Value Id="169" Content="Protokol" />
+  <Value Id="170" Content="Nové stanovisko" />
+  <Value Id="171" Content="Výpočet" />
+  <Value Id="172" Header="Určovaný bod" />
+  <Value Id="173" Content="Předčíslí" />
+  <Value Id="174" Content="Číslo:" />
+  <Value Id="175" Content="Výška stroje" />
+  <Value Id="176" Content="Kód:" />
+  <Value Id="177" Content="X:" />
+  <Value Id="178" Content="Y:" />
+  <Value Id="179" Content="Z" />
+  <!--Protinani z delek-->/>
+  <Value Id="180" Header="[5] Protínaní z délek" Title="[5] Protínaní z délek" />
+  <Value Id="181" Header="Levé stanovisko" />
+  <Value Id="182" Content="Předčíslí:" />
+  <Value Id="183" Content="Číslo:" />
+  <Value Id="184" Content="Délka:" />
+  <Value Id="185" Content="X:" />
+  <Value Id="186" Content="Y:" />
+  <Value Id="187" Header="Pravé stanovisko" />
+  <Value Id="188" Header="Určovaný bod" />
+  <Value Id="189" Content="Předčíslí" />
+  <Value Id="190" Content="Číslo:" />
+  <Value Id="191" Content="Kód:" />
+  <Value Id="192" Content="X:" />
+  <Value Id="193" Content="Y:" />
+  <Value Id="194" Content="Protokol" />
+  <Value Id="195" Content="Nové výpočet" />
+  <Value Id="196" Content="Výpočet" />
+  <!--Protinani ze smeru-->
+  <Value Id="197" Header="[53] Protínaní ze směrů" Title="[53] Protínaní ze směrů" />
+  <Value Id="198" Header="PointOfView" />
+  <Value Id="199" Content="Předčíslí:" />
+  <Value Id="200" Content="Číslo:" />
+  <Value Id="201" Content="X:" />
+  <Value Id="202" Content="Y:" />
+  <Value Id="203" Header="Orientation" />
+  <Value Id="204" Header="Body" />
+  <Value Id="205" Header="V Orientation" />
+  <Value Id="206" Content="Předčíslí:" />
+  <Value Id="207" Content="Číslo:" />
+  <Value Id="208" Content="Výška stroje:" />
+  <Value Id="209" Content="X:" />
+  <Value Id="210" Content="Y:" />
+  <Value Id="211" Header="Určovaný bod" />
+  <Value Id="212" Content="Předčíslí" />
+  <Value Id="213" Content="Číslo:" />
+  <Value Id="214" Content="Kód:" />
+  <Value Id="215" Content="X:" />
+  <Value Id="216" Content="Y:" />
+  <Value Id="217" Content="Směr z A:" />
+  <Value Id="218" Content="Směr z B:" />
+  <Value Id="219" Content="Protokol" />
+  <Value Id="220" Content="Nový výpočet" />
+  <Value Id="221" Content="Výpočet" />
+  <!--Prusecik primek-->
+  <Value Id="222" Header="[3] Průsečík přímek" Title="[3] Průsečík přímek" />
+  <Value Id="223" Header="První přímka" />
+  <Value Id="224" Content="Předčíslí:" />
+  <Value Id="225" Content="Číslo:" />
+  <Value Id="226" Content="X:" />
+  <Value Id="227" Content="Y:" />
+  <Value Id="228" Header="Bod A" />
+  <Value Id="228" Header="Bod B" />
+  <Value Id="229" Content="Odsazeni přímky:" />
+  <Value Id="230" Header="Druhá přímka" />
+  <Value Id="231" Header="Průsečík" />
+  <Value Id="232" Content="Protokol" />
+  <Value Id="233" Content="Nový průsečík" />
+  <Value Id="234" Content="Výpočet" />
+  <Value Id="235" ErrorText="Nespravna hodnota." />
+  <!--Nezarazeny-->
+  <Value Id="236" Content="Zámek" />
+  <!--Vstup/Vystup nastaveni-->
+  <Value Id="237" Header="Vstup/Vystup" Content="Vstup/Vystup" />
+  <Value Id="238" Header="Počet desetiných míst:" />
+  <Value Id="239" Content="Souřadnice:" />
+  <Value Id="240" Content="Výšky:" />
+  <Value Id="241" Content="Délky:" />
+  <Value Id="242" Content="Úhly:" />
+  <Value Id="243" Content="Plochy:" />
+  <Value Id="244" Content="Souřadnice obrazu" />
+  <Value Id="245" Content="Souřadnice polohy" />
+  <!--Parse Exceptions-->
+  <Value Id="246" Message="Soubor má příliš moc položek na řádku." />
+  <Value Id="247" Message="Řádka nemohla být přečtena. Pravděpodobně špatní vstuní formát." />
+  <Value Id="248" Message="Patter pro parsovaní ma neočekávaný format." />
+  <Value Id="249" Message="Řádek neodpovídá nadefinovanému patternu." />
+
+  <Value Id="250" Header="Konec" />
+  <Value Id="251" Content="Pattern:" />
+  <Value Id="252" Text="Pattern nemůže být prazdný." />
+  <Value Id="253" Content="Uložit" />
+  <Value Id="254" Header="Smazat" />
+  <Value Id="255"
+         Text=" 
+     P - predcisli
+     N - cislo
+     Num - cele cislo
+     SpolX
+     SpolY
+     SpolPrec
+     Des - popis
+     SobrX
+     SobrY
+     SobrZ
+     SobrPrec
+     Ha - vodorovný úhel
+     Hl - vodorovná délka
+     Za - zenitový úhel
+     Su - převýšení
+     Hp - Výška hranolu stanoviska
+     W - váha
+
+    Priklad:
+    &lt;Num:12&gt; &lt;SobrX:6.2&gt; &lt;SobrY:7.2&gt;
+    " />
+  <Value Id="256"
+         Text="Nelze konvertovat hodnotu:'#value#' do patternu:'#pattern#'. Hodnota je prilis velka.(radek:#row#)" />
+  <Value Id="257" Text="Tabulka neobsahuje sloupec:#value#." />
+  <Value Id="258" Text="Tabulka #tableName# nebyla uložena. Chcete ho uložiz?" Caption="Geo helper" />
+  <Value Id="259" Text="Protokol nebyl uložen. Chcete ho uložiz?" Caption="Geo helper" />
+  <Value Id="260" Text="Souřadnice" />
+  <Value Id="261" Text="Souřadnice dvojí" />
+  <Value Id="262" Text="Měření" />
+  <Value Id="263" Header="Najdi položku" />
+  <Value Id="264" Title="Najdi bod" />
+  <Value Id="265" Header="Hromadná změna" />
+  <!--Hromadna zmena-->
+  <Value Id="266" Header="Souřadnice Y:" />
+  <Value Id="267" Content="Zmenit" />
+  <Value Id="268" Content="Nastavi" />
+  <Value Id="269" Content="Vynásobit" />
+  <Value Id="270" Content="Přičíst" />
+  <Value Id="271" Content="Zamknout" />
+  <Value Id="272" Content="Zámek:" />
+  <Value Id="273" Content="Všechny:" />
+  <Value Id="274" Content="Označené:" />
+  <Value Id="275" Header="Změnit:" />
+  <Value Id="276" Content="Změnit" />
+  <Value Id="277" Content="Zavrit" />
+  <Value Id="278" Content="Description" />
+  <Value Id="279" Header="Souřadnice Z:" />
+  <Value Id="280" Content="Neměnit" />
+  <Value Id="281" Content="Odemknout" />
+  <Value Id="282" Header="Souřadnice X:" />
+  <Value Id="283" Header="Soubror:" />
+  <Value Id="284" Title="Hromadná změna v seznamu souřadnic" />
+  <Value Id="285" Header="Přečíslí:" />
+  <Value Id="286" Header="Hz:" />
+  <Value Id="287" Header="Zenitový úhel:" />
+  <Value Id="288" Header="Description" />
+  <Value Id="289" Header="Vod. Délka" />
+  <Value Id="290" Header="dH" />
+  <Value Id="291" Header="Signal" />
+  <Value Id="292" Title="Hromadná změna v seznamu měření" />
+  <Value Id="293" Header="Dvojí souřadnice" />
+  <Value Id="294" Title="Parametry zobrazeni seznamu měření" />
+  <Value Id="295" Header="Zobrazit sloupce" />
+  <Value Id="296" Content="Předčíslí" />
+  <Value Id="297" Content="Číslo" />
+  <Value Id="298" Content="Hz" />
+  <Value Id="299" Content="Délka" />
+  <Value Id="300" Content="Zenitový úhel:" />
+  <Value Id="301" Content="dH:" />
+  <Value Id="302" Content="Signal:" />
+  <Value Id="303" Content="Description:" />
+  <Value Id="304" Header="Parametry zobrazení..." />
+  <Value Id="305" Content="Vodorovná délka" />
+  <Value Id="306" Title="Parametry zobrazeni seznamu souřadnic" />
+  <Value Id="307" Content="Souřadnice X" />
+  <Value Id="308" Content="Souradnice Y" />
+  <Value Id="309" Content="Souřadnice Z" />
+  <Value Id="310" Content="Kod kvality" />
+  <Value Id="311" Content="Description:" />
+  <Value Id="312" Content="SpolX" />
+  <Value Id="313" Content="SpolY" />
+  <Value Id="314" Content="Spol kvalita" />
+  <Value Id="315" Title="[3] PRŮSEČÍK PŘÍMEK" />
+  <Value Id="316" Header="Description" />
+  <Value Id="317" Content="Starý" />
+  <Value Id="318" Content="Nový" />
+  <Value Id="319" Content="Rozdíl" />
+  <Value Id="320" Header="Nové číslo" />
+  <Value Id="321" Content="Předčíslí" />
+  <Value Id="322" Content="Číslo" />
+  <Value Id="323" Header="Souřadnice" />
+  <Value Id="324" Content="Nové" />
+  <Value Id="325" Content="Staré" />
+  <Value Id="326" Header="Výška" />
+  <Value Id="327" Content="Nová" />
+  <Value Id="328" Content="Staré" />
+  <Value Id="329" Text="Bod číslo #bod# již existuje:" />
+  <Value Id="330" Title="[1] Polární metoda dávkou" Header="[1] Polární metoda dávkou" />
+  <Value Id="331" Header="Soubory" />
+  <Value Id="332" Content="Vstup:" />
+  <Value Id="332" Content="Výstup:" />
+  <Value Id="333" Header="Volby" />
+  <Value Id="334" Content="Používat pouze označené hodnoty" />
+  <Value Id="335" Content="Editovat orientace" />
+  <Value Id="336" Content="Počítat volná stanoviska v dávce" />
+  <Value Id="337" Header="Celkový stav výpočtů" />
+  <Value Id="338" Content="Vypočteno:" />
+  <Value Id="339" Content="Nepoužito:" />
+  <Value Id="340" Content="stanovisek" />
+  <Value Id="341" Content="podrobných bodů" />
+  <Value Id="342" Content="měření" />
+  <Value Id="343" Content="Nastavení" />
+  <Value Id="345" Content="Tisk" />
+  <Value Id="346" Content="Zrusit" />
+  <Value Id="347" Header="Okraje" />
+  <Value Id="348" Content="Levý:" />
+  <Value Id="349" Content="Pravý:" />
+  <Value Id="350" Content="Horní:" />
+  <Value Id="351" Content="Dolní:" />
+  <Value Id="352" Content="Vytisknou" />
+  <Value Id="353" Content="Informace o souboru" />
+  <Value Id="354" Header="Vytisknou" />
+  <Value Id="355" Content="Všechny položky" />
+  <Value Id="356" Content="Označené položky" />
+  <Value Id="357" Title="Tisk" />
+  <Value Id="358" Content="Měřič" />
+  <Value Id="359" Content="Stroj" />
+  <Value Id="360" Content="Datum" />
+  <Value Id="361" Header="Editace" />
+  <Value Id="362" Header="Přenes" />
+  <Value Id="363" Header="Kopíru" />
+  <Value Id="364" Header="Vlož" />
+  <Value Id="365" Header="Vymaž" />
+  <Value Id="366" Text="Bude vymazany #pocet# položky ze seznamu." />
+  <Value Id="367" Header="Zpět" />
+  <Value Id="368" Header="Dopředu" />
+  <Value Id="369" Header="Poslat souřadnice do Microstation" />
+  <Value Id="370" Content="Zrušit" />
+  <Value Id="371" Text="Nahrávám..." />
+  <Value Id="372" Text="Nepodařilo se navázat spojeni s Microstation." />
+  <Value Id="373" Text="Chyba při přenosu bodu:#bod#. Přenos ukončen." />
+  <Value Id="374" Text="Nebyl zadán vstupní, nebo výstupni soubor." Caption="Chyba" />
+  <Value Id="375" Content="Ok" />
+  <Value Id="376" Content="Zrusit" />
+  <Value Id="377" Content="Načtení dat" />
+  <Value Id="378" Content="Nahrání dat" />
+  <Value Id="379" Content="Uložit jako měření" />
+  <Value Id="380" Content="Nastavení přenosu" Title="Nastavení přenosu" />
+  <Value Id="381" Content="Přenos souborů" Header="Přenos souborů..." />
+  <Value Id="382" Header="Nástroje" />
+  <Value Id="383" Title="Nový soubor" />
+  <Value Id="384" Header="Port:" />
+  <Value Id="385" Header="Data bitů:" />
+  <Value Id="386" Header="Bitu/s:" />
+  <Value Id="387" Header="Parita:" />
+  <Value Id="388" Header="Stop bitů:" />
+  <Value Id="389" Header="Řízení komunikace:" />
+  <Value Id="390" Text="Ukončovací řetězec při čtení ze stroje:" />
+  <Value Id="391" Text="Ukončovací řetězec při zapisu do stroje:" />
+  <Value Id="392" Content="Vymazat" />
+  <Value Id="393" Text="Nelze importovat. Nesprávný řádek #radek#." Caption="Chyba při nahrávání" />
+  <Value Id="394" Text="Neřešitelna konfigurace." Caption="Chyba při výpočtu" />
+  <Value Id="395" Header="PointOfView" />
+  <Value Id="396" Title="Přenos souboru" Content="Pošlete soubor z totální stanice." Button="Zrušit" />
+  <Value Id="397" Title="Přenos souboru" Content="Kopíruji soubory z totální stanice..." Button="Ukončit" />
+  <Value Id="398" Content="Vytvořit seznam měření" />
+  <Value Id="399" Content="Vytvořit seznam souřadnic" />
+  <Value Id="400" Title="Chyba" Content="Řteězec:#value# nelze převest na číslo." />
+  <Value Id="401" Title="Polygonový pořad" Header="Polygonový pořad" />
+  <Value Id="402" Header="Počáteční bod" />
+  <Value Id="403" GroupBoxHeader="Počáteční bod" />
+  <Value Id="404" Content="Předčíslí:" />
+  <Value Id="405" Content="Číslo:" />
+  <Value Id="406" Content="Y:" />
+  <Value Id="407" Content="X:" />
+  <Value Id="408" Content="Z:" />
+  <Value Id="409" Header="Orientation:" />
+  <Value Id="410" Content="Nový pořad" />
+  <Value Id="411" Header="Koncový bod" />
+  <Value Id="412" GroupBoxHeader="Koncový bod" />
+  <Value Id="413" Header="Měřená data" />
+  <Value Id="415" Header="PointOfView" />
+  <Value Id="416" Header="Měření zpět" />
+  <Value Id="417" Content="Směr:" />
+  <Value Id="418" Content="Délka:" />
+  <Value Id="419" Content="Z:" />
+  <Value Id="420" Content="dH:" />
+  <Value Id="421" Content="Výška stroje:" />
+  <Value Id="422" Header="Měření vpřed" />
+  <Value Id="423" Content="Výška stroje" />
+  <Value Id="424" Header="Body" />
+  <Value Id="425" Header="Výsledky" />
+  <Value Id="426" Title="[4] Konstrukční odměrné" Header="[4] Konstrukční odměrné" />
+  <Value Id="427" Header="Identické body:" />
+  <Value Id="428" Header="Vypočtené body:" />
+  <Value Id="429" Content="Nový objekt" />
+  <Value Id="430" Content="Délka:" />
+  <Value Id="431" Header="Y:" />
+  <Value Id="432" Header="X:" />
+  <Value Id="433" Title="[9] Kontrolní odměrné" Header="[9] Kontrolní odměrné" />
+  <Value Id="434" Header="Vzdálenost" />
+  <Value Id="435" Header="Rozdíl" />
+  <Value Id="436" Content="Nový výpočet" />
+  <Value Id="437" Header="Kód kvality:" />
+  <Value Id="438" Title="[5] Směrník a délka" Header="[5] Směrník a délka" />
+  <Value Id="439" Header="Orientation" />
+  <Value Id="440" Header="Směrník a délka" />
+  <Value Id="441" Content="Směrník:" />
+  <Value Id="442" Content="Převýšení:" />
+  <Value Id="443" Content="Sklon(úhel):" />
+  <Value Id="444" Content="Vodorovná déka:" />
+  <Value Id="445" Content="Šikmá délka:" />
+  <Value Id="446" Content="Spád" />
+  <Value Id="447" Content="Nová přímka" />
+  <Value Id="448" Content="Úhlový uzávěr:" />
+  <Value Id="449" Content="Odchylka X/Y:" />
+  <Value Id="450" Content="Polohová odchylka:" />
+  <Value Id="451" Content="Vyskový uzávěr:" />
+  <Value Id="452" Content="Typ pořadu:" Zadny="Nelze určit" VolnyPolygonovyPorad="Volný polygonový pořad"
+         VetknutyPolygonovyPorad="Vetknutý polygonový pořad"
+         OboustranePripojenyAJednostraneVetknuty="Oboustraně připojený a jednostraně vetknutý"
+         OboustranePripojenyAOboustraneVetknuty="Oboustraně připojený a oboustraně vetknutý" />
+  <Value Id="453" Header="Vsup/Výstup" />
+  <Value Id="454" Content="Načíst pořad ze souboru..." />
+  <Value Id="455" Content="Uložit pořad do souboru..." />
+  <Value Id="456" Text="Nepodařilo se naimportovat souboru." Caption="Pozor" />
+  <Value Id="457" Text="Při exportu nastala chyba." Caption="Pozor" />
+  <Value Id="458" Content="Výškový výpočet." />
+  <Value Id="459" Content="Nalezené chyby:" />
+  <Value Id="460" Text="Nepodařilo se spočitat orientační posun." Caption="Pozor" />
+  <Value Id="461" Title="Transformace souřadnic" Header="Transformace souřadnic" />
+  <Value Id="462" Header="Identické body" />
+  <Value Id="463" Header="dY" />
+  <Value Id="464" Header="dX" />
+  <Value Id="465" Content="Nová Transformace" />
+  <Value Id="466" Header="Typ Transformace" />
+  <Value Id="467" Content="Podobnostní(4)" />
+  <Value Id="468" Header="Seznam souřadnic:" />
+  <Value Id="469" Text="Nebyly zadány všechny potřebné hodnoty." Caption="Pozor" />
+  <Value Id="470" Title="Nastavení aktivního seznamu souřdnic" />
+  <Value Id="471" Header="Aktivní seznam souřadnic" />
+  <Value Id="472" Text="[Žadný]" />
+  <Value Id="473" Text="[Neuložený soubor]" />
+  <Value Id="474" Header="Aktuální seznam souřadnic..." />
+
+  <Value Id="E1" ExceptionText="Počáteční bod musi být vyplněn." />
+  <Value Id="E2" ExceptionText="U počátečního budu neni zadaná žádná orientace pro volný polygonvoý pořad." />
+  <Value Id="E3" ExceptionText="Některý z bodu orientace u počátečního bodu má špatně nastavený hodnoty." />
+  <Value Id="E4" ExceptionText="Některá hodnotu u měřených dat není správná." />
+  <Value Id="E5" ExceptionText="Volný polygonový pořad může mít maximalně tři body." />
+  <Value Id="E6" ExceptionText="Nejsou nastavené žadné orientace." />
+  <Value Id="E7" ExceptionText="U koncového budu neni zadaná žádná orientace pro volný polygonvoý pořad." />
+  <Value Id="E8" ExceptionText="Některý z bodu orientace u koncového bodu má špatně nastavený hodnoty." />
+  <Value Id="E9" ExceptionText="Není dostatek měřených bodu." />
+  <Value Id="E10" ExceptionText="Nebyla zadána počáteční souřadnice Z." />
+  <Value Id="E11" ExceptionText="Uzavřený polygonový přad má odlišnou souřadnici Z." />
+  <Value Id="E12" ExceptionText="Nebyla zadána koncová souřadnice Z." />
+  <Value Id="E13" ExceptionText="Není nastaven úhel Z u měřených dat." />
+  <Value Id="E14" ExceptionText="Délka, nebo souřadnice Z u měření není zadána." />
+  <Value Id="E15" ExceptionText="Nemůže být zadán úhel 0, nebo 200g." />
+  <Value Id="E16" ExceptionText="Nebyla zadána výška stroje, nebo signálu." />
+  <Value Id="E17" ExceptionText="Pro výpočet volného stanovisko musí být zadány alespoň dvě hodnoty." />
+  <Value Id="E18" ExceptionText="Nepodařilo se vypočítat transformační matici." />
+  <Value Id="E19" ExceptionText="Některý z bodů nemá zadaný zenitový úhel, nebo délku." />
+  <Value Id="E20" ExceptionText="U stanoviska nebyla zadána správná délka." />
+  <Value Id="E21" ExceptionText="Určovaný bod nelze spočitat. Byly zadány nesprávné hodnoty." />
+  <Value Id="E22" ExceptionText="Určovaný bod nelze spočitat. Byly zadány nesprávné hodnoty." />
+  <Value Id="E23" ExceptionText="Určovaný bod nelze spočitat. Musí být zadány alespoň dvě hodnoty." />
+  <Value Id="E24" ExceptionText="Určovaný bod nelze spočitat. Nepodařilo se vypočítat transformační matici." />
+  <Value Id="E25" ExceptionText="Určovaný bod nelze spočitat. Nemá zadané staničení, nebo kolmici." />
+  <Value Id="E26" ExceptionText="Určovaný bod nelze spočitat. Nemá zadané počateční a koncové souřadnice." />
+  <Value Id="E27" ExceptionText="Určované body nelze spočitat. Nemá zadané počateční a koncové souřadnice." />
+  <Value Id="E28" ExceptionText="Určované body nelze spočitat. Bod #point# nemá zadanou jednu ze souřadnice." />
+  <Value Id="E29" ExceptionText="Určované body nelze spočitat. První bodu musí mít kladnou hodnotu." />
+  <Value Id="E30" ExceptionText="Určované body nelze spočitat. Bod #point# nemá zadanou délku." />
+  <Value Id="E31" ExceptionText="Transformci nelze spočitat. Bod '#number#' nemá zadané všechny položky." />
+  <Value Id="E32" ExceptionText="Transformci nelze spočitat. Nepodařilo se vypočítat matici. Nemá řešení." />
+  <Value Id="E33" ExceptionText="Nepodařilo se vypočitat některý z určovaných bodu." />
+  <Value Id="E34" ExceptionText="Distance vypočtená, nebo změřená není validni u bodu '#number#'." />
+</Dictionary>

@@ -1,0 +1,54 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.UITools.DocumentToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" mc:Ignorable="d"
+                       d:DesignHeight="300"
+                       d:DesignWidth="300">
+   <UITools:GeoCadToolBar.CommandBindings>
+      <CommandBinding Command="UITools:DocumentToolBar.NewDocumnet"
+                      Executed="OnNewDocument" />
+      <CommandBinding Command="UITools:DocumentToolBar.OpenDocument"
+                      Executed="OnOpenDocument" />
+      <CommandBinding Command="UITools:DocumentToolBar.SaveDocument"
+                      CanExecute="OnCanSaveDocument"
+                      Executed="onSaveDocument" />
+      <CommandBinding Command="UITools:DocumentToolBar.SaveDocumentAs"
+                      CanExecute="OnCanSaveDocumentAs"
+                      Executed="OnSaveDocumentAs" />
+      <CommandBinding Command="UITools:DocumentToolBar.CloseDocument"
+                      CanExecute="OnCanCloseDocument"
+                      Executed="OnCloseDocument" />
+      <CommandBinding Command="UITools:DocumentToolBar.ExportDocumnet"
+                      CanExecute="OnCanExportDocumnet"
+                      Executed="OnExportDocumnet" />
+   </UITools:GeoCadToolBar.CommandBindings>
+   <UITools:GeoCadToolBar.InputBindings>
+      <KeyBinding Command="UITools:DocumentToolBar.NewDocumnet"
+                  Key="N"
+                  Modifiers="Ctrl" />
+      <KeyBinding Command="UITools:DocumentToolBar.OpenDocument"
+                  Key="O"
+                  Modifiers="Ctrl" />
+      <KeyBinding Command="UITools:DocumentToolBar.SaveDocument"
+                  Key="S"
+                  Modifiers="Ctrl" />
+   </UITools:GeoCadToolBar.InputBindings>
+   <Button Command="UITools:DocumentToolBar.NewDocumnet"
+           loc:Translate.Uid="2"
+           ToolTip="{loc:Translate New}">
+      <Image Source="/CAD;component/Icons/New.png" />
+   </Button>
+   <Button  Command="UITools:DocumentToolBar.OpenDocument"
+            loc:Translate.Uid="3"
+            ToolTip="{loc:Translate Open document}">
+      <Image Source="/CAD;component/Icons/Open.png" />
+   </Button>
+   <Button Command="UITools:DocumentToolBar.SaveDocument"
+           loc:Translate.Uid="4"
+           ToolTip="{loc:Translate Save document}">
+      <Image Source="/CAD;component/Icons/Save.png" />
+   </Button>
+</UITools:GeoCadToolBar>

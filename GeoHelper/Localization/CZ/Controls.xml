@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Nampespace Value="Buttons">
+      <Value Id="0" Content="Ok" />
+      <Value Id="1" Content="Zavřít" />
+      <Value Id="2" Content="Změnit" />
+      <Value Id="3" Content="Protocol" />
+      <Value Id="4" Content="Výpočet" />
+      <Value Id="Save" Content="Uložit"/>
+      <Value Id="Erease" Content="Vyprazdnit"/>
+      <Value Id="Cancel" Content="Zrusit"/>
+    </Nampespace>
+    <Namespace Value="MassChangeGroupBox">
+      <Value Id="0" Content="Zmenit" />
+      <Value Id="1" Content="Nastavit" />
+      <Value Id="2" Content="Vynásobit" />
+      <Value Id="3" Content="Přičíst" />
+    </Namespace>
+    <Namespace Value="MassChangeLockGroupBox">
+      <Value Id="0" Content="Neměnit" />
+      <Value Id="1" Content="Unlock" />
+      <Value Id="2" Content="Zamknout" />
+    </Namespace>
+    <Namespace Value="MassChangeChangeGroupBox">
+      <Value Id="0" Header="Změnit:" />
+      <Value Id="1" Content="Všechny:" />
+      <Value Id="2" Content="Označené:" />
+    </Namespace>
+  </Gui>
+</Localization>

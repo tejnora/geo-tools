@@ -1,0 +1,45 @@
+﻿<InfoTools:InfoPropPage x:Class="CAD.InfoTools.VfkMeasureArea"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:InfoTools="clr-namespace:CAD.InfoTools"
+                        xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
+                        xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" Title="VfkMeasureArea"
+                        ResizeMode="NoResize"
+                        SizeToContent="WidthAndHeight">
+    <InfoTools:InfoPropPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Converters/Converters.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </InfoTools:InfoPropPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0"
+               Grid.Row="0"
+               loc:Translate.Uid="140"
+               Content="{loc:Translate LasteMeasureArea:}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 IsEnabled="False"
+                 Utils:TextBoxMaskBehavior.Mask="Decimal"
+                 Text="{Binding Path=MeasureArea, Converter={StaticResource PlochaConverter}}" />
+        <Label Grid.Column="0"
+               Grid.Row="1"
+               loc:Translate.Uid="141"
+               Content="{loc:Translate CurcuitOfArea:}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="1"
+                 IsEnabled="False"
+                 Utils:TextBoxMaskBehavior.Mask="Decimal"
+                 Text="{Binding Path=CurcuitOfArea, Converter={StaticResource PlochaConverter}}" />
+
+    </Grid>
+</InfoTools:InfoPropPage>

@@ -1,0 +1,102 @@
+﻿<Tables:TableBase x:Class="GeoHelper.Tables.CoordinateListTable"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:Tables="clr-namespace:GeoHelper.Tables"
+                   xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                  xmlns:controls="clr-namespace:GeoHelper.Controls">
+    <Tables:TableBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TableStyles.xaml" />
+                <ResourceDictionary Source="../Converters/ConvertersStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Tables:TableBase.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding Path=ViewNodes.View}"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  AutoGenerateColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserSortColumns="False"
+                  GridLinesVisibility="Vertical"
+                  x:Name="_dataGrid"
+                  Background="White"
+                  RowHeaderWidth="0"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Width="16"
+                                   Height="16"
+                                   Source="{Binding Path=LockImage}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <controls:LabelTextBoxColumn Width="100"
+                                            x:Name="_tableRowCislo"
+                                            loc:Translate.Uid="CoordinateListTable.0"
+                                            Header="{loc:Translate Number}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=NumberWithPrefix}" />
+                <controls:LabelTextBoxColumn Width="100"
+                                            x:Name="_tableRowSouradniceY"
+                                            loc:Translate.Uid="CoordinateListTable.1"
+                                            Header="{loc:Translate Y}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=Y, Converter={StaticResource CoordinateConverter}}" />
+                <controls:LabelTextBoxColumn Width="100"
+                                            x:Name="_tableRowSouradniceX"
+                                            loc:Translate.Uid="CoordinateListTable.2"
+                                            Header="{loc:Translate X}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=X,Converter={StaticResource CoordinateConverter}}" />
+                <controls:LabelTextBoxColumn Width="100"
+                                            x:Name="_tableRowSouradniceZ"
+                                            loc:Translate.Uid="CoordinateListTable.3"
+                                            Header="{loc:Translate Z}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=Z,Converter={StaticResource CoordinateConverter}}" />
+                <controls:LabelTextBoxColumn Width="70"
+                                            x:Name="_tableRowKodKvalita"
+                                            loc:Translate.Uid="CoordinateListTable.4"
+                                            Header="{loc:Translate Kod kvalita}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=Quality}" />
+                <controls:LabelTextBoxColumn Width="1*"
+                                            x:Name="_tableRowPopis"
+                                            loc:Translate.Uid="CoordinateListTable.5"
+                                            Header="{loc:Translate Popis}"
+                                            IsReadOnly="True"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            ElementStyle="{StaticResource BaseLabelCellStyle}"
+                                            EditingElementStyle="{StaticResource BaseTextBoxCellStyle}"
+                                            Binding="{Binding Path=Description}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Tables:TableBase>

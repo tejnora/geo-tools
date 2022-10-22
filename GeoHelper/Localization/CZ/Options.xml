@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Nampespace Value="InputOutputSettingsOption">
+      <Value Id="0" Header="Vstup/Vystup" Content="Vstup/Vystup" />
+      <Value Id="1" Header="Počet desetiných míst:" />
+      <Value Id="2" Content="Souřadnice:" />
+      <Value Id="3" Content="Výšky:" />
+      <Value Id="4" Content="Délky:" />
+      <Value Id="5" Content="Úhly:" />
+      <Value Id="6" Content="Plochy:" />
+    </Nampespace>
+    <Namespace Value="FileInputOutputOptions">
+      <Value Id="0" Header="Výstupní/Vstupní souřadnice" Content="Výstupní/vstupní formát souřadnic" />
+      <Value Id="1" Header="Format" />
+      <Value Id="2" Content="Předpis formatu" />
+      <Value Id="3"
+         Text=" 
+     P - predcisli
+     N - cislo
+     Num - cele cislo
+     SpolX
+     SpolY
+     SpolPrec
+     Des - popis
+     SobrX
+     SobrY
+     SobrZ
+     SobrPrec
+     Ha - vodorovný úhel
+     Hl - vodorovná délka
+     Za - zenitový úhel
+     Su - převýšení
+     Hp - Výška hranolu stanoviska
+     W - váha
+
+    Priklad:
+    &lt;Num:12&gt; &lt;SobrX:6.2&gt; &lt;SobrY:7.2&gt;
+    " />
+      <Value Id="4" Content="Volby" />
+      <Value Id="5" Content="Nedefinované nahradit nulami" />
+      <Value Id="6" Content="Uložit" />
+      <Value Id="7" Header="Smazat" />
+    </Namespace>
+  </Gui>
+</Localization>

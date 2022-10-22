@@ -1,0 +1,99 @@
+﻿<Gui:DialogBase x:Class="CAD.VFK.GUI.VfkLayerManager"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:GUI="clr-namespace:CAD.VFK.GUI"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                loc:Translate.Uid="119"
+                Title="{loc:Translate Default=LevelManager}"
+                Height="300"
+                Width="300">
+    <Gui:DialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:DialogBase.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Grid.Row="0"
+               loc:Translate.Uid="117"
+               Content="{loc:Translate Default=DesigneLevels}" />
+        <TreeView Grid.Column="0"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Nodes}">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded"
+                            Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="FontWeight"
+                            Value="Normal" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type GUI:VfkLayerGroupNode}"
+                                          ItemsSource="{Binding Nodes}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16"
+                               Height="16"
+                               Margin="3,0"
+                               Source="{Binding Path=Image}" />
+                        <TextBlock Text="{Binding Name}"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="12" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type GUI:VfkLayerSubGroupNode}"
+                                          ItemsSource="{Binding Nodes}">
+                    <CheckBox IsChecked="{Binding Path=IsVisible}"
+                              Content="{Binding Path=Name}" />
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type GUI:VfkLayerItemNode}">
+                    <CheckBox IsChecked="{Binding Path=IsVisible}"
+                              Content="{Binding Path=Name}" />
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1"
+                    VerticalAlignment="Top">
+            <Button loc:Translate.Uid="113"
+                    Content="{loc:Translate Default=ExpandAll}"
+                    Click="OnExpandAll" />
+            <Button loc:Translate.Uid="114"
+                    Content="{loc:Translate Default=UnExpandAll}"
+                    Click="OnUnexpandAll" />
+            <Button loc:Translate.Uid="115"
+                    Content="{loc:Translate Default=SelectAll}"
+                    Click="OnSelectAll" />
+            <Button loc:Translate.Uid="116"
+                    Content="{loc:Translate Default=UnelectAll}"
+                    Click="OnUnselectAll" />
+        </StackPanel>
+        <StackPanel Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button loc:Translate.Uid="43"
+                    Content="{loc:Translate Default=Ok}"
+                    IsCancel="True"
+                    Click="OnOkButtonClick" />
+            <Button loc:Translate.Uid="44"
+                    Content="{loc:Translate Default=Cancel}"
+                    IsDefault="True"
+                    Click="OnCancelButtonClick" />
+        </StackPanel>
+    </Grid>
+</Gui:DialogBase>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+  <Gui>
+    <Nampespace Value="ProtocolDialog">
+      <Value Id="0" Title="Protokol" />
+      <Value Id="1" Text="Nepodařila se vygenerovat data pro protokol.(#error#)" Caption="Chyba" />
+    </Nampespace>
+      <Nampespace Value="NewFileDialog">
+      <Value Id="0" Title="Nový soubor" />
+      <Value Id="1" Header="Typ" />
+      <Value Id="2" Content="Seznam souřadnic" />
+      <Value Id="3" Content="Seznam souřadnic - dvojí" />
+      <Value Id="4" Content="Seznam měření" />
+      <Value Id="5" Content="ProtocolDialog" Text="ProtocolDialog" />
+    </Nampespace>
+    <Namespace Value="ActiveListOfCoordinates">
+      <Value Id="0" Title="Nastavení aktivního seznamu souřdnic" Height="300" Width="300"/>
+    </Namespace>
+    <Namespace Value="OptionsDialog">
+      <Value Id="0" Title="Nastavení" Height="400" Width="500"/>
+      <Value Id="1" Title="Nastavení" />
+      <Value Id="2" Header="Vstup/Vystup" Content="Vstup/Vystup"  />
+      <Value Id="3" Header="Jednotky"/>
+    </Namespace>
+    <Namespace Value="PrintDialog">
+      <Value Id="0" Title="Tisk" />
+      <Value Id="1" Content="Nastavení" />
+      <Value Id="2" Header="Okraje" />
+      <Value Id="3" Content="Levý:" />
+      <Value Id="4" Content="Pravý:" />
+      <Value Id="5" Content="Horní:" />
+      <Value Id="6" Content="Dolní:" />
+      <Value Id="7" Content="Vytisknou" />
+      <Value Id="8" Content="Informace o souboru" />
+      <Value Id="9" Content="Všechny položky" />
+      <Value Id="10" Content="Označené položky" />
+    </Namespace>
+    <Namespace Value="FileTransferSttingsDialog">
+      <Value Id="0" Content="Nastavení přenosu" Title="Nastavení přenosu" />
+      <Value Id="1" Header="Port:" />
+      <Value Id="2" Header="Data bitů:" />
+      <Value Id="3" Header="Bitu/s:" />
+      <Value Id="4" Header="Parita:" />
+      <Value Id="5" Header="Stop bitů:" />
+      <Value Id="6" Header="Řízení komunikace:" />
+      <Value Id="7" Text="Ukončovací řetězec při čtení ze stroje:" />
+      <Value Id="8" Text="Ukončovací řetězec při zapisu do stroje:" />
+    </Namespace>
+    <Namespace Value="FileTransferDownloadDialog">
+      <Value Id="0" Title="Přenos souboru"/>
+      <Value Id="1" Content="Pošlete soubor z totální stanice." Button="Zrušit" />
+      <Value Id="2" Content="Kopíruji soubory z totální stanice..." Button="Ukončit" />
+    </Namespace>
+    <Namespace Value="FileTransferDialog">
+      <Value Id="0" Content="Přenos souborů" Header="Přenos souborů..." />
+      <Value Id="1" Content="Načtení dat" />
+      <Value Id="2" Content="Nahrání dat" />
+      <Value Id="3" Content="Nastavení přenosu" Title="Nastavení přenosu" />
+      <Value Id="4" Content="Vytvořit seznam měření" />
+      <Value Id="5" Content="Vytvořit seznam souřadnic" />
+      <Value Id="6" Content="Vymazat" />
+    </Namespace>
+    <Namespace Value="ExistingPointInCoordinatesDialog">
+      <Value Id="0" Title="Existující bod"/>
+      <Value Id="1" Content="Starý" />
+      <Value Id="2" Content="Nový" />
+      <Value Id="3" Content="Rozdíl" />
+      <Value Id="4" Header="Nové číslo" />
+      <Value Id="5" Content="Předčíslí" />
+      <Value Id="6" Content="Číslo" />
+      <Value Id="7" Header="Souřadnice" />
+      <Value Id="8" Content="Nové" />
+      <Value Id="9" Content="Staré" />
+      <Value Id="10" Header="Výška" />
+      <Value Id="11" Content="Nová" />
+      <Value Id="12" Content="Staré" />
+      <Value Id="13" Text="Bod číslo #point# již existuje:" />
+    </Namespace>
+    <Namespace Value="FindPointDialog">
+      <Value Id="0" Title="Najdi bod" />
+    </Namespace>
+    <Namespace Value="MassChangeMeasureDialog">
+      <Value Id="0" Title="Hromadná změna v seznamu měření" />
+      <Value Id="1" Header="Soubror:" />
+      <Value Id="2" Header="Přečíslí:" />
+      <Value Id="3" Header="Hz:" />
+      <Value Id="4" Header="Zenitový úhel:" />
+      <Value Id="5" Header="Description" />
+      <Value Id="6" Header="Vod. Délka" />
+      <Value Id="7" Header="dH" />
+      <Value Id="8" Header="Signal" />
+    </Namespace>
+    <Namespace Value="MassChangeCoordinateDialog">
+      <Value Id="0" Title="Hromadná změna v seznamu souřadnic" />
+      <Value Id="1" GroupBoxHeader="Soubror:" />
+      <Value Id="2" GroupBoxHeader="Souřadnice Y:" />
+      <Value Id="3" GroupBoxHeader="Souřadnice X:" />
+      <Value Id="4" GroupBoxHeader="Souřadnice Z:" />
+      <Value Id="5" GroupBoxHeader="Zámek:" />
+      <Value Id="6" GroupBoxHeader="Kvalita" />
+      <Value Id="7" GroupBoxHeader="Popis" />
+    </Namespace>
+    <Namespace Value="MeasureTableSettingsDialog">
+      <Value Id="0" Title="Parametry zobrazeni seznamu měření" />
+      <Value Id="1" Header="Zobrazit sloupce" />
+      <Value Id="2" Content="Předčíslí" />
+      <Value Id="3" Content="Číslo" />
+      <Value Id="4" Content="Hz" />
+      <Value Id="5" Content="Zenitový úhel:" />
+      <Value Id="6" Content="Vodorovná délka" />
+      <Value Id="7" Content="dH:" />
+      <Value Id="8" Content="Signal:" />
+      <Value Id="9" Content="Description:" />
+    </Namespace>
+    <Namespace Value="CoordinateTableSttingsDialog">
+      <Value Id="0" Title="Parametry zobrazeni seznamu souřadnic" />
+      <Value Id="1" Header="Zobrazit sloupce" />
+      <Value Id="2" Content="Předčíslí" />
+      <Value Id="3" Content="Číslo" />
+      <Value Id="4" Content="Souřadnice X" />
+      <Value Id="5" Content="Souradnice Y" />
+      <Value Id="6" Content="Souřadnice Z" />
+      <Value Id="7" Content="Code kvality" />
+      <Value Id="8" Content="Description:" />
+      <Value Id="9" Content="SpolX" />
+      <Value Id="10" Content="SpolY" />
+      <Value Id="11" Content="Spol kvalita" />
+    </Namespace>
+    <Namespace Value="MeasureListInfoDialog">
+      <Value Id="0" Title="Nastaveni vlastností tabulky měření" />
+      <Value Id="1" Content="Název souboru:" />
+      <Value Id="2" Content="Popis souboru:" />
+      <Value Id="3" Content="Zakázka:" />
+      <Value Id="4" Content="Lokalita:" />
+      <Value Id="5" Content="Stroj:" />
+      <Value Id="6" Content="Datum:" />
+      <Value Id="7" Content="Poznámky:" />
+      <Value Id="8" Content="Měřič:" />
+    </Namespace>
+    <Namespace Value="MeasureListDialog">
+      <Value id="0" Title="Vlastnosti bodu měřeni"/>
+      <Value Id="1" Header="Naměřené údaje" />
+      <Value Id="2" Content="Předčíslí:" />
+      <Value Id="3" Content="Číslo:" />
+      <Value Id="4" Content="Hz:" />
+      <Value Id="5" Content="Délka:" />
+      <Value Id="6" Content="Zenitový úhel:" />
+      <Value Id="7" Content="dH:" />
+      <Value Id="8" Content="Signal:" />
+      <Value Id="9" Content="Code:" />
+      <Value Id="10" Content="Zámek" />
+      <Value Id="11" Header="Typ bodu" />
+      <Value Id="12" Content="Staniceni" />
+      <Value Id="13" Content="Orientation" />
+      <Value Id="14" Content="Měřený bod" />
+    </Namespace>
+    <Namespace Value="CoordinateListInfoDialog">
+      <Value Id="0" Title="Seznam souřadnic:" />
+      <Value Id="1" Content="Název souboru:" />
+      <Value Id="2" Content="Popis souboru:" />
+      <Value Id="3" Content="Zakázka:" />
+      <Value Id="4" Content="Locality:" />
+      <Value Id="5" Content="Souřadnicový system:" />
+      <Value Id="6" Content="Výškový system:" />
+      <Value Id="7" Content="Poznámky:" />
+    </Namespace>
+    <Namespace Value="CoordinateListEditDialog">
+      <Value Id="0" Title="Editor souřadnice" />
+      <Value Id="1" Header="Souřadnice" />
+      <Value Id="2" Content="Předčíslí:" />
+      <Value Id="3" Content="Číslo:" />
+      <Value Id="4" Header="Description" />
+      <Value Id="5" Header="Typ" />
+      <Value Id="6" Content="Zamčený" />
+      <Value Id="7" Header="Y" />
+      <Value Id="8" Header="X" />
+      <Value Id="9" Header="Z" />
+      <Value Id="10" Content="Kvalita" />
+    </Namespace>
+    <Namespace Value="DoubleCoordinateEditDialog">
+      <Value Id="0" Title="Editor dvojích souřadnice" />
+      <Value Id="1" Header="Souřadnice" />
+      <Value Id="2" Content="Předčíslí:" />
+      <Value Id="3" Content="Číslo:" />
+      <Value Id="4" Header="Description" />
+      <Value Id="5" Header="Typ" />
+      <Value Id="6" Content="Kvalita" />
+      <Value Id="7" Content="Zamčený" />
+      <Value Id="8" Header="Y" />
+      <Value Id="9" Header="X" />
+      <Value Id="10" Header="Spol Y:" />
+      <Value Id="11" Header="Spol X:" />
+    </Namespace>
+  </Gui>
+</Localization>

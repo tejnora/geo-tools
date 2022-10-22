@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AllTrans">
+      <UniqueIdentifier>{18c1b5f0-6b66-432a-a0d6-de5ffd73cf9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gama">
+      <UniqueIdentifier>{835023e9-2e6a-4a0c-8888-f8bfba3f3216}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gmatvec\vecbase.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\added_by_koska.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\array.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\bandmat.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\covmat.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\gso.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\hilbert.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\choldec.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\inderr.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\jacobian.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\mat.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\matbase.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\matvec.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\matvecbase.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\memrep.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\pinv.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\pinv_old.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\sortvec.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\svd.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\symmat.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\transmat.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\transvec.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="gmatvec\vec.h">
+      <Filter>Gama</Filter>
+    </ClInclude>
+    <ClInclude Include="AllTrans\general_affine_multi.h">
+      <Filter>AllTrans</Filter>
+    </ClInclude>
+    <ClInclude Include="AllTrans\affine_etc_2d.h">
+      <Filter>AllTrans</Filter>
+    </ClInclude>
+    <ClInclude Include="AllTrans\all_tran_base.h">
+      <Filter>AllTrans</Filter>
+    </ClInclude>
+    <ClInclude Include="AllTrans\at_exception.h">
+      <Filter>AllTrans</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportExport.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="TransformationExport.cpp" />
+    <ClCompile Include="MatrixExport.cpp" />
+  </ItemGroup>
+</Project>

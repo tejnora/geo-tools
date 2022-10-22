@@ -1,0 +1,58 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.UITools.DrawToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       mc:Ignorable="d"
+                       d:DesignHeight="300"
+                       d:DesignWidth="300">
+   
+   <UITools:GeoCadToolBar.CommandBindings>
+      <CommandBinding Command="UITools:DrawToolBar.MultiLine"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:DrawToolBar.Line"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:DrawToolBar.Circle2Point"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:DrawToolBar.CircleCentrePoint"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:DrawToolBar.TextBox"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+      <CommandBinding Command="UITools:DrawToolBar.ActivePoint"
+                      CanExecute="OnCanExecute"
+                      Executed="OnExecute" />
+   </UITools:GeoCadToolBar.CommandBindings>
+   
+   <ToggleButton ToolTip="MultiLine"
+                 Command="UITools:DrawToolBar.MultiLine">
+      <Image Source="/CAD;component/Icons/Lines.png"/>
+   </ToggleButton>
+   <ToggleButton ToolTip="Line"
+                 Command="UITools:DrawToolBar.Line">
+      <Image Source="/CAD;component/Icons/Line.png"/>
+   </ToggleButton>
+   <ToggleButton ToolTip="Circle 2 point"
+                 Command="UITools:DrawToolBar.Circle2Point"
+                 Tag="circle2P">
+      <Image Source="/CAD;component/Icons/CircleCenterRadius.png"/>
+   </ToggleButton>
+   <ToggleButton ToolTip="Circle Center-Radius"
+                 Command="UITools:DrawToolBar.CircleCentrePoint"
+                 Tag="circleCR">
+      <Image Source="/CAD;component/Icons/Circle2Points.png"/>
+   </ToggleButton>
+   <ToggleButton ToolTip="Text box"
+                 Command="UITools:DrawToolBar.TextBox">
+      <Image Source="/CAD;component/Icons/TextBox.png"/>
+   </ToggleButton>
+   <ToggleButton ToolTip="Place active point"
+                 Command="UITools:DrawToolBar.ActivePoint">
+      <Image Source="/CAD;component/Icons/active_point.PNG"/>
+   </ToggleButton>
+</UITools:GeoCadToolBar>
