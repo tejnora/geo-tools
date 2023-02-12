@@ -13,6 +13,7 @@ using GeoBase.Utils;
 using VFK.Tables;
 using CAD.Utils;
 
+
 namespace VFK
 {
     public interface IVFKMain
@@ -328,7 +329,7 @@ namespace VFK
                 if (VFKSPOLTable.Items != null)
                 {
                     List<int> cItems;
-                    if(!spolTableCache.TryGetValue(item.ID,out cItems))
+                    if (!spolTableCache.TryGetValue(item.ID, out cItems))
                     {
                         spolItem = updateSPOL(null, item);
                         spolItem.STAV_DAT = SOBR_SPOL_STAV_DAT_NEED_UPDATE;
@@ -615,15 +616,18 @@ namespace VFK
                 case "ZB":
                     {
                         VFKMarksDrawingObjects.Add(new VfkMark(this, obbp));
-                    } break;
+                    }
+                    break;
                 case "CB":
                     {
                         VFKTextsDrawingObjects.Add(new VfkText(this, obbp));
-                    } break;
+                    }
+                    break;
                 default:
                     {
                         Debug.Assert(false);
-                    } break;
+                    }
+                    break;
             }
         }
         public void CreateOBGraphicsElement(VFKOBTableItem ob, bool fromModifyItems)
@@ -894,7 +898,7 @@ namespace VFK
                 var sobrs = from n in VFKSOBRTable.Items where n.ID == obbp.BP_ID select n;
                 foreach (var sobr in sobrs)
                 {
-                    WExportSOBR(aWriter, sobr,IsItemRemoved(obbp));
+                    WExportSOBR(aWriter, sobr, IsItemRemoved(obbp));
                 }
             }
         }
@@ -1499,7 +1503,7 @@ namespace VFK
             Debug.Assert(sobr.Count == 1 && sobr[0].STAV_DAT == SOBR_SPOL_STAV_DAT_NOVY_BOD);
             VFKSOBRTable.Items.RemoveAll(x => x.ID == value.ID);
         }
-        private void WExportSOBR(IVFKWriter aWriter, VFKSOBRTableItem aItem, bool aParentIsRemoved )
+        private void WExportSOBR(IVFKWriter aWriter, VFKSOBRTableItem aItem, bool aParentIsRemoved)
         {
             aItem = (VFKSOBRTableItem)aItem.Clone();
             if (aItem.ItemFromImport())
@@ -1588,7 +1592,7 @@ namespace VFK
                     ToList();
             foreach (var bdpModify in _bdbModifyTableItems)
             {
-                if (bdpModify.PAR_ID != aPar.PAR_ID)
+                if (bdpModify.PAR_ID != aPar.ID)
                     continue;
                 if (bdpModify.PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N)
                     returnBdp.Add(bdpModify);
@@ -1706,11 +1710,12 @@ namespace VFK
                             VFKPARTableItem par = (VFKPARTableItem)parT.PAR.Clone();
                             InitBeforeExport(par);
                             aWriter.AddPAR(par);
-                        } break;
+                        }
+                        break;
                     case EditedParcelNode.ParcelModificationEnum.Modify:
                         {
                             var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
-                            System.Diagnostics.Debug.Assert(oPar.Count() != 0);
+                            Debug.Assert(oPar.Count() != 0);
                             //remove old
                             VFKPARTableItem par = (VFKPARTableItem)oPar.First().Clone();
                             par.STAV_DAT = STAV_DAT_PRITOMNOST;
@@ -1721,7 +1726,8 @@ namespace VFK
                             par.STAV_DAT = STAV_DAT_BUDOUCNOST;
                             par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_N;
                             aWriter.AddPAR(par);
-                        } break;
+                        }
+                        break;
                     case EditedParcelNode.ParcelModificationEnum.Cancel:
                         {
                             var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
@@ -1738,7 +1744,8 @@ namespace VFK
                                 bdpc.STAV_DAT = STAV_DAT_PRITOMNOST;
                                 aWriter.AddBDP(bdpc);
                             }
-                        } break;
+                        }
+                        break;
                 }
                 WExportBdp(aWriter, parT.PAR);
             }
@@ -1828,5 +1835,37 @@ namespace VFK
         }
         #endregion
 
+        public void ImportEditedParcel()
+        {
+            if (VFKDataContext.CilImportuEntrie.StavData != StavData.Budoucnost) return;
+            _bdbModifyTableItems = VFKBDPTable.Items;
+            VFKBDPTable.ReinitItems();
+            var modifiedParcels = VFKPARTable.Items.GroupBy((n) => n.ID);
+            foreach (var modifiedParcel in modifiedParcels)
+            {
+                var par = modifiedParcel.ToList();
+                EditedParcelNode newNode = null;
+                switch (par.Count)
+                {
+                    case 1:
+                        {
+                            newNode = new EditedParcelNode(this, par[0]);
+                            newNode.ParcelModification = par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N
+                                ? EditedParcelNode.ParcelModificationEnum.New
+                                : EditedParcelNode.ParcelModificationEnum.Cancel;
+                        }
+                        break;
+                    case 2:
+                        {
+                            newNode = new EditedParcelNode(this, par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N ? par[0] : par[1]);
+                            newNode.ParcelModification = EditedParcelNode.ParcelModificationEnum.Modify;
+                        }
+                        break;
+                    default:
+                        continue;
+                }
+                ParcelContext.ParcelNode.Add(newNode);
+            }
+        }
     }
 }

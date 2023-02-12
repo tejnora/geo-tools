@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Forms;
 using CAD.Canvas;
 using CAD.UITools;
-using CAD.Utils;
 using CAD.Canvas.DrawTools;
 using System.IO;
 using CAD.VFK;

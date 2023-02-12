@@ -21,7 +21,7 @@ namespace VFK
 
         public void parseFile(string aName)
         {
-            Encoding enc = Encoding.GetEncoding("iso-8859-2");
+            Encoding enc = Encoding.UTF8;
             using (Stream fileStream = new FileStream(aName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 using (var reader = new StreamReader(fileStream, enc))
@@ -438,7 +438,10 @@ namespace VFK
                         _ImportDialogContext.BUDOBJ++;
                         break;
                     case "ADROBJ":
-                        _ImportDialogContext.ADROBJ++;
+                        _ImportDialogContext.ADROBJ++; 
+                        break;
+                    case "HPOLYGDATA":
+                        _ImportDialogContext.HPOLYGDATA++;
                         break;
                     default:
                         throw new Exception(name);

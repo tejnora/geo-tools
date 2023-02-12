@@ -195,6 +195,7 @@ namespace VFK.GUI
         public UInt32 OBDEBO { get; set; }
         public UInt32 BUDOBJ { get; set; }
         public UInt32 ADROBJ { get; set; }
+        public UInt32 HPOLYGDATA { get; set; }
         #endregion
         #region Errors
         public struct ErrorInfo

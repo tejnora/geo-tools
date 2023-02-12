@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace VFK
 {
@@ -23,7 +24,7 @@ namespace VFK
             aResult = true;
             try
             {
-                return Convert.ToDateTime(aValue);
+                return DateTime.ParseExact(aValue, "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             }
             catch (Exception)
             {

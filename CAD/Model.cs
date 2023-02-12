@@ -513,6 +513,7 @@ namespace CAD.Canvas
                 _layers.RemoveAt(0);
             VfkMain = new VFKMain(aDataContext,this);
             VfkMain.VFKOpenFile();
+            VfkMain.ImportEditedParcel();
             _vfkDrawingLayerMain = new VFKDrawingLayerMain(VfkMain);
             _layers.Insert(0, _vfkDrawingLayerMain);
             _activeLayer = _layers[0];

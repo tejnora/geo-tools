@@ -6,6 +6,7 @@ using System.Reflection;
 using System.IO;
 
 using VFK.Tables;
+using System.Globalization;
 
 namespace VFK
 {
@@ -486,7 +487,9 @@ namespace VFK
                             System.Diagnostics.Debug.Assert(subString[0] == '\"' && subString[subString.Length - 1] == '\"');
                             if (subString.Length == 2)
                                 continue;
-                            DateTime dateTime = Convert.ToDateTime(subString.Substring(1, subString.Length - 2));
+                            //"24.05.2001 14:21:11"
+                            var dateTime = DateTime.ParseExact(subString.Substring(1, subString.Length - 2), "dd.MM.yyyy HH:mm:ss",
+                                CultureInfo.InvariantCulture);
                             property.SetValue(vfkTable, dateTime, null);
                         }
                         break;
@@ -533,8 +536,8 @@ namespace VFK
                                     property.SetValue(vfkTable, Double.MaxValue, null);
                                 else
                                 {
-                                    subString = subString.Replace('.', ',');
-                                    property.SetValue(vfkTable, Convert.ToDouble(subString), null);
+                                    //subString = subString.Replace('.', ',');
+                                    property.SetValue(vfkTable, Convert.ToDouble(subString,CultureInfo.InvariantCulture), null);
                                 }
                             }
                             else if (property.PropertyType.FullName == "System.String")

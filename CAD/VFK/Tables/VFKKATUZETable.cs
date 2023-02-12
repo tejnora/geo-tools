@@ -57,5 +57,17 @@ namespace VFK.Tables
             get;
             set;
         }
+        [VFKDefinitionAttribute(DefinitionFieldType.Number, 3, 0, false, 5)]
+        public UInt32 CISLO
+        {
+            get;
+            set;
+        }
+        [VFKDefinitionAttribute(DefinitionFieldType.Number, 1, 0, true, 5)]
+        public UInt32 CISELNA_RADA
+        {
+            get;
+            set;
+        }
     }
 }

@@ -68,17 +68,17 @@ namespace VFK
             try
             {
                 Stream fileStream = new FileStream(aLocation, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-                var writer = new StreamWriter(fileStream, Encoding.GetEncoding("iso-8859-2"));
+                var writer = new StreamWriter(fileStream, Encoding.UTF8);
                 //BEGIN HEADER
                 var dateNow = DateTime.Now;
                 
-                string dateNowString = string.Format("{0:00}.{1:00}.{2:0000} {3:00}:{4:00}:{5:00}", dateNow.Day, dateNow.Month, dateNow.Year, dateNow.Hour,
+                var dateNowString = string.Format("{0:00}.{1:00}.{2:0000} {3:00}:{4:00}:{5:00}", dateNow.Day, dateNow.Month, dateNow.Year, dateNow.Hour,
                                 dateNow.Minute, dateNow.Second);
-                writer.WriteLine("&HVERZE;\"5.0\"");
-                writer.WriteLine(string.Format("&HVYTVORENO;\"{0}\"", dateNowString));
-                writer.WriteLine(string.Format("&HPUVOD;\"GEOCAD - {0}\"",Assembly.GetExecutingAssembly().GetName().Version.ToString()));
-                writer.WriteLine("&HCODEPAGE;\"WE8ISO8859P2\"");
-                writer.WriteLine(string.Format("&HJMENO;\"{0}\"", _mOwner.VFKDataContext.AuthorName));
+                writer.WriteLine("&HVERZE;\"6.0\"");
+                writer.WriteLine($"&HVYTVORENO;\"{dateNowString}\"");
+                writer.WriteLine($"&HPUVOD;\"GEOCAD - {Assembly.GetExecutingAssembly().GetName().Version.ToString()}\"");
+                writer.WriteLine("&HCODEPAGE;\"UTF-8\"");
+                writer.WriteLine($"&HJMENO;\"{_mOwner.VFKDataContext.AuthorName}\"");
                 List<string> updatedTempItems = new List<string>();
                 //END HEADER
                 //BEGIN PAR
@@ -310,6 +310,7 @@ namespace VFK
                         ExportInfoContext.SPOL._existujici++;
                 }
                 //SPOL END
+                writer.WriteLine("&K");
                 writer.Close();
                 fileStream.Close();
             }
