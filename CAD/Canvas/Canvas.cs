@@ -11,8 +11,10 @@ using CAD.GUI;
 using CAD.Canvas.DrawTools;
 using CAD.Canvas.Layers;
 using System.Windows;
+using System.Windows.Input;
 using CAD.VFK.DrawTools;
 using GeoBase.Utils;
+using VFK.GUI;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.Forms.MessageBox;
 using GraphicsPath = System.Drawing.Drawing2D.GraphicsPath;
@@ -27,8 +29,12 @@ using StringFormat = System.Drawing.StringFormat;
 using Matrix = System.Drawing.Drawing2D.Matrix;
 using UserControl = System.Windows.Forms.UserControl;
 using Bitmap = System.Drawing.Bitmap;
+using Cursor = System.Windows.Forms.Cursor;
+using Cursors = System.Windows.Forms.Cursors;
 using GraphicsUnit = System.Drawing.GraphicsUnit;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using LineSegment = GeoBase.Utils.LineSegment;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Point = System.Windows.Point;
 using RectangleF = System.Drawing.RectangleF;
 using Size = System.Windows.Size;
@@ -631,7 +637,22 @@ namespace CAD.Canvas
 
             UnitPoint mousepoint = ToUnit(_mousedownPoint);
             if (_snappoint != null)
+            {
                 mousepoint = _snappoint.SnapPoint;
+                if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+                {
+                    var hitObjects = _model.GetHitObjects(_canvaswrapper, mousepoint);
+                    if (hitObjects.Count > 1)
+                    {
+                        var dialog = new MultiSelectPointDialog(hitObjects);
+                        if (!(bool)dialog.ShowDialog()) return;
+                        var snapPoint = dialog.SelectedPoint.DrawObject.SnapPoint(_canvaswrapper, mousepoint,
+                            hitObjects, null, typeof(VfkSnapPoint));
+                        if (snapPoint == null) return;
+                        mousepoint = snapPoint.SnapPoint;
+                    }
+                }
+            }
 
             if (_commandType == ECommandType.EditNode)
             {
@@ -712,7 +733,8 @@ namespace CAD.Canvas
                                     pp.AddPoint(activePoint);
                                 }
                             }
-                        } break;
+                        }
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -824,7 +846,7 @@ namespace CAD.Canvas
                 mousepoint = GetMousePoint();
             if (_commandType == ECommandType.Info)
             {
-                InfoPropPage ipp = (InfoPropPage) _propPageWindow;
+                InfoPropPage ipp = (InfoPropPage)_propPageWindow;
                 Rectangle invalidaterect =
                     ScreenUtils.ConvertRect(ScreenUtils.ToScreenNormalized(_canvaswrapper,
                                                            ipp.GetBoundingRect(_canvaswrapper)));
@@ -1048,12 +1070,14 @@ namespace CAD.Canvas
                         {
                             var l = (LineSegment)item;
                             DrawLine(aCanvas, aPen, l.P1 + offset, l.P2 + offset);
-                        } break;
+                        }
+                        break;
                     case PathSegment.SegmentTypes.Arc:
                         {
                             var a = (ArcSegment)item;
                             DrawArc(aCanvas, aPen, a.Center + offset, a.Radius, a.StartAngle, a.Angle);
-                        } break;
+                        }
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

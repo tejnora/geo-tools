@@ -1,0 +1,38 @@
+﻿<Gui:DialogBase x:Class="CAD.Canvas.MultiSelectPointDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                Title="Select point"
+                Width="200"
+                Height="80">
+    <Gui:DialogBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Gui:DialogBase.Resources>
+    <StackPanel>
+        <ComboBox x:Name="_elementsGroup"
+                  SelectedItem="{Binding Path=SelectedPoint}"
+                  ItemsSource="{Binding Path=Points}"
+                  DisplayMemberPath="PointNumber"
+                  SelectedValuePath="PointNumber" Margin="5,5,5,5">
+        </ComboBox>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    >
+            <Button Height="23"
+                    IsDefault="True"
+                    loc:Translate.Uid="43"
+                    Content="{loc:Translate Ok}"
+                    Click="OnOkButtonClick" />
+            <Button Height="25"
+                    IsCancel="True"
+                    loc:Translate.Uid="44"
+                    Content="{loc:Translate Cancel}"
+                    Click="OnCancelButtonClick" />
+        </StackPanel>
+    </StackPanel>
+</Gui:DialogBase>

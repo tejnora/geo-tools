@@ -12,6 +12,7 @@ using GeoBase.Localization;
 using GeoBase.Utils;
 using VFK.Tables;
 using CAD.Utils;
+using VFK.GUI;
 
 
 namespace VFK
@@ -268,7 +269,7 @@ namespace VFK
         #region Import
         public void VFKOpenFile()
         {
-            VFK.GUI.ImportInfoDialog importDialog = new VFK.GUI.ImportInfoDialog(this);
+            ImportInfoDialog importDialog = new ImportInfoDialog(this);
             importDialog.Context.JmenoSouboru = VFKDataContext.FileName;
             VFKReader reader = new VFKReader(this, importDialog.Context);
             reader.parseFile(VFKDataContext.FileName);

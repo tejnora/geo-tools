@@ -131,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Canvas\GUI\MultiSelectPointDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Converters\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -409,6 +413,9 @@
     </Compile>
     <Compile Include="Canvas\CanvasExtensionMethods.cs" />
     <Compile Include="Canvas\DefaultColors.cs" />
+    <Compile Include="Canvas\GUI\MultiSelectPointDialog.xaml.cs">
+      <DependentUpon>MultiSelectPointDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\PlochaConverter.cs" />
     <Compile Include="Export\DxfExport.cs" />
     <Compile Include="Export\IExport.cs" />
@@ -719,6 +726,7 @@
   <ItemGroup>
     <Resource Include="Icons\VfkVypocetVymer.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

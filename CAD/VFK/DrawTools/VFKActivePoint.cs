@@ -89,7 +89,7 @@ namespace CAD.VFK.DrawTools
             get;
             set;
         }
-        private string PointNumber
+        public string PointNumber
         {
             get
             {

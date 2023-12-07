@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 using GeoBase.Gui;
@@ -116,6 +117,7 @@ namespace VFK.GUI
             return string.Format("{0}\t\t\t\t{1}\t\t{2}\n", aName, aReaded, Imported);
         }
         #endregion
+
     }
     public class ImportInfoDialogContext
     {

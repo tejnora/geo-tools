@@ -444,7 +444,7 @@ namespace VFK
                         _ImportDialogContext.HPOLYGDATA++;
                         break;
                     default:
-                        throw new Exception(name);
+                        return false;
                 }
             }
             catch (Exception)
