@@ -497,6 +497,26 @@ namespace CAD.Canvas
             _commandType = ECommandType.Select;
             _snappoint = null;
         }
+
+        ISnapPoint SelectSnapPoint(UnitPoint mouseunitpoint)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+            {
+                var hitObjects = _model.GetHitObjects(_canvaswrapper, mouseunitpoint);
+                if (hitObjects.Count > 1)
+                {
+                    var dialog = new MultiSelectPointDialog(hitObjects);
+                    if (!(bool)dialog.ShowDialog()) return null;
+                    var snapPoint = dialog.SelectedPoint.DrawObject.SnapPoint(_canvaswrapper, mouseunitpoint,
+                        hitObjects, null, typeof(VfkSnapPoint));
+                    if (snapPoint == null) return null;
+                    return snapPoint;
+                }
+                return null;
+            }
+            return _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
+        }
+
         protected virtual void HandleMouseDownWhenDrawing(UnitPoint mouseunitpoint, ISnapPoint snappoint)
         {
             if (_commandType == ECommandType.Draw)
@@ -510,13 +530,23 @@ namespace CAD.Canvas
                         {
                             if (((IVFKTool)_newObject).GetMustBeConnectedWithSnap())
                             {
-                                snappoint = _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
-                                if (snappoint != null && snappoint.Owner.Id == VfkToolBar.VfkActivePoint.Name)
+                                snappoint = SelectSnapPoint(ToUnit(_mousedownPoint));
+                                if (snappoint == null)
                                 {
-                                    _newObject = _model.CreateVFKObject(_drawObjectId.Name, mouseunitpoint, snappoint);
+                                    _newObject = null;
                                 }
                                 else
-                                    _newObject = null;
+                                {
+                                    mouseunitpoint = snappoint.SnapPoint;
+                                    if (snappoint != null && snappoint.Owner.Id == VfkToolBar.VfkActivePoint.Name)
+                                    {
+                                        _newObject = _model.CreateVFKObject(_drawObjectId.Name, mouseunitpoint, snappoint);
+                                    }
+                                    else
+                                    {
+                                        _newObject = null;
+                                    }
+                                }
                             }
                         }
                         else
@@ -537,7 +567,7 @@ namespace CAD.Canvas
                     {
                         if (((IVFKTool)_newObject).GetMustBeConnectedWithSnap())
                         {
-                            snappoint = _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
+                            snappoint = SelectSnapPoint(ToUnit(_mousedownPoint));
                             if (snappoint == null || snappoint.Owner.Id != VfkToolBar.VfkActivePoint.Name)
                             {
                                 MessageBox.Show(@"Objekt nemuze byt vytvoren mimo body...", @"Vytvoreni objektu", MessageBoxButtons.OK);
@@ -639,19 +669,6 @@ namespace CAD.Canvas
             if (_snappoint != null)
             {
                 mousepoint = _snappoint.SnapPoint;
-                if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
-                {
-                    var hitObjects = _model.GetHitObjects(_canvaswrapper, mousepoint);
-                    if (hitObjects.Count > 1)
-                    {
-                        var dialog = new MultiSelectPointDialog(hitObjects);
-                        if (!(bool)dialog.ShowDialog()) return;
-                        var snapPoint = dialog.SelectedPoint.DrawObject.SnapPoint(_canvaswrapper, mousepoint,
-                            hitObjects, null, typeof(VfkSnapPoint));
-                        if (snapPoint == null) return;
-                        mousepoint = snapPoint.SnapPoint;
-                    }
-                }
             }
 
             if (_commandType == ECommandType.EditNode)
