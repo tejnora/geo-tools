@@ -2,8 +2,7 @@ namespace DxfLibrary
 {
     public class Style : TableEntry
     {
-        #region Constructor
-        public Style(string name, bool shape, double height, double width, double obliqueAngle, bool backward, bool upsidedown, double lastHeightUsed, string primaryFontFile)
+                public Style(string name, bool shape, double height, double width, double obliqueAngle, bool backward, bool upsidedown, double lastHeightUsed, string primaryFontFile)
             : base("STYLE")
         {
             DataAcceptanceList.AddRange(new int[] { 2, 70, 40, 41, 50, 71, 42, 3, 4, 1000, 1001});
@@ -21,13 +20,10 @@ namespace DxfLibrary
             if (height == 0) AddData(42, lastHeightUsed);
             AddData(3, primaryFontFile);
         }
-        #endregion
-        #region Methods
-        public void AddMicrostationExtendetData(string fontName)
+                        public void AddMicrostationExtendetData(string fontName)
         {
             AddReplace(1001, "ACAD");
             AddReplace(1000, fontName);
         }
-        #endregion
-    }
+            }
 }

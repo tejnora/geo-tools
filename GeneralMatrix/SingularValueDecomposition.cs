@@ -21,8 +21,7 @@ namespace DotNetMatrix
     [Serializable]
     public class SingularValueDecomposition : System.Runtime.Serialization.ISerializable
     {
-        #region Class variables
-
+        
         /// <summary>Arrays for internal storage of U and V.
         /// @serial internal storage of U.
         /// @serial internal storage of V.
@@ -40,10 +39,8 @@ namespace DotNetMatrix
         /// </summary>
         private int m, n;
 
-        #endregion   //Class variables
-
-        #region Constructor
-
+        
+        
         /// <summary>Construct the singular value decomposition</summary>
         /// <param name="Arg">   Rectangular matrix
         /// </param>
@@ -561,10 +558,7 @@ namespace DotNetMatrix
                 }
             }
         }
-        #endregion	//Constructor
-
-        #region Public Properties
-        /// <summary>Return the one-dimensional array of singular values</summary>
+                /// <summary>Return the one-dimensional array of singular values</summary>
         /// <returns>     diagonal of S.
         /// </returns>
         virtual public double[] SingularValues
@@ -595,9 +589,7 @@ namespace DotNetMatrix
                 return X;
             }
         }
-        #endregion //  Public Properties
-
-        #region	 Public Methods
+        
 
         /// <summary>Return the left singular vectors</summary>
         /// <returns>     U
@@ -653,8 +645,7 @@ namespace DotNetMatrix
             }
             return r;
         }
-        #endregion   //Public Methods
-
+        
         // A method called when serializing this class.
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {

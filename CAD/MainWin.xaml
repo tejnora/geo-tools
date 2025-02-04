@@ -7,153 +7,153 @@
         Title="{loc:Translate GeoCad}"
         Width="{loc:Translate 865}"
         Height="{loc:Translate 800}">
-   <Window.Resources>
-      <RoutedCommand x:Key="ImportVFK" />
-      <RoutedCommand x:Key="ExportVFK" />
-      <RoutedCommand x:Key="CloseVFK" />
-      <RoutedCommand x:Key="EditOfParcelVFK" />
-      <RoutedCommand x:Key="SeznamSouracnicVFK" />
-      <RoutedCommand x:Key="SetElementsVFK" />
-      <RoutedCommand x:Key="GenerateSIPVFK" />
-   </Window.Resources>
-   <Window.CommandBindings>
-      <CommandBinding Command="{StaticResource ImportVFK}"
-                      Executed="OnImportVfk"
-                      CanExecute="OnCanImportVfk" />
-      <CommandBinding Command="{StaticResource ExportVFK}"
-                      Executed="OnExportVfk"
-                      CanExecute="OnCanExportVfk" />
-      <CommandBinding Command="{StaticResource CloseVFK}"
-                      Executed="OnRemoveVFKData"
-                      CanExecute="OnCanRemoveVFKData" />
-      <CommandBinding Command="{StaticResource EditOfParcelVFK}"
-                      Executed="OnVFKEdidOfParcel"
-                      CanExecute="OnCanVFKEdidOfParcel" />
-      <CommandBinding Command="{StaticResource SeznamSouracnicVFK}"
-                      Executed="OnSeznamSouradnicVFK"
-                      CanExecute="OnCanSeznamSouradnicVFK" />
-      <CommandBinding Command="{StaticResource SetElementsVFK}"
-                      Executed="OnSetElements" />
-      <CommandBinding Command="{StaticResource GenerateSIPVFK}"
-                      Executed="OnGenerateSIP"
-                      CanExecute="OnCanGenerateSIP" />
-   </Window.CommandBindings>
-   <DockPanel LastChildFill="true">
-      <Menu DockPanel.Dock="Top"
-            Background="#FFEAE3D4">
-         <MenuItem loc:Translate.Uid="1"
-                   Header="{loc:Translate File}">
-            <MenuItem loc:Translate.Uid="2"
-                      Header="{loc:Translate New}"
-                      Command="UITools:DocumentToolBar.NewDocumnet"
-                      ToolTip="New document">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/New.png"></Image>
-               </MenuItem.Icon>
+    <Window.Resources>
+        <RoutedCommand x:Key="ImportVFK" />
+        <RoutedCommand x:Key="ExportVFK" />
+        <RoutedCommand x:Key="CloseVFK" />
+        <RoutedCommand x:Key="EditOfParcelVFK" />
+        <RoutedCommand x:Key="SeznamSouracnicVFK" />
+        <RoutedCommand x:Key="SetElementsVFK" />
+        <RoutedCommand x:Key="GenerateSIPVFK" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource ImportVFK}"
+                        Executed="OnImportVfk"
+                        CanExecute="OnCanImportVfk" />
+        <CommandBinding Command="{StaticResource ExportVFK}"
+                        Executed="OnExportVfk"
+                        CanExecute="OnCanExportVfk" />
+        <CommandBinding Command="{StaticResource CloseVFK}"
+                        Executed="OnRemoveVFKData"
+                        CanExecute="OnCanRemoveVFKData" />
+        <CommandBinding Command="{StaticResource EditOfParcelVFK}"
+                        Executed="OnVFKEdidOfParcel"
+                        CanExecute="OnCanVFKEdidOfParcel" />
+        <CommandBinding Command="{StaticResource SeznamSouracnicVFK}"
+                        Executed="OnSeznamSouradnicVFK"
+                        CanExecute="OnCanSeznamSouradnicVFK" />
+        <CommandBinding Command="{StaticResource SetElementsVFK}"
+                        Executed="OnSetElements" />
+        <CommandBinding Command="{StaticResource GenerateSIPVFK}"
+                        Executed="OnGenerateSIP"
+                        CanExecute="OnCanGenerateSIP" />
+    </Window.CommandBindings>
+    <DockPanel LastChildFill="true">
+        <Menu DockPanel.Dock="Top"
+              Background="#FFEAE3D4">
+            <MenuItem loc:Translate.Uid="1"
+                      Header="{loc:Translate File}">
+                <MenuItem loc:Translate.Uid="2"
+                          Header="{loc:Translate New}"
+                          Command="UITools:DocumentToolBar.NewDocumnet"
+                          ToolTip="New document">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/New.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="3"
+                          Header="{loc:Translate Open}"
+                          Command="UITools:DocumentToolBar.OpenDocument"
+                          ToolTip="Open document">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Open.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="4"
+                          Header="{loc:Translate Save}"
+                          Command="UITools:DocumentToolBar.SaveDocument"
+                          ToolTip="Save document">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Save.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="5"
+                          Header="{loc:Translate Save As}"
+                          Command="UITools:DocumentToolBar.SaveDocumentAs"
+                          ToolTip="Save document as">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/SaveAs.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="106"
+                          Header="{loc:Translate Export}"
+                          Command="UITools:DocumentToolBar.ExportDocumnet">
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="6"
+                          Header="{loc:Translate Close}"
+                          Command="UITools:DocumentToolBar.CloseDocument"
+                          ToolTip="Close document" />
             </MenuItem>
-            <MenuItem loc:Translate.Uid="3"
-                      Header="{loc:Translate Open}"
-                      Command="UITools:DocumentToolBar.OpenDocument"
-                      ToolTip="Open document">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Open.png"></Image>
-               </MenuItem.Icon>
+            <MenuItem Header="Edit">
+                <MenuItem loc:Translate.Uid="7"
+                          Header="{loc:Translate Undo}"
+                          Command="UITools:EditToolBar.Undo">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Undo.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="8"
+                          Header="{loc:Translate Redo}"
+                          Command="UITools:EditToolBar.Redo"
+                          Tag="redo">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Redo.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="9"
+                          Header="{loc:Translate Select}"
+                          Command="UITools:EditToolBar.Select"
+                          Tag="select">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Arrow.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="10"
+                          Header="{loc:Translate Pan}"
+                          Command="UITools:EditToolBar.Pan"
+                          Tag="pan">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Hand.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="11"
+                          Header="{loc:Translate Move}"
+                          Command="UITools:EditToolBar.Move"
+                          Tag="move">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/MoveCris.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem loc:Translate.Uid="12"
+                          Header="{loc:Translate FitView}"
+                          Command="UITools:EditToolBar.FitView">
+                    <MenuItem.Icon>
+                        <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/FitView.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
-            <MenuItem loc:Translate.Uid="4"
-                      Header="{loc:Translate Save}"
-                      Command="UITools:DocumentToolBar.SaveDocument"
-                      ToolTip="Save document">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Save.png"></Image>
-               </MenuItem.Icon>
+            <MenuItem loc:Translate.Uid="28"
+                      Header="{loc:Translate Draw Tools}">
+                <MenuItem loc:Translate.Uid="13"
+                          Header="{loc:Translate Line}"
+                          Command="UITools:DrawToolBar.Line" />
+                <MenuItem loc:Translate.Uid="14"
+                          Header="{loc:Translate Lines}"
+                          Command="UITools:DrawToolBar.MultiLine" />
+                <MenuItem loc:Translate.Uid="15"
+                          Header="{loc:Translate Circle2P}"
+                          Command="UITools:DrawToolBar.Circle2Point" />
+                <MenuItem loc:Translate.Uid="88"
+                          Header="{loc:Translate CircleCentrePoint}"
+                          Command="UITools:DrawToolBar.CircleCentrePoint" />
+                <MenuItem loc:Translate.Uid="89"
+                          Header="{loc:Translate TextBox}"
+                          Command="UITools:DrawToolBar.TextBox" />
+                <MenuItem loc:Translate.Uid="16"
+                          Header="{loc:Translate Place active Point}"
+                          Command="UITools:DrawToolBar.ActivePoint" />
             </MenuItem>
-            <MenuItem loc:Translate.Uid="5"
-                      Header="{loc:Translate Save As}"
-                      Command="UITools:DocumentToolBar.SaveDocumentAs"
-                      ToolTip="Save document as">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/SaveAs.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="106"
-                      Header="{loc:Translate Export}"
-                      Command="UITools:DocumentToolBar.ExportDocumnet">
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="6"
-                      Header="{loc:Translate Close}"
-                      Command="UITools:DocumentToolBar.CloseDocument"
-                      ToolTip="Close document" />
-         </MenuItem>
-         <MenuItem Header="Edit">
-            <MenuItem loc:Translate.Uid="7"
-                      Header="{loc:Translate Undo}"
-                      Command="UITools:EditToolBar.Undo">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Undo.png" />
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="8"
-                      Header="{loc:Translate Redo}"
-                      Command="UITools:EditToolBar.Redo"
-                      Tag="redo">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Redo.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="9"
-                      Header="{loc:Translate Select}"
-                      Command="UITools:EditToolBar.Select"
-                      Tag="select">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Arrow.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="10"
-                      Header="{loc:Translate Pan}"
-                      Command="UITools:EditToolBar.Pan"
-                      Tag="pan">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/Hand.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="11"
-                      Header="{loc:Translate Move}"
-                      Command="UITools:EditToolBar.Move"
-                      Tag="move">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/MoveCris.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem loc:Translate.Uid="12"
-                      Header="{loc:Translate FitView}"
-                      Command="UITools:EditToolBar.FitView">
-               <MenuItem.Icon>
-                  <Image Source="/..\GeoHelper\Tabulky\CoordinateListTable.xaml/Icons/FitView.png"></Image>
-               </MenuItem.Icon>
-            </MenuItem>
-         </MenuItem>
-         <MenuItem loc:Translate.Uid="28"
-                   Header="{loc:Translate Draw Tools}">
-            <MenuItem loc:Translate.Uid="13"
-                      Header="{loc:Translate Line}"
-                      Command="UITools:DrawToolBar.Line" />
-            <MenuItem loc:Translate.Uid="14"
-                      Header="{loc:Translate Lines}"
-                      Command="UITools:DrawToolBar.MultiLine" />
-            <MenuItem loc:Translate.Uid="15"
-                      Header="{loc:Translate Circle2P}"
-                      Command="UITools:DrawToolBar.Circle2Point" />
-            <MenuItem loc:Translate.Uid="88"
-                      Header="{loc:Translate CircleCentrePoint}"
-                      Command="UITools:DrawToolBar.CircleCentrePoint" />
-            <MenuItem loc:Translate.Uid="89"
-                      Header="{loc:Translate TextBox}"
-                      Command="UITools:DrawToolBar.TextBox" />
-            <MenuItem loc:Translate.Uid="16"
-                      Header="{loc:Translate Place active Point}"
-                      Command="UITools:DrawToolBar.ActivePoint" />
-         </MenuItem>
-         <!--MenuItem loc:Translate.Uid="29"
+            <!--MenuItem loc:Translate.Uid="29"
                    Header="{loc:Translate Raster}">
             <MenuItem loc:Translate.Uid="17"
                       Header="{loc:Translate Add}"
@@ -165,88 +165,88 @@
                       Header="{loc:Translate Manage}"
                       Click="OnManageRaster" />
          </MenuItem-->
-         <MenuItem loc:Translate.Uid="30"
-                   Header="{loc:Translate VFK}">
-            <MenuItem loc:Translate.Uid="20"
-                      Header="{loc:Translate Import VFK}"
-                      Command="{StaticResource ImportVFK}" />
-            <MenuItem loc:Translate.Uid="21"
-                      Header="{loc:Translate Export VFK}"
-                      Command="{StaticResource ExportVFK}" />
-            <MenuItem loc:Translate.Uid="22"
-                      Header="{loc:Translate Remove VFK}"
-                      Command="{StaticResource CloseVFK}" />
-            <!--MenuItem loc:Translate.Uid="23"
+            <MenuItem loc:Translate.Uid="30"
+                      Header="{loc:Translate VFK}">
+                <MenuItem loc:Translate.Uid="20"
+                          Header="{loc:Translate Import VFK}"
+                          Command="{StaticResource ImportVFK}" />
+                <MenuItem loc:Translate.Uid="21"
+                          Header="{loc:Translate Export VFK}"
+                          Command="{StaticResource ExportVFK}" />
+                <MenuItem loc:Translate.Uid="22"
+                          Header="{loc:Translate Remove VFK}"
+                          Command="{StaticResource CloseVFK}" />
+                <!--MenuItem loc:Translate.Uid="23"
                       Header="{loc:Translate Editace dotcenych parcel}"
                       Command="{StaticResource EditOfParcelVFK}" /-->
-            <MenuItem loc:Translate.Uid="24"
-                      Header="{loc:Translate Seznam souradnic}"
-                      Command="{StaticResource SeznamSouracnicVFK}" />
-            <MenuItem loc:Translate.Uid="25"
-                      Header="{loc:Translate Nastavení elementů}"
-                      Command="{StaticResource SetElementsVFK}" />
-            <MenuItem loc:Translate.Uid="51"
-                      Header="{loc:Translate Gen SIP}"
-                      Command="{StaticResource GenerateSIPVFK}" />
-         </MenuItem>
-         <MenuItem loc:Translate.Uid="26"
-                   Header="{loc:Translate Options}">
-            <MenuItem loc:Translate.Uid="27"
-                      Header="{loc:Translate Save pos and size}"
-                      Click="onSavePosAndSize" />
-         </MenuItem>
-         <MenuItem loc:Translate.Uid="84"
-                   Header="{loc:Translate Help}">
-            <MenuItem loc:Translate.Uid="83"
-                      Header="{loc:Translate AboutBox}"
-                      Click="OnAboutBox" />
-         </MenuItem>
-      </Menu>
-      <ToolBarTray DockPanel.Dock="Top"
-                   x:Name="_toolBarTrayTop">
-      </ToolBarTray>
-      <ToolBarTray DockPanel.Dock="Left"
-                   Orientation="Vertical"
-                   x:Name="_toolBarTrayLeft">
-      </ToolBarTray>
-      <StatusBar DockPanel.Dock="Bottom">
-         <StatusBar.ItemsPanel>
-            <ItemsPanelTemplate>
-               <Grid>
-                  <Grid.RowDefinitions>
-                     <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-                  <Grid.ColumnDefinitions>
-                     <ColumnDefinition Width="Auto" />
-                     <ColumnDefinition Width="Auto" />
-                     <ColumnDefinition Width="Auto" />
-                     <ColumnDefinition Width="*" />
-                  </Grid.ColumnDefinitions>
-               </Grid>
-            </ItemsPanelTemplate>
-         </StatusBar.ItemsPanel>
-         <StatusBarItem>
-            <TextBlock x:Name="_statusBarInfoPos"></TextBlock>
-         </StatusBarItem>
-         <StatusBarItem Grid.Column="1">
-            <TextBlock x:Name="_snapBarInfoLabel">
-            </TextBlock>
-         </StatusBarItem>
-         <StatusBarItem Grid.Column="2">
-            <TextBlock x:Name="_drawInfoLabel">
-            </TextBlock>
-         </StatusBarItem>
-      </StatusBar>
-      <ad:DockingManager x:Name="_dockingManager"
-                         Loaded="DockingManagerControl_Loaded">
-         <ad:ResizingPanel Orientation="Horizontal">
-            <ad:DocumentPane SelectionChanged="OnMainDocumentChanged">
-            </ad:DocumentPane>
-            <ad:DockablePane>
-               <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic"
-                                       Visibility="Visible" />
-            </ad:DockablePane>
-         </ad:ResizingPanel>
-      </ad:DockingManager>
-   </DockPanel>
+                <MenuItem loc:Translate.Uid="24"
+                          Header="{loc:Translate Seznam souradnic}"
+                          Command="{StaticResource SeznamSouracnicVFK}" />
+                <MenuItem loc:Translate.Uid="25"
+                          Header="{loc:Translate Nastavení elementů}"
+                          Command="{StaticResource SetElementsVFK}" />
+                <MenuItem loc:Translate.Uid="51"
+                          Header="{loc:Translate Gen SIP}"
+                          Command="{StaticResource GenerateSIPVFK}" />
+            </MenuItem>
+            <MenuItem loc:Translate.Uid="26"
+                      Header="{loc:Translate Options}">
+                <MenuItem loc:Translate.Uid="27"
+                          Header="{loc:Translate Save pos and size}"
+                          Click="onSavePosAndSize" />
+            </MenuItem>
+            <MenuItem loc:Translate.Uid="84"
+                      Header="{loc:Translate Help}">
+                <MenuItem loc:Translate.Uid="83"
+                          Header="{loc:Translate AboutBox}"
+                          Click="OnAboutBox" />
+            </MenuItem>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Top"
+                     x:Name="_toolBarTrayTop">
+        </ToolBarTray>
+        <ToolBarTray DockPanel.Dock="Left"
+                     Orientation="Vertical"
+                     x:Name="_toolBarTrayLeft">
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock x:Name="_statusBarInfoPos"></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <TextBlock x:Name="_snapBarInfoLabel">
+                </TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <TextBlock x:Name="_drawInfoLabel">
+                </TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <ad:DockingManager x:Name="_dockingManager"
+                           Loaded="DockingManagerControl_Loaded">
+            <ad:ResizingPanel Orientation="Horizontal">
+                <ad:DocumentPane SelectionChanged="OnMainDocumentChanged">
+                </ad:DocumentPane>
+                <ad:DockablePane>
+                    <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic"
+                                            Visibility="Visible" />
+                </ad:DockablePane>
+            </ad:ResizingPanel>
+        </ad:DockingManager>
+    </DockPanel>
 </Window>

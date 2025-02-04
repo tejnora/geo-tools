@@ -335,8 +335,7 @@ namespace AvalonDock
 
             if (Orientation == Orientation.Horizontal)
             {
-                #region Horizontal Orientation
-
+                
                 //if finalSize is not sufficient...
                 double offset = 0.0;
                 double maxHeight = 0.0;
@@ -416,12 +415,10 @@ namespace AvalonDock
 
                 return new Size(offset, maxHeight);
 
-                #endregion
-            }
+                            }
             else
             {
-                #region Vertical Orientation
-
+                
                 //if finalSize is not sufficient...
                 double offset = 0.0;
                 double maxWidth = 0.0;
@@ -501,8 +498,7 @@ namespace AvalonDock
 
                 return new Size(maxWidth, offset);
 
-                #endregion
-
+                
             }
         }
 
@@ -626,8 +622,7 @@ namespace AvalonDock
 
             if (Orientation == Orientation.Horizontal)
             {
-                #region Horizontal Orientation
-
+                
                 //if finalSize is not sufficient...
                 if (minimumSize.Width >= finalSize.Width)
                 {
@@ -685,12 +680,10 @@ namespace AvalonDock
                 }
 
                 return new Size(offset, finalSize.Height);
-                #endregion
-            }
+                            }
             else
             {
-                #region Vertical Orientation
-
+                
                 //if finalSize is not sufficient...
                 if (minimumSize.Height >= finalSize.Height)
                 {
@@ -747,8 +740,7 @@ namespace AvalonDock
                 }
 
                 return new Size(finalSize.Width, offset);
-                #endregion
-            }
+                            }
 
 
         }
@@ -1106,8 +1098,7 @@ namespace AvalonDock
             //Size resExtNext = new Size((double)childNext.GetValue(ResizeWidthProperty), (double)childNext.GetValue(ResizeHeightProperty));
 
 
-            //#region Orientation == Horizontal
-            //if (Orientation == Orientation.Horizontal)
+            //            //if (Orientation == Orientation.Horizontal)
             //{
             //    double delta = e.HorizontalChange;
 
@@ -1125,9 +1116,7 @@ namespace AvalonDock
             //    if (!double.IsPositiveInfinity(resExtNext.Width))
             //        childNext.SetValue(ResizeWidthProperty, resExtNext.Width - delta);
             //}
-            //#endregion
-            //#region Orientation == Vertical
-            //else //if (Orientation == Orientation.Vertical)
+            //            //            //else //if (Orientation == Orientation.Vertical)
             //{
             //    double delta = e.VerticalChange;
 
@@ -1146,8 +1135,7 @@ namespace AvalonDock
             //    if (!double.IsPositiveInfinity(resExtNext.Height))
             //        childNext.SetValue(ResizeHeightProperty, resExtNext.Height - delta);
             //}
-            //#endregion
-
+            //
         }
 
         void splitter_DragStarted(object sender, DragStartedEventArgs e)
@@ -1155,8 +1143,7 @@ namespace AvalonDock
             Cursor = Orientation == Orientation.Horizontal ? Cursors.SizeWE : Cursors.SizeNS;
         }
 
-        #region IDockableControl Membri di
-
+        
         public bool IsDocked
         {
             get
@@ -1172,8 +1159,7 @@ namespace AvalonDock
             }
         }
 
-        #endregion
-
+        
 
         /// <summary>
         /// Remove a child from children collection

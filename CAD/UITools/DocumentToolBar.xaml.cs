@@ -6,22 +6,17 @@ namespace CAD.UITools
 {
     public partial class DocumentToolBar : GeoCadToolBar
     {
-        #region RoutedCommands
-        public static GeoCadRoutedCommand NewDocumnet = new GeoCadRoutedCommand("NewDocumnet", typeof(MainWin),GeoCadRoutedCommand.CommandTypes.None);
+                public static GeoCadRoutedCommand NewDocumnet = new GeoCadRoutedCommand("NewDocumnet", typeof(MainWin),GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand OpenDocument = new GeoCadRoutedCommand("OpenDocument", typeof(MainWin), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand SaveDocument = new GeoCadRoutedCommand("SaveDocument", typeof(MainWin), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand SaveDocumentAs = new GeoCadRoutedCommand("SaveDocumentAs", typeof(MainWin), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand CloseDocument = new GeoCadRoutedCommand("CloseDocument", typeof(MainWin), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand ExportDocumnet = new GeoCadRoutedCommand("ExportDocumnet", typeof(MainWin), GeoCadRoutedCommand.CommandTypes.None);
-        #endregion
-        #region Constructor
-        public DocumentToolBar()
+                        public DocumentToolBar()
         {
             InitializeComponent();
         }
-        #endregion
-        #region Commands
-        private void OnNewDocument(object sender, ExecutedRoutedEventArgs e)
+                        private void OnNewDocument(object sender, ExecutedRoutedEventArgs e)
         {
             ToolBarManager.Owner.DocumentNew(string.Empty);
         }
@@ -75,6 +70,5 @@ namespace CAD.UITools
         {
             e.CanExecute = ToolBarManager != null && ToolBarManager.Document != null;
         }
-        #endregion
-    }
+            }
 }

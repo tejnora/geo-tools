@@ -11,21 +11,16 @@ namespace CAD.Export
 {
     class DxfExport : IExport
     {
-        #region Constructor
-        public DxfExport(string fileName)
+                public DxfExport(string fileName)
         {
             _fileName = fileName;
         }
-        #endregion
-        #region Fields
-        private string _fileName;
+                        private string _fileName;
         private DxfLibrary.Document _document;
         private Table _layers;
         private Table _styles;
         private Stack<ICanvasLayer> _layersStack = new Stack<ICanvasLayer>();
-        #endregion
-        #region IExport
-        public void Init()
+                        public void Init()
         {
             _document = new DxfLibrary.Document();
             Tables tables = new Tables();
@@ -172,6 +167,5 @@ namespace CAD.Export
             line.Color = Colors.GetNearesColorIndex(color.R, color.G, color.B);
             _document.Add(line);
         }
-        #endregion
-    }
+            }
 }

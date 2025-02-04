@@ -7,16 +7,13 @@ namespace CAD.UITools
 {
     public partial class VfkToolBar : GeoCadToolBar
     {
-        #region RoutedCommands
-        public static GeoCadRoutedCommand VfkMultiLine = new GeoCadRoutedCommand("VfkMultiLine", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
+                public static GeoCadRoutedCommand VfkMultiLine = new GeoCadRoutedCommand("VfkMultiLine", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public static GeoCadRoutedCommand VfkMark = new GeoCadRoutedCommand("VfkMark", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public static GeoCadRoutedCommand VfkText = new GeoCadRoutedCommand("VfkText", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public static GeoCadRoutedCommand VfkActivePoint = new GeoCadRoutedCommand("VfkActivePoint", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand VfkLayerManger = new GeoCadRoutedCommand("VfkLayerManager", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.None);
         public static GeoCadRoutedCommand VfkMeasureArea = new GeoCadRoutedCommand("VfkMeasureArea", typeof(VfkToolBar), GeoCadRoutedCommand.CommandTypes.InfoTool);
-        #endregion
-        #region Constructor
-        public VfkToolBar()
+                        public VfkToolBar()
         {
             InitializeComponent();
             DataContext = this;
@@ -25,9 +22,7 @@ namespace CAD.UITools
             _elementGroupSubCombo.IsEnabled = false;
 
         }
-        #endregion
-        #region Fields & Properties
-        public bool VfkShowPointsIsChecked
+                        public bool VfkShowPointsIsChecked
         {
             get { return ToolBarManager.Document != null && ToolBarManager.Document.DataModel.ViewPointEnable; }
             set
@@ -38,9 +33,7 @@ namespace CAD.UITools
             }
         }
         private bool _lockToolBarChanged;
-        #endregion
-        #region GeoCadToolBar
-        public override void Notify(NotificationType type, object additionData)
+                        public override void Notify(NotificationType type, object additionData)
         {
             base.Notify(type,additionData);
             bool updatePropertyValues = false;
@@ -95,13 +88,10 @@ namespace CAD.UITools
             if (ToolBarManager.Document.DataModel.ShowVfkLayerManager())
                 ToolBarManager.Document.CanvasCommand.InvalidateAll();
         }
-        #endregion
-        #region Events
-        private void OnReloadTool(object sender, SelectionChangedEventArgs e)
+                        private void OnReloadTool(object sender, SelectionChangedEventArgs e)
         {
             if (_lockToolBarChanged) return;
             ToolBarManager.ForceToolBarChange();
         }
-        #endregion
-    }
+            }
 }

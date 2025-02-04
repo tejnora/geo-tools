@@ -2,14 +2,11 @@ namespace DxfLibrary
 {
     public class Header : Section
     {
-        #region Constructor
-        internal Header()
+                internal Header()
             : base("HEADER")
         {
         }
-        #endregion
-        #region Methods
-        public int VariableCount()
+                        public int VariableCount()
         {
             return Elements.Count;
         }
@@ -29,6 +26,5 @@ namespace DxfLibrary
         {
             Elements.Add(v);
         }
-        #endregion
-    }
+            }
 }

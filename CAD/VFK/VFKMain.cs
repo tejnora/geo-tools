@@ -19,10 +19,7 @@ namespace VFK
 {
     public interface IVFKMain
     {
-        VFKPARTable VFKPARTable
-        {
-            get;
-        }
+        VFKPARTable VFKPARTable { get; }
         VFKKATUZETableItem getKATUZE(UInt32 aKodKN);
         VFKKATUZETableItem getSelectedKATUZE();
         List<VfkProxyActivePoint> GetProxyActivePoins();
@@ -57,7 +54,9 @@ namespace VFK
         void DeleteSbm(VFKSBMTableItem aItem);
         void DeleteHbpej(VFKHBPEJTableItem aItem);
         void DeleteSobr(VFKSOBRTableItem item);
+
         void DeleteSpol(VFKSPOLTableItem item);
+
         //
         void WExportHP(IVFKWriter aWriter);
         void WExportDPM(IVFKWriter aWriter);
@@ -71,6 +70,7 @@ namespace VFK
         void WExportZVB(IVFKWriter aWriter);
         void WExportHbpej(IVFKWriter aWriter);
     }
+
     public interface IEditParcel
     {
         VFKMAPLISTable GetMapListTable();
@@ -85,9 +85,9 @@ namespace VFK
 
         VFKDataContext GetDataContext();
         List<VFKBDPTableItem> getExistBDPAItems(VFKPARTableItem aPar);
-        VFKModifyParcelContext ParcelContext
-        { get; set; }
+        VFKModifyParcelContext ParcelContext { get; set; }
     }
+
     [Serializable]
     public class VFKMain : IVFKMain, IEditParcel, ISerializable, IDeserializationCallback
     {
@@ -96,26 +96,33 @@ namespace VFK
             Pritomnoust = 0,
             Budoucnost = 1
         }
-        #region Constats
+
+        
         private const UInt32 PRIZNAK_KONTEXTU_N = 3;
         private const UInt32 PRIZNAK_KONTEXTU_Z = 1;
         public const Int32 STAV_DAT_PRITOMNOST = 0;
+
         public const Int32 STAV_DAT_BUDOUCNOST = 1;
+
         //blok SOBR and SPOL
         public const Int32 SOBR_SPOL_STAV_DAT_NOVY_BOD = 2;
         private const Int32 SOBR_SPOL_STAV_DAT_EXISTUJICI = 0;
+
         public const Int32 SOBR_SPOL_STAV_DAT_NEED_UPDATE = Int32.MaxValue;
+
         //blok SBM
         private const UInt32 SBM_PRIZNAK_KONTEXTU_Z = 1;
         private const UInt32 SBM_PRIZNAK_KONTEXTU_S = 2;
         private const UInt32 SBM_PRIZNAK_KONTEXTU_N = 3;
-        #endregion
+
+        
         public enum VFKDataTypes
         {
             itDKM,
             itKMD
         };
-        #region Constructors
+
+        
         public VFKMain(VFKDataContext aDataContext, IModel model)
         {
             VFKDataContext = aDataContext;
@@ -137,7 +144,8 @@ namespace VFK
             VFKSPOLTable = new VFKSPOLTable();
             VFKKATUZETable = new VFKKATUZETable();
             VFKMAPLISTable = new VFKMAPLISTable();
-            VFKMAPLISTable.addTableData(new VFKMAPLISTableItem() { ID = null, OZNACENI_MAPOVEHO_LISTU = "-----------", });
+            VFKMAPLISTable.addTableData(
+                new VFKMAPLISTableItem() { ID = null, OZNACENI_MAPOVEHO_LISTU = "-----------", });
             VfkTelTable = new VFKTELTable();
             VFKHBPEJTable = new VFKHBPEJTable();
             VFKOBPEJTable = new VFKOBPEJTable();
@@ -146,127 +154,38 @@ namespace VFK
             VFKModifySBPItems = VFKModifySBPItems = new List<VFKSBPTableItem>();
             Model = model;
         }
-        #endregion
-        #region Property
-        public VFKDataContext VFKDataContext
-        {
-            get;
-            set;
-        }
-        public IModel Model
-        {
-            get;
-            private set;
-        }
-        #endregion
-        #region Tables
-        public Header Header
-        {
-            get;
-            set;
-        }
-        public VFKPARTable VFKPARTable
-        {
-            get;
-            set;
-        }
-        public VFKBUDTable VFKBUDTable
-        {
-            get;
-            set;
-        }
-        public VFKBDPTable VFKBDPTable
-        {
-            get;
-            set;
-        }
-        public VFKRZOTable VFKRZOTable
-        {
-            get;
-            set;
-        }
-        public VFKSOBRTable VFKSOBRTable
-        {
-            get;
-            set;
-        }
-        public VFKSBPTable VFKSBPTable
-        {
-            get;
-            set;
-        }
-        public VFKSBMTable VFKSBMTable
-        {
-            get;
-            set;
-        }
-        public VFKHPTable VFKHPTable
-        {
-            get;
-            set;
-        }
-        public VFKZVBTable VFKZVBTable
-        {
-            get;
-            set;
-        }
-        public VFKOBTable VFKOBTable
-        {
-            get;
-            set;
-        }
-        public VFKOPTable VFKOPTable
-        {
-            get;
-            set;
-        }
-        public VFKDPMTable VFKDPMTable
-        {
-            get;
-            set;
-        }
-        public VFKOBBPTable VFKOBBPTable
-        {
-            get;
-            set;
-        }
-        public VFKZPMZTable VFKZPMZTable
-        {
-            get;
-            set;
-        }
-        public VFKSPOLTable VFKSPOLTable
-        {
-            get;
-            set;
-        }
-        public VFKKATUZETable VFKKATUZETable
-        {
-            get;
-            set;
-        }
-        public VFKMAPLISTable VFKMAPLISTable
-        {
-            get;
-            set;
-        }
-        public VFKTELTable VfkTelTable
-        {
-            get;
-            set;
-        }
-        public VFKHBPEJTable VFKHBPEJTable
-        {
-            get;
-            set;
-        }
-        public VFKOBPEJTable VFKOBPEJTable
-        {
-            get;
-            set;
-        }
-        #endregion
-        #region Import
+
+        
+        
+        public VFKDataContext VFKDataContext { get; set; }
+        public IModel Model { get; private set; }
+
+        
+        
+        public Header Header { get; set; }
+        public VFKPARTable VFKPARTable { get; set; }
+        public VFKBUDTable VFKBUDTable { get; set; }
+        public VFKBDPTable VFKBDPTable { get; set; }
+        public VFKRZOTable VFKRZOTable { get; set; }
+        public VFKSOBRTable VFKSOBRTable { get; set; }
+        public VFKSBPTable VFKSBPTable { get; set; }
+        public VFKSBMTable VFKSBMTable { get; set; }
+        public VFKHPTable VFKHPTable { get; set; }
+        public VFKZVBTable VFKZVBTable { get; set; }
+        public VFKOBTable VFKOBTable { get; set; }
+        public VFKOPTable VFKOPTable { get; set; }
+        public VFKDPMTable VFKDPMTable { get; set; }
+        public VFKOBBPTable VFKOBBPTable { get; set; }
+        public VFKZPMZTable VFKZPMZTable { get; set; }
+        public VFKSPOLTable VFKSPOLTable { get; set; }
+        public VFKKATUZETable VFKKATUZETable { get; set; }
+        public VFKMAPLISTable VFKMAPLISTable { get; set; }
+        public VFKTELTable VfkTelTable { get; set; }
+        public VFKHBPEJTable VFKHBPEJTable { get; set; }
+        public VFKOBPEJTable VFKOBPEJTable { get; set; }
+
+        
+        
         public void VFKOpenFile()
         {
             ImportInfoDialog importDialog = new ImportInfoDialog(this);
@@ -275,13 +194,11 @@ namespace VFK
             reader.parseFile(VFKDataContext.FileName);
             importDialog.ShowDialog();
         }
-        #endregion
-        #region ExportVFK
-        public VFKDataTypes VFKDataType
-        {
-            get;
-            set;
-        }
+
+        
+        
+        public VFKDataTypes VFKDataType { get; set; }
+
         public void ExportFile(string aFileName)
         {
             VFKWriter writer = new VFKWriter(this);
@@ -290,8 +207,9 @@ namespace VFK
             dlg.Owner = Application.Current.MainWindow;
             dlg.ShowDialog();
         }
-        #endregion
-        #region KATUZE
+
+        
+        
         public VFKKATUZETableItem getKATUZE(UInt32 aKodKN)
         {
             var katuze = from n in VFKKATUZETable.Items where n.KOD == aKodKN select n;
@@ -299,14 +217,17 @@ namespace VFK
             {
                 return table;
             }
+
             return null;
         }
+
         public VFKKATUZETableItem getSelectedKATUZE()
         {
             return VFKKATUZETable.Items[0];
         }
-        #endregion
-        #region DrawingMethos
+
+        
+        
         public List<VfkProxyActivePoint> GetProxyActivePoins()
         {
             List<VfkProxyActivePoint> points = new List<VfkProxyActivePoint>();
@@ -320,6 +241,7 @@ namespace VFK
                     items = new List<int>();
                     spolTableCache[item.ID] = items;
                 }
+
                 items.Add(counter);
                 counter++;
             }
@@ -344,45 +266,40 @@ namespace VFK
                         throw new ArgumentException("Bylo nalezeno prilis mnoho Sbor bodu.");
                     }
                 }
+
                 points.Add(new VfkProxyActivePoint(item, spolItem, this));
             }
+
             return points;
         }
+
         public List<VfkMultiLine> GetDravingLineObjects()
         {
             CreateProxyObjects();
             return VFKMultiLinesDrawingObjects;
         }
+
         public List<VfkMark> GetDravingMarkObjects()
         {
             CreateProxyObjects();
             return VFKMarksDrawingObjects;
         }
+
         public List<VfkText> GetDrawingTextObjects()
         {
             CreateProxyObjects();
             return VFKTextsDrawingObjects;
         }
-        private List<VfkMultiLine> VFKMultiLinesDrawingObjects
-        {
-            get;
-            set;
-        }
-        private List<VfkMark> VFKMarksDrawingObjects
-        {
-            get;
-            set;
-        }
-        private List<VfkText> VFKTextsDrawingObjects
-        {
-            get;
-            set;
-        }
+
+        private List<VfkMultiLine> VFKMultiLinesDrawingObjects { get; set; }
+        private List<VfkMark> VFKMarksDrawingObjects { get; set; }
+        private List<VfkText> VFKTextsDrawingObjects { get; set; }
         private bool _useImportCache = false;
         private Dictionary<string, int> _sobrCahce = new Dictionary<string, int>();
         private Dictionary<string, List<int>> _hp2SBPTableCache = new Dictionary<string, List<int>>();
         private Dictionary<string, List<int>> _dpm2SBPTableCache = new Dictionary<string, List<int>>();
         private Dictionary<string, List<int>> _ob2SBPTableCache = new Dictionary<string, List<int>>();
+
         private void CreateImportCache()
         {
             _sobrCahce.Clear();
@@ -391,6 +308,7 @@ namespace VFK
             {
                 _sobrCahce.Add(item.ID, i++);
             }
+
             i = 0;
             _hp2SBPTableCache.Clear();
             _dpm2SBPTableCache.Clear();
@@ -404,6 +322,7 @@ namespace VFK
                     hpIds = new List<int>();
                     _hp2SBPTableCache[item.HP_ID] = hpIds;
                 }
+
                 hpIds.Add(i);
                 List<int> dpmIds;
                 if (!_dpm2SBPTableCache.TryGetValue(item.DPM_ID, out dpmIds))
@@ -411,6 +330,7 @@ namespace VFK
                     dpmIds = new List<int>();
                     _dpm2SBPTableCache[item.DPM_ID] = dpmIds;
                 }
+
                 dpmIds.Add(i);
 
                 List<int> obIds;
@@ -419,11 +339,14 @@ namespace VFK
                     obIds = new List<int>();
                     _ob2SBPTableCache[item.OB_ID] = obIds;
                 }
+
                 obIds.Add(i);
                 ++i;
             }
+
             _useImportCache = true;
         }
+
         private void ClearCache()
         {
             _sobrCahce.Clear();
@@ -432,7 +355,9 @@ namespace VFK
             _ob2SBPTableCache.Clear();
             _useImportCache = false;
         }
+
         private bool _mCreatedProxyObjects = false;
+
         private void CreateProxyObjects()
         {
             if (_mCreatedProxyObjects) return;
@@ -453,12 +378,14 @@ namespace VFK
                     continue;
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, line, false));
             }
+
             foreach (var line in _VFKModifyHPItems)
             {
                 if (line.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, line, true));
             }
+
             //END HP
             //BEGIN ZVB
             foreach (var line in VFKZVBTable.Items)
@@ -468,12 +395,14 @@ namespace VFK
                     continue;
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, line, false));
             }
+
             foreach (var line in _VFKModifyZVBItems)
             {
                 if (line.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, line, true));
             }
+
             //END ZVB
             //BEGIN DPM
             foreach (var dpm in VFKDPMTable.Items)
@@ -483,12 +412,14 @@ namespace VFK
                     continue;
                 CreateDPMGraphicsElement(dpm, false);
             }
+
             foreach (var dpm in _VFKModifyDPMItems)
             {
                 if (dpm.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 CreateDPMGraphicsElement(dpm, true);
             }
+
             //END  DPM
             //BEGIN OP
             foreach (var op in VFKOPTable.Items)
@@ -498,12 +429,14 @@ namespace VFK
                     continue;
                 CreateOPGraphicsElement(op, false);
             }
+
             foreach (var opItem in _VFKModifyOPItems)
             {
                 if (opItem.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 CreateOPGraphicsElement(opItem, true);
             }
+
             //END OP
             //BEGIN OBBP
             foreach (var obbp in VFKOBBPTable.Items)
@@ -513,12 +446,14 @@ namespace VFK
                     continue;
                 CreateOBBPGraphicsElement(obbp, false);
             }
+
             foreach (var obbpItem in _VFKModifyOBBPItems)
             {
                 if (obbpItem.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 CreateOBBPGraphicsElement(obbpItem, true);
             }
+
             //END OBBP
             //BEGIN OB
             foreach (var ob in VFKOBTable.Items)
@@ -528,12 +463,14 @@ namespace VFK
                     continue;
                 CreateOBGraphicsElement(ob, false);
             }
+
             foreach (var obItem in _VFKModifyOBItems)
             {
                 if (obItem.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 CreateOBGraphicsElement(obItem, true);
             }
+
             //END OB
             //BEGIN HBPEJ
             foreach (var hbpej in VFKHBPEJTable.Items)
@@ -544,12 +481,14 @@ namespace VFK
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, hbpej, false));
                 //Debug.Assert(hbpej.BPEJ_KOD_HRANICE_2.Length==0); TODO
             }
+
             foreach (var hbpejItem in _VFKModifyHBPEJItems)
             {
                 if (hbpejItem.PRIZNAK_KONTEXTU != PRIZNAK_KONTEXTU_N)
                     continue;
                 VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, hbpejItem, true));
             }
+
             //END HBPEJ
             //BEGIN OBPEJ
             foreach (var obpej in VFKOBPEJTable.Items)
@@ -557,6 +496,7 @@ namespace VFK
                 if (obpej.STAV_DAT != stavDataShow) continue;
                 VFKTextsDrawingObjects.Add(new VfkText(this, obpej));
             }
+
             //TODO
             //END OBPEJ
             ClearCache();
@@ -588,6 +528,7 @@ namespace VFK
                     break;
             }
         }
+
         public void CreateOPGraphicsElement(VFKOPTableItem op, bool fromModifyItems)
         {
             switch (op.OPAR_TYPE)
@@ -600,6 +541,7 @@ namespace VFK
                     }
                     else
                         VFKMarksDrawingObjects.Add(new VfkMark(this, op));
+
                     break;
                 case "PC":
                 case "PPC":
@@ -610,50 +552,53 @@ namespace VFK
                     break;
             }
         }
+
         public void CreateOBBPGraphicsElement(VFKOBBPTableItem obbp, bool fromModifyItems)
         {
             switch (obbp.OBBP_TYPE)
             {
                 case "ZB":
-                    {
-                        VFKMarksDrawingObjects.Add(new VfkMark(this, obbp));
-                    }
+                {
+                    VFKMarksDrawingObjects.Add(new VfkMark(this, obbp));
+                }
                     break;
                 case "CB":
-                    {
-                        VFKTextsDrawingObjects.Add(new VfkText(this, obbp));
-                    }
+                {
+                    VFKTextsDrawingObjects.Add(new VfkText(this, obbp));
+                }
                     break;
                 default:
-                    {
-                        Debug.Assert(false);
-                    }
+                {
+                    Debug.Assert(false);
+                }
                     break;
             }
         }
+
         public void CreateOBGraphicsElement(VFKOBTableItem ob, bool fromModifyItems)
         {
             switch (ob.OBRBUD_TYPE)
             {
                 case "OB":
                 case "ZDB":
-                    {
-                        //Obvod budovy evidované v SPI
-                        if (ob.TYPPPD_KOD == 21700)
-                            VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, ob, fromModifyItems));
-                        else
-                            VFKMarksDrawingObjects.Add(new VfkMark(this, ob));
-                    }
+                {
+                    //Obvod budovy evidované v SPI
+                    if (ob.TYPPPD_KOD == 21700)
+                        VFKMultiLinesDrawingObjects.Add(new VfkMultiLine(this, ob, fromModifyItems));
+                    else
+                        VFKMarksDrawingObjects.Add(new VfkMark(this, ob));
+                }
                     break;
                 default:
-                    {
-                        Debug.Assert(false);
-                        break;
-                    }
+                {
+                    Debug.Assert(false);
+                    break;
+                }
             }
         }
-        #endregion
-        #region private methods
+
+        
+        
         private void InitDataTableBaseItems(VFKDataTableBaseItemWithProp aItem, VFKDataTableBase aOwnerTable)
         {
             aItem.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_N;
@@ -661,11 +606,13 @@ namespace VFK
             aItem.ID = aOwnerTable.getMaxValueFromBlock().ToString();
             aOwnerTable.UpdateMaxValue(aItem.ID);
         }
+
         private void InitDataRemoveTableBaseItem(VFKDataTableBaseItemWithProp aItem)
         {
             aItem.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
             aItem.STAV_DAT = STAV_DAT_BUDOUCNOST;
         }
+
         private void InitBeforeExport(VFKDataTableBaseItemWithProp aItem)
         {
             switch (aItem.PRIZNAK_KONTEXTU)
@@ -681,9 +628,11 @@ namespace VFK
                     throw new UnExpectException();
             }
         }
-        #endregion
-        #region DPM
+
+        
+        
         private List<VFKDPMTableItem> _VFKModifyDPMItems = new List<VFKDPMTableItem>();
+
         public VFKDPMTableItem UpdateDPM(VFKDPMTableItem aValue)
         {
             if (aValue == null)
@@ -697,6 +646,7 @@ namespace VFK
                 _VFKModifyDPMItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var dpm = (from n in _VFKModifyDPMItems where n.ID == aValue.ID select n).ToList();
@@ -705,6 +655,7 @@ namespace VFK
                     _VFKModifyDPMItems.Add(aValue);
                     return aValue;
                 }
+
                 if (dpm.Count() == 1)
                 {
                     dpm.ToList()[0] = aValue;
@@ -712,12 +663,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyDPMItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteDPM(VFKDPMTableItem aItem)
         {
             var item = from n in _VFKModifyDPMItems where n.ID == aItem.ID select n;
@@ -727,12 +681,14 @@ namespace VFK
                 _VFKModifyDPMItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKDPMTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKDPMTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyDPMItems.Add(newItem);
         }
+
         public void WExportDPM(IVFKWriter aWriter)
         {
             foreach (var dpmT in _VFKModifyDPMItems)
@@ -763,9 +719,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region OP
+
+        
+        
         private List<VFKOPTableItem> _VFKModifyOPItems = new List<VFKOPTableItem>();
+
         public VFKOPTableItem UpdateOP(VFKOPTableItem aValue)
         {
             if (aValue == null)
@@ -777,6 +735,7 @@ namespace VFK
                 newItem.UHEL = double.MaxValue;
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var op = (from n in _VFKModifyOPItems where n.ID == aValue.ID select n).ToList();
@@ -785,6 +744,7 @@ namespace VFK
                     _VFKModifyOPItems.Add(aValue);
                     return aValue;
                 }
+
                 if (op.Count() == 1)
                 {
                     op.ToList()[0] = aValue;
@@ -792,12 +752,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyOPItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteOP(VFKOPTableItem aItem)
         {
             var item = from n in _VFKModifyOPItems where n.ID == aItem.ID select n;
@@ -807,19 +770,21 @@ namespace VFK
                 _VFKModifyOPItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKOPTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKOPTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyOPItems.Add(newItem);
         }
+
         public void WExportOP(IVFKWriter aWriter)
         {
             foreach (var opT in _VFKModifyOPItems)
             {
                 var op = (VFKOPTableItem)opT.Clone();
                 InitBeforeExport(op);
-                op.PAR_ID = "0";//todo
+                op.PAR_ID = "0"; //todo
                 aWriter.AddOP(op);
                 if (op.TYPPPD_KOD == 1032)
                 {
@@ -839,9 +804,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region OBBP
+
+        
+        
         private List<VFKOBBPTableItem> _VFKModifyOBBPItems = new List<VFKOBBPTableItem>();
+
         public VFKOBBPTableItem UpdateOBBP(VFKOBBPTableItem aValue)
         {
             if (aValue == null)
@@ -853,6 +820,7 @@ namespace VFK
                 newItem.UHEL = double.MaxValue;
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var obbp = (from n in _VFKModifyOBBPItems where n.ID == aValue.ID select n).ToList();
@@ -861,6 +829,7 @@ namespace VFK
                     _VFKModifyOBBPItems.Add(aValue);
                     return aValue;
                 }
+
                 if (obbp.Count() == 1)
                 {
                     obbp.ToList()[0] = aValue;
@@ -868,12 +837,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyOBBPItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteOBBP(VFKOBBPTableItem aItem)
         {
             var item = from n in _VFKModifyOBBPItems where n.ID == aItem.ID select n;
@@ -883,12 +855,14 @@ namespace VFK
                 _VFKModifyOBBPItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKOBBPTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKOBBPTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyOBBPItems.Add(newItem);
         }
+
         public void WExportOBBP(IVFKWriter aWriter)
         {
             foreach (var obT in _VFKModifyOBBPItems)
@@ -903,9 +877,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region OB
+
+        
+        
         private List<VFKOBTableItem> _VFKModifyOBItems = new List<VFKOBTableItem>();
+
         public VFKOBTableItem UpdateOB(VFKOBTableItem aValue)
         {
             if (aValue == null)
@@ -913,12 +889,13 @@ namespace VFK
                 VFKOBTableItem newItem = new VFKOBTableItem();
                 InitDataTableBaseItems(newItem, VFKOBTable);
                 _VFKModifyOBItems.Add(newItem);
-                newItem.BUD_ID = "0";//tod
+                newItem.BUD_ID = "0"; //tod
                 newItem.VELIKOST = double.MaxValue;
                 newItem.UHEL = double.MaxValue;
 
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var ob = (from n in _VFKModifyOBItems where n.ID == aValue.ID select n).ToList();
@@ -927,6 +904,7 @@ namespace VFK
                     _VFKModifyOBItems.Add(aValue);
                     return aValue;
                 }
+
                 if (ob.Count() == 1)
                 {
                     ob.ToList()[0] = aValue;
@@ -934,12 +912,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyOBItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteOB(VFKOBTableItem aItem)
         {
             var item = from n in _VFKModifyOBItems where n.ID == aItem.ID select n;
@@ -949,12 +930,14 @@ namespace VFK
                 _VFKModifyOBItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKOBTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKOBTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyOBItems.Add(newItem);
         }
+
         public void WExportOB(IVFKWriter aWriter)
         {
             foreach (var obT in _VFKModifyOBItems)
@@ -969,9 +952,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region HBPEJ
+
+        
+        
         private List<VFKHBPEJTableItem> _VFKModifyHBPEJItems = new List<VFKHBPEJTableItem>();
+
         public VFKHBPEJTableItem UpdateHbpej(VFKHBPEJTableItem aValue)
         {
             if (aValue == null)
@@ -981,6 +966,7 @@ namespace VFK
                 _VFKModifyHBPEJItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var hbpej = (from n in _VFKModifyHBPEJItems where n.ID == aValue.ID select n).ToList();
@@ -989,6 +975,7 @@ namespace VFK
                     _VFKModifyHBPEJItems.Add(aValue);
                     return aValue;
                 }
+
                 if (hbpej.Count() == 1)
                 {
                     hbpej.ToList()[0] = aValue;
@@ -996,12 +983,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyHBPEJItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteHbpej(VFKHBPEJTableItem aItem)
         {
             var item = from n in _VFKModifyHBPEJItems where n.ID == aItem.ID select n;
@@ -1011,12 +1001,14 @@ namespace VFK
                 _VFKModifyHBPEJItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKHBPEJTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKHBPEJTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyHBPEJItems.Add(newItem);
         }
+
         public void WExportHbpej(IVFKWriter aWriter)
         {
             foreach (var obT in _VFKModifyHBPEJItems)
@@ -1031,13 +1023,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region SBP
-        public List<VFKSBPTableItem> VFKModifySBPItems
-        {
-            get;
-            set;
-        }
+
+        
+        
+        public List<VFKSBPTableItem> VFKModifySBPItems { get; set; }
+
         public VFKSBPTableItem UpdateSBP(VFKSBPTableItem aValue)
         {
             if (aValue == null)
@@ -1047,6 +1037,7 @@ namespace VFK
                 VFKModifySBPItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var sbp = (from n in VFKModifySBPItems where n.ID == aValue.ID select n).ToList();
@@ -1055,6 +1046,7 @@ namespace VFK
                     VFKModifySBPItems.Add(aValue);
                     return aValue;
                 }
+
                 if (sbp.Count() == 1)
                 {
                     sbp.ToList()[0] = aValue;
@@ -1062,12 +1054,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 VFKModifySBPItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteSBP(VFKSBPTableItem aItem)
         {
             var item = from n in VFKModifySBPItems where n.ID == aItem.ID select n;
@@ -1077,12 +1072,14 @@ namespace VFK
                 VFKModifySBPItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKSBPTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKSBPTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             VFKModifySBPItems.Add(newItem);
         }
+
         private void WExportSBP(IVFKWriter aWriter, VFKSBPTableItem aItem)
         {
             aItem = (VFKSBPTableItem)aItem.Clone();
@@ -1093,6 +1090,7 @@ namespace VFK
             {
                 WExportSOBR(aWriter, tempSobr, IsItemRemoved(aItem));
             }
+
             //            aItem.ZVB_ID = "0";//todo from ISKN so empty
             aWriter.AddSBP(aItem);
         }
@@ -1102,9 +1100,10 @@ namespace VFK
             return aItem.PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_Z && aItem.STAV_DAT == STAV_DAT_PRITOMNOST;
         }
 
-        #endregion
-        #region Sbm
+        
+        
         public List<VFKSBMTableItem> VFKModifySBMItems = new List<VFKSBMTableItem>();
+
         public VFKSBMTableItem UpdateSbm(VFKSBMTableItem aValue)
         {
             if (aValue == null)
@@ -1115,20 +1114,23 @@ namespace VFK
                 VFKModifySBMItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.PRIZNAK_KONTEXTU == SBM_PRIZNAK_KONTEXTU_N)
             {
                 var sbm = (from n in VFKModifySBMItems
-                           where n.DPM_ID == aValue.DPM_ID && n.HBPEJ_ID == aValue.HBPEJ_ID
-                                 && n.OP_ID == aValue.OP_ID && n.PARAMETRY_SPOJENI == aValue.PARAMETRY_SPOJENI
-                                 && n.PORADOVE_CISLO_BODU == aValue.PORADOVE_CISLO_BODU &&
-                                 n.SOURADNICE_X == aValue.SOURADNICE_X
-                                 && n.SOURADNICE_Y == aValue.SOURADNICE_Y
-                           select n).ToList();
+                    where n.DPM_ID == aValue.DPM_ID && n.HBPEJ_ID == aValue.HBPEJ_ID
+                                                    && n.OP_ID == aValue.OP_ID &&
+                                                    n.PARAMETRY_SPOJENI == aValue.PARAMETRY_SPOJENI
+                                                    && n.PORADOVE_CISLO_BODU == aValue.PORADOVE_CISLO_BODU &&
+                                                    n.SOURADNICE_X == aValue.SOURADNICE_X
+                                                    && n.SOURADNICE_Y == aValue.SOURADNICE_Y
+                    select n).ToList();
                 if (sbm.Count == 0)
                 {
                     VFKModifySBMItems.Add(aValue);
                     return aValue;
                 }
+
                 if (sbm.Count() == 1)
                 {
                     sbm.ToList()[0] = aValue;
@@ -1136,44 +1138,53 @@ namespace VFK
                 }
             }
             else if (aValue.PRIZNAK_KONTEXTU == SBM_PRIZNAK_KONTEXTU_S)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 VFKModifySBMItems.RemoveAll(n => n.DPM_ID == aValue.DPM_ID && n.HBPEJ_ID == aValue.HBPEJ_ID
-                                                  && n.OP_ID == aValue.OP_ID &&
-                                                  n.PARAMETRY_SPOJENI == aValue.PARAMETRY_SPOJENI
-                                                  && n.PORADOVE_CISLO_BODU == aValue.PORADOVE_CISLO_BODU &&
-                                                  n.SOURADNICE_X == aValue.SOURADNICE_X
-                                                  && n.SOURADNICE_Y == aValue.SOURADNICE_Y);
+                                                                           && n.OP_ID == aValue.OP_ID &&
+                                                                           n.PARAMETRY_SPOJENI ==
+                                                                           aValue.PARAMETRY_SPOJENI
+                                                                           && n.PORADOVE_CISLO_BODU ==
+                                                                           aValue.PORADOVE_CISLO_BODU &&
+                                                                           n.SOURADNICE_X == aValue.SOURADNICE_X
+                                                                           && n.SOURADNICE_Y == aValue.SOURADNICE_Y);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteSbm(VFKSBMTableItem aItem)
         {
             var item = from n in VFKModifySBMItems
-                       where n.DPM_ID == aItem.DPM_ID && n.HBPEJ_ID == aItem.HBPEJ_ID
-                             && n.OP_ID == aItem.OP_ID && n.PARAMETRY_SPOJENI == aItem.PARAMETRY_SPOJENI
-                             && n.PORADOVE_CISLO_BODU == aItem.PORADOVE_CISLO_BODU &&
-                             n.SOURADNICE_X == aItem.SOURADNICE_X
-                             && n.SOURADNICE_Y == aItem.SOURADNICE_Y
-                       select n;
+                where n.DPM_ID == aItem.DPM_ID && n.HBPEJ_ID == aItem.HBPEJ_ID
+                                               && n.OP_ID == aItem.OP_ID &&
+                                               n.PARAMETRY_SPOJENI == aItem.PARAMETRY_SPOJENI
+                                               && n.PORADOVE_CISLO_BODU == aItem.PORADOVE_CISLO_BODU &&
+                                               n.SOURADNICE_X == aItem.SOURADNICE_X
+                                               && n.SOURADNICE_Y == aItem.SOURADNICE_Y
+                select n;
             if (item.Count() > 0)
             {
                 Debug.Assert(item.Count() == 1);
                 VFKModifySBMItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKSBMTable.Items
-                   where n.DPM_ID == aItem.DPM_ID && n.HBPEJ_ID == aItem.HBPEJ_ID
-                         && n.OP_ID == aItem.OP_ID && n.PARAMETRY_SPOJENI == aItem.PARAMETRY_SPOJENI
-                         && n.PORADOVE_CISLO_BODU == aItem.PORADOVE_CISLO_BODU &&
-                         n.SOURADNICE_X == aItem.SOURADNICE_X
-                         && n.SOURADNICE_Y == aItem.SOURADNICE_Y
-                   select n;
+                where n.DPM_ID == aItem.DPM_ID && n.HBPEJ_ID == aItem.HBPEJ_ID
+                                               && n.OP_ID == aItem.OP_ID &&
+                                               n.PARAMETRY_SPOJENI == aItem.PARAMETRY_SPOJENI
+                                               && n.PORADOVE_CISLO_BODU == aItem.PORADOVE_CISLO_BODU &&
+                                               n.SOURADNICE_X == aItem.SOURADNICE_X
+                                               && n.SOURADNICE_Y == aItem.SOURADNICE_Y
+                select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKSBMTableItem)item.First().Clone();
             newItem.PRIZNAK_KONTEXTU = SBM_PRIZNAK_KONTEXTU_Z;
             VFKModifySBMItems.Add(newItem);
         }
+
         private void WExportSbm(IVFKWriter aWriter, VFKSBMTableItem aItem)
         {
             VFKSBMTableItem item = (VFKSBMTableItem)aItem.Clone();
@@ -1183,9 +1194,11 @@ namespace VFK
                 item.DATUM_ZANIKU = DateTime.Now;
             aWriter.AddSbm(item);
         }
-        #endregion
-        #region HP
+
+        
+        
         private List<VFKHPTableItem> _VFKModifyHPItems = new List<VFKHPTableItem>();
+
         public VFKHPTableItem UpdateHP(VFKHPTableItem aValue)
         {
             if (aValue == null)
@@ -1195,6 +1208,7 @@ namespace VFK
                 _VFKModifyHPItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var hp = (from n in _VFKModifyHPItems where n.ID == aValue.ID select n).ToList();
@@ -1203,6 +1217,7 @@ namespace VFK
                     _VFKModifyHPItems.Add(aValue);
                     return aValue;
                 }
+
                 if (hp.Count() == 1)
                 {
                     hp.ToList()[0] = aValue;
@@ -1210,12 +1225,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyHPItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteHP(VFKHPTableItem aItem)
         {
             var item = from n in _VFKModifyHPItems where n.ID == aItem.ID select n;
@@ -1225,12 +1243,14 @@ namespace VFK
                 _VFKModifyHPItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKHPTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKHPTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyHPItems.Add(newItem);
         }
+
         public void WExportHP(IVFKWriter aWriter)
         {
             foreach (var hpT in _VFKModifyHPItems)
@@ -1247,9 +1267,11 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region ZVB
+
+        
+        
         private List<VFKZVBTableItem> _VFKModifyZVBItems = new List<VFKZVBTableItem>();
+
         public VFKZVBTableItem UpdateZVB(VFKZVBTableItem aValue)
         {
             if (aValue == null)
@@ -1260,6 +1282,7 @@ namespace VFK
                 _VFKModifyZVBItems.Add(newItem);
                 return newItem;
             }
+
             if (aValue.STAV_DAT == STAV_DAT_BUDOUCNOST)
             {
                 var zvb = (from n in _VFKModifyZVBItems where n.ID == aValue.ID select n).ToList();
@@ -1268,6 +1291,7 @@ namespace VFK
                     _VFKModifyZVBItems.Add(aValue);
                     return aValue;
                 }
+
                 if (zvb.Count() == 1)
                 {
                     zvb.ToList()[0] = aValue;
@@ -1275,12 +1299,15 @@ namespace VFK
                 }
             }
             else if (aValue.STAV_DAT == STAV_DAT_PRITOMNOST)
-            {//UndoRedo, item form import
+            {
+                //UndoRedo, item form import
                 _VFKModifyZVBItems.RemoveAll(n => n.ID == aValue.ID);
                 return aValue;
             }
+
             throw new UnExpectException();
         }
+
         public void DeleteZVB(VFKZVBTableItem aItem)
         {
             var item = from n in _VFKModifyZVBItems where n.ID == aItem.ID select n;
@@ -1290,12 +1317,14 @@ namespace VFK
                 _VFKModifyZVBItems.Remove(item.First());
                 return;
             }
+
             item = from n in VFKZVBTable.Items where n.ID == aItem.ID select n;
             Debug.Assert(item.Count() == 1);
             var newItem = (VFKZVBTableItem)item.First().Clone();
             InitDataRemoveTableBaseItem(newItem);
             _VFKModifyZVBItems.Add(newItem);
         }
+
         public void WExportZVB(IVFKWriter aWriter)
         {
             foreach (var zvbT in _VFKModifyZVBItems)
@@ -1311,8 +1340,9 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region SPOL
+
+        
+        
         public bool CanDeleteSobrAndSpol(string aSobrId)
         {
             var sobr = VFKSOBRTable.Items.FindAll(x => x.ID == aSobrId);
@@ -1323,6 +1353,7 @@ namespace VFK
                 return false;
             return true;
         }
+
         public VFKSPOLTableItem updateSPOL(VFKSPOLTableItem value, VFKSOBRTableItem aAssociatetTable)
         {
             if (value == null)
@@ -1341,16 +1372,19 @@ namespace VFK
                 VFKSPOLTable.addTableData(newItem);
                 return newItem;
             }
+
             Debug.Assert(!VFKSPOLTable.Items.Contains(value));
             VFKSPOLTable.addTableData(value);
             return value;
         }
+
         public void DeleteSpol(VFKSPOLTableItem value)
         {
             var spol = (from n in VFKSPOLTable.Items where n.ID == value.ID select n).ToList();
             Debug.Assert(spol.Count == 1 && spol[0].STAV_DAT == SOBR_SPOL_STAV_DAT_NOVY_BOD);
             VFKSPOLTable.Items.RemoveAll(x => x.ID == value.ID);
         }
+
         public void WExportSPOL(IVFKWriter aWriter)
         {
             foreach (var spolT in VFKSPOLTable.Items)
@@ -1364,6 +1398,7 @@ namespace VFK
                 aWriter.AddSPOL(spol);
             }
         }
+
         private void WExportSPOL(IVFKWriter aWriter, VFKSPOLTableItem aItem, bool aParentIsRemoved)
         {
             var spol = (VFKSPOLTableItem)aItem.Clone();
@@ -1380,20 +1415,23 @@ namespace VFK
                     ResourceParams par = new ResourceParams();
                     par.Add("number", spol.UPLNE_CISLO.ToString());
                     var res = LanguageDictionary.Current.ShowMessageBox("142", par, MessageBoxButton.OKCancel,
-                                  MessageBoxImage.Error);
+                        MessageBoxImage.Error);
                     if (res == MessageBoxResult.Cancel)
                     {
                         throw new ExportExcetiption(LanguageDictionary.Current.Translate("E1", "Text",
-                                                                                         par));
+                            par));
                     }
+
                     return;
                 }
+
                 spol.STAV_DAT = SOBR_SPOL_STAV_DAT_NOVY_BOD;
                 aWriter.AddSPOL(spol);
             }
         }
-        #endregion
-        #region SOBR
+
+        
+        
         public VFKSOBRTableItem getSouradniceBodu(string aId)
         {
             if (_useImportCache)
@@ -1402,8 +1440,10 @@ namespace VFK
                 {
                     return VFKSOBRTable.Items[_sobrCahce[aId]];
                 }
+
                 throw new UnExpectException();
             }
+
             var point = from n in VFKSOBRTable.Items where n.ID == aId select n;
             VFKSOBRTableItem retValue = null;
             foreach (var p in point)
@@ -1411,6 +1451,7 @@ namespace VFK
                 System.Diagnostics.Debug.Assert(retValue == null);
                 retValue = p;
             }
+
             System.Diagnostics.Debug.Assert(retValue != null);
             return retValue;
         }
@@ -1430,10 +1471,11 @@ namespace VFK
             else
             {
                 sbpPoint = (from n in VFKSBPTable.Items
-                            where n.HP_ID == hpId
-                            orderby n.PORADOVE_CISLO_BODU
-                            select n).ToList();
+                    where n.HP_ID == hpId
+                    orderby n.PORADOVE_CISLO_BODU
+                    select n).ToList();
             }
+
             return sbpPoint;
         }
 
@@ -1452,10 +1494,11 @@ namespace VFK
             else
             {
                 sbpPoint = (from n in VFKSBPTable.Items
-                            where n.DPM_ID == dpmId
-                            orderby n.PORADOVE_CISLO_BODU
-                            select n).ToList();
+                    where n.DPM_ID == dpmId
+                    orderby n.PORADOVE_CISLO_BODU
+                    select n).ToList();
             }
+
             return sbpPoint;
         }
 
@@ -1474,10 +1517,11 @@ namespace VFK
             else
             {
                 sbpPoint = (from n in VFKSBPTable.Items
-                            where n.OB_ID == obId
-                            orderby n.PORADOVE_CISLO_BODU
-                            select n).ToList();
+                    where n.OB_ID == obId
+                    orderby n.PORADOVE_CISLO_BODU
+                    select n).ToList();
             }
+
             return sbpPoint;
         }
 
@@ -1494,16 +1538,19 @@ namespace VFK
                 VFKSOBRTable.addTableData(newItem);
                 return newItem;
             }
+
             Debug.Assert(!VFKSOBRTable.Items.Contains(value));
             VFKSOBRTable.addTableData(value);
             return value;
         }
+
         public void DeleteSobr(VFKSOBRTableItem value)
         {
             var sobr = (from n in VFKSOBRTable.Items where n.ID == value.ID select n).ToList();
             Debug.Assert(sobr.Count == 1 && sobr[0].STAV_DAT == SOBR_SPOL_STAV_DAT_NOVY_BOD);
             VFKSOBRTable.Items.RemoveAll(x => x.ID == value.ID);
         }
+
         private void WExportSOBR(IVFKWriter aWriter, VFKSOBRTableItem aItem, bool aParentIsRemoved)
         {
             aItem = (VFKSOBRTableItem)aItem.Clone();
@@ -1517,6 +1564,7 @@ namespace VFK
                 aItem.STAV_DAT = SOBR_SPOL_STAV_DAT_NOVY_BOD;
                 aWriter.AddSOBR(aItem);
             }
+
             var spols = from n in VFKSPOLTable.Items where n.ID == aItem.ID select n;
             if (spols.Count() != 1)
             {
@@ -1524,8 +1572,10 @@ namespace VFK
                 par.Add("number", aItem.UPLNE_CISLO.ToString());
                 throw new ExportExcetiption(LanguageDictionary.Current.Translate("E2", "Text", par));
             }
+
             WExportSPOL(aWriter, spols.First(), aParentIsRemoved);
         }
+
         public void WExportSOBR(IVFKWriter aWriter)
         {
             foreach (var sobrT in VFKSOBRTable.Items)
@@ -1537,8 +1587,9 @@ namespace VFK
                 aWriter.AddSOBR(sobr);
             }
         }
-        #endregion
-        #region ZPMZ
+
+        
+        
         public void WExportZPMZ(IVFKWriter aWriter)
         {
             VFKZPMZTableItem zpmz = new VFKZPMZTableItem();
@@ -1548,9 +1599,11 @@ namespace VFK
             zpmz.TYPSOS_KOD = (UInt32)VFKDataContext.SouradnicovySystem;
             aWriter.AddZPMZ(zpmz);
         }
-        #endregion
-        #region Bdp
+
+        
+        
         List<VFKBDPTableItem> _bdbModifyTableItems = new List<VFKBDPTableItem>();
+
         public VFKBDPTableItem GetNewBdp()
         {
             VFKBDPTableItem bdp = new VFKBDPTableItem();
@@ -1560,6 +1613,7 @@ namespace VFK
             _bdbModifyTableItems.Add(bdp);
             return bdp;
         }
+
         public void DeleteBdp(VFKBDPTableItem bdp)
         {
             if (bdp.ItemFromImport())
@@ -1574,6 +1628,7 @@ namespace VFK
                 _bdbModifyTableItems.Remove(bdp);
             }
         }
+
         public void DeleteAllBdp(string parId)
         {
             var bdps = (from n in VFKBDPTable.Items where n.PAR_ID == parId select n).ToList();
@@ -1582,15 +1637,17 @@ namespace VFK
                 DeleteBdp(bdp);
             }
         }
+
         public void RestoreBdpAfterRemoveParcelFromEdit(string parId)
         {
             _bdbModifyTableItems.RemoveAll(x => x.PAR_ID == parId);
         }
+
         public List<VFKBDPTableItem> getExistBDPAItems(VFKPARTableItem aPar)
         {
             var returnBdp =
-                (from n in VFKBDPTable.Items where n.PAR_ID == aPar.ID && n.STAV_DAT == STAV_DAT_PRITOMNOST select n).
-                    ToList();
+                (from n in VFKBDPTable.Items where n.PAR_ID == aPar.ID && n.STAV_DAT == STAV_DAT_PRITOMNOST select n)
+                .ToList();
             foreach (var bdpModify in _bdbModifyTableItems)
             {
                 if (bdpModify.PAR_ID != aPar.ID)
@@ -1600,18 +1657,20 @@ namespace VFK
                 if (bdpModify.PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_Z)
                 {
                     var ret = (from n in returnBdp
-                               where
-                                   n.BPEJ_KOD == bdpModify.BPEJ_KOD && n.PAR_ID == bdpModify.PAR_ID &&
-                                   n.RIZENI_ID_VZNIKU == bdpModify.RIZENI_ID_VZNIKU &&
-                                   n.RIZENI_ID_ZANIKU == bdpModify.RIZENI_ID_ZANIKU &&
-                                   n.VYMERA == bdpModify.VYMERA
-                               select n).ToList();
+                        where
+                            n.BPEJ_KOD == bdpModify.BPEJ_KOD && n.PAR_ID == bdpModify.PAR_ID &&
+                            n.RIZENI_ID_VZNIKU == bdpModify.RIZENI_ID_VZNIKU &&
+                            n.RIZENI_ID_ZANIKU == bdpModify.RIZENI_ID_ZANIKU &&
+                            n.VYMERA == bdpModify.VYMERA
+                        select n).ToList();
                     if (ret.Count > 0)
                         returnBdp.Remove(ret.First());
                 }
             }
+
             return returnBdp;
         }
+
         private void WExportBdp(IVFKWriter aWriter, VFKPARTableItem par)
         {
             var bdps = from n in _bdbModifyTableItems where n.PAR_ID == par.ID select n;
@@ -1630,15 +1689,18 @@ namespace VFK
                     default:
                         throw new UnExpectException();
                 }
+
                 aWriter.AddBDP(bdpc);
             }
         }
-        #endregion
-        #region IEditParcel PAR
+
+        
+        
         public VFKMAPLISTable GetMapListTable()
         {
             return VFKMAPLISTable;
         }
+
         public VFKTELTableItem GetTELItem(string aTelId)
         {
             var tel = from n in VfkTelTable.Items where n.ID == aTelId select n;
@@ -1649,12 +1711,13 @@ namespace VFK
                 return tel.First();
             }
         }
+
         public List<VFKPARTableItem> GetPARItems()
         {
-
             UInt32 stavDataShow = (UInt32)VFKDataContext.CilImportuEntrie.StavData;
             return (from n in VFKPARTable.Items where n.STAV_DAT == stavDataShow select n).ToList();
         }
+
         public VFKPARTableItem GetNewParcel()
         {
             VFKPARTableItem newPar = new VFKPARTableItem();
@@ -1681,11 +1744,14 @@ namespace VFK
             newPar.IDENT_PS = "n";
             return newPar;
         }
+
         public VFKDataContext GetDataContext()
         {
             return VFKDataContext;
         }
+
         VFKModifyParcelContext _VFKModifyParcelContext = null;
+
         public VFKModifyParcelContext ParcelContext
         {
             get
@@ -1694,11 +1760,9 @@ namespace VFK
                     _VFKModifyParcelContext = new VFKModifyParcelContext(this);
                 return _VFKModifyParcelContext;
             }
-            set
-            {
-                _VFKModifyParcelContext = value;
-            }
+            set { _VFKModifyParcelContext = value; }
         }
+
         public void WExportPAR(IVFKWriter aWriter)
         {
             if (_VFKModifyParcelContext == null) return;
@@ -1707,52 +1771,54 @@ namespace VFK
                 switch (parT.ParcelModification)
                 {
                     case EditedParcelNode.ParcelModificationEnum.New:
-                        {
-                            VFKPARTableItem par = (VFKPARTableItem)parT.PAR.Clone();
-                            InitBeforeExport(par);
-                            aWriter.AddPAR(par);
-                        }
+                    {
+                        VFKPARTableItem par = (VFKPARTableItem)parT.PAR.Clone();
+                        InitBeforeExport(par);
+                        aWriter.AddPAR(par);
+                    }
                         break;
                     case EditedParcelNode.ParcelModificationEnum.Modify:
-                        {
-                            var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
-                            Debug.Assert(oPar.Count() != 0);
-                            //remove old
-                            VFKPARTableItem par = (VFKPARTableItem)oPar.First().Clone();
-                            par.STAV_DAT = STAV_DAT_PRITOMNOST;
-                            par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
-                            aWriter.AddPAR(par);
-                            //add modify
-                            par = (VFKPARTableItem)parT.PAR.Clone();
-                            par.STAV_DAT = STAV_DAT_BUDOUCNOST;
-                            par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_N;
-                            aWriter.AddPAR(par);
-                        }
+                    {
+                        var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
+                        Debug.Assert(oPar.Count() != 0);
+                        //remove old
+                        VFKPARTableItem par = (VFKPARTableItem)oPar.First().Clone();
+                        par.STAV_DAT = STAV_DAT_PRITOMNOST;
+                        par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
+                        aWriter.AddPAR(par);
+                        //add modify
+                        par = (VFKPARTableItem)parT.PAR.Clone();
+                        par.STAV_DAT = STAV_DAT_BUDOUCNOST;
+                        par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_N;
+                        aWriter.AddPAR(par);
+                    }
                         break;
                     case EditedParcelNode.ParcelModificationEnum.Cancel:
+                    {
+                        var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
+                        System.Diagnostics.Debug.Assert(oPar.Count() != 0);
+                        VFKPARTableItem par = (VFKPARTableItem)oPar.First().Clone();
+                        par.STAV_DAT = STAV_DAT_PRITOMNOST;
+                        par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
+                        aWriter.AddPAR(par);
+                        var bdps = from n in VFKBDPTable.Items where n.PAR_ID == par.ID select n;
+                        foreach (var bdp in bdps)
                         {
-                            var oPar = from n in VFKPARTable.Items where n.ID == parT.PAR.ID select n;
-                            System.Diagnostics.Debug.Assert(oPar.Count() != 0);
-                            VFKPARTableItem par = (VFKPARTableItem)oPar.First().Clone();
-                            par.STAV_DAT = STAV_DAT_PRITOMNOST;
-                            par.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
-                            aWriter.AddPAR(par);
-                            var bdps = from n in VFKBDPTable.Items where n.PAR_ID == par.ID select n;
-                            foreach (var bdp in bdps)
-                            {
-                                var bdpc = (VFKBDPTableItem)bdp.Clone();
-                                bdpc.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
-                                bdpc.STAV_DAT = STAV_DAT_PRITOMNOST;
-                                aWriter.AddBDP(bdpc);
-                            }
+                            var bdpc = (VFKBDPTableItem)bdp.Clone();
+                            bdpc.PRIZNAK_KONTEXTU = PRIZNAK_KONTEXTU_Z;
+                            bdpc.STAV_DAT = STAV_DAT_PRITOMNOST;
+                            aWriter.AddBDP(bdpc);
                         }
+                    }
                         break;
                 }
+
                 WExportBdp(aWriter, parT.PAR);
             }
         }
-        #endregion
-        #region Serialzece & Deserializace
+
+        
+        
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("VFKDataContext", VFKDataContext, typeof(VFKDataContext));
@@ -1790,6 +1856,7 @@ namespace VFK
             info.AddValue("VFKModifyBDPItems", _bdbModifyTableItems, typeof(List<VFKBDPTableItem>));
             info.AddValue("VFKModifyParcelContext", _VFKModifyParcelContext, typeof(VFKModifyParcelContext));
         }
+
         public VFKMain(SerializationInfo info, StreamingContext ctxt)
         {
             VFKDataContext = (VFKDataContext)info.GetValue("VFKDataContext", typeof(VFKDataContext));
@@ -1815,27 +1882,36 @@ namespace VFK
             VFKHBPEJTable = info.GetValue("VFKHBPEJTable", typeof(VFKHBPEJTable)) as VFKHBPEJTable;
             VFKOBPEJTable = info.GetValue("VFKOBPEJTable", typeof(VFKOBPEJTable)) as VFKOBPEJTable;
 
-            _VFKModifyDPMItems = info.GetValue("VFKModifyDPMItems", typeof(List<VFKDPMTableItem>)) as List<VFKDPMTableItem>;
+            _VFKModifyDPMItems =
+                info.GetValue("VFKModifyDPMItems", typeof(List<VFKDPMTableItem>)) as List<VFKDPMTableItem>;
             _VFKModifyOPItems = info.GetValue("VFKModifyOPItems", typeof(List<VFKOPTableItem>)) as List<VFKOPTableItem>;
-            _VFKModifyOBBPItems = info.GetValue("VFKModifyOBBPItems", typeof(List<VFKOBBPTableItem>)) as List<VFKOBBPTableItem>;
+            _VFKModifyOBBPItems =
+                info.GetValue("VFKModifyOBBPItems", typeof(List<VFKOBBPTableItem>)) as List<VFKOBBPTableItem>;
             _VFKModifyOBItems = info.GetValue("VFKModifyOBItems", typeof(List<VFKOBTableItem>)) as List<VFKOBTableItem>;
-            _VFKModifyHBPEJItems = info.GetValue("VFKModifyHBPEJItems", typeof(List<VFKHBPEJTableItem>)) as List<VFKHBPEJTableItem>;
-            VFKModifySBPItems = info.GetValue("VFKModifySBPItems", typeof(List<VFKSBPTableItem>)) as List<VFKSBPTableItem>;
-            VFKModifySBMItems = info.GetValue("VFKModifySBMItems", typeof(List<VFKSBMTableItem>)) as List<VFKSBMTableItem>;
+            _VFKModifyHBPEJItems =
+                info.GetValue("VFKModifyHBPEJItems", typeof(List<VFKHBPEJTableItem>)) as List<VFKHBPEJTableItem>;
+            VFKModifySBPItems =
+                info.GetValue("VFKModifySBPItems", typeof(List<VFKSBPTableItem>)) as List<VFKSBPTableItem>;
+            VFKModifySBMItems =
+                info.GetValue("VFKModifySBMItems", typeof(List<VFKSBMTableItem>)) as List<VFKSBMTableItem>;
             _VFKModifyHPItems = info.GetValue("VFKModifyHPItems", typeof(List<VFKHPTableItem>)) as List<VFKHPTableItem>;
-            _VFKModifyZVBItems = info.GetValue("VFKModifyZVBItems", typeof(List<VFKZVBTableItem>)) as List<VFKZVBTableItem>;
-            _bdbModifyTableItems = info.GetValue("VFKModifyBDPItems", typeof(List<VFKBDPTableItem>)) as List<VFKBDPTableItem>;
-            _VFKModifyParcelContext = info.GetValue("VFKModifyParcelContext", typeof(VFKModifyParcelContext)) as VFKModifyParcelContext;
+            _VFKModifyZVBItems =
+                info.GetValue("VFKModifyZVBItems", typeof(List<VFKZVBTableItem>)) as List<VFKZVBTableItem>;
+            _bdbModifyTableItems =
+                info.GetValue("VFKModifyBDPItems", typeof(List<VFKBDPTableItem>)) as List<VFKBDPTableItem>;
+            _VFKModifyParcelContext =
+                info.GetValue("VFKModifyParcelContext", typeof(VFKModifyParcelContext)) as VFKModifyParcelContext;
         }
-        #endregion
-        #region IDeserializationCallback Members
+
+        
+        
         public void OnDeserialization(object sender)
         {
             if (_VFKModifyParcelContext != null)
                 _VFKModifyParcelContext.IEditParcel = this;
         }
-        #endregion
 
+        
         public void ImportEditedParcel()
         {
             if (VFKDataContext.CilImportuEntrie.StavData != StavData.Budoucnost) return;
@@ -1849,22 +1925,24 @@ namespace VFK
                 switch (par.Count)
                 {
                     case 1:
-                        {
-                            newNode = new EditedParcelNode(this, par[0]);
-                            newNode.ParcelModification = par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N
-                                ? EditedParcelNode.ParcelModificationEnum.New
-                                : EditedParcelNode.ParcelModificationEnum.Cancel;
-                        }
+                    {
+                        newNode = new EditedParcelNode(this, par[0]);
+                        newNode.ParcelModification = par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N
+                            ? EditedParcelNode.ParcelModificationEnum.New
+                            : EditedParcelNode.ParcelModificationEnum.Cancel;
+                    }
                         break;
                     case 2:
-                        {
-                            newNode = new EditedParcelNode(this, par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N ? par[0] : par[1]);
-                            newNode.ParcelModification = EditedParcelNode.ParcelModificationEnum.Modify;
-                        }
+                    {
+                        newNode = new EditedParcelNode(this,
+                            par[0].PRIZNAK_KONTEXTU == PRIZNAK_KONTEXTU_N ? par[0] : par[1]);
+                        newNode.ParcelModification = EditedParcelNode.ParcelModificationEnum.Modify;
+                    }
                         break;
                     default:
                         continue;
                 }
+
                 ParcelContext.ParcelNode.Add(newNode);
             }
         }

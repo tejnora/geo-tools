@@ -24,8 +24,7 @@ namespace VFK.Tables
         {
             isEdited = false;
         }
-        #region VFKDefinition
-        [VFKDefinitionAttribute(DefinitionFieldType.Number, 30, 0, false, 7)]
+                [VFKDefinitionAttribute(DefinitionFieldType.Number, 30, 0, false, 7)]
         public string PKN_ID
         {
             get;
@@ -170,8 +169,7 @@ namespace VFK.Tables
             get;
             set;
         }
-        #endregion
-        public bool isEdited
+                public bool isEdited
         {
             get;
             set;

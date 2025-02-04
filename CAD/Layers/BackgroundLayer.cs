@@ -12,14 +12,11 @@ namespace CAD.Canvas.Layers
 {
     public class BackgroundLayer : ICanvasLayer, ISerialize
     {
-        #region Constructors
-        public BackgroundLayer()
+                public BackgroundLayer()
         {
             _backgroundBrush = new SolidBrush(_color);
         }
-        #endregion
-        #region Properties & Fields
-        SolidBrush _backgroundBrush;
+                        SolidBrush _backgroundBrush;
         Color _color = Color.Black;
         [XmlSerializable]
         public Color Color
@@ -31,9 +28,7 @@ namespace CAD.Canvas.Layers
                 _backgroundBrush = new SolidBrush(_color);
             }
         }
-        #endregion
-        #region ICanvasLayer Members
-        public void Draw(ICanvas canvas, Rect unitrect)
+                        public void Draw(ICanvas canvas, Rect unitrect)
         {
             Rect r = ScreenUtils.ToScreenNormalized(canvas, unitrect);
             canvas.Graphics.FillRectangle(_backgroundBrush, r.ToRectangleF());
@@ -100,9 +95,7 @@ namespace CAD.Canvas.Layers
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region ISerialize
-        public void GetObjectData(XmlWriter wr)
+                        public void GetObjectData(XmlWriter wr)
         {
             wr.WriteStartElement("backgroundlayer");
             XmlUtil.WriteProperties(this, wr);
@@ -111,6 +104,5 @@ namespace CAD.Canvas.Layers
         public void AfterSerializedIn()
         {
         }
-        #endregion
-    }
+            }
 }

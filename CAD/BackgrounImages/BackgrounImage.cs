@@ -14,8 +14,7 @@ namespace CAD.BackgrounImages
 {
     class BackgrounImage : IDrawObject, ISerialize
     {
-        #region Constructors
-        public BackgrounImage(string aLocation)
+                public BackgrounImage(string aLocation)
         {
             _imageLocation = aLocation;
         }
@@ -24,14 +23,10 @@ namespace CAD.BackgrounImages
         {
             _imageLocation = string.Empty;
         }
-        #endregion
-        #region Property
-        private string _imageLocation;
+                        private string _imageLocation;
         private IImage _image = null;
         private Rectangle _imageRect = Rectangle.Empty;
-        #endregion
-        #region IDrawObject
-        public string Id 
+                        public string Id 
         {
             get
             {
@@ -126,14 +121,11 @@ namespace CAD.BackgrounImages
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region ISerialize
-        public void GetObjectData(XmlWriter wr)
+                        public void GetObjectData(XmlWriter wr)
         {
         }
         public void AfterSerializedIn()
         {
         }
-        #endregion
-    }
+            }
 }

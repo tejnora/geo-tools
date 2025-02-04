@@ -7,8 +7,7 @@ namespace CAD.Canvas.DrawTools
 {
     class SnapPointBase : ISnapPoint
     {
-        #region Constructor
-        public SnapPointBase(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)
+                public SnapPointBase(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)
         {
             _owner = owner;
             _snappoint = snappoint;
@@ -18,18 +17,14 @@ namespace CAD.Canvas.DrawTools
             _boundingRect.Width = size;
             _boundingRect.Height = size;
         }
-        #endregion
-        #region Property & Fields
-        protected UnitPoint _snappoint;
+                        protected UnitPoint _snappoint;
         protected Rect _boundingRect;
         protected IDrawObject _owner;
         public IDrawObject Owner
         {
             get { return _owner; }
         }
-        #endregion
-        #region ISnapPoint Members
-        public virtual UnitPoint SnapPoint
+                        public virtual UnitPoint SnapPoint
         {
             get { return _snappoint; }
         }
@@ -40,9 +35,7 @@ namespace CAD.Canvas.DrawTools
         public virtual void Draw(ICanvas canvas)
         {
         }
-        #endregion
-        #region Methods
-        protected void DrawPoint(ICanvas canvas, Pen pen, Brush fillBrush)
+                        protected void DrawPoint(ICanvas canvas, Pen pen, Brush fillBrush)
         {
             Rectangle screenrect = ScreenUtils.ConvertRect(ScreenUtils.ToScreenNormalized(canvas, _boundingRect));
             canvas.Graphics.DrawRectangle(pen, screenrect);
@@ -53,21 +46,18 @@ namespace CAD.Canvas.DrawTools
             if (fillBrush != null)
                 canvas.Graphics.FillRectangle(fillBrush, screenrect);
         }
-        #endregion
-    }
+            }
     class GridSnapPoint : SnapPointBase
     {
         public GridSnapPoint(ICanvas canvas, UnitPoint snappoint)
             : base(canvas, null, snappoint)
         {
         }
-        #region ISnapPoint Members
-        public override void Draw(ICanvas canvas)
+                public override void Draw(ICanvas canvas)
         {
             DrawPoint(canvas, Pens.Gray, null);
         }
-        #endregion
-    }
+            }
     class VertextSnapPoint : SnapPointBase
     {
         public VertextSnapPoint(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)
@@ -107,13 +97,11 @@ namespace CAD.Canvas.DrawTools
             : base(canvas, owner, snappoint)
         {
         }
-        #region ISnapPoint Members
-        public override void Draw(ICanvas canvas)
+                public override void Draw(ICanvas canvas)
         {
             DrawPoint(canvas, Pens.White, Brushes.YellowGreen);
         }
-        #endregion
-    }
+            }
     class QuadrantSnapPoint : SnapPointBase
     {
         public QuadrantSnapPoint(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)

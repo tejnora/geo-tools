@@ -29,8 +29,7 @@ namespace CAD.Utils
     [Serializable]
     public abstract class BaseObject : ICloneable, INotifyPropertyChanged
     {
-        #region ICloneable
-        /// <summary>
+                /// <summary>
         /// Clone the object, and returning a reference to a cloned object.
         /// </summary>
         /// <returns>Reference to the new cloned object.</returns>
@@ -133,14 +132,11 @@ namespace CAD.Utils
             }
             return newObject;
         }
-        #endregion
-        #region INotifyPropertyChanged
-        protected virtual void OnPropertyChanged(string propertyName)
+                        protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-    }
+            }
 }

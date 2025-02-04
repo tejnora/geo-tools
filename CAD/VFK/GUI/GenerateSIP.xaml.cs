@@ -198,8 +198,7 @@ namespace VFK.GUI
                 return vym.ToString();
             }
         }
-        #region INotifyPropertyChanged
-        private void OnPropertyChangedAll()
+                private void OnPropertyChangedAll()
         {
             OnPropertyChanged("SelectedParcelNode");
         }
@@ -209,8 +208,7 @@ namespace VFK.GUI
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        #endregion
-    }
+            }
 
 
     [ValueConversion(typeof(EditedParcelNode.ParcelModificationEnum), typeof(String))]

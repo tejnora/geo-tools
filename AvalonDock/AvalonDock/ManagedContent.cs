@@ -197,8 +197,7 @@ namespace AvalonDock
         }
 
 
-        #region Mouse management
-
+        
         protected virtual void OnDragStart(Point ptMouse, Point ptrelativeMouse)
         {
         
@@ -303,8 +302,7 @@ namespace AvalonDock
         }
 
 
-        #endregion
-
+        
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
@@ -525,8 +523,7 @@ namespace AvalonDock
             { _floatingResizeMode = value; }
         }
 
-        #region INotifyPropertyChanged Members
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -534,8 +531,7 @@ namespace AvalonDock
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
-
+        
 
         public bool IsCloseable
         {

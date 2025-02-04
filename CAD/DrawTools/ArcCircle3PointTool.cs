@@ -13,8 +13,7 @@ namespace CAD.Canvas.DrawTools
 {
     class NodePointArc3PointPoint : INodePoint
     {
-        #region Constructors
-        public NodePointArc3PointPoint(Arc3Point owner, Arc3Point.ECurrentPoint curpoint)
+                public NodePointArc3PointPoint(Arc3Point owner, Arc3Point.ECurrentPoint curpoint)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc3Point;
@@ -26,16 +25,12 @@ namespace CAD.Canvas.DrawTools
             OriginalPoints[2] = Owner.P3;
             CurPoint = curpoint;
         }
-        #endregion
-        #region Fields
-        protected Arc3Point Owner;
+                        protected Arc3Point Owner;
         protected Arc3Point Clone;
         protected UnitPoint[] OriginalPoints = new UnitPoint[3];
         protected UnitPoint[] EndPoints = new UnitPoint[3];
         protected Arc3Point.ECurrentPoint CurPoint;
-        #endregion
-        #region INodePoint Members
-        public IDrawObject GetClone()
+                        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -126,13 +121,11 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-        #endregion
-    }
+            }
     [Serializable]
     class Arc3Point : DrawObjectBase, IArc, IDrawObject, IDeserializationCallback
     {
-        #region Enums
-        public enum EArcType
+                public enum EArcType
         {
             KArc3P132,
             KArc3P123,
@@ -157,9 +150,7 @@ namespace CAD.Canvas.DrawTools
             get { return CurPoint; }
             set { CurPoint = value; }
         }
-        #endregion
-        #region Fields & Propery
-        EArcType _type = EArcType.KArc3P132;
+                        EArcType _type = EArcType.KArc3P132;
         UnitPoint _p1 = UnitPoint.Empty;
         UnitPoint _p2 = UnitPoint.Empty;
         UnitPoint _p3 = UnitPoint.Empty;
@@ -212,9 +203,7 @@ namespace CAD.Canvas.DrawTools
         protected static int ThresholdPixel = 6;
         protected ECurrentPoint CurPoint = ECurrentPoint.Done;
         protected UnitPoint LastPoint = UnitPoint.Empty;
-        #endregion
-        #region Constructors
-        public Arc3Point()
+                        public Arc3Point()
         {
         }
         public Arc3Point(EArcType type)
@@ -222,18 +211,14 @@ namespace CAD.Canvas.DrawTools
             _type = type;
             CurPoint = ECurrentPoint.P1;
         }
-        #endregion
-        #region DrawObjectBase
-        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             Width = layer.Width;
             Color = layer.Color;
             Selected = true;
             OnMouseDown(null, point, snap);
         }
-        #endregion
-        #region Methods
-        public void Copy(Arc3Point acopy)
+                        public void Copy(Arc3Point acopy)
         {
             base.Copy(acopy);
             _p1 = acopy._p1;
@@ -271,9 +256,7 @@ namespace CAD.Canvas.DrawTools
         {
             get { return (float)GetSweep(StartAngle, EndAngle, Direction); }
         }
-        #endregion
-        #region IDrawObject Members
-        public virtual string Id
+                        public virtual string Id
         {
             get { return DrawToolBar.Arc3Points.Name; }
         }
@@ -727,14 +710,11 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region IDeserializationCallback Members
-
+                
         public void OnDeserialization(object sender)
         {
             UpdateArcFrom3Points();
 
         }
-        #endregion
-    }
+            }
 }

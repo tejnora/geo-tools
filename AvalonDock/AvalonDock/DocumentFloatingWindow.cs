@@ -192,8 +192,7 @@ namespace AvalonDock
             this.Visibility = Visibility.Visible;
             base.OnHideSelectionBox();
         }
-        #region Commands
-
+        
         protected override void OnExecuteCommand(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == TabbedDocumentCommand)
@@ -217,9 +216,7 @@ namespace AvalonDock
         }
 
         
-        #endregion
-        //#region Drag
-        //protected override IntPtr FilterMessage(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+                //        //protected override IntPtr FilterMessage(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         //{
         //    handled = false;
 
@@ -311,8 +308,7 @@ namespace AvalonDock
 
         //    return IntPtr.Zero;
         //}
-        //#endregion
-
+        //
         protected override void Redock()
         {
             if (_previousPane != null)

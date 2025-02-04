@@ -7,19 +7,14 @@ namespace CAD.VFK.GUI
 {
     public partial class ExportInfoDialog : DialogBase
     {
-        #region Constructor
-        public ExportInfoDialog(ExportInfoDialogContext context)
+                public ExportInfoDialog(ExportInfoDialogContext context)
             : base("ExportInfoDialog")
         {
             InitializeComponent();
             Context = context;
         }
-        #endregion
-        #region Property
-        public ExportInfoDialogContext Context { get; set; }
-        #endregion
-        #region Methods
-        public new bool? ShowDialog()
+                        public ExportInfoDialogContext Context { get; set; }
+                        public new bool? ShowDialog()
         {
             StringBuilder content = new StringBuilder();
             content.Append("\n");
@@ -77,8 +72,7 @@ namespace CAD.VFK.GUI
         {
             return string.Format("{0}\t\t\t{1}\t\t{2}\t\t{3}\n", aName, aExported._zrusen, aExported._soucasny,aExported._budouci);
         }
-        #endregion
-    }
+            }
 
     public class ExportInfoDialogContext
     {
@@ -122,8 +116,7 @@ namespace CAD.VFK.GUI
             public Int32 _soucasny;
             public Int32 _budouci;
         }
-        #region Pocet Exportovanych Elementu
-        public PKStavData PAR { get; set; }
+                public PKStavData PAR { get; set; }
         public PKStavData BUD { get; set; }
         public PKStavData RZO { get; set; }
         public PKStavData BDP { get; set; }
@@ -140,6 +133,5 @@ namespace CAD.VFK.GUI
         public PKStavData ZVB { get; set; }
         public PKStavData NZ { get; set; }
         public SOBR_SPOL_StavData SPOL { get; set; }
-        #endregion
-    }
+            }
 }

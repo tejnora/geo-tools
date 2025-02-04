@@ -16,8 +16,7 @@ namespace VFK.GUI
 {
     public class CadasterViewModel : INotifyPropertyChanged
     {
-        #region Data
-
+        
         readonly ReadOnlyCollection<CadasterViewModel> _children;
         readonly CadasterViewModel _parent;
         readonly CadasterNamesTreeNode _cadasterNamesTreeNode;
@@ -25,10 +24,8 @@ namespace VFK.GUI
         bool _isExpanded;
         bool _isSelected;
 
-        #endregion // Data
-
-        #region Constructors
-
+        
+        
         public CadasterViewModel(CadasterNamesTreeNode cadasterNamesTreeNode)
             : this(cadasterNamesTreeNode, null)
         {
@@ -45,10 +42,8 @@ namespace VFK.GUI
                      .ToList<CadasterViewModel>());
         }
 
-        #endregion // Constructors
-
-        #region CadasterNamesTreeNode Properties
-
+        
+        
         public ReadOnlyCollection<CadasterViewModel> Children
         {
             get { return _children; }
@@ -64,12 +59,9 @@ namespace VFK.GUI
             get { return _cadasterNamesTreeNode; }
         }
 
-        #endregion // CadasterNamesTreeNode Properties
-
-        #region Presentation Members
-
-        #region IsExpanded
-
+        
+        
+        
         /// <summary>
         /// Gets/sets whether the TreeViewItem 
         /// associated with this object is expanded.
@@ -91,10 +83,8 @@ namespace VFK.GUI
             }
         }
 
-        #endregion // IsExpanded
-
-        #region IsSelected
-
+        
+        
         /// <summary>
         /// Gets/sets whether the TreeViewItem 
         /// associated with this object is selected.
@@ -112,10 +102,8 @@ namespace VFK.GUI
             }
         }
 
-        #endregion // IsSelected
-
-        #region NameContainsText
-
+        
+        
         public bool NameContainsText(string text)
         {
             if (String.IsNullOrEmpty(text) || String.IsNullOrEmpty(this.Name))
@@ -124,21 +112,16 @@ namespace VFK.GUI
             return this.Name.IndexOf(text, StringComparison.InvariantCultureIgnoreCase) > -1;
         }
 
-        #endregion // NameContainsText
-
-        #region Parent
-
+        
+        
         public CadasterViewModel Parent
         {
             get { return _parent; }
         }
 
-        #endregion // Parent
-
-        #endregion // Presentation Members
-
-        #region INotifyPropertyChanged Members
-
+        
+        
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -147,13 +130,11 @@ namespace VFK.GUI
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion // INotifyPropertyChanged Members
-    }
+            }
 
     public class CadasterTreeViewModel
     {
-        #region Data
-
+        
         readonly Collection<CadasterViewModel> _firstGeneration;
         readonly ICommand _searchCommand;
         public TreeView OwnerControl
@@ -164,10 +145,8 @@ namespace VFK.GUI
         IEnumerator<CadasterViewModel> _matchingPeopleEnumerator;
         string _searchText = String.Empty;
 
-        #endregion // Data
-
-        #region Constructor
-
+        
+        
         public CadasterTreeViewModel(CadasterNamesTreeNode rootCadasterNamesTreeNode, TreeView aTreeView)
         {
             _firstGeneration = new Collection<CadasterViewModel>();
@@ -180,12 +159,9 @@ namespace VFK.GUI
             _searchCommand = new SearchFamilyTreeCommand(this);
         }
 
-        #endregion // Constructor
-
-        #region Properties
-
-        #region FirstGeneration
-
+        
+        
+        
         /// <summary>
         /// Returns a read-only collection containing the first person 
         /// in the family tree, to which the TreeView can bind.
@@ -195,10 +171,8 @@ namespace VFK.GUI
             get { return _firstGeneration; }
         }
 
-        #endregion // FirstGeneration
-
-        #region SearchCommand
-
+        
+        
         /// <summary>
         /// Returns the command used to execute a search in the family tree.
         /// </summary>
@@ -238,10 +212,8 @@ namespace VFK.GUI
             }
         }
 
-        #endregion // SearchCommand
-
-        #region SearchText
-
+        
+        
         /// <summary>
         /// Gets/sets a fragment of the name to search for.
         /// </summary>
@@ -259,12 +231,9 @@ namespace VFK.GUI
             }
         }
 
-        #endregion // SearchText
-
-        #endregion // Properties
-
-        #region Search Logic
-
+        
+        
+        
         void PerformSearch()
         {
             if (_matchingPeopleEnumerator == null || !_matchingPeopleEnumerator.MoveNext())
@@ -314,8 +283,7 @@ namespace VFK.GUI
                     yield return match;
         }
 
-        #endregion // Search Logic
-    }
+            }
 
     public class CadasterNamesTreeNode
     {

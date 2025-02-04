@@ -118,8 +118,7 @@ namespace AvalonDock
 
         }
 
-        #region Active Content Management
-        ManagedContent lastActiveContent = null;
+                ManagedContent lastActiveContent = null;
 
         protected override void OnActivated(EventArgs e)
         {
@@ -140,10 +139,8 @@ namespace AvalonDock
             }
             base.OnDeactivated(e);
         } 
-        #endregion
-
-        #region IsClosing Flag Management
-        public void Close(bool force)
+        
+                public void Close(bool force)
         {
             ForcedClosing = force;
             base.Close();
@@ -176,13 +173,11 @@ namespace AvalonDock
             IsClosing = false;
             base.OnClosed(e);
         }
-        #endregion
-
+        
         public abstract Pane ClonePane();
 
 
-        #region Enable/Disable window Close Button
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+                [DllImport("User32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr GetSystemMenu(
             IntPtr hWnd,
             Int32 bRevert
@@ -232,10 +227,8 @@ namespace AvalonDock
             DrawMenuBar(helper.Handle);
         }
 
-        #endregion
-
-        #region Non-Client area management
-
+        
+        
         protected const int WM_MOVE = 0x0003;
         protected const int WM_SIZE = 0x0005;
         protected const int WM_NCMOUSEMOVE = 0xa0;
@@ -250,8 +243,7 @@ namespace AvalonDock
 
 
 
-        #region Load/Unload window events
-        HwndSource _hwndSource;
+                HwndSource _hwndSource;
         HwndSourceHook _wndProcHandler;
 
         protected void OnLoaded(object sender, EventArgs e)
@@ -275,8 +267,7 @@ namespace AvalonDock
             if (_hwndSource != null)
                 _hwndSource.RemoveHook(_wndProcHandler);
         }
-        #endregion
-
+        
 
         protected virtual IntPtr FilterMessage(
             IntPtr hwnd,
@@ -353,10 +344,8 @@ namespace AvalonDock
 
             return IntPtr.Zero;
         }
-        #endregion
-
-        #region Floating/dockable window state
-        bool _dockableWindow = true;
+        
+                bool _dockableWindow = true;
 
         public bool IsDockableWindow
         {
@@ -390,10 +379,8 @@ namespace AvalonDock
         { 
             
         }
-        #endregion
-
-        #region Commands
-        private static object syncRoot = new object();
+        
+                private static object syncRoot = new object();
 
         private static RoutedUICommand tabbedDocumentCommand = null;
         public static RoutedUICommand TabbedDocumentCommand
@@ -486,10 +473,8 @@ namespace AvalonDock
             else
                 e.CanExecute = true;
         }
-        #endregion
-
-        #region INotifyPropertyChanged Members
-
+        
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -497,6 +482,5 @@ namespace AvalonDock
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
-    }
+            }
 }

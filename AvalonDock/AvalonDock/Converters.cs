@@ -37,8 +37,7 @@ namespace AvalonDock
     public class FindResourcePathConverter : IValueConverter
     {
 
-        #region IValueConverter Members
-
+        
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null)
@@ -55,8 +54,7 @@ namespace AvalonDock
             throw new NotImplementedException();
         }
 
-        #endregion
-    }
+            }
 
     /// <summary>
     /// Converter from boolean values to visibility (inverse mode)

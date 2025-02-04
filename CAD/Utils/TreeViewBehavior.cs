@@ -6,8 +6,7 @@ namespace CAD.Utils
 {
     public static class TreeViewItemBehavior
     {
-        #region IsBroughtIntoViewWhenSelected
-
+        
         public static bool GetIsBroughtIntoViewWhenSelected(TreeViewItem treeViewItem)
         {
             return (bool)treeViewItem.GetValue(IsBroughtIntoViewWhenSelectedProperty);
@@ -55,6 +54,5 @@ namespace CAD.Utils
                 item.BringIntoView();
         }
 
-        #endregion // IsBroughtIntoViewWhenSelected
-    }
+            }
 }

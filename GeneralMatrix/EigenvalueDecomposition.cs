@@ -23,8 +23,7 @@ namespace DotNetMatrix
 	[Serializable]
 	public class EigenvalueDecomposition : System.Runtime.Serialization.ISerializable
 	{
-		#region	 Class variables
-		
+	
 		/// <summary>Row and column dimension (square matrix).
 		/// @serial matrix dimension.
 		/// </summary>
@@ -55,10 +54,8 @@ namespace DotNetMatrix
 		/// </summary>
 		private double[] ort;
 		
-		#endregion //  Class variables
-
-		#region Private Methods
 		
+				
 		// Symmetric Householder reduction to tridiagonal form.
 		
 		private void  tred2()
@@ -997,11 +994,9 @@ namespace DotNetMatrix
 			}
 		}
 
-		#endregion //  Private Methods
+				
 		
-		
-		#region Constructor
-		
+				
 		/// <summary>Check for symmetry, then construct the eigenvalue decomposition</summary>
 		/// <param name="Arg">   Square matrix
 		/// </param>
@@ -1070,10 +1065,8 @@ namespace DotNetMatrix
 			}
 		}
 
-		#endregion //  Constructor
-		
-		#region Public Properties
-		/// <summary>Return the real parts of the eigenvalues</summary>
+				
+				/// <summary>Return the real parts of the eigenvalues</summary>
 		/// <returns>     real(diag(D))
 		/// </returns>
 		virtual public double[] RealEigenvalues
@@ -1121,10 +1114,8 @@ namespace DotNetMatrix
 				return X;
 			}
 		}
-		#endregion //  Public Properties
-		
-		#region Public Methods
-		
+				
+				
 		/// <summary>Return the eigenvector matrix</summary>
 		/// <returns>     V
 		/// </returns>
@@ -1133,8 +1124,7 @@ namespace DotNetMatrix
 		{
 			return new GeneralMatrix(V, n, n);
 		}
-		#endregion //  Public Methods
-
+		
 		// A method called when serializing this class.
 		void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context) 
 		{

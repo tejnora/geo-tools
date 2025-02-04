@@ -18,8 +18,7 @@ namespace DotNetMatrix
 	[Serializable]
 	public class LUDecomposition : System.Runtime.Serialization.ISerializable
 	{
-		#region Class variables
-		
+				
 		/// <summary>Array for internal storage of decomposition.
 		/// @serial internal array storage.
 		/// </summary>
@@ -37,10 +36,8 @@ namespace DotNetMatrix
 		/// </summary>
 		private int[] piv;
 		
-		#endregion //  Class variables
-
-		#region Constructor
 		
+				
 		/// <summary>LU Decomposition</summary>
 		/// <param name="A">  Rectangular matrix
 		/// </param>
@@ -124,10 +121,8 @@ namespace DotNetMatrix
 				}
 			}
 		}
-		#endregion //  Constructor
-				
-		#region Public Properties
-		/// <summary>Is the matrix nonsingular?</summary>
+						
+				/// <summary>Is the matrix nonsingular?</summary>
 		/// <returns>     true if U, and hence A, is nonsingular.
 		/// </returns>
 		virtual public bool IsNonSingular
@@ -233,10 +228,8 @@ namespace DotNetMatrix
 			}
 		}
 
-		#endregion //  Public Properties
-		
-		#region Public Methods
-		
+				
+				
 		/// <summary>Determinant</summary>
 		/// <returns>     det(A)
 		/// </returns>
@@ -312,8 +305,7 @@ namespace DotNetMatrix
 			return Xmat;
 		}
 
-		#endregion //  Public Methods
-
+		
 		// A method called when serializing this class.
 		void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context) 
 		{

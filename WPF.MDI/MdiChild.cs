@@ -14,8 +14,7 @@ namespace WPF.MDI
     [ContentProperty("Content")]
     public class MdiChild : Control
     {
-        #region Dependency Properties
-
+        
         /// <summary>
         /// Identifies the WPF.MDI.MdiChild.ContentProperty dependency property.
         /// </summary>
@@ -85,10 +84,8 @@ namespace WPF.MDI
             DependencyProperty.Register("WindowState", typeof(WindowState), typeof(MdiChild),
             new UIPropertyMetadata(WindowState.Normal, new PropertyChangedCallback(WindowStateValueChanged)));
         
-        #endregion
-
-        #region Depedency Events
-
+        
+        
         /// <summary>
         /// Identifies the WPF.MDI.MdiChild.ClosingEvent routed event.
         /// </summary>
@@ -103,10 +100,8 @@ namespace WPF.MDI
         public static readonly RoutedEvent ClosedEvent =
             EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventArgs), typeof(MdiChild));
 
-        #endregion
-
-        #region Property Accessors
-
+        
+        
         /// <summary>
         /// Gets or sets the content.
         /// This is a dependency property.
@@ -206,10 +201,8 @@ namespace WPF.MDI
             set { SetValue(WindowStateProperty, value); }
         }
         
-        #endregion
-
-        #region Event Accessors
-
+        
+        
         public event RoutedEventHandler Closing
         {
             add { AddHandler(ClosingEvent, value); }
@@ -222,20 +215,16 @@ namespace WPF.MDI
             remove { RemoveHandler(ClosedEvent, value); }
         }
 
-        #endregion
-
-        #region Member Declarations
-
-        #region Top Buttons
-
+        
+        
+        
         private Button minimizeButton;
 
         private Button maximizeButton;
 
         private Button closeButton;
 
-        #endregion
-
+        
         /// <summary>
         /// Gets or sets the container.
         /// </summary>
@@ -244,8 +233,7 @@ namespace WPF.MDI
 
         private Rect originalDimension;
 
-        #endregion
-
+        
         /// <summary>
         /// Initializes the <see cref="MdiChild"/> class.
         /// </summary>
@@ -264,8 +252,7 @@ namespace WPF.MDI
             LoadPosSizeFromStream = false;
         }
 
-        #region Control Events
-
+        
         /// <summary>
         /// Handles the Loaded event of the MdiChild control.
         /// </summary>
@@ -294,10 +281,8 @@ namespace WPF.MDI
             Focus();
         }
 
-        #endregion
-
-        #region Control Overrides
-
+        
+        
         /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate"/>.
         /// </summary>
@@ -433,10 +418,8 @@ namespace WPF.MDI
             Focused = true;
         }
 
-        #endregion
-
-        #region Top Button Events
-
+        
+        
         /// <summary>
         /// Handles the Click event of the minimizeButton control.
         /// </summary>
@@ -481,10 +464,8 @@ namespace WPF.MDI
             RaiseEvent(new RoutedEventArgs(ClosedEvent));
         }
 
-        #endregion
-
-        #region Thumb Events
-
+        
+        
         /// <summary>
         /// Handles the DragStarted event of the Thumb control.
         /// </summary>
@@ -562,10 +543,8 @@ namespace WPF.MDI
                 Container.InvalidateSize();
         }
 
-        #endregion
-
-        #region Control Drag Event
-
+        
+        
         /// <summary>
         /// Handles the DragDelta event of the dragThumb control.
         /// </summary>
@@ -586,10 +565,8 @@ namespace WPF.MDI
             Container.InvalidateSize();
         }
 
-        #endregion
-
-        #region Dependency Property Events
-
+        
+        
         /// <summary>
         /// Dependency property event once the focused value has changed.
         /// </summary>
@@ -790,8 +767,7 @@ namespace WPF.MDI
             }
         }
         
-        #endregion
-
+        
         /// <summary>
         /// Set focus to the child window and brings into view.
         /// </summary>

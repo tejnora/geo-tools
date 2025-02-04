@@ -6,17 +6,14 @@ namespace CAD.GUI
     public partial class VfkNumberPropPage
         : PpWindow
     {
-        #region Constructor
-        public VfkNumberPropPage(IDrawObject owner)
+                public VfkNumberPropPage(IDrawObject owner)
             :base("GUI\\VFKNumberPropPage")
         {
             InitializeComponent();
             SetOwner(owner);
             DataContext = this;
         }
-        #endregion
-        #region Properties & Fields
-        private VfkTextsEdit _numbers;
+                        private VfkTextsEdit _numbers;
         private string _textBoxContent;
         public string TextBoxContent
         {
@@ -52,9 +49,7 @@ namespace CAD.GUI
                 OnSaveValues();
             }
         }
-        #endregion
-        #region Methods
-        public override sealed void SetOwner(IDrawObject aOwner)
+                        public override sealed void SetOwner(IDrawObject aOwner)
         {
             _numbers = (VfkTextsEdit)aOwner;
             OnLoadValues();
@@ -74,6 +69,5 @@ namespace CAD.GUI
             TextSize = _numbers.VyskaTextu;
             _loading = false;
         }
-        #endregion
-    }
+            }
 }

@@ -19,22 +19,17 @@ namespace CAD.Canvas.DrawTools
     }
     class NodePointArcCenter : INodePoint
     {
-        #region Constructor
-        public NodePointArcCenter(Arc owner)
+                public NodePointArcCenter(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
             OriginalPoint = Owner.Center;
         }
-        #endregion
-        #region Fields
-        protected Arc Owner;
+                        protected Arc Owner;
         protected Arc Clone;
         protected UnitPoint OriginalPoint;
         protected UnitPoint EndPoint;
-        #endregion
-        #region INodePoint Members
-        public IDrawObject GetClone()
+                        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -69,12 +64,10 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-        #endregion
-    }
+            }
     class NodePointArcRadius : INodePoint
     {
-        #region Constructor
-        public NodePointArcRadius(Arc owner)
+                public NodePointArcRadius(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
@@ -82,15 +75,11 @@ namespace CAD.Canvas.DrawTools
                 Clone.CurrentPoint = Owner.CurrentPoint;
             OriginalValue = Owner.Radius;
         }
-        #endregion
-        #region Fields
-        protected Arc Owner;
+                        protected Arc Owner;
         protected Arc Clone;
         protected float OriginalValue;
         protected float EndValue;
-        #endregion
-        #region INodePoint Members
-        public IDrawObject GetClone()
+                        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -124,12 +113,10 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-        #endregion
-    }
+            }
     class NodePointArcAngle : INodePoint
     {
-        #region Constructor
-        public NodePointArcAngle(Arc owner)
+                public NodePointArcAngle(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
@@ -139,17 +126,13 @@ namespace CAD.Canvas.DrawTools
             OriginalA2 = Owner.EndAngle;
             Owner.Selected = false;
         }
-        #endregion
-        #region Fields
-        protected Arc Owner;
+                        protected Arc Owner;
         protected Arc Clone;
         protected float OriginalA1;
         protected float EndA1;
         protected float OriginalA2;
         protected float EndA2;
-        #endregion
-        #region INodePoint Members
-        public IDrawObject GetClone()
+                        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -185,14 +168,12 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-        #endregion
-    }
+            }
 
     [Serializable]
     class Arc : DrawObjectBase, IArc, IDrawObject
     {
-        #region Enums
-        public enum EDirection
+                public enum EDirection
         {
             KCw,
             KCcw,
@@ -212,9 +193,7 @@ namespace CAD.Canvas.DrawTools
             TypeCenterRadius,
             Type2Point,
         }
-        #endregion
-        #region Fields & Property
-        UnitPoint _center;
+                        UnitPoint _center;
         float _radius;
         float _startAngle;
         float _endAngle;
@@ -271,9 +250,7 @@ namespace CAD.Canvas.DrawTools
         protected ECurrentPoint CurPoint = ECurrentPoint.P1;
         protected UnitPoint LastPoint;
         protected UnitPoint P1;
-        #endregion
-        #region Constructor
-        public Arc()
+                        public Arc()
         {
         }
         public Arc(EArcType type)
@@ -283,9 +260,7 @@ namespace CAD.Canvas.DrawTools
             if (ArcType == EArcType.TypeCenterRadius)
                 CurPoint = ECurrentPoint.Center;
         }
-        #endregion
-        #region IDrawObject Members
-        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             Width = layer.Width;
             Color = layer.Color;
@@ -665,9 +640,7 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region Methods
-        protected virtual void DrawNodes(ICanvas canvas)
+                        protected virtual void DrawNodes(ICanvas canvas)
         {
             if (CurPoint == ECurrentPoint.StartAngle && LastPoint != UnitPoint.Empty)
                 canvas.DrawLine(canvas, DrawUtils.SelectedPen, _center, LastPoint);
@@ -682,23 +655,19 @@ namespace CAD.Canvas.DrawTools
         {
             return HitUtil.PointOncircle(_center, _radius, HitUtil.DegressToRadians(angle));
         }
-        #endregion
-    }
+            }
 
     [Serializable]
     class Circle : Arc
     {
-        #region Constructors
-        public Circle()
+                public Circle()
         {
         }
         public Circle(EArcType type)
             : base(type)
         {
         }
-        #endregion
-        #region Property & Fields
-        public static string ObjectType
+                        public static string ObjectType
         {
             get { return "circle"; }
         }
@@ -706,9 +675,7 @@ namespace CAD.Canvas.DrawTools
         {
             get { return ObjectType; }
         }
-        #endregion
-        #region IDrawObject
-        public override IDrawObject Clone()
+                        public override IDrawObject Clone()
         {
             Circle a = new Circle();
             a.Copy(this);
@@ -780,6 +747,5 @@ namespace CAD.Canvas.DrawTools
         {
             return string.Format("Circle@{0}, r={1:f4}", Center.PosAsString(), Radius);
         }
-        #endregion
-    }
+            }
 }

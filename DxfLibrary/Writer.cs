@@ -6,8 +6,7 @@ namespace DxfLibrary
 {
     public class Writer
     {
-        #region Constructor
-        public static void Write(Document d, Stream s)
+                public static void Write(Document d, Stream s)
         {
             StreamWriter sr = new StreamWriter(s, Encoding.GetEncoding("iso-8859-2"));
 
@@ -19,9 +18,7 @@ namespace DxfLibrary
             WriteData(new Data(0, "EOF"), sr);
             sr.Close();
         }
-        #endregion
-        #region Methods
-        private static void WriteHeader(Header h, StreamWriter sr)
+                        private static void WriteHeader(Header h, StreamWriter sr)
         {
             if (h == null) return;
             WriteElement(h, sr);
@@ -69,6 +66,5 @@ namespace DxfLibrary
                 sr.Write(d._data);
             sr.Write("\n");
         }
-        #endregion
-    }
+            }
 }

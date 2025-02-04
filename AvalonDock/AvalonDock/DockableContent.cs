@@ -205,8 +205,7 @@ namespace AvalonDock
         {
         }
 
-        #region Drag content
-        protected override void OnDragMouseMove(object sender, MouseEventArgs e)
+                protected override void OnDragMouseMove(object sender, MouseEventArgs e)
         {
             base.OnDragMouseMove(sender, e);
         }
@@ -222,10 +221,8 @@ namespace AvalonDock
             base.OnDragStart(ptMouse, ptRelativeMouse);
         }        
         
-        #endregion
-
-        #region State Properties & Events
-
+        
+        
         public delegate void DockableContentStateHandler(object sender, DockableContentState state);
         public event DockableContentStateHandler StateChanged;
 		
@@ -258,10 +255,8 @@ namespace AvalonDock
 
         
 
-	    #endregion  
-
-        #region StateMachine
-
+	    
+        
         internal void SetStateToAutoHide()
         {
             State = DockableContentState.AutoHide;
@@ -307,18 +302,15 @@ namespace AvalonDock
         {
             State = DockableContentState.Document;
         }
-        #endregion 
-
-        #region HideOnClose
-        public static DependencyProperty HideOnCloseKey = DependencyProperty.Register("HideOnClose", typeof(bool), typeof(DockableContent), new PropertyMetadata(true));
+        
+                public static DependencyProperty HideOnCloseKey = DependencyProperty.Register("HideOnClose", typeof(bool), typeof(DockableContent), new PropertyMetadata(true));
 
         public bool HideOnClose
         {
             get { return (bool)GetValue(HideOnCloseKey); }
             set { SetValue(HideOnCloseKey, value); }
         }
-        #endregion
-
+        
 
 
 
@@ -340,8 +332,7 @@ namespace AvalonDock
                 new CommandBinding(HideCommand, this.OnExecuteCommand, this.OnCanExecuteCommand));
         }
 
-        #region Commands
-
+        
         static object syncRoot = new object();
 
 
@@ -459,10 +450,8 @@ namespace AvalonDock
                 e.CanExecute = true;
         }
         
-        #endregion
-
-        #region Operations on content
-
+        
+        
 
         /// <summary>
         /// Remove this content from its parent container pane
@@ -511,10 +500,8 @@ namespace AvalonDock
             _savedStateAndPosition = null;
         }
 
-        #endregion
-
-        #region Save/Restore Content Layout
-        /// <summary>
+        
+                /// <summary>
         /// Save content specific layout settings
         /// </summary>
         /// <param name="storeWriter">Backend store writer</param>
@@ -576,6 +563,5 @@ namespace AvalonDock
                     //contentElement.HasAttribute("State") ? (DockableContentState)Enum.Parse(typeof(DockableContentState), contentElement.GetAttribute("State") );
             }
         } 
-        #endregion
-    }
+            }
 }

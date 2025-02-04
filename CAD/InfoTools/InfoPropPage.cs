@@ -9,15 +9,12 @@ namespace CAD.InfoTools
     public class InfoPropPage
         : PpWindow
     {
-        #region Constructor
-        public InfoPropPage(String aRegistryValue)
+                public InfoPropPage(String aRegistryValue)
             : base(aRegistryValue)
         {
 
         }
-        #endregion
-        #region Methods
-        public virtual void Draw(ICanvas canvas )
+                        public virtual void Draw(ICanvas canvas )
         {
             
         }
@@ -28,6 +25,5 @@ namespace CAD.InfoTools
         {
             return new Rect();            
         }
-        #endregion
-    }
+            }
 }

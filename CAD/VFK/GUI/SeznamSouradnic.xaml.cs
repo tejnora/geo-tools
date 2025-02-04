@@ -17,23 +17,18 @@ namespace CAD.VFK.GUI
 {
     public partial class SeznamSouradnic
     {
-        #region Constructor
-        public SeznamSouradnic()
+                public SeznamSouradnic()
         {
             InitializeComponent();
             ActivePoints = null;
         }
-        #endregion
-        #region Fields & Property
-        Document _mCurrentDocument;
+                        Document _mCurrentDocument;
         public VfkActivePointCollection ActivePoints
         {
             get;
             set;
         }
-        #endregion
-        #region Methods
-        public void SetDocument(Document aDoc)
+                        public void SetDocument(Document aDoc)
         {
             _mCurrentDocument = aDoc;
             _mDataGrid.DataContext = null;
@@ -101,7 +96,6 @@ namespace CAD.VFK.GUI
                 }
             }
         }
-        #endregion
-
+        
     }
 }

@@ -17,7 +17,6 @@ namespace CAD
 {
     public partial class Document : AvalonDock.DocumentContent, ICanvasOwner
     {
-        #region Constructor
         public Document(string aFileName, IMainWinInterface aOwner)
         {
             InitializeComponent();
@@ -42,7 +41,7 @@ namespace CAD
             DataModel.AddDrawTool(VfkToolBar.VfkText.Name, new VfkTextsEdit());
             _Canvas.Construct(this, DataModel);
 
-            _Canvas.RunningSnaps = new Type[] 
+            _Canvas.RunningSnaps = new Type[]
                 {
                 typeof(VertextSnapPoint),
                 typeof(MidpointSnapPoint),
@@ -63,8 +62,6 @@ namespace CAD
             _Canvas.AddQuickSnapType(Keys.D, typeof(DivisionSnapPoint));
 
         }
-        #endregion
-        #region Property & Fields
         private readonly IMainWinInterface _owner;
         public ICanvasCommand CanvasCommand
         {
@@ -84,8 +81,6 @@ namespace CAD
             get;
             private set;
         }
-        #endregion
-        #region ICanvasOwner
         public void SetPositionInfo(UnitPoint unitpos)
         {
             _owner.SetPositionInfo(unitpos);
@@ -98,11 +93,9 @@ namespace CAD
         {
             _owner.UpdateToolBars(aDrawObjectId);
         }
-        #endregion
-        #region Methods
         public void Save()
         {
-            if (FileName==null || FileName.Length == 0)
+            if (FileName == null || FileName.Length == 0)
                 SaveAs();
             else
                 DataModel.Save(FileName);
@@ -110,10 +103,10 @@ namespace CAD
         public void SaveAs()
         {
             var dlg = new Microsoft.Win32.SaveFileDialog
-                          {
-                              Filter = "Geo cad files (*.gcad)|*.gcad",
-                              OverwritePrompt = true
-                          };
+            {
+                Filter = "Geo cad files (*.gcad)|*.gcad",
+                OverwritePrompt = true
+            };
             if (FileName.Length > 0)
                 dlg.FileName = FileName;
             bool? result = dlg.ShowDialog();
@@ -133,17 +126,15 @@ namespace CAD
                 OverwritePrompt = true
             };
             bool? result = dlg.ShowDialog();
-            if(result == true)
-                DataModel.Export(dlg.FileName,ExportType.Dxf);
+            if (result == true)
+                DataModel.Export(dlg.FileName, ExportType.Dxf);
         }
-        #endregion
-        #region VFK
         public bool ImportVfk(string aLocation)
         {
-            var vfkDataContext = new VFKDataContext {FileName = aLocation};
+            var vfkDataContext = new VFKDataContext { FileName = aLocation };
             if (aLocation.Length == 0)
             {
-                var dlg = new VFKImportDialog(vfkDataContext) {Owner = (MainWin) _owner};
+                var dlg = new VFKImportDialog(vfkDataContext) { Owner = (MainWin)_owner };
                 bool? result = dlg.DoModal();
                 if (result == false)
                     return false;
@@ -154,7 +145,7 @@ namespace CAD
             {
                 DataModel.OnImportVfk(vfkDataContext);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 LanguageDictionary.Current.ShowMessageBox("110", null, MessageBoxButton.OK,
                                                   MessageBoxImage.Error);
@@ -212,6 +203,5 @@ namespace CAD
         {
             _Canvas.CommandSelectVFKActiveObject(activePoint);
         }
-        #endregion
     }
 }

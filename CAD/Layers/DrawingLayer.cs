@@ -13,17 +13,14 @@ namespace CAD.Canvas.Layers
     [Serializable]
     public class DrawingLayer : ICanvasLayer, ISerializable
     {
-        #region Constructor
-        public DrawingLayer(string id, string name, Color color, float width)
+                public DrawingLayer(string id, string name, Color color, float width)
         {
             _id = id;
             _name = name;
             _color = color;
             m_width = width;
         }
-        #endregion
-        #region Property & Field
-        string _id;
+                        string _id;
         string _name = "<Layer>";
         Color _color;
         double m_width = 0.00f;
@@ -58,9 +55,7 @@ namespace CAD.Canvas.Layers
         {
             get { return _id; }
         }
-        #endregion
-        #region Function
-        List<IDrawObject> _objects = new List<IDrawObject>();
+                        List<IDrawObject> _objects = new List<IDrawObject>();
         Dictionary<IDrawObject, bool> _objectMap = new Dictionary<IDrawObject, bool>();
         public void AddObject(IDrawObject drawobject)
         {
@@ -122,9 +117,7 @@ namespace CAD.Canvas.Layers
             _enabled = acopy._enabled;
             _visible = acopy._visible;
         }
-        #endregion
-        #region ICanvasLayer Members
-        public virtual void Draw(ICanvas canvas, Rect unitrect)
+                        public virtual void Draw(ICanvas canvas, Rect unitrect)
         {
             Tracing.StartTrack(App.TracePaint);
             int cnt = 0;
@@ -193,9 +186,7 @@ namespace CAD.Canvas.Layers
                 drawobject.Export(export);
             export.RiseLayer();
         }
-        #endregion
-        #region ISerializable
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+                        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("Color", Color);
             info.AddValue("Width", Width);
@@ -224,6 +215,5 @@ namespace CAD.Canvas.Layers
             for (int i = 0; i < objectCount; i++)
                 _objects.Add(info.GetValue("Object " + i, typeof(IDrawObject)) as IDrawObject);
         }
-        #endregion
-    }
+            }
 }

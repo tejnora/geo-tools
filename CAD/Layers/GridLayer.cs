@@ -14,8 +14,7 @@ namespace CAD.Canvas.Layers
 {
     public class GridLayer : ICanvasLayer, ISerialize
     {
-        #region Property
-        public enum eStyle
+                public enum eStyle
         {
             Dots,
             Lines,
@@ -49,9 +48,7 @@ namespace CAD.Canvas.Layers
             get { return m_color; }
             set { m_color = value; }
         }
-        #endregion
-        #region ICanvasLayer Members
-        public void Copy(GridLayer acopy)
+                        public void Copy(GridLayer acopy)
         {
             m_enabled = acopy.m_enabled;
             m_spacing = acopy.m_spacing;
@@ -193,9 +190,7 @@ namespace CAD.Canvas.Layers
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region ISerialize
-        public void GetObjectData(XmlWriter wr)
+                        public void GetObjectData(XmlWriter wr)
         {
             wr.WriteStartElement("gridlayer");
             XmlUtil.WriteProperties(this, wr);
@@ -204,6 +199,5 @@ namespace CAD.Canvas.Layers
         public void AfterSerializedIn()
         {
         }
-        #endregion
-    }
+            }
 }

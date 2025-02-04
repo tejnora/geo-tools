@@ -10,16 +10,13 @@ namespace VFK
 {
     public class VfkProxyActivePoint : BaseObject, IVfkRegister
     {
-        #region Constructor
-        public VfkProxyActivePoint(VFKSOBRTableItem item, VFKSPOLTableItem spol,IVFKMain vfkMain)
+                public VfkProxyActivePoint(VFKSOBRTableItem item, VFKSPOLTableItem spol,IVFKMain vfkMain)
         {
             VfkSobrItem = item;
             VfkSpolItem = spol;
             _mVFKMain = vfkMain;
         }
-        #endregion
-        #region Fields & Properties
-        IVFKMain _mVFKMain;
+                        IVFKMain _mVFKMain;
         public VFKSOBRTableItem VfkSobrItem
         {
             get;
@@ -189,9 +186,7 @@ namespace VFK
         {
             return _mVFKMain.CanDeleteSobrAndSpol(VfkSobrItem.ID);
         }
-        #endregion
-        #region IVFKRegister
-        public bool RegisterSegment(IVFKMain aOwner)
+                        public bool RegisterSegment(IVFKMain aOwner)
         {
             VfkSobrItem = aOwner.updateSOBR(VfkSobrItem);
             VfkSpolItem = aOwner.updateSPOL(VfkSpolItem, VfkSobrItem);
@@ -209,6 +204,5 @@ namespace VFK
         {
 
         }
-        #endregion IVFKRegister
-    }
+            }
 }

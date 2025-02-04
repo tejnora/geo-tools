@@ -4,8 +4,7 @@ namespace DxfLibrary
 {
     public abstract class Element
     {
-        #region Constructor
-        protected Element()
+                protected Element()
         {
             Data = new ArrayList();
             Elements = new ArrayList();
@@ -16,18 +15,14 @@ namespace DxfLibrary
         {
             S = s;
         }
-        #endregion
-        #region Fields
-        internal Data StartTag = new Data(-10, 0);
+                        internal Data StartTag = new Data(-10, 0);
         internal Data EndTag = new Data(-10, 0);
         protected ArrayList Data;
         protected ArrayList Elements;
         protected ArrayList DataAcceptanceList;
         protected ArrayList ElementAcceptanceList;
         internal string S;
-        #endregion
-        #region Methods
-        internal int AddElement(Element e)
+                        internal int AddElement(Element e)
         {
             if (IsAccepted(e))
                 return Elements.Add(e);
@@ -145,6 +140,5 @@ namespace DxfLibrary
         {
             AddData(new Data(cod, o));
         }
-        #endregion
-    }
+            }
 }

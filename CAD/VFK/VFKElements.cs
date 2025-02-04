@@ -17,17 +17,19 @@ using BaseObject = CAD.Utils.BaseObject;
 
 namespace VFK
 {
-    #region Enums
+    
     public enum ObbpType
     {
-        CB,     //Číslo bodu.                    --Cisla
-        ZB      //Značka bodu.
+        CB, //Číslo bodu.                    --Cisla
+        ZB //Značka bodu.
     }
+
     public enum ObrBudType
     {
         ZDB,
         OB
     }
+
     public enum BlockNvf
     {
         empty = 0,
@@ -40,6 +42,7 @@ namespace VFK
         HBPEJ = 7,
         OBPEJ = 8
     }
+
     public enum ElementGroupType
     {
         epmpty,
@@ -61,23 +64,24 @@ namespace VFK
         BDPP,
         BPP
     }
-    #endregion
+
+    
     [Serializable]
     public class VfkElement : DataObjectBase<VfkElement>
     {
-        #region Constructor
+        
         public VfkElement()
             : base(null, new StreamingContext())
         {
             BlockNvf = BlockNvf.empty;
             Prislusnost = false;
-
         }
-        #endregion
-        #region Class ElementDrawInfo
+
+        
+        
         public class ElementDrawInfo : BaseObject
         {
-            #region Constructor
+            
             public ElementDrawInfo()
             {
                 Color = Color.Black;
@@ -86,6 +90,7 @@ namespace VFK
                 VyskaTextu = 1.7;
                 FontName = "Arial";
             }
+
             public ElementDrawInfo(string parseString)
             {
                 string[] items = parseString.Split(' ');
@@ -111,57 +116,101 @@ namespace VFK
                     return;
                 SirkaText = double.Parse(items[7], CultureInfo.InvariantCulture);
             }
+
             public ElementDrawInfo(BinaryReader aR)
             {
                 LoadFromDefaultFile(aR);
             }
-            #endregion
-            #region Property
+
+            
+            
             private Color _color;
+
             public Color Color
             {
                 get { return _color; }
-                set { _color = value; OnPropertyChanged("Color"); }
+                set
+                {
+                    _color = value;
+                    OnPropertyChanged("Color");
+                }
             }
+
             private double _width;
+
             public double Width
             {
                 get { return _width; }
-                set { _width = value; OnPropertyChanged("Width"); }
+                set
+                {
+                    _width = value;
+                    OnPropertyChanged("Width");
+                }
             }
+
             private string _layername;
+
             public string LayerName
             {
                 get { return _layername; }
-                set { _layername = value; OnPropertyChanged("LayerName"); }
+                set
+                {
+                    _layername = value;
+                    OnPropertyChanged("LayerName");
+                }
             }
+
             private int _type;
             private double _vyskaTextu;
+
             public double VyskaTextu
             {
                 get { return _vyskaTextu; }
-                set { _vyskaTextu = value; OnPropertyChanged("VyskaTextu"); }
+                set
+                {
+                    _vyskaTextu = value;
+                    OnPropertyChanged("VyskaTextu");
+                }
             }
+
             private int _vztaznyBod;
+
             public int VztaznyBod
             {
                 get { return _vztaznyBod; }
-                set { _vztaznyBod = value; OnPropertyChanged("VztaznyBod"); }
+                set
+                {
+                    _vztaznyBod = value;
+                    OnPropertyChanged("VztaznyBod");
+                }
             }
+
             private double _sirkaText;
+
             public double SirkaText
             {
                 get { return _sirkaText; }
-                set { _sirkaText = value; OnPropertyChanged("SirkaText"); }
+                set
+                {
+                    _sirkaText = value;
+                    OnPropertyChanged("SirkaText");
+                }
             }
+
             private string _fontName;
+
             public string FontName
             {
                 get { return _fontName; }
-                set { _fontName = value; OnPropertyChanged("FontName"); }
+                set
+                {
+                    _fontName = value;
+                    OnPropertyChanged("FontName");
+                }
             }
-            #endregion
-            #region Methods
+
+            
+            
             public void LoadFromDefaultFile(BinaryReader aR)
             {
                 LayerName = string.Format("{0}", aR.ReadInt32());
@@ -177,42 +226,40 @@ namespace VFK
                 VztaznyBod = aR.ReadInt32();
                 SirkaText = aR.ReadDouble();
             }
-            #endregion
-        }
-        #endregion
-        #region Properties
+
+                    }
+
+        
+        
         private string _description = string.Empty;
+
         public string Description
         {
             get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            set
+            {
+                _description = value;
+                OnPropertyChanged("Description");
+            }
         }
+
         private UInt32 _typPdKod;
+
         public UInt32 TYPPPD_KOD
         {
             get { return _typPdKod; }
-            set { _typPdKod = value; OnPropertyChanged("TYPPPD_KOD"); }
+            set
+            {
+                _typPdKod = value;
+                OnPropertyChanged("TYPPPD_KOD");
+            }
         }
-        public bool Prislusnost
-        {
-            get;
-            set;
-        }
-        public ElementDrawInfo MinulyStav
-        {
-            get;
-            set;
-        }
-        public ElementDrawInfo PritomnyStav
-        {
-            get;
-            set;
-        }
-        public ElementDrawInfo BudouciStav
-        {
-            get;
-            set;
-        }
+
+        public bool Prislusnost { get; set; }
+        public ElementDrawInfo MinulyStav { get; set; }
+        public ElementDrawInfo PritomnyStav { get; set; }
+        public ElementDrawInfo BudouciStav { get; set; }
+
         public DpmType DpmType
         {
             get
@@ -238,6 +285,7 @@ namespace VFK
                 return DpmType.None;
             }
         }
+
         public string OparType
         {
             get
@@ -263,6 +311,7 @@ namespace VFK
                 }
             }
         }
+
         public ObbpType ObbpType
         {
             get
@@ -279,21 +328,14 @@ namespace VFK
                         return ObbpType.ZB;
                     default:
                         throw new UnExpectException();
-
                 }
             }
             set { throw new UnExpectException(); }
         }
-        public BlockNvf BlockNvf
-        {
-            get;
-            set;
-        }
-        public bool SnapToSobr
-        {
-            get;
-            set;
-        }
+
+        public BlockNvf BlockNvf { get; set; }
+        public bool SnapToSobr { get; set; }
+
         public ObrBudType ObrBudType
         {
             get
@@ -312,65 +354,66 @@ namespace VFK
             }
             set { throw new UnExpectException(); }
         }
-        public Int32 TypPrvku
-        {
-            get;
-            set;
-        }
-        public bool Polohopis
-        {
-            get;
-            set;
-        }
-        public VfkElementSubGroup Owner
-        { get; set; }
-        #endregion
-        #region Methods
+
+        public Int32 TypPrvku { get; set; }
+        public bool Polohopis { get; set; }
+        public VfkElementSubGroup Owner { get; set; }
+
+        
+        
         public override string ToString()
         {
             return Description;
         }
-        #endregion
-    }
+
+            }
+
     [Serializable]
     public class VfkElementSubGroup : DataObjectBase<VfkElementSubGroup>, IEnumerable
     {
-        #region Constructor
+        
         public VfkElementSubGroup()
             : base(null, new StreamingContext())
         {
             Elements = new ObservableCollection<VfkElement>();
         }
-        #endregion
-        #region Property
+
+        
+        
         private string _description;
+
         public string Description
         {
             get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            set
+            {
+                _description = value;
+                OnPropertyChanged("Description");
+            }
         }
-        public UInt32 GroupId
-        {
-            get;
-            set;
-        }
-        public readonly PropertyData _elementsProperty = RegisterProperty("Elements", typeof(ObservableCollection<VfkElement>), null);
+
+        public UInt32 GroupId { get; set; }
+
+        public readonly PropertyData _elementsProperty =
+            RegisterProperty("Elements", typeof(ObservableCollection<VfkElement>), null);
+
         public ObservableCollection<VfkElement> Elements
         {
             get { return GetValue<ObservableCollection<VfkElement>>(_elementsProperty); }
             set { SetValue(_elementsProperty, value); }
         }
-        public readonly PropertyData _selectedElementProperty = RegisterProperty("SelectedElement", typeof(VfkElement), null);
+
+        public readonly PropertyData _selectedElementProperty =
+            RegisterProperty("SelectedElement", typeof(VfkElement), null);
+
         public VfkElement SelectedElement
         {
             get { return GetValue<VfkElement>(_selectedElementProperty); }
             set { SetValue(_selectedElementProperty, value); }
         }
-        public VfkElementGroup Owner
-        {
-            get;
-            set;
-        }
+
+        public VfkElementGroup Owner { get; set; }
+
         public VfkElement DefaultElement
         {
             get
@@ -380,22 +423,25 @@ namespace VFK
                 return null;
             }
         }
-        #endregion
-        #region IEnumerable
+
+        
+        
         public IEnumerator GetEnumerator()
         {
             foreach (var element in Elements)
                 yield return element;
         }
-        #endregion
-        #region Methods
+
+        
+        
         public void Add(VfkElement element)
         {
             Elements.Add(element);
             element.Owner = this;
         }
-        #endregion
-    }
+
+            }
+
     [Serializable]
     public class VfkElementGroup : DataObjectBase<VfkElementGroup>, IEnumerable
     {
@@ -405,22 +451,21 @@ namespace VFK
             Marks,
             Numbers
         }
-        #region Constructor
+
+        
         public VfkElementGroup(Types type)
             : base(null, new StreamingContext())
         {
             SubGroupItems = new ObservableCollection<VfkElementSubGroup>();
             Type = type;
         }
-        #endregion
-        #region Property
-        public ObservableCollection<VfkElementSubGroup> SubGroupItems
-        {
-            get;
-            private set;
-        }
+
+        
+        
+        public ObservableCollection<VfkElementSubGroup> SubGroupItems { get; private set; }
 
         private string _name;
+
         public string Name
         {
             get
@@ -442,9 +487,11 @@ namespace VFK
                             throw new ArgumentOutOfRangeException();
                     }
                 }
+
                 return _name;
             }
         }
+
         public VfkElementSubGroup DefaultElementSubGroup
         {
             get
@@ -456,6 +503,7 @@ namespace VFK
         }
 
         private BitmapImage _image;
+
         public BitmapImage Image
         {
             get
@@ -478,53 +526,63 @@ namespace VFK
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
+
                     _image.EndInit();
                 }
+
                 return _image;
             }
         }
-        public Types Type
-        { get; private set; }
-        #endregion
-        #region Methos
+
+        public Types Type { get; private set; }
+
+        
+        
         public void Add(VfkElementSubGroup subGroup)
         {
             SubGroupItems.Add(subGroup);
             subGroup.Owner = this;
             subGroup.SelectedElement = subGroup.DefaultElement;
         }
-        #endregion
-        #region IEnumerable
+
+        
+        
         public IEnumerator GetEnumerator()
         {
             foreach (var subGroup in SubGroupItems)
                 yield return subGroup;
         }
-        #endregion
-    }
+
+            }
 
     public class VfkElements : DataObjectBase<VfkElements>
     {
-        #region Constructor
+        
         private VfkElements()
             : base(null, new StreamingContext())
         {
             LoadVfkElements();
             return;
         }
-        #endregion
-        #region Property
+
+        
+        
         public VfkElementGroup VfkLineElementGroup;
         public VfkElementGroup VfkMarkElementGroup;
         public VfkElementGroup VfkNumberElementGroup;
 
-        public readonly PropertyData _elementSubGroupsProperty = RegisterProperty("SubGroups", typeof(ObservableCollection<VfkElementSubGroup>), null);
+        public readonly PropertyData _elementSubGroupsProperty =
+            RegisterProperty("SubGroups", typeof(ObservableCollection<VfkElementSubGroup>), null);
+
         public ObservableCollection<VfkElementSubGroup> SubGroups
         {
             get { return GetValue<ObservableCollection<VfkElementSubGroup>>(_elementSubGroupsProperty); }
             set { SetValue(_elementSubGroupsProperty, value); }
         }
-        public readonly PropertyData _selectedSubGroupProperty = RegisterProperty("SelectedSubGroup", typeof(VfkElementSubGroup), null);
+
+        public readonly PropertyData _selectedSubGroupProperty =
+            RegisterProperty("SelectedSubGroup", typeof(VfkElementSubGroup), null);
+
         public VfkElementSubGroup SelectedSubGroup
         {
             get { return GetValue<VfkElementSubGroup>(_selectedSubGroupProperty); }
@@ -535,8 +593,9 @@ namespace VFK
                     value.SelectedElement = value.DefaultElement;
             }
         }
-        #endregion
-        #region Methods
+
+        
+        
         public void LoadVfkElements()
         {
             VfkLineElementGroup = new VfkElementGroup(VfkElementGroup.Types.Lines);
@@ -611,6 +670,7 @@ namespace VFK
                             subGroup.Description = "Parcelní Číslo";
                             break;
                     }
+
                     Int32 count = reader.ReadInt32();
                     for (Int32 i = 0; i < count; i++)
                     {
@@ -633,6 +693,7 @@ namespace VFK
                         element.BlockNvf = (BlockNvf)reader.ReadInt32();
                         subGroup.Add(element);
                     }
+
                     if (lineElements.Contains(subGroup.GroupId))
                         VfkLineElementGroup.Add(subGroup);
                     else if (markElements.Contains(subGroup.GroupId))
@@ -648,62 +709,65 @@ namespace VFK
                 LanguageDictionary.Current.ShowMessageBox("109", null, MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.MainWindow.Close();
             }
-            #region Lines Additional
-            VfkElementSubGroup elementSubGroup = new VfkElementSubGroup { Description = "věcné břemeno", GroupId = 101 };
+
+            
+            VfkElementSubGroup elementSubGroup = new VfkElementSubGroup
+                { Description = "věcné břemeno", GroupId = 101 };
             elementSubGroup.Add(new VfkElement
-                                    {
-                                        TYPPPD_KOD = 23700,
-                                        Description = "věcné břemeno",
-                                        Prislusnost = true,
-                                        BlockNvf = BlockNvf.ZVB,
-                                        MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
-                                    });
+            {
+                TYPPPD_KOD = 23700,
+                Description = "věcné břemeno",
+                Prislusnost = true,
+                BlockNvf = BlockNvf.ZVB,
+                MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
+            });
             elementSubGroup.Add(new VfkElement
-                                    {
-                                        TYPPPD_KOD = 23100,
-                                        Description = "první břemeno",
-                                        Prislusnost = true,
-                                        BlockNvf = BlockNvf.ZVB,
-                                        MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
-                                    });
+            {
+                TYPPPD_KOD = 23100,
+                Description = "první břemeno",
+                Prislusnost = true,
+                BlockNvf = BlockNvf.ZVB,
+                MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
+            });
             elementSubGroup.Add(new VfkElement
-                                    {
-                                        TYPPPD_KOD = 23200,
-                                        Description = "druhé břemeno",
-                                        Prislusnost = true,
-                                        BlockNvf = BlockNvf.ZVB,
-                                        MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
-                                    });
+            {
+                TYPPPD_KOD = 23200,
+                Description = "druhé břemeno",
+                Prislusnost = true,
+                BlockNvf = BlockNvf.ZVB,
+                MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
+            });
             elementSubGroup.Add(new VfkElement
-                                    {
-                                        TYPPPD_KOD = 23300,
-                                        Description = "třetí břemeno",
-                                        Prislusnost = true,
-                                        BlockNvf = BlockNvf.ZVB,
-                                        MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
-                                    });
+            {
+                TYPPPD_KOD = 23300,
+                Description = "třetí břemeno",
+                Prislusnost = true,
+                BlockNvf = BlockNvf.ZVB,
+                MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
+            });
             elementSubGroup.Add(new VfkElement
-                                    {
-                                        TYPPPD_KOD = 23400,
-                                        Description = "čtvrté břemeno",
-                                        Prislusnost = true,
-                                        BlockNvf = BlockNvf.ZVB,
-                                        MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
-                                        BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
-                                    });
+            {
+                TYPPPD_KOD = 23400,
+                Description = "čtvrté břemeno",
+                Prislusnost = true,
+                BlockNvf = BlockNvf.ZVB,
+                MinulyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                PritomnyStav = new VfkElement.ElementDrawInfo("1 148 1 0.1"),
+                BudouciStav = new VfkElement.ElementDrawInfo("1 148 1 0.1")
+            });
             VfkLineElementGroup.Add(elementSubGroup);
             //mistopisne nazvy
-            #endregion
-            #region Texts Additional
+
+            
+            
             elementSubGroup = new VfkElementSubGroup { Description = "Parcelní číslo", GroupId = 101 };
             elementSubGroup.Add(new VfkElement
             {
@@ -763,7 +827,8 @@ namespace VFK
                 BudouciStav = new VfkElement.ElementDrawInfo("7 0 0 0 1.7 23 2 1.5")
             });
             VfkNumberElementGroup.Add(elementSubGroup);
-            var mistopisneNazvy = (from n in VfkNumberElementGroup.SubGroupItems where n.GroupId == 8 select n).ToList();
+            var mistopisneNazvy =
+                (from n in VfkNumberElementGroup.SubGroupItems where n.GroupId == 8 select n).ToList();
             mistopisneNazvy[0].Add(new VfkElement
             {
                 TYPPPD_KOD = 1006,
@@ -774,8 +839,9 @@ namespace VFK
                 PritomnyStav = new VfkElement.ElementDrawInfo("7 0 0 0 1.7 23 2 1.5"),
                 BudouciStav = new VfkElement.ElementDrawInfo("7 0 0 0 1.7 23 2 1.5")
             });
-            #endregion
-            #region Marks
+
+            
+            
             var group = from n in VfkMarkElementGroup.SubGroupItems where n.GroupId == 3 select n;
             if (group.Any())
                 elementSubGroup = group.First();
@@ -784,6 +850,7 @@ namespace VFK
                 elementSubGroup = new VfkElementSubGroup { Description = "Druhy pozemků", GroupId = 101 };
                 VfkMarkElementGroup.Add(elementSubGroup);
             }
+
             elementSubGroup.Add(new VfkElement
             {
                 TYPPPD_KOD = 319,
@@ -811,85 +878,98 @@ namespace VFK
                 PritomnyStav = new VfkElement.ElementDrawInfo("2 0 0 0 1.7 23 2 1.5"),
                 BudouciStav = new VfkElement.ElementDrawInfo("2 4 0 0 1.7 23 2 1.5")
             });
-            #endregion
-        }
+
+                    }
+
         private VfkElement _prevVfkElement;
+
         public VfkElement GetElement(UInt32 aTypeId)
         {
             if (_prevVfkElement == null || _prevVfkElement.TYPPPD_KOD != aTypeId)
             {
                 _prevVfkElement = null;
                 foreach (VfkElementSubGroup gg in VfkLineElementGroup)
-                    foreach (VfkElement e in gg)
+                foreach (VfkElement e in gg)
+                {
+                    if (e.TYPPPD_KOD == aTypeId)
                     {
-                        if (e.TYPPPD_KOD == aTypeId)
-                        {
-                            _prevVfkElement = e;
-                            return _prevVfkElement;
-                        }
+                        _prevVfkElement = e;
+                        return _prevVfkElement;
                     }
+                }
+
                 foreach (VfkElementSubGroup gg in VfkMarkElementGroup)
-                    foreach (VfkElement e in gg)
+                foreach (VfkElement e in gg)
+                {
+                    if (e.TYPPPD_KOD == aTypeId)
                     {
-                        if (e.TYPPPD_KOD == aTypeId)
-                        {
-                            _prevVfkElement = e;
-                            return _prevVfkElement;
-                        }
+                        _prevVfkElement = e;
+                        return _prevVfkElement;
                     }
+                }
+
                 foreach (VfkElementSubGroup gg in VfkNumberElementGroup)
-                    foreach (VfkElement e in gg)
+                foreach (VfkElement e in gg)
+                {
+                    if (e.TYPPPD_KOD == aTypeId)
                     {
-                        if (e.TYPPPD_KOD == aTypeId)
-                        {
-                            _prevVfkElement = e;
-                            return _prevVfkElement;
-                        }
+                        _prevVfkElement = e;
+                        return _prevVfkElement;
                     }
+                }
+
                 throw new UnExpectException();
             }
+
             return _prevVfkElement;
         }
+
         private Dictionary<UInt32, ElementGroupType> _elementGroupCache = new Dictionary<uint, ElementGroupType>();
+
         public ElementGroupType GetElemntGroup(UInt32 aTypeId)
         {
             if (_elementGroupCache.ContainsKey(aTypeId))
             {
                 return _elementGroupCache[aTypeId];
             }
+
             if (aTypeId == 1032 || aTypeId == 21700)
             {
                 return ElementGroupType.UN_IMPLEMENTED;
             }
+
             foreach (VfkElementSubGroup gg in VfkLineElementGroup)
-                foreach (VfkElement e in gg)
+            foreach (VfkElement e in gg)
+            {
+                if (e.TYPPPD_KOD == aTypeId)
                 {
-                    if (e.TYPPPD_KOD == aTypeId)
-                    {
-                        _elementGroupCache[aTypeId] = ElementGroupType.LINES;
-                        return ElementGroupType.LINES;
-                    }
+                    _elementGroupCache[aTypeId] = ElementGroupType.LINES;
+                    return ElementGroupType.LINES;
                 }
+            }
+
             foreach (VfkElementSubGroup gg in VfkMarkElementGroup)
-                foreach (VfkElement e in gg)
+            foreach (VfkElement e in gg)
+            {
+                if (e.TYPPPD_KOD == aTypeId)
                 {
-                    if (e.TYPPPD_KOD == aTypeId)
-                    {
-                        _elementGroupCache[aTypeId] = ElementGroupType.MARKS;
-                        return ElementGroupType.MARKS;
-                    }
+                    _elementGroupCache[aTypeId] = ElementGroupType.MARKS;
+                    return ElementGroupType.MARKS;
                 }
+            }
+
             foreach (VfkElementSubGroup gg in VfkNumberElementGroup)
-                foreach (VfkElement e in gg)
+            foreach (VfkElement e in gg)
+            {
+                if (e.TYPPPD_KOD == aTypeId)
                 {
-                    if (e.TYPPPD_KOD == aTypeId)
-                    {
-                        _elementGroupCache[aTypeId] = ElementGroupType.NUMBERS;
-                        return ElementGroupType.NUMBERS;
-                    }
+                    _elementGroupCache[aTypeId] = ElementGroupType.NUMBERS;
+                    return ElementGroupType.NUMBERS;
                 }
+            }
+
             throw new UnExpectException();
         }
-        #endregion
-    }
+
+            }
 }

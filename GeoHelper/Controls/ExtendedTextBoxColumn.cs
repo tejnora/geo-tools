@@ -5,10 +5,8 @@ using System.Windows.Controls;
 namespace GeoHelper.Tabulky
 {
 
-    #region #using Directives
-
-    #endregion
-
+    
+    
     public class ExtendedTextBoxColumn : DataGridTextColumn
     {
         public static readonly DependencyProperty HorizontalAlignmentProperty =

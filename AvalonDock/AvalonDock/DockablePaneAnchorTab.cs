@@ -106,12 +106,10 @@ namespace AvalonDock
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(object), typeof(DockablePaneAnchorTab));
 
-        #region INotifyPropertyChanged Members
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
-        #endregion
-
+        
 
     }
 }

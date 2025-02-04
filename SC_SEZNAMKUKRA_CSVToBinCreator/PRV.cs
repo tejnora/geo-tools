@@ -37,21 +37,21 @@ namespace CSVToBinCreator
     TYP_PRVKU 	Typ prvku:
     1 ... liniov² prvek
     4 ... textov² prvek
-    7 ... bodov² prvek (znaΦka) 
+    7 ... bodov² prvek (znaΦka)
      */
     class Prv
     {
         public Prv()
         {
-            
         }
+
         private struct Data
         {
-            public Int32  KOD;
+            public Int32 KOD;
             public string VYZNAM;
             public Int32 SKUP_KOD;
             public string CLEN_KOD;
-            public Int32  TUM_KOD;
+            public Int32 TUM_KOD;
             public bool POLOHOPIS;
             public bool EDITOVATELNY;
             public string PLATNOST_OD;
@@ -64,19 +64,20 @@ namespace CSVToBinCreator
             public Int32 TYP_PRVKU;
             public String BLOK_VFK;
         }
+
         private class ElementDrawInfo
         {
             public ElementDrawInfo(string parseString)
             {
                 _font = string.Empty;
-                string[] items=parseString.Split(' ');
+                string[] items = parseString.Split(' ');
                 _vrstva = int.Parse(items[0]);
                 if (!Int32.TryParse(items[1], out _colorIndex))
                     _colorIndex = 1;
                 //color items[1]
                 _type = int.Parse(items[2]);
                 _tlouska = double.Parse(items[3], CultureInfo.InvariantCulture);
-                if(items.Length==4)
+                if (items.Length == 4)
                     return;
                 _vyskaTextu = double.Parse(items[4], CultureInfo.InvariantCulture);
                 if (items.Length == 5)
@@ -89,6 +90,7 @@ namespace CSVToBinCreator
                     return;
                 _sirkaTextu = double.Parse(items[7], CultureInfo.InvariantCulture);
             }
+
             private int _vrstva;
             private int _colorIndex;
             private int _type;
@@ -109,6 +111,7 @@ namespace CSVToBinCreator
                 aW.Write(_vztaznyBod);
                 aW.Write(_sirkaTextu);
             }
+
             public void Load(BinaryReader aR)
             {
                 _vrstva = aR.ReadInt32();
@@ -121,11 +124,11 @@ namespace CSVToBinCreator
                 _sirkaTextu = aR.ReadDouble();
             }
         }
+
         public void DoBinFile(string inLoc, string outLoc)
         {
             try
             {
-
                 string text = File.ReadAllText(inLoc, Encoding.GetEncoding("windows-1250"));
                 string[] lines = text.Split('\n');
                 List<Data> pr = new List<Data>();
@@ -137,6 +140,7 @@ namespace CSVToBinCreator
                         def = false;
                         continue;
                     }
+
                     string[] fiels = line.Split(';');
                     if (fiels.Length < 18)
                     {
@@ -144,7 +148,7 @@ namespace CSVToBinCreator
                         continue;
                     }
 
-                    Data d=new Data();
+                    Data d = new Data();
                     d.KOD = Int32.Parse(fiels[0]);
                     d.SKUP_KOD = Int32.Parse(fiels[1]);
                     d.CLEN_KOD = fiels[2];
@@ -165,20 +169,22 @@ namespace CSVToBinCreator
                     d.BLOK_VFK = fiels[17];
                     pr.Add(d);
                 }
+
                 BinaryWriter bw = new BinaryWriter(File.OpenWrite(outLoc));
-                pr=(pr.OrderBy((n) => n.SKUP_KOD)).ToList();
+                pr = (pr.OrderBy((n) => n.SKUP_KOD)).ToList();
                 bw.Write(pr.Last().SKUP_KOD);
                 Int32 groupIdx = Int32.MaxValue;
                 foreach (var data in pr)
                 {
-                    if(data.SKUP_KOD!=groupIdx)
+                    if (data.SKUP_KOD != groupIdx)
                     {
                         bw.Write(data.SKUP_KOD);
-                    //    var texttt = (from n in pr where n.SKUP_KOD == data.SKUP_KOD select n).ToList();
+                        //    var texttt = (from n in pr where n.SKUP_KOD == data.SKUP_KOD select n).ToList();
                         Int32 count = (from n in pr where n.SKUP_KOD == data.SKUP_KOD select n).Count();
                         bw.Write(count);
                         groupIdx = data.SKUP_KOD;
                     }
+
                     bw.Write(data.KOD);
                     bw.Write(data.VYZNAM);
                     bw.Write(data.CLEN_KOD);
@@ -190,21 +196,21 @@ namespace CSVToBinCreator
                     data.MINULY_STAV.Save(bw);
                     data.PRITOMNY_STAV.Save(bw);
                     data.BUDOUCI_STAV.Save(bw);
-                    if(data.BLOK_VFK.Contains("HBPEJ"))
+                    if (data.BLOK_VFK.Contains("HBPEJ"))
                         bw.Write(7);
-                    else if(data.BLOK_VFK.Contains("OBPEJ"))
+                    else if (data.BLOK_VFK.Contains("OBPEJ"))
                         bw.Write(8);
-                    else if(data.BLOK_VFK.Contains("OP"))
+                    else if (data.BLOK_VFK.Contains("OP"))
                         bw.Write(1);
-                    else if(data.BLOK_VFK.Contains("DPM"))
+                    else if (data.BLOK_VFK.Contains("DPM"))
                         bw.Write(2);
-                    else if(data.BLOK_VFK.Contains("OBBP"))
+                    else if (data.BLOK_VFK.Contains("OBBP"))
                         bw.Write(3);
-                    else if(data.BLOK_VFK.Contains("HP"))
+                    else if (data.BLOK_VFK.Contains("HP"))
                         bw.Write(4);
-                    else if(data.BLOK_VFK.Contains("ZVB"))
+                    else if (data.BLOK_VFK.Contains("ZVB"))
                         bw.Write(5);
-                    else if(data.BLOK_VFK.Contains("OB"))
+                    else if (data.BLOK_VFK.Contains("OB"))
                     {
                         bw.Write(6);
                     }
@@ -212,12 +218,11 @@ namespace CSVToBinCreator
                     {
                         bw.Write(0);
                     }
-
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Parse error:{0}",ex.Message);
+                Console.WriteLine("Parse error:{0}", ex.Message);
             }
         }
     }

@@ -14,8 +14,7 @@ namespace VFK
     [Serializable]
     public class VFKModifyParcelContext : ISerializable
     {
-        #region Constructors
-        public VFKModifyParcelContext()
+                public VFKModifyParcelContext()
         {
 
         }
@@ -24,9 +23,7 @@ namespace VFK
             ParcelNode = new ObservableCollection<EditedParcelNode>();
             IEditParcel = aEditParcel;
         }
-        #endregion
-        #region Property & Field
-        public ObservableCollection<EditedParcelNode> ParcelNode
+                        public ObservableCollection<EditedParcelNode> ParcelNode
         {
             get;
             set;
@@ -52,9 +49,7 @@ namespace VFK
 
             }
         }
-        #endregion
-        #region Serialzece & Deserializace
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+                        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("ParcelNodesCount", ParcelNode.Count, typeof(int));
             for (int i = 0; i < ParcelNode.Count; i++)
@@ -73,14 +68,12 @@ namespace VFK
                 ParcelNode.Add(node);
             }
         }
-        #endregion
-    }
+            }
 
     [Serializable]
     public class EditedParcelNode : INotifyPropertyChanged, ISerializable
     {
-        #region Constructors
-        public EditedParcelNode()
+                public EditedParcelNode()
         {
 
         }
@@ -94,9 +87,7 @@ namespace VFK
                 BDPA.Add(new BDPANode(s));
             }
         }
-        #endregion
-        #region Filed & Property
-        public IEditParcel IEditParcel
+                        public IEditParcel IEditParcel
         {
             get;
             set;
@@ -343,17 +334,13 @@ namespace VFK
                 return true;
             }
         }
-        #endregion
-        #region INotifyPropertyChanged
-        protected virtual void OnPropertyChanged(string propertyName)
+                        protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        #endregion
-        #region Serialzece & Deserializace
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+                        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("ParcelModification", ParcelModification, typeof(ParcelModificationEnum));
             info.AddValue("Parcele", PAR);
@@ -374,15 +361,13 @@ namespace VFK
                 BDPA.Add(info.GetValue("BDPA" + i.ToString(), typeof(BDPANode)) as BDPANode);
             }
         }
-        #endregion
-
+        
     }
 
     [Serializable]
     public class BDPANode : INotifyPropertyChanged, ISerializable
     {
-        #region Property & Field
-        public VFKBDPTableItem BDPA
+                public VFKBDPTableItem BDPA
         {
             get;
             private set;
@@ -421,9 +406,7 @@ namespace VFK
                 }
             }
         }
-        #endregion
-        #region Serialzece & Deserializace
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+                        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("BDPA", BDPA, typeof(VFKBDPTableItem));
         }
@@ -431,14 +414,11 @@ namespace VFK
         {
             BDPA = info.GetValue("BDPA", typeof(VFKBDPTableItem)) as VFKBDPTableItem;
         }
-        #endregion
-        #region INotifyPropertyChanged
-        protected virtual void OnPropertyChanged(string propertyName)
+                        protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        #endregion
-    }
+            }
 }

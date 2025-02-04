@@ -10,8 +10,7 @@ namespace GeoBase.Utils
   public static class UIHelpers
   {
 
-    #region find parent
-
+    
     /// <summary>
     /// Finds a parent of a given item on the visual tree.
     /// </summary>
@@ -71,11 +70,9 @@ namespace GeoBase.Utils
       return VisualTreeHelper.GetParent(child);
     }
 
-    #endregion
+    
 
-
-    #region update binding sources
-
+    
     /// <summary>
     /// Recursively processes a given dependency object and all its
     /// children, and updates sources of all objects that use a
@@ -107,8 +104,7 @@ namespace GeoBase.Utils
       }
     }
 
-    #endregion
-
+    
 
     /// <summary>
     /// Tries to locate a given item within the visual tree,

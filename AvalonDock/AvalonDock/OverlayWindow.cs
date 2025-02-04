@@ -374,10 +374,8 @@ namespace AvalonDock
             }
         }
 
-        #region INotifyPropertyChanged Members
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
-        #endregion
-    }
+            }
 }

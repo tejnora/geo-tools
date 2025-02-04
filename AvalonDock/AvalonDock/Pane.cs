@@ -69,8 +69,7 @@ namespace AvalonDock
 
         
 
-        #region Contents management
-        public bool HasSingleItem
+                public bool HasSingleItem
         {
             get
             {
@@ -133,17 +132,14 @@ namespace AvalonDock
 
         //    base.OnPropertyChanged(e);
         //} 
-        #endregion
-
-        #region IDockableControl Members
-
+        
+        
         public virtual bool IsDocked
         {
             get { return true; }
         }
 
-        #endregion
-
+        
         public virtual DockingManager GetManager()
         {
             DependencyObject parent = LogicalTreeHelper.GetParent(this);
@@ -158,13 +154,9 @@ namespace AvalonDock
         
 
 
-        #region IDockableControl Members
-
-        #endregion
-
-        #region Membri di IDropSurface
-        #region Drag pane services
-
+        
+        
+                
         DockingManager _oldManager = null;
         //protected override void OnVisualParentChanged(DependencyObject oldParent)
         //{
@@ -193,8 +185,7 @@ namespace AvalonDock
                     _oldManager.DragPaneServices.Register(this);
             }
         }
-        #endregion
-
+        
 
         public abstract bool IsSurfaceVisible {get;}
         
@@ -232,8 +223,7 @@ namespace AvalonDock
             return false;
         }
 
-        #endregion
-
+        
 
         public virtual ManagedContent RemoveContent(int index)
         {
@@ -286,8 +276,7 @@ namespace AvalonDock
         }
 
 
-        #region INotifyPropertyChanged Members
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -295,6 +284,5 @@ namespace AvalonDock
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
-    }
+            }
 }

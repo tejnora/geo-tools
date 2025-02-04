@@ -9,8 +9,7 @@ namespace VFK.GUI
 {
     public partial class VFKImportDialog : DialogBase
     {
-        #region Constructors
-        private VFKDataContext _vfkDataContext;
+                private VFKDataContext _vfkDataContext;
         public VFKImportDialog(VFKDataContext aDataContext)
             : base("VFKImportDialog")
         {
@@ -35,9 +34,7 @@ namespace VFK.GUI
             _vfkDataContext.OnReloadProperties();
             _cilImportuEntriesCB.DataContext = _vfkDataContext;
         }
-        #endregion
-        #region Events
-        private void OnFileChooser(object sender, EventArgs aArgs)
+                        private void OnFileChooser(object sender, EventArgs aArgs)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.Filter = "Vymenny format KN (*.vfk)|*.vfk";
@@ -105,6 +102,5 @@ namespace VFK.GUI
                     _vfkDataContext.TypGP = TypGP.Ostatni;
             }
         }
-        #endregion
-    }
+            }
 }

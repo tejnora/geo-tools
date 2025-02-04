@@ -21,13 +21,11 @@ namespace GeoBase.Utils
             P1 = p1;
             P2 = p2;
         }
-        #region Property
-        public UnitPoint P1
+                public UnitPoint P1
         { get; set; }
         public UnitPoint P2
         { get; private set; }
-        #endregion
-    }
+            }
     public class ArcSegment:PathSegment
     {
         public ArcSegment(UnitPoint p, float radius, float begin, float angle)
@@ -38,8 +36,7 @@ namespace GeoBase.Utils
             StartAngle = begin;
             Angle = angle;
         }
-        #region Property
-        public UnitPoint Center
+                public UnitPoint Center
         { get; private set; }
         public float Radius
         { get; private set; }
@@ -47,16 +44,12 @@ namespace GeoBase.Utils
         { get; private set; }
         public float Angle
         { get; private set; }
-        #endregion
-    }
+            }
 
     public class PathImpl: IEnumerable
     {
-        #region Property & Fields
-        private List<PathSegment> _pathSegments = new List<PathSegment>();
-        #endregion
-        #region Methods
-        public int ItmesCount
+                private List<PathSegment> _pathSegments = new List<PathSegment>();
+                        public int ItmesCount
         {
             get { return _pathSegments.Count; }
         }
@@ -96,13 +89,10 @@ namespace GeoBase.Utils
             }
             return path;
         }
-        #endregion
-        #region IEnumerable
-        public IEnumerator GetEnumerator()
+                        public IEnumerator GetEnumerator()
         {
             foreach (var pathSegment in _pathSegments)
                 yield return pathSegment;
         }
-        #endregion
-    }
+            }
 }

@@ -71,8 +71,7 @@ namespace AvalonDock
         HwndSource _hwndSrc = null;
         HwndSourceHook _hwndSrcHook = null;
 
-        #region interop funtions and consts
-        const int WM_NCACTIVATE = 0x86;
+                const int WM_NCACTIVATE = 0x86;
         const int WM_ACTIVATEAPP = 0x1c;
         const int WM_ACTIVATE = 6;
         const int WM_WINDOWPOSCHANGING = 70;
@@ -96,8 +95,7 @@ namespace AvalonDock
         [DllImport("user32.dll")]
         public static extern bool LockWindowUpdate(IntPtr hWndLock);  
 
-        #endregion
-
+        
         private IntPtr HookHandler(
             IntPtr hwnd,
             int msg,
@@ -133,14 +131,12 @@ namespace AvalonDock
         }
 
 
-        #region IDisposable Members
-
+        
         public void Dispose()
         {
             AttachedObject = null;
             GC.SuppressFinalize(this);
         }
 
-        #endregion
-    }
+            }
 }

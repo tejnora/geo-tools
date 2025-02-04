@@ -237,8 +237,7 @@ namespace AvalonDock
         }
         
 
-        #region INotifyPropertyChanged Members
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         void NotifyPropertyChanged(string propertyName)
@@ -246,7 +245,6 @@ namespace AvalonDock
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
-    }
+            }
 
 }

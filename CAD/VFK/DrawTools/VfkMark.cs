@@ -16,19 +16,16 @@ using Pen = System.Drawing.Pen;
 
 namespace CAD.VFK.DrawTools
 {
-    #region Enums
-    public enum VfkMarkType
+        public enum VfkMarkType
     {
         Dpm,
         Op,
         Obbp,
         Ob
     }
-    #endregion
-    public class VfkMark : VfkDrawObjectBase, IDrawObject
+        public class VfkMark : VfkDrawObjectBase, IDrawObject
     {
-        #region Constructors
-        public VfkMark()
+                public VfkMark()
         {
 
         }
@@ -80,9 +77,7 @@ namespace CAD.VFK.DrawTools
             SetVfkElement(Singletons.VFKElements.GetElement(obItem.TYPPPD_KOD));
             P1 = new UnitPoint(-obItem.SOURADNICE_Y, -obItem.SOURADNICE_X);
         }
-        #endregion
-        #region Property
-        public VfkMarkType VfkMarkType
+                        public VfkMarkType VfkMarkType
         { get; set; }
 
         private UnitPoint P1
@@ -110,9 +105,7 @@ namespace CAD.VFK.DrawTools
         { get; set; }
         private VFKDataTableBaseItemWithProp Item
         { get; set; }
-        #endregion
-        #region IDrawObject
-        public virtual string Id
+                        public virtual string Id
         {
             get { return VfkToolBar.VfkMark.Name; }
         }
@@ -228,9 +221,7 @@ namespace CAD.VFK.DrawTools
         {
             export.AddPath(GetMarkPath().GetTransformPath(P1),Color,Width);
         }
-        #endregion
-        #region Threshold
-        private const int ThresholdPixel = 6;
+                        private const int ThresholdPixel = 6;
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {
             return ThresholdWidth(canvas, objectwidth, ThresholdPixel);
@@ -241,9 +232,7 @@ namespace CAD.VFK.DrawTools
             double width = Math.Max(objectwidth / 2, minWidth);
             return (float)width;
         }
-        #endregion
-        #region Marks Descriptions
-        static public Rect GetBoundigBox(UnitPoint nodePoint, VfkElement element)
+                        static public Rect GetBoundigBox(UnitPoint nodePoint, VfkElement element)
         {
             switch (element.TYPPPD_KOD)
             {
@@ -402,9 +391,7 @@ namespace CAD.VFK.DrawTools
             }
             return path;
         }
-        #endregion
-        #region IVFKTool
-        public override void RegisterObject(IVFKMain aOwner)
+                        public override void RegisterObject(IVFKMain aOwner)
         {
             switch (VfkMarkType)
             {
@@ -530,20 +517,16 @@ namespace CAD.VFK.DrawTools
                     throw new UnExpectException(); 
             }
         }
-        #endregion
-        #region Methods
-        private PathImpl GetMarkPath()
+                        private PathImpl GetMarkPath()
         {
             if (!_markCache.ContainsKey(VfkElement.TYPPPD_KOD))
                 _markCache[VfkElement.TYPPPD_KOD] = GetDrawMark(VfkElement.TYPPPD_KOD);
             return _markCache[VfkElement.TYPPPD_KOD];
         }
-        #endregion
-    }
+            }
     internal class VfkMarkEdit : VfkMark, IObjectEditInstance
     {
-        #region IDrawObject
-        public void Copy(ActivePointEdit acopy)
+                public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -553,9 +536,7 @@ namespace CAD.VFK.DrawTools
             l.Copy(this);
             return l;
         }
-        #endregion
-        #region IObjectEditInstance
-        public IDrawObject GetDrawObject()
+                        public IDrawObject GetDrawObject()
         {
             return Clone();
         }
@@ -571,6 +552,5 @@ namespace CAD.VFK.DrawTools
         {
             return true;
         }
-        #endregion
-    }
+            }
 }

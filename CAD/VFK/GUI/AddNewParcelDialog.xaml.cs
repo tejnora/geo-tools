@@ -9,8 +9,7 @@ namespace VFK.GUI
 {
     public partial class AddNewParcelDialog : DialogBase
     {
-        #region Constructor
-        public AddNewParcelDialog ()
+                public AddNewParcelDialog ()
             :base("AddNewParcelDialog")
         {
             
@@ -24,17 +23,13 @@ namespace VFK.GUI
             _FSU.Text = aEP.GetDataContext().FSU.ToString();
         }
 
-        #endregion
-        #region Property & Fields
-        private IEditParcel _editParce;
+                        private IEditParcel _editParce;
         public List<VFKPARTableItem> NewParcels
         {
             get; 
             private set;
         }
-        #endregion
-        #region Event handlers
-        public void OnAddNewParcel(object sender, EventArgs args)
+                        public void OnAddNewParcel(object sender, EventArgs args)
         {
             ValidationRule val = new CAD.Validators.ParcelNumberValidator();
             if (val.Validate(_ParcelNumber.Text, null) != ValidationResult.ValidResult || _FSU.Text.Length == 0)
@@ -67,6 +62,5 @@ namespace VFK.GUI
 
             NewParcels.Add(newPar);
         }
-        #endregion
-    }
+            }
 }

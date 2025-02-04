@@ -12,8 +12,7 @@ namespace CAD.GUI
     public class PpWindow
         : Window, INotifyPropertyChanged
     {
-        #region Constructors
-        public PpWindow()
+                public PpWindow()
         {
         }
         public PpWindow(String aRegistryValue)
@@ -34,20 +33,14 @@ namespace CAD.GUI
 
             Closing += OnClosing;
         }
-        #endregion
-        #region Fields
-        private string _registryValue;
-        #endregion
-        #region INotifyPropertyChanged
-        protected virtual void OnPropertyChanged(string propertyName)
+                        private string _registryValue;
+                        protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        #endregion INotifyPropertyChanged
-        #region Methods
-        public virtual void SetOwner(IDrawObject aOwner)
+                        public virtual void SetOwner(IDrawObject aOwner)
         {
         }
         private void OnClosing(object sender, EventArgs arg)
@@ -55,7 +48,6 @@ namespace CAD.GUI
             Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, _registryValue + "/Pos", new ProgramOption(new Point(Left, Top)));
             Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, _registryValue + "/Size", new ProgramOption(new Point(Width, Height)));
         }
-        #endregion
-
+        
     }
 }

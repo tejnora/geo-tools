@@ -20,11 +20,8 @@
 //[Serializable]
 //internal class IniData : DataObjectBase<IniData>
 //{
-//    #region Variables
-//    #endregion
-
-//    #region Constructor & destructor
-//    /// <summary>
+//    //    
+//    //    /// <summary>
 //    /// Initializes a new object from scratch.
 //    /// </summary>
 //    public IniData()
@@ -37,10 +34,8 @@
 //    /// <param name="context"><see cref="StreamingContext"/>.</param>
 //    public IniData(SerializationInfo info, StreamingContext context)
 //        : base(info, context) { }
-//    #endregion
-
-//    #region Properties
-//    /// <summary>
+//    
+//    //    /// <summary>
 //    /// Gets or sets the filename of the ini file to modify.
 //    /// </summary>
 //    public string FileName
@@ -95,13 +90,9 @@
 //    /// Register the property so it is known in the class.
 //    /// </summary>
 //    public readonly PropertyData ValueProperty = RegisterProperty("Value", typeof(string), string.Empty);
-//    #endregion
-
-//    #region Methods
-//    #endregion
-
-//    #region Serialization
-//    /// <summary>
+//    
+//    //    
+//    //    /// <summary>
 //    /// Retrieves the actual data from the serialization info.
 //    /// </summary>
 //    /// <param name="info"><see cref="SerializationInfo"/>.</param>
@@ -113,8 +104,7 @@
 //        // Perform any custom serialization here, or if you wish to 
 //        // support older style serialization, you can do it here
 //    }
-//    #endregion
-//}
+//    //}
 //
 //////////////////////////////////////////////////////////
 

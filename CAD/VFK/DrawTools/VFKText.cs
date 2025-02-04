@@ -22,8 +22,7 @@ using StringFormat = System.Drawing.StringFormat;
 
 namespace CAD.VFK.DrawTools
 {
-    #region Enums
-    public enum VFKTextEnum
+        public enum VFKTextEnum
     {
         Unset,
         Dpm,
@@ -31,11 +30,9 @@ namespace CAD.VFK.DrawTools
         Obbp,
         Obpej
     }
-    #endregion
-    public class VfkText : VfkDrawObjectBase, IDrawObject
+        public class VfkText : VfkDrawObjectBase, IDrawObject
     {
-        #region Constructors
-        public VfkText()
+                public VfkText()
         {
             Type = VFKTextEnum.Unset;
             UseLayerColor = false;
@@ -76,9 +73,7 @@ namespace CAD.VFK.DrawTools
             P1 = new UnitPoint(-obpej.SOURADNICE_Y, -obpej.SOURADNICE_X);
             UseLayerColor = false;         
         }
-        #endregion
-        #region Property
-        private VFKMain Owner
+                        private VFKMain Owner
         {
             get; set;
         }
@@ -143,9 +138,7 @@ namespace CAD.VFK.DrawTools
         }
 
         private string _fontName;
-        #endregion
-        #region IDrawObject
-        public virtual string Id
+                        public virtual string Id
         {
             get { return VfkToolBar.VfkText.Name; }
         }
@@ -284,9 +277,7 @@ namespace CAD.VFK.DrawTools
             string styleName = export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.0, _fontName);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, UhelNatoceni);
         }
-        #endregion
-        #region IVFKTool
-        public override void RegisterObject(IVFKMain aOwner)
+                        public override void RegisterObject(IVFKMain aOwner)
         {
             bool newItem = Item == null;
             switch (Type)
@@ -429,18 +420,14 @@ namespace CAD.VFK.DrawTools
             UpdateFontSize();
         }
 
-        #endregion
-        #region Methods
-        private void UpdateFontSize()
+                        private void UpdateFontSize()
         {
             FontSize = (VyskaTextu * 100 / 2.54) * 96;
         }
-        #endregion
-    }
+            }
     internal class VfkTextsEdit : VfkText, IObjectEditInstance
     {
-        #region Methods
-        public void Copy(ActivePointEdit acopy)
+                public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -451,13 +438,9 @@ namespace CAD.VFK.DrawTools
             l.Copy(this);
             return l;
         }
-        #endregion
-        #region Property
-        public bool SetAngle
+                        public bool SetAngle
         { get; set; }
-        #endregion
-        #region IObjectEditInstance
-        public IDrawObject GetDrawObject()
+                        public IDrawObject GetDrawObject()
         {
             VfkText text = new VfkText();
             text.Copy(this);
@@ -482,9 +465,7 @@ namespace CAD.VFK.DrawTools
             }
             return true;
         }
-        #endregion
-        #region IDrawObject
-        private bool _modifyText;
+                        private bool _modifyText;
         public override eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             if(!SetAngle)
@@ -532,7 +513,6 @@ namespace CAD.VFK.DrawTools
                 }
             }
         }
-        #endregion
-    }
+            }
 
 }

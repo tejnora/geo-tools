@@ -22,7 +22,7 @@ namespace CAD.Canvas
 {
     public class DataModel : IModel
     {
-        #region Constructor
+        
         public DataModel()
         {
             _toolTypes.Clear();
@@ -40,8 +40,9 @@ namespace CAD.Canvas
             _centerPoint = new UnitPoint(0, 0);
             VfkMain = null;
         }
-        #endregion
-        #region Property & Fields
+
+        
+        
         static Dictionary<string, Type> _toolTypes = new Dictionary<string, Type>();
         private Dictionary<string, IDrawObject> _drawObjectTypes = new Dictionary<string, IDrawObject>();
         private Dictionary<string, IEditTool> m_editTools = new Dictionary<string, IEditTool>();
@@ -55,48 +56,55 @@ namespace CAD.Canvas
         private ICanvasLayer _activeLayer;
         private readonly Dictionary<IDrawObject, bool> _selection = new Dictionary<IDrawObject, bool>();
         private UInt32 _slaveCounter;
-        private readonly List<Color> _colors = new List<Color>{ Color.White, Color.Black, Color.Red, Color.Yellow };
-        private readonly List<double> _widths = new List<double>{ 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008 };
+        private readonly List<Color> _colors = new List<Color> { Color.White, Color.Black, Color.Red, Color.Yellow };
+
+        private readonly List<double> _widths = new List<double>
+            { 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008 };
+
         public bool IsDirty
         {
             get { return _undoBuffer.Dirty; }
         }
+
         [XmlSerializable]
         public UnitPoint CenterPoint
         {
             get { return _centerPoint; }
             set { _centerPoint = value; }
         }
-        public VFKMain VfkMain
-        {
-            get;
-            set;
-        }
+
+        public VFKMain VfkMain { get; set; }
         private VFKDrawingLayerMain _vfkDrawingLayerMain;
-        #endregion
-        #region IModel
+
+        
+        
         [XmlSerializable]
         public double Zoom
         {
             get { return _zoom; }
             set { _zoom = value; }
         }
+
         public ICanvasLayer BackgroundLayer
         {
             get { return _backgroundLayer; }
         }
+
         public ICanvasLayer ImageBackgrounLayer
         {
             get { return _imageBackgroundLayer; }
         }
+
         public ICanvasLayer GridLayer
         {
             get { return _gridLayer; }
         }
+
         public ICanvasLayer[] Layers
         {
             get { return _layers.ToArray(); }
         }
+
         public ICanvasLayer ActiveLayer
         {
             get
@@ -105,11 +113,9 @@ namespace CAD.Canvas
                     _activeLayer = _layers[0];
                 return _activeLayer;
             }
-            set
-            {
-                _activeLayer = value;
-            }
+            set { _activeLayer = value; }
         }
+
         public ICanvasLayer GetLayer(string id)
         {
             foreach (ICanvasLayer layer in _layers)
@@ -117,8 +123,10 @@ namespace CAD.Canvas
                 if (layer.Id == id)
                     return layer;
             }
+
             return null;
         }
+
         public IDrawObject CreateObject(string type, UnitPoint point, ISnapPoint snappoint)
         {
             var layer = ActiveLayer;
@@ -130,8 +138,10 @@ namespace CAD.Canvas
                 newobj.Layer = layer;
                 newobj.InitializeFromModel(point, layer, snappoint);
             }
+
             return newobj as IDrawObject;
         }
+
         public IDrawObject CreateVFKObject(string type, UnitPoint point, ISnapPoint snappoint)
         {
             var layer = ActiveLayer;
@@ -143,8 +153,10 @@ namespace CAD.Canvas
                 newobj.Layer = layer;
                 newobj.InitializeFromModel(point, layer, snappoint);
             }
+
             return newobj as IDrawObject;
         }
+
         public void AddObject(ICanvasLayer layer, IDrawObject drawobject)
         {
             if (drawobject is IObjectEditInstance)
@@ -153,6 +165,7 @@ namespace CAD.Canvas
                 _undoBuffer.AddCommand(new EditCommandAdd(layer, drawobject));
             layer.AddObject(drawobject);
         }
+
         public void AddVFKObject(IDrawObject drawobject)
         {
             if (drawobject is IObjectEditInstance)
@@ -162,6 +175,7 @@ namespace CAD.Canvas
                 _undoBuffer.AddCommand(new EditVFKCommandAdd(_vfkDrawingLayerMain, drawobject));
             ((IVFKTool)drawobject).RegisterObject(VfkMain);
         }
+
         public void DeleteObjects(IEnumerable<IDrawObject> objects)
         {
             EditCommandRemove undocommand = null;
@@ -174,9 +188,11 @@ namespace CAD.Canvas
                 if (removedobjects != null && undocommand != null)
                     undocommand.AddLayerObjects(layer, removedobjects);
             }
+
             if (undocommand != null)
                 _undoBuffer.AddCommand(undocommand);
         }
+
         public void DeleteVFKObjects(IEnumerable<IDrawObject> objects, bool silentDeleteObjects)
         {
             EditVFKCommandRemove undocommand = null;
@@ -186,7 +202,8 @@ namespace CAD.Canvas
             {
                 if (layer is VFKDrawingLayerMain)
                 {
-                    List<IDrawObject> removedobjects = ((VFKDrawingLayerMain)layer).DeleteVFKObjects(objects, silentDeleteObjects);
+                    List<IDrawObject> removedobjects =
+                        ((VFKDrawingLayerMain)layer).DeleteVFKObjects(objects, silentDeleteObjects);
                     if (removedobjects != null && undocommand != null)
                         undocommand.AddLayerObjects(layer, removedobjects);
                     if (removedobjects != null)
@@ -202,9 +219,11 @@ namespace CAD.Canvas
                         undocommand.AddLayerObjects(layer, removedobjects);
                 }
             }
+
             if (undocommand != null)
                 _undoBuffer.AddCommand(undocommand);
         }
+
         public void MoveObjects(UnitPoint offset, IEnumerable<IDrawObject> objects)
         {
             if (_undoBuffer.CanCapture)
@@ -212,6 +231,7 @@ namespace CAD.Canvas
             foreach (IDrawObject obj in objects)
                 obj.Move(offset);
         }
+
         public void CopyObjects(UnitPoint offset, IEnumerable<IDrawObject> objects)
         {
             ClearSelectedObjects();
@@ -224,9 +244,11 @@ namespace CAD.Canvas
                 ((DrawingLayer)ActiveLayer).AddObject(newobj);
                 AddSelectedObject(newobj);
             }
+
             if (_undoBuffer.CanCapture)
                 _undoBuffer.AddCommand(new EditCommandAdd(ActiveLayer, newobjects));
         }
+
         public void MoveNodes(UnitPoint position, IEnumerable<INodePoint> nodes)
         {
             if (_activeLayer is IVFKDravingLayerMain)
@@ -239,18 +261,21 @@ namespace CAD.Canvas
                 node.Finish();
             }
         }
+
         public IEditTool GetEditTool(string edittoolid)
         {
             if (m_editTools.ContainsKey(edittoolid))
                 return m_editTools[edittoolid].Clone();
             return null;
         }
+
         public void AfterEditObjects(IEditTool edittool)
         {
             edittool.Finished();
             if (_undoBuffer.CanCapture)
                 _undoBuffer.AddCommand(new EditCommandEditTool(edittool));
         }
+
         public List<IDrawObject> GetHitObjects(ICanvas canvas, Rect selection, bool anyPoint)
         {
             List<IDrawObject> selected = new List<IDrawObject>();
@@ -260,8 +285,10 @@ namespace CAD.Canvas
                     continue;
                 layer.GetHitObjects(selected, canvas, selection, anyPoint);
             }
+
             return selected;
         }
+
         public List<IDrawObject> GetHitObjects(ICanvas canvas, UnitPoint point)
         {
             List<IDrawObject> selected = new List<IDrawObject>();
@@ -271,12 +298,15 @@ namespace CAD.Canvas
                     continue;
                 layer.GetHitObjects(selected, canvas, point);
             }
+
             return selected;
         }
+
         public bool IsSelected(IDrawObject drawobject)
         {
             return _selection.ContainsKey(drawobject);
         }
+
         public void AddSelectedObject(IDrawObject drawobject)
         {
             DrawObjectBase obj = drawobject as DrawObjectBase;
@@ -284,6 +314,7 @@ namespace CAD.Canvas
             _selection[drawobject] = true;
             if (obj != null) obj.Selected = true;
         }
+
         public void RemoveSelectedObject(IDrawObject drawobject)
         {
             if (_selection.ContainsKey(drawobject))
@@ -293,17 +324,17 @@ namespace CAD.Canvas
                 _selection.Remove(drawobject);
             }
         }
+
         public IEnumerable<IDrawObject> SelectedObjects
         {
-            get
-            {
-                return _selection.Keys;
-            }
+            get { return _selection.Keys; }
         }
+
         public int SelectedCount
         {
             get { return _selection.Count; }
         }
+
         public void ClearSelectedObjects()
         {
             IEnumerable<IDrawObject> x = SelectedObjects;
@@ -312,8 +343,10 @@ namespace CAD.Canvas
                 DrawObjectBase obj = drawobject as DrawObjectBase;
                 if (obj != null) obj.Selected = false;
             }
+
             _selection.Clear();
         }
+
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, Type[] runningsnaptypes, Type usersnaptype)
         {
             List<IDrawObject> objects = GetHitObjects(canvas, point);
@@ -330,41 +363,50 @@ namespace CAD.Canvas
                 if (snap != null)
                     return snap;
             }
+
             return null;
         }
+
         public List<Color> getColors()
         {
             return _colors;
         }
+
         public List<double> getWidths()
         {
             return _widths;
         }
+
         public bool CanUndo()
         {
             return _undoBuffer.CanUndo;
         }
+
         public bool DoUndo()
         {
             return _undoBuffer.DoUndo(this);
         }
+
         public bool CanRedo()
         {
             return _undoBuffer.CanRedo;
-
         }
+
         public bool DoRedo()
         {
             return _undoBuffer.DoRedo(this);
         }
+
         public void StopUndoRedo()
         {
             _undoBuffer.StopUndoRedo = true;
         }
+
         public void StarUndoRedo()
         {
             _undoBuffer.StopUndoRedo = false;
         }
+
         public void Export(string fileName, ExportType type)
         {
             IExport export;
@@ -376,6 +418,7 @@ namespace CAD.Canvas
                 default:
                     throw new ArgumentOutOfRangeException("type");
             }
+
             try
             {
                 export.Init();
@@ -386,12 +429,14 @@ namespace CAD.Canvas
             catch (Exception e)
             {
                 ResourceParams resourceParams = new ResourceParams();
-                resourceParams.Add("msg",e.Message);
-                LanguageDictionary.Current.ShowMessageBox("107", resourceParams, MessageBoxButton.OK, MessageBoxImage.Error);
+                resourceParams.Add("msg", e.Message);
+                LanguageDictionary.Current.ShowMessageBox("107", resourceParams, MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
-        #endregion
-        #region Methods
+
+        
+        
         static public IDrawObject NewDrawObject(string objecttype)
         {
             if (_toolTypes.ContainsKey(objecttype))
@@ -399,37 +444,46 @@ namespace CAD.Canvas
                 string type = _toolTypes[objecttype].ToString();
                 return Assembly.GetExecutingAssembly().CreateInstance(type) as IDrawObject;
             }
+
             return null;
         }
+
         DrawObjectBase CreateObject(string objecttype)
         {
             if (_drawObjectTypes.ContainsKey(objecttype))
             {
                 return _drawObjectTypes[objecttype].Clone() as DrawObjectBase;
             }
+
             return null;
         }
+
         public void AddEditTool(string key, IEditTool tool)
         {
             m_editTools.Add(key, tool);
         }
+
         public void RemoveLayer(ICanvasLayer aLayer)
         {
             _layers.Remove(aLayer);
         }
+
         public void AddLayer(ICanvasLayer aLayer)
         {
             _layers.Add(aLayer);
         }
+
         public void AddDrawTool(string key, IDrawObject drawtool)
         {
             _drawObjectTypes[key] = drawtool;
         }
+
         void DefaultLayer()
         {
             _layers.Clear();
             _layers.Add(new DrawingLayer("Main", "Main Layer", Color.White, 0.001f));
         }
+
         public IDrawObject GetFirstSelected()
         {
             if (_selection.Count > 0)
@@ -438,15 +492,17 @@ namespace CAD.Canvas
                 e.MoveNext();
                 return e.Current;
             }
+
             return null;
         }
+
         public string FindUniqueId()
         {
             return string.Format("SlaveId{0}", _slaveCounter++);
         }
 
-        #endregion
-        #region Serializace & Deserialize
+        
+        
         public void Save(string filename)
         {
             try
@@ -460,6 +516,7 @@ namespace CAD.Canvas
                         if (layer is ISerializable)
                             layerCount++;
                     }
+
                     bw.Write(layerCount);
                     BinaryFormatter bin = new BinaryFormatter();
                     foreach (ICanvasLayer layer in _layers)
@@ -468,14 +525,15 @@ namespace CAD.Canvas
                             bin.Serialize(stream, layer);
                     }
                 }
+
                 _undoBuffer.Dirty = false;
             }
             catch (IOException)
             {
                 throw new UnExpectException();
             }
-
         }
+
         public bool Load(string filename)
         {
             try
@@ -494,30 +552,35 @@ namespace CAD.Canvas
                             _vfkDrawingLayerMain = (VFKDrawingLayerMain)canvasLayer;
                             VfkMain = _vfkDrawingLayerMain.VFKMain;
                         }
+
                         _layers.Add(canvasLayer);
                     }
                 }
+
                 return true;
             }
             catch (IOException)
             {
                 DefaultLayer();
             }
+
             return false;
         }
-        #endregion
-        #region IVFKModel
+
+        
+        
         public void OnImportVfk(VFKDataContext aDataContext)
         {
             if (_layers[0] is VFKDrawingLayerMain)
                 _layers.RemoveAt(0);
-            VfkMain = new VFKMain(aDataContext,this);
+            VfkMain = new VFKMain(aDataContext, this);
             VfkMain.VFKOpenFile();
             VfkMain.ImportEditedParcel();
             _vfkDrawingLayerMain = new VFKDrawingLayerMain(VfkMain);
             _layers.Insert(0, _vfkDrawingLayerMain);
             _activeLayer = _layers[0];
         }
+
         public void OnRemoveVfkData()
         {
             if (VfkMain != null)
@@ -527,10 +590,12 @@ namespace CAD.Canvas
                 _layers.RemoveAt(0);
             }
         }
+
         public bool IsImportedVfkFile()
         {
             return VfkMain != null;
         }
+
         public bool ViewPointEnable
         {
             get
@@ -539,12 +604,9 @@ namespace CAD.Canvas
                     return false;
                 return _vfkDrawingLayerMain.ViewPointEnable;
             }
-            set
-            {
-                _vfkDrawingLayerMain.ViewPointEnable = value;
-                
-            }
+            set { _vfkDrawingLayerMain.ViewPointEnable = value; }
         }
+
         public VfkActivePointCollection VfkActivePoints
         {
             get { return _vfkDrawingLayerMain.VFKActivePoints; }
@@ -554,6 +616,6 @@ namespace CAD.Canvas
         {
             return _vfkDrawingLayerMain.ShowVfkLayerManager();
         }
-        #endregion
-    }
+
+            }
 }

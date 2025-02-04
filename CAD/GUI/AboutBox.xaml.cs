@@ -46,9 +46,7 @@ namespace CAD.GUI
             }
         }
 
-        #region AboutData Provider
-        #region Member data
-        private XmlDocument xmlDoc = null;
+                        private XmlDocument xmlDoc = null;
 
         private const string propertyNameTitle = "Title";
         private const string propertyNameDescription = "Description";
@@ -64,10 +62,8 @@ namespace CAD.GUI
         private const string xPathCompany = xPathRoot + propertyNameCompany;
         private const string xPathLink = xPathRoot + "Link";
         private const string xPathLinkUri = xPathRoot + "Link/@Uri";
-        #endregion
-
-        #region Properties
-        /// <summary>
+        
+                /// <summary>
         /// Gets the title property, which is display in the About dialogs window title.
         /// </summary>
         public string ProductTitle
@@ -154,10 +150,8 @@ namespace CAD.GUI
         {
             get { return GetLogicalResourceString(xPathLinkUri); }
         }
-        #endregion
-
-        #region Resource location methods
-        /// <summary>
+        
+                /// <summary>
         /// Gets the specified property value either from a specific attribute, or from a resource dictionary.
         /// </summary>
         /// <typeparam name="T">Attribute type that we're trying to retrieve.</typeparam>
@@ -241,7 +235,5 @@ namespace CAD.GUI
             }
             return result;
         }
-        #endregion
-        #endregion
-    }
+                    }
 }

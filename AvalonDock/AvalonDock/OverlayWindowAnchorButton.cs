@@ -65,8 +65,7 @@ namespace AvalonDock
 
 
 
-        #region IDropSurface Membri di
-
+        
 
 
         public Rect SurfaceRectangle
@@ -120,6 +119,5 @@ namespace AvalonDock
             get { return (_owner.IsLoaded && _btnDock != null); }
         }
 
-        #endregion
-    }
+            }
 }

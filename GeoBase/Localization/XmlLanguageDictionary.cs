@@ -10,7 +10,9 @@ namespace GeoBase.Localization
 {
     public class XmlLanguageDictionary : LanguageDictionary
     {
-        readonly Dictionary<string, Dictionary<string, string>> _data = new Dictionary<string, Dictionary<string, string>>();
+        readonly Dictionary<string, Dictionary<string, string>> _data =
+            new Dictionary<string, Dictionary<string, string>>();
+
         public string Path { get; private set; }
         public string LocalizationSettingPath { get; private set; }
 
@@ -36,6 +38,7 @@ namespace GeoBase.Localization
             {
                 throw new XmlException("Invalid localization settings.");
             }
+
             var rootElement = xmlDocument["LocalizationSettings"];
             if (rootElement["CultureName"] != null)
                 CultureName = rootElement["CultureName"].InnerText;
@@ -46,7 +49,8 @@ namespace GeoBase.Localization
             {
                 foreach (XmlElement guiElement in guiElements.ChildNodes)
                 {
-                    ParseCurrentFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(LocalizationSettingPath), guiElement.InnerText));
+                    ParseCurrentFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(LocalizationSettingPath),
+                        guiElement.InnerText));
                 }
             }
         }
@@ -78,7 +82,6 @@ namespace GeoBase.Localization
                     default:
                         throw new XmlException(string.Format("Invalid localization node {0}", node.Name));
                 }
-
             }
         }
 
@@ -138,8 +141,10 @@ namespace GeoBase.Localization
                     {
                         correctionString.Append(line.TrimStart(' '));
                     }
+
                     innerData[node.Name] = correctionString.ToString();
                 }
+
                 _data[protocolName] = innerData;
             }
         }
@@ -153,6 +158,7 @@ namespace GeoBase.Localization
                 {
                     nameSpace = nameSpaceElement.Attributes["Value"].Value;
                 }
+
                 foreach (XmlNode node in nameSpaceElement.ChildNodes)
                 {
                     if (node.Name == "Value")
@@ -171,7 +177,6 @@ namespace GeoBase.Localization
                     }
                 }
             }
-
         }
 
         protected void LoadFromFileOld()
@@ -182,16 +187,19 @@ namespace GeoBase.Localization
             {
                 throw new XmlException("Invalid root element. Must be Dictionary");
             }
+
             var englishNameAttribute = xmlDocument.DocumentElement.Attributes["EnglishName"];
             if (englishNameAttribute != null)
             {
                 EnglishName = englishNameAttribute.Value;
             }
+
             var cultureNameAttribute = xmlDocument.DocumentElement.Attributes["CultureName"];
             if (cultureNameAttribute != null)
             {
                 CultureName = cultureNameAttribute.Value;
             }
+
             foreach (XmlNode node in xmlDocument.DocumentElement.ChildNodes)
             {
                 if (node.Name == "Value")
@@ -227,22 +235,27 @@ namespace GeoBase.Localization
                 Debug.WriteLine(string.Format("Uid must not be null or empty"));
                 return defaultValue;
             }
+
             if (string.IsNullOrEmpty(vid))
             {
                 Debug.WriteLine(string.Format("Vid must not be null or empty"));
                 return defaultValue;
             }
+
             if (!_data.ContainsKey(uid))
             {
                 Debug.WriteLine(string.Format("Uid {0} was not found in the {1} dictionary", uid, EnglishName));
                 return defaultValue;
             }
+
             var innerData = _data[uid];
             if (!innerData.ContainsKey(vid))
             {
-                Debug.WriteLine(string.Format("Vid {0} was not found for Uid {1}, in the {2} dictionary", vid, uid, EnglishName));
+                Debug.WriteLine(string.Format("Vid {0} was not found for Uid {1}, in the {2} dictionary", vid, uid,
+                    EnglishName));
                 return defaultValue;
             }
+
             var textValue = innerData[vid];
             try
             {
@@ -250,13 +263,15 @@ namespace GeoBase.Localization
                 {
                     return textValue;
                 }
+
                 var typeConverter = TypeDescriptor.GetConverter(type);
                 var translation = typeConverter.ConvertFromString(textValue);
                 return translation;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(string.Format("Failed to translate text {0} in dictionary {1}:\n{2}", textValue, EnglishName, ex.Message));
+                Debug.WriteLine(string.Format("Failed to translate text {0} in dictionary {1}:\n{2}", textValue,
+                    EnglishName, ex.Message));
                 return null;
             }
         }

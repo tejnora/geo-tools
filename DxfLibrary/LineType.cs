@@ -2,8 +2,7 @@ namespace DxfLibrary
 {
     public class LineType : TableEntry
     {
-        #region Constructor
-        public LineType(string name, string description, double patternLength)
+                public LineType(string name, string description, double patternLength)
             : base("LTYPE")
         {
             DataAcceptanceList.AddRange(new int[] { 2, 70, 3, 72, 73, 40, 49, 74, 75, 340, 46, 50, 44, 45, 9 });
@@ -19,12 +18,8 @@ namespace DxfLibrary
             : base(s)
         {
         }
-        #endregion
-        #region Fields
-        short _nrElements;
-        #endregion
-        #region Methods
-        /// <summary>
+                        short _nrElements;
+                        /// <summary>
         /// Add a simple section to the pattern. If positive, represents continuous line, if negative, represents space.
         /// </summary>
         /// <param name="length">The length of the section added</param>
@@ -76,6 +71,5 @@ namespace DxfLibrary
             _nrElements++;
             AddReplace(73, _nrElements);
         }
-        #endregion
-    }
+            }
 }

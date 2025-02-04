@@ -1,19 +1,15 @@
 ﻿namespace VFK.GUI
 {
-    #region #using Directives
-
+    
     using System;
     using System.Windows;
     using System.Windows.Controls;
 
-    #endregion
-
+    
     public class ExtendedTextBoxColumn : DataGridTextColumn
     {
-        #region Properties
-
-        #region HorizontalAlignment Property
-
+        
+        
         public HorizontalAlignment HorizontalAlignment
         {
             get { return (HorizontalAlignment)GetValue(HorizontalAlignmentProperty); }
@@ -27,10 +23,8 @@
                 typeof(ExtendedTextBoxColumn),
                 new UIPropertyMetadata(HorizontalAlignment.Stretch));
 
-        #endregion
-
-        #region VerticalAlignment Property
-
+        
+        
         public VerticalAlignment VerticalAlignment
         {
             get { return (VerticalAlignment)GetValue(VerticalAlignmentProperty); }
@@ -44,12 +38,9 @@
                 typeof(ExtendedTextBoxColumn),
                 new UIPropertyMetadata(VerticalAlignment.Stretch));
 
-        #endregion
-
-        #endregion
-
-        #region Implementation
-
+        
+        
+        
         private TextAlignment GetTextAlignment()
         {
             switch (HorizontalAlignment)
@@ -67,10 +58,8 @@
             }
         }
 
-        #endregion
-
-        #region DataGridTextColumn overrides
-
+        
+        
         protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
         {
             var element = base.GenerateElement(cell, dataItem);
@@ -91,6 +80,5 @@
             return textBox;
         }
 
-        #endregion
-    }
+            }
 }

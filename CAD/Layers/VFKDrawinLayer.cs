@@ -12,7 +12,7 @@ namespace CAD.Canvas.Layers
 {
     class VfkDrawinLayer : ICanvasLayer
     {
-        #region Constructor
+        
         public VfkDrawinLayer(VfkElement vfkElement)
         {
             Enabled = true;
@@ -21,18 +21,25 @@ namespace CAD.Canvas.Layers
             Name = _id;
             Name = vfkElement.PritomnyStav.LayerName.ToString();
         }
-        #endregion
-        #region Fields
+
+        
+        
         private List<IDrawObject> _objects = new List<IDrawObject>();
         readonly string _id;
-        public string Id { get { return _id; } }
+
+        public string Id
+        {
+            get { return _id; }
+        }
+
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
         public Color Color { get; set; }
         public double Width { get; set; }
         public string Name { get; set; }
-        #endregion
-        #region ICanvasLayer
+
+        
+        
         public void Draw(ICanvas canvas, Rect unitrect)
         {
             Tracing.StartTrack(App.TracePaint);
@@ -51,10 +58,14 @@ namespace CAD.Canvas.Layers
                     obj.Selected = sel;
                     obj.Highlighted = high;
                 }
+
                 cnt++;
             }
-            Tracing.EndTrack(App.TracePaint, "Draw Layer {0}, ObjCount {1}, Painted ObjCount {2}", Id, _objects.Count, cnt);
+
+            Tracing.EndTrack(App.TracePaint, "Draw Layer {0}, ObjCount {1}, Painted ObjCount {2}", Id, _objects.Count,
+                cnt);
         }
+
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, List<IDrawObject> otherobj)
         {
             foreach (IDrawObject obj in _objects)
@@ -63,15 +74,15 @@ namespace CAD.Canvas.Layers
                 if (sp != null)
                     return sp;
             }
+
             return null;
         }
-        public IEnumerable<IDrawObject> Objects 
+
+        public IEnumerable<IDrawObject> Objects
         {
-            get
-            {
-                return _objects;
-            }
+            get { return _objects; }
         }
+
         public Rect GetBoundingRect(ICanvas canvas)
         {
             Rect bb = Rect.Empty;
@@ -80,8 +91,10 @@ namespace CAD.Canvas.Layers
                 bb = WPFToFormConverter.unionRect(bb, drawobject.GetBoundingRect(canvas));
                 Debug.Assert(!double.IsInfinity(bb.Bottom));
             }
+
             return bb;
         }
+
         public void GetHitObjects(List<IDrawObject> selected, ICanvas canvas, Rect selection, bool anyPoint)
         {
             foreach (IDrawObject drawobject in Objects)
@@ -90,6 +103,7 @@ namespace CAD.Canvas.Layers
                     selected.Add(drawobject);
             }
         }
+
         public void GetHitObjects(List<IDrawObject> aHitObjects, ICanvas canvas, UnitPoint point)
         {
             foreach (IDrawObject drawobject in Objects)
@@ -98,10 +112,12 @@ namespace CAD.Canvas.Layers
                     aHitObjects.Add(drawobject);
             }
         }
+
         public void AddObject(IDrawObject drawobject)
         {
             System.Diagnostics.Debug.Assert(false);
         }
+
         public void Export(IExport export)
         {
             export.SinkLayer(this);
@@ -109,16 +125,18 @@ namespace CAD.Canvas.Layers
                 drawobject.Export(export);
             export.RiseLayer();
         }
-        #endregion
-        #region Methods
+
+        
+        
         public void DeleteObjects(IDrawObject objects)
         {
             _objects.Remove(objects);
         }
+
         public void AddVfkObjectFast(IDrawObject aObject)
         {
             _objects.Add(aObject);
         }
-        #endregion
-    }
+
+            }
 }

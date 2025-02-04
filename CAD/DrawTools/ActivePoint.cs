@@ -14,31 +14,24 @@ namespace CAD.Canvas.DrawTools
 {
     public class NodePointAcitePoint : INodePoint
     {
-        #region Enums
-        public enum EPoint
+                public enum EPoint
         {
             P1,
         }
-        #endregion
-        #region Fields
-        static bool _angleLocked = false;
+                        static bool _angleLocked = false;
         ActivePoint _owner;
         ActivePoint _clone;
         UnitPoint _originalPoint;
         UnitPoint _endPoint;
         EPoint _pointId;
-        #endregion
-        #region Constructor
-        public NodePointAcitePoint(ActivePoint owner, EPoint id)
+                        public NodePointAcitePoint(ActivePoint owner, EPoint id)
         {
             _owner = owner;
             _clone = _owner.Clone() as ActivePoint;
             _pointId = id;
             _originalPoint = GetPoint(_pointId);
         }
-        #endregion
-        #region INodePoint Members
-        public IDrawObject GetClone()
+                        public IDrawObject GetClone()
         {
             return _clone;
         }
@@ -75,9 +68,7 @@ namespace CAD.Canvas.DrawTools
                 e.Handled = true;
             }
         }
-        #endregion
-        #region Methods
-        protected UnitPoint GetPoint(EPoint pointid)
+                        protected UnitPoint GetPoint(EPoint pointid)
         {
             if (pointid == EPoint.P1)
                 return _clone.P1;
@@ -92,13 +83,11 @@ namespace CAD.Canvas.DrawTools
             if (pointid == EPoint.P1)
                 aActivePoint.P1 = point;
         }
-        #endregion
-    }
+            }
     [Serializable]
     public class ActivePoint : DrawObjectBase, IDrawObject
     {
-        #region Property & Field
-        public virtual UnitPoint P1
+                public virtual UnitPoint P1
         {
             get;
             set;
@@ -117,9 +106,7 @@ namespace CAD.Canvas.DrawTools
         {
             get { return DrawToolBar.ActivePoint.Name; }
         }
-        #endregion
-        #region Constructors
-        public ActivePoint()
+                        public ActivePoint()
         {
         }
         public ActivePoint(UnitPoint point, double width, Color color, double aRadius)
@@ -131,9 +118,7 @@ namespace CAD.Canvas.DrawTools
             Radius = aRadius;
             DrawCircle = true;
         }
-        #endregion
-        #region IDrawObject Members
-
+                
         public virtual IDrawObject Clone()
         {
             ActivePoint l = new ActivePoint();
@@ -275,9 +260,7 @@ namespace CAD.Canvas.DrawTools
         public virtual void Export(IExport export)
         {
         }
-        #endregion
-        #region Method
-        static int ThresholdPixel = 6;
+                        static int ThresholdPixel = 6;
         public static double ThresholdWidth(ICanvas canvas, double objectwidth)
         {
             return ThresholdWidth(canvas, objectwidth, ThresholdPixel);
@@ -288,21 +271,17 @@ namespace CAD.Canvas.DrawTools
             double width = Math.Max(objectwidth / 2, minWidth);
             return (float)width;
         }
-        #endregion`
     }
     public class ActivePointEdit : ActivePoint, IObjectEditInstance
     {
-        #region Property
-        public override string Id
+                public override string Id
         {
             get
             {
                 return "activePoint";
             }
         }
-        #endregion
-        #region Methods
-        public void Copy(ActivePointEdit acopy)
+                        public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -312,9 +291,7 @@ namespace CAD.Canvas.DrawTools
             l.Copy(this);
             return l;
         }
-        #endregion
-        #region IObjectEditInstance
-        public IDrawObject GetDrawObject()
+                        public IDrawObject GetDrawObject()
         {
             return new ActivePoint(P1, Width, Color, Radius);
         }
@@ -330,7 +307,6 @@ namespace CAD.Canvas.DrawTools
         {
             return true;
         }
-        #endregion
-    }
+            }
 
 }

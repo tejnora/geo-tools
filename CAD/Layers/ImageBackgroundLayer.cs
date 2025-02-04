@@ -35,8 +35,7 @@ namespace CAD.Canvas.Layers
         List<IDrawObject> _images = new List<IDrawObject>();
         Dictionary<IDrawObject, bool> _imagesMap = new Dictionary<IDrawObject, bool>();
 
-        #region IIMageBackgroundLayer
-        public void AddImageObject(IDrawObject drawobject)
+                public void AddImageObject(IDrawObject drawobject)
         {
             if (_imagesMap.ContainsKey(drawobject))
                 return; // this should never happen
@@ -68,9 +67,7 @@ namespace CAD.Canvas.Layers
             return _images[aIndex];
         }
 
-        #endregion
-        #region ICanvasLayer Members
-        public Color Color
+                        public Color Color
         {
             get;
             set;
@@ -146,9 +143,7 @@ namespace CAD.Canvas.Layers
         public void Export(IExport export)
         {
         }
-        #endregion
-        #region ISerialize
-        public void GetObjectData(XmlWriter wr)
+                        public void GetObjectData(XmlWriter wr)
         {
             wr.WriteStartElement("backgroundlayer");
             XmlUtil.WriteProperties(this, wr);
@@ -157,6 +152,5 @@ namespace CAD.Canvas.Layers
         public void AfterSerializedIn()
         {
         }
-        #endregion
-    }
+            }
 }

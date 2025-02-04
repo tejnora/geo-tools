@@ -2,8 +2,7 @@ namespace DxfLibrary
 {
     public class Text : Entity
     {
-        #region Constructor
-        public Text(string text, double x, double y, double height, string layer)
+                public Text(string text, double x, double y, double height, string layer)
             : base("TEXT", layer)
         {
             DataAcceptanceList.AddRange(new int[] { 39, 10, 20, 30, 40, 1, 50, 41, 51, 7, 71, 72, 11, 21, 31, 210, 220, 230, 73});
@@ -12,9 +11,7 @@ namespace DxfLibrary
             AddReplace(1, text);
             AddReplace(40, height);
         }
-        #endregion
-        #region Methods
-        /// <summary>
+                        /// <summary>
         /// Horizontal text justification type (optional, default = 0) integer codes (not bit-coded)
         /// 0 = Left; 1= Center; 2 = Right
         /// 3 = Aligned (if vertical alignment = 0)
@@ -53,6 +50,5 @@ namespace DxfLibrary
         {
             AddReplace(50, value);
         }
-        #endregion
-    }
+            }
 }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContoursViewer", "ContoursTester\ContoursTester\ContoursViewer.csproj", "{25412822-3407-4F97-9362-745756920285}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DxfLibrary", "DxfLibrary\DxfLibrary.csproj", "{69CA75D0-CB87-45FE-B462-8C92A0D4A489}"
@@ -24,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAD", "CAD\CAD.csproj", "{7748DE99-F7A6-4EF4-8252-7B35B76AF97D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDock", "AvalonDock\AvalonDock\AvalonDock.csproj", "{2FF700C2-A38A-48BD-A637-8CAFD4FE6237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVToBinCreator", "SC_SEZNAMKUKRA_CSVToBinCreator\CSVToBinCreator.csproj", "{4A4819C5-6855-40CA-A1C7-86842E876D44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -218,6 +222,22 @@ Global
 		{2FF700C2-A38A-48BD-A637-8CAFD4FE6237}.Release|Win32.Build.0 = Release|x86
 		{2FF700C2-A38A-48BD-A637-8CAFD4FE6237}.Release|x86.ActiveCfg = Release|x86
 		{2FF700C2-A38A-48BD-A637-8CAFD4FE6237}.Release|x86.Build.0 = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Win32.ActiveCfg = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|Win32.Build.0 = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|x86.ActiveCfg = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Debug|x86.Build.0 = Debug|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Win32.ActiveCfg = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|Win32.Build.0 = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|x86.ActiveCfg = Release|x86
+		{4A4819C5-6855-40CA-A1C7-86842E876D44}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

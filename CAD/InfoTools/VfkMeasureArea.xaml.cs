@@ -11,17 +11,14 @@ namespace CAD.InfoTools
 {
     public partial class VfkMeasureArea : InfoPropPage
     {
-        #region Constructor
-        public VfkMeasureArea(string registryname)
+                public VfkMeasureArea(string registryname)
             : base(registryname)
         {
             InitializeComponent();
             _points = new List<VfkActivePoint>();
             DataContext = this;
         }
-        #endregion
-        #region Property
-
+                
         private List<VfkActivePoint> _points;
         private UnitPoint _mousePoint;
         private double _width = 0.005;
@@ -38,9 +35,7 @@ namespace CAD.InfoTools
             get { return _curcuitOfArea; }
             set { _curcuitOfArea = value; OnPropertyChanged("CurcuitOfArea"); }
         }
-        #endregion
-        #region InfoPropPage
-        public override void Draw(ICanvas canvas)
+                        public override void Draw(ICanvas canvas)
         {
             var color = System.Drawing.Color.Violet;
             Draw.Pen pen = canvas.CreatePen(color, (float)_width);
@@ -82,9 +77,7 @@ namespace CAD.InfoTools
             return rect;
 
         }
-        #endregion
-        #region Methods
-        public void AddPoint(VfkActivePoint point)
+                        public void AddPoint(VfkActivePoint point)
         {
             _points.Add(point);
         }
@@ -136,6 +129,5 @@ namespace CAD.InfoTools
             double width = Math.Max(objectwidth / 2, minWidth);
             return (float)width;
         }
-        #endregion
-    }
+            }
 }

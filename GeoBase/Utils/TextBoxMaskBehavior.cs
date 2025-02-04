@@ -5,8 +5,7 @@ using System.Globalization;
 
 namespace CAD.Utils
 {
-    #region Documentation Tags
-    /// <summary>
+        /// <summary>
     ///     WPF Maskable TextBox class. Just specify the TextBoxMaskBehavior.Mask attached property to a TextBox. 
     ///     It protect your TextBox from unwanted non numeric symbols and make it easy to modify your numbers.
     /// </summary>
@@ -20,11 +19,9 @@ namespace CAD.Utils
     ///     </list>
     /// </para>
     /// </remarks>
-    #endregion
-    public class TextBoxMaskBehavior
+        public class TextBoxMaskBehavior
     {
-        #region MinimumValue Property
-
+        
         public static double GetMinimumValue(DependencyObject obj)
         {
             return (double)obj.GetValue(MinimumValueProperty);
@@ -48,10 +45,8 @@ namespace CAD.Utils
             TextBox _this = (d as TextBox);
             ValidateTextBox(_this);
         }
-        #endregion
-
-        #region MaximumValue Property
-
+        
+        
         public static double GetMaximumValue(DependencyObject obj)
         {
             return (double)obj.GetValue(MaximumValueProperty);
@@ -75,10 +70,8 @@ namespace CAD.Utils
             TextBox _this = (d as TextBox);
             ValidateTextBox(_this);
         }
-        #endregion
-
-        #region Mask Property
-
+        
+        
         public static MaskType GetMask(DependencyObject obj)
         {
             return (MaskType)obj.GetValue(MaskProperty);
@@ -118,10 +111,8 @@ namespace CAD.Utils
             ValidateTextBox(_this);
         }
 
-        #endregion
-
-        #region Private Static Methods
-
+        
+        
         private static void ValidateTextBox(TextBox _this)
         {
             if (GetMask(_this) != MaskType.Text)
@@ -362,8 +353,7 @@ namespace CAD.Utils
             return false;
         }
 
-        #endregion
-    }
+            }
 
     public enum MaskType
     {

@@ -22,12 +22,13 @@ namespace CAD.Canvas.Layers
     [Serializable]
     class VFKDrawingLayerMain : ICanvasLayer, IVFKDravingLayerMain, ISerializable, IDeserializationCallback
     {
-        #region Property & Field
+        
         public bool ViewPointEnable { get; set; }
         public VFKMain VFKMain { get; set; }
         Dictionary<UInt32, ICanvasLayer> _layers = new Dictionary<UInt32, ICanvasLayer>();
-        #endregion
-        #region Constructors
+
+        
+        
         public VFKDrawingLayerMain(VFKMain aVFKMain)
         {
             Name = "VFK";
@@ -40,22 +41,30 @@ namespace CAD.Canvas.Layers
             AddVFKObjects();
             ViewPointEnable = true;
         }
-        #endregion
-        #region IVFKDravingLayer
+
+        
+        
         protected VfkActivePointCollection _mActivePoints;
+
         public VfkActivePointCollection VFKActivePoints
         {
             get { return _mActivePoints; }
         }
+
         public void addPoint(VfkActivePoint aPoint)
         {
             _mActivePoints.UseModelForModification = false;
             _mActivePoints.Add(aPoint);
             _mActivePoints.UseModelForModification = true;
         }
-        #endregion
-        #region ICanvasLayer Members
-        public string Id { get { return "WFK"; } }
+
+        
+        
+        public string Id
+        {
+            get { return "WFK"; }
+        }
+
         public void Draw(ICanvas canvas, Rect unitrect)
         {
             if (ViewPointEnable)
@@ -73,12 +82,14 @@ namespace CAD.Canvas.Layers
                     obj.Highlighted = high;
                 }
             }
+
             foreach (var layer in _layers)
             {
                 if (layer.Value.Visible)
                     layer.Value.Draw(canvas, unitrect);
             }
         }
+
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, List<IDrawObject> otherobj)
         {
             foreach (IDrawObject obj in _mActivePoints)
@@ -87,6 +98,7 @@ namespace CAD.Canvas.Layers
                 if (sp != null)
                     return sp;
             }
+
             foreach (var layer in _layers)
             {
                 if (!layer.Value.Visible) continue;
@@ -94,14 +106,21 @@ namespace CAD.Canvas.Layers
                 if (snap != null)
                     return snap;
             }
+
             return null;
         }
-        public IEnumerable<IDrawObject> Objects { get { return null; } }
+
+        public IEnumerable<IDrawObject> Objects
+        {
+            get { return null; }
+        }
+
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
         public Color Color { get; set; }
         public double Width { get; set; }
         public string Name { get; set; }
+
         public Rect GetBoundingRect(ICanvas canvas)
         {
             Rect bb = Rect.Empty;
@@ -112,8 +131,10 @@ namespace CAD.Canvas.Layers
                 if (!layer.Value.Visible) continue;
                 bb = WPFToFormConverter.unionRect(bb, layer.Value.GetBoundingRect(canvas));
             }
+
             return bb;
         }
+
         public void GetHitObjects(List<IDrawObject> selected, ICanvas canvas, Rect selection, bool anyPoint)
         {
             foreach (IDrawObject drawobject in _mActivePoints)
@@ -121,12 +142,14 @@ namespace CAD.Canvas.Layers
                 if (drawobject.ObjectInRectangle(canvas, selection, anyPoint))
                     selected.Add(drawobject);
             }
+
             foreach (var layer in _layers)
             {
                 if (!layer.Value.Visible) continue;
                 layer.Value.GetHitObjects(selected, canvas, selection, anyPoint);
             }
         }
+
         public void GetHitObjects(List<IDrawObject> aHitObjects, ICanvas canvas, UnitPoint point)
         {
             foreach (IDrawObject drawobject in _mActivePoints)
@@ -134,12 +157,14 @@ namespace CAD.Canvas.Layers
                 if (drawobject.PointInObject(canvas, point))
                     aHitObjects.Add(drawobject);
             }
+
             foreach (var layer in _layers)
             {
                 if (!layer.Value.Visible) continue;
                 layer.Value.GetHitObjects(aHitObjects, canvas, point);
             }
         }
+
         public void AddObject(IDrawObject drawobject)
         {
             if (drawobject is VfkActivePoint)
@@ -156,9 +181,11 @@ namespace CAD.Canvas.Layers
                 {
                     _layers[typ] = new VfkDrawinLayer(Singletons.VFKElements.GetElement(typ));
                 }
+
                 ((VfkDrawinLayer)_layers[typ]).AddVfkObjectFast(drawobject);
             }
         }
+
         public List<IDrawObject> DeleteVFKObjects(IEnumerable<IDrawObject> objects, bool silentRemoveObject)
         {
             List<IDrawObject> deletedObjects = new List<IDrawObject>();
@@ -171,8 +198,9 @@ namespace CAD.Canvas.Layers
                     LanguageDictionary dictionary = LanguageConverter.ResolveDictionary();
                     ResourceParams par = new ResourceParams();
                     par.Add("PointNumber", activePoint.VfkPointName);
-                    if (!silentRemoveObject && dictionary.ShowMessageBox("90", par, MessageBoxButton.YesNo, MessageBoxImage.Warning) !=
-                            MessageBoxResult.Yes)
+                    if (!silentRemoveObject &&
+                        dictionary.ShowMessageBox("90", par, MessageBoxButton.YesNo, MessageBoxImage.Warning) !=
+                        MessageBoxResult.Yes)
                         continue;
                     _mActivePoints.UseModelForModification = false;
                     if (activePoint.VfkItem.CanRemove())
@@ -182,6 +210,7 @@ namespace CAD.Canvas.Layers
                     }
                     else
                         dictionary.ShowMessageBox("91", par, MessageBoxButton.OK, MessageBoxImage.Warning);
+
                     _mActivePoints.UseModelForModification = true;
                 }
                 else if (vfkTool != null)
@@ -190,8 +219,10 @@ namespace CAD.Canvas.Layers
                     deletedObjects.Add(vfkObject);
                 }
             }
+
             return deletedObjects;
         }
+
         public void DeleteObjects(IEnumerable<IDrawObject> objects)
         {
             foreach (var vfkObject in objects)
@@ -199,6 +230,7 @@ namespace CAD.Canvas.Layers
                 ((VfkDrawinLayer)_layers[((IVFKTool)vfkObject).TYPPPD_KOD]).DeleteObjects(vfkObject);
             }
         }
+
         public void Export(IExport export)
         {
             export.SinkLayer(this);
@@ -213,8 +245,9 @@ namespace CAD.Canvas.Layers
                 layer.Value.Export(export);
             export.RiseLayer();
         }
-        #endregion
-        #region Private method
+
+        
+        
         private void AddVFKObjects()
         {
             addActivePoints();
@@ -222,6 +255,7 @@ namespace CAD.Canvas.Layers
             addSimpleMarks();
             addSimpleNumbers();
         }
+
         private void addActivePoints()
         {
             List<VfkProxyActivePoint> points = VFKMain.GetProxyActivePoins();
@@ -230,6 +264,7 @@ namespace CAD.Canvas.Layers
                 addPoint(new VfkActivePoint(point));
             }
         }
+
         private void addSimpleLines()
         {
             List<VfkMultiLine> lines = VFKMain.GetDravingLineObjects();
@@ -239,9 +274,11 @@ namespace CAD.Canvas.Layers
                 {
                     _layers[line.TYPPPD_KOD] = new VfkDrawinLayer(line.VfkElement);
                 }
+
                 ((VfkDrawinLayer)_layers[line.TYPPPD_KOD]).AddVfkObjectFast(line);
             }
         }
+
         private void addSimpleMarks()
         {
             List<VfkMark> marks = VFKMain.GetDravingMarkObjects();
@@ -251,9 +288,11 @@ namespace CAD.Canvas.Layers
                 {
                     _layers[mark.VfkElement.TYPPPD_KOD] = new VfkDrawinLayer(mark.VfkElement);
                 }
+
                 ((VfkDrawinLayer)_layers[mark.TYPPPD_KOD]).AddVfkObjectFast(mark);
             }
         }
+
         private void addSimpleNumbers()
         {
             List<VfkText> texts = VFKMain.GetDrawingTextObjects();
@@ -263,11 +302,13 @@ namespace CAD.Canvas.Layers
                 {
                     _layers[text.VfkElement.TYPPPD_KOD] = new VfkDrawinLayer(text.VfkElement);
                 }
+
                 ((VfkDrawinLayer)_layers[text.VfkElement.TYPPPD_KOD]).AddVfkObjectFast(text);
             }
         }
-        #endregion
-        #region ISerializable
+
+        
+        
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("Name", Name);
@@ -277,8 +318,8 @@ namespace CAD.Canvas.Layers
             info.AddValue("Color", Color);
             info.AddValue("Width", Width);
             info.AddValue("VFKCore", VFKMain);
-
         }
+
         public VFKDrawingLayerMain(SerializationInfo info, StreamingContext ctxt)
         {
             Name = info.GetString("Name");
@@ -289,15 +330,17 @@ namespace CAD.Canvas.Layers
             Width = (float)info.GetValue("Width", typeof(float));
             VFKMain = info.GetValue("VFKCore", typeof(VFKMain)) as VFKMain;
         }
-        #endregion
-        #region IDeserializationCallback Members
+
+        
+        
         public void OnDeserialization(object sender)
         {
             _mActivePoints = new VfkActivePointCollection(VFKMain);
             AddVFKObjects();
         }
-        #endregion
-        #region IVFKDravingLayerMain
+
+        
+        
         public bool ShowVfkLayerManager()
         {
             var dialog = new VfkLayerManager();
@@ -306,6 +349,7 @@ namespace CAD.Canvas.Layers
             {
                 dialog.AddElement(vfkElements.GetElement(layer.Key), layer.Value.Visible);
             }
+
             if (dialog.ShowDialog().GetValueOrDefault(false))
             {
                 var elements = dialog.GetElements();
@@ -315,10 +359,12 @@ namespace CAD.Canvas.Layers
                     if (_layers.TryGetValue(element.Object.TYPPPD_KOD, out layer))
                         layer.Visible = element.Object2;
                 }
+
                 return true;
             }
+
             return false;
         }
-        #endregion
-    }
+
+            }
 }

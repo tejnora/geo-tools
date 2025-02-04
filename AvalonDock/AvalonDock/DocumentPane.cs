@@ -102,11 +102,9 @@ namespace AvalonDock
             base.OnInitialized(e);
         }
 
-        #region DocumentPane Commands
+        
 
-
-        #region Show Document Window List Command
-
+        
         public static RoutedCommand ShowDocumentsListMenuCommand = new RoutedCommand();
 
         public void ExecutedShowDocumentsListMenuCommand(object sender,
@@ -123,11 +121,9 @@ namespace AvalonDock
             e.CanExecute = true;
         }
 
-        #endregion
+        
 
-
-        #region Close Command
-
+        
         //ApplicationCommands.Close command....
 
         public void ExecutedCloseCommand(object sender,
@@ -166,10 +162,8 @@ namespace AvalonDock
             e.CanExecute = true;
         }
 
-        #endregion
-
-        #region Activate Document Command
-        public static RoutedCommand ActivateDocumentCommand = new RoutedCommand();
+        
+                public static RoutedCommand ActivateDocumentCommand = new RoutedCommand();
 
         public void ExecutedActivateDocumentCommand(object sender,
             ExecutedRoutedEventArgs e)
@@ -199,11 +193,9 @@ namespace AvalonDock
                 e.CanExecute = true;
         }
 
-        #endregion
+        
 
-
-        #region Commands
-        private static object syncRoot = new object();
+                private static object syncRoot = new object();
 
 
         private static RoutedUICommand closeAllButThisCommand = null;
@@ -340,10 +332,8 @@ namespace AvalonDock
             GetManager().Anchor(newContainerPane, this, AnchorStyle.Right);
         }
 
-        #endregion    
-
-        #endregion
-
+        
+        
         UIElement _optionsContextMenuPlacementTarget;
 
         public override void OnApplyTemplate()

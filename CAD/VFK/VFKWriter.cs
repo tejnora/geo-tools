@@ -326,8 +326,7 @@ namespace VFK
             else if (aItem.PRIZNAK_KONTEXTU == 1)
                 aPkStavData._rusene++;
         }
-        #region IVFKWriter
-        private List<VFKHPTableItem> HP
+                private List<VFKHPTableItem> HP
         {
             get;
             set;
@@ -463,6 +462,5 @@ namespace VFK
         {
             HBPEJ.Add(aItem);
         }
-        #endregion
-    }
+            }
 }

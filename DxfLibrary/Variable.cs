@@ -2,8 +2,7 @@ namespace DxfLibrary
 {
     public class Variable : Element
     {
-        #region Constructor
-        public Variable(string nume, int dataType, object val)
+                public Variable(string nume, int dataType, object val)
         {
             StartTag = new Data(0, 0);
             EndTag = new Data(0, 0);
@@ -11,9 +10,7 @@ namespace DxfLibrary
             Data.Add(new Data(9, nume));
             Data.Add(new Data(dataType, val));
         }
-        #endregion
-        #region Properties
-        public string VarName
+                        public string VarName
         {
             get
             {
@@ -27,6 +24,5 @@ namespace DxfLibrary
                 return ((Data)Data[1])._data;
             }
         }
-        #endregion
-    }
+            }
 }

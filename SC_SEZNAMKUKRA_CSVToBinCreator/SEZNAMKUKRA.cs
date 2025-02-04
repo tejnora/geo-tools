@@ -29,11 +29,11 @@ namespace CSVToBinCreator
             public string PRARES_NAZEV;
             public string POZNAMKA;
         }
+
         public void DoBinFile(string inLoc, string outLoc)
         {
             try
             {
-
                 string text = File.ReadAllText(inLoc, Encoding.GetEncoding("windows-1250"));
                 string[] lines = text.Split('\n');
                 List<Data> ku = new List<Data>();
@@ -45,12 +45,14 @@ namespace CSVToBinCreator
                         def = false;
                         continue;
                     }
+
                     string[] fiels = line.Split(';');
                     if (fiels.Length < 16)
                     {
                         Console.WriteLine("Invalid data;{0}", line);
                         continue;
                     }
+
                     Data d;
                     d.KRAJ_KOD = fiels[0];
                     d.KRAJ_NAZEV = fiels[1];
@@ -71,6 +73,7 @@ namespace CSVToBinCreator
                     d.POZNAMKA = fiels[16];
                     ku.Add(d);
                 }
+
                 ku.Sort((ku1, ku2) =>
                 {
                     return string.Compare(ku1.KU_NAZEV, ku2.KU_NAZEV, true, new CultureInfo("cs-CZ"));
@@ -90,9 +93,8 @@ namespace CSVToBinCreator
             }
             catch (Exception ex)
             {
-                Console.Write("Parse error:{0}",ex.Message);
+                Console.Write("Parse error:{0}", ex.Message);
             }
-            
         }
     }
 }

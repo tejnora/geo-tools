@@ -32,17 +32,14 @@ namespace CAD.VFK.GUI
 
     public partial class ImportSouradnicDialog : DialogBase
     {
-        #region Enums
-
+        
         public enum ImportTypes
         {
             SouradniceObrazu,
             SouradnicePolohy
         };
 
-        #endregion
-        #region Constructor
-        public ImportSouradnicDialog(VfkActivePointCollection activePoints, Document document)
+                        public ImportSouradnicDialog(VfkActivePointCollection activePoints, Document document)
             : base("VFKImportSouradnicDialog")
         {
             InitializeComponent();
@@ -50,9 +47,7 @@ namespace CAD.VFK.GUI
             _document = document;
             DataContext = this;
         }
-        #endregion
-        #region Property
-        Document _document;
+                        Document _document;
         private ImportTypes _importType = ImportTypes.SouradniceObrazu;
         public ImportTypes ImportType
         {
@@ -71,9 +66,7 @@ namespace CAD.VFK.GUI
             get;
             set;
         }
-        #endregion
-        #region Methods
-        private void OnImport(object sender, RoutedEventArgs e)
+                        private void OnImport(object sender, RoutedEventArgs e)
         {
             if (ActivePoints == null) return;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -198,6 +191,5 @@ namespace CAD.VFK.GUI
             }
             OnOkButtonClick(sender, e);
         }
-        #endregion
-    }
+            }
 }

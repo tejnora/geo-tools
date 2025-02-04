@@ -13,26 +13,21 @@ namespace CAD.VFK.GUI
 {
     public partial class ExportSouradnicDialog : DialogBase
     {
-        #region Enums
-
+        
         public enum ExportTypes
         {
             SouradniceObrazu,
             SouradnicePolohy
         };
 
-        #endregion
-        #region Constructor
-        public ExportSouradnicDialog(VfkActivePointCollection activePoints)
+                        public ExportSouradnicDialog(VfkActivePointCollection activePoints)
             : base("VFKExportSouradnicDialog")
         {
             InitializeComponent();
             ActivePoints = activePoints;
             DataContext = this;
         }
-        #endregion
-        #region Property
-        private ExportTypes _exportType = ExportTypes.SouradniceObrazu;
+                        private ExportTypes _exportType = ExportTypes.SouradniceObrazu;
         public ExportTypes ExportType
         {
             get { return _exportType; }
@@ -50,9 +45,7 @@ namespace CAD.VFK.GUI
             get;
             set;
         }
-        #endregion
-        #region Methods
-        private void OnExport(object sender, RoutedEventArgs e)
+                        private void OnExport(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog();
             dlg.Filter = "TXT files (*.txt)|*.txt";
@@ -100,6 +93,5 @@ namespace CAD.VFK.GUI
             var res = string.Format(CultureInfo.InvariantCulture, "{0:0.00}", number);
             return res.PadLeft(pad, '0');
         }
-        #endregion
-    }
+            }
 }

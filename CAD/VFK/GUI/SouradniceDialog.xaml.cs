@@ -9,25 +9,20 @@ namespace CAD.VFK.GUI
 {
     public partial class SouradniceDialog : DialogBase
     {
-        #region Constructor
-        public SouradniceDialog(VfkProxyActivePoint point)
+                public SouradniceDialog(VfkProxyActivePoint point)
             : base("SouradniceDialog")
         {
             InitializeComponent();
             SouradniceDataContext=new SouradniceDialogContext(point);
             DataContext = SouradniceDataContext;
         }
-        #endregion
-        #region Property
-        public SouradniceDialogContext SouradniceDataContext
+                        public SouradniceDialogContext SouradniceDataContext
         { get; private set; }
-        #endregion
-    }
+            }
 
     public class SouradniceDialogContext : DataObjectBase<SouradniceDialogContext>
     {
-        #region Constructors
-        public SouradniceDialogContext(SerializationInfo info, StreamingContext context)
+                public SouradniceDialogContext(SerializationInfo info, StreamingContext context)
             :base(info,context)
         {
         }
@@ -36,9 +31,7 @@ namespace CAD.VFK.GUI
         {
             Init(point);
         }
-        #endregion
-        #region Property
-        public readonly PropertyData _sobrUplneCisloBoduProperty = RegisterProperty("SobrUplneCisloBodu", typeof(string), string.Empty);
+                        public readonly PropertyData _sobrUplneCisloBoduProperty = RegisterProperty("SobrUplneCisloBodu", typeof(string), string.Empty);
         public string SobrUplneCisloBodu
         {
             get { return GetValue<string>(_sobrUplneCisloBoduProperty); }
@@ -120,9 +113,7 @@ namespace CAD.VFK.GUI
             if (string.IsNullOrEmpty(SobrUplneCisloBodu) || SobrUplneCisloBodu.Length!=12) SetFieldError(_sobrUplneCisloBoduProperty, errorMesg);
             
         }
-        #endregion
-        #region Methods
-        private void Init(VfkProxyActivePoint point)
+                        private void Init(VfkProxyActivePoint point)
         {
             SobrIsEnabled = !point.IsSobrReadOnly;
             SobrUplneCisloBodu = point.PointFullName;
@@ -159,6 +150,5 @@ namespace CAD.VFK.GUI
             }
             return true;
         }
-        #endregion
-    }
+            }
 }

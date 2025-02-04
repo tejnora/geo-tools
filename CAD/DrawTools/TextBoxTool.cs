@@ -18,8 +18,7 @@ using RectangleF = System.Drawing.RectangleF;
 
 namespace CAD.Canvas.DrawTools
 {
-    #region Enums
-    public enum PointPositions
+        public enum PointPositions
     {
         TopLeft,
         TopRight,
@@ -31,12 +30,10 @@ namespace CAD.Canvas.DrawTools
         BottomLeft,
         BottomRight,
     };
-    #endregion
-    [Serializable]
+        [Serializable]
     public class TextBox : DrawObjectBase, IDrawObject, IDeserializationCallback
     {
-        #region Constructors
-        public TextBox()
+                public TextBox()
         {
             PointPosition = PointPositions.TopLeft;
             FontFamily = new System.Drawing.FontFamily("Arial");
@@ -48,9 +45,7 @@ namespace CAD.Canvas.DrawTools
             Text = string.Empty;
             Reset();
         }
-        #endregion
-        #region Property & Fields
-        private Size _size = new Size(); //pixel size
+                        private Size _size = new Size(); //pixel size
         protected UnitPoint _p1;
         public UnitPoint P1
         {
@@ -127,9 +122,7 @@ namespace CAD.Canvas.DrawTools
         GraphicsPath _mGP = new GraphicsPath();
         [NonSerialized]
         Rect _mBoundingBox;
-        #endregion
-        #region ITextBox
-        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             Reset();
         }
@@ -160,9 +153,7 @@ namespace CAD.Canvas.DrawTools
             return new Size();
         }
 
-        #endregion
-        #region IDrawObject
-        public virtual string Id
+                        public virtual string Id
         {
             get { return DrawToolBar.TextBox.Name; }
         }
@@ -315,9 +306,7 @@ namespace CAD.Canvas.DrawTools
             string styleName=export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.2, FontFamily.Name);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, 0);
         }
-        #endregion
-        #region IDeserializationCallback Members
-
+                
         public void OnDeserialization(object sender)
         {
             try
@@ -332,12 +321,10 @@ namespace CAD.Canvas.DrawTools
             Reset();
         }
 
-        #endregion    
-    }
+            }
     public class TextBoxEdit : TextBox, IObjectEditInstance
     {
-        #region IDrawObject
-        public void Copy(TextBoxEdit acopy)
+                public void Copy(TextBoxEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -347,9 +334,7 @@ namespace CAD.Canvas.DrawTools
             l.Copy(this);
             return l;
         }
-        #endregion
-        #region IObjectEditInstance
-        public IDrawObject GetDrawObject()
+                        public IDrawObject GetDrawObject()
         {
             TextBox textBox = new TextBox();
             textBox.Copy(this);
@@ -367,7 +352,6 @@ namespace CAD.Canvas.DrawTools
         {
             return true;
         }
-        #endregion
-    }
+            }
 
 }

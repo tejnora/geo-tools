@@ -15,8 +15,7 @@ namespace DotNetMatrix
 	[Serializable]
 	public class CholeskyDecomposition : System.Runtime.Serialization.ISerializable
 	{
-		#region Class variables
-		
+				
 		/// <summary>Array for internal storage of decomposition.
 		/// @serial internal array storage.
 		/// </summary>
@@ -32,10 +31,8 @@ namespace DotNetMatrix
 		/// </summary>
 		private bool isspd;
 		
-		#endregion //  Class variables
-
-		#region Constructor
 		
+				
 		/// <summary>Cholesky algorithm for symmetric and positive definite matrix.</summary>
 		/// <param name="Arg">  Square, symmetric matrix.
 		/// </param>
@@ -80,10 +77,8 @@ namespace DotNetMatrix
 			}
 		}
 		
-		#endregion //  Constructor
-
-		#region Public Properties
-		/// <summary>Is the matrix symmetric and positive definite?</summary>
+		
+				/// <summary>Is the matrix symmetric and positive definite?</summary>
 		/// <returns>     true if A is symmetric and positive definite.
 		/// </returns>
 		virtual public bool SPD
@@ -93,10 +88,8 @@ namespace DotNetMatrix
 				return isspd;
 			}
 		}
-		#endregion   // Public Properties
-		
-		#region Public Methods
-		
+				
+				
 		/// <summary>Return triangular factor.</summary>
 		/// <returns>     L
 		/// </returns>
@@ -164,8 +157,7 @@ namespace DotNetMatrix
 			}
 			return new GeneralMatrix(X, n, nx);
 		}
-		#endregion //  Public Methods
-
+		
 		// A method called when serializing this class.
 		void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context) 
 		{

@@ -13,15 +13,14 @@ using CAD.BackgrounImages;
 using GeoBase.Localization;
 using GeoBase.Utils;
 using VFK.GUI;
-
 using Registry = GeoBase.Utils.Registry;
 using ProgramOption = GeoBase.Utils.ProgramOption;
 
 namespace CAD
 {
-    public partial class MainWin : Window , IMainWinInterface
+    public partial class MainWin : Window, IMainWinInterface
     {
-        #region Constructor
+        
         public MainWin()
         {
             InitLanguages();
@@ -29,12 +28,14 @@ namespace CAD
             InitLayout();
             InitToolBars();
         }
-        #endregion
-        #region Property
+
+        
+        
         private GeoCadToolBarManager _toolBarManager;
         private bool _lockUpdateToolBar;
-        #endregion
-        #region DokingManagetEvents
+
+        
+        
         private void DockingManagerControl_Loaded(object sender, EventArgs arg)
         {
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize");
@@ -46,6 +47,7 @@ namespace CAD
                 }
             }
         }
+
         private Document GetDocument()
         {
             if (_dockingManager == null || _dockingManager.ActiveDocument == null)
@@ -54,6 +56,7 @@ namespace CAD
                 return ((Document)_dockingManager.ActiveDocument);
             return null;
         }
+
         private void OnMainDocumentChanged(object sender, EventArgs e)
         {
             Document doc = GetDocument();
@@ -66,19 +69,21 @@ namespace CAD
                     return;
                 }
             }
+
             _seznamSouradnic.SetDocument(null);
         }
-        #endregion
-        #region Menu
-        #region Raster Menu
+
+        
+        
+        
         private void OnAddRaster(object sender, EventArgs e)
         {
             Document doc = GetDocument();
             if (doc == null) return;
             var dlg = new Microsoft.Win32.OpenFileDialog
-                          {
-                              Filter = "CIT (only 24 code supported) (*.cit)|*.cit"
-                          };
+            {
+                Filter = "CIT (only 24 code supported) (*.cit)|*.cit"
+            };
             Nullable<bool> result = dlg.ShowDialog(this);
             if (result == true)
             {
@@ -87,6 +92,7 @@ namespace CAD
                 doc.CanvasCommand.InvalidateAll();
             }
         }
+
         private void OnRemoveRaster(object sender, EventArgs e)
         {
             Document doc = GetDocument();
@@ -94,7 +100,7 @@ namespace CAD
             IImageBackgrounLayer iibl = doc.DataModel.ImageBackgrounLayer as IImageBackgrounLayer;
             if (iibl != null)
             {
-                if (iibl.getImageObjectCount() == 0) 
+                if (iibl.getImageObjectCount() == 0)
                     return;
                 if (iibl.getImageObjectCount() == 1)
                 {
@@ -103,13 +109,15 @@ namespace CAD
                 }
             }
         }
+
         private void OnManageRaster(object sender, EventArgs e)
         {
             Document doc = GetDocument();
             if (doc == null) return;
         }
-        #endregion
-        #region VFK Menu
+
+        
+        
         private void OnImportVfk(object aSender, EventArgs aArg)
         {
             Document doc = GetDocument();
@@ -118,24 +126,29 @@ namespace CAD
                 DocumentNew(string.Empty);
                 doc = GetDocument();
             }
+
             if (doc.ImportVfk(string.Empty))
                 OnMainDocumentChanged(this, EventArgs.Empty);
         }
+
         private void OnCanImportVfk(object sender, CanExecuteRoutedEventArgs args)
         {
             args.CanExecute = true;
         }
+
         private void OnExportVfk(object aSender, EventArgs aArg)
         {
             Document doc = GetDocument();
             if (doc == null) return;
             doc.ExportVfk();
         }
+
         private void OnCanExportVfk(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
+
         private void OnRemoveVFKData(object aSender, EventArgs aArg)
         {
             Document doc = GetDocument();
@@ -143,72 +156,89 @@ namespace CAD
             doc.RemoveVfk();
             _seznamSouradnic.SetDocument(null);
         }
+
         private void OnCanRemoveVFKData(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
+
         private void OnVFKEdidOfParcel(object aSender, EventArgs aArgs)
         {
             Document doc = GetDocument();
             doc.OnVfkEdidOfParcel();
         }
+
         private void OnCanVFKEdidOfParcel(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
+
         private void OnSeznamSouradnicVFK(object aSender, EventArgs aArgs)
         {
             _dockingManager.Show(_seznamSouradnic);
         }
+
         private void OnCanSeznamSouradnicVFK(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
+
         private void OnSetElements(object aSender, EventArgs aArgs)
         {
             ElementsProperties prop = new ElementsProperties();
             prop.Show();
         }
+
         private void OnGenerateSIP(object aSender, EventArgs aArgs)
         {
             Document doc = GetDocument();
             doc.OnGenerateSip();
         }
+
         private void OnCanGenerateSIP(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
-        #endregion
-        #region Option Menu
+
+        
+        
         private void onSavePosAndSize(object sender, EventArgs arg)
         {
-            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowPos", new ProgramOption(new Point(Left, Top)));
+            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowPos",
+                new ProgramOption(new Point(Left, Top)));
             if (WindowState != WindowState.Maximized)
             {
-                Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowSize", new ProgramOption(new Point(ActualWidth, ActualHeight)));
+                Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowSize",
+                    new ProgramOption(new Point(ActualWidth, ActualHeight)));
             }
-            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowState", new ProgramOption(WindowState == WindowState.Maximized));
+
+            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowState",
+                new ProgramOption(WindowState == WindowState.Maximized));
             StringBuilder builder = new StringBuilder();
             using (System.IO.StringWriter writer = new System.IO.StringWriter((builder)))
             {
                 _dockingManager.SaveLayout(writer);
             }
-            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize", new ProgramOption(builder.ToString()));
+
+            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize",
+                new ProgramOption(builder.ToString()));
         }
-        #endregion
-        #region Help Menu
+
+        
+        
         private void OnAboutBox(object sender, RoutedEventArgs e)
         {
             AboutBox aboutBox = new AboutBox(this);
             aboutBox.ShowDialog();
         }
-        #endregion
-        #endregion
-        #region IMainWinInterface
+
+        
+        
+        
         public void SetPositionInfo(UnitPoint aUnitpos)
         {
             Document document = GetDocument();
@@ -224,8 +254,10 @@ namespace CAD
                 if (obj != null)
                     s = obj.GetInfoAsString();
             }
+
             _drawInfoLabel.Text = s;
         }
+
         public void SetSnapInfo(ISnapPoint aSnap)
         {
             string snapHint = string.Empty;
@@ -233,6 +265,7 @@ namespace CAD
                 snapHint = string.Format("Snap@{0}, {1}", aSnap.SnapPoint.PosAsString(), aSnap.GetType());
             _snapBarInfoLabel.Text = snapHint;
         }
+
         public void DocumentNew(string aName)
         {
             Document doc = new Document(aName, this);
@@ -240,12 +273,13 @@ namespace CAD
             doc.ContentTypeDescription = "Sample document";
             _dockingManager.MainDocumentPane.Items.Add(doc);
             doc.CanvasCommand.CommandFitView();
-
         }
+
         public void CloseDocument()
         {
             ((DocumentContent)_dockingManager.ActiveDocument).Close();
         }
+
         public void UpdateToolBars(GeoCadRoutedCommand command)
         {
             if (_lockUpdateToolBar) return;
@@ -253,15 +287,17 @@ namespace CAD
             _toolBarManager.Command = command;
             _lockUpdateToolBar = false;
         }
-        #endregion
-        #region Methods
+
+        
+        
         private void InitLanguages()
         {
             LanguageDictionary.RegisterDictionary(
-            CultureInfo.GetCultureInfo("cs-CZ"),
-            new XmlLanguageDictionary("Languages/cs-CZ.xml",string.Empty));
+                CultureInfo.GetCultureInfo("cs-CZ"),
+                new XmlLanguageDictionary("Languages/cs-CZ.xml", string.Empty));
             LanguageContext.Instance.Culture = CultureInfo.GetCultureInfo("cs-CZ");
         }
+
         private void InitLayout()
         {
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowPos");
@@ -270,6 +306,7 @@ namespace CAD
                 Left = po.getPoint().X;
                 Top = po.getPoint().Y;
             }
+
             po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowState");
             if (po.isBool())
             {
@@ -278,6 +315,7 @@ namespace CAD
                     WindowState = WindowState.Maximized;
                 }
             }
+
             po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowSize");
             if (po.isPoint())
             {
@@ -285,6 +323,7 @@ namespace CAD
                 Height = po.getPoint().Y;
             }
         }
+
         private void InitToolBars()
         {
             _toolBarManager = new GeoCadToolBarManager(this);
@@ -299,6 +338,7 @@ namespace CAD
             _toolBarManager.MergeInputBindings(InputBindings);
             _toolBarManager.ToolChanged += OnToolChanged;
         }
+
         private void OnToolChanged(GeoCadRoutedCommand command)
         {
             switch (command.CommandType)
@@ -323,11 +363,10 @@ namespace CAD
                 case GeoCadRoutedCommand.CommandTypes.InfoTool:
                     GetDocument().CanvasCommand.CommandInfoTool(command);
                     break;
-               default:
+                default:
                     throw new ArgumentOutOfRangeException();
             }
         }
-        #endregion
-    }
-}
 
+            }
+}

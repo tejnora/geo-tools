@@ -23,8 +23,7 @@ namespace CITReader
             FileLocation=aLocation;
         }
 
-        #region IBackgroundImage
-        public ImageType Type
+                public ImageType Type
         {
             get { return ImageType.itCit; }
         }
@@ -95,8 +94,7 @@ namespace CITReader
             return new Point(2 * _bitmapData.PixelWidth * 254 / _bitmapData.DpiX, 2 * _bitmapData.PixelHeight * 254 / _bitmapData.DpiY);
         }
 
-        #endregion
-
+        
         public delegate void progressBar(Int16 aValue);
 
         public progressBar ProgressBar
@@ -681,8 +679,7 @@ namespace CITReader
             return 0;
         }
 
-        #region Conversion Tables
-        const Int32 _TOTAL_CODES = 105;
+                const Int32 _TOTAL_CODES = 105;
 
         Int32[] _huffman_white_code = {
         53,    7,    7,    8,   11,   12,   14,   15,   19,   20, 
@@ -770,6 +767,5 @@ namespace CITReader
 
         Int32[] _ccitt_2d_value = {
         0,  0,  0,  1,  2,  3, -1, -2, -3,  0,  0 };
-        #endregion
-    }
+            }
 }

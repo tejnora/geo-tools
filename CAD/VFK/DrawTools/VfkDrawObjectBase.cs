@@ -9,13 +9,10 @@ namespace CAD.VFK.DrawTools
 {
     public abstract class VfkDrawObjectBase : DrawObjectBase, IVFKTool
     {
-        #region Property & Fields
-        public VfkElement VfkElement
+                public VfkElement VfkElement
         { get; private set; }
         private VfkElement.ElementDrawInfo _drawInfo;
-        #endregion
-        #region IVFKTool
-        public abstract void RegisterObject(IVFKMain aOwner);
+                        public abstract void RegisterObject(IVFKMain aOwner);
         public abstract void DeleteObject(IVFKMain aOwner);
         public virtual VFKSOBRTableItem getActivePoint(uint aIdx)
         {
@@ -36,9 +33,7 @@ namespace CAD.VFK.DrawTools
         }
         public virtual bool GetMustBeConnectedWithSnap()
         {throw new UnExpectException();}
-        #endregion
-        #region DrawObjectBase
-        public new double Width
+                        public new double Width
         {
             set { throw new UnExpectException(); }
             get
@@ -60,6 +55,5 @@ namespace CAD.VFK.DrawTools
             VfkElement = acopy.VfkElement;
             _drawInfo = acopy._drawInfo;
         }
-        #endregion
-    }
+            }
 }

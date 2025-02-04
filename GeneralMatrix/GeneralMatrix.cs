@@ -4,8 +4,7 @@ using System.Runtime.Serialization;
 
 namespace DotNetMatrix
 {
-    #region Internal Maths utility
-    internal class Maths
+        internal class Maths
     {
         /// <summary>
         ///  sqrt(a^2 + b^2) without under/overflow.
@@ -34,8 +33,7 @@ namespace DotNetMatrix
             return r;
         }
     }
-    #endregion   // Internal Maths utility
-
+    
     /// <summary>.NET GeneralMatrix class.
     /// 
     /// The .NET GeneralMatrix Class provides the fundamental operations of numerical
@@ -83,8 +81,7 @@ namespace DotNetMatrix
     [Serializable]
     public class GeneralMatrix : System.ICloneable, System.Runtime.Serialization.ISerializable, System.IDisposable
     {
-        #region Class variables
-
+        
         /// <summary>Array for internal storage of elements.
         /// @serial internal array storage.
         /// </summary>
@@ -96,10 +93,8 @@ namespace DotNetMatrix
         /// </summary>
         private int m, n;
 
-        #endregion //  Class variables
-
-        #region Constructors
-
+        
+        
         /// <summary>Construct an m-by-n matrix of zeros. </summary>
         /// <param name="m">   Number of rows.
         /// </param>
@@ -209,11 +204,9 @@ namespace DotNetMatrix
                 }
             }
         }
-        #endregion //  Constructors
+        
 
-
-        #region Public Properties
-        /// <summary>Access the internal two-dimensional array.</summary>
+                /// <summary>Access the internal two-dimensional array.</summary>
         /// <returns>     Pointer to the two-dimensional array of matrix elements.
         /// </returns>
         virtual public double[][] Array
@@ -306,9 +299,7 @@ namespace DotNetMatrix
                 return n;
             }
         }
-        #endregion   // Public Properties
-
-        #region	 Public Methods
+        
 
         /// <summary>Construct a matrix from a copy of a 2-D array.</summary>
         /// <param name="A">   Two-dimensional array of doubles.
@@ -1009,8 +1000,7 @@ namespace DotNetMatrix
             return X;
         }
 
-        #region Operator Overloading
-
+        
         /// <summary>
         ///  Addition of matrices
         /// </summary>
@@ -1062,8 +1052,7 @@ namespace DotNetMatrix
             return t;
         }
 
-        #endregion   //Operator Overloading
-
+        
         /// <summary>LU Decomposition</summary>
         /// <returns>     LUDecomposition
         /// </returns>
@@ -1237,9 +1226,7 @@ namespace DotNetMatrix
             return A;
         }
 
-        #endregion //  Public Methods
-
-        #region	 Private Methods
+        
 
         /// <summary>Check if size(A) == size(B) *</summary>
 
@@ -1250,10 +1237,8 @@ namespace DotNetMatrix
                 throw new System.ArgumentException("GeneralMatrix dimensions must agree.");
             }
         }
-        #endregion //  Private Methods
-
-        #region Implement IDisposable
-        /// <summary>
+        
+                /// <summary>
         /// Do not make this method virtual.
         /// A derived class should not be able to override this method.
         /// </summary>
@@ -1296,8 +1281,7 @@ namespace DotNetMatrix
             // readability and maintainability.
             Dispose(false);
         }
-        #endregion //  Implement IDisposable
-
+        
         /// <summary>Clone the GeneralMatrix object.</summary>
         public System.Object Clone()
         {

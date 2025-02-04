@@ -19,8 +19,7 @@ namespace DotNetMatrix
 	[Serializable]
 	public class QRDecomposition : System.Runtime.Serialization.ISerializable
 	{
-		#region Class variables
-		
+				
 		/// <summary>Array for internal storage of decomposition.
 		/// @serial internal array storage.
 		/// </summary>
@@ -37,10 +36,8 @@ namespace DotNetMatrix
 		/// </summary>
 		private double[] Rdiag;
 
-		#endregion //  Class variables
-		
-		#region Constructor
-		
+				
+				
 		/// <summary>QR Decomposition, computed by Householder reflections.</summary>
 		/// <param name="A">   Rectangular matrix
 		/// </param>
@@ -97,10 +94,8 @@ namespace DotNetMatrix
 			}
 		}
 
-		#endregion //  Constructor
+				
 		
-		#region Public Properties
-
 		/// <summary>Is the matrix full rank?</summary>
 		/// <returns>     true if R, and hence A, has full rank.
 		/// </returns>
@@ -212,10 +207,8 @@ namespace DotNetMatrix
 				return X;
 			}
 		}
-		#endregion //  Public Properties
-		
-		#region Public Methods
-		
+				
+				
 		/// <summary>Least squares solution of A*X = B</summary>
 		/// <param name="B">   A Matrix with as many rows as A and any number of columns.
 		/// </param>
@@ -277,8 +270,7 @@ namespace DotNetMatrix
 			return (new GeneralMatrix(X, n, nx).GetMatrix(0, n - 1, 0, nx - 1));
 		}
 
-		#endregion //  Public Methods
-
+		
 		// A method called when serializing this class.
 		void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context) 
 		{

@@ -4,14 +4,12 @@ using System.Globalization;
 
 namespace VFK.GUI
 {
-    #region #using Directives
-
+    
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
 
-    #endregion
-
+    
     public class DatabindingDebugConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
@@ -32,8 +30,7 @@ namespace VFK.GUI
 
     public class LabelTextBoxColumn : ExtendedTextBoxColumn
     {
-        #region Implementation
-
+        
         private void ApplyStyle(bool isEditing, bool defaultToElementStyle, FrameworkElement element)
         {
             var style = PickStyle(isEditing, defaultToElementStyle);
@@ -58,10 +55,8 @@ namespace VFK.GUI
                 BindingOperations.ClearBinding(target, property);
         }
 
-        #endregion
-
-        #region DataGridTextBoxColumn overrides
-
+        
+        
         protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
         {
             var label = new Label
@@ -76,6 +71,5 @@ namespace VFK.GUI
             return label;
         }
 
-        #endregion
-    }
+            }
 }

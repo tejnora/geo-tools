@@ -303,8 +303,7 @@ namespace AvalonDock
         }
 
 
-        #region Resize management
-        double originalWidth = 0.0;
+                double originalWidth = 0.0;
         double originalHeight = 0.0;
         double originalLeft = 0.0;
         double originalTop = 0.0;
@@ -409,10 +408,8 @@ namespace AvalonDock
 
         }
         
-        #endregion
-
-        #region Closing window strategies
-
+        
+        
 
         DispatcherTimer _closingTimer = null;
 
@@ -839,11 +836,9 @@ namespace AvalonDock
 
 
         
-        #endregion
+        
 
-
-        #region Clipping Region
-
+        
         protected override void OnActivated(EventArgs e)
         {
             if (!IsOpening && !IsClosing)
@@ -918,6 +913,5 @@ namespace AvalonDock
             }        
         }
 
-        #endregion
-    }
+            }
 }

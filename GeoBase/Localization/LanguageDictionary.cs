@@ -8,9 +8,18 @@ namespace GeoBase.Localization
 {
     public abstract class LanguageDictionary
     {
-        private static readonly Dictionary<CultureInfo, LanguageDictionary> RegisteredDictionaries = new Dictionary<CultureInfo, LanguageDictionary>();
-        public CultureInfo Culture { get { return CultureInfo.GetCultureInfo(CultureName); } }
-        public static LanguageDictionary Current { get { return GetDictionary(LanguageContext.Instance.Culture); } }
+        private static readonly Dictionary<CultureInfo, LanguageDictionary> RegisteredDictionaries =
+            new Dictionary<CultureInfo, LanguageDictionary>();
+
+        public CultureInfo Culture
+        {
+            get { return CultureInfo.GetCultureInfo(CultureName); }
+        }
+
+        public static LanguageDictionary Current
+        {
+            get { return GetDictionary(LanguageContext.Instance.Culture); }
+        }
 
         public void Load()
         {
@@ -48,6 +57,7 @@ namespace GeoBase.Localization
                     message = message.Replace("#" + param.Key + "#", param.Value);
                 }
             }
+
             return message;
         }
 
@@ -56,10 +66,11 @@ namespace GeoBase.Localization
             return OnTranslate(uid, vid, defaultValue, type);
         }
 
-        public MessageBoxResult ShowMessageBox(string uid, ResourceParams param, MessageBoxButton messageBoxButton, MessageBoxImage messageBoxImage)
+        public MessageBoxResult ShowMessageBox(string uid, ResourceParams param, MessageBoxButton messageBoxButton,
+            MessageBoxImage messageBoxImage)
         {
             return MessageBox.Show(Application.Current.MainWindow, Translate(uid, "Text", param),
-                            Translate<string>(uid, "Caption"), messageBoxButton, messageBoxImage);
+                Translate<string>(uid, "Caption"), messageBoxButton, messageBoxImage);
         }
 
         public static void RegisterDictionary(CultureInfo cultureInfo, LanguageDictionary dictionary)
@@ -84,11 +95,13 @@ namespace GeoBase.Localization
             {
                 throw new ArgumentNullException("cultureInfo");
             }
+
             if (RegisteredDictionaries.ContainsKey(cultureInfo))
             {
                 var dictionary = RegisteredDictionaries[cultureInfo];
                 return dictionary;
             }
+
             return new NullLanguageDictionary();
         }
 
@@ -100,9 +113,18 @@ namespace GeoBase.Localization
 
         private sealed class NullLanguageDictionary : LanguageDictionary
         {
-            protected override void OnLoad() { }
-            protected override void OnUnload() { }
-            protected override object OnTranslate(string uid, string vid, object defaultValue, Type type) { return defaultValue; }
+            protected override void OnLoad()
+            {
+            }
+
+            protected override void OnUnload()
+            {
+            }
+
+            protected override object OnTranslate(string uid, string vid, object defaultValue, Type type)
+            {
+                return defaultValue;
+            }
 
             public override string CultureName
             {
@@ -116,6 +138,5 @@ namespace GeoBase.Localization
                 protected set { }
             }
         };
-
     }
 }

@@ -42,14 +42,11 @@ namespace WPF.MDI
             Aero
         }
 
-        #region Static Members
-
+        
         private static ResourceDictionary currentResourceDictionary;
 
-        #endregion
+                
         
-        #region Dependency Properties
-
         /// <summary>
         /// Identifies the WPF.MDI.MdiContainer.Theme dependency property.
         /// </summary>
@@ -58,10 +55,8 @@ namespace WPF.MDI
             DependencyProperty.Register("Theme", typeof(ThemeType), typeof(MdiContainer),
             new UIPropertyMetadata(ThemeType.Luna, new PropertyChangedCallback(ThemeValueChanged)));
 
-        #endregion
-
-        #region Property Accessors
-
+        
+        
         /// <summary>
         /// Gets or sets the container theme.
         /// The default is determined by the operating system.
@@ -74,10 +69,8 @@ namespace WPF.MDI
             set { SetValue(ThemeProperty, value); }
         }
 
-        #endregion
-
-        #region Member Declarations
-
+        
+        
         /// <summary>
         /// Gets or sets the child elements.
         /// </summary>
@@ -86,8 +79,7 @@ namespace WPF.MDI
 
         private Canvas windowCanvas;
 
-        #endregion
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="MdiContainer"/> class.
         /// </summary>
@@ -114,8 +106,7 @@ namespace WPF.MDI
             SizeChanged += new SizeChangedEventHandler(MdiContainer_SizeChanged);
         }
 
-        #region Container Events
-
+        
         /// <summary>
         /// Handles the Loaded event of the MdiContainer control.
         /// </summary>
@@ -175,10 +166,8 @@ namespace WPF.MDI
             ((MdiChild)windowCanvas.Children[windowCanvas.Children.Count - 1]).Height = ActualHeight;
         }
 
-        #endregion
-
-        #region ObservableCollection Events
-
+        
+        
         /// <summary>
         /// Handles the CollectionChanged event of the Children control.
         /// </summary>
@@ -228,10 +217,8 @@ namespace WPF.MDI
             Focus((MdiChild)sender);
         }
 
-        #endregion
-
-        #region IAddChild Members
-
+        
+        
         /// <summary>
         /// Adds a child object.
         /// </summary>
@@ -256,8 +243,7 @@ namespace WPF.MDI
 
         }
 
-        #endregion
-
+        
         /// <summary>
         /// Focuses a child and brings it into view.
         /// TODO: Look into how ZIndex works.
@@ -320,8 +306,7 @@ namespace WPF.MDI
                 windowCanvas.Height = largestPoint.Y;
         }
 
-        #region Dependency Property Events
-
+        
         /// <summary>
         /// Dependency property event once the theme value has changed.
         /// </summary>
@@ -346,6 +331,5 @@ namespace WPF.MDI
             }
         }
 
-        #endregion
-    }
+            }
 }

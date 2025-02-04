@@ -10,8 +10,7 @@ namespace VFK.GUI
 {
     public partial class ImportInfoDialog : DialogBase
     {
-        #region Constructor
-        public ImportInfoDialog(VFKMain aVFKMain)
+                public ImportInfoDialog(VFKMain aVFKMain)
             : base("ImportInfoDialog")
         {
             _VFKMain = aVFKMain;
@@ -21,13 +20,9 @@ namespace VFK.GUI
             _TextBox.Document.PageWidth = 1000;
             _TextBox.FontSize = 12;
         }
-        #endregion
-        #region Property & Fields
-        private VFKMain _VFKMain;
+                        private VFKMain _VFKMain;
         public ImportInfoDialogContext Context { get; set; }
-        #endregion
-        #region Methods
-        public new bool? ShowDialog()
+                        public new bool? ShowDialog()
         {
             StringBuilder content = new StringBuilder();
             content.Append("\n");
@@ -116,8 +111,7 @@ namespace VFK.GUI
         {
             return string.Format("{0}\t\t\t\t{1}\t\t{2}\n", aName, aReaded, Imported);
         }
-        #endregion
-
+        
     }
     public class ImportInfoDialogContext
     {
@@ -135,8 +129,7 @@ namespace VFK.GUI
             NepotrvzeneGP = true;
             DatoveSkupiny = string.Empty;
         }
-        #region Header
-        public string JmenoSouboru { get; set; }
+                public string JmenoSouboru { get; set; }
         public string Verze { get; set; }
         public string Vytvoreno { get; set; }
         public string Vytvoril { get; set; }
@@ -144,9 +137,7 @@ namespace VFK.GUI
         public string ExportZaobdobi { get; set; }
         public bool NepotrvzeneGP { get; set; }
         public string DatoveSkupiny { get; set; }
-        #endregion
-        #region Pocet Nactenych Radek
-        public UInt32 PAR { get; set; }
+                        public UInt32 PAR { get; set; }
         public UInt32 BUD { get; set; }
         public UInt32 ZPOCHN { get; set; }
         public UInt32 DRUPOZ { get; set; }
@@ -198,9 +189,7 @@ namespace VFK.GUI
         public UInt32 BUDOBJ { get; set; }
         public UInt32 ADROBJ { get; set; }
         public UInt32 HPOLYGDATA { get; set; }
-        #endregion
-        #region Errors
-        public struct ErrorInfo
+                        public struct ErrorInfo
         {
             public ErrorInfo(string aDescription, int aNumberOfLine, int aError)
             {
@@ -214,6 +203,5 @@ namespace VFK.GUI
         }
 
         public List<ErrorInfo> Errors { get; set; }
-        #endregion
-    }
+            }
 }

@@ -4,11 +4,9 @@ namespace DxfLibrary
 {
     internal class UnexpectedElement : Exception
     {
-        #region Constructor
-        internal UnexpectedElement()
+                internal UnexpectedElement()
             : base("Unexpected bug.\n Conntact manufacture.")
         {
         }
-        #endregion
-    }
+            }
 }

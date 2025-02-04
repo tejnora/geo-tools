@@ -107,8 +107,7 @@ namespace AvalonDock
         }
 
 
-        #region Dependency properties
-
+        
         public bool ShowHeader
         {
             get { return (bool)GetValue(ShowHeaderProperty); }
@@ -161,8 +160,7 @@ namespace AvalonDock
 
 
         
-        #endregion
-        
+                
         
         public override bool IsSurfaceVisible
         {
@@ -182,8 +180,7 @@ namespace AvalonDock
         }
 
 
-        #region OptionsContextMenu
-        ContextMenu cxOptions = null;
+                ContextMenu cxOptions = null;
 
         UIElement _optionsContextMenuPlacementTarget = null;
 
@@ -251,10 +248,8 @@ namespace AvalonDock
             }
         }
 
-        #endregion
-
-        #region Mouse management
-
+        
+        
         void FocusContent()
         {
             ManagedContent selectedContent = SelectedItem as ManagedContent;
@@ -324,10 +319,8 @@ namespace AvalonDock
             isMouseDown = false;
            
         }
-        #endregion
-           
-        #region Commands
-        private static object syncRoot = new object();
+                   
+                private static object syncRoot = new object();
 
 
         private static RoutedUICommand optionsCommand = null;
@@ -404,8 +397,7 @@ namespace AvalonDock
             e.CanExecute = true;
         }        
  
-	    #endregion    
-
+	    
 
         public override bool IsDocked
         {
@@ -464,8 +456,7 @@ namespace AvalonDock
 
 
 
-        #region Dockable Pane operations
-		/// <summary>
+        		/// <summary>
         /// Show/Hide a flyout window containing this pane
         /// </summary>
         internal virtual void ToggleAutoHide()
@@ -495,7 +486,6 @@ namespace AvalonDock
 
 
         
-	    #endregion    
-    
+	        
     }
 }

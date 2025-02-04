@@ -11,20 +11,15 @@ namespace CAD.UITools
 {
     public partial class AttributesToolBar : GeoCadToolBar
     {
-        #region RoutedCommands
-        public static GeoCadRoutedCommand AddLayer = new GeoCadRoutedCommand("AddLayer", typeof(AttributesToolBar), false);
+                public static GeoCadRoutedCommand AddLayer = new GeoCadRoutedCommand("AddLayer", typeof(AttributesToolBar), false);
         public static GeoCadRoutedCommand RemoveLayer = new GeoCadRoutedCommand("RemoveLayer", typeof(AttributesToolBar), false);
         public static GeoCadRoutedCommand EditLayer = new GeoCadRoutedCommand("EditLayer", typeof(AttributesToolBar), false);
-        #endregion
-        #region Constructor
-        public AttributesToolBar()
+                        public AttributesToolBar()
         {
             InitializeComponent();
             DataContext = this;
         }
-        #endregion
-        #region GeoCadToolBar
-        public override void Notify(NotificationType type, object additionData)
+                        public override void Notify(NotificationType type, object additionData)
         {
             base.Notify(type, additionData);
             bool updatePropertyValues = false;
@@ -49,9 +44,7 @@ namespace CAD.UITools
                 RefillWidthCombo();
             }
         }
-        #endregion
-        #region Property
-        private ObservableCollection<NameObject<ICanvasLayer>> _layers;
+                        private ObservableCollection<NameObject<ICanvasLayer>> _layers;
         public ObservableCollection<NameObject<ICanvasLayer>> Layers
         {
             get { return _layers; }
@@ -102,9 +95,7 @@ namespace CAD.UITools
             get { return _colors; }
             set { _colors = value; OnPropertyChanged("Colors"); }
         }
-        #endregion
-        #region Methods
-        private void RefillColorCombo()
+                        private void RefillColorCombo()
         {
             Colors = new ObservableCollection<NameObjectTwo<System.Drawing.Color, Brush>>();
             if (ToolBarManager.Document != null && IsEnabled)
@@ -175,9 +166,7 @@ namespace CAD.UITools
                 }
             }
         }
-        #endregion
-        #region CommandBinding
-        private void OnAddLayer(object sender, ExecutedRoutedEventArgs e)
+                        private void OnAddLayer(object sender, ExecutedRoutedEventArgs e)
         {
             string id = ToolBarManager.Document.DataModel.FindUniqueId();
             ICanvasLayer dl = new DrawingLayer(id, id, SelectedColor.Object,(float)SelectedLineWidth.Object);
@@ -232,7 +221,6 @@ namespace CAD.UITools
                 ToolBarManager.Document.CanvasCommand.InvalidateAll();
             }
         }
-        #endregion
-    }
+            }
 
 }
