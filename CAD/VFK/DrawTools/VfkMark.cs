@@ -232,7 +232,7 @@ namespace CAD.VFK.DrawTools
             double width = Math.Max(objectwidth / 2, minWidth);
             return (float)width;
         }
-                        static public Rect GetBoundigBox(UnitPoint nodePoint, VfkElement element)
+        static public Rect GetBoundigBox(UnitPoint nodePoint, VfkElement element)
         {
             switch (element.TYPPPD_KOD)
             {

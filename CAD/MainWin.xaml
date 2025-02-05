@@ -15,6 +15,7 @@
         <RoutedCommand x:Key="SeznamSouracnicVFK" />
         <RoutedCommand x:Key="SetElementsVFK" />
         <RoutedCommand x:Key="GenerateSIPVFK" />
+        <RoutedCommand x:Key="ImportDtm" />
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource ImportVFK}"
@@ -37,6 +38,10 @@
         <CommandBinding Command="{StaticResource GenerateSIPVFK}"
                         Executed="OnGenerateSIP"
                         CanExecute="OnCanGenerateSIP" />
+        <CommandBinding Command="{StaticResource ImportDtm}"
+                        Executed="OnImportDtm"
+                        CanExecute="CanImportDtm" />
+
     </Window.CommandBindings>
     <DockPanel LastChildFill="true">
         <Menu DockPanel.Dock="Top"
@@ -188,6 +193,11 @@
                 <MenuItem loc:Translate.Uid="51"
                           Header="{loc:Translate Gen SIP}"
                           Command="{StaticResource GenerateSIPVFK}" />
+            </MenuItem>
+            <MenuItem Header="DTM">
+                <MenuItem loc:Translate.Uid="148"
+                          Header="{loc:Translate Import Dtm}"
+                          Command="{StaticResource ImportDtm}" />
             </MenuItem>
             <MenuItem loc:Translate.Uid="26"
                       Header="{loc:Translate Options}">

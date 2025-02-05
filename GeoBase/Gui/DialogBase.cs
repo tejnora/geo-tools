@@ -21,7 +21,7 @@ namespace GeoBase.Gui
 
     public class DialogBase : WindowBase, INotifyPropertyChanged
     {
-        bool _newVersion;
+        bool _newVersion = false;
         Grid _grid;
         protected StackPanel _buttonsStackPanel;
         UIElement _dialogContent = new UIElement();
@@ -40,8 +40,9 @@ namespace GeoBase.Gui
             _registerName = registerName;
         }
 
-        public DialogBase(string registerName, bool saveOnlyPosition)
+        public DialogBase(string registerName, bool saveOnlyPosition, bool newVersion = false)
         {
+            _newVersion = newVersion;
             Init();
             _registerName = registerName;
             SaveOnlyPosition = saveOnlyPosition;
@@ -50,7 +51,7 @@ namespace GeoBase.Gui
         private void Init()
         {
             var assemblyName = Assembly.GetEntryAssembly().GetName();
-            _newVersion = assemblyName.Name == "GeoHelper";//hack
+            _newVersion = _newVersion || assemblyName.Name == "GeoHelper";//hack
             if (_newVersion)
             {
                 Background = Brushes.LightGray;

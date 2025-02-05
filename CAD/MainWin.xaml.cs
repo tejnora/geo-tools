@@ -131,7 +131,25 @@ namespace CAD
                 OnMainDocumentChanged(this, EventArgs.Empty);
         }
 
-        private void OnCanImportVfk(object sender, CanExecuteRoutedEventArgs args)
+        void OnCanImportVfk(object sender, CanExecuteRoutedEventArgs args)
+        {
+            args.CanExecute = true;
+        }
+
+        void OnImportDtm(object aSender, EventArgs aArg)
+        {
+            var doc = GetDocument();
+            if (doc == null)
+            {
+                DocumentNew(string.Empty);
+                doc = GetDocument();
+            }
+
+            if (doc.ImportDtm(string.Empty))
+                OnMainDocumentChanged(this, EventArgs.Empty);
+        }
+
+        void CanImportDtm(object sender, CanExecuteRoutedEventArgs args)
         {
             args.CanExecute = true;
         }

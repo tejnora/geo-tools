@@ -145,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DTM\Gui\DtmImportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\AboutBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +421,26 @@
       <DependentUpon>MultiSelectPointDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\PlochaConverter.cs" />
+    <Compile Include="DTM\DtmCurveGeometry.cs" />
+    <Compile Include="DTM\DtmDrawingCurveElement.cs" />
+    <Compile Include="DTM\DtmDrawingPointElement.cs" />
+    <Compile Include="DTM\DtmDrawingGroup.cs" />
+    <Compile Include="DTM\DtmDrawingLayerMain.cs" />
+    <Compile Include="DTM\Gui\DtmImportDialog.xaml.cs">
+      <DependentUpon>DtmImportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DTM\IDtmDrawingObject.cs" />
+    <Compile Include="DTM\DtmElementsGroup.cs" />
+    <Compile Include="DTM\DtmPointGeometry.cs" />
+    <Compile Include="DTM\DtmImportCtx.cs" />
+    <Compile Include="DTM\DtmMain.cs" />
+    <Compile Include="DTM\DtmElement.cs" />
+    <Compile Include="DTM\DtmPoint.cs" />
+    <Compile Include="DTM\DtmReader.cs" />
+    <Compile Include="DTM\IDtmElement.cs" />
+    <Compile Include="DTM\IDtmElementsGroup.cs" />
+    <Compile Include="DTM\IDtmGeometry.cs" />
+    <Compile Include="DTM\IDtmMain.cs" />
     <Compile Include="Export\DxfExport.cs" />
     <Compile Include="Export\IExport.cs" />
     <Compile Include="GUI\AboutBox.xaml.cs">

@@ -5,6 +5,8 @@ using CAD.Canvas;
 using CAD.UITools;
 using CAD.Canvas.DrawTools;
 using System.IO;
+using CAD.DTM;
+using CAD.DTM.Gui;
 using CAD.VFK;
 using CAD.VFK.DrawTools;
 using CAD.VFK.GUI;
@@ -129,6 +131,25 @@ namespace CAD
             if (result == true)
                 DataModel.Export(dlg.FileName, ExportType.Dxf);
         }
+
+        public bool ImportDtm(string location)
+        {
+            var ctx = new DtmImportCtx { FileName = @"c:\Temp\JVF DTM\vydej_zps_ref.jvf.xml" };
+//            var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
+//            var result = dlg.DoModal();
+//            if (result == false)
+//                return false;
+            try
+            {
+                DataModel.ImportDtm(ctx);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool ImportVfk(string aLocation)
         {
             var vfkDataContext = new VFKDataContext { FileName = aLocation };

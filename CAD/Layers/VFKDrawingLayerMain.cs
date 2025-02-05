@@ -60,10 +60,7 @@ namespace CAD.Canvas.Layers
 
         
         
-        public string Id
-        {
-            get { return "WFK"; }
-        }
+        public string Id => "WFK";
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
@@ -110,10 +107,7 @@ namespace CAD.Canvas.Layers
             return null;
         }
 
-        public IEnumerable<IDrawObject> Objects
-        {
-            get { return null; }
-        }
+        public IEnumerable<IDrawObject> Objects => null;
 
         public bool Enabled { get; set; }
         public bool Visible { get; set; }

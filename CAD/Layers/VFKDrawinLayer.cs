@@ -78,10 +78,7 @@ namespace CAD.Canvas.Layers
             return null;
         }
 
-        public IEnumerable<IDrawObject> Objects
-        {
-            get { return _objects; }
-        }
+        public IEnumerable<IDrawObject> Objects => _objects;
 
         public Rect GetBoundingRect(ICanvas canvas)
         {
