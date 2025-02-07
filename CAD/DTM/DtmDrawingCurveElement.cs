@@ -10,6 +10,7 @@ using CAD.Canvas.DrawTools;
 using CAD.DrawTools;
 using GeoHelper.Utils;
 using CAD.DTM.Configuration;
+using CAD.DTM.Elements;
 
 namespace CAD.DTM
 {
@@ -221,7 +222,8 @@ namespace CAD.DTM
                 Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point }
             };
             var dtmLayer = (DtmDrawingLayerMain)layer;
-            _element = new DtmElement { Geometry = _curveGeometry };
+            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected);
+            _element.Geometry = _curveGeometry;
             new DtmDrawingGroup(dtmLayer.DtmLineElementSelected, this);
             Selected = true;
         }

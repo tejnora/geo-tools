@@ -1,4 +1,6 @@
-﻿namespace CAD.DTM.Configuration
+﻿using System;
+
+namespace CAD.DTM.Configuration
 {
     public enum ElementType
     {
@@ -17,5 +19,6 @@
         public string KategorieObjektu { get; set; }
         public string SkupinaObjektu { get; set; }
         public string ObsahovaCast { get; set; }
+        public Type ClassType { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace CAD.DTM
         {
             if (!_groups.ContainsKey(groupName))
             {
-                _groups[groupName] = new DtmElementsGroup();
+                _groups[groupName] = new DtmElementsGroup(groupName);
             }
             _groups[groupName].AddElementIfNotExist(dtmElementGetDtmElement);
         }
@@ -33,9 +33,24 @@ namespace CAD.DTM
         {
             try
             {
-                var importer = new DtmReader(this);
+                var importer = new DtmImporter(this);
                 importer.ParseFile(ctx.FileName);
                 //((DtmElementsGroup)_groups["IdentickyBod"]).Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+        public bool Export(DtmExportCtx ctx)
+        {
+            try
+            {
+                var importer = new DtmExporter(this);
+                importer.CreateFile(ctx.FileName);
                 return true;
             }
             catch (Exception ex)

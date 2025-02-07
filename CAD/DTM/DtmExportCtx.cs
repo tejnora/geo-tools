@@ -1,19 +1,16 @@
-﻿using System.Runtime.Serialization;
-using GeoBase.Utils;
-using GeoBase;
+﻿using GeoBase;
 using GeoBase.Localization;
-
+using GeoBase.Utils;
+using System.Runtime.Serialization;
 namespace CAD.DTM
 {
-    public class DtmImportCtx : DataObjectBase<DtmImportCtx>
+    public class DtmExportCtx : DataObjectBase<DtmExportCtx>
     {
-        public DtmImportCtx()
-            : base(null, new StreamingContext())
+        public DtmExportCtx() : base(null, new StreamingContext())
         {
-            var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, "Dtm/ImportFileName");
+            var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, "Dtm/ExportFileName");
             FileName = po.getString("");
         }
-
         public readonly PropertyData FileNameProperty = RegisterProperty("FileName", typeof(string), string.Empty);
         public string FileName
         {
@@ -26,5 +23,6 @@ namespace CAD.DTM
             var msg = (string)dictionary.Translate("81", "Text", "PolozkaNemuzeBytPrazdna", typeof(string));
             if (string.IsNullOrEmpty(FileName)) SetFieldError(FileNameProperty, msg);
         }
+
     }
 }

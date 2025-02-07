@@ -10,6 +10,7 @@ using CAD.UITools;
 using CAD.Utils;
 using CAD.Canvas;
 using CAD.BackgrounImages;
+using CAD.DTM;
 using GeoBase.Localization;
 using GeoBase.Utils;
 using VFK.GUI;
@@ -21,7 +22,7 @@ namespace CAD
 {
     public partial class MainWin : Window, IMainWinInterface
     {
-        
+
         public MainWin()
         {
             InitLanguages();
@@ -30,13 +31,13 @@ namespace CAD
             InitToolBars();
         }
 
-        
-        
+
+
         private GeoCadToolBarManager _toolBarManager;
         private bool _lockUpdateToolBar;
 
-        
-        
+
+
         private void DockingManagerControl_Loaded(object sender, EventArgs arg)
         {
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize");
@@ -74,9 +75,9 @@ namespace CAD
             _seznamSouradnic.SetDocument(null);
         }
 
-        
-        
-        
+
+
+
         private void OnAddRaster(object sender, EventArgs e)
         {
             Document doc = GetDocument();
@@ -117,8 +118,8 @@ namespace CAD
             if (doc == null) return;
         }
 
-        
-        
+
+
         private void OnImportVfk(object aSender, EventArgs aArg)
         {
             Document doc = GetDocument();
@@ -155,14 +156,26 @@ namespace CAD
             args.CanExecute = true;
         }
 
-        private void OnExportVfk(object aSender, EventArgs aArg)
+        void OnExportDtm(object sender, EventArgs args)
+        {
+            var doc = GetDocument();
+            if (doc == null) return;
+            doc.ExportDtm();
+        }
+
+        void CanExportDtm(object sender, CanExecuteRoutedEventArgs args)
+        {
+            var doc = GetDocument();
+            args.CanExecute = doc != null && doc.DataModel.ActiveLayer is DtmDrawingLayerMain;
+        }
+        void OnExportVfk(object aSender, EventArgs aArg)
         {
             Document doc = GetDocument();
             if (doc == null) return;
             doc.ExportVfk();
         }
 
-        private void OnCanExportVfk(object sender, CanExecuteRoutedEventArgs args)
+        void OnCanExportVfk(object sender, CanExecuteRoutedEventArgs args)
         {
             Document doc = GetDocument();
             args.CanExecute = doc != null && doc.IsImportedVfk();
@@ -223,8 +236,8 @@ namespace CAD
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
 
-        
-        
+
+
         private void onSavePosAndSize(object sender, EventArgs arg)
         {
             Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowPos",
@@ -247,17 +260,17 @@ namespace CAD
                 new ProgramOption(builder.ToString()));
         }
 
-        
-        
+
+
         private void OnAboutBox(object sender, RoutedEventArgs e)
         {
             AboutBox aboutBox = new AboutBox(this);
             aboutBox.ShowDialog();
         }
 
-        
-        
-        
+
+
+
         public void SetPositionInfo(UnitPoint aUnitpos)
         {
             Document document = GetDocument();
@@ -307,8 +320,8 @@ namespace CAD
             _lockUpdateToolBar = false;
         }
 
-        
-        
+
+
         private void InitLanguages()
         {
             LanguageDictionary.RegisterDictionary(
@@ -388,5 +401,5 @@ namespace CAD
             }
         }
 
-            }
+    }
 }

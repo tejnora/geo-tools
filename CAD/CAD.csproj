@@ -176,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DTM\Gui\DtmExportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmImportDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -464,12 +468,19 @@
     <Compile Include="DTM\DtmDrawingPointElement.cs" />
     <Compile Include="DTM\DtmDrawingGroup.cs" />
     <Compile Include="DTM\DtmDrawingLayerMain.cs" />
+    <Compile Include="DTM\DtmExportCtx.cs" />
+    <Compile Include="DTM\DtmExporter.cs" />
+    <Compile Include="DTM\Elements\DtmPodrobnyBodZPSElement.cs" />
+    <Compile Include="DTM\Gui\DtmExportDialog.xaml.cs">
+      <DependentUpon>DtmExportDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DTM\Gui\DtmImportDialog.xaml.cs">
       <DependentUpon>DtmImportDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTM\Gui\DtmToolBar.xaml.cs">
       <DependentUpon>DtmToolBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTM\Gui\IDtmExporter.cs" />
     <Compile Include="DTM\IDtmDrawingElement.cs" />
     <Compile Include="DTM\IDtmDrawingGroup.cs" />
     <Compile Include="DTM\IDtmDrawingObject.cs" />
@@ -477,9 +488,9 @@
     <Compile Include="DTM\DtmPointGeometry.cs" />
     <Compile Include="DTM\DtmImportCtx.cs" />
     <Compile Include="DTM\DtmMain.cs" />
-    <Compile Include="DTM\DtmElement.cs" />
+    <Compile Include="DTM\Elements\DtmElement.cs" />
     <Compile Include="DTM\DtmPoint.cs" />
-    <Compile Include="DTM\DtmReader.cs" />
+    <Compile Include="DTM\DtmImporter.cs" />
     <Compile Include="DTM\IDtmElement.cs" />
     <Compile Include="DTM\IDtmElementsGroup.cs" />
     <Compile Include="DTM\IDtmGeometry.cs" />

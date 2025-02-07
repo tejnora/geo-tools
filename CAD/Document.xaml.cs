@@ -226,5 +226,26 @@ namespace CAD
         {
             _Canvas.CommandSelectVFKActiveObject(activePoint);
         }
+
+        public void ExportDtm()
+        {
+            var ctx = new DtmExportCtx();
+            var exportDialog = new DtmExportDialog(ctx);
+            var result = exportDialog.ShowDialog();
+            if (!result.HasValue || !result.Value) return;
+            try
+            {
+                DataModel.DtmMain.Export(ctx);
+            }
+            catch (ExportExcetiption ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Chyba pri exportu", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Neočekávaná chyba", "Neočekávaná chyba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }

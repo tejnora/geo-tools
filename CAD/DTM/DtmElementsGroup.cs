@@ -1,14 +1,20 @@
-﻿using CAD.DTM.Configuration;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using CAD.DTM.Configuration;
+using CAD.DTM.Elements;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
     public class DtmElementsGroup
     : IDtmElementsGroup
     {
+        public DtmElementsGroup(string name)
+        {
+            Name = name;
+        }
         List<IDtmElement> _elements = new List<IDtmElement>();
         public void AddElement(IDtmElement element)
         {
@@ -35,6 +41,8 @@ namespace CAD.DTM
         public string KategorieObjektu { get; set; }
         public string SkupinaObjektu { get; set; }
         public string ObsahovaCast { get; set; }
+        public string Name { get; }
+
         public IEnumerable<IDtmElement> GetElementGroups()
         {
             return _elements;
@@ -46,5 +54,38 @@ namespace CAD.DTM
                 return;
             _elements.Add(dtmElementGetDtmElement);
         }
+
+        public bool HasSameElementsToExport()
+        {
+            return _elements.Any(n => n.ExportToOutput);
+        }
+
+        public void ExportToDtm(IDtmExporter exporter, DtmElementOption option)
+        {
+            ExportToDtmGroupData(exporter, option);
+            exporter.BeginElement(option.XmlNamespace, "ZaznamyObjektu");
+            foreach (var element in _elements)
+            {
+                if (!element.ExportToOutput)
+                    continue;
+                exporter.BeginElement(option.XmlNamespace, "ZaznamObjektu");
+                element.ExportToDtm(exporter);
+                exporter.EndElement();
+            }
+            exporter.EndElement();
+        }
+        static void ExportToDtmGroupData(IDtmExporter dtmExporter, DtmElementOption option)
+        {
+            var ns = option.XmlNamespace;
+            dtmExporter.BeginElement(ns, "ObjektovyTypNazev");
+            dtmExporter.AddAttribute("code_base", option.CodeBase);
+            dtmExporter.AddAttribute("code_suffix", option.CodeSuffix);
+            dtmExporter.AddPCData(option.ObjektovyTypNazev);
+            dtmExporter.EndElement();
+            dtmExporter.AddElement(ns, "KategorieObjektu", option.KategorieObjektu);
+            dtmExporter.AddElement(ns, "SkupinaObjektu", option.SkupinaObjektu);
+            dtmExporter.AddElement(ns, "ObsahovaCast", option.ObsahovaCast);
+        }
+
     }
 }

@@ -1,17 +1,16 @@
-﻿using GeoBase.Gui;
+﻿using GeoBase;
+using GeoBase.Gui;
 using GeoBase.Utils;
 using System;
 using System.Windows.Input;
-using GeoBase;
 
 namespace CAD.DTM.Gui
 {
-    public partial class DtmImportDialog : DialogBase
+    public partial class DtmExportDialog : DialogBase
     {
-        readonly DtmImportCtx _ctx;
-
-        public DtmImportDialog(DtmImportCtx ctx)
-        : base("DtmImportDialog", false, true)
+        readonly DtmExportCtx _ctx;
+        public DtmExportDialog(DtmExportCtx ctx)
+            : base("DtmExportDialog", false, true)
         {
             _ctx = ctx;
             DataContext = _ctx;
@@ -26,14 +25,14 @@ namespace CAD.DTM.Gui
             Close();
         }
 
-        void OnImportButtonClick(object sender, EventArgs aArgs)
+        void OnExportButtonClick(object sender, EventArgs aArgs)
         {
             DialogResult = true;
-            SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, "Dtm/ImportFileName", new ProgramOption(_ctx.FileName));
+            SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, "Dtm/ExportFileName", new ProgramOption(_ctx.FileName));
             SavePosAndSize();
             Close();
         }
-        void OnCanImportButtonClick(object sender, CanExecuteRoutedEventArgs args)
+        void OnCanExportButtonClick(object sender, CanExecuteRoutedEventArgs args)
         {
             _ctx.Validate();
             args.CanExecute = !_ctx.HasErrors;
@@ -41,7 +40,7 @@ namespace CAD.DTM.Gui
 
         void OnFileChooser(object sender, EventArgs aArgs)
         {
-            var dlg = new Microsoft.Win32.OpenFileDialog
+            var dlg = new Microsoft.Win32.SaveFileDialog
             {
                 Filter = "DTM (*.xml)|*.xml",
                 FileName = _ctx.FileName

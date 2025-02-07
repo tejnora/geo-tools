@@ -1,8 +1,9 @@
 ﻿using System;
 using CAD.Canvas;
+using CAD.DTM.Gui;
 using CAD.VFK;
 
-namespace CAD.DTM
+namespace CAD.DTM.Elements
 {
     public class DtmElement
     : IDtmElement
@@ -10,8 +11,6 @@ namespace CAD.DTM
         public int ZpusobPorizeniZPS { get; set; }
         public int UrovenUmisteniObjektuZPS { get; set; }
         public char ZapisObjektu { get; set; }
-        public DateTime DatumVkladu { get; set; }
-        public DateTime DatumZmeny { get; set; }
         public int TridaPresnostiPoloha { get; set; }
         public int TridaPresnostiVyska { get; set; }
         public double VyskaNaTerenu { get; set; }
@@ -27,6 +26,11 @@ namespace CAD.DTM
             return new DtmDrawingCurveElement(this);
         }
         public bool IsDeleted { get; set; } = false;
+        public bool ExportToOutput => !IsDeleted && ZapisObjektu != 'r';
+        public virtual void ExportToDtm(IDtmExporter exporter)
+        {
+            //throw new NotImplemented();
+        }
 
         public string ZapisObjektuPopis
         {

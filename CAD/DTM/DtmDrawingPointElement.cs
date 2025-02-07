@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Forms;
 using CAD.Canvas;
 using CAD.Canvas.DrawTools;
+using CAD.DTM.Elements;
 using CAD.Export;
 using CAD.Utils;
 using GeoBase.Utils;

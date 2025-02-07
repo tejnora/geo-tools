@@ -1,4 +1,5 @@
 ﻿using CAD.Canvas;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
@@ -6,5 +7,7 @@ namespace CAD.DTM
     {
         IDrawObject CreateDrawObject();
         bool IsDeleted { get; set; }
+        bool ExportToOutput { get; }
+        void ExportToDtm(IDtmExporter exporter);
     }
 }

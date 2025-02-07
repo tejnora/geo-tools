@@ -151,7 +151,8 @@
   <Value Id="145" Content="Import"/>
   <Value Id="146" Title="Import souřadnic"/>
   <Value Id="147" Content="Budova je součástí pozemku"/>
-  <Value Id="148" Header="Nahrej DTM"/>
+  <Value Id="148" Header="Import Dtm"/>
+  <Value Id="147" Header="Export Dtm"/>
 	
   <Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
   <Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>

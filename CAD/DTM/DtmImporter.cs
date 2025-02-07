@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Windows.Media;
 using System.Xml;
+using CAD.DTM.Configuration;
+using CAD.DTM.Elements;
 using GeoHelper.Utils;
 
 namespace CAD.DTM
 {
-    class DtmReader
+    class DtmImporter
     {
         readonly IDtmMain _main;
 
-        public DtmReader(IDtmMain main)
+        public DtmImporter(IDtmMain main)
         {
             _main = main;
         }
@@ -49,7 +50,7 @@ namespace CAD.DTM
                 {
                     case XmlNodeType.Element:
                         {
-                            var elements = new DtmElementsGroup();
+                            var elements = new DtmElementsGroup(reader.LocalName);
                             _main.AddElementGroup(reader.LocalName, elements);
                             ParseElementsGroup(reader, elements);
                         }
@@ -133,7 +134,9 @@ namespace CAD.DTM
                             switch (reader.LocalName)
                             {
                                 case "ZaznamObjektu":
-                                    element = new DtmElement();
+                                    {
+                                        element = DtmConfigurationSingleton.Instance.CreateType(group.Name);
+                                    }
                                     break;
                                 case "GeometrieObjektu":
                                     ParseGeometrieObjektu(reader, element);
@@ -147,12 +150,6 @@ namespace CAD.DTM
                             {
                                 case "ZapisObjektu":
                                     element.ZapisObjektu = char.Parse(reader.Value);
-                                    break;
-                                case "DatumVkladu":
-                                    element.DatumVkladu = DateTime.Parse(reader.Value);
-                                    break;
-                                case "DatumZmeny":
-                                    element.DatumZmeny = DateTime.Parse(reader.Value);
                                     break;
                                 case "UrovenUmisteniObjektuZPS":
                                     element.UrovenUmisteniObjektuZPS = int.Parse(reader.Value);

@@ -3,6 +3,8 @@ using System;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using CAD.DTM.Elements;
 using CAD.VFK;
 
 namespace CAD.DTM.Configuration
@@ -39,7 +41,8 @@ namespace CAD.DTM.Configuration
                             ObjektovyTypNazev = value.GetProperty("ObjektovyTypNazev").GetString(),
                             KategorieObjektu = value.GetProperty("KategorieObjektu").GetString(),
                             SkupinaObjektu = value.GetProperty("SkupinaObjektu").GetString(),
-                            ObsahovaCast = value.GetProperty("ObsahovaCast").GetString()
+                            ObsahovaCast = value.GetProperty("ObsahovaCast").GetString(),
+                            ClassType = Type.GetType($"CAD.DTM.Elements.Dtm{field.Name}Element")
                         };
                         ElementSetting[field.Name] = elementOption;
                     }
@@ -61,5 +64,14 @@ namespace CAD.DTM.Configuration
 
         public static DtmConfigurationSingleton Instance => _instance;
         public Dictionary<string, DtmElementOption> ElementSetting { get; }
+
+        public DtmElement CreateType(string elementName)
+        {
+            if (ElementSetting.TryGetValue(elementName, out var option) && option.ClassType != null)
+            {
+                return (DtmElement)Activator.CreateInstance(option.ClassType);
+            }
+            return (DtmElement)Activator.CreateInstance(typeof(DtmElement));
+        }
     }
 }
