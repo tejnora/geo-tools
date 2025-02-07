@@ -5,7 +5,7 @@ namespace CAD.UITools
 {
     public class GeoCadRoutedCommand : RoutedCommand
     {
-                public enum CommandTypes
+        public enum CommandTypes
         {
             None,
             DrawTool,
@@ -15,8 +15,8 @@ namespace CAD.UITools
             Move,
             InfoTool
         }
-                        public GeoCadRoutedCommand(string name, Type ownerType, CommandTypes commandType)
-            :base(name, ownerType)
+        public GeoCadRoutedCommand(string name, Type ownerType, CommandTypes commandType)
+: base(name, ownerType)
         {
             HasState = true;
             CommandType = commandType;
@@ -27,7 +27,7 @@ namespace CAD.UITools
             HasState = hasState;
             CommandType = CommandTypes.None;
         }
-                        public bool HasState
+        public bool HasState
         {
             get; private set;
         }
@@ -35,5 +35,5 @@ namespace CAD.UITools
         {
             get; private set;
         }
-            }
+    }
 }

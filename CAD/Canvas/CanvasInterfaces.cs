@@ -120,6 +120,8 @@ namespace CAD.Canvas
         void GetHitObjects(List<IDrawObject> aHitObjects, ICanvas canvas, UnitPoint point);
         void AddObject(IDrawObject drawobject);
         void Export(IExport export);
+
+        void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer,IDrawObject>> deletedObjects);
     }
     public interface ISnapPoint
     {
@@ -128,11 +130,12 @@ namespace CAD.Canvas
         Rect BoundingRect { get; }
         void Draw(ICanvas canvas);
     }
-    public enum eDrawObjectMouseDown
+    public enum DrawObjectState
     {
         Done,		// this draw object is complete
         DoneRepeat,	// this object is complete, but create new object of same type
         Continue,	// this object requires additional mouse inputs
+        Drop,       // this object will dropped
     }
     public interface INodePoint
     {
@@ -154,7 +157,8 @@ namespace CAD.Canvas
         void Draw(ICanvas canvas, Rect unitrect);
         Rect GetBoundingRect(ICanvas canvas);
         void OnMouseMove(ICanvas canvas, UnitPoint point);
-        eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
+        DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
+        DrawObjectState OnFinish();
         void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
         void OnKeyDown(ICanvas canvas, KeyEventArgs e);
         UnitPoint RepeatStartingPoint { get; }
@@ -164,6 +168,8 @@ namespace CAD.Canvas
         bool getSelectDrawToolCreate();
         string GetInfoAsString();
         void Export(IExport export);
+        bool Selected { get; set; }
+        bool Highlighted { get; set; }
     }
     public interface IEditTool
     {
@@ -173,7 +179,7 @@ namespace CAD.Canvas
         void SetHitObjects(UnitPoint mousepoint, List<IDrawObject> list);
 
         void OnMouseMove(ICanvas canvas, UnitPoint point);
-        eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
+        DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
         void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint);
         void OnKeyDown(ICanvas canvas, KeyEventArgs e);
         void Finished();

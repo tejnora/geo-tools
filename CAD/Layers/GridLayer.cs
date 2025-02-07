@@ -190,7 +190,13 @@ namespace CAD.Canvas.Layers
         public void Export(IExport export)
         {
         }
-                        public void GetObjectData(XmlWriter wr)
+
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetObjectData(XmlWriter wr)
         {
             wr.WriteStartElement("gridlayer");
             XmlUtil.WriteProperties(this, wr);

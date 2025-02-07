@@ -35,7 +35,7 @@ namespace CAD.Canvas.Layers
         List<IDrawObject> _images = new List<IDrawObject>();
         Dictionary<IDrawObject, bool> _imagesMap = new Dictionary<IDrawObject, bool>();
 
-                public void AddImageObject(IDrawObject drawobject)
+        public void AddImageObject(IDrawObject drawobject)
         {
             if (_imagesMap.ContainsKey(drawobject))
                 return; // this should never happen
@@ -67,7 +67,7 @@ namespace CAD.Canvas.Layers
             return _images[aIndex];
         }
 
-                        public Color Color
+        public Color Color
         {
             get;
             set;
@@ -104,12 +104,12 @@ namespace CAD.Canvas.Layers
         public bool Enabled
         {
             get { return true; }
-            set { ;}
+            set {; }
         }
         public bool Visible
         {
             get { return true; }
-            set { ;}
+            set {; }
         }
 
         public double Width
@@ -143,7 +143,12 @@ namespace CAD.Canvas.Layers
         public void Export(IExport export)
         {
         }
-                        public void GetObjectData(XmlWriter wr)
+
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+        }
+
+        public void GetObjectData(XmlWriter wr)
         {
             wr.WriteStartElement("backgroundlayer");
             XmlUtil.WriteProperties(this, wr);
@@ -152,5 +157,5 @@ namespace CAD.Canvas.Layers
         public void AfterSerializedIn()
         {
         }
-            }
+    }
 }

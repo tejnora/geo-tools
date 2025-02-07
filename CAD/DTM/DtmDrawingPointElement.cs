@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
-using System.Windows.Media;
 using CAD.Canvas;
 using CAD.Canvas.DrawTools;
 using CAD.Export;
 using CAD.Utils;
 using GeoBase.Utils;
-using static CAD.Canvas.DefaultColors;
 
 namespace CAD.DTM
 {
     class DtmDrawingPointElement
-        : IDrawObject
+        : DrawObjectBase
+        , IDrawObject
+        , IDtmDrawingElement
     {
         readonly DtmElement _element;
-        readonly DtmPointGeometry _pointGeometry;
-        readonly float _width = 0.001f;
-        readonly System.Drawing.Color _color = System.Drawing.Color.White;
+        public DtmPointGeometry PointGeometry { get; }
         readonly UnitPoint _point;
         const int ThresholdPixel = 6;
         readonly Font _font = new Font("Arial", 12F, System.Drawing.FontStyle.Regular, GraphicsUnit.Pixel, 0);
@@ -29,8 +26,8 @@ namespace CAD.DTM
         public DtmDrawingPointElement(DtmElement element)
         {
             _element = element;
-            _pointGeometry = (DtmPointGeometry)element.Geometry;
-            _point = new UnitPoint(_pointGeometry.Point.X, _pointGeometry.Point.Y);
+            PointGeometry = (DtmPointGeometry)element.Geometry;
+            _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
         }
         public string Id { get; }
         public IDrawObject Clone()
@@ -41,20 +38,18 @@ namespace CAD.DTM
         public bool PointInObject(ICanvas canvas, UnitPoint point)
         {
             var rect = GetBoundingRect(canvas);
-            return rect.Contains(point.Point);
-
+            var res = rect.Contains(point.Point);
+            return res;
         }
 
         public bool ObjectInRectangle(ICanvas canvas, Rect rect, bool anyPoint)
         {
-            var bbox = GetBoundingRect(canvas);
-            return rect.Contains(bbox);
-
+            return rect.Contains(_point.X, _point.Y);
         }
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
-            var pen = canvas.CreatePen(_color, _width);
+            var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
             pen.EndCap = LineCap.Flat;
             pen.StartCap = LineCap.Flat;
             var p1 = canvas.ToScreen(_point);
@@ -72,20 +67,20 @@ namespace CAD.DTM
             f.Alignment = StringAlignment.Center;
             p1.X += 10;
             p1.Y -= 10;
-            var _brush = new SolidBrush(System.Drawing.Color.Yellow);
-            canvas.Graphics.DrawString(_element.CisloBodu, _font, _brush, p1.FromWpfPoint(), f);
+            var brush = new SolidBrush(Group.Options.Color);
+            canvas.Graphics.DrawString(_element.CisloBodu, _font, brush, p1.FromWpfPoint(), f);
 
-            /*if (Selected)
-                {
-                if (P1.IsEmpty == false)
-                DrawUtils.DrawNode(canvas, P1);
-                }
-            */
+            if (Selected && !_point.IsEmpty)
+            {
+                DrawUtils.DrawNode(canvas, _point);
+            }
         }
 
         public Rect GetBoundingRect(ICanvas canvas)
         {
-            return new Rect(new System.Windows.Point(_point.X - 3.0f, _point.Y - 3.0f), new System.Windows.Size(6.0f, 6.0f));
+            var thWidth = ThresholdWidth(canvas, Group.Options.Width);
+            var delta = canvas.ToUnit(2);
+            return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
         }
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
@@ -93,9 +88,14 @@ namespace CAD.DTM
 
         }
 
-        public eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
+        }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
         }
 
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
@@ -124,17 +124,13 @@ namespace CAD.DTM
 
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, List<IDrawObject> otherobj, Type[] runningsnaptypes, Type usersnaptype)
         {
-            var thWidth = ThresholdWidth(canvas, _width);
-            if (runningsnaptypes == null)
-            {
-                return usersnaptype == typeof(VertextSnapPoint) ? new VertextSnapPoint(canvas, this, _point) : null;
-            }
-
+            var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             foreach (var snaptype in runningsnaptypes)
             {
-                if (snaptype != typeof(VertextSnapPoint)) continue;
+                if (snaptype == typeof(PodrobnyBodZPS) && Group.Name != "PodrobnyBodZPS" && snaptype != typeof(VertextSnapPoint))
+                    return null;
                 if (HitUtil.CircleHitPoint(_point, thWidth, point))
-                    return new VertextSnapPoint(canvas, this, _point);
+                    return new PodrobnyBodZPS(canvas, this, _point);
             }
             return null;
         }
@@ -150,16 +146,23 @@ namespace CAD.DTM
 
         public string GetInfoAsString()
         {
-            return "";
+            return $"Group name: {Group.Name}, Cislo bodu: {_element.CisloBodu}, Stav: {_element.ZapisObjektuPopis}, " +
+                   $"[Y,X,Z]=[{PointGeometry.Point.X:##.00},{PointGeometry.Point.Y:##.00},{PointGeometry.Point.Z:##.00}]";
         }
 
         public void Export(IExport export)
         {
-            export.AddPoint(_point.X, _point.Y, _color);
+            export.AddPoint(_point.X, _point.Y, Group.Options.Color);
             if (!string.IsNullOrEmpty(_element.CisloBodu))
             {
-                export.AddText(_element.CisloBodu, _point.X, _point.Y, 0.5, string.Empty, _color, 0);
+                export.AddText(_element.CisloBodu, _point.X, _point.Y, 0.5, string.Empty, Group.Options.Color, 0);
             }
         }
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        {
+            throw new NotImplementedException();
+        }
+        public IDtmDrawingGroup Group { get; set; }
+        public IDtmElement GetDtmElement => _element;
     }
 }

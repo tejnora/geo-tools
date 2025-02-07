@@ -5,37 +5,71 @@ using System.Windows;
 using System.Windows.Forms;
 using CAD.Export;
 using GeoBase.Utils;
-using CAD.Canvas.DrawTools;
-using System.Windows.Controls.Primitives;
-using System.Windows.Media;
-using Pen = System.Drawing.Pen;
 using CAD.Utils;
-using System.Drawing;
-using CAD.VFK.DrawTools;
+using CAD.Canvas.DrawTools;
+using CAD.DrawTools;
+using GeoHelper.Utils;
+using CAD.DTM.Configuration;
 
 namespace CAD.DTM
 {
     class DtmDrawingCurveElement
-        : IDrawObject
+        : DrawObjectBase
+            , IDrawObject
+            , IDtmDrawingElement
+            , ISnapList
     {
-        readonly DtmElement _element;
-        readonly float _width = 0.001f;
-        readonly System.Drawing.Color _color = System.Drawing.Color.White;
+        DtmElement _element;
         DtmCurveGeometry _curveGeometry;
+        const int ThresholdPixel = 6;
+
+        public DtmDrawingCurveElement()
+        {
+
+        }
+
         public DtmDrawingCurveElement(DtmElement element)
         {
             _element = element;
             _curveGeometry = (DtmCurveGeometry)element.Geometry;
         }
+
         public string Id { get; }
+
         public IDrawObject Clone()
         {
-            throw new NotImplementedException();
+            var l = new DtmDrawingCurveElement();
+            l.Copy(this);
+            return l;
+        }
+
+        public virtual void Copy(DtmDrawingCurveElement origin)
+        {
+            base.Copy(origin);
+            _element = origin._element;
+            _curveGeometry = origin._curveGeometry;
+        }
+
+        bool ProcessLines(Func<UnitPoint, UnitPoint, bool> doAction)
+        {
+            var p1 = new UnitPoint(_curveGeometry.Points[0].X, _curveGeometry.Points[0].Y);
+            var p2 = new UnitPoint();
+            for (var i = 1; i < _curveGeometry.Points.Count; i++)
+            {
+                p2.X = _curveGeometry.Points[i].X;
+                p2.Y = _curveGeometry.Points[i].Y;
+                if (doAction(p1, p2))
+                    return true;
+                (p1, p2) = (p2, p1);
+            }
+
+            return false;
         }
 
         public bool PointInObject(ICanvas canvas, UnitPoint point)
         {
-            return false;
+            double thWidth = ThresholdWidth(canvas, Group.Options.Width);
+            return ProcessLines((p1, p2) => HitUtil.IsPointInLine(p1, p2, point, thWidth));
         }
 
         public bool ObjectInRectangle(ICanvas canvas, Rect rect, bool anyPoint)
@@ -45,43 +79,43 @@ namespace CAD.DTM
                 var bBox = GetBoundingRect(canvas);
                 return rect.Contains(bBox);
             }
-            var p1 = new UnitPoint(_curveGeometry.Points[0].X, _curveGeometry.Points[0].Y);
-            var p2 = new UnitPoint();
-            for (var i = 1; i < _curveGeometry.Points.Count; i++)
-            {
-                p2.X = _curveGeometry.Points[i].X;
-                p2.Y = _curveGeometry.Points[i].Y;
-                if (HitUtil.LineIntersectWithRect(p1, p2, rect))
-                    return true;
-                (p1, p2) = (p2, p1);
-            }
-            p2.X = _curveGeometry.Points[0].X;
-            p2.Y = _curveGeometry.Points[0].Y;
-            return HitUtil.LineIntersectWithRect(p1, p2, rect);
+
+            return ProcessLines((p1, p2) => HitUtil.LineIntersectWithRect(p1, p2, rect));
         }
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
-            if (_curveGeometry.Points.Count <= 1)
+            if (_curveGeometry == null || _curveGeometry.Points.Count <= 1)
                 return;
-            var pen = canvas.CreatePen(_color, _width);
+            var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
             pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-
-            var p1 = new UnitPoint(_curveGeometry.Points[0].X, _curveGeometry.Points[0].Y);
-            var p2 = new UnitPoint();
-            for (var i = 1; i < _curveGeometry.Points.Count; i++)
+            ProcessLines((p1, p2) =>
             {
-                p2.X = _curveGeometry.Points[i].X;
-                p2.Y = _curveGeometry.Points[i].Y;
                 canvas.DrawLine(canvas, pen, p1, p2);
-                (p1, p2) = (p2, p1);
-            }
+                if (!Selected) return false;
+                canvas.DrawLine(canvas, DrawUtils.SelectedPen, p1, p2);
+                DrawUtils.DrawNode(canvas, p1);
+                DrawUtils.DrawNode(canvas, p2);
+                return false;
+            });
+        }
+
+        public static float ThresholdWidth(ICanvas canvas, float objectwidth)
+        {
+            return ThresholdWidth(canvas, objectwidth, ThresholdPixel);
+        }
+
+        public static float ThresholdWidth(ICanvas canvas, float objectwidth, float pixelwidth)
+        {
+            var minWidth = canvas.ToUnit(pixelwidth);
+            var width = Math.Max(objectwidth / 2, minWidth);
+            return (float)width;
         }
 
         public Rect GetBoundingRect(ICanvas canvas)
         {
-            if (_curveGeometry.Points.Count <= 1)
+            if (_curveGeometry == null || _curveGeometry.Points.Count <= 1)
                 return Rect.Empty;
             var minX = double.MaxValue;
             var minY = double.MaxValue;
@@ -94,18 +128,37 @@ namespace CAD.DTM
                 maxX = Math.Max(lineSegment.X, maxX);
                 maxY = Math.Max(lineSegment.Y, maxY);
             }
+
             var p1 = new UnitPoint(minX, minY);
             var p2 = new UnitPoint(maxX, maxY);
-            return ScreenUtils.GetRect(p1, p2, _width);
+            double thWidth = ThresholdWidth(canvas, Group.Options.Width);
+            return ScreenUtils.GetRect(p1, p2, thWidth);
         }
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
+            var lastPoint = _curveGeometry.Points.Back();
+            lastPoint.X = point.X;
+            lastPoint.Y = point.Y;
         }
 
-        public eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            if (!(snappoint is PodrobnyBodZPS zpz))
+                return DrawObjectState.Continue;
+            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
+            _curveGeometry.Points.Add((DtmPoint)pointGeometry.Point.Clone());
+            return DrawObjectState.Continue;
+        }
+
+        public DrawObjectState OnFinish()
+        {
+            if (_curveGeometry.Points.Count > 2)
+            {
+                _curveGeometry.Points.Pop();
+                return DrawObjectState.Done;
+            }
+            return DrawObjectState.Drop;
         }
 
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
@@ -117,6 +170,7 @@ namespace CAD.DTM
         }
 
         public UnitPoint RepeatStartingPoint { get; }
+
         public INodePoint NodePoint(ICanvas canvas, UnitPoint point)
         {
             return null;
@@ -138,7 +192,9 @@ namespace CAD.DTM
 
         public string GetInfoAsString()
         {
-            return "";
+            if (Group == null)
+                return "";
+            return $"Group name: {Group.Name}";
         }
 
         public void Export(IExport export)
@@ -148,8 +204,31 @@ namespace CAD.DTM
             var points = new UnitPoint[_curveGeometry.Points.Count];
             for (var i = 0; i < _curveGeometry.Points.Count; i++)
                 points[i] = new UnitPoint(_curveGeometry.Points[i].X, _curveGeometry.Points[i].Y);
-            export.AddPolyline(ref points, _color, _width);
+            export.AddPolyline(ref points, Group.Options.Color, Group.Options.Width);
 
+        }
+
+        public IDtmDrawingGroup Group { get; set; }
+        public IDtmElement GetDtmElement => _element;
+
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        {
+            if (!(snap is PodrobnyBodZPS zpz))
+                return;
+            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
+            _curveGeometry = new DtmCurveGeometry
+            {
+                Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point }
+            };
+            var dtmLayer = (DtmDrawingLayerMain)layer;
+            _element = new DtmElement { Geometry = _curveGeometry };
+            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected, this);
+            Selected = true;
+        }
+
+        public Type[] RunningSnaps
+        {
+            get { return new[] { typeof(PodrobnyBodZPS) }; }
         }
     }
 }

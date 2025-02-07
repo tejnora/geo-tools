@@ -14,24 +14,24 @@ namespace CAD.Canvas.DrawTools
 {
     public class NodePointAcitePoint : INodePoint
     {
-                public enum EPoint
+        public enum EPoint
         {
             P1,
         }
-                        static bool _angleLocked = false;
+        static bool _angleLocked = false;
         ActivePoint _owner;
         ActivePoint _clone;
         UnitPoint _originalPoint;
         UnitPoint _endPoint;
         EPoint _pointId;
-                        public NodePointAcitePoint(ActivePoint owner, EPoint id)
+        public NodePointAcitePoint(ActivePoint owner, EPoint id)
         {
             _owner = owner;
             _clone = _owner.Clone() as ActivePoint;
             _pointId = id;
             _originalPoint = GetPoint(_pointId);
         }
-                        public IDrawObject GetClone()
+        public IDrawObject GetClone()
         {
             return _clone;
         }
@@ -68,7 +68,7 @@ namespace CAD.Canvas.DrawTools
                 e.Handled = true;
             }
         }
-                        protected UnitPoint GetPoint(EPoint pointid)
+        protected UnitPoint GetPoint(EPoint pointid)
         {
             if (pointid == EPoint.P1)
                 return _clone.P1;
@@ -83,11 +83,11 @@ namespace CAD.Canvas.DrawTools
             if (pointid == EPoint.P1)
                 aActivePoint.P1 = point;
         }
-            }
+    }
     [Serializable]
     public class ActivePoint : DrawObjectBase, IDrawObject
     {
-                public virtual UnitPoint P1
+        public virtual UnitPoint P1
         {
             get;
             set;
@@ -106,7 +106,7 @@ namespace CAD.Canvas.DrawTools
         {
             get { return DrawToolBar.ActivePoint.Name; }
         }
-                        public ActivePoint()
+        public ActivePoint()
         {
         }
         public ActivePoint(UnitPoint point, double width, Color color, double aRadius)
@@ -118,7 +118,7 @@ namespace CAD.Canvas.DrawTools
             Radius = aRadius;
             DrawCircle = true;
         }
-                
+
         public virtual IDrawObject Clone()
         {
             ActivePoint l = new ActivePoint();
@@ -151,10 +151,10 @@ namespace CAD.Canvas.DrawTools
 
         public bool ObjectInRectangle(ICanvas canvas, Rect rect, bool anyPoint)
         {
-//            Rect boundingrect = GetBoundingRect(canvas);
+            //            Rect boundingrect = GetBoundingRect(canvas);
             return rect.Contains(P1.Point);
         }
-        
+
         public virtual void Draw(ICanvas canvas, Rect unitrect)
         {
             Color color = Color;
@@ -172,14 +172,14 @@ namespace CAD.Canvas.DrawTools
             bottom.Y += delta;
             canvas.DrawLine(canvas, pen, left, right);
             canvas.DrawLine(canvas, pen, top, bottom);
-            if(DrawCircle)
+            if (DrawCircle)
                 canvas.DrawArc(canvas, pen, P1, (float)Radius, 0.0f, 360.0f);
             if (Selected)
             {
                 if (P1.IsEmpty == false)
                     DrawUtils.DrawNode(canvas, P1);
             }
-             
+
         }
 
         public virtual void OnMouseMove(ICanvas canvas, UnitPoint point)
@@ -187,9 +187,14 @@ namespace CAD.Canvas.DrawTools
             P1 = point;
         }
 
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
+        }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
         }
 
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
@@ -260,7 +265,7 @@ namespace CAD.Canvas.DrawTools
         public virtual void Export(IExport export)
         {
         }
-                        static int ThresholdPixel = 6;
+        static int ThresholdPixel = 6;
         public static double ThresholdWidth(ICanvas canvas, double objectwidth)
         {
             return ThresholdWidth(canvas, objectwidth, ThresholdPixel);
@@ -274,14 +279,14 @@ namespace CAD.Canvas.DrawTools
     }
     public class ActivePointEdit : ActivePoint, IObjectEditInstance
     {
-                public override string Id
+        public override string Id
         {
             get
             {
                 return "activePoint";
             }
         }
-                        public void Copy(ActivePointEdit acopy)
+        public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -291,7 +296,7 @@ namespace CAD.Canvas.DrawTools
             l.Copy(this);
             return l;
         }
-                        public IDrawObject GetDrawObject()
+        public IDrawObject GetDrawObject()
         {
             return new ActivePoint(P1, Width, Color, Radius);
         }
@@ -307,6 +312,6 @@ namespace CAD.Canvas.DrawTools
         {
             return true;
         }
-            }
+    }
 
 }

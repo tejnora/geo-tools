@@ -88,18 +88,28 @@ namespace GeoBase.Gui
                 _buttonsStackPanel.Children.Insert(0, new OkButton());
             foreach (UIElement ui in _buttonsStackPanel.Children)
             {
-                if (ui is CloseButton)
+                switch (ui)
                 {
-                    (ui as CloseButton).Click += OnCancelButtonClick;
-                    if (DefaultButton == DialogButtons.Cancel)
-                        (ui as CloseButton).IsDefault = true;
+                    case CloseButton button:
+                    {
+                        button.Click += OnCancelButtonClick;
+                        if (DefaultButton == DialogButtons.Cancel)
+                            button.IsDefault = true;
+                        break;
+                    }
+                    case OkButton d:
+                    {
+                        d.Click += OnOkButtonClick;
+                        if (DefaultButton == DialogButtons.Ok)
+                            d.IsDefault = true;
+                        break;
+                    }
                 }
-                if (ui is OkButton)
-                {
-                    (ui as OkButton).Click += OnOkButtonClick;
-                    if (DefaultButton == DialogButtons.Ok)
-                        (ui as OkButton).IsDefault = true;
-                }
+                var b = ui as Button;
+                b.Padding = new Thickness(5, 2, 5, 2);
+                b.Margin = new Thickness(5, 5, 5, 5);
+                b.MinWidth = 50;
+
             }
             LoadPosAndSize();
         }
@@ -121,12 +131,14 @@ namespace GeoBase.Gui
 
         public UIElementCollection CustomButtons
         {
-            get { return _buttonsStackPanel.Children; }
+            get => _buttonsStackPanel.Children;
             set
             {
                 _buttonsStackPanel.Children.Clear();
                 foreach (UIElement ui in value)
+                {
                     _buttonsStackPanel.Children.Add(ui);
+                }
             }
         }
 

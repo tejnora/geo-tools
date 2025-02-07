@@ -19,17 +19,17 @@ namespace CAD.Canvas.DrawTools
     }
     class NodePointArcCenter : INodePoint
     {
-                public NodePointArcCenter(Arc owner)
+        public NodePointArcCenter(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
             OriginalPoint = Owner.Center;
         }
-                        protected Arc Owner;
+        protected Arc Owner;
         protected Arc Clone;
         protected UnitPoint OriginalPoint;
         protected UnitPoint EndPoint;
-                        public IDrawObject GetClone()
+        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -64,10 +64,10 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-            }
+    }
     class NodePointArcRadius : INodePoint
     {
-                public NodePointArcRadius(Arc owner)
+        public NodePointArcRadius(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
@@ -75,11 +75,11 @@ namespace CAD.Canvas.DrawTools
                 Clone.CurrentPoint = Owner.CurrentPoint;
             OriginalValue = Owner.Radius;
         }
-                        protected Arc Owner;
+        protected Arc Owner;
         protected Arc Clone;
         protected float OriginalValue;
         protected float EndValue;
-                        public IDrawObject GetClone()
+        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -113,10 +113,10 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-            }
+    }
     class NodePointArcAngle : INodePoint
     {
-                public NodePointArcAngle(Arc owner)
+        public NodePointArcAngle(Arc owner)
         {
             Owner = owner;
             Clone = Owner.Clone() as Arc;
@@ -126,13 +126,13 @@ namespace CAD.Canvas.DrawTools
             OriginalA2 = Owner.EndAngle;
             Owner.Selected = false;
         }
-                        protected Arc Owner;
+        protected Arc Owner;
         protected Arc Clone;
         protected float OriginalA1;
         protected float EndA1;
         protected float OriginalA2;
         protected float EndA2;
-                        public IDrawObject GetClone()
+        public IDrawObject GetClone()
         {
             return Clone;
         }
@@ -168,12 +168,12 @@ namespace CAD.Canvas.DrawTools
         public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
         }
-            }
+    }
 
     [Serializable]
     class Arc : DrawObjectBase, IArc, IDrawObject
     {
-                public enum EDirection
+        public enum EDirection
         {
             KCw,
             KCcw,
@@ -193,7 +193,7 @@ namespace CAD.Canvas.DrawTools
             TypeCenterRadius,
             Type2Point,
         }
-                        UnitPoint _center;
+        UnitPoint _center;
         float _radius;
         float _startAngle;
         float _endAngle;
@@ -250,7 +250,7 @@ namespace CAD.Canvas.DrawTools
         protected ECurrentPoint CurPoint = ECurrentPoint.P1;
         protected UnitPoint LastPoint;
         protected UnitPoint P1;
-                        public Arc()
+        public Arc()
         {
         }
         public Arc(EArcType type)
@@ -260,7 +260,7 @@ namespace CAD.Canvas.DrawTools
             if (ArcType == EArcType.TypeCenterRadius)
                 CurPoint = ECurrentPoint.Center;
         }
-                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             Width = layer.Width;
             Color = layer.Color;
@@ -378,7 +378,7 @@ namespace CAD.Canvas.DrawTools
                 EndAngle = (float)HitUtil.RadiansToDegrees(HitUtil.LineAngleR(_center, point, angleToRound));
             }
         }
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             OnMouseMove(canvas, point);
             if (ArcType == EArcType.Type2Point)
@@ -386,24 +386,24 @@ namespace CAD.Canvas.DrawTools
                 if (CurPoint == ECurrentPoint.P1)
                 {
                     CurPoint = ECurrentPoint.P2;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.P2)
                 {
                     CurPoint = ECurrentPoint.StartAngle;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.StartAngle)
                 {
                     CurPoint = ECurrentPoint.EndAngle;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.EndAngle)
                 {
                     CurPoint = ECurrentPoint.Done;
                     OnMouseMove(canvas, point);
                     Selected = false;
-                    return eDrawObjectMouseDown.Done;
+                    return DrawObjectState.Done;
                 }
             }
             if (ArcType == EArcType.TypeCenterRadius)
@@ -411,28 +411,34 @@ namespace CAD.Canvas.DrawTools
                 if (CurPoint == ECurrentPoint.Center)
                 {
                     CurPoint = ECurrentPoint.Radius;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.Radius)
                 {
                     CurPoint = ECurrentPoint.StartAngle;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.StartAngle)
                 {
                     CurPoint = ECurrentPoint.EndAngle;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.EndAngle)
                 {
                     CurPoint = ECurrentPoint.Done;
                     OnMouseMove(canvas, point);
                     Selected = false;
-                    return eDrawObjectMouseDown.Done;
+                    return DrawObjectState.Done;
                 }
             }
-            return eDrawObjectMouseDown.Done;
+            return DrawObjectState.Done;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public virtual void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -640,7 +646,7 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
-                        protected virtual void DrawNodes(ICanvas canvas)
+        protected virtual void DrawNodes(ICanvas canvas)
         {
             if (CurPoint == ECurrentPoint.StartAngle && LastPoint != UnitPoint.Empty)
                 canvas.DrawLine(canvas, DrawUtils.SelectedPen, _center, LastPoint);
@@ -655,19 +661,19 @@ namespace CAD.Canvas.DrawTools
         {
             return HitUtil.PointOncircle(_center, _radius, HitUtil.DegressToRadians(angle));
         }
-            }
+    }
 
     [Serializable]
     class Circle : Arc
     {
-                public Circle()
+        public Circle()
         {
         }
         public Circle(EArcType type)
             : base(type)
         {
         }
-                        public static string ObjectType
+        public static string ObjectType
         {
             get { return "circle"; }
         }
@@ -675,13 +681,13 @@ namespace CAD.Canvas.DrawTools
         {
             get { return ObjectType; }
         }
-                        public override IDrawObject Clone()
+        public override IDrawObject Clone()
         {
             Circle a = new Circle();
             a.Copy(this);
             return a;
         }
-        public override eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public override DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             OnMouseMove(canvas, point);
             if (ArcType == EArcType.Type2Point)
@@ -689,14 +695,14 @@ namespace CAD.Canvas.DrawTools
                 if (CurPoint == ECurrentPoint.P1)
                 {
                     CurPoint = ECurrentPoint.P2;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.P2)
                 {
                     CurPoint = ECurrentPoint.Done;
                     OnMouseMove(canvas, point);
                     Selected = false;
-                    return eDrawObjectMouseDown.Done;
+                    return DrawObjectState.Done;
                 }
             }
             if (ArcType == EArcType.TypeCenterRadius)
@@ -704,17 +710,17 @@ namespace CAD.Canvas.DrawTools
                 if (CurPoint == ECurrentPoint.Center)
                 {
                     CurPoint = ECurrentPoint.Radius;
-                    return eDrawObjectMouseDown.Continue;
+                    return DrawObjectState.Continue;
                 }
                 if (CurPoint == ECurrentPoint.Radius)
                 {
                     CurPoint = ECurrentPoint.Done;
                     OnMouseMove(canvas, point);
                     Selected = false;
-                    return eDrawObjectMouseDown.Done;
+                    return DrawObjectState.Done;
                 }
             }
-            return eDrawObjectMouseDown.Done;
+            return DrawObjectState.Done;
         }
         protected override void DrawNodes(ICanvas canvas)
         {
@@ -747,5 +753,5 @@ namespace CAD.Canvas.DrawTools
         {
             return string.Format("Circle@{0}, r={1:f4}", Center.PosAsString(), Radius);
         }
-            }
+    }
 }

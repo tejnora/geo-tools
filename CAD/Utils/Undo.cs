@@ -88,9 +88,9 @@ namespace CAD.Utils
         public EditCommandRemove()
         {
         }
-        public void AddLayerObjects(ICanvasLayer layer, List<IDrawObject> objects)
+        public void AddLayerObjects(ICanvasLayer layer, IDrawObject objects)
         {
-            m_objects.Add(layer, objects);
+            m_objects.Add(layer, new List<IDrawObject>() { objects });
         }
         public override bool DoUndo(IModel data)
         {

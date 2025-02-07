@@ -40,7 +40,7 @@ namespace CAD.Canvas.DrawTools
         }
         static public void DrawNode(ICanvas canvas, UnitPoint nodepoint)
         {
-            DrawNode(canvas, nodepoint, new Size(3, 3));
+            DrawNode(canvas, nodepoint, new Size(4, 4));
         }
         static public void DrawTriangleNode(ICanvas canvas, UnitPoint nodepoint)
         {

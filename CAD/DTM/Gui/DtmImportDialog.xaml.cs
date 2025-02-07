@@ -30,6 +30,7 @@ namespace CAD.DTM.Gui
         {
             DialogResult = true;
             SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, "Dtm/FileName", new ProgramOption(_ctx.FileName));
+            SavePosAndSize();
             Close();
         }
         void OnCanImportButtonClick(object sender, CanExecuteRoutedEventArgs args)

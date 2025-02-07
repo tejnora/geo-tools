@@ -61,11 +61,11 @@ namespace CAD.Utils
         }
         public static Rect GetRect(UnitPoint p1, UnitPoint p2, double width)
         {
-            double x = Math.Min(p1.X, p2.X);
-            double y = Math.Min(p1.Y, p2.Y);
-            double w = Math.Abs(p1.X - p2.X);
-            double h = Math.Abs(p1.Y - p2.Y);
-            Rect rect = ScreenUtils.GetRect(x, y, w, h);
+            var x = Math.Min(p1.X, p2.X);
+            var y = Math.Min(p1.Y, p2.Y);
+            var w = Math.Abs(p1.X - p2.X);
+            var h = Math.Abs(p1.Y - p2.Y);
+            var rect = ScreenUtils.GetRect(x, y, w, h);
             rect.Inflate(width, width);
             return rect;
         }

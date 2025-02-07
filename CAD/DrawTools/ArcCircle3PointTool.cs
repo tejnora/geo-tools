@@ -448,47 +448,47 @@ namespace CAD.Canvas.DrawTools
                 return;
             }
         }
-        eDrawObjectMouseDown MouseDown3P132(ICanvas canvas, UnitPoint point)
+        DrawObjectState MouseDown3P132(ICanvas canvas, UnitPoint point)
         {
             OnMouseMove(canvas, point);
             if (CurPoint == ECurrentPoint.P1)
             {
                 CurPoint = ECurrentPoint.P3;
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
             if (CurPoint == ECurrentPoint.P3)
             {
                 CurPoint = ECurrentPoint.P2;
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
             if (CurPoint == ECurrentPoint.P2)
             {
                 CurPoint = ECurrentPoint.Done;
                 Selected = false;
-                return eDrawObjectMouseDown.Done;
+                return DrawObjectState.Done;
             }
-            return eDrawObjectMouseDown.Done;
+            return DrawObjectState.Done;
         }
-        eDrawObjectMouseDown MouseDown3P123(ICanvas canvas, UnitPoint point)
+        DrawObjectState MouseDown3P123(ICanvas canvas, UnitPoint point)
         {
             OnMouseMove(canvas, point);
             if (CurPoint == ECurrentPoint.P1)
             {
                 CurPoint = ECurrentPoint.P2;
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
             if (CurPoint == ECurrentPoint.P2)
             {
                 CurPoint = ECurrentPoint.P3;
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
             if (CurPoint == ECurrentPoint.P3)
             {
                 CurPoint = ECurrentPoint.Done;
                 Selected = false;
-                return eDrawObjectMouseDown.Done;
+                return DrawObjectState.Done;
             }
-            return eDrawObjectMouseDown.Done;
+            return DrawObjectState.Done;
         }
 
         UnitPoint StartAngleNodePoint(ICanvas canvas)
@@ -515,14 +515,20 @@ namespace CAD.Canvas.DrawTools
             if (_type == EArcType.KArc3P123)
                 MoveMouse3P123(point);
         }
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             if (_type == EArcType.KArc3P132)
                 return MouseDown3P132(canvas, point);
             if (_type == EArcType.KArc3P123)
                 return MouseDown3P123(canvas, point);
-            return eDrawObjectMouseDown.Done;
+            return DrawObjectState.Done;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public virtual void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -710,7 +716,6 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
-                
         public void OnDeserialization(object sender)
         {
             UpdateArcFrom3Points();

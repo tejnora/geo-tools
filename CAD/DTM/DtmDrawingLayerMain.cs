@@ -6,7 +6,7 @@ using GeoBase.Utils;
 using Color = System.Drawing.Color;
 using CAD.Utils;
 using System;
-using System.Xml.Linq;
+using System.Linq;
 
 namespace CAD.DTM
 {
@@ -18,6 +18,8 @@ namespace CAD.DTM
         public DtmDrawingLayerMain(IDtmMain dtmMain)
         {
             Name = "Dtm";
+            Visible = true;
+            Enabled = true;
             _dtmMain = dtmMain;
             CreateDrawingObjects();
         }
@@ -59,6 +61,8 @@ namespace CAD.DTM
         public Color Color { get; set; }
         public double Width { get; set; }
         public string Name { get; set; }
+        public string DtmLineElementSelected { get; set; }
+
         public Rect GetBoundingRect(ICanvas canvas)
         {
             var bb = Rect.Empty;
@@ -91,7 +95,17 @@ namespace CAD.DTM
 
         public void AddObject(IDrawObject drawobject)
         {
-            throw new NotImplementedException();
+            var dtmElement = (IDtmDrawingElement)drawobject;
+            dtmElement.GetDtmElement.IsDeleted = false;
+            _dtmMain.AddElementIfNotExist(dtmElement.Group.Name, dtmElement.GetDtmElement);
+            if (_layers[dtmElement.Group.Name] == null)
+            {
+                _layers[dtmElement.Group.Name] = new DtmDrawingGroup(dtmElement.Group.Name, drawobject);
+            }
+            else
+            {
+                _layers[dtmElement.Group.Name].AddObject(drawobject);
+            }
         }
 
         public void Export(IExport export)
@@ -99,6 +113,22 @@ namespace CAD.DTM
             foreach (var layer in _layers)
             {
                 layer.Value.Export(export);
+            }
+        }
+
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+            var localDeletedObjects = new List<Tuple<ICanvasLayer, IDrawObject>>();
+            foreach (var layer in _layers.Where(layer => layer.Value.Visible))
+            {
+                layer.Value.DeleteObjects(objects, localDeletedObjects);
+            }
+
+            foreach (var delObj in localDeletedObjects)
+            {
+                var dtmElement = (IDtmDrawingElement)delObj.Item2;
+                dtmElement.GetDtmElement.IsDeleted = true;
+                deletedObjects.Add(new Tuple<ICanvasLayer, IDrawObject>(this, delObj.Item2));
             }
         }
     }

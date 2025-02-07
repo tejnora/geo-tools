@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 using System.Xml.Linq;
 using CAD.Canvas;
+using CAD.DTM.Configuration;
 using CAD.Export;
 using CAD.Utils;
 using GeoBase.Utils;
@@ -14,8 +13,8 @@ namespace CAD.DTM
 {
     class DtmDrawingGroup
     : ICanvasLayer
+    , IDtmDrawingGroup
     {
-        readonly IDtmElementsGroup _group;
         readonly List<IDrawObject> _objects = new List<IDrawObject>();
 
         public DtmDrawingGroup(string groupName, IDtmElementsGroup group)
@@ -23,26 +22,53 @@ namespace CAD.DTM
             Visible = true;
             Name = groupName;
             Id = groupName;
-            _group = group;
-            CreateDrawingObjects();
+            InitOptions();
+            CreateDrawingObjects(group);
         }
 
-        void CreateDrawingObjects()
+        public DtmDrawingGroup(string groupName, IDrawObject drawObject)
         {
-            foreach (var group in _group.GetElementGroups())
+            Visible = true;
+            Name = groupName;
+            Id = groupName;
+            InitOptions();
+            ((IDtmDrawingElement)drawObject).Group = this;
+            _objects = new List<IDrawObject> { drawObject };
+        }
+
+        void InitOptions()
+        {
+            var setting = DtmConfigurationSingleton.Instance.ElementSetting;
+            Options = new DtmElementOption { Width = 0.003f, Color = Color.White };
+            if (!setting.ContainsKey(Name))
+                return;
+            Options = setting[Name];
+        }
+
+        void CreateDrawingObjects(IDtmElementsGroup group)
+        {
+            foreach (var g in group.GetElementGroups())
             {
-                _objects.Add(group.CreateDrawObject());
+                var obj = g.CreateDrawObject();
+                ((IDtmDrawingElement)obj).Group = this;
+                _objects.Add(obj);
             }
         }
 
-        public string Id { get; private set; }
+        public string Id { get; }
         public void Draw(ICanvas canvas, Rect unitrect)
         {
             foreach (var obj in _objects)
             {
                 if (obj.ObjectInRectangle(canvas, unitrect, true) == false)
                     continue;
+                var sel = obj.Selected;
+                var high = obj.Highlighted;
+                obj.Selected = false;
+                obj.Highlighted = false;
                 obj.Draw(canvas, unitrect);
+                obj.Selected = sel;
+                obj.Highlighted = high;
             }
         }
 
@@ -62,6 +88,7 @@ namespace CAD.DTM
         public bool Visible { get; set; }
         public Color Color { get; set; }
         public double Width { get; set; }
+        public DtmElementOption Options { get; set; }
         public string Name { get; set; }
         public Rect GetBoundingRect(ICanvas canvas)
         {
@@ -92,11 +119,6 @@ namespace CAD.DTM
             }
         }
 
-        public void AddObject(IDrawObject drawobject)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Export(IExport export)
         {
             export.SinkLayer(this);
@@ -105,6 +127,23 @@ namespace CAD.DTM
                 obj.Export(export);
             }
             export.RiseLayer();
+        }
+        public void AddObject(IDrawObject drawobject)
+        {
+            ((IDtmDrawingElement)drawobject).Group = this;
+            _objects.Add(drawobject);
+        }
+
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+            foreach (var obj in objects)
+            {
+                var deletedObj = _objects.Find((o => obj == o));
+                if (deletedObj == null)
+                    continue;
+                _objects.Remove(deletedObj);
+                deletedObjects.Add(new Tuple<ICanvasLayer, IDrawObject>(this, deletedObj));
+            }
         }
     }
 }

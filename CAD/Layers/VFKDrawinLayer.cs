@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows;
@@ -12,7 +13,7 @@ namespace CAD.Canvas.Layers
 {
     class VfkDrawinLayer : ICanvasLayer
     {
-        
+
         public VfkDrawinLayer(VfkElement vfkElement)
         {
             Enabled = true;
@@ -22,8 +23,8 @@ namespace CAD.Canvas.Layers
             Name = vfkElement.PritomnyStav.LayerName.ToString();
         }
 
-        
-        
+
+
         private List<IDrawObject> _objects = new List<IDrawObject>();
         readonly string _id;
 
@@ -38,8 +39,8 @@ namespace CAD.Canvas.Layers
         public double Width { get; set; }
         public string Name { get; set; }
 
-        
-        
+
+
         public void Draw(ICanvas canvas, Rect unitrect)
         {
             Tracing.StartTrack(App.TracePaint);
@@ -123,8 +124,10 @@ namespace CAD.Canvas.Layers
             export.RiseLayer();
         }
 
-        
-        
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+        }
+
         public void DeleteObjects(IDrawObject objects)
         {
             _objects.Remove(objects);
@@ -135,5 +138,5 @@ namespace CAD.Canvas.Layers
             _objects.Add(aObject);
         }
 
-            }
+    }
 }

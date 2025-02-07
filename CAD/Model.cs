@@ -23,7 +23,7 @@ namespace CAD.Canvas
 {
     public class DataModel : IModel
     {
-        
+
         public DataModel()
         {
             _toolTypes.Clear();
@@ -42,8 +42,8 @@ namespace CAD.Canvas
             VfkMain = null;
         }
 
-        
-        
+
+
         static Dictionary<string, Type> _toolTypes = new Dictionary<string, Type>();
         private Dictionary<string, IDrawObject> _drawObjectTypes = new Dictionary<string, IDrawObject>();
         private Dictionary<string, IEditTool> m_editTools = new Dictionary<string, IEditTool>();
@@ -79,8 +79,8 @@ namespace CAD.Canvas
 
         public DtmMain DtmMain { get; set; }
         DtmDrawingLayerMain _dtmDrawingLayerMain;
-        
-        
+
+
         [XmlSerializable]
         public double Zoom
         {
@@ -187,9 +187,13 @@ namespace CAD.Canvas
             foreach (ICanvasLayer layer in _layers)
             {
                 if (layer is VFKDrawingLayerMain) continue;
-                List<IDrawObject> removedobjects = ((DrawingLayer)layer).DeleteObjects(objects);
-                if (removedobjects != null && undocommand != null)
-                    undocommand.AddLayerObjects(layer, removedobjects);
+                var deletedObjects = new List<Tuple<ICanvasLayer, IDrawObject>>();
+                layer.DeleteObjects(objects, deletedObjects);
+                if (undocommand == null) continue;
+                foreach (var deletedObject in deletedObjects)
+                {
+                    undocommand.AddLayerObjects(deletedObject.Item1, deletedObject.Item2);
+                }
             }
 
             if (undocommand != null)
@@ -201,25 +205,33 @@ namespace CAD.Canvas
             EditVFKCommandRemove undocommand = null;
             if (_undoBuffer.CanCapture)
                 undocommand = new EditVFKCommandRemove();
-            foreach (ICanvasLayer layer in _layers)
+            foreach (var layer in _layers)
             {
                 if (layer is VFKDrawingLayerMain)
                 {
-                    List<IDrawObject> removedobjects =
-                        ((VFKDrawingLayerMain)layer).DeleteVFKObjects(objects, silentDeleteObjects);
+                    var removedobjects = ((VFKDrawingLayerMain)layer).DeleteVFKObjects(objects, silentDeleteObjects);
                     if (removedobjects != null && undocommand != null)
-                        undocommand.AddLayerObjects(layer, removedobjects);
-                    if (removedobjects != null)
-                        foreach (var obj in removedobjects)
+                    {
+                        foreach (var removeObj in removedobjects)
                         {
-                            ((IVFKTool)obj).DeleteObject(VfkMain);
+                            undocommand.AddLayerObjects(layer, removeObj);
                         }
+                    }
+                    if (removedobjects == null) continue;
+                    foreach (var obj in removedobjects)
+                    {
+                        ((IVFKTool)obj).DeleteObject(VfkMain);
+                    }
                 }
                 else
                 {
-                    List<IDrawObject> removedobjects = ((DrawingLayer)layer).DeleteObjects(objects);
-                    if (removedobjects != null && undocommand != null)
-                        undocommand.AddLayerObjects(layer, removedobjects);
+                    var deletedObjects = new List<Tuple<ICanvasLayer, IDrawObject>>();
+                    layer.DeleteObjects(objects, deletedObjects);
+                    if (undocommand == null) continue;
+                    foreach (var deletedObject in deletedObjects)
+                    {
+                        undocommand.AddLayerObjects(deletedObject.Item1, deletedObject.Item2);
+                    }
                 }
             }
 
@@ -438,8 +450,8 @@ namespace CAD.Canvas
             }
         }
 
-        
-        
+
+
         static public IDrawObject NewDrawObject(string objecttype)
         {
             if (_toolTypes.ContainsKey(objecttype))
@@ -504,8 +516,8 @@ namespace CAD.Canvas
             return string.Format("SlaveId{0}", _slaveCounter++);
         }
 
-        
-        
+
+
         public void Save(string filename)
         {
             try
@@ -570,8 +582,8 @@ namespace CAD.Canvas
             return false;
         }
 
-        
-        
+
+
         public void OnImportVfk(VFKDataContext aDataContext)
         {
             if (_layers[0] is VFKDrawingLayerMain)
@@ -632,5 +644,5 @@ namespace CAD.Canvas
             return _vfkDrawingLayerMain.ShowVfkLayerManager();
         }
 
-            }
+    }
 }

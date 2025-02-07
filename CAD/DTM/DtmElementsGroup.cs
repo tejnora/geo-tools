@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CAD.DTM.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -37,6 +38,13 @@ namespace CAD.DTM
         public IEnumerable<IDtmElement> GetElementGroups()
         {
             return _elements;
+        }
+
+        public void AddElementIfNotExist(IDtmElement dtmElementGetDtmElement)
+        {
+            if (_elements.Contains(dtmElementGetDtmElement))
+                return;
+            _elements.Add(dtmElementGetDtmElement);
         }
     }
 }

@@ -12,13 +12,13 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="20px" />
+                <ColumnDefinition Width="20" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBox MinWidth="100" Grid.Row="0" Grid.Column="0" Text="{Binding Path=FileName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+            <TextBox HorizontalAlignment="Stretch" MinWidth="100" Grid.Row="0" Grid.Column="0" Text="{Binding Path=FileName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
             <Button Grid.Row="0" Grid.Column="1" Click="OnFileChooser" Content="..." />
         </Grid>
     </Gui:DialogBase.DialogContent>

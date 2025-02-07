@@ -38,6 +38,7 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Point = System.Windows.Point;
 using RectangleF = System.Drawing.RectangleF;
 using Size = System.Windows.Size;
+using CAD.DrawTools;
 
 namespace CAD.Canvas
 {
@@ -76,7 +77,7 @@ namespace CAD.Canvas
             _graphics = null;
         }
 
-        
+
         public IModel DataModel
         {
             get { return _canvas.Model; }
@@ -190,11 +191,11 @@ namespace CAD.Canvas
                 out aNumberOfLines);
         }
 
-            }
+    }
 
     public partial class CanvasCtrl : UserControl, ICanvasCommand
     {
-        
+
         enum ECommandType
         {
             Select,
@@ -206,8 +207,8 @@ namespace CAD.Canvas
             Info
         }
 
-        
-        
+
+
         ICanvasOwner _owner;
         readonly CursorCollection _cursors = new CursorCollection();
         IModel _model;
@@ -217,6 +218,7 @@ namespace CAD.Canvas
         ECommandType _commandType = ECommandType.Select;
         bool _runningSnaps = true;
         Type[] _runningSnapTypes;
+        Type[] _runningSnapTypesDefault;
         Point _mousedownPoint;
         IDrawObject _newObject;
         IEditTool _editTool;
@@ -227,12 +229,15 @@ namespace CAD.Canvas
         bool _staticDirty = true;
         ISnapPoint _snappoint;
 
-        
-        
-        public Type[] RunningSnaps
+
+
+        public Type[] RunningSnapsDefault
         {
-            get { return _runningSnapTypes; }
-            set { _runningSnapTypes = value; }
+            set
+            {
+                _runningSnapTypes = value;
+                _runningSnapTypesDefault = value;
+            }
         }
 
         public bool RunningSnapsEnabled
@@ -255,8 +260,8 @@ namespace CAD.Canvas
             set { _model = value; }
         }
 
-        
-        
+
+
         public void Construct(ICanvasOwner owner, IModel datamodel)
         {
             _canvaswrapper = new CanvasWrapper(this);
@@ -280,7 +285,7 @@ namespace CAD.Canvas
             _nodeMoveHelper = new NodeMoveHelper(_canvaswrapper);
         }
 
-        
+
         public UnitPoint GetMousePoint()
         {
             Point point = PointToClient(MousePosition).ToWpfPoint();
@@ -560,23 +565,15 @@ namespace CAD.Canvas
 
         ISnapPoint SelectSnapPoint(UnitPoint mouseunitpoint)
         {
-            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
-            {
-                var hitObjects = _model.GetHitObjects(_canvaswrapper, mouseunitpoint);
-                if (hitObjects.Count > 1)
-                {
-                    var dialog = new MultiSelectPointDialog(hitObjects);
-                    if (!(bool)dialog.ShowDialog()) return null;
-                    var snapPoint = dialog.SelectedPoint.DrawObject.SnapPoint(_canvaswrapper, mouseunitpoint,
-                        hitObjects, null, typeof(VfkSnapPoint));
-                    if (snapPoint == null) return null;
-                    return snapPoint;
-                }
+            if (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl))
+                return _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), _runningSnapTypes, null);
 
-                return null;
-            }
-
-            return _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
+            var hitObjects = _model.GetHitObjects(_canvaswrapper, mouseunitpoint);
+            if (hitObjects.Count <= 1) return null;
+            var dialog = new MultiSelectPointDialog(hitObjects);
+            if (!(bool)dialog.ShowDialog()) return null;
+            var snapPoint = dialog.SelectedPoint.DrawObject.SnapPoint(_canvaswrapper, mouseunitpoint, hitObjects, null, typeof(VfkSnapPoint));
+            return snapPoint;
         }
 
         protected virtual void HandleMouseDownWhenDrawing(UnitPoint mouseunitpoint, ISnapPoint snappoint)
@@ -623,7 +620,10 @@ namespace CAD.Canvas
                         }
                     }
                     else
+                    {
+                        snappoint = SelectSnapPoint(ToUnit(_mousedownPoint));
                         _newObject = _model.CreateObject(_drawObjectId.Name, mouseunitpoint, snappoint);
+                    }
 
                     DoInvalidate(false, _newObject.GetBoundingRect(_canvaswrapper));
                 }
@@ -649,15 +649,15 @@ namespace CAD.Canvas
                                 return;
                         }
 
-                        eDrawObjectMouseDown result = _newObject.OnMouseDown(_canvaswrapper, mouseunitpoint, snappoint);
+                        var result = _newObject.OnMouseDown(_canvaswrapper, mouseunitpoint, snappoint);
                         switch (result)
                         {
-                            case eDrawObjectMouseDown.Done:
+                            case DrawObjectState.Done:
                                 _model.AddVFKObject(_newObject);
                                 _newObject = null;
                                 DoInvalidate(true);
                                 break;
-                            case eDrawObjectMouseDown.DoneRepeat:
+                            case DrawObjectState.DoneRepeat:
                                 _model.AddVFKObject(_newObject);
                                 _newObject = _model.CreateVFKObject(_newObject.Id, _newObject.RepeatStartingPoint,
                                     snappoint);
@@ -668,35 +668,46 @@ namespace CAD.Canvas
 
                                 DoInvalidate(true);
                                 break;
-                            case eDrawObjectMouseDown.Continue:
+                            case DrawObjectState.Continue:
                                 break;
                         }
                     }
                     else
                     {
-                        eDrawObjectMouseDown result = _newObject.OnMouseDown(_canvaswrapper, mouseunitpoint, snappoint);
-                        switch (result)
-                        {
-                            case eDrawObjectMouseDown.Done:
-                                _model.AddObject(_model.ActiveLayer, _newObject);
-                                _newObject = null;
-                                DoInvalidate(true);
-                                break;
-                            case eDrawObjectMouseDown.DoneRepeat:
-                                _model.AddObject(_model.ActiveLayer, _newObject);
-                                _newObject = _model.CreateObject(_newObject.Id, _newObject.RepeatStartingPoint, null);
-                                DoInvalidate(true);
-                                if (_propPageWindow != null)
-                                {
-                                    _propPageWindow.SetOwner(_newObject);
-                                }
-
-                                break;
-                            case eDrawObjectMouseDown.Continue:
-                                break;
-                        }
+                        snappoint = SelectSnapPoint(ToUnit(_mousedownPoint));
+                        var result = _newObject.OnMouseDown(_canvaswrapper, mouseunitpoint, snappoint);
+                        HandleDrawObjectState(result, snappoint);
                     }
                 }
+            }
+        }
+
+        void HandleDrawObjectState(DrawObjectState result, ISnapPoint snapPoint)
+        {
+            switch (result)
+            {
+                case DrawObjectState.Done:
+                    _model.AddObject(_model.ActiveLayer, _newObject);
+                    _newObject = null;
+                    DoInvalidate(true);
+                    break;
+                case DrawObjectState.DoneRepeat:
+                    _model.AddObject(_model.ActiveLayer, _newObject);
+                    _newObject = _model.CreateObject(_newObject.Id, _newObject.RepeatStartingPoint, null);
+                    DoInvalidate(true);
+                    if (_propPageWindow != null)
+                    {
+                        _propPageWindow.SetOwner(_newObject);
+                    }
+                    break;
+                case DrawObjectState.Continue:
+                    break;
+                case DrawObjectState.Drop:
+                    {
+                        _newObject = null;
+                        DoInvalidate(true);
+                    }
+                    break;
             }
         }
 
@@ -707,6 +718,9 @@ namespace CAD.Canvas
                 base.OnMouseDown(e);
                 return;
             }
+            _mousedownPoint = new Point(e.X, e.Y); // used when panning
+            _dragOffset = new Point(0, 0);
+            var mousepoint = ToUnit(_mousedownPoint);
 
             if (e.Button == MouseButtons.Right)
             {
@@ -725,6 +739,10 @@ namespace CAD.Canvas
                 {
                     if (_newObject is IObjectEditInstance)
                         return;
+                    if (_newObject != null)
+                    {
+                        HandleDrawObjectState(_newObject.OnFinish(), null);
+                    }
                     if (_newObject != null || _snappoint != null)
                     {
                         _newObject = null;
@@ -737,11 +755,6 @@ namespace CAD.Canvas
                 DoInvalidate(false);
                 return;
             }
-
-            _mousedownPoint = new Point(e.X, e.Y); // used when panning
-            _dragOffset = new Point(0, 0);
-
-            UnitPoint mousepoint = ToUnit(_mousedownPoint);
             if (_snappoint != null)
             {
                 mousepoint = _snappoint.SnapPoint;
@@ -792,15 +805,15 @@ namespace CAD.Canvas
                     if (_editTool.SupportSelection)
                         _selection = new SelectionRectangle(_mousedownPoint);
 
-                    eDrawObjectMouseDown mouseresult = _editTool.OnMouseDown(_canvaswrapper, mousepoint, _snappoint);
+                    DrawObjectState mouseresult = _editTool.OnMouseDown(_canvaswrapper, mousepoint, _snappoint);
                     /*
-                    if (mouseresult == eDrawObjectMouseDown.Continue)
+                    if (mouseresult == DrawObjectState.Continue)
                     {
                         if (m_editTool.SupportSelection)
                             m_selection = new SelectionRectangle(m_mousedownPoint);
                     }
                      * */
-                    if (mouseresult == eDrawObjectMouseDown.Done)
+                    if (mouseresult == DrawObjectState.Done)
                     {
                         _editTool.Finished();
                         _editTool = _model.GetEditTool(_editToolId.Name); // continue with new tool
@@ -822,18 +835,18 @@ namespace CAD.Canvas
                     case InfoTools.None:
                         break;
                     case InfoTools.VfkMeasureArea:
-                    {
-                        var pp = _propPageWindow as VfkMeasureArea;
-                        if (pp != null)
                         {
-                            var snappoint = _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
-                            if (snappoint != null && snappoint.Owner.Id == VfkToolBar.VfkActivePoint.Name)
+                            var pp = _propPageWindow as VfkMeasureArea;
+                            if (pp != null)
                             {
-                                var activePoint = snappoint.Owner as VfkActivePoint;
-                                pp.AddPoint(activePoint);
+                                var snappoint = _model.SnapPoint(_canvaswrapper, ToUnit(_mousedownPoint), null, null);
+                                if (snappoint != null && snappoint.Owner.Id == VfkToolBar.VfkActivePoint.Name)
+                                {
+                                    var activePoint = snappoint.Owner as VfkActivePoint;
+                                    pp.AddPoint(activePoint);
+                                }
                             }
                         }
-                    }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -1058,7 +1071,7 @@ namespace CAD.Canvas
             return ToUnit(ClientRectangle.Height) / _model.Zoom;
         }
 
-        
+
         public UnitPoint CenterPointUnit()
         {
             UnitPoint p1 = ScreenTopLeftToUnitPoint();
@@ -1204,16 +1217,16 @@ namespace CAD.Canvas
                 switch (item.SegmentType)
                 {
                     case PathSegment.SegmentTypes.Line:
-                    {
-                        var l = (LineSegment)item;
-                        DrawLine(aCanvas, aPen, l.P1 + offset, l.P2 + offset);
-                    }
+                        {
+                            var l = (LineSegment)item;
+                            DrawLine(aCanvas, aPen, l.P1 + offset, l.P2 + offset);
+                        }
                         break;
                     case PathSegment.SegmentTypes.Arc:
-                    {
-                        var a = (ArcSegment)item;
-                        DrawArc(aCanvas, aPen, a.Center + offset, a.Radius, a.StartAngle, a.Angle);
-                    }
+                        {
+                            var a = (ArcSegment)item;
+                            DrawArc(aCanvas, aPen, a.Center + offset, a.Radius, a.StartAngle, a.Angle);
+                        }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -1236,7 +1249,7 @@ namespace CAD.Canvas
             return new Size(size.Width, size.Height);
         }
 
-        
+
         Dictionary<float, Dictionary<Color, Pen>> m_penCache = new Dictionary<float, Dictionary<Color, Pen>>();
 
         Pen GetPen(Color color, float width)
@@ -1271,7 +1284,7 @@ namespace CAD.Canvas
             m_QuickSnap.Add(key, snaptype);
         }
 
-        
+
         Dictionary<GeoCadRoutedCommand, IDrawObject> _commandSelectDrawTool =
             new Dictionary<GeoCadRoutedCommand, IDrawObject>();
 
@@ -1290,9 +1303,15 @@ namespace CAD.Canvas
                 if (_model.ActiveLayer is IVFKDravingLayerMain)
                     _newObject = _model.CreateVFKObject(_drawObjectId.Name, new UnitPoint(), null);
                 else
+                {
                     _newObject = _model.CreateObject(_drawObjectId.Name, new UnitPoint(), null);
+                }
             }
 
+            if (_newObject is ISnapList list)
+            {
+                _runningSnapTypes = list.RunningSnaps;
+            }
             if (_newObject.getSelectDrawToolCreate())
             {
                 IObjectEditInstance edit = _newObject as IObjectEditInstance;
@@ -1340,7 +1359,7 @@ namespace CAD.Canvas
                 _moveHelper.HandleCancelMove();
                 _nodeMoveHelper.HandleCancelMove();
             }
-
+            _runningSnapTypes = _runningSnapTypesDefault;
             UpdateCursor();
             ClosePropPage();
             if (updateToolBar)
@@ -1435,7 +1454,7 @@ namespace CAD.Canvas
             DoInvalidate(true);
         }
 
-        
+
         private void SetRectView(Rect aBoundingBox)
         {
             if (aBoundingBox.IsEmpty) return;

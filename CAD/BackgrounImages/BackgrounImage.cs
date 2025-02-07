@@ -66,10 +66,16 @@ namespace CAD.BackgrounImages
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         { 
         }
-        public eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -121,7 +127,10 @@ namespace CAD.BackgrounImages
         public void Export(IExport export)
         {
         }
-                        public void GetObjectData(XmlWriter wr)
+
+        public bool Selected { get; set; }
+        public bool Highlighted { get; set; }
+        public void GetObjectData(XmlWriter wr)
         {
         }
         public void AfterSerializedIn()

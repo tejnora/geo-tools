@@ -6,5 +6,6 @@ namespace CAD.DTM
     {
         void AddElementGroup(string elementType, IDtmElementsGroup group);
         IEnumerable<KeyValuePair<string, IDtmElementsGroup>> GetElementGroups();
+        void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement);
     }
 }

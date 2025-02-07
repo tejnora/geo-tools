@@ -41,9 +41,10 @@ namespace CAD
             DataModel.AddDrawTool(VfkToolBar.VfkActivePoint.Name, new VfkActivePoint());
             DataModel.AddDrawTool(VfkToolBar.VfkMark.Name, new VfkMarkEdit());
             DataModel.AddDrawTool(VfkToolBar.VfkText.Name, new VfkTextsEdit());
+            DataModel.AddDrawTool(DtmToolBar.DtmMultiLine.Name, new DtmDrawingCurveElement());
             _Canvas.Construct(this, DataModel);
 
-            _Canvas.RunningSnaps = new Type[]
+            _Canvas.RunningSnapsDefault = new Type[]
                 {
                 typeof(VertextSnapPoint),
                 typeof(MidpointSnapPoint),
@@ -134,14 +135,15 @@ namespace CAD
 
         public bool ImportDtm(string location)
         {
-            var ctx = new DtmImportCtx { FileName = @"c:\Temp\JVF DTM\vydej_zps_ref.jvf.xml" };
-//            var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
-//            var result = dlg.DoModal();
-//            if (result == false)
-//                return false;
+            var ctx = new DtmImportCtx();// { FileName = @"c:\Temp\JVF DTM\vydej_zps_ref.jvf.xml" };
+            var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
+            var result = dlg.DoModal();
+            if (result == false)
+                return false;
             try
             {
                 DataModel.ImportDtm(ctx);
+                CanvasCommand.CommandFitView();
                 return true;
             }
             catch

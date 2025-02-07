@@ -146,12 +146,18 @@ namespace CAD.VFK.DrawTools
         {
             P1 = point;
         }
-        public eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             if (GetMustBeConnectedWithSnap() && snappoint != null)
                 Sobr = ((IVFKTool)snappoint.Owner).getActivePoint(0);
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -221,7 +227,7 @@ namespace CAD.VFK.DrawTools
         {
             export.AddPath(GetMarkPath().GetTransformPath(P1),Color,Width);
         }
-                        private const int ThresholdPixel = 6;
+        private const int ThresholdPixel = 6;
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {
             return ThresholdWidth(canvas, objectwidth, ThresholdPixel);

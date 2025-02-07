@@ -12,25 +12,25 @@ namespace CAD.Canvas.DrawTools
 {
     class NodePointLine : INodePoint
     {
-                public enum EPoint
+        public enum EPoint
         {
             P1,
             P2,
         }
-                        static bool _angleLocked;
+        static bool _angleLocked;
         Line _owner;
         Line _clone;
         UnitPoint _originalPoint;
         UnitPoint _endPoint;
         EPoint _pointId;
-                        public NodePointLine(Line owner, EPoint id)
+        public NodePointLine(Line owner, EPoint id)
         {
             _owner = owner;
             _clone = _owner.Clone() as Line;
             _pointId = id;
             _originalPoint = GetPoint(_pointId);
         }
-                        public IDrawObject GetClone()
+        public IDrawObject GetClone()
         {
             return _clone;
         }
@@ -72,7 +72,7 @@ namespace CAD.Canvas.DrawTools
                 e.Handled = true;
             }
         }
-                        protected UnitPoint GetPoint(EPoint pointid)
+        protected UnitPoint GetPoint(EPoint pointid)
         {
             if (pointid == EPoint.P1)
                 return _clone.P1;
@@ -93,11 +93,11 @@ namespace CAD.Canvas.DrawTools
             if (pointid == EPoint.P2)
                 line.P2 = point;
         }
-            }
+    }
     [Serializable]
     class Line : DrawObjectBase, IDrawObject
     {
-                protected UnitPoint _p1, _p2;
+        protected UnitPoint _p1, _p2;
 
         public UnitPoint P1
         {
@@ -109,7 +109,7 @@ namespace CAD.Canvas.DrawTools
             get { return _p2; }
             set { _p2 = value; }
         }
-                        public Line()
+        public Line()
         {
         }
         public Line(UnitPoint point, UnitPoint endpoint, float width, Color color)
@@ -120,7 +120,7 @@ namespace CAD.Canvas.DrawTools
             Color = color;
             Selected = false;
         }
-                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             P1 = P2 = point;
             Width = layer.Width;
@@ -194,26 +194,32 @@ namespace CAD.Canvas.DrawTools
                 point = HitUtil.OrthoPointD(_p1, point, 45);
             _p2 = point;
         }
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             Selected = false;
             if (snappoint is PerpendicularSnapPoint && snappoint.Owner is Line)
             {
                 Line src = snappoint.Owner as Line;
                 _p2 = HitUtil.NearestPointOnLine(src.P1, src.P2, _p1, true);
-                return eDrawObjectMouseDown.DoneRepeat;
+                return DrawObjectState.DoneRepeat;
             }
             if (snappoint is PerpendicularSnapPoint && snappoint.Owner is Arc)
             {
                 Arc src = snappoint.Owner as Arc;
                 _p2 = HitUtil.NearestPointOnCircle(src.Center, src.Radius, _p1, 0);
-                return eDrawObjectMouseDown.DoneRepeat;
+                return DrawObjectState.DoneRepeat;
             }
             if (Control.ModifierKeys == Keys.Control)
                 point = HitUtil.OrthoPointD(_p1, point, 45);
             _p2 = point;
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -322,7 +328,8 @@ namespace CAD.Canvas.DrawTools
         {
             export.AddLine(P1, P2, Color, Width);
         }
-                        public void ExtendLineToPoint(UnitPoint newpoint)
+
+        public void ExtendLineToPoint(UnitPoint newpoint)
         {
             UnitPoint newlinepoint = HitUtil.NearestPointOnLine(P1, P2, newpoint, true);
             if (HitUtil.Distance(newlinepoint, P1) < HitUtil.Distance(newlinepoint, P2))
@@ -341,14 +348,14 @@ namespace CAD.Canvas.DrawTools
             double width = Math.Max(objectwidth / 2, minWidth);
             return (float)width;
         }
-            }
+    }
     class LineEdit : Line, IObjectEditInstance
     {
-                public LineEdit(bool singleLine)
+        public LineEdit(bool singleLine)
         {
             _singleLineSegment = singleLine;
         }
-                        PerpendicularSnapPoint _perSnap;
+        PerpendicularSnapPoint _perSnap;
         TangentSnapPoint _tanSnap;
         bool _tanReverse;
         bool _singleLineSegment = true;
@@ -361,13 +368,13 @@ namespace CAD.Canvas.DrawTools
                 return DrawToolBar.MultiLine.Name;
             }
         }
-                        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             base.InitializeFromModel(point, layer, snap);
             _perSnap = snap as PerpendicularSnapPoint;
             _tanSnap = snap as TangentSnapPoint;
         }
-                        public override void OnMouseMove(ICanvas canvas, UnitPoint point)
+        public override void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
             if (_perSnap != null)
             {
@@ -381,12 +388,12 @@ namespace CAD.Canvas.DrawTools
             }
             base.OnMouseMove(canvas, point);
         }
-        public override eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public override DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             if (_tanSnap != null && Control.MouseButtons == MouseButtons.Right)
             {
                 ReverseTangent(canvas);
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
 
             if (_perSnap != null || _tanSnap != null)
@@ -395,13 +402,13 @@ namespace CAD.Canvas.DrawTools
                     point = snappoint.SnapPoint;
                 OnMouseMove(canvas, point);
                 if (_singleLineSegment)
-                    return eDrawObjectMouseDown.Done;
-                return eDrawObjectMouseDown.DoneRepeat;
+                    return DrawObjectState.Done;
+                return DrawObjectState.DoneRepeat;
             }
-            eDrawObjectMouseDown result = base.OnMouseDown(canvas, point, snappoint);
+            DrawObjectState result = base.OnMouseDown(canvas, point, snappoint);
             if (_singleLineSegment)
-                return eDrawObjectMouseDown.Done;
-            return eDrawObjectMouseDown.DoneRepeat;
+                return DrawObjectState.Done;
+            return DrawObjectState.DoneRepeat;
         }
         public override void OnKeyDown(ICanvas canvas, KeyEventArgs e)
         {
@@ -458,7 +465,7 @@ namespace CAD.Canvas.DrawTools
             l.Copy(this);
             return l;
         }
-                        public IDrawObject GetDrawObject()
+        public IDrawObject GetDrawObject()
         {
             return new Line(P1, P2, (float)Width, Color);
         }
@@ -474,5 +481,5 @@ namespace CAD.Canvas.DrawTools
         {
             return true;
         }
-            }
+    }
 }

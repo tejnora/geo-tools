@@ -15,7 +15,7 @@ using VFK.Tables;
 
 namespace CAD.VFK.DrawTools
 {
-    
+
     internal class LineSegment
     {
         enum LineSegmentType
@@ -109,8 +109,8 @@ namespace CAD.VFK.DrawTools
         }
     }
 
-    
-    
+
+
     public enum VfkMultiLineType
     {
         HP,
@@ -121,8 +121,8 @@ namespace CAD.VFK.DrawTools
         Hbpej
     }
 
-    
-    
+
+
     public class VfkMultiLineException : Exception
     {
         public VfkMultiLineException(string description)
@@ -131,11 +131,11 @@ namespace CAD.VFK.DrawTools
         }
     }
 
-    
-    
+
+
     public class VfkMultiLine : VfkDrawObjectBase, IDrawObject
     {
-        
+
         public VfkMultiLine()
         {
         }
@@ -149,9 +149,9 @@ namespace CAD.VFK.DrawTools
             if (fromModifyItems)
             {
                 sbpPoint = (from n in owner.VFKModifySBPItems
-                    where n.HP_ID == item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                            where n.HP_ID == item.ID
+                            orderby n.PORADOVE_CISLO_BODU
+                            select n).ToList();
             }
             else
             {
@@ -191,16 +191,16 @@ namespace CAD.VFK.DrawTools
             if (fromModifyItems)
             {
                 sbdPoint = (from n in owner.VFKModifySBPItems
-                    where n.ZVB_ID == zvbItem.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                            where n.ZVB_ID == zvbItem.ID
+                            orderby n.PORADOVE_CISLO_BODU
+                            select n).ToList();
             }
             else
             {
                 sbdPoint = (from n in owner.VFKSBPTable.Items
-                    where n.ZVB_ID == zvbItem.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                            where n.ZVB_ID == zvbItem.ID
+                            orderby n.PORADOVE_CISLO_BODU
+                            select n).ToList();
             }
 
             MultiLineSegments = new List<LineSegment>();
@@ -238,16 +238,16 @@ namespace CAD.VFK.DrawTools
                 if (fromModifyItems)
                 {
                     sbmPoints = (from n in Owner.VFKModifySBMItems
-                        where n.DPM_ID == Item.ID
-                        orderby n.PORADOVE_CISLO_BODU
-                        select n).ToList();
+                                 where n.DPM_ID == Item.ID
+                                 orderby n.PORADOVE_CISLO_BODU
+                                 select n).ToList();
                 }
                 else
                 {
                     sbmPoints = (from n in Owner.VFKSBMTable.Items
-                        where n.DPM_ID == Item.ID
-                        orderby n.PORADOVE_CISLO_BODU
-                        select n).ToList();
+                                 where n.DPM_ID == Item.ID
+                                 orderby n.PORADOVE_CISLO_BODU
+                                 select n).ToList();
                 }
 
                 VFKSBMTableItem prevTable = null;
@@ -277,9 +277,9 @@ namespace CAD.VFK.DrawTools
                 if (fromModifyItems)
                 {
                     sbpPoint = (from n in Owner.VFKModifySBPItems
-                        where n.DPM_ID == Item.ID
-                        orderby n.PORADOVE_CISLO_BODU
-                        select n).ToList();
+                                where n.DPM_ID == Item.ID
+                                orderby n.PORADOVE_CISLO_BODU
+                                select n).ToList();
                 }
                 else
                 {
@@ -320,9 +320,9 @@ namespace CAD.VFK.DrawTools
             if (fromModifyItems)
             {
                 sbpPoint = (from n in Owner.VFKModifySBPItems
-                    where n.OB_ID == Item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                            where n.OB_ID == Item.ID
+                            orderby n.PORADOVE_CISLO_BODU
+                            select n).ToList();
             }
             else
             {
@@ -362,16 +362,16 @@ namespace CAD.VFK.DrawTools
             if (fromModifyItem)
             {
                 sbmPoints = (from n in Owner.VFKModifySBMItems
-                    where n.OP_ID == Item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                             where n.OP_ID == Item.ID
+                             orderby n.PORADOVE_CISLO_BODU
+                             select n).ToList();
             }
             else
             {
                 sbmPoints = (from n in Owner.VFKSBMTable.Items
-                    where n.OP_ID == Item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                             where n.OP_ID == Item.ID
+                             orderby n.PORADOVE_CISLO_BODU
+                             select n).ToList();
             }
 
             VFKSBMTableItem prevTable = null;
@@ -406,16 +406,16 @@ namespace CAD.VFK.DrawTools
             if (fromModifyItems)
             {
                 sbmPoints = (from n in Owner.VFKModifySBMItems
-                    where n.HBPEJ_ID == Item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                             where n.HBPEJ_ID == Item.ID
+                             orderby n.PORADOVE_CISLO_BODU
+                             select n).ToList();
             }
             else
             {
                 sbmPoints = (from n in Owner.VFKSBMTable.Items
-                    where n.HBPEJ_ID == Item.ID
-                    orderby n.PORADOVE_CISLO_BODU
-                    select n).ToList();
+                             where n.HBPEJ_ID == Item.ID
+                             orderby n.PORADOVE_CISLO_BODU
+                             select n).ToList();
             }
 
             VFKSBMTableItem prevTable = null;
@@ -440,18 +440,18 @@ namespace CAD.VFK.DrawTools
             }
         }
 
-        
-        
+
+
         private List<LineSegment> MultiLineSegments { get; set; }
 
-        
-        
+
+
         private VFKMain Owner { get; set; }
         private VFKDataTableBaseItemWithProp Item { get; set; }
         public VfkMultiLineType Type { get; set; }
 
-        
-        
+
+
         static int ThresholdPixel = 6;
 
         static double ThresholdWidth(ICanvas canvas, double objectwidth)
@@ -476,8 +476,8 @@ namespace CAD.VFK.DrawTools
             MultiLineSegments = acopy.MultiLineSegments;
         }
 
-        
-        
+
+
         public virtual string Id
         {
             get { return VfkToolBar.VfkMultiLine.Name; }
@@ -591,7 +591,7 @@ namespace CAD.VFK.DrawTools
             MultiLineSegments.Last().P2 = point;
         }
 
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             Selected = false;
             if (Type == VfkMultiLineType.Op || Type == VfkMultiLineType.Hbpej ||
@@ -604,8 +604,13 @@ namespace CAD.VFK.DrawTools
                 MultiLineSegments.Last().Sobr2 = ((IVFKTool)snappoint.Owner).getActivePoint(0);
 
             if (Control.ModifierKeys == Keys.Control)
-                return eDrawObjectMouseDown.Done;
-            return eDrawObjectMouseDown.DoneRepeat;
+                return DrawObjectState.Done;
+            return DrawObjectState.DoneRepeat;
+        }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
         }
 
         public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
@@ -664,9 +669,6 @@ namespace CAD.VFK.DrawTools
             points[points.Length - 1] = MultiLineSegments[MultiLineSegments.Count - 1].P2;
             export.AddPolyline(ref points, Color, Width);
         }
-
-        
-        
         public override void RegisterObject(IVFKMain aOwner)
         {
             bool newItem = Item == null;
@@ -700,45 +702,153 @@ namespace CAD.VFK.DrawTools
             switch (Type)
             {
                 case VfkMultiLineType.HP:
-                {
-                    VFKHPTableItem hp = Item as VFKHPTableItem;
-                    Item = hp = aOwner.UpdateHP(hp);
-                    if (newItem)
                     {
-                        UInt64 number = 1;
-                        foreach (var segment in MultiLineSegments)
+                        VFKHPTableItem hp = Item as VFKHPTableItem;
+                        Item = hp = aOwner.UpdateHP(hp);
+                        if (newItem)
                         {
-                            segment.Sbp1.HP_ID = hp.ID;
-                            segment.Sbp1.PORADOVE_CISLO_BODU = number;
-                            segment.Sbp1.BP_ID = segment.Sobr1.ID;
-                            segment.Sbp1.PARAMETRY_SPOJENI = "3";
-                            number++;
-                            if (segment == MultiLineSegments.Last())
-                            {
-                                segment.Sbp2.HP_ID = hp.ID;
-                                segment.Sbp2.PORADOVE_CISLO_BODU = number;
-                                segment.Sbp2.BP_ID = segment.Sobr2.ID;
-                                segment.Sbp2.PARAMETRY_SPOJENI = "3";
-                                number++;
-                            }
-                        }
-
-                        hp.TYPPPD_KOD = TYPPPD_KOD;
-                    }
-                }
-                    break;
-                case VfkMultiLineType.DPM:
-                {
-                    VFKDPMTableItem dpm = Item as VFKDPMTableItem;
-                    Item = dpm = aOwner.UpdateDPM(dpm);
-                    if (newItem)
-                    {
-                        UInt64 number = 1;
-                        if (VfkElement.DpmType == DpmType.HCHU || VfkElement.DpmType == DpmType.HOCHP)
-                        {
+                            UInt64 number = 1;
                             foreach (var segment in MultiLineSegments)
                             {
-                                segment.Sbm1.DPM_ID = dpm.ID;
+                                segment.Sbp1.HP_ID = hp.ID;
+                                segment.Sbp1.PORADOVE_CISLO_BODU = number;
+                                segment.Sbp1.BP_ID = segment.Sobr1.ID;
+                                segment.Sbp1.PARAMETRY_SPOJENI = "3";
+                                number++;
+                                if (segment == MultiLineSegments.Last())
+                                {
+                                    segment.Sbp2.HP_ID = hp.ID;
+                                    segment.Sbp2.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbp2.BP_ID = segment.Sobr2.ID;
+                                    segment.Sbp2.PARAMETRY_SPOJENI = "3";
+                                    number++;
+                                }
+                            }
+
+                            hp.TYPPPD_KOD = TYPPPD_KOD;
+                        }
+                    }
+                    break;
+                case VfkMultiLineType.DPM:
+                    {
+                        VFKDPMTableItem dpm = Item as VFKDPMTableItem;
+                        Item = dpm = aOwner.UpdateDPM(dpm);
+                        if (newItem)
+                        {
+                            UInt64 number = 1;
+                            if (VfkElement.DpmType == DpmType.HCHU || VfkElement.DpmType == DpmType.HOCHP)
+                            {
+                                foreach (var segment in MultiLineSegments)
+                                {
+                                    segment.Sbm1.DPM_ID = dpm.ID;
+                                    segment.Sbm1.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbm1.SOURADNICE_X = -segment.P1.Y;
+                                    segment.Sbm1.SOURADNICE_Y = -segment.P1.X;
+                                    segment.Sbm1.PARAMETRY_SPOJENI = "3";
+                                    number++;
+                                    if (segment == MultiLineSegments.Last())
+                                    {
+                                        segment.Sbm2.DPM_ID = dpm.ID;
+                                        segment.Sbm2.PORADOVE_CISLO_BODU = number;
+                                        segment.Sbm2.PARAMETRY_SPOJENI = "3";
+                                        segment.Sbm2.SOURADNICE_X = -segment.P1.Y;
+                                        segment.Sbm2.SOURADNICE_Y = -segment.P1.X;
+                                        number++;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var segment in MultiLineSegments)
+                                {
+                                    segment.Sbp1.DPM_ID = dpm.ID;
+                                    segment.Sbp1.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbp1.BP_ID = segment.Sobr1.ID;
+                                    segment.Sbp1.PARAMETRY_SPOJENI = "3";
+                                    number++;
+                                    if (segment == MultiLineSegments.Last())
+                                    {
+                                        segment.Sbp2.DPM_ID = dpm.ID;
+                                        segment.Sbp2.PORADOVE_CISLO_BODU = number;
+                                        segment.Sbp2.BP_ID = segment.Sobr2.ID;
+                                        segment.Sbp2.PARAMETRY_SPOJENI = "3";
+                                        number++;
+                                    }
+                                }
+                            }
+
+                            dpm.TYPPPD_KOD = TYPPPD_KOD;
+                            dpm.DPM_TYPE = VfkElement.DpmType.ToString();
+                        }
+                    }
+                    break;
+                case VfkMultiLineType.ZVB:
+                    {
+                        VFKZVBTableItem zvb = Item as VFKZVBTableItem;
+                        Item = zvb = aOwner.UpdateZVB(zvb);
+                        if (newItem)
+                        {
+                            UInt64 number = 1;
+                            foreach (var segment in MultiLineSegments)
+                            {
+                                segment.Sbp1.ZVB_ID = zvb.ID;
+                                segment.Sbp1.PORADOVE_CISLO_BODU = number;
+                                segment.Sbp1.BP_ID = segment.Sobr1.ID;
+                                segment.Sbp1.PARAMETRY_SPOJENI = "3";
+                                number++;
+                                if (segment == MultiLineSegments.Last())
+                                {
+                                    segment.Sbp2.ZVB_ID = zvb.ID;
+                                    segment.Sbp2.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbp2.BP_ID = segment.Sobr2.ID;
+                                    segment.Sbp2.PARAMETRY_SPOJENI = "3";
+                                    number++;
+                                }
+                            }
+
+                            zvb.TYPPPD_KOD = TYPPPD_KOD;
+                        }
+                    }
+                    break;
+                case VfkMultiLineType.Ob:
+                    {
+                        VFKOBTableItem ob = Item as VFKOBTableItem;
+                        Item = ob = aOwner.UpdateOB(ob);
+                        if (newItem)
+                        {
+                            UInt64 number = 1;
+                            foreach (var segment in MultiLineSegments)
+                            {
+                                segment.Sbp1.OB_ID = ob.ID;
+                                segment.Sbp1.PORADOVE_CISLO_BODU = number;
+                                segment.Sbp1.BP_ID = segment.Sobr1.ID;
+                                segment.Sbp1.PARAMETRY_SPOJENI = "3";
+                                number++;
+                                if (segment == MultiLineSegments.Last())
+                                {
+                                    segment.Sbp2.OB_ID = ob.ID;
+                                    segment.Sbp2.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbp2.BP_ID = segment.Sobr2.ID;
+                                    segment.Sbp2.PARAMETRY_SPOJENI = "3";
+                                    number++;
+                                }
+                            }
+
+                            ob.TYPPPD_KOD = VfkElement.TYPPPD_KOD;
+                            ob.OBRBUD_TYPE = VfkElement.ObrBudType.ToString();
+                        }
+                    }
+                    break;
+                case VfkMultiLineType.Op:
+                    {
+                        VFKOPTableItem op = Item as VFKOPTableItem;
+                        Item = op = aOwner.UpdateOP(op);
+                        if (newItem)
+                        {
+                            UInt64 number = 1;
+                            foreach (var segment in MultiLineSegments)
+                            {
+                                segment.Sbm1.OP_ID = op.ID;
                                 segment.Sbm1.PORADOVE_CISLO_BODU = number;
                                 segment.Sbm1.SOURADNICE_X = -segment.P1.Y;
                                 segment.Sbm1.SOURADNICE_Y = -segment.P1.X;
@@ -746,7 +856,7 @@ namespace CAD.VFK.DrawTools
                                 number++;
                                 if (segment == MultiLineSegments.Last())
                                 {
-                                    segment.Sbm2.DPM_ID = dpm.ID;
+                                    segment.Sbm2.OP_ID = op.ID;
                                     segment.Sbm2.PORADOVE_CISLO_BODU = number;
                                     segment.Sbm2.PARAMETRY_SPOJENI = "3";
                                     segment.Sbm2.SOURADNICE_X = -segment.P1.Y;
@@ -754,149 +864,41 @@ namespace CAD.VFK.DrawTools
                                     number++;
                                 }
                             }
+
+                            op.TYPPPD_KOD = TYPPPD_KOD;
+                            op.OPAR_TYPE = VfkElement.OparType;
                         }
-                        else
+                    }
+                    break;
+                case VfkMultiLineType.Hbpej:
+                    {
+                        VFKHBPEJTableItem hbpej = Item as VFKHBPEJTableItem;
+                        Item = hbpej = aOwner.UpdateHbpej(hbpej);
+                        if (newItem)
                         {
+                            UInt64 number = 1;
                             foreach (var segment in MultiLineSegments)
                             {
-                                segment.Sbp1.DPM_ID = dpm.ID;
-                                segment.Sbp1.PORADOVE_CISLO_BODU = number;
-                                segment.Sbp1.BP_ID = segment.Sobr1.ID;
-                                segment.Sbp1.PARAMETRY_SPOJENI = "3";
+                                segment.Sbm1.HBPEJ_ID = hbpej.ID;
+                                segment.Sbm1.PORADOVE_CISLO_BODU = number;
+                                segment.Sbm1.SOURADNICE_X = -segment.P1.Y;
+                                segment.Sbm1.SOURADNICE_Y = -segment.P1.X;
+                                segment.Sbm1.PARAMETRY_SPOJENI = "3";
                                 number++;
                                 if (segment == MultiLineSegments.Last())
                                 {
-                                    segment.Sbp2.DPM_ID = dpm.ID;
-                                    segment.Sbp2.PORADOVE_CISLO_BODU = number;
-                                    segment.Sbp2.BP_ID = segment.Sobr2.ID;
-                                    segment.Sbp2.PARAMETRY_SPOJENI = "3";
+                                    segment.Sbm2.HBPEJ_ID = hbpej.ID;
+                                    segment.Sbm2.PORADOVE_CISLO_BODU = number;
+                                    segment.Sbm2.PARAMETRY_SPOJENI = "3";
+                                    segment.Sbm2.SOURADNICE_X = -segment.P1.Y;
+                                    segment.Sbm2.SOURADNICE_Y = -segment.P1.X;
                                     number++;
                                 }
                             }
-                        }
 
-                        dpm.TYPPPD_KOD = TYPPPD_KOD;
-                        dpm.DPM_TYPE = VfkElement.DpmType.ToString();
-                    }
-                }
-                    break;
-                case VfkMultiLineType.ZVB:
-                {
-                    VFKZVBTableItem zvb = Item as VFKZVBTableItem;
-                    Item = zvb = aOwner.UpdateZVB(zvb);
-                    if (newItem)
-                    {
-                        UInt64 number = 1;
-                        foreach (var segment in MultiLineSegments)
-                        {
-                            segment.Sbp1.ZVB_ID = zvb.ID;
-                            segment.Sbp1.PORADOVE_CISLO_BODU = number;
-                            segment.Sbp1.BP_ID = segment.Sobr1.ID;
-                            segment.Sbp1.PARAMETRY_SPOJENI = "3";
-                            number++;
-                            if (segment == MultiLineSegments.Last())
-                            {
-                                segment.Sbp2.ZVB_ID = zvb.ID;
-                                segment.Sbp2.PORADOVE_CISLO_BODU = number;
-                                segment.Sbp2.BP_ID = segment.Sobr2.ID;
-                                segment.Sbp2.PARAMETRY_SPOJENI = "3";
-                                number++;
-                            }
+                            hbpej.TYPPPD_KOD = TYPPPD_KOD;
                         }
-
-                        zvb.TYPPPD_KOD = TYPPPD_KOD;
                     }
-                }
-                    break;
-                case VfkMultiLineType.Ob:
-                {
-                    VFKOBTableItem ob = Item as VFKOBTableItem;
-                    Item = ob = aOwner.UpdateOB(ob);
-                    if (newItem)
-                    {
-                        UInt64 number = 1;
-                        foreach (var segment in MultiLineSegments)
-                        {
-                            segment.Sbp1.OB_ID = ob.ID;
-                            segment.Sbp1.PORADOVE_CISLO_BODU = number;
-                            segment.Sbp1.BP_ID = segment.Sobr1.ID;
-                            segment.Sbp1.PARAMETRY_SPOJENI = "3";
-                            number++;
-                            if (segment == MultiLineSegments.Last())
-                            {
-                                segment.Sbp2.OB_ID = ob.ID;
-                                segment.Sbp2.PORADOVE_CISLO_BODU = number;
-                                segment.Sbp2.BP_ID = segment.Sobr2.ID;
-                                segment.Sbp2.PARAMETRY_SPOJENI = "3";
-                                number++;
-                            }
-                        }
-
-                        ob.TYPPPD_KOD = VfkElement.TYPPPD_KOD;
-                        ob.OBRBUD_TYPE = VfkElement.ObrBudType.ToString();
-                    }
-                }
-                    break;
-                case VfkMultiLineType.Op:
-                {
-                    VFKOPTableItem op = Item as VFKOPTableItem;
-                    Item = op = aOwner.UpdateOP(op);
-                    if (newItem)
-                    {
-                        UInt64 number = 1;
-                        foreach (var segment in MultiLineSegments)
-                        {
-                            segment.Sbm1.OP_ID = op.ID;
-                            segment.Sbm1.PORADOVE_CISLO_BODU = number;
-                            segment.Sbm1.SOURADNICE_X = -segment.P1.Y;
-                            segment.Sbm1.SOURADNICE_Y = -segment.P1.X;
-                            segment.Sbm1.PARAMETRY_SPOJENI = "3";
-                            number++;
-                            if (segment == MultiLineSegments.Last())
-                            {
-                                segment.Sbm2.OP_ID = op.ID;
-                                segment.Sbm2.PORADOVE_CISLO_BODU = number;
-                                segment.Sbm2.PARAMETRY_SPOJENI = "3";
-                                segment.Sbm2.SOURADNICE_X = -segment.P1.Y;
-                                segment.Sbm2.SOURADNICE_Y = -segment.P1.X;
-                                number++;
-                            }
-                        }
-
-                        op.TYPPPD_KOD = TYPPPD_KOD;
-                        op.OPAR_TYPE = VfkElement.OparType;
-                    }
-                }
-                    break;
-                case VfkMultiLineType.Hbpej:
-                {
-                    VFKHBPEJTableItem hbpej = Item as VFKHBPEJTableItem;
-                    Item = hbpej = aOwner.UpdateHbpej(hbpej);
-                    if (newItem)
-                    {
-                        UInt64 number = 1;
-                        foreach (var segment in MultiLineSegments)
-                        {
-                            segment.Sbm1.HBPEJ_ID = hbpej.ID;
-                            segment.Sbm1.PORADOVE_CISLO_BODU = number;
-                            segment.Sbm1.SOURADNICE_X = -segment.P1.Y;
-                            segment.Sbm1.SOURADNICE_Y = -segment.P1.X;
-                            segment.Sbm1.PARAMETRY_SPOJENI = "3";
-                            number++;
-                            if (segment == MultiLineSegments.Last())
-                            {
-                                segment.Sbm2.HBPEJ_ID = hbpej.ID;
-                                segment.Sbm2.PORADOVE_CISLO_BODU = number;
-                                segment.Sbm2.PARAMETRY_SPOJENI = "3";
-                                segment.Sbm2.SOURADNICE_X = -segment.P1.Y;
-                                segment.Sbm2.SOURADNICE_Y = -segment.P1.X;
-                                number++;
-                            }
-                        }
-
-                        hbpej.TYPPPD_KOD = TYPPPD_KOD;
-                    }
-                }
                     break;
                 default:
                     throw new VfkMultiLineException("Neni naprogramovano.");
@@ -989,6 +991,6 @@ namespace CAD.VFK.DrawTools
             }
         }
 
-            }
-
     }
+
+}

@@ -20,6 +20,15 @@ namespace CAD.DTM
             return _groups.AsEnumerable();
         }
 
+        public void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement)
+        {
+            if (!_groups.ContainsKey(groupName))
+            {
+                _groups[groupName] = new DtmElementsGroup();
+            }
+            _groups[groupName].AddElementIfNotExist(dtmElementGetDtmElement);
+        }
+
         public bool Import(DtmImportCtx ctx)
         {
             try

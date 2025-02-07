@@ -22,7 +22,7 @@ namespace GeoHelper.Options
             get { return _context; }
             set
             {
-                _context = (FileInputOutputOptionsContext) value;
+                _context = (FileInputOutputOptionsContext)value;
                 DataContext = _context;
             }
         }
@@ -30,11 +30,11 @@ namespace GeoHelper.Options
         void OnSave(object sender, EventArgs args)
         {
             var newItem = new FileInputOutputOptionsContext.OFItem
-                              {
-                                  Name = _nazev.Text,
-                                  Format = _format.Text,
-                                  NedefinovaneNahraditNulami = _undefinedReplaceZero.IsChecked.Value
-                              };
+            {
+                Name = _nazev.Text,
+                Format = _format.Text,
+                NedefinovaneNahraditNulami = _undefinedReplaceZero.IsChecked.Value
+            };
             _context.Nodes.Add(newItem);
             _context.OnPropertyChanged("CanDelete");
         }
@@ -131,11 +131,11 @@ namespace GeoHelper.Options
             public OFItem GetCloneItem()
             {
                 var newItem = new OFItem
-                                  {
-                                      Name = Name,
-                                      Format = Format,
-                                      NedefinovaneNahraditNulami = NedefinovaneNahraditNulami
-                                  };
+                {
+                    Name = Name,
+                    Format = Format,
+                    NedefinovaneNahraditNulami = NedefinovaneNahraditNulami
+                };
                 return newItem;
             }
         }
@@ -213,10 +213,10 @@ namespace GeoHelper.Options
             else
             {
                 Nodes.Add(new OFItem
-                              {
-                                  Name = "S předčíslím",
-                                  Format = "<Num:12> <SobrX:6.2> <SobrY:7.2> <SobrZ:4.2> <SobrPrec:1>"
-                              });
+                {
+                    Name = "S předčíslím",
+                    Format = "<Num:12> <SobrX:6.2> <SobrY:7.2> <SobrZ:4.2> <SobrPrec:1>"
+                });
                 SelectedNode = Nodes[0];
             }
         }

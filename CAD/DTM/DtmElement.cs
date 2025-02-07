@@ -1,5 +1,6 @@
 ﻿using System;
 using CAD.Canvas;
+using CAD.VFK;
 
 namespace CAD.DTM
 {
@@ -21,9 +22,25 @@ namespace CAD.DTM
 
         public IDrawObject CreateDrawObject()
         {
-            if(Geometry is DtmPointGeometry)
+            if (Geometry is DtmPointGeometry)
                 return new DtmDrawingPointElement(this);
             return new DtmDrawingCurveElement(this);
+        }
+        public bool IsDeleted { get; set; } = false;
+
+        public string ZapisObjektuPopis
+        {
+            get
+            {
+                switch (ZapisObjektu)
+                {
+                    case 'i': return "Insert";
+                    case 'u': return "Update";
+                    case 'd': return "Delete";
+                    case 'r': return "Reference";
+                }
+                throw new NotImplemented();
+            }
         }
     }
 }

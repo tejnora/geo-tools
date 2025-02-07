@@ -258,10 +258,16 @@ namespace CAD.Canvas.DrawTools
             _p1 = point;
         }
 
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -306,7 +312,6 @@ namespace CAD.Canvas.DrawTools
             string styleName=export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.2, FontFamily.Name);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, 0);
         }
-                
         public void OnDeserialization(object sender)
         {
             try

@@ -22,7 +22,7 @@ using StringFormat = System.Drawing.StringFormat;
 
 namespace CAD.VFK.DrawTools
 {
-        public enum VFKTextEnum
+    public enum VFKTextEnum
     {
         Unset,
         Dpm,
@@ -30,9 +30,9 @@ namespace CAD.VFK.DrawTools
         Obbp,
         Obpej
     }
-        public class VfkText : VfkDrawObjectBase, IDrawObject
+    public class VfkText : VfkDrawObjectBase, IDrawObject
     {
-                public VfkText()
+        public VfkText()
         {
             Type = VFKTextEnum.Unset;
             UseLayerColor = false;
@@ -43,7 +43,7 @@ namespace CAD.VFK.DrawTools
             Item = dpmItem;
             SetVfkElement(Singletons.VFKElements.GetElement(dpmItem.TYPPPD_KOD));
             Text = dpmItem.TEXT;
-            P1=new UnitPoint(-dpmItem.SOURADNICE_Y, -dpmItem.SOURADNICE_X);
+            P1 = new UnitPoint(-dpmItem.SOURADNICE_Y, -dpmItem.SOURADNICE_X);
             UseLayerColor = false;
         }
         public VfkText(VFKMain owner, VFKOPTableItem opItem)
@@ -71,9 +71,9 @@ namespace CAD.VFK.DrawTools
             SetVfkElement(Singletons.VFKElements.GetElement(obpej.TYPPPD_KOD));
             Text = obpej.TEXT;
             P1 = new UnitPoint(-obpej.SOURADNICE_Y, -obpej.SOURADNICE_X);
-            UseLayerColor = false;         
+            UseLayerColor = false;
         }
-                        private VFKMain Owner
+        private VFKMain Owner
         {
             get; set;
         }
@@ -138,7 +138,7 @@ namespace CAD.VFK.DrawTools
         }
 
         private string _fontName;
-                        public virtual string Id
+        public virtual string Id
         {
             get { return VfkToolBar.VfkText.Name; }
         }
@@ -158,20 +158,20 @@ namespace CAD.VFK.DrawTools
         public virtual void Draw(ICanvas canvas, Rect unitrect)
         {
             Rect bb = GetBoundingRect(canvas);
-            if(bb.IsEmpty)return;
+            if (bb.IsEmpty) return;
             float fontSize = (float)(FontSize * canvas.getZoom());
             if (fontSize < 1) return;
             try
             {
-                Font font = canvas.CreateFont(_fontName,fontSize,FontStyle.Regular);
+                Font font = canvas.CreateFont(_fontName, fontSize, FontStyle.Regular);
                 UnitPoint finalPoint = P1;
-                Matrix backupMatrix=canvas.Graphics.Transform;
+                Matrix backupMatrix = canvas.Graphics.Transform;
                 System.Drawing.Point pt = canvas.ToScreen(finalPoint).FromWpfPoint();
                 canvas.Graphics.TranslateTransform(pt.X, pt.Y);
                 canvas.Graphics.RotateTransform((float)-UhelNatoceni);
-                canvas.Graphics.TranslateTransform(0,-(float)canvas.ToScreen(TextBoxSize.Height));
+                canvas.Graphics.TranslateTransform(0, -(float)canvas.ToScreen(TextBoxSize.Height));
                 var color = Color;
-                var pen = canvas.CreatePen(color, (float) Width);
+                var pen = canvas.CreatePen(color, (float)Width);
                 canvas.Graphics.DrawString(Text, font, new System.Drawing.SolidBrush(pen.Color), 0, 0);
                 canvas.Graphics.Transform = backupMatrix;
             }
@@ -185,7 +185,7 @@ namespace CAD.VFK.DrawTools
                 canvas.Graphics.DrawRectangle(DrawUtils.SelectedPen, screenRect);
             }
         }
-        private Size TextBoxSize{get;set;}
+        private Size TextBoxSize { get; set; }
         private bool ReloadBbValues { get; set; }
         private TransformGroup _rotateTr;
         public virtual Rect GetBoundingRect(ICanvas canvas)
@@ -199,16 +199,16 @@ namespace CAD.VFK.DrawTools
                 int charactersFitted;
                 int linesFilled;
                 TextBoxSize = canvas.MeasureString(canvas, Text, font, layoutSize, new StringFormat(), out charactersFitted, out linesFilled);
-                TextBoxSize = new Size(TextBoxSize.Width / 96 * 0.0254f , TextBoxSize.Height / 96 * 0.0254f );
+                TextBoxSize = new Size(TextBoxSize.Width / 96 * 0.0254f, TextBoxSize.Height / 96 * 0.0254f);
                 ReloadBbValues = false;
                 _rotateTr = new TransformGroup();
-                _rotateTr.Children.Add(new TranslateTransform(0,-TextBoxSize.Height));
+                _rotateTr.Children.Add(new TranslateTransform(0, -TextBoxSize.Height));
                 _rotateTr.Children.Add(new RotateTransform(-UhelNatoceni));
             }
             PathGeometry path = new PathGeometry();
             path.AddGeometry(new RectangleGeometry(new Rect(0, 0, TextBoxSize.Width, TextBoxSize.Height)));
             path.Transform = _rotateTr;
-            return new Rect(P1.Point.X + path.Bounds.X, P1.Point.Y - (path.Bounds.Height+path.Bounds.Y), path.Bounds.Width,
+            return new Rect(P1.Point.X + path.Bounds.X, P1.Point.Y - (path.Bounds.Height + path.Bounds.Y), path.Bounds.Width,
                             path.Bounds.Height);
         }
         public virtual bool PointInObject(ICanvas canvas, UnitPoint point)
@@ -225,10 +225,16 @@ namespace CAD.VFK.DrawTools
         {
             P1 = point;
         }
-        public virtual eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        public virtual DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
+
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+
         public virtual void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
         }
@@ -273,18 +279,18 @@ namespace CAD.VFK.DrawTools
         }
         public void Export(IExport export)
         {
-            var height= FontSize/96.0*0.0254f;
+            var height = FontSize / 96.0 * 0.0254f;
             string styleName = export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.0, _fontName);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, UhelNatoceni);
         }
-                        public override void RegisterObject(IVFKMain aOwner)
+        public override void RegisterObject(IVFKMain aOwner)
         {
             bool newItem = Item == null;
             switch (Type)
             {
                 case VFKTextEnum.Op:
                     {
-                        VFKOPTableItem op = (VFKOPTableItem) Item;
+                        VFKOPTableItem op = (VFKOPTableItem)Item;
                         Item = op = aOwner.UpdateOP(op);
                         if (newItem)
                         {
@@ -294,15 +300,16 @@ namespace CAD.VFK.DrawTools
                         op.SOURADNICE_X = -P1.Y;
                         op.SOURADNICE_Y = -P1.X;
                         op.VELIKOST = VyskaTextu;
-                        op.UHEL = UhelNatoceni/0.9;
+                        op.UHEL = UhelNatoceni / 0.9;
                         op.TEXT = Text;
                         op.VZTAZNY_BOD = 1;
-                    }break;
+                    }
+                    break;
                 case VFKTextEnum.Obbp:
                     {
-                        VFKOBBPTableItem obbp = (VFKOBBPTableItem) Item;
+                        VFKOBBPTableItem obbp = (VFKOBBPTableItem)Item;
                         Item = obbp = aOwner.UpdateOBBP(obbp);
-                        if(newItem)
+                        if (newItem)
                         {
                             obbp.TYPPPD_KOD = TYPPPD_KOD;
                             obbp.OBBP_TYPE = VfkElement.ObbpType.ToString();
@@ -313,13 +320,14 @@ namespace CAD.VFK.DrawTools
                         obbp.UHEL = UhelNatoceni / 0.9;
                         obbp.TEXT = Text;
                         obbp.VZTAZNY_BOD = 1;
-                        
-                    }break;
+
+                    }
+                    break;
                 case VFKTextEnum.Dpm:
                     {
-                        VFKDPMTableItem dpm = (VFKDPMTableItem) Item;
+                        VFKDPMTableItem dpm = (VFKDPMTableItem)Item;
                         Item = dpm = aOwner.UpdateDPM(dpm);
-                        if(newItem)
+                        if (newItem)
                         {
                             dpm.TYPPPD_KOD = TYPPPD_KOD;
                             dpm.DPM_TYPE = VfkElement.DpmType.ToString();
@@ -330,7 +338,8 @@ namespace CAD.VFK.DrawTools
                         dpm.UHEL = UhelNatoceni / 0.9;
                         dpm.TEXT = Text;
                         dpm.VZTAZNY_BOD = 1;
-                    }break;
+                    }
+                    break;
                 default:
                     throw new NotImplemented();
             }
@@ -340,13 +349,13 @@ namespace CAD.VFK.DrawTools
             switch (Type)
             {
                 case VFKTextEnum.Op:
-                    aOwner.DeleteOP((VFKOPTableItem) Item);
+                    aOwner.DeleteOP((VFKOPTableItem)Item);
                     break;
                 case VFKTextEnum.Obbp:
-                    aOwner.DeleteOBBP((VFKOBBPTableItem) Item);
+                    aOwner.DeleteOBBP((VFKOBBPTableItem)Item);
                     break;
                 case VFKTextEnum.Dpm:
-                    aOwner.DeleteDPM((VFKDPMTableItem) Item);
+                    aOwner.DeleteDPM((VFKDPMTableItem)Item);
                     break;
                 default:
                     throw new NotImplemented();
@@ -362,11 +371,11 @@ namespace CAD.VFK.DrawTools
         {
             base.SetVfkElement(vfkElement);
             VfkElement.ElementDrawInfo drawInfo;
-            if(Item!=null)
+            if (Item != null)
             {
-                if(Item.STAV_DAT==VFKMain.STAV_DAT_PRITOMNOST)
+                if (Item.STAV_DAT == VFKMain.STAV_DAT_PRITOMNOST)
                     drawInfo = vfkElement.PritomnyStav;
-                else if (Item.STAV_DAT==VFKMain.STAV_DAT_BUDOUCNOST)
+                else if (Item.STAV_DAT == VFKMain.STAV_DAT_BUDOUCNOST)
                     drawInfo = vfkElement.BudouciStav;
                 else
                     throw new UnExpectException();
@@ -376,15 +385,15 @@ namespace CAD.VFK.DrawTools
             VyskaTextu = drawInfo.VyskaTextu;
             _fontName = "Arial";
             UhelNatoceni = 0;
-            switch(vfkElement.BlockNvf)
+            switch (vfkElement.BlockNvf)
             {
                 case BlockNvf.DPM:
                     Type = VFKTextEnum.Dpm;
                     if (Item != null)
                     {
-                        var dpm= (VFKDPMTableItem)Item;
+                        var dpm = (VFKDPMTableItem)Item;
                         VyskaTextu = dpm.VELIKOST;
-                        UhelNatoceni = dpm.UHEL*0.9;
+                        UhelNatoceni = dpm.UHEL * 0.9;
                     }
                     break;
                 case BlockNvf.OP:
@@ -420,14 +429,14 @@ namespace CAD.VFK.DrawTools
             UpdateFontSize();
         }
 
-                        private void UpdateFontSize()
+        private void UpdateFontSize()
         {
             FontSize = (VyskaTextu * 100 / 2.54) * 96;
         }
-            }
+    }
     internal class VfkTextsEdit : VfkText, IObjectEditInstance
     {
-                public void Copy(ActivePointEdit acopy)
+        public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -438,9 +447,9 @@ namespace CAD.VFK.DrawTools
             l.Copy(this);
             return l;
         }
-                        public bool SetAngle
+        public bool SetAngle
         { get; set; }
-                        public IDrawObject GetDrawObject()
+        public IDrawObject GetDrawObject()
         {
             VfkText text = new VfkText();
             text.Copy(this);
@@ -458,25 +467,25 @@ namespace CAD.VFK.DrawTools
         }
         public bool ValidateObjectContent()
         {
-            if (Text==null || Text.Length == 0)
+            if (Text == null || Text.Length == 0)
             {
                 LanguageDictionary.Current.ShowMessageBox("108", null, MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;
         }
-                        private bool _modifyText;
-        public override eDrawObjectMouseDown OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        private bool _modifyText;
+        public override DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            if(!SetAngle)
-                return eDrawObjectMouseDown.DoneRepeat;
+            if (!SetAngle)
+                return DrawObjectState.DoneRepeat;
             if (!_modifyText)
             {
                 _modifyText = true;
-                return eDrawObjectMouseDown.Continue;
+                return DrawObjectState.Continue;
             }
             _modifyText = false;
-            return eDrawObjectMouseDown.DoneRepeat;
+            return DrawObjectState.DoneRepeat;
         }
         public override void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
@@ -487,7 +496,7 @@ namespace CAD.VFK.DrawTools
             }
             double x = point.X - P1.X;
             double y = point.Y - P1.Y;
-            if(y==0)
+            if (y == 0)
             {
                 if (x >= 0)
                     UhelNatoceni = 0;
@@ -496,7 +505,7 @@ namespace CAD.VFK.DrawTools
             }
             else
             {
-                double atan = Math.Atan(y/ x)*180/Math.PI;
+                double atan = Math.Atan(y / x) * 180 / Math.PI;
                 if (x >= 0)
                 {
                     if (y >= 0)
@@ -513,6 +522,6 @@ namespace CAD.VFK.DrawTools
                 }
             }
         }
-            }
+    }
 
 }

@@ -20,15 +20,15 @@ namespace CAD.Canvas.Layers
     }
 
     [Serializable]
-    class VFKDrawingLayerMain : ICanvasLayer, IVFKDravingLayerMain, ISerializable, IDeserializationCallback
+    class VFKDrawingLayerMain : CAD.Canvas.ICanvasLayer, IVFKDravingLayerMain, ISerializable, IDeserializationCallback
     {
-        
+
         public bool ViewPointEnable { get; set; }
         public VFKMain VFKMain { get; set; }
         Dictionary<UInt32, ICanvasLayer> _layers = new Dictionary<UInt32, ICanvasLayer>();
 
-        
-        
+
+
         public VFKDrawingLayerMain(VFKMain aVFKMain)
         {
             Name = "VFK";
@@ -42,8 +42,8 @@ namespace CAD.Canvas.Layers
             ViewPointEnable = true;
         }
 
-        
-        
+
+
         protected VfkActivePointCollection _mActivePoints;
 
         public VfkActivePointCollection VFKActivePoints
@@ -58,8 +58,8 @@ namespace CAD.Canvas.Layers
             _mActivePoints.UseModelForModification = true;
         }
 
-        
-        
+
+
         public string Id => "WFK";
 
         public void Draw(ICanvas canvas, Rect unitrect)
@@ -217,14 +217,6 @@ namespace CAD.Canvas.Layers
             return deletedObjects;
         }
 
-        public void DeleteObjects(IEnumerable<IDrawObject> objects)
-        {
-            foreach (var vfkObject in objects)
-            {
-                ((VfkDrawinLayer)_layers[((IVFKTool)vfkObject).TYPPPD_KOD]).DeleteObjects(vfkObject);
-            }
-        }
-
         public void Export(IExport export)
         {
             export.SinkLayer(this);
@@ -240,8 +232,16 @@ namespace CAD.Canvas.Layers
             export.RiseLayer();
         }
 
-        
-        
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+            foreach (var vfkObject in objects)
+            {
+                ((VfkDrawinLayer)_layers[((IVFKTool)vfkObject).TYPPPD_KOD]).DeleteObjects(vfkObject);
+                deletedObjects.Add(new Tuple<ICanvasLayer, IDrawObject>(this, vfkObject));
+            }
+        }
+
+
         private void AddVFKObjects()
         {
             addActivePoints();
@@ -301,8 +301,8 @@ namespace CAD.Canvas.Layers
             }
         }
 
-        
-        
+
+
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("Name", Name);
@@ -325,16 +325,16 @@ namespace CAD.Canvas.Layers
             VFKMain = info.GetValue("VFKCore", typeof(VFKMain)) as VFKMain;
         }
 
-        
-        
+
+
         public void OnDeserialization(object sender)
         {
             _mActivePoints = new VfkActivePointCollection(VFKMain);
             AddVFKObjects();
         }
 
-        
-        
+
+
         public bool ShowVfkLayerManager()
         {
             var dialog = new VfkLayerManager();
@@ -360,5 +360,5 @@ namespace CAD.Canvas.Layers
             return false;
         }
 
-            }
+    }
 }

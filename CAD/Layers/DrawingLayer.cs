@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows;
 using CAD.Export;
@@ -13,14 +14,14 @@ namespace CAD.Canvas.Layers
     [Serializable]
     public class DrawingLayer : ICanvasLayer, ISerializable
     {
-                public DrawingLayer(string id, string name, Color color, float width)
+        public DrawingLayer(string id, string name, Color color, float width)
         {
             _id = id;
             _name = name;
             _color = color;
             m_width = width;
         }
-                        string _id;
+        string _id;
         string _name = "<Layer>";
         Color _color;
         double m_width = 0.00f;
@@ -55,7 +56,7 @@ namespace CAD.Canvas.Layers
         {
             get { return _id; }
         }
-                        List<IDrawObject> _objects = new List<IDrawObject>();
+        List<IDrawObject> _objects = new List<IDrawObject>();
         Dictionary<IDrawObject, bool> _objectMap = new Dictionary<IDrawObject, bool>();
         public void AddObject(IDrawObject drawobject)
         {
@@ -65,42 +66,6 @@ namespace CAD.Canvas.Layers
                 ((DrawTools.DrawObjectBase)drawobject).Layer = this;
             _objects.Add(drawobject);
             _objectMap[drawobject] = true;
-        }
-        public List<IDrawObject> DeleteObjects(IEnumerable<IDrawObject> objects)
-        {
-            if (Enabled == false)
-                return null;
-            List<IDrawObject> removedobjects = new List<IDrawObject>();
-            // first remove from map only
-            foreach (IDrawObject obj in objects)
-            {
-                if (_objectMap.ContainsKey(obj))
-                {
-                    _objectMap.Remove(obj);
-                    removedobjects.Add(obj);
-                }
-            }
-            // need some smart algorithm here to either remove from existing list or build a new list
-            // for now I will just ise the removed count;
-            if (removedobjects.Count == 0)
-                return null;
-            if (removedobjects.Count < 10) // remove from existing list
-            {
-                foreach (IDrawObject obj in removedobjects)
-                    _objects.Remove(obj);
-            }
-            else // else build new list;
-            {
-                List<IDrawObject> newlist = new List<IDrawObject>();
-                foreach (IDrawObject obj in _objects)
-                {
-                    if (_objectMap.ContainsKey(obj))
-                        newlist.Add(obj);
-                }
-                _objects.Clear();
-                _objects = newlist;
-            }
-            return removedobjects;
         }
         public int Count
         {
@@ -117,7 +82,7 @@ namespace CAD.Canvas.Layers
             _enabled = acopy._enabled;
             _visible = acopy._visible;
         }
-                        public virtual void Draw(ICanvas canvas, Rect unitrect)
+        public virtual void Draw(ICanvas canvas, Rect unitrect)
         {
             Tracing.StartTrack(App.TracePaint);
             int cnt = 0;
@@ -186,7 +151,43 @@ namespace CAD.Canvas.Layers
                 drawobject.Export(export);
             export.RiseLayer();
         }
-                        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+
+        public void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects)
+        {
+            if (Enabled == false)
+                return;
+            var removedobjects = new List<IDrawObject>();
+            // first remove from map only
+            foreach (IDrawObject obj in objects)
+            {
+                if (!_objectMap.ContainsKey(obj)) continue;
+                _objectMap.Remove(obj);
+                removedobjects.Add(obj);
+            }
+            // need some smart algorithm here to either remove from existing list or build a new list
+            // for now I will just ise the removed count;
+            if (removedobjects.Count == 0)
+                return;
+            if (removedobjects.Count < 10) // remove from existing list
+            {
+                foreach (IDrawObject obj in removedobjects)
+                    _objects.Remove(obj);
+            }
+            else // else build new list;
+            {
+                var newlist = new List<IDrawObject>();
+                foreach (IDrawObject obj in _objects)
+                {
+                    if (_objectMap.ContainsKey(obj))
+                        newlist.Add(obj);
+                }
+                _objects.Clear();
+                _objects = newlist;
+            }
+            deletedObjects.AddRange(removedobjects.Select(obj => new Tuple<ICanvasLayer, IDrawObject>(this, obj)));
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("Color", Color);
             info.AddValue("Width", Width);
@@ -215,5 +216,5 @@ namespace CAD.Canvas.Layers
             for (int i = 0; i < objectCount; i++)
                 _objects.Add(info.GetValue("Object " + i, typeof(IDrawObject)) as IDrawObject);
         }
-            }
+    }
 }

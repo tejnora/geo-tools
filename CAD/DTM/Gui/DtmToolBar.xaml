@@ -1,0 +1,18 @@
+﻿<UITools:GeoCadToolBar x:Class="CAD.DTM.Gui.DtmToolBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:UITools="clr-namespace:CAD.UITools"
+                       xmlns:gui="clr-namespace:CAD.DTM.Gui">
+    <UITools:GeoCadToolBar.CommandBindings>
+        <CommandBinding Command="gui:DtmToolBar.DtmMultiLine"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
+    </UITools:GeoCadToolBar.CommandBindings>
+    <ToggleButton Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Lines">
+        <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
+    </ToggleButton>
+    <ComboBox Width="100"
+              SelectedItem="{Binding Path=DtmLineElementSelected}"
+              ItemsSource="{Binding Path=DtmLineElements}">
+    </ComboBox>
+</UITools:GeoCadToolBar>

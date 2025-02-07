@@ -15,6 +15,7 @@ using GeoBase.Utils;
 using VFK.GUI;
 using Registry = GeoBase.Utils.Registry;
 using ProgramOption = GeoBase.Utils.ProgramOption;
+using CAD.DTM.Gui;
 
 namespace CAD
 {
@@ -351,6 +352,7 @@ namespace CAD
             _toolBarManager.RegisterToolBar(_toolBarTrayTop, new EditToolBar());
             _toolBarManager.RegisterToolBar(_toolBarTrayTop, new AttributesToolBar());
             _toolBarManager.RegisterToolBar(_toolBarTrayTop, new VfkToolBar());
+            _toolBarManager.RegisterToolBar(_toolBarTrayTop, new DtmToolBar());
             _toolBarManager.NotifyDocumentChanged();
             _toolBarManager.MergeCommandBindings(CommandBindings);
             _toolBarManager.MergeInputBindings(InputBindings);
