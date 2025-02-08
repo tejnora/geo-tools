@@ -8,8 +8,8 @@ namespace CAD.DTM
     {
         string Name { get; }
         IEnumerable<IDtmElement> GetElementGroups();
-        void AddElementIfNotExist(IDtmElement dtmElementGetDtmElement);
-        bool HasSameElementsToExport();
-        void ExportToDtm(IDtmExporter exporter, DtmElementOption option);
+        void AddElementIfNotExist(IDtmElement dtmElementGetDtmElement, IDtmMain dtmMain);
+        bool HasSameElementsForExport();
+        void ExportToDtm(IDtmExporter exporter);
     }
 }

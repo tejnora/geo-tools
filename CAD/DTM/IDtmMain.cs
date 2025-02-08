@@ -2,10 +2,11 @@
 
 namespace CAD.DTM
 {
-    interface IDtmMain
+    public interface IDtmMain
     {
         void AddElementGroup(string elementType, IDtmElementsGroup group);
         IEnumerable<KeyValuePair<string, IDtmElementsGroup>> GetElementGroups();
         void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement);
+        string AllocateUniqueId(string name);
     }
 }

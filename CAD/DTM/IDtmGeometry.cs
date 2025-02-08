@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
     public interface IDtmGeometry
     {
+        void ExportToDtm(IDtmExporter exporter);
     }
 }

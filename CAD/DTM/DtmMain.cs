@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CAD.DTM.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -10,6 +11,7 @@ namespace CAD.DTM
     : IDtmMain
     {
         readonly IDictionary<string, IDtmElementsGroup> _groups = new Dictionary<string, IDtmElementsGroup>();
+        int _idAllocator = 1;
         public void AddElementGroup(string elementType, IDtmElementsGroup group)
         {
             _groups.Add(elementType, group);
@@ -26,7 +28,12 @@ namespace CAD.DTM
             {
                 _groups[groupName] = new DtmElementsGroup(groupName);
             }
-            _groups[groupName].AddElementIfNotExist(dtmElementGetDtmElement);
+            _groups[groupName].AddElementIfNotExist(dtmElementGetDtmElement, this);
+        }
+
+        public string AllocateUniqueId(string name)
+        {
+            return $"ID{_idAllocator}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
         }
 
         public bool Import(DtmImportCtx ctx)
@@ -50,7 +57,7 @@ namespace CAD.DTM
             try
             {
                 var importer = new DtmExporter(this);
-                importer.CreateFile(ctx.FileName);
+                importer.CreateFile(ctx);
                 return true;
             }
             catch (Exception ex)

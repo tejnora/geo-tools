@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.Xml;
+using System.Linq;
+using System.Linq.Expressions;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
-using GeoHelper.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -20,176 +21,55 @@ namespace CAD.DTM
 
         public void ParseFile(string location)
         {
-            using (var reader = XmlReader.Create(location))
+            var xmlDocument = new XmlDocument();
+            xmlDocument.Load(location);
+            var JVFDTM = xmlDocument.Cast<XmlElement>().FirstOrDefault(c => c.LocalName == "JVFDTM");
+            var DataJVFDTM = FindElement(JVFDTM, "DataJVFDTM");
+            var data = FindElement(DataJVFDTM, "Data");
+            ParseDataNode(data);
+            ParseUdajeOVydeji(FindElement(DataJVFDTM, "DoprovodneInformace"));
+        }
+
+        void ParseDataNode(XmlElement dataElement)
+        {
+            foreach (XmlElement element in dataElement)
             {
-                reader.MoveToContent();
-                while (reader.Read())
-                {
-                    switch (reader.NodeType)
-                    {
-                        case XmlNodeType.Element:
-                            {
-                                if (reader.LocalName == "Data")
-                                {
-                                    ParseDataNode(reader);
-                                }
-                            }
-                            break;
-                        case XmlNodeType.EndElement:
-                            break;
-                    }
-                }
+                var group = new DtmElementsGroup(element.LocalName);
+                _main.AddElementGroup(element.LocalName, group);
+                ParseElementsGroup(element, group);
             }
         }
 
-        void ParseDataNode(XmlReader reader)
+        void ParseElementsGroup(XmlElement xmlGroupReader, DtmElementsGroup group)
         {
-            while (reader.Read())
+
+            foreach (XmlElement xmlGroup in xmlGroupReader)
             {
-                switch (reader.NodeType)
+                switch (xmlGroup.LocalName)
                 {
-                    case XmlNodeType.Element:
+                    case "ObjektovyTypNazev":
                         {
-                            var elements = new DtmElementsGroup(reader.LocalName);
-                            _main.AddElementGroup(reader.LocalName, elements);
-                            ParseElementsGroup(reader, elements);
+                            group.ObjektovyTypNazev = xmlGroup.InnerText;
+                            group.CodeBase = xmlGroup.GetAttribute("code_base");
+                            group.CodeSuffix = xmlGroup.GetAttribute("code_suffix");
                         }
                         break;
-                    case XmlNodeType.EndElement:
-                        return;
-                }
-            }
-        }
-
-        void ParseElementsGroup(XmlReader reader, DtmElementsGroup group)
-        {
-            var currentElement = "";
-            var endElementName = reader.LocalName;
-            while (reader.Read())
-            {
-                switch (reader.NodeType)
-                {
-                    case XmlNodeType.Element:
-                        {
-                            Debug.Assert(currentElement == "");
-                            currentElement = reader.LocalName;
-                            if (currentElement == "ObjektovyTypNazev")
-                            {
-                                group.CodeBase = reader.GetAttribute("code_base");
-                                group.CodeSuffix = reader.GetAttribute("code_suffix");
-                            }
-                            else if (currentElement == "ZaznamyObjektu")
-                            {
-                                ParseZaznamObjektu(reader, group);
-                            }
-                        }
+                    case "KategorieObjektu":
+                        group.KategorieObjektu = xmlGroup.InnerText;
                         break;
-                    case XmlNodeType.Text:
-                        {
-                            switch (currentElement)
-                            {
-                                case "ObjektovyTypNazev":
-                                    group.ObjektovyTypNazev = reader.Value;
-                                    break;
-                                case "KategorieObjektu":
-                                    group.KategorieObjektu = reader.Value;
-                                    break;
-                                case "SkupinaObjektu":
-                                    group.SkupinaObjektu = reader.Value;
-                                    break;
-                                case "ObsahovaCast":
-                                    group.ObsahovaCast = reader.Value;
-                                    break;
-                            }
-                        }
+                    case "SkupinaObjektu":
+                        group.SkupinaObjektu = xmlGroup.InnerText;
                         break;
-                    case XmlNodeType.EndElement:
-                        {
-                            if (reader.LocalName == endElementName)
-                            {
-                                reader.Read();
-                                return;
-                            }
-                            currentElement = "";
-                        }
+                    case "ObsahovaCast":
+                        group.ObsahovaCast = xmlGroup.InnerText;
                         break;
-                }
-
-            }
-        }
-
-        void ParseZaznamObjektu(XmlReader reader, DtmElementsGroup group)
-        {
-            DtmElement element = null;
-            var elementStack = new List<string>();
-            while (reader.Read())
-            {
-                switch (reader.NodeType)
-                {
-                    case XmlNodeType.Element:
+                    case "ZaznamyObjektu":
                         {
-                            if (reader.IsEmptyElement)
-                                continue;
-                            elementStack.Add(reader.LocalName);
-                            switch (reader.LocalName)
+                            foreach (XmlElement xmlElement in xmlGroup)
                             {
-                                case "ZaznamObjektu":
-                                    {
-                                        element = DtmConfigurationSingleton.Instance.CreateType(group.Name);
-                                    }
-                                    break;
-                                case "GeometrieObjektu":
-                                    ParseGeometrieObjektu(reader, element);
-                                    break;
-                            }
-                        }
-                        break;
-                    case XmlNodeType.Text:
-                        {
-                            switch (elementStack.Back())
-                            {
-                                case "ZapisObjektu":
-                                    element.ZapisObjektu = char.Parse(reader.Value);
-                                    break;
-                                case "UrovenUmisteniObjektuZPS":
-                                    element.UrovenUmisteniObjektuZPS = int.Parse(reader.Value);
-                                    break;
-                                case "TridaPresnostiPoloha":
-                                    element.TridaPresnostiPoloha = int.Parse(reader.Value);
-                                    break;
-                                case "TridaPresnostiVyska":
-                                    element.TridaPresnostiVyska = int.Parse(reader.Value);
-                                    break;
-                                case "ZpusobPorizeniZPS":
-                                    element.ZpusobPorizeniZPS = int.Parse(reader.Value);
-                                    break;
-                                case "VyskaNaTerenu":
-                                    element.VyskaNaTerenu = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-                                    break;
-                                case "ID":
-                                    element.ID = reader.Value;
-                                    break;
-                                case "CisloBodu":
-                                    element.CisloBodu = reader.Value;
-                                    break;
-
-                            }
-                        }
-                        break;
-                    case XmlNodeType.EndElement:
-                        {
-                            if (reader.LocalName == "ZaznamyObjektu")
-                            {
-                                Debug.Assert(elementStack.Count == 0);
-                                reader.Read();
-                                return;
-                            }
-                            Debug.Assert(reader.LocalName == elementStack.Back());
-                            elementStack.Pop();
-                            if (elementStack.Count == 0)
-                            {
+                                var element = DtmConfigurationSingleton.Instance.CreateType(group.Name);
+                                ParseZaznamObjektu(xmlElement, element);
                                 group.AddElement(element);
-                                element = null;
                             }
                         }
                         break;
@@ -197,155 +77,235 @@ namespace CAD.DTM
             }
         }
 
-        void ParseGeometrieObjektu(XmlReader reader, DtmElement dtmElement)
+        void ParseZaznamObjektu(XmlElement xmlElement, DtmElement element)
         {
-            var elementStack = new List<string>();
-            while (reader.Read())
+            foreach (XmlElement e in xmlElement)
             {
-                switch (reader.NodeType)
+                switch (e.LocalName)
                 {
-                    case XmlNodeType.Element:
-                        {
-                            if (reader.IsEmptyElement)
-                                continue;
-                            elementStack.Add(reader.LocalName);
-                            switch (reader.LocalName)
-                            {
-                                case "pointProperty":
-                                    dtmElement.Geometry = ParsePointGeometry(reader);
-                                    break;
-                                case "curveProperty":
-                                    dtmElement.Geometry = ParseCurveGeometry(reader);
-                                    break;
-                                default:
-                                    throw new Exception($"Geometry type is not supported {reader.LocalName}");
-                            }
-
-                        }
+                    case "ZapisObjektu":
+                        element.ZapisObjektu = e.InnerText.Trim(' ')[0];
                         break;
-                    case XmlNodeType.EndElement:
-                        {
-                            Debug.Assert(reader.LocalName == elementStack.Back());
-                            elementStack.Pop();
-                            if (elementStack.Count == 0)
-                            {
-                                reader.Read();
-                                return;
-                            }
-                        }
+                    case "AtributyObjektu":
+                        ParseAtributyObjektu(e, element);
+                        break;
+                    case "GeometrieObjektu":
+                        element.Geometry = ParseGeometrieObjektu(e);
                         break;
                 }
-
             }
         }
 
-        IDtmGeometry ParseCurveGeometry(XmlReader reader)
+        IDtmGeometry ParseGeometrieObjektu(XmlElement xmlElement)
         {
-            var geometry = new DtmCurveGeometry();
-            var elementStack = new List<string>();
-            while (reader.Read())
+            foreach (XmlElement e in xmlElement)
             {
-                switch (reader.NodeType)
+                switch (e.LocalName)
                 {
-                    case XmlNodeType.Element:
-                        {
-                            if (reader.IsEmptyElement)
-                                continue;
-                            elementStack.Add(reader.LocalName);
-                            if (reader.LocalName == "LineString")
-                            {
-                                geometry.Id = reader.GetAttribute("gml:id");
-                                geometry.SrsName = reader.GetAttribute("srsName");
-                                geometry.SrsDimension = int.Parse(reader.GetAttribute("srsDimension"));
-                            }
-                            break;
-                        }
-                    case XmlNodeType.Text:
-                        {
-                            switch (elementStack.Back())
-                            {
-                                case "posList":
-                                    {
-                                        var coordinates = reader.Value.Split(' ');
-                                        if (coordinates.Length % 3 != 0)
-                                        {
-                                            throw new Exception($"Coordinates are not in correct format.");
-                                        }
-                                        var count = coordinates.Length / 3;
-                                        geometry.Points = new List<DtmPoint>(count);
-                                        for (var i = 0; i < count; i++)
-                                        {
-                                            var beginIdx = i * 3;
-                                            geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], coordinates[beginIdx + 2]));
-                                        }
-
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
-                    case XmlNodeType.EndElement:
-                        {
-                            elementStack.Pop();
-                            if (elementStack.Count == 0)
-                            {
-                                reader.Read();
-                                return geometry;
-                            }
-                        }
-                        break;
-
+                    case "curveProperty":
+                        return ParseCurveGeometry(e);
+                    case "pointProperty":
+                        return ParsePointGeometry(e);
+                    default:
+                        throw new Exception("Invalid geometry.");
                 }
             }
-            throw new Exception("Invalid Curve Geometry.");
+            throw new Exception("Invalid geometry.");
         }
 
-        IDtmGeometry ParsePointGeometry(XmlReader reader)
+        IDtmGeometry ParsePointGeometry(XmlElement xmlElement)
         {
             var geometry = new DtmPointGeometry();
-            var elementStack = new List<string>();
-            while (reader.Read())
+            var point = (XmlElement)xmlElement.ChildNodes[0];
+            foreach (XmlAttribute attribute in point.Attributes)
             {
-                switch (reader.NodeType)
+                switch (attribute.LocalName)
                 {
-                    case XmlNodeType.Element:
-                        {
-                            if (reader.IsEmptyElement)
-                                continue;
-                            elementStack.Add(reader.LocalName);
-                            if (reader.LocalName == "Point")
-                            {
-                                geometry.Id = reader.GetAttribute("gml:id");
-                                geometry.SrsName = reader.GetAttribute("srsName");
-                                geometry.SrsDimension = int.Parse(reader.GetAttribute("srsDimension"));
-                            }
-                        }
+                    case "id":
+                        geometry.Id = attribute.InnerText;
                         break;
-                    case XmlNodeType.Text:
-                        {
-                            if (elementStack.Back() == "pos")
-                            {
-                                var values = reader.Value.Split(' ');
-                                if (values.Length != 3)
-                                    throw new Exception("Invalid Point Geometry.");
-                                geometry.Point = new DtmPoint(values[0], values[1], values[2]);
-                            }
-                        }
+                    case "SrsName":
+                        geometry.SrsName = attribute.InnerText;
                         break;
-                    case XmlNodeType.EndElement:
-                        {
-                            elementStack.Pop();
-                            if (elementStack.Count == 0)
-                            {
-                                reader.Read();
-                                return geometry;
-                            }
-                        }
+                    case "SrsDimension":
+                        geometry.SrsDimension = int.Parse(attribute.InnerText);
                         break;
                 }
-
             }
-            throw new Exception("Invalid Point Geometry.");
+            if (point.ChildNodes.Count != 1 && point.ChildNodes[0].LocalName != "pos")
+                throw new Exception("Invalid curve geometry.");
+            var values = point.ChildNodes[0].InnerText.Split(' ');
+            if (values.Length != 3)
+                throw new Exception("Invalid Point Geometry.");
+            geometry.Point = new DtmPoint(values[0], values[1], values[2]);
+            return geometry;
+        }
+
+        IDtmGeometry ParseCurveGeometry(XmlElement xmlElement)
+        {
+            var geometry = new DtmCurveGeometry();
+            var lineString = (XmlElement)xmlElement.ChildNodes[0];
+            foreach (XmlAttribute attribute in lineString.Attributes)
+            {
+                switch (attribute.LocalName)
+                {
+                    case "id":
+                        geometry.Id = attribute.InnerText;
+                        break;
+                    case "SrsName":
+                        geometry.SrsName = attribute.InnerText;
+                        break;
+                    case "SrsDimension":
+                        geometry.SrsDimension = int.Parse(attribute.InnerText);
+                        break;
+                }
+            }
+            if (lineString.ChildNodes.Count != 1 && lineString.ChildNodes[0].LocalName != "LineString")
+                throw new Exception("Invalid curve geometry.");
+            var posList = lineString.ChildNodes[0];
+            var coordinates = posList.InnerText.Split(' ');
+            if (coordinates.Length % 3 != 0)
+            {
+                throw new Exception($"Coordinates are not in correct format.");
+            }
+            var count = coordinates.Length / 3;
+            geometry.Points = new List<DtmPoint>(count);
+            for (var i = 0; i < count; i++)
+            {
+                var beginIdx = i * 3;
+                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], coordinates[beginIdx + 2]));
+            }
+            return geometry;
+        }
+        DtmPolygonGeometry ParsePolygonGeometry(XmlElement xmlElement)
+        {
+            var geometry = new DtmPolygonGeometry();
+            foreach (XmlAttribute attribute in xmlElement.Attributes)
+            {
+                switch (attribute.LocalName)
+                {
+                    case "id":
+                        geometry.Id = attribute.InnerText;
+                        break;
+                    case "SrsName":
+                        geometry.SrsName = attribute.InnerText;
+                        break;
+                    case "SrsDimension":
+                        geometry.SrsDimension = int.Parse(attribute.InnerText);
+                        break;
+                }
+            }
+
+            var exterior = xmlElement["exterior"];
+            var linearRing = exterior["LinearRing"];
+            var posList = linearRing["posList"];
+            var coordinates = posList.InnerText.Split(' ');
+            if (coordinates.Length % 2 != 0)
+            {
+                throw new Exception($"Coordinates are not in correct format.");
+            }
+            var count = coordinates.Length / 2;
+            geometry.Points = new List<DtmPoint>(count);
+            for (var i = 0; i < count; i++)
+            {
+                var beginIdx = i * 2;
+                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], "0"));
+            }
+            return geometry;
+        }
+
+        void ParseAtributyObjektu(XmlElement xmlElement, DtmElement element)
+        {
+            foreach (XmlElement e in xmlElement)
+            {
+                switch (e.LocalName)
+                {
+                    case "SpolecneAtributyVsechObjektu":
+                        element.SpolecneAtributy = ParseSpolecneAtributyVsechObjektu(e);
+                        break;
+                    case "SpolecneAtributyObjektuZPS":
+                        element.SpolecneAtributyZPS = ParseDtmSpolecneAtributyZPS(e);
+                        break;
+                    case "CisloBodu":
+                        element.CisloBodu = e.InnerText;
+                        break;
+                }
+            }
+            element.ImportDtmAttributes(xmlElement);
+        }
+
+        DtmElementSpolecneAtributy ParseSpolecneAtributyVsechObjektu(XmlElement xmlElement)
+        {
+            var atributy = new DtmElementSpolecneAtributy();
+            foreach (XmlElement e in xmlElement)
+            {
+                switch (e.LocalName)
+                {
+                    case "DatumVkladu":
+                        atributy.DatumVkladu = DateTime.Parse(e.InnerText);
+                        break;
+                    case "DatumZmeny":
+                        atributy.DatumZmeny = DateTime.Parse(e.InnerText);
+                        break;
+
+                }
+            }
+            return atributy;
+        }
+
+        DtmSpolecneAtributyZPS ParseDtmSpolecneAtributyZPS(XmlElement xmlElement)
+        {
+            var atributy = new DtmSpolecneAtributyZPS();
+            foreach (XmlElement e in xmlElement)
+            {
+                switch (e.LocalName)
+                {
+                    case "UrovenUmisteniObjektuZPS":
+                        atributy.UrovenUmisteniObjektuZPS = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiPoloha":
+                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiVyska":
+                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
+                        break;
+                    case "ZpusobPorizeniZPS":
+                        atributy.ZpusobPorizeniZPS = int.Parse(e.InnerText);
+                        break;
+                }
+            }
+            return atributy;
+        }
+
+        XmlElement FindElement(XmlElement parent, string name)
+        {
+            foreach (XmlElement c in parent)
+            {
+                if (c.LocalName == name)
+                    return c;
+            }
+            return null;
+        }
+        DtmUdajeOVydeji ParseUdajeOVydeji(XmlElement xmlElement)
+        {
+            var vydej = new DtmUdajeOVydeji();
+            var udajeOVydejiXml = FindElement(xmlElement, "UdajeOVydeji");
+            foreach (XmlElement xn in udajeOVydejiXml)
+            {
+                switch (xn.LocalName)
+                {
+                    case "DatumPlatnosti":
+                        vydej.DatumPlatnosti = DateTime.Parse(xn.InnerText);
+                        break;
+                    case "TypDatoveSady":
+                        vydej.TypDatoveSady = int.Parse(xn.InnerText);
+                        break;
+                    case "ObvodDatoveSady":
+                        vydej.Polygon = ParsePolygonGeometry(xn);
+                        break;
+                }
+            }
+            return vydej;
         }
     }
 }

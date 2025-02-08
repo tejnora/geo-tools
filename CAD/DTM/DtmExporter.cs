@@ -12,16 +12,15 @@ namespace CAD.DTM
         readonly IDtmMain _main;
         XmlWriter _xmlWriter;
         HashSet<string> _namespaces;
-        DateTime _now = DateTime.Now;
-
+        DtmExportCtx _exportCtx;
         public DtmExporter(IDtmMain main)
         {
             _main = main;
         }
-
-        public void CreateFile(string location)
+        public void CreateFile(DtmExportCtx ctx)
         {
-            using (var writer = XmlWriter.Create(location))
+            _exportCtx = ctx;
+            using (var writer = XmlWriter.Create(ctx.FileName, new XmlWriterSettings { Indent = true }))
             {
                 try
                 {
@@ -34,6 +33,7 @@ namespace CAD.DTM
                     BeginElement("objtyp", "Data");
                     AddData();
                     EndElement();
+                    ExportDoprovodneInformace();
                     EndElement();
                     EndElement();
                     writer.WriteEndDocument();
@@ -44,13 +44,18 @@ namespace CAD.DTM
                 }
             }
         }
-
         void AddNamespaces()
         {
             _namespaces = new HashSet<string>
             {
-                "objtyp", "cmn", "atr"
+                "objtyp", "cmn", "atr", "dopinf"
             };
+            foreach (var group in _main.GetElementGroups())
+            {
+                if (!group.Value.HasSameElementsForExport())
+                    continue;
+                _namespaces.Add(DtmConfigurationSingleton.Instance.ElementSetting[group.Key].XmlNamespace);
+            }
             _xmlWriter.WriteAttributeString("xmlns", "xsd", null, "http://www.w3.org/2001/XMLSchema");
             _xmlWriter.WriteAttributeString("xmlns", "xsi", null, "http://www.w3.org/2001/XMLSchema-instance");
             _xmlWriter.WriteAttributeString("xmlns", "gml", null, "http://www.opengis.net/gml/3.2");
@@ -61,7 +66,6 @@ namespace CAD.DTM
 
             _namespaces.Add("gml");
         }
-
         void AddHead()
         {
             AddElement("cmn", "VerzeJVFDTM", "1.4.3");
@@ -73,70 +77,91 @@ namespace CAD.DTM
             BeginElement("objtyp", "Data");
             foreach (var elementGroup in _main.GetElementGroups())
             {
-                BeginElement("objtyp", elementGroup.Key);
-                elementGroup.Value.ExportToDtm(this, DtmConfigurationSingleton.Instance.ElementSetting[elementGroup.Key]);
-                EndElement();
+                elementGroup.Value.ExportToDtm(this);
             }
             EndElement();
         }
-
         public void AddAttribute(string name, string value)
         {
             _xmlWriter.WriteAttributeString(name, value);
         }
-
-        public void AddPCData(string value)
+        public void AddAttribute(string name, int value)
         {
-            _xmlWriter.WriteCData(value);
+            _xmlWriter.WriteAttributeString(name, value.ToString());
         }
-
-        public void AddSpolecneAtributyVsechObjektu()
+        public void AddStringData(string value)
         {
-            BeginElement("atr", "SpolecneAtributyVsechObjektu");
-            AddElement(null, "DatumVkladu", _now);
-            AddElement(null, "DatumZmeny", _now);
-            EndElement();
+            _xmlWriter.WriteString(value);
         }
-
-        public void AddSpolecneAtributyObjektuZPS()
-        {
-            BeginElement("atr", "SpolecneAtributyObjektuZPS");
-            AddElement(null, "UrovenUmisteniObjektuZPS", "0");
-            AddElement(null, "TridaPresnostiPoloha", "3");
-            AddElement(null, "TridaPresnostiVyska", "3");
-            AddElement(null, "ZpusobPorizeniZPS", "3");
-            EndElement();
-        }
-
         public void AddElement(string ns, string name, string text)
         {
             if (!string.IsNullOrEmpty(ns) && !_namespaces.Contains(ns))
                 throw new Exception($"Namespace '{ns}' does not exist.");
             _xmlWriter.WriteStartElement(name, ns);
-            _xmlWriter.WriteCData(text);
+            _xmlWriter.WriteString(text);
             _xmlWriter.WriteEndElement();
         }
-
         public void AddElement(string ns, string name, int value)
         {
             AddElement(ns, name, value.ToString());
         }
-
         public void AddElement(string ns, string name, DateTime value)
         {
             AddElement(ns, name, value.ToString("ddd"));
         }
-
+        public void AddElement(string ns, string name, double value)
+        {
+            AddElement(ns, name, value.ToString("##.00"));
+        }
+        public void AddElement(string ns, string name, bool value)
+        {
+            AddElement(ns, name, value ? "true" : "false");
+        }
         public void BeginElement(string ns, string name)
         {
             if (!string.IsNullOrEmpty(ns) && !_namespaces.Contains(ns))
                 throw new Exception($"Namespace '{ns}' does not exist.");
             _xmlWriter.WriteStartElement(name, ns);
         }
-
         public void EndElement()
         {
             _xmlWriter.WriteEndElement();
+        }
+
+        void ExportDoprovodneInformace()
+        {
+            BeginElement("dopinf", "DoprovodneInformace");
+            BeginElement(null, "UdajeOZmenach");
+            BeginElement(null, "ZaznamZmeny");
+            ExportZaznamZmeny();
+            EndElement();
+            EndElement();
+            EndElement();
+        }
+
+        void ExportZaznamZmeny()
+        {
+            AddEmptyElement("atr", "IDPodani");
+            AddEmptyElement("atr", "PopisObjektu");
+            AddEmptyElement("atr", "IDEditora");
+            AddEmptyElement("atr", "DatumVkladu");
+            AddEmptyElement("atr", "VkladOsoba");
+            AddElement(null, "NazevZakazky", _exportCtx.NazevZakazky);
+            AddEmptyElement(null, "CisloStavbyZakazky");
+            AddEmptyElement(null, "PartnerInvestor");
+            AddElement(null, "Zpracovatel", _exportCtx.Zpracovatel);
+            AddElement(null, "OrganizaceZpracovatele",_exportCtx.OrganizaceZpracovatele);
+            AddElement(null, "DatumMereni", _exportCtx.DatumMereni.ToString("yyyy-MM-dd"));
+            AddElement(null, "DatumZpracovani", _exportCtx.DatumZpracovani.ToString("yyyy-MM-dd"));
+            AddElement(null, "AZI",_exportCtx.AZI);
+            AddElement(null, "DatumOvereni",_exportCtx.DatumOvereni.ToString("yyyy-MM-dd"));
+            AddElement(null, "CisloOvereni",_exportCtx.CisloOvereni);
+
+        }
+
+        void AddEmptyElement(string ns, string name)
+        {
+            AddElement(ns, name, null);
         }
     }
 }

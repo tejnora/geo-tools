@@ -2,7 +2,7 @@
 
 namespace CAD.DTM
 {
-    class DtmPoint : ICloneable
+    public class DtmPoint : ICloneable
     {
         public DtmPoint(string y, string x, string z)
         {
@@ -17,6 +17,11 @@ namespace CAD.DTM
         public object Clone()
         {
             return MemberwiseClone();
+        }
+
+        public string ExportToDtm()
+        {
+            return $"{Y:##.00} {X:##.00} {Z:##.00}";
         }
     }
 }

@@ -17,7 +17,7 @@
     "Type": "point",
     "CodeBase": "0100000219",
     "CodeSuffix": "01",
-    "Xmlns":"vybote",
+    "Xmlns": "vybote",
     "ObjektovyTypNazev": "výškový bod na terénu",
     "KategorieObjektu": "Geodetické prvky",
     "SkupinaObjektu": "Podrobný bod",
@@ -129,6 +129,54 @@
     "ObjektovyTypNazev": "budova",
     "KategorieObjektu": "Budovy",
     "SkupinaObjektu": "Objekt budovy",
+    "ObsahovaCast": "ZPS"
+  },
+  "ChodnikDefinicniBod": {
+    "Color": [ 210, 217, 25, 255 ],
+    "Width": 0.02,
+    "Type": "point",
+    "CodeBase": "0100000007",
+    "CodeSuffix": "04",
+    "Xmlns": "chodef",
+    "ObjektovyTypNazev": "chodník",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Silniční doprava",
+    "ObsahovaCast": "ZPS"
+  },
+  "HraniceStavby": {
+    "Color": [ 210, 217, 25, 255 ],
+    "Width": 0.02,
+    "Type": "line",
+    "CodeBase": "0100000300",
+    "CodeSuffix": "02",
+    "Xmlns": "hrasta",
+    "ObjektovyTypNazev": "hranice stavby",
+    "KategorieObjektu": "Konstrukční prvky objektů",
+    "SkupinaObjektu": "Základní konstrukční prvek",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZahradaDefinicniBod": {
+    "Color": [ 210, 217, 25, 255 ],
+    "Width": 0.02,
+    "Type": "point",
+    "CodeBase": "0100000209",
+    "CodeSuffix": "04",
+    "Xmlns": "zahdef",
+    "ObjektovyTypNazev": "zahrada",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "OstatniZastresenaStavbaDefinicniBod": {
+    "Color": [ 210, 217, 25, 255 ],
+    "Width": 0.02,
+    "Type": "point",
+    "CodeBase": "0100000314",
+    "CodeSuffix": "04",
+    "Xmlns": "ozsdef",
+    "ObjektovyTypNazev": "ostatní zastřešená stavba",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
     "ObsahovaCast": "ZPS"
   }
 }

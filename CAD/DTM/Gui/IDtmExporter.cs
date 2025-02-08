@@ -7,11 +7,12 @@ namespace CAD.DTM.Gui
         void AddElement(string ns, string name, string text);
         void AddElement(string ns, string name, int value);
         void AddElement(string ns, string name, DateTime value);
+        void AddElement(string ns, string name, double value);
+        void AddElement(string ns, string name, bool value);
         void BeginElement(string ns, string name);
         void EndElement();
         void AddAttribute(string name, string value);
-        void AddPCData(string value);
-
-        void AddSpolecneAtributyVsechObjektu();
+        void AddAttribute(string name, int value);
+        void AddStringData(string value);
     }
 }
