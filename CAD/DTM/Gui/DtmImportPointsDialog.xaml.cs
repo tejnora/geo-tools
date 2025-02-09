@@ -2,18 +2,18 @@
 using GeoBase.Gui;
 using GeoBase.Utils;
 using System;
-using System.Windows.Input;
 
 namespace CAD.DTM.Gui
 {
-    public partial class DtmExportDialog : DialogBase
+    public partial class DtmImportPointsDialog : DialogBase
     {
-        readonly DtmExportCtx _ctx;
-        public DtmExportDialog(DtmExportCtx ctx)
-            : base("DtmExportDialog", false, true)
+        readonly DtmImportPointsCtx _ctx;
+
+        public DtmImportPointsDialog(DtmImportPointsCtx ctx)
+            : base("DtmImportPointsDialog", false, true)
         {
             _ctx = ctx;
-            DataContext = _ctx;
+            DataContext = ctx;
             InitializeComponent();
         }
         public Nullable<bool> DoModal()
@@ -24,31 +24,23 @@ namespace CAD.DTM.Gui
         {
             Close();
         }
-
-        void OnExportButtonClick(object sender, EventArgs aArgs)
+        void OnImportButtonClick(object sender, EventArgs aArgs)
         {
-            _ctx.SaveValuesToRegistry();
             DialogResult = true;
+            _ctx.SaveToRegistry();
             SavePosAndSize();
             Close();
         }
-        void OnCanExportButtonClick(object sender, CanExecuteRoutedEventArgs args)
-        {
-            _ctx.Validate();
-            args.CanExecute = !_ctx.HasErrors;
-        }
-
         void OnFileChooser(object sender, EventArgs aArgs)
         {
-            var dlg = new Microsoft.Win32.SaveFileDialog
+            var dlg = new Microsoft.Win32.OpenFileDialog
             {
-                Filter = "DTM (*.xml)|*.xml",
+                Filter = "DTM (*.txt)|*.txt",
                 FileName = _ctx.FileName
             };
             var result = dlg.ShowDialog();
             if (result != true) return;
             _ctx.FileName = dlg.FileName;
         }
-
     }
 }

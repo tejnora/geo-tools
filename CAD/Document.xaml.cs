@@ -132,26 +132,6 @@ namespace CAD
             if (result == true)
                 DataModel.Export(dlg.FileName, ExportType.Dxf);
         }
-
-        public bool ImportDtm(string location)
-        {
-            var ctx = new DtmImportCtx();// { FileName = @"c:\Temp\JVF DTM\vydej_zps_ref.jvf.xml" };
-            var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
-            var result = dlg.DoModal();
-            if (result == false)
-                return false;
-            try
-            {
-                DataModel.ImportDtm(ctx);
-                CanvasCommand.CommandFitView();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public bool ImportVfk(string aLocation)
         {
             var vfkDataContext = new VFKDataContext { FileName = aLocation };
@@ -226,7 +206,6 @@ namespace CAD
         {
             _Canvas.CommandSelectVFKActiveObject(activePoint);
         }
-
         public void ExportDtm()
         {
             var ctx = new DtmExportCtx();
@@ -246,6 +225,41 @@ namespace CAD
                 System.Windows.MessageBox.Show("Neočekávaná chyba", "Neočekávaná chyba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+        public bool ImportDtm(string location)
+        {
+            var ctx = new DtmImportCtx();
+            var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
+            var result = dlg.DoModal();
+            if (result == false)
+                return false;
+            try
+            {
+                DataModel.ImportDtm(ctx);
+                CanvasCommand.CommandFitView();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool ImportPointsDtm()
+        {
+            var ctx = new DtmImportPointsCtx();
+            var dlg = new DtmImportPointsDialog(ctx) { Owner = (MainWin)_owner };
+            var result = dlg.DoModal();
+            if (result == false)
+                return false;
+            try
+            {
+                DataModel.ImportPointsDtm(ctx);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

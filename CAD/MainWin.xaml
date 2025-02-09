@@ -17,6 +17,7 @@
         <RoutedCommand x:Key="GenerateSIPVFK" />
         <RoutedCommand x:Key="ImportDtm" />
         <RoutedCommand x:Key="ExportDtm" />
+        <RoutedCommand x:Key="ImportPointsDtm" />
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource ImportVFK}"
@@ -45,6 +46,9 @@
         <CommandBinding Command="{StaticResource ExportDtm}"
                         Executed="OnExportDtm"
                         CanExecute="CanExportDtm" />
+        <CommandBinding Command="{StaticResource ImportPointsDtm}"
+                        Executed="OnImportPointsDtm"
+                        CanExecute="CanImportPointsDtm" />
 
     </Window.CommandBindings>
     <DockPanel LastChildFill="true">
@@ -199,8 +203,9 @@
                           Command="{StaticResource GenerateSIPVFK}" />
             </MenuItem>
             <MenuItem Header="DTM">
-                <MenuItem loc:Translate.Uid="148" Header="{loc:Translate Import Dtm}" Command="{StaticResource ImportDtm}" />
-                <MenuItem loc:Translate.Uid="147" Header="{loc:Translate Export Dtm}" Command="{StaticResource ExportDtm}" />
+                <MenuItem loc:Translate.Uid="148" Header="{loc:Translate Import}" Command="{StaticResource ImportDtm}" />
+                <MenuItem loc:Translate.Uid="147" Header="{loc:Translate Export}" Command="{StaticResource ExportDtm}" />
+                <MenuItem loc:Translate.Uid="157" Header="{loc:Translate Import Points}" Command="{StaticResource ImportPointsDtm}" />
             </MenuItem>
             <MenuItem loc:Translate.Uid="26"
                       Header="{loc:Translate Options}">

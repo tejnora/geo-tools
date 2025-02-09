@@ -7,6 +7,8 @@ using Color = System.Drawing.Color;
 using CAD.Utils;
 using System;
 using System.Linq;
+using CAD.Canvas.DrawTools;
+using System.Windows.Controls.Primitives;
 
 namespace CAD.DTM
 {
@@ -40,7 +42,34 @@ namespace CAD.DTM
                 if (!layer.Value.Visible) continue;
                 layer.Value.Draw(canvas, unitrect);
             }
+
+            if (_dtmMain.UdajeOVydeji == null) return;
+            var pen = canvas.CreatePen(Color.FromArgb(100, 209, 231, 235), 0.001f);
+            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            ProcessLines((p1, p2) =>
+            {
+                canvas.DrawLine(canvas, pen, p1, p2);
+                return false;
+            });
         }
+
+        bool ProcessLines(Func<UnitPoint, UnitPoint, bool> doAction)
+        {
+            var points = _dtmMain.UdajeOVydeji.Polygon.Points;
+            var p1 = new UnitPoint(points[0].X, points[0].Y);
+            var p2 = new UnitPoint();
+            for (var i = 1; i < points.Count; i++)
+            {
+                p2.X = points[i].X;
+                p2.Y = points[i].Y;
+                if (doAction(p1, p2))
+                    return true;
+                (p1, p2) = (p2, p1);
+            }
+            return false;
+        }
+
 
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, List<IDrawObject> otherobj)
         {

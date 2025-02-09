@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
-using System.Linq;
-using System.Linq.Expressions;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -23,11 +19,11 @@ namespace CAD.DTM
         {
             var xmlDocument = new XmlDocument();
             xmlDocument.Load(location);
-            var JVFDTM = xmlDocument.Cast<XmlElement>().FirstOrDefault(c => c.LocalName == "JVFDTM");
+            var JVFDTM = xmlDocument["JVFDTM", "objtyp"];
             var DataJVFDTM = FindElement(JVFDTM, "DataJVFDTM");
             var data = FindElement(DataJVFDTM, "Data");
             ParseDataNode(data);
-            ParseUdajeOVydeji(FindElement(DataJVFDTM, "DoprovodneInformace"));
+            _main.UdajeOVydeji = ParseUdajeOVydeji(FindElement(DataJVFDTM, "DoprovodneInformace"));
         }
 
         void ParseDataNode(XmlElement dataElement)
@@ -180,25 +176,23 @@ namespace CAD.DTM
         DtmPolygonGeometry ParsePolygonGeometry(XmlElement xmlElement)
         {
             var geometry = new DtmPolygonGeometry();
-            foreach (XmlAttribute attribute in xmlElement.Attributes)
+            var polygon = FindElement(xmlElement, "Polygon");
+            foreach (XmlAttribute attribute in polygon.Attributes)
             {
                 switch (attribute.LocalName)
                 {
-                    case "id":
-                        geometry.Id = attribute.InnerText;
-                        break;
-                    case "SrsName":
+                    case "srsName":
                         geometry.SrsName = attribute.InnerText;
                         break;
-                    case "SrsDimension":
+                    case "srsDimension":
                         geometry.SrsDimension = int.Parse(attribute.InnerText);
                         break;
                 }
             }
 
-            var exterior = xmlElement["exterior"];
-            var linearRing = exterior["LinearRing"];
-            var posList = linearRing["posList"];
+            var exterior = FindElement(polygon, "exterior");
+            var linearRing = FindElement(exterior, "LinearRing");
+            var posList = FindElement(linearRing, "posList");
             var coordinates = posList.InnerText.Split(' ');
             if (coordinates.Length % 2 != 0)
             {
@@ -288,8 +282,10 @@ namespace CAD.DTM
         }
         DtmUdajeOVydeji ParseUdajeOVydeji(XmlElement xmlElement)
         {
-            var vydej = new DtmUdajeOVydeji();
             var udajeOVydejiXml = FindElement(xmlElement, "UdajeOVydeji");
+            if (udajeOVydejiXml == null)
+                return null;
+            var vydej = new DtmUdajeOVydeji();
             foreach (XmlElement xn in udajeOVydejiXml)
             {
                 switch (xn.LocalName)

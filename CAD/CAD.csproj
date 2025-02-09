@@ -184,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DTM\Gui\DtmImportPointsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmToolBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -470,6 +474,7 @@
     <Compile Include="DTM\DtmDrawingLayerMain.cs" />
     <Compile Include="DTM\DtmExportCtx.cs" />
     <Compile Include="DTM\DtmExporter.cs" />
+    <Compile Include="DTM\DtmImportPointsCtx.cs" />
     <Compile Include="DTM\DtmPolygonGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
     <Compile Include="DTM\Elements\DtmBudovaDefinicniBodElement.cs" />
@@ -493,6 +498,9 @@
     </Compile>
     <Compile Include="DTM\Gui\DtmImportDialog.xaml.cs">
       <DependentUpon>DtmImportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DTM\Gui\DtmImportPointsDialog.xaml.cs">
+      <DependentUpon>DtmImportPointsDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTM\Gui\DtmToolBar.xaml.cs">
       <DependentUpon>DtmToolBar.xaml</DependentUpon>

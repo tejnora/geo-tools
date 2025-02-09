@@ -1,9 +1,9 @@
 ﻿using CAD.DTM.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -36,6 +36,8 @@ namespace CAD.DTM
             return $"ID{_idAllocator}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
         }
 
+        public DtmUdajeOVydeji UdajeOVydeji { get; set; }
+
         public bool Import(DtmImportCtx ctx)
         {
             try
@@ -65,6 +67,26 @@ namespace CAD.DTM
                 MessageBox.Show(ex.Message, ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+        }
+        public IList<IDtmElement> ImportPoints(DtmImportPointsCtx ctx)
+        {
+            var points = new List<IDtmElement>();
+            var lines = File.ReadAllLines(ctx.FileName);
+            foreach (var line in lines)
+            {
+                var items = line.Split(' ');
+                if (items.Length != 4)
+                    throw new ArgumentOutOfRangeException("Format it is not correct.");
+                var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);
+                element.Geometry = new DtmPointGeometry
+                {
+                    Point = new DtmPoint(items[1], items[2], items[3])
+                };
+                element.CisloBodu = items[0];
+                AddElementIfNotExist(ctx.PointTypeSelected, element);
+                points.Add(element);
+            }
+            return points;
         }
     }
 }

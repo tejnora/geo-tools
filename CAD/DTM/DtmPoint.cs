@@ -19,9 +19,15 @@ namespace CAD.DTM
             return MemberwiseClone();
         }
 
-        public string ExportToDtm()
+        public string ExportToDtm(int srsDimension)
         {
-            return $"{Y:##.00} {X:##.00} {Z:##.00}";
+            switch (srsDimension)
+            {
+                case 2: return $"{X:##.00} {Y:##.00}";
+                case 3: return $"{X:##.00} {Y:##.00} {Z:##.00}";
+            }
+
+            throw new ArgumentOutOfRangeException();
         }
     }
 }

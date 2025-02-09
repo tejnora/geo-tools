@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using CAD.Canvas;
+using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using CAD.VFK;
 
@@ -10,7 +11,6 @@ namespace CAD.DTM.Elements
     : IDtmElement
     {
         public char ZapisObjektu { get; set; }
-        public string ID { get; set; }
         public IDtmGeometry Geometry { get; set; }
         public string CisloBodu { get; set; }
 
@@ -34,30 +34,30 @@ namespace CAD.DTM.Elements
         {
 
         }
-        public char EvaluateZapisObjektuForExportToDtm()
+        public string EvaluateZapisObjektuForExportToDtm()
         {
             if (IsDeleted)
             {
                 if (ZapisObjektu != 'r')
                     throw new ArgumentOutOfRangeException();
-                return 'd';
+                return "d";
             }
             if (ZapisObjektu == 'r')
                 throw new ArgumentOutOfRangeException();
-            return ZapisObjektu;
+            return ZapisObjektu.ToString();
         }
 
         public void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter)
         {
-            exporter.BeginElement("atr", "SpolecneAtributyVsechObjektu");
-            exporter.AddElement(null, "DatumVkladu", DateTime.Now);
-            exporter.AddElement(null, "DatumZmeny", DateTime.Now);
+            exporter.BeginElement("atr", "SpolecneAtributyVsechObjektu", true);
+            exporter.AddElement(null, "DatumVkladu", SpolecneAtributy.DatumVkladu);
+            exporter.AddElement(null, "DatumZmeny", SpolecneAtributy.DatumZmeny);
             exporter.EndElement();
         }
 
         protected void ExportSpolecneAtributyObjektuZPS(IDtmExporter exporter)
         {
-            exporter.BeginElement("atr", "SpolecneAtributyObjektuZPS");
+            exporter.BeginElement("atr", "SpolecneAtributyObjektuZPS", true);
             exporter.AddElement(null, "TridaPresnostiPoloha", SpolecneAtributyZPS.TridaPresnostiPoloha);
             exporter.AddElement(null, "TridaPresnostiVyska", SpolecneAtributyZPS.TridaPresnostiVyska);
             exporter.AddElement(null, "UrovenUmisteniObjektuZPS", SpolecneAtributyZPS.UrovenUmisteniObjektuZPS);
@@ -99,6 +99,18 @@ namespace CAD.DTM.Elements
                 }
                 throw new NotImplemented();
             }
+        }
+
+        public virtual void Init(DtmElementOption dtmElementOption)
+        {
+            ZapisObjektu = 'i';
+            CisloBodu = "";
+            var dateTime = DateTime.Now;
+            SpolecneAtributy = new DtmElementSpolecneAtributy
+            {
+                DatumVkladu = dateTime,
+                DatumZmeny = dateTime
+            };
         }
     }
 }

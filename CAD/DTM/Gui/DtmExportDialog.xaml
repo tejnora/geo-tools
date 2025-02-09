@@ -11,15 +11,41 @@
     <Gui:DialogBase.DialogContent>
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="20" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBox HorizontalAlignment="Stretch" MinWidth="100" Grid.Row="0" Grid.Column="0" Text="{Binding Path=FileName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
-            <Button Grid.Row="0" Grid.Column="1" Click="OnFileChooser" Content="..." />
+            <Label Grid.Column="0" Grid.Row="0" loc:Translate.Uid="149" Content="{loc:Translate Soubor:}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" MinWidth="100" Text="{Binding Path=FileName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+            <Button Grid.Row="0" Grid.Column="2" Click="OnFileChooser" Content="..." />
+            <Label Grid.Column="0" Grid.Row="1" loc:Translate.Uid="148" Content="{loc:Translate Nazev zakazky:}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=NazevZakazky}"/>
+            <Label Grid.Column="0" Grid.Row="2" loc:Translate.Uid="150" Content="{loc:Translate Zpracovatel:}"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Zpracovatel}"/>
+            <Label Grid.Column="0" Grid.Row="3" loc:Translate.Uid="151" Content="{loc:Translate Organizace zpracovatele:}"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=OrganizaceZpracovatele}"/>
+            <Label Grid.Column="0" Grid.Row="4" loc:Translate.Uid="152" Content="{loc:Translate Datum mereni:}"/>
+            <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding Path=DatumMereni}" DisplayDate="2019-01-01"/>
+            <Label Grid.Column="0" Grid.Row="5" loc:Translate.Uid="153" Content="{loc:Translate Datum zpracovani:}"/>
+            <DatePicker Grid.Column="1" Grid.Row="5" SelectedDate="{Binding Path=DatumZpracovani}" DisplayDate="2019-01-01"/>
+            <Label Grid.Column="0" Grid.Row="6" loc:Translate.Uid="154" Content="{loc:Translate AZI:}"/>
+            <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding Path=AZI}"/>
+            <Label Grid.Column="0" Grid.Row="7" loc:Translate.Uid="155" Content="{loc:Translate Datum overeni:}"/>
+            <DatePicker Grid.Column="1" Grid.Row="7" SelectedDate="{Binding Path=DatumOvereni}" DisplayDate="2019-01-01"/>
+            <Label Grid.Column="0" Grid.Row="8" loc:Translate.Uid="156" Content="{loc:Translate Cislo overeni:}"/>
+            <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding Path=CisloOvereni}"/>
         </Grid>
     </Gui:DialogBase.DialogContent>
     <Gui:DialogBase.CustomButtons>

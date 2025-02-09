@@ -38,7 +38,6 @@ namespace CAD.DTM.Gui
             _ctx.Validate();
             args.CanExecute = !_ctx.HasErrors;
         }
-
         void OnFileChooser(object sender, EventArgs aArgs)
         {
             var dlg = new Microsoft.Win32.OpenFileDialog
@@ -50,6 +49,5 @@ namespace CAD.DTM.Gui
             if (result != true) return;
             _ctx.FileName = dlg.FileName;
         }
-
     }
 }

@@ -608,6 +608,17 @@ namespace CAD.Canvas
             _activeLayer = _layers[0];
         }
 
+        public void ImportPointsDtm(DtmImportPointsCtx dataCtx)
+        {
+            var importedPoints = DtmMain.ImportPoints(dataCtx);
+            foreach (var importedPoint in importedPoints)
+            {
+                var drawObject = importedPoint.CreateDrawObject();
+                new DtmDrawingGroup(dataCtx.PointTypeSelected, drawObject);
+                _dtmDrawingLayerMain.AddObject(drawObject);
+            }
+        }
+
         public void OnRemoveVfkData()
         {
             if (VfkMain != null)

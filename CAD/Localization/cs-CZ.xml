@@ -151,8 +151,19 @@
   <Value Id="145" Content="Import"/>
   <Value Id="146" Title="Import souřadnic"/>
   <Value Id="147" Content="Budova je součástí pozemku"/>
-  <Value Id="148" Header="Import Dtm"/>
-  <Value Id="147" Header="Export Dtm"/>
+  <Value Id="148" Header="Import"/>
+  <Value Id="147" Header="Export"/>
+  <Value Id="148" Content="Nazev zakazky:"/>
+  <Value Id="149" Content="Soubor:"/>
+  <Value Id="150" Content="Zpracovatel:"/>
+  <Value Id="151" Content="Organizace zpracovatele:"/>
+  <Value Id="152" Content="Datum mereni:"/>
+  <Value Id="153" Content="Datum zpracovani:"/>
+  <Value Id="154" Content="AIZ:"/>
+  <Value Id="155" Content="Datum overeni:"/>
+  <Value Id="156" Content="Cislo overeni:"/>
+  <Value Id="157" Header="Importovat body"/>
+  <Value Id="158" Content="Element type:"/>
 	
   <Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
   <Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>

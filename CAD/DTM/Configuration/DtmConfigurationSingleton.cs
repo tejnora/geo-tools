@@ -67,11 +67,13 @@ namespace CAD.DTM.Configuration
 
         public DtmElement CreateType(string elementName)
         {
+            DtmElement element;
             if (ElementSetting.TryGetValue(elementName, out var option) && option.ClassType != null)
-            {
-                return (DtmElement)Activator.CreateInstance(option.ClassType);
-            }
-            return (DtmElement)Activator.CreateInstance(typeof(DtmElement));
+                element = (DtmElement)Activator.CreateInstance(option.ClassType);
+            else
+                element = (DtmElement)Activator.CreateInstance(typeof(DtmElement));
+            element.Init(ElementSetting[elementName]);
+            return element;
         }
     }
 }

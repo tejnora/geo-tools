@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using CAD.DTM.Gui;
 using System.Xml;
 using CAD.DTM.Configuration;
+using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -26,13 +28,12 @@ namespace CAD.DTM
                 {
                     _xmlWriter = writer;
                     writer.WriteStartDocument();
-                    BeginElement(null, "JVFDTM");
+                    _xmlWriter.WriteStartElement("JVFDTM", "objtyp");
+                    _xmlWriter.WriteAttributeString("xmlns", "objtyp");
                     AddNamespaces();
                     BeginElement("objtyp", "DataJVFDTM");
                     AddHead();
-                    BeginElement("objtyp", "Data");
                     AddData();
-                    EndElement();
                     ExportDoprovodneInformace();
                     EndElement();
                     EndElement();
@@ -95,11 +96,9 @@ namespace CAD.DTM
         }
         public void AddElement(string ns, string name, string text)
         {
-            if (!string.IsNullOrEmpty(ns) && !_namespaces.Contains(ns))
-                throw new Exception($"Namespace '{ns}' does not exist.");
-            _xmlWriter.WriteStartElement(name, ns);
+            BeginElement(ns, name);
             _xmlWriter.WriteString(text);
-            _xmlWriter.WriteEndElement();
+            EndElement();
         }
         public void AddElement(string ns, string name, int value)
         {
@@ -107,7 +106,7 @@ namespace CAD.DTM
         }
         public void AddElement(string ns, string name, DateTime value)
         {
-            AddElement(ns, name, value.ToString("ddd"));
+            AddElement(ns, name, value.ToString("O"));
         }
         public void AddElement(string ns, string name, double value)
         {
@@ -117,11 +116,13 @@ namespace CAD.DTM
         {
             AddElement(ns, name, value ? "true" : "false");
         }
-        public void BeginElement(string ns, string name)
+        public void BeginElement(string ns, string name, bool addNsToAttribute = false)
         {
             if (!string.IsNullOrEmpty(ns) && !_namespaces.Contains(ns))
                 throw new Exception($"Namespace '{ns}' does not exist.");
             _xmlWriter.WriteStartElement(name, ns);
+            if (addNsToAttribute)
+                _xmlWriter.WriteAttributeString("xmlns", ns);
         }
         public void EndElement()
         {
@@ -130,7 +131,7 @@ namespace CAD.DTM
 
         void ExportDoprovodneInformace()
         {
-            BeginElement("dopinf", "DoprovodneInformace");
+            BeginElement("dopinf", "DoprovodneInformace", true);
             BeginElement(null, "UdajeOZmenach");
             BeginElement(null, "ZaznamZmeny");
             ExportZaznamZmeny();
@@ -150,15 +151,36 @@ namespace CAD.DTM
             AddEmptyElement(null, "CisloStavbyZakazky");
             AddEmptyElement(null, "PartnerInvestor");
             AddElement(null, "Zpracovatel", _exportCtx.Zpracovatel);
-            AddElement(null, "OrganizaceZpracovatele",_exportCtx.OrganizaceZpracovatele);
+            AddElement(null, "OrganizaceZpracovatele", _exportCtx.OrganizaceZpracovatele);
             AddElement(null, "DatumMereni", _exportCtx.DatumMereni.ToString("yyyy-MM-dd"));
             AddElement(null, "DatumZpracovani", _exportCtx.DatumZpracovani.ToString("yyyy-MM-dd"));
-            AddElement(null, "AZI",_exportCtx.AZI);
-            AddElement(null, "DatumOvereni",_exportCtx.DatumOvereni.ToString("yyyy-MM-dd"));
-            AddElement(null, "CisloOvereni",_exportCtx.CisloOvereni);
-
+            AddElement(null, "AZI", _exportCtx.AZI);
+            AddElement(null, "DatumOvereni", _exportCtx.DatumOvereni.ToString("yyyy-MM-dd"));
+            AddElement(null, "CisloOvereni", _exportCtx.CisloOvereni);
+            if (_main.UdajeOVydeji != null)
+            {
+                var polygon = _main.UdajeOVydeji.Polygon;
+                BeginElement(null, "OblastZmeny");
+                BeginElement("gml", "surfaceProperty", true);
+                BeginElement(null, "Polygon");
+                AddAttribute("srsName", polygon.SrsName);
+                AddAttribute("srsDimension", polygon.SrsDimension);
+                BeginElement(null, "exterior");
+                BeginElement(null, "LinearRing");
+                var posListData = new StringBuilder();
+                foreach (var p in polygon.Points)
+                {
+                    posListData.Append(p.ExportToDtm(2) + " ");
+                }
+                AddElement(null, "posList", posListData.ToString(0, posListData.Length - 1));
+                EndElement();
+                EndElement();
+                EndElement();
+                EndElement();
+                EndElement();
+            }
+            AddElement(null, "Konsolidace", false);
         }
-
         void AddEmptyElement(string ns, string name)
         {
             AddElement(ns, name, null);

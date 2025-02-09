@@ -12,15 +12,16 @@ namespace CAD.DTM
         public string SrsName { get; set; }
         public int SrsDimension { get; set; }
         public List<DtmPoint> Points { get; set; }
+
         public void ExportToDtm(IDtmExporter exporter)
         {
             var posListData = new StringBuilder();
             foreach (var p in Points)
             {
-                posListData.Append(p.ExportToDtm() + " ");
+                posListData.Append(p.ExportToDtm(3) + " ");
             }
             exporter.BeginElement(null, "GeometrieObjektu");
-            exporter.BeginElement("gml", "curveProperty");
+            exporter.BeginElement("gml", "curveProperty", true);
             exporter.BeginElement("gml", "LineString");
             exporter.AddAttribute("id", Id);
             exporter.AddAttribute("srsName", SrsName);

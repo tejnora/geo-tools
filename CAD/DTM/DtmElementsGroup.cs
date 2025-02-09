@@ -54,8 +54,8 @@ namespace CAD.DTM
         {
             if (_elements.Contains(dtmElementGetDtmElement))
                 return;
-            Debug.Assert(string.IsNullOrEmpty(dtmElementGetDtmElement.ID));
-            dtmElementGetDtmElement.ID = dtmMain.AllocateUniqueId(Name);
+            Debug.Assert(string.IsNullOrEmpty(dtmElementGetDtmElement.Geometry.Id));
+            dtmElementGetDtmElement.Geometry.Id = dtmMain.AllocateUniqueId(Name);
             _elements.Add(dtmElementGetDtmElement);
         }
 
@@ -66,13 +66,15 @@ namespace CAD.DTM
 
         public void ExportToDtm(IDtmExporter exporter)
         {
+            if (!HasSameElementsForExport())
+                return;
             var ns = DtmConfigurationSingleton.Instance.ElementSetting[Name].XmlNamespace;
             exporter.BeginElement("objtyp", Name);
             ExportToDtmGroupData(exporter, ns);
             exporter.BeginElement(ns, "ZaznamyObjektu");
             foreach (var element in _elements.Where(element => element.ExportToOutput))
             {
-                exporter.BeginElement(ns, "ZaznamObjektu");
+                exporter.BeginElement(ns, "ZaznamObjektu", true);
                 exporter.AddElement("cmn", "ZapisObjektu", element.EvaluateZapisObjektuForExportToDtm());
                 exporter.BeginElement(null, "AtributyObjektu");
                 element.ExportSpolecneAtributyVsechObjektu(exporter);

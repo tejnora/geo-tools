@@ -9,7 +9,7 @@ namespace CAD.DTM.Gui
         void AddElement(string ns, string name, DateTime value);
         void AddElement(string ns, string name, double value);
         void AddElement(string ns, string name, bool value);
-        void BeginElement(string ns, string name);
+        void BeginElement(string ns, string name, bool addNsToAttribute = false);
         void EndElement();
         void AddAttribute(string name, string value);
         void AddAttribute(string name, int value);

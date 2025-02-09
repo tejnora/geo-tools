@@ -9,12 +9,42 @@ namespace CAD.DTM
     {
         public DtmExportCtx() : base(null, new StreamingContext())
         {
-            FileName = GetSavedValue("Dtm/ExportFileName");
-            NazevZakazky = GetSavedValue("Dtm/ExportNazevZakazky");
-            Zpracovatel = GetSavedValue("Dtm/ExportZpracovatel");
-            OrganizaceZpracovatele = GetSavedValue("Dtm/ExportOrganizaceZpracovatele");
+            FileName = ReadFromRegistry("Dtm/ExportFileName");
+            NazevZakazky = ReadFromRegistry("Dtm/ExportNazevZakazky");
+            Zpracovatel = ReadFromRegistry("Dtm/ExportZpracovatel");
+            OrganizaceZpracovatele = ReadFromRegistry("Dtm/ExportOrganizaceZpracovatele");
+            DatumMereni = ReadFromRegistryDateTime("Dtm/ExportDatumMereni");
+            DatumZpracovani = ReadFromRegistryDateTime("Dtm/ExportDatumZpracovani");
+            AZI = ReadFromRegistry("Dtm/ExportAZI");
+            DatumOvereni = ReadFromRegistryDateTime("Dtm/ExportDatumOvereni");
+            CisloOvereni = ReadFromRegistry("Dtm/ExportCisloOvereni");
         }
-        string GetSavedValue(string key)
+
+        public void SaveValuesToRegistry()
+        {
+            SaveToRegistry(FileName, "Dtm/ExportFileName");
+            SaveToRegistry(NazevZakazky, "Dtm/ExportNazevZakazky");
+            SaveToRegistry(Zpracovatel, "Dtm/ExportZpracovatel");
+            SaveToRegistry(OrganizaceZpracovatele, "Dtm/ExportOrganizaceZpracovatele");
+            SaveToRegistry(DatumMereni.ToLongDateString(), "Dtm/ExportDatumMereni");
+            SaveToRegistry(DatumZpracovani.ToLongDateString(), "Dtm/ExportDatumZpracovani");
+            SaveToRegistry(AZI, "Dtm/ExportAZI");
+            SaveToRegistry(DatumOvereni.ToLongDateString(), "Dtm/ExportDatumOvereni");
+            SaveToRegistry(CisloOvereni, "Dtm/ExportCisloOvereni");
+        }
+
+        void SaveToRegistry(string value, string key)
+        {
+            SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, key, new ProgramOption(value));
+        }
+        DateTime ReadFromRegistryDateTime(string key)
+        {
+            var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, key);
+            var value = po.getString("");
+            return DateTime.TryParse(value, out var date) ? date : DateTime.Now;
+        }
+
+        string ReadFromRegistry(string key)
         {
             var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, key);
             return po.getString("");

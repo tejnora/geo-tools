@@ -18,7 +18,7 @@ namespace CAD.DTM.Elements
             {
                 switch (x.LocalName)
                 {
-                    case "VyskaNaTerenu":
+                    case "TypPrirodnihoPoloprirodnihoObjektu":
                         TypPrirodnihoPoloprirodnihoObjektu = int.Parse(x.InnerText);
                         break;
                 }

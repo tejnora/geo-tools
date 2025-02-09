@@ -8,5 +8,6 @@ namespace CAD.DTM
         IEnumerable<KeyValuePair<string, IDtmElementsGroup>> GetElementGroups();
         void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement);
         string AllocateUniqueId(string name);
+        DtmUdajeOVydeji UdajeOVydeji { get; set; }
     }
 }

@@ -29,7 +29,14 @@ namespace CAD.DTM.Elements
                         DruhPlotu = int.Parse(x.InnerText);
                         break;
                     case "HraniceJinehoObjektu":
-                        HraniceJinehoObjektu = bool.Parse(x.InnerText);
+                        {
+                            if (bool.TryParse(x.InnerText, out var value))
+                            {
+                                HraniceJinehoObjektu = value;
+                                continue;
+                            }
+                            HraniceJinehoObjektu = int.Parse(x.InnerText) == 1;
+                        }
                         break;
                 }
             }
