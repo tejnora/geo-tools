@@ -33,7 +33,7 @@ namespace CAD.DTM
 
         public string AllocateUniqueId(string name)
         {
-            return $"ID{_idAllocator}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
+            return $"ID{_idAllocator++}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
         }
 
         public DtmUdajeOVydeji UdajeOVydeji { get; set; }

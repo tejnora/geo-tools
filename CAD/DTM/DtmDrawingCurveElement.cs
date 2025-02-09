@@ -219,7 +219,7 @@ namespace CAD.DTM
             var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
             _curveGeometry = new DtmCurveGeometry
             {
-                Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point }
+                Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point.Clone() }
             };
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected);
