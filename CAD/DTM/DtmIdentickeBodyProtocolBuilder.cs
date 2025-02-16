@@ -16,7 +16,8 @@ namespace CAD.DTM
             public DtmPoint MezPoint { get; set; }
         }
         List<Data> _data = new List<Data>();
-
+        static double MezniPolohovaOdchylka = 0.239;
+        static double MezniVyskaSpevnenyPovrchOdchylka = 0.241;
         readonly IDtmMain _main;
         StringBuilder _sb = new StringBuilder();
         public DtmIdentickeBodyProtocolBuilder(IDtmMain main)
@@ -35,11 +36,11 @@ namespace CAD.DTM
         }
         void AddPoints()
         {
-            AddLine("č.b.(pův)     Y(pův)     X(pův) Z(pův) č.b.(měř)   Y(měř)     X(měř) Z(měř)");
+            AddLine("č.b.(pův)     Y(pův)     X(pův) Z(pův) č.b.(měř)     Y(měř)     X(měř) Z(měř)");
             foreach (var d in _data)
             {
-                AddLine($"{d.RefPointNumber.PadLeft(9)} {d.RefPoint.Y:#####0.00} {d.RefPoint.X:######0.00} {d.RefPoint.Z:###0.00} " +
-                        $"{d.MezPointNumber.PadLeft(9)} {d.MezPoint.Y:#####0.00} {d.MezPoint.X:######0.00} {d.MezPoint.Z:###0.00} ");
+                AddLine($"{d.RefPointNumber,9} {d.RefPoint.Y,10:0.00} {d.RefPoint.X,10:0.00} {d.RefPoint.Z,6:0.00} " +
+                        $"{d.MezPointNumber,9} {d.MezPoint.Y,10:0.00} {d.MezPoint.X,10:0.00} {d.MezPoint.Z,6:0.00} ");
             }
             AddLineSeparator();
         }
@@ -47,14 +48,15 @@ namespace CAD.DTM
         {
             AddLine("Rozdíly souřadnic (pův)-(měř)");
             AddLineSeparator();
-            AddLine("dvojice delta(y) delta(x) poloh.odchylka delta(p)<0.239 pro 3.tř.př.");
+            AddLine($"dvojice delta(y) delta(x) poloh.odchylka delta(p)<{MezniPolohovaOdchylka} pro 3.tř.př.");
             var i = 1;
             foreach (var data in _data)
             {
                 var dy = data.RefPoint.Y - data.MezPoint.Y;
                 var dx = data.RefPoint.X - data.MezPoint.X;
                 var p = Math.Sqrt(Math.Pow(dy, 2) + Math.Pow(dx, 2));
-                AddLine($"{i:0000000} {dy:0.000} {dx:0.000} {p:0.000}");
+                var nesplneno = p >= MezniPolohovaOdchylka ? "nesplněno" : "";
+                AddLine($"{i,7} {dy,8:0.000} {dx,8:0.000} {p,14:0.000} {nesplneno}");
                 i++;
             }
             AddLineSeparator();
@@ -62,7 +64,7 @@ namespace CAD.DTM
             var sx = SmerodatnaOdchylka(_data.Select(n => (n.RefPoint.X - n.MezPoint.X)).ToArray());
             var sy = SmerodatnaOdchylka(_data.Select(n => (n.RefPoint.Y - n.MezPoint.Y)).ToArray());
             var sxy = (sx + sy) / 2.0;
-            AddLine($"směrodatné odchylky souřadnic pro měření o stejné přesnosti (k=2): Sx={sy:0.###}, Sy={sx:0.###}");
+            AddLine($"směrodatné odchylky souřadnic pro měření o stejné přesnosti (k=2): Sx={sx:0.###}, Sy={sy:0.###}");
             AddLine($"výběrová směrodatná souřadnicová odchylka pro měření o stejné přesnosti: Sxy={sxy:0.###}");
             AddLineSeparator();
         }
@@ -71,17 +73,19 @@ namespace CAD.DTM
         {
             AddLine("Rozdíly výšek (pův)-(měř)");
             AddLineSeparator();
-            AddLine("dvojice delta(H) < 0.241m pro zp.povrch a vyšší přesnost < 0.34m pro zp.povrch a shod. přesnost");
+            AddLine($"dvojice delta(H) < {MezniVyskaSpevnenyPovrchOdchylka}m pro zp.povrch a vyšší přesnost < 0.34m pro zp.povrch a shod. přesnost");
             var i = 1;
             var sum = 0.0;
             foreach (var data in _data)
             {
                 var dz = data.RefPoint.Z - data.MezPoint.Z;
-                AddLine($"{i:0000000} {dz:0.000}");
+                var nesplnenoZpevneny = dz >= MezniVyskaSpevnenyPovrchOdchylka ? "nesplněno" : "";
+                AddLine($"{i,7} {dz,8:0.000} {nesplnenoZpevneny}");
                 sum += dz;
+                i++;
             }
             AddLine("-----------------------");
-            AddLine($"průměr {(sum / _data.Count):0.###}");
+            AddLine($"průměr {(sum / _data.Count),9:0.###}");
             AddLineSeparator();
             AddLine($"Kritérium přesnosti výšek pro 3.tř.př.: sigma(H)=0.12m pro zpev.povrch (0.36m pro nezp.povrch)");
             AddLineSeparator();
@@ -91,7 +95,6 @@ namespace CAD.DTM
 
         double SmerodatnaOdchylka(double[] values)
         {
-            //*
             var prumer = values.Sum() / values.Length;
             var res = 0.0;
             foreach (var value in values)
@@ -99,20 +102,8 @@ namespace CAD.DTM
                 var div = Math.Pow(prumer - value, 2);
                 res += div;
             }
-
             res /= (values.Length - 1);
             return Math.Sqrt(res);
-            /*/
-            var res = 0.0;
-            foreach (var value in values)
-            {
-                var div = Math.Pow(value, 2);
-                res += div;
-            }
-
-            res = res / values.Length;
-            return Math.Sqrt(res);
-            //*/
         }
         void InitTestData()
         {

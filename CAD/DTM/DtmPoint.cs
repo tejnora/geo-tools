@@ -25,7 +25,7 @@ namespace CAD.DTM
 
         public DtmPoint FlipValues()
         {
-            return new DtmPoint { X = -X, Y = -Y, Z = Z };
+            return new DtmPoint { X = -Y, Y = -X, Z = Z };
         }
 
         public string ExportToDtm(int srsDimension)
