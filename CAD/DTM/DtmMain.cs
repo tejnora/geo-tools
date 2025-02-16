@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using CAD.DTM.Elements;
 
 namespace CAD.DTM
 {
@@ -12,9 +13,20 @@ namespace CAD.DTM
     {
         readonly IDictionary<string, IDtmElementsGroup> _groups = new Dictionary<string, IDtmElementsGroup>();
         int _idAllocator = 1;
+
+        public DtmMain()
+        {
+            IndeticalPointsMapping = new Dictionary<string, string>();
+        }
         public void AddElementGroup(string elementType, IDtmElementsGroup group)
         {
             _groups.Add(elementType, group);
+        }
+
+        public IDtmElementsGroup getElementsGroup(string elementType)
+        {
+            _groups.TryGetValue(elementType, out var group);
+            return group;
         }
 
         public IEnumerable<KeyValuePair<string, IDtmElementsGroup>> GetElementGroups()
@@ -37,6 +49,20 @@ namespace CAD.DTM
         }
 
         public DtmUdajeOVydeji UdajeOVydeji { get; set; }
+        public Dictionary<string, string> IndeticalPointsMapping { get; set; }
+        public DtmIdentickyBodElement GetIdentickyBod(string cislo, bool referencni)
+        {
+            var identickeBody = getElementsGroup("IdentickyBod");
+            if (identickeBody == null)
+                return null;
+            var point = identickeBody.GetElementGroups().First(n =>
+            {
+                var p = n as DtmIdentickyBodElement;
+                return p.IsReferencePoint == referencni && !p.IsDeleted && cislo == p.CisloBodu;
+            });
+            return (DtmIdentickyBodElement)point;
+        }
+
 
         public bool Import(DtmImportCtx ctx)
         {
@@ -80,7 +106,7 @@ namespace CAD.DTM
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);
                 element.Geometry = new DtmPointGeometry
                 {
-                    Point = new DtmPoint(items[1], items[2], items[3])
+                    Point = new DtmPoint("-" + items[1], "-" + items[2], items[3])
                 };
                 element.CisloBodu = items[0];
                 AddElementIfNotExist(ctx.PointTypeSelected, element);

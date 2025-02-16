@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using GeoBase.Utils;
 using GeoBase;
-using GeoBase.Localization;
 using System.Collections.ObjectModel;
 using System.Linq;
 using CAD.DTM.Configuration;

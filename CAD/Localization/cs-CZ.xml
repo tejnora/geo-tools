@@ -1,171 +1,175 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Dictionary EnglishName="English" CultureName="English" Culture="en-US">
 	<Value Id="0" Title="GeoCad" Width="855" Height="800" />
-  <Value Id="1" Header="Soubor"/>
-  <Value Id="2" Header="Nový" ToolTip="Nový dokument"/>
-  <Value Id="3" Header="Otevřít" ToolTip="Otevří dokument"/>
-  <Value Id="4" Header="Uložit" ToolTip="Uložit dokument"/>
-  <Value Id="5" Header="Uložit jako" ToolTip="Uložit jako dokument"/>
-  <Value Id="6" Header="Zavřít" ToolTip="Zavřít dokument"/>
-  <Value Id="7" Header="Zpět" ToolTip="Zpět"/>
-  <Value Id="8" Header="Dopředu" ToolTip="Dopředu"/>
-  <Value Id="9" Header="Výběr" ToolTip="Výběr"/>
-  <Value Id="10" Header="Posun obrazovky" ToolTip="Posun obrazovky"/>
-  <Value Id="11" Header="Posun" ToolTip="Posun vybraných oběktů"/>
-  <Value Id="12" Header="Celkový pohled"/>
-  <Value Id="13" Header="Čára"/>
-  <Value Id="14" Header="Multičára"/>
-  <Value Id="15" Header="Kružnice dva body"/>
-  <Value Id="16" Header="Aktivní bod"/>
-  <Value Id="17" Header="Přidej hladinu"/>
-  <Value Id="18" Header="Odstrň hladinu"/>
-  <Value Id="19" Header="Nastav hladinu"/>
-  <Value Id="20" Header="Nahraj VFK"/>
-  <Value Id="21" Header="Uloz VFK"/>
-  <Value Id="22" Header="Zavři VFK"/>
-  <Value Id="23" Header="Editace dotcenych parcel"/>
-  <Value Id="24" Header="Seznam souradnic"/>
-  <Value Id="25" Header="Nastavení elementů"/>
-  <Value Id="26" Header="Nastavení"/>
-  <Value Id="27" Header="Ulož pozici a velikost"/>
-  <Value Id="28" Header="Nástroje"/>
-  <Value Id="30" Header="VFK"/>
-  <Value Id="31" Content="Jméno:"/>
-  <Value Id="32" Content="Soubor:"/>
-  <Value Id="33" Content="Číslo kú(FSU):"/>
-  <Value Id="34" Content="Katastrální pracoviště:"/>
-  <Value Id="35" Content="Obec:"/>
-  <Value Id="36" Content="Katastrální uzemí:"/>
-  <Value Id="37" Content="Pořadové číslo kú:"/>
-  <Value Id="38" Content="Číselná řada:"/>
-  <Value Id="39" Content="Vztažné měřítko"/>
-  <Value Id="40" Content="Souřadnicový systém:"/>
-  <Value Id="41" Content="Typ GP:"/>
-  <Value Id="42" Content="Číslo ZPMZ:"/>
-  <Value Id="43" Content="Potvrdit"/>
-  <Value Id="44" Content="Zrušit"/>
-  <Value Id="45" Title="Generování SIP a výkazů" Width="500" Height="400"/>
-  <Value Id="46" Header="Gen. SIP"/>
-  <Value Id="47" Header="Seznam nových a dotčených parcel"/>
-  <Value Id="48" Header="Kat. uzemí"/>
-  <Value Id="49" Header="Číslo parcely"/>
-  <Value Id="49" Header="Typ"/>
-  <Value Id="50" Header="Generování SIP a výkazů"/>
-  <Value Id="51" Header="Informace o parcele"/>
-  <Value Id="52" Content="Výměra:"/>
-  <Value Id="53" Content="FSÚ:"/>
-  <Value Id="54" Content="Druh pozemku:"/>
-  <Value Id="55" Content="Využití pozemku:"/>
-  <Value Id="56" Content="Způsob určené výměry:"/>
-  <Value Id="57" Content="Mapvý list:"/>
-  <Value Id="58" Content="List vlastnicví:"/>
-  <Value Id="59" Header="BPEJ"/>
-  <Value Id="60" Header="BPEJ"/>
-  <Value Id="61" Header="Výměra"/>
-  <Value Id="62" Header="Nový BPEJ díl"/>
-  <Value Id="63" Content="BPEJ:"/>
-  <Value Id="63" Content="Výměra:"/>
-  <Value Id="64" Content="Přidej:"/>
-  <Value Id="65" Content="Smazat:"/>
-  <Value Id="66" Content="Smazat vše:"/>
-  <Value Id="67" Content="Přidat rušenou parcelu:"/>
-  <Value Id="68" Content="Přidat novou parcelu:"/>
-  <Value Id="69" Content="Přidat aktualizovanou parcelu:"/>
-  <Value Id="70" Content="Odebrat:"/>
-  <Value Id="71" Content="Potvrdit"/>
-  <Value Id="72" Content="Zrušit"/>
-  <Value Id="71" Content="Vým. BPEJ:"/>
-  <Value Id="72" Content="Vým. nebon:"/>
-  <Value Id="73" Title="Přidaní nových bodů"/>
-  <Value Id="74" Content="Vym. nebon:"/>
-  <Value Id="75" Content="FSÚ:"/>
-  <Value Id="76" Content="Číslo parcely:"/>
-  <Value Id="77" Content="Přidej parcelu"/>
-  <Value Id="78" Content="Konec přidávaní"/>
-  <Value Id="79" Content="KN - pozemková parcela"/>
-  <Value Id="80" Content="KN - stavební parcela"/>
-  <Value Id="81" Text="Položka nemůže být prázdná."/>
-  <Value Id="82" Text="ZPMZ musí mít 4 čísel."/>
-  <Value Id="83" Header="O programu"/>
-  <Value Id="84" Header="Nápověda"/>
-  <Value Id="85" Content="Cíl importu"/>
-  <Value Id="86" Content="Dosavadní stav"/>
-  <Value Id="87" Content="Nový stav"/>
-  <Value Id="88" Header="Kružnice s centrem"/>
-  <Value Id="89" Header="Textové pole"/>
-  <Value Id="90" Text="Opravdu chcete odstranit bod #PointNumber#?" Caption="Pozor"/>
-  <Value Id="91" Text="Bod #PointNumber# nemůže být odstraněn. Pravděpodobne jsou na něj navázané jiné objekty, nebo byl vytvořen při importu." Caption="Pozor"/>
-  <Value Id="92" Text="Jiz je nainportovany jiny VFK soubor. Vsechny data budou ztracena.\n Prejete si pokracovat" Caption="Pozor"/>
-  <Value Id="93" Text="Při exportu nastala chyba." Caption="Pozor"/>
-  <Value Id="94" Content="Text:"/>
-  <Value Id="95" Content="Úhel:"/>
-  <Value Id="96" Content="Velikost:" ToolTip="Velkost v metrech"/>
-  <Value Id="97" Text="Při importu řadku s hodnoutou '#value#' nastala chyba:#msg#.  Nahrávání bodů bude přerušeno." Caption="Pozor"/>
-  <Value Id="98" Text="číslo bodu nemá požadovanou hodnotu"/>
-  <Value Id="99" Text="řádek nemá požadovaný poček položek"/>
-  <Value Id="100" Text="souřadnice obrazu X nemá požadovanou hodnotu"/>
-  <Value Id="101" Text="souřadnice obrazu Y nemá požadovanou hodnotu"/>
-  <Value Id="102" Text="souřadnice polohy X nemá požadovanou hodnotu"/>
-  <Value Id="103" Text="souřadnice polohy Y nemá požadovanou hodnotu"/>
-  <Value Id="104" Text="kód kvality nemá požadovanou hodnotu"/>
-  <Value Id="105" Text="Došklo k chybě v programu. Prosím kontaktuje výrobce produktu." Caption="Pozor"/>
-  <Value Id="106" Header="Export"/>
-  <Value Id="107" Text="Při exportu došlo k chybě:#msg#" Caption="Pozor"/>
-  <Value Id="108" Text="Text nemá požadovanou formu..." Caption="Pozor"/>
-  <Value Id="109" Text="Nepodařilo se načist elementy vfk. Pravděpodobne chybí soubor s elementy. Kontaktuje výrobce." Caption="Pozor"/>
-  <Value Id="110" Text="Při importu souboru nastala chyba." Caption="Pozor"/>
-  <Value Id="111" ToolTip="Zobrazeni, vypnuti souřadnic."/>
-  <Value Id="112" ToolTip="Manažer vrstev."/>
-  <Value Id="113" Content="Rozbalit vše"/>
-  <Value Id="114" Content="Sbalit vše"/>
-  <Value Id="115" Content="Vybrat vše"/>
-  <Value Id="116" Content="Vypnout vše"/>
-  <Value Id="117" Content="Vrstvy výkresu:"/>
-  <Value Id="118" Lines="Linie" Marks="Značky" Numbers="Texty"/>
-  <Value Id="119" Title="Manažer vrstev"/>
-  <Value Id="120" Title="Export vfk"/>
-  <Value Id="121" Title="Import vfk"/>
-  <Value Id="122" Title="Export info"/>
-  <Value Id="123" Title="Import info"/>
-  <Value Id="124" Content="Úplné číslo bodu:"/>
-  <Value Id="125" Header="Souřadnice obrazu:"/>
-  <Value Id="126" Content="Y:"/>
-  <Value Id="127" Content="X:"/>
-  <Value Id="128" Header="Souřadnice polohy:"/>
-  <Value Id="129" Content="Kód chyby:"/>
-  <Value Id="130" Content="Kód katastrálního uzemí měření:"/>
-  <Value Id="131" Content="Číslo zpmz které uřčilo souřadnice:"/>
-  <Value Id="132" Text="Nelze uložit změny. Nějaká hodnota je špatne vyplněná." Caption="Pozor"/>
-  <Value Id="133" Title="Export souřadnic"/>
-  <Value Id="134" Title="Exporotvat souřadnice:"/>
-  <Value Id="135" Title="Připojit kody kvality"/>
-  <Value Id="136" Content="Souradnice obrazu"/>
-  <Value Id="137" Content="Souradnice polohy"/>
-  <Value Id="138" Content="Export"/>
-  <Value Id="139" ToolTip="Výpočet výměr"/>
-  <Value Id="140" Content="Poslední výměra:"/>
-  <Value Id="141" Content="Poslední obvod:"/>
-  <Value Id="142" Text="Bod #number# nemá ověřené souřadnice polohy a nebude exportován. Přejete si pokračovat?" Caption="Pozor"/>
-  <Value Id="143" Title="Importovat souřadnice:"/>
-  <Value Id="144" Title="Připojit kody kvality"/>
-  <Value Id="145" Content="Import"/>
-  <Value Id="146" Title="Import souřadnic"/>
-  <Value Id="147" Content="Budova je součástí pozemku"/>
-  <Value Id="148" Header="Import"/>
-  <Value Id="147" Header="Export"/>
-  <Value Id="148" Content="Nazev zakazky:"/>
-  <Value Id="149" Content="Soubor:"/>
-  <Value Id="150" Content="Zpracovatel:"/>
-  <Value Id="151" Content="Organizace zpracovatele:"/>
-  <Value Id="152" Content="Datum mereni:"/>
-  <Value Id="153" Content="Datum zpracovani:"/>
-  <Value Id="154" Content="AIZ:"/>
-  <Value Id="155" Content="Datum overeni:"/>
-  <Value Id="156" Content="Cislo overeni:"/>
-  <Value Id="157" Header="Importovat body"/>
-  <Value Id="158" Content="Element type:"/>
-	
-  <Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
-  <Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>
-  <Value Id="E3" Text="Bod #number# už v souřadnicích existuje."/>
+	<Value Id="1" Header="Soubor"/>
+	<Value Id="2" Header="Nový" ToolTip="Nový dokument"/>
+	<Value Id="3" Header="Otevřít" ToolTip="Otevří dokument"/>
+	<Value Id="4" Header="Uložit" ToolTip="Uložit dokument"/>
+	<Value Id="5" Header="Uložit jako" ToolTip="Uložit jako dokument"/>
+	<Value Id="6" Header="Zavřít" ToolTip="Zavřít dokument"/>
+	<Value Id="7" Header="Zpět" ToolTip="Zpět"/>
+	<Value Id="8" Header="Dopředu" ToolTip="Dopředu"/>
+	<Value Id="9" Header="Výběr" ToolTip="Výběr"/>
+	<Value Id="10" Header="Posun obrazovky" ToolTip="Posun obrazovky"/>
+	<Value Id="11" Header="Posun" ToolTip="Posun vybraných oběktů"/>
+	<Value Id="12" Header="Celkový pohled"/>
+	<Value Id="13" Header="Čára"/>
+	<Value Id="14" Header="Multičára"/>
+	<Value Id="15" Header="Kružnice dva body"/>
+	<Value Id="16" Header="Aktivní bod"/>
+	<Value Id="17" Header="Přidej hladinu"/>
+	<Value Id="18" Header="Odstrň hladinu"/>
+	<Value Id="19" Header="Nastav hladinu"/>
+	<Value Id="20" Header="Nahraj VFK"/>
+	<Value Id="21" Header="Uloz VFK"/>
+	<Value Id="22" Header="Zavři VFK"/>
+	<Value Id="23" Header="Editace dotcenych parcel"/>
+	<Value Id="24" Header="Seznam souradnic"/>
+	<Value Id="25" Header="Nastavení elementů"/>
+	<Value Id="26" Header="Nastavení"/>
+	<Value Id="27" Header="Ulož pozici a velikost"/>
+	<Value Id="28" Header="Nástroje"/>
+	<Value Id="30" Header="VFK"/>
+	<Value Id="31" Content="Jméno:"/>
+	<Value Id="32" Content="Soubor:"/>
+	<Value Id="33" Content="Číslo kú(FSU):"/>
+	<Value Id="34" Content="Katastrální pracoviště:"/>
+	<Value Id="35" Content="Obec:"/>
+	<Value Id="36" Content="Katastrální uzemí:"/>
+	<Value Id="37" Content="Pořadové číslo kú:"/>
+	<Value Id="38" Content="Číselná řada:"/>
+	<Value Id="39" Content="Vztažné měřítko"/>
+	<Value Id="40" Content="Souřadnicový systém:"/>
+	<Value Id="41" Content="Typ GP:"/>
+	<Value Id="42" Content="Číslo ZPMZ:"/>
+	<Value Id="43" Content="Potvrdit"/>
+	<Value Id="44" Content="Zrušit"/>
+	<Value Id="45" Title="Generování SIP a výkazů" Width="500" Height="400"/>
+	<Value Id="46" Header="Gen. SIP"/>
+	<Value Id="47" Header="Seznam nových a dotčených parcel"/>
+	<Value Id="48" Header="Kat. uzemí"/>
+	<Value Id="49" Header="Číslo parcely"/>
+	<Value Id="49" Header="Typ"/>
+	<Value Id="50" Header="Generování SIP a výkazů"/>
+	<Value Id="51" Header="Informace o parcele"/>
+	<Value Id="52" Content="Výměra:"/>
+	<Value Id="53" Content="FSÚ:"/>
+	<Value Id="54" Content="Druh pozemku:"/>
+	<Value Id="55" Content="Využití pozemku:"/>
+	<Value Id="56" Content="Způsob určené výměry:"/>
+	<Value Id="57" Content="Mapvý list:"/>
+	<Value Id="58" Content="List vlastnicví:"/>
+	<Value Id="59" Header="BPEJ"/>
+	<Value Id="60" Header="BPEJ"/>
+	<Value Id="61" Header="Výměra"/>
+	<Value Id="62" Header="Nový BPEJ díl"/>
+	<Value Id="63" Content="BPEJ:"/>
+	<Value Id="63" Content="Výměra:"/>
+	<Value Id="64" Content="Přidej:"/>
+	<Value Id="65" Content="Smazat:"/>
+	<Value Id="66" Content="Smazat vše:"/>
+	<Value Id="67" Content="Přidat rušenou parcelu:"/>
+	<Value Id="68" Content="Přidat novou parcelu:"/>
+	<Value Id="69" Content="Přidat aktualizovanou parcelu:"/>
+	<Value Id="70" Content="Odebrat:"/>
+	<Value Id="71" Content="Potvrdit"/>
+	<Value Id="72" Content="Zrušit"/>
+	<Value Id="71" Content="Vým. BPEJ:"/>
+	<Value Id="72" Content="Vým. nebon:"/>
+	<Value Id="73" Title="Přidaní nových bodů"/>
+	<Value Id="74" Content="Vym. nebon:"/>
+	<Value Id="75" Content="FSÚ:"/>
+	<Value Id="76" Content="Číslo parcely:"/>
+	<Value Id="77" Content="Přidej parcelu"/>
+	<Value Id="78" Content="Konec přidávaní"/>
+	<Value Id="79" Content="KN - pozemková parcela"/>
+	<Value Id="80" Content="KN - stavební parcela"/>
+	<Value Id="81" Text="Položka nemůže být prázdná."/>
+	<Value Id="82" Text="ZPMZ musí mít 4 čísel."/>
+	<Value Id="83" Header="O programu"/>
+	<Value Id="84" Header="Nápověda"/>
+	<Value Id="85" Content="Cíl importu"/>
+	<Value Id="86" Content="Dosavadní stav"/>
+	<Value Id="87" Content="Nový stav"/>
+	<Value Id="88" Header="Kružnice s centrem"/>
+	<Value Id="89" Header="Textové pole"/>
+	<Value Id="90" Text="Opravdu chcete odstranit bod #PointNumber#?" Caption="Pozor"/>
+	<Value Id="91" Text="Bod #PointNumber# nemůže být odstraněn. Pravděpodobne jsou na něj navázané jiné objekty, nebo byl vytvořen při importu." Caption="Pozor"/>
+	<Value Id="92" Text="Jiz je nainportovany jiny VFK soubor. Vsechny data budou ztracena.\n Prejete si pokracovat" Caption="Pozor"/>
+	<Value Id="93" Text="Při exportu nastala chyba." Caption="Pozor"/>
+	<Value Id="94" Content="Text:"/>
+	<Value Id="95" Content="Úhel:"/>
+	<Value Id="96" Content="Velikost:" ToolTip="Velkost v metrech"/>
+	<Value Id="97" Text="Při importu řadku s hodnoutou '#value#' nastala chyba:#msg#.  Nahrávání bodů bude přerušeno." Caption="Pozor"/>
+	<Value Id="98" Text="číslo bodu nemá požadovanou hodnotu"/>
+	<Value Id="99" Text="řádek nemá požadovaný poček položek"/>
+	<Value Id="100" Text="souřadnice obrazu X nemá požadovanou hodnotu"/>
+	<Value Id="101" Text="souřadnice obrazu Y nemá požadovanou hodnotu"/>
+	<Value Id="102" Text="souřadnice polohy X nemá požadovanou hodnotu"/>
+	<Value Id="103" Text="souřadnice polohy Y nemá požadovanou hodnotu"/>
+	<Value Id="104" Text="kód kvality nemá požadovanou hodnotu"/>
+	<Value Id="105" Text="Došklo k chybě v programu. Prosím kontaktuje výrobce produktu." Caption="Pozor"/>
+	<Value Id="106" Header="Export"/>
+	<Value Id="107" Text="Při exportu došlo k chybě:#msg#" Caption="Pozor"/>
+	<Value Id="108" Text="Text nemá požadovanou formu..." Caption="Pozor"/>
+	<Value Id="109" Text="Nepodařilo se načist elementy vfk. Pravděpodobne chybí soubor s elementy. Kontaktuje výrobce." Caption="Pozor"/>
+	<Value Id="110" Text="Při importu souboru nastala chyba." Caption="Pozor"/>
+	<Value Id="111" ToolTip="Zobrazeni, vypnuti souřadnic."/>
+	<Value Id="112" ToolTip="Manažer vrstev."/>
+	<Value Id="113" Content="Rozbalit vše"/>
+	<Value Id="114" Content="Sbalit vše"/>
+	<Value Id="115" Content="Vybrat vše"/>
+	<Value Id="116" Content="Vypnout vše"/>
+	<Value Id="117" Content="Vrstvy výkresu:"/>
+	<Value Id="118" Lines="Linie" Marks="Značky" Numbers="Texty"/>
+	<Value Id="119" Title="Manažer vrstev"/>
+	<Value Id="120" Title="Export vfk"/>
+	<Value Id="121" Title="Import vfk"/>
+	<Value Id="122" Title="Export info"/>
+	<Value Id="123" Title="Import info"/>
+	<Value Id="124" Content="Úplné číslo bodu:"/>
+	<Value Id="125" Header="Souřadnice obrazu:"/>
+	<Value Id="126" Content="Y:"/>
+	<Value Id="127" Content="X:"/>
+	<Value Id="128" Header="Souřadnice polohy:"/>
+	<Value Id="129" Content="Kód chyby:"/>
+	<Value Id="130" Content="Kód katastrálního uzemí měření:"/>
+	<Value Id="131" Content="Číslo zpmz které uřčilo souřadnice:"/>
+	<Value Id="132" Text="Nelze uložit změny. Nějaká hodnota je špatne vyplněná." Caption="Pozor"/>
+	<Value Id="133" Title="Export souřadnic"/>
+	<Value Id="134" Title="Exporotvat souřadnice:"/>
+	<Value Id="135" Title="Připojit kody kvality"/>
+	<Value Id="136" Content="Souradnice obrazu"/>
+	<Value Id="137" Content="Souradnice polohy"/>
+	<Value Id="138" Content="Export"/>
+	<Value Id="139" ToolTip="Výpočet výměr"/>
+	<Value Id="140" Content="Poslední výměra:"/>
+	<Value Id="141" Content="Poslední obvod:"/>
+	<Value Id="142" Text="Bod #number# nemá ověřené souřadnice polohy a nebude exportován. Přejete si pokračovat?" Caption="Pozor"/>
+	<Value Id="143" Title="Importovat souřadnice:"/>
+	<Value Id="144" Title="Připojit kody kvality"/>
+	<Value Id="145" Content="Import"/>
+	<Value Id="146" Title="Import souřadnic"/>
+	<Value Id="147" Content="Budova je součástí pozemku"/>
+	<Value Id="148" Header="Import ..."/>
+	<Value Id="147" Header="Export ..."/>
+	<Value Id="148" Content="Nazev zakazky:"/>
+	<Value Id="149" Content="Soubor:"/>
+	<Value Id="150" Content="Zpracovatel:"/>
+	<Value Id="151" Content="Organizace zpracovatele:"/>
+	<Value Id="152" Content="Datum mereni:"/>
+	<Value Id="153" Content="Datum zpracovani:"/>
+	<Value Id="154" Content="AIZ:"/>
+	<Value Id="155" Content="Datum overeni:"/>
+	<Value Id="156" Content="Cislo overeni:"/>
+	<Value Id="157" Header="Importovat body ..."/>
+	<Value Id="158" Content="Element type:"/>
+	<Value Id="159" Header="Identicke body ..."/>
+	<Value Id="160" Content="Automaticky namapuj"/>
+	<Value Id="161" Content="Zavřít"/>
+	<Value Id="162" Content="Zobraz protokol"/>
+
+	<Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
+	<Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>
+	<Value Id="E3" Text="Bod #number# už v souřadnicích existuje."/>
 </Dictionary>

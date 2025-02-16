@@ -18,6 +18,7 @@
         <RoutedCommand x:Key="ImportDtm" />
         <RoutedCommand x:Key="ExportDtm" />
         <RoutedCommand x:Key="ImportPointsDtm" />
+        <RoutedCommand x:Key="IdentickeBodyMapovaniDtm" />
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource ImportVFK}"
@@ -49,7 +50,9 @@
         <CommandBinding Command="{StaticResource ImportPointsDtm}"
                         Executed="OnImportPointsDtm"
                         CanExecute="CanImportPointsDtm" />
-
+        <CommandBinding Command="{StaticResource IdentickeBodyMapovaniDtm}"
+                        Executed="OnIdentickeBodyMapovaniDtm"
+                        CanExecute="CanIdentickeBodyMapovaniDtm" />
     </Window.CommandBindings>
     <DockPanel LastChildFill="true">
         <Menu DockPanel.Dock="Top"
@@ -203,9 +206,10 @@
                           Command="{StaticResource GenerateSIPVFK}" />
             </MenuItem>
             <MenuItem Header="DTM">
-                <MenuItem loc:Translate.Uid="148" Header="{loc:Translate Import}" Command="{StaticResource ImportDtm}" />
-                <MenuItem loc:Translate.Uid="147" Header="{loc:Translate Export}" Command="{StaticResource ExportDtm}" />
-                <MenuItem loc:Translate.Uid="157" Header="{loc:Translate Import Points}" Command="{StaticResource ImportPointsDtm}" />
+                <MenuItem loc:Translate.Uid="148" Header="{loc:Translate Import ...}" Command="{StaticResource ImportDtm}" />
+                <MenuItem loc:Translate.Uid="147" Header="{loc:Translate Export ...}" Command="{StaticResource ExportDtm}" />
+                <MenuItem loc:Translate.Uid="157" Header="{loc:Translate Import Points ...}" Command="{StaticResource ImportPointsDtm}" />
+                <MenuItem loc:Translate.Uid="159" Header="{loc:Translate Identicke body ...}" Command="{StaticResource IdentickeBodyMapovaniDtm}" />
             </MenuItem>
             <MenuItem loc:Translate.Uid="26"
                       Header="{loc:Translate Options}">

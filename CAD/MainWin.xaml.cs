@@ -413,5 +413,17 @@ namespace CAD
             var doc = GetDocument();
             args.CanExecute = doc != null && doc.DataModel.ActiveLayer is DtmDrawingLayerMain;
         }
+
+        void OnIdentickeBodyMapovaniDtm(object sender, ExecutedRoutedEventArgs e)
+        {
+            var doc = GetDocument();
+            doc.ShowIdetickeBodyMapovaniDialog();
+        }
+
+        void CanIdentickeBodyMapovaniDtm(object sender, CanExecuteRoutedEventArgs args)
+        {
+            var doc = GetDocument();
+            args.CanExecute = doc != null && doc.DataModel.ActiveLayer is DtmDrawingLayerMain;
+        }
     }
 }

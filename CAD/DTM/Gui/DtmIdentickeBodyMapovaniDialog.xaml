@@ -1,0 +1,37 @@
+﻿<gui:DialogBase x:Class="CAD.DTM.Gui.DtmIdentickeBodyMapovaniDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
+                xmlns:localization="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+                mc:Ignorable="d" 
+                MinHeight="200"
+                MinWidth="200">
+    <gui:DialogBase.DialogContent>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Path=IdentickeBody}" HorizontalScrollBarVisibility="Hidden" 
+                  SelectionMode="Extended" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="200"  Header="Referencni body" Binding="{Binding Path=ReferencniBod}" IsReadOnly="True"/>
+                <DataGridComboBoxColumn Width="200" Header="Namerene body" SelectedItemBinding="{Binding Path=NamerenyBod}">
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.NamereneBody, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.NamereneBody, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </gui:DialogBase.DialogContent>
+    <gui:DialogBase.CustomButtons>
+        <Button localization:Translate.Uid="43" Content="{localization:Translate Ok}" Click="OnConfirm" />
+        <Button localization:Translate.Uid="44" Content="{localization:Translate Cancel}" Click="OnCancel" />
+        <Button localization:Translate.Uid="160" Content="{localization:Translate AutoMap}" Click="OnAutoMap" />
+        <Button localization:Translate.Uid="162" Content="{localization:Translate Show protocol}" Click="OnShowProtocol" />
+    </gui:DialogBase.CustomButtons>
+</gui:DialogBase>

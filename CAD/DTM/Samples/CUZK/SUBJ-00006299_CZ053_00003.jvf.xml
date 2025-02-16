@@ -1,0 +1,2544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<JVFDTM xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="objtyp">
+  <DataJVFDTM>
+    <VerzeJVFDTM xmlns="cmn">1.4.3</VerzeJVFDTM>
+    <DatumZapisu xmlns="cmn">2024-05-30T10:39:40.5063813+02:00</DatumZapisu>
+    <TypZapisu xmlns="cmn">změnové věty</TypZapisu>
+    <Data>
+      <VyskovyBodNaTerenu>
+        <ObjektovyTypNazev code_base="0100000219" code_suffix="01" xmlns="vybote">výškový bod na terénu</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="vybote">Geodetické prvky</KategorieObjektu>
+        <SkupinaObjektu xmlns="vybote">Podrobný bod</SkupinaObjektu>
+        <ObsahovaCast xmlns="vybote">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="vybote">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5295499+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5295499+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <VyskaNaTerenu xmlns="atr">220.28</VyskaNaTerenu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID1_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646075.45 -1060561.57 220.28</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5439909+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5439909+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <VyskaNaTerenu xmlns="atr">220.28</VyskaNaTerenu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID2_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646056.19 -1060555.82 220.28</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5449446+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5449446+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <VyskaNaTerenu xmlns="atr">220.42</VyskaNaTerenu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID3_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646065.71 -1060558.52 220.42</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </VyskovyBodNaTerenu>
+      <HranicePrirodnihoPoloprirodnihoObjektu>
+        <ObjektovyTypNazev code_base="0100000305" code_suffix="02" xmlns="hrappo">hranice přírodního a polopřírodního objektu</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="hrappo">Konstrukční prvky objektů</KategorieObjektu>
+        <SkupinaObjektu xmlns="hrappo">Základní konstrukční prvek</SkupinaObjektu>
+        <ObsahovaCast xmlns="hrappo">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="hrappo">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5640358+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5640358+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypPrirodnihoPoloprirodnihoObjektu xmlns="atr">5</TypPrirodnihoPoloprirodnihoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID4_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646075.16 -1060560.49 220.22 -646074.73 -1060560.78 220.22 -646073.04 -1060561.05 220.25 -646071.81 -1060561.48 220.27 -646070.59 -1060562.21 220.29 -646069.7 -1060562.27 220.32 -646068.38 -1060560.94 220.26 -646067.67 -1060559.82 220.38 -646068.15 -1060557.56 220.35 -646075.46 -1060559.55 220.2 -646075.16 -1060560.49 220.22</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5744229+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5744229+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypPrirodnihoPoloprirodnihoObjektu xmlns="atr">5</TypPrirodnihoPoloprirodnihoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID5_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.65 -1060562.27 219.93 -646079.93 -1060563.29 220.11 -646080.76 -1060565.03 220.18 -646082.01 -1060566.15 220.13 -646082.16 -1060567.01 220.07 -646082.63 -1060567.2 220.01 -646083.64 -1060567.06 219.92</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5754215+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5754215+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypPrirodnihoPoloprirodnihoObjektu xmlns="atr">5</TypPrirodnihoPoloprirodnihoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID6_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646052.47 -1060554.75 220.25 -646051.36 -1060554.62 220.21 -646049.92 -1060559.31 220.36 -646050.94 -1060559.86 220.27 -646051.69 -1060559.75 220.25 -646053.12 -1060555.37 220.27 -646052.47 -1060554.75 220.25</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5754215+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5754215+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypPrirodnihoPoloprirodnihoObjektu xmlns="atr">5</TypPrirodnihoPoloprirodnihoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID7_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.79 -1060556.49 220.36 -646080.29 -1060557.7 220.21 -646079.13 -1060557.62 220.25 -646077.53 -1060557.03 220.25 -646077.47 -1060555.51 220.29</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </HranicePrirodnihoPoloprirodnihoObjektu>
+      <PodrobnyBodZPS>
+        <ObjektovyTypNazev code_base="0100000218" code_suffix="01" xmlns="pobzps">podrobný bod ZPS</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="pobzps">Geodetické prvky</KategorieObjektu>
+        <SkupinaObjektu xmlns="pobzps">Podrobný bod</SkupinaObjektu>
+        <ObsahovaCast xmlns="pobzps">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="pobzps">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5906425+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5906425+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">59</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID8_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646074.73 -1060560.78 220.22</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5926372+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5926372+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">60</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID9_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646075.16 -1060560.49 220.22</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5926372+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5926372+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">12</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID10_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646073.04 -1060561.05 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5926372+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5926372+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">61</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID11_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646075.46 -1060559.55 220.2</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5926372+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5926372+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">11</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID12_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646071.81 -1060561.48 220.27</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5936337+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5936337+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">14</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID13_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646070.59 -1060562.21 220.29</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5941365+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5941365+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">16</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID14_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646069.7 -1060562.27 220.32</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5941365+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5941365+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">15</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID15_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646068.38 -1060560.94 220.26</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5946768+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5946768+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">45</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID16_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646068.15 -1060557.56 220.35</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5948795+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5948795+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">67</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID17_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646084 -1060560.4 219.88</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">d</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <ID>53000330011508880</ID>
+                <IDZmeny>PGAD-18BA0FC2-1465-45B0-BB70-A67A148F2412</IDZmeny>
+                <PopisObjektu>-</PopisObjektu>
+                <IDEditora>SUBJ-00003933</IDEditora>
+                <DatumVkladu>2024-05-17T15:30:27</DatumVkladu>
+                <VkladOsoba>dummy</VkladOsoba>
+                <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+                <ZmenaOsoba />
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr" />
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID53000330011508880_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646083.98 -1060560.45 219.88</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5953759+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5953759+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">9</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID18_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646064.69 -1060564.01 220.39</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5953759+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5953759+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">10</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID19_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646068.45 -1060565.05 220.33</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5953759+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5953759+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">13</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID20_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646076.38 -1060565.02 220.26</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5953759+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5953759+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">68</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID21_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.79 -1060556.49 220.36</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5965574+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5965574+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">19</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID22_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646052.38 -1060548.11 220.16</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5965574+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5965574+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">46</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID23_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646067.67 -1060559.82 220.38</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5965574+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5965574+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">20</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID24_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646058.2 -1060549.82 220.24</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5965574+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5965574+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">22</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID25_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646059.76 -1060550.51 220.29</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5965574+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5965574+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">21</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID26_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646059.64 -1060550.26 220.24</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5975539+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5975539+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">25</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID27_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646068.06 -1060566.22 220.36</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5975539+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5975539+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">40</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID28_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646062.96 -1060554.42 220.47</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5975539+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5975539+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">24</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID29_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646073.26 -1060567.84 220.36</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5975539+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5975539+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">41</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID30_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646067.25 -1060552.39 220.45</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5975539+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5975539+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">23</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID31_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646075.28 -1060568.47 220.3</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">37</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID32_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646079.86 -1060569.85 220.06</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">17</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID33_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.89 -1060566.45 220.13</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">18</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID34_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.76 -1060565.03 220.18</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">28</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID35_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646083.64 -1060567.06 219.92</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">4</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID36_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646081.93 -1060557.34 220.3</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5985505+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5985505+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">5</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID37_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646084.18 -1060560.45 219.99</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5995473+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5995473+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">7</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID38_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646084.48 -1060557.58 220.44</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5995473+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5995473+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">6</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID39_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646084.85 -1060558.22 219.97</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5995473+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5995473+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">47</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID40_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646048.58 -1060560.43 220.21</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5995473+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5995473+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">48</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID41_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646050.13 -1060560.38 220.24</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.5995473+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.5995473+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">52</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID42_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646049.92 -1060559.31 220.36</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6005441+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6005441+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">51</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID43_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646050.94 -1060559.86 220.27</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6005441+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6005441+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">50</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID44_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646051.97 -1060561.48 220.28</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6005441+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6005441+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">53</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID45_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646051.69 -1060559.75 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6005441+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6005441+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">49</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID46_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646055.11 -1060562.4 220.34</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6005441+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6005441+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">55</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID47_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646051.36 -1060554.62 220.21</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6015406+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6015406+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">57</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID48_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646052.47 -1060554.75 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6015406+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6015406+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">56</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID49_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646053.12 -1060555.37 220.27</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6015406+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6015406+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">8</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID50_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646061.16 -1060563.77 220.52</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6015406+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6015406+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">43</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID51_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646065.36 -1060555.19 220.48</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6015406+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6015406+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">42</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID52_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646067.49 -1060552.71 220.45</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">35</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID53_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.07 -1060569.15 220.18</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">38</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID54_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646081 -1060569.44 220.09</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">39</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID55_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646081.08 -1060569.78 220.06</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">31</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID56_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.67 -1060567.18 220.18</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">34</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID57_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646081.63 -1060567.47 220.1</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6025373+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6025373+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">33</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID58_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646082.16 -1060567.01 220.07</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.603534+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.603534+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">32</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID59_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646082.01 -1060566.15 220.13</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.603534+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.603534+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">36</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID60_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646082.63 -1060567.2 220.01</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.603534+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.603534+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">64</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID61_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646073.38 -1060554.28 220.37</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.603534+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.603534+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">62</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID62_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646079.93 -1060563.29 220.11</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.603534+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.603534+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">65</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID63_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646076.4 -1060555.2 220.27</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6045306+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6045306+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">63</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID64_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646077.53 -1060557.03 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6045306+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6045306+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">5</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">66</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID65_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646077.47 -1060555.51 220.29</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6045306+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6045306+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">69</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID66_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646079.13 -1060557.62 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6045306+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6045306+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">71</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID67_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.29 -1060557.7 220.21</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6045306+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6045306+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">70</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID68_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646081.26 -1060559.56 220.04</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6055273+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6055273+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns="atr">3</TridaPresnostiVyska>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">3</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">30</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID69_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646094.57 -1060573.8 219.89</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </PodrobnyBodZPS>
+      <UdrzovanaPlochaZeleneDefinicniBod>
+        <ObjektovyTypNazev code_base="0100000215" code_suffix="04" xmlns="upzdef">udržovaná plocha zeleně</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="upzdef">Vodstvo, vegetace a terén</KategorieObjektu>
+        <SkupinaObjektu xmlns="upzdef">Udržovaná zeleň</SkupinaObjektu>
+        <ObsahovaCast xmlns="upzdef">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="upzdef">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6120569+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6130553+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+              <TypUdrzovaneZelene xmlns="atr">2</TypUdrzovaneZelene>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID70_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646071.02 -1060559.64 220.3</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6203739+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6203739+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+              <TypUdrzovaneZelene xmlns="atr">3</TypUdrzovaneZelene>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID71_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646082.48 -1060564.17 220.2</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6203739+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6203739+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+              <TypUdrzovaneZelene xmlns="atr">3</TypUdrzovaneZelene>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID72_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646051.53 -1060557.25 220.24</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6203739+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6203739+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+              <TypUdrzovaneZelene xmlns="atr">3</TypUdrzovaneZelene>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID73_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646079.02 -1060556.63 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </UdrzovanaPlochaZeleneDefinicniBod>
+      <Plot>
+        <ObjektovyTypNazev code_base="0100000162" code_suffix="02" xmlns="plotli">plot</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="plotli">Součásti a příslušenství staveb</KategorieObjektu>
+        <SkupinaObjektu xmlns="plotli">Stavba společná pro více skupin</SkupinaObjektu>
+        <ObsahovaCast xmlns="plotli">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="plotli">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6292826+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6292826+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">2</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID74_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646076.4 -1060555.2 220.27 -646073.38 -1060554.28 220.37 -646067.25 -1060552.39 220.45 -646059.64 -1060550.26 220.24 -646058.2 -1060549.82 220.24 -646052.38 -1060548.11 220.16 -646048.58 -1060560.43 220.21 -646051.97 -1060561.48 220.28 -646055.11 -1060562.4 220.34 -646068.06 -1060566.22 220.36</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6302781+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6302781+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">5</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">false</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID75_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646065.36 -1060555.19 220.48 -646062.96 -1060554.42 220.47</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6302781+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6302781+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">5</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">false</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID76_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646061.16 -1060563.77 220.52 -646050.13 -1060560.38 220.24</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6302781+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6302781+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">5</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">false</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID77_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646068.45 -1060565.05 220.33 -646064.69 -1060564.01 220.39</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6312746+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6312746+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">5</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">false</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID78_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646067.49 -1060552.71 220.45 -646059.76 -1060550.51 220.29</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6312746+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6312746+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">4</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID79_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646068.06 -1060566.22 220.36 -646073.26 -1060567.84 220.36</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6312746+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6312746+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">2</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID80_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646079.86 -1060569.85 220.06 -646095.07 -1060574.36 219.92</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6312746+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6312746+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">5</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">false</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID81_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646094.57 -1060573.8 219.89 -646081.08 -1060569.78 220.06</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6312746+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6312746+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">4</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID82_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646077.47 -1060555.51 220.29 -646076.4 -1060555.2 220.27</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6322713+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6322713+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">4</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID83_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.79 -1060556.49 220.36 -646077.47 -1060555.51 220.29</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6322713+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6322713+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <DruhPlotu xmlns="atr">4</DruhPlotu>
+              <HraniceJinehoObjektu xmlns="atr">true</HraniceJinehoObjektu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID84_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646084.48 -1060557.58 220.44 -646080.79 -1060556.49 220.36</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </Plot>
+      <IdentickyBod>
+        <ObjektovyTypNazev code_base="0100000220" code_suffix="01" xmlns="idebod">identický bod</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="idebod">Geodetické prvky</KategorieObjektu>
+        <SkupinaObjektu xmlns="idebod">Podrobný bod</SkupinaObjektu>
+        <ObsahovaCast xmlns="idebod">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="idebod">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6406913+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6406913+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">2</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID85_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646095.99 -1060561.02 219.99</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6417821+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6417821+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">26</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID86_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646084.81 -1060566.91 219.93</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6417821+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6417821+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">29</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID87_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646091.51 -1060577.44 220.03</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.642782+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.642782+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">3</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID88_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646096.01 -1060574.66 219.83</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.642782+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.642782+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">27</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID89_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646093.45 -1060569.5 219.89</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.642782+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.642782+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <CisloBodu xmlns="atr">1</CisloBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID90_01" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646099.78 -1060562.13 219.88</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </IdentickyBod>
+      <HraniceBudovy>
+        <ObjektovyTypNazev code_base="0100000299" code_suffix="02" xmlns="hrabud">hranice budovy</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="hrabud">Konstrukční prvky objektů</KategorieObjektu>
+        <SkupinaObjektu xmlns="hrabud">Základní konstrukční prvek</SkupinaObjektu>
+        <ObsahovaCast xmlns="hrabud">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="hrabud">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6477694+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6477694+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID91_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646073.26 -1060567.84 220.36 -646075.28 -1060568.47 220.3</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6487575+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6487575+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID92_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646075.28 -1060568.47 220.3 -646079.86 -1060569.85 220.06</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6487575+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6487575+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID93_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.67 -1060567.18 220.18 -646080.89 -1060566.45 220.13 -646076.38 -1060565.02 220.26 -646075.28 -1060568.47 220.3</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6487575+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6487575+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID94_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646079.86 -1060569.85 220.06 -646080.07 -1060569.15 220.18</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6487575+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6487575+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID95_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.07 -1060569.15 220.18 -646080.67 -1060567.18 220.18</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6497631+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6497631+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID96_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646086.27 -1060558.09 219.95 -646084.48 -1060557.58 220.44</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </HraniceBudovy>
+      <BudovaDefinicniBod>
+        <ObjektovyTypNazev code_base="0100000001" code_suffix="04" xmlns="buddef">budova</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="buddef">Budovy</KategorieObjektu>
+        <SkupinaObjektu xmlns="buddef">Objekt budovy</SkupinaObjektu>
+        <ObsahovaCast xmlns="buddef">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="buddef">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6595062+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6595062+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID97_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646078.12 -1060567.34 220.23</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </BudovaDefinicniBod>
+      <HraniceDopravniStavbyPlochy>
+        <ObjektovyTypNazev code_base="0100000304" code_suffix="02" xmlns="hradsp">hranice dopravní stavby nebo plochy</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="hradsp">Konstrukční prvky objektů</KategorieObjektu>
+        <SkupinaObjektu xmlns="hradsp">Základní konstrukční prvek</SkupinaObjektu>
+        <ObsahovaCast xmlns="hradsp">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="hradsp">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6615895+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6615895+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypDopravniStavbyNeboPlochy xmlns="atr">2</TypDopravniStavbyNeboPlochy>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID98_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.67 -1060567.18 220.18 -646081.63 -1060567.47 220.1 -646081 -1060569.44 220.09 -646080.07 -1060569.15 220.18</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <IDZmeny>PGAD-18BA0FC2-1465-45B0-BB70-A67A148F2412</IDZmeny>
+                <PopisObjektu>-</PopisObjektu>
+                <IDEditora>SUBJ-00003933</IDEditora>
+                <DatumVkladu>2024-05-17T15:30:27</DatumVkladu>
+                <VkladOsoba>dummy</VkladOsoba>
+                <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+                <ZmenaOsoba />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+                <ICS>-</ICS>
+              </SpolecneAtributyObjektuZPS>
+              <TypDopravniStavbyNeboPlochy xmlns="atr">2</TypDopravniStavbyNeboPlochy>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID99_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646083.64 -1060567.06 219.92 -646084.8 -1060563.09 219.91 -646083.03 -1060562.49 219.92 -646082.81 -1060563.03 219.96 -646080.65 -1060562.27 219.93</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <IDZmeny>PGAD-18BA0FC2-1465-45B0-BB70-A67A148F2412</IDZmeny>
+                <PopisObjektu>-</PopisObjektu>
+                <IDEditora>SUBJ-00003933</IDEditora>
+                <DatumVkladu>2024-05-17T15:30:27</DatumVkladu>
+                <VkladOsoba>dummy</VkladOsoba>
+                <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+                <ZmenaOsoba />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+                <ICS>-</ICS>
+              </SpolecneAtributyObjektuZPS>
+              <TypDopravniStavbyNeboPlochy xmlns="atr">2</TypDopravniStavbyNeboPlochy>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID100_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646080.65 -1060562.27 219.93 -646081.39 -1060560.28 219.97 -646082.77 -1060560.77 219.91 -646083.02 -1060560.12 219.91</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <IDZmeny>PGAD-18BA0FC2-1465-45B0-BB70-A67A148F2412</IDZmeny>
+                <PopisObjektu>-</PopisObjektu>
+                <IDEditora>SUBJ-00003933</IDEditora>
+                <DatumVkladu>2024-05-17T15:30:27</DatumVkladu>
+                <VkladOsoba>dummy</VkladOsoba>
+                <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+                <ZmenaOsoba />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+                <ICS>-</ICS>
+              </SpolecneAtributyObjektuZPS>
+              <TypDopravniStavbyNeboPlochy xmlns="atr">2</TypDopravniStavbyNeboPlochy>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID101_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646084 -1060560.4 219.88 -646083.8 -1060560.95 219.89 -646085.27 -1060561.42 219.9 -646086.27 -1060558.09 219.95</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">u</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <ID>53000190002140743</ID>
+                <IDZmeny>PGAD-18BA0FC2-1465-45B0-BB70-A67A148F2412</IDZmeny>
+                <PopisObjektu>-</PopisObjektu>
+                <IDEditora>SUBJ-00003933</IDEditora>
+                <DatumVkladu>2024-05-17T15:30:27</DatumVkladu>
+                <VkladOsoba>dummy</VkladOsoba>
+                <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+                <ZmenaOsoba />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>99</ZpusobPorizeniZPS>
+                <ICS>-</ICS>
+              </SpolecneAtributyObjektuZPS>
+              <TypDopravniStavbyNeboPlochy xmlns="atr">2</TypDopravniStavbyNeboPlochy>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID53000190002140743_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646096.36 -1060573.6 219.89 -646094.65 -1060573.06 219.83 -646095.08 -1060571.85 219.79 -646089.44 -1060570.17 219.86 -646086.88 -1060569.4 219.89 -646083.27 -1060568.34 219.92 -646083.64 -1060567.06 219.92</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </HraniceDopravniStavbyPlochy>
+      <ChodnikDefinicniBod>
+        <ObjektovyTypNazev code_base="0100000007" code_suffix="04" xmlns="chodef">chodník</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="chodef">Dopravní stavby</KategorieObjektu>
+        <SkupinaObjektu xmlns="chodef">Silniční doprava</SkupinaObjektu>
+        <ObsahovaCast xmlns="chodef">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="chodef">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6645699+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6645699+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+              <PrevazujiciPovrch xmlns="atr">3</PrevazujiciPovrch>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID102_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646080.8 -1060568.48 220.11</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </ChodnikDefinicniBod>
+      <HraniceStavby>
+        <ObjektovyTypNazev code_base="0100000300" code_suffix="02" xmlns="hrasta">hranice stavby</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="hrasta">Konstrukční prvky objektů</KategorieObjektu>
+        <SkupinaObjektu xmlns="hrasta">Základní konstrukční prvek</SkupinaObjektu>
+        <ObsahovaCast xmlns="hrasta">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="hrasta">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6741633+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6741633+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">12</TypStavby>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID103_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646083.02 -1060560.12 219.91 -646081.26 -1060559.56 220.04 -646081.93 -1060557.34 220.3 -646084.85 -1060558.22 219.97 -646084.18 -1060560.45 219.99 -646084 -1060560.4 219.88</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6751588+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6751588+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+                <TridaPresnostiPoloha>3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska>3</TridaPresnostiVyska>
+                <ZpusobPorizeniZPS>3</ZpusobPorizeniZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">12</TypStavby>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:curveProperty>
+                <gml:LineString gml:id="ID104_02" srsName="EPSG:5514" srsDimension="3">
+                  <gml:posList>-646084 -1060560.4 219.88 -646083.02 -1060560.12 219.91</gml:posList>
+                </gml:LineString>
+              </gml:curveProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </HraniceStavby>
+      <ZahradaDefinicniBod>
+        <ObjektovyTypNazev code_base="0100000209" code_suffix="04" xmlns="zahdef">zahrada</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="zahdef">Vodstvo, vegetace a terén</KategorieObjektu>
+        <SkupinaObjektu xmlns="zahdef">Hospodářská plocha</SkupinaObjektu>
+        <ObsahovaCast xmlns="zahdef">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="zahdef">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.6822292+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.6822292+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID105_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646062.45 -1060558.65 220.25</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </ZahradaDefinicniBod>
+      <OstatniZastresenaStavbaDefinicniBod>
+        <ObjektovyTypNazev code_base="0100000314" code_suffix="04" xmlns="ozsdef">ostatní zastřešená stavba</ObjektovyTypNazev>
+        <KategorieObjektu xmlns="ozsdef">Součásti a příslušenství staveb</KategorieObjektu>
+        <SkupinaObjektu xmlns="ozsdef">Stavba společná pro více skupin</SkupinaObjektu>
+        <ObsahovaCast xmlns="ozsdef">ZPS</ObsahovaCast>
+        <ZaznamyObjektu xmlns="ozsdef">
+          <ZaznamObjektu>
+            <ZapisObjektu xmlns="cmn">i</ZapisObjektu>
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu xmlns="atr">
+                <DatumVkladu>2024-05-30T10:39:40.690669+02:00</DatumVkladu>
+                <DatumZmeny>2024-05-30T10:39:40.690669+02:00</DatumZmeny>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu xmlns="atr">
+                <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <gml:pointProperty>
+                <gml:Point gml:id="ID106_04" srsName="EPSG:5514" srsDimension="3">
+                  <gml:pos>-646083.08 -1060558.8 220</gml:pos>
+                </gml:Point>
+              </gml:pointProperty>
+            </GeometrieObjektu>
+          </ZaznamObjektu>
+        </ZaznamyObjektu>
+      </OstatniZastresenaStavbaDefinicniBod>
+    </Data>
+    <DoprovodneInformace xmlns="dopinf">
+      <UdajeOZmenach>
+        <ZaznamZmeny>
+          <IDPodani xmlns="atr" />
+          <PopisObjektu xmlns="atr" />
+          <IDEditora xmlns="atr" />
+          <DatumVkladu xmlns="atr">2024-05-30T10:39:40.0948538+02:00</DatumVkladu>
+          <VkladOsoba xmlns="atr" />
+          <NazevZakazky>Doměření ZPS Na Bukovině 1274</NazevZakazky>
+          <CisloStavbyZakazky>2024-PC-005</CisloStavbyZakazky>
+          <PartnerInvestor />
+          <Zpracovatel>Ing. Pavel Cimpl</Zpracovatel>
+          <OrganizaceZpracovatele>GEOVAP, spol.s.r.o.</OrganizaceZpracovatele>
+          <DatumMereni>2024-01-15</DatumMereni>
+          <DatumZpracovani>2024-05-29</DatumZpracovani>
+          <AZI>1404</AZI>
+          <DatumOvereni>2024-05-29</DatumOvereni>
+          <CisloOvereni>1404</CisloOvereni>
+          <OblastZmeny>
+            <gml:surfaceProperty>
+              <gml:Polygon gml:id="ID107_03" srsName="EPSG:5514" srsDimension="2">
+                <gml:exterior>
+                  <gml:LinearRing>
+                    <gml:posList>-646101.98 -1060559.81 -646095.02 -1060582.64 -646084.12 -1060579.06 -646082.64 -1060573.3 -646043.06 -1060565.7 -646050.67 -1060543.36 -646101.98 -1060559.81</gml:posList>
+                  </gml:LinearRing>
+                </gml:exterior>
+              </gml:Polygon>
+            </gml:surfaceProperty>
+          </OblastZmeny>
+          <Konsolidace>false</Konsolidace>
+        </ZaznamZmeny>
+      </UdajeOZmenach>
+      <OblastiKompletniZPS>
+        <ZaznamZPS>
+          <AtributyObjektu>
+            <SpolecneAtributyVsechObjektu xmlns="atr">
+              <PopisObjektu>NEW</PopisObjektu>
+              <DatumVkladu>0001-01-01T00:00:00</DatumVkladu>
+              <DatumZmeny>0001-01-01T00:00:00</DatumZmeny>
+            </SpolecneAtributyVsechObjektu>
+            <SpolecneAtributyObjektuZPS xmlns="atr">
+              <UrovenUmisteniObjektuZPS>0</UrovenUmisteniObjektuZPS>
+              <TridaPresnostiPoloha>1</TridaPresnostiPoloha>
+              <TridaPresnostiVyska>1</TridaPresnostiVyska>
+              <ZpusobPorizeniZPS>1</ZpusobPorizeniZPS>
+            </SpolecneAtributyObjektuZPS>
+          </AtributyObjektu>
+          <GeometrieObjektu>
+            <PlochaZPS>
+              <gml:surfaceProperty>
+                <gml:Polygon gml:id="ID108_03" srsName="EPSG:5514" srsDimension="2">
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>-646096 -1060574.67 -646096.29 -1060573.82 -646096.36 -1060573.6 -646097.09 -1060571.18 -646099.77 -1060562.14 -646096 -1060561.04 -646087.35 -1060558.41 -646086.27 -1060558.09 -646084.48 -1060557.58 -646080.79 -1060556.49 -646077.47 -1060555.51 -646076.4 -1060555.2 -646073.38 -1060554.28 -646067.25 -1060552.39 -646059.64 -1060550.26 -646058.2 -1060549.82 -646052.38 -1060548.11 -646048.58 -1060560.43 -646051.97 -1060561.48 -646055.11 -1060562.4 -646068.06 -1060566.22 -646073.26 -1060567.84 -646075.28 -1060568.47 -646079.86 -1060569.85 -646095.07 -1060574.36 -646096 -1060574.67</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Polygon>
+              </gml:surfaceProperty>
+            </PlochaZPS>
+          </GeometrieObjektu>
+        </ZaznamZPS>
+      </OblastiKompletniZPS>
+    </DoprovodneInformace>
+  </DataJVFDTM>
+</JVFDTM>

@@ -6,8 +6,7 @@
                 LanguageNamespace="FileTransferDialog"
                 loc:Translate.Uid="0"
                 Title="{loc:Translate FileTransfer}"
-                Height="300"
-                Width="523">
+                SizeToContent="WidthAndHeight">
     <Gui:DialogBase.DialogContent>
         <Grid>
             <Grid.ColumnDefinitions>

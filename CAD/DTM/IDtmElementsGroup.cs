@@ -1,6 +1,5 @@
 ﻿using CAD.DTM.Gui;
 using System.Collections.Generic;
-using CAD.DTM.Configuration;
 
 namespace CAD.DTM
 {

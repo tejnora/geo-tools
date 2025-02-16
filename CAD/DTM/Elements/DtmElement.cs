@@ -25,6 +25,7 @@ namespace CAD.DTM.Elements
         }
         public bool IsDeleted { get; set; } = false;
         public bool ExportToOutput => !IsDeleted && ZapisObjektu != 'r';
+        public bool IsReferencePoint => ZapisObjektu == 'r';
         public virtual void ExportAttributesToDtm(IDtmExporter exporter)
         {
             throw new NotImplemented();

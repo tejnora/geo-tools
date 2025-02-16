@@ -261,5 +261,12 @@ namespace CAD
                 return false;
             }
         }
+
+        public void ShowIdetickeBodyMapovaniDialog()
+        {
+            var ctx = new DtmIdentickeBodyMapovaniCtx(DataModel.DtmMain);
+            var dlg = new DtmIdentickeBodyMapovaniDialog(ctx);
+            var result = dlg.DoModal();
+        }
     }
 }

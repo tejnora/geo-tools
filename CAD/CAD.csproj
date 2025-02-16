@@ -180,6 +180,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DTM\Gui\DtmIdentickeBodyMapovaniDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmImportDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DTM\Gui\DtmToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DTM\Gui\DtmProtocolDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -474,6 +482,7 @@
     <Compile Include="DTM\DtmDrawingLayerMain.cs" />
     <Compile Include="DTM\DtmExportCtx.cs" />
     <Compile Include="DTM\DtmExporter.cs" />
+    <Compile Include="DTM\DtmIdentickeBodyProtocolBuilder.cs" />
     <Compile Include="DTM\DtmImportPointsCtx.cs" />
     <Compile Include="DTM\DtmPolygonGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
@@ -496,6 +505,10 @@
     <Compile Include="DTM\Gui\DtmExportDialog.xaml.cs">
       <DependentUpon>DtmExportDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTM\Gui\DtmIdentickeBodyMapovaniDialog.xaml.cs">
+      <DependentUpon>DtmIdentickeBodyMapovaniDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DTM\Gui\DtmIdentickeBodyMapovaniCtx.cs" />
     <Compile Include="DTM\Gui\DtmImportDialog.xaml.cs">
       <DependentUpon>DtmImportDialog.xaml</DependentUpon>
     </Compile>
@@ -506,6 +519,9 @@
       <DependentUpon>DtmToolBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTM\Gui\IDtmExporter.cs" />
+    <Compile Include="DTM\Gui\DtmProtocolDialog.xaml.cs">
+      <DependentUpon>DtmProtocolDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DTM\IDtmDrawingElement.cs" />
     <Compile Include="DTM\IDtmDrawingGroup.cs" />
     <Compile Include="DTM\IDtmDrawingObject.cs" />

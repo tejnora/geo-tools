@@ -4,6 +4,10 @@ namespace CAD.DTM
 {
     public class DtmPoint : ICloneable
     {
+        public DtmPoint()
+        {
+
+        }
         public DtmPoint(string y, string x, string z)
         {
             X = double.Parse(y);
@@ -17,6 +21,11 @@ namespace CAD.DTM
         public object Clone()
         {
             return MemberwiseClone();
+        }
+
+        public DtmPoint FlipValues()
+        {
+            return new DtmPoint { X = -X, Y = -Y, Z = Z };
         }
 
         public string ExportToDtm(int srsDimension)
