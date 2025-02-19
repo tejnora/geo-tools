@@ -4,7 +4,6 @@ using System.Text;
 using CAD.DTM.Gui;
 using System.Xml;
 using CAD.DTM.Configuration;
-using System.Xml.Linq;
 
 namespace CAD.DTM
 {
@@ -12,7 +11,7 @@ namespace CAD.DTM
     : IDtmExporter
     {
         readonly IDtmMain _main;
-        XmlWriter _xmlWriter;
+        CAD.Tools.XmlWriter _xmlWriter;
         HashSet<string> _namespaces;
         DtmExportCtx _exportCtx;
         public DtmExporter(IDtmMain main)
@@ -22,27 +21,26 @@ namespace CAD.DTM
         public void CreateFile(DtmExportCtx ctx)
         {
             _exportCtx = ctx;
-            using (var writer = XmlWriter.Create(ctx.FileName, new XmlWriterSettings { Indent = true }))
+
+            try
             {
-                try
-                {
-                    _xmlWriter = writer;
-                    writer.WriteStartDocument();
-                    _xmlWriter.WriteStartElement("JVFDTM", "objtyp");
-                    _xmlWriter.WriteAttributeString("xmlns", "objtyp");
-                    AddNamespaces();
-                    BeginElement("objtyp", "DataJVFDTM");
-                    AddHead();
-                    AddData();
-                    ExportDoprovodneInformace();
-                    EndElement();
-                    EndElement();
-                    writer.WriteEndDocument();
-                }
-                finally
-                {
-                    _xmlWriter = null;
-                }
+                _xmlWriter = new Tools.XmlWriter();
+                _xmlWriter.WriteStartDocument();
+                _xmlWriter.WriteStartElement("JVFDTM", "");
+                _xmlWriter.WriteAttributeString("xmlns", "objtyp");
+                AddNamespaces();
+                BeginElement("objtyp", "DataJVFDTM");
+                AddHead();
+                AddData();
+                ExportDoprovodneInformace();
+                EndElement();
+                EndElement();
+                _xmlWriter.WriteEndDocument();
+                _xmlWriter.WriteTo(ctx.FileName);
+            }
+            finally
+            {
+                _xmlWriter = null;
             }
         }
         void AddNamespaces()
@@ -57,12 +55,12 @@ namespace CAD.DTM
                     continue;
                 _namespaces.Add(DtmConfigurationSingleton.Instance.ElementSetting[group.Key].XmlNamespace);
             }
-            _xmlWriter.WriteAttributeString("xmlns", "xsd", null, "http://www.w3.org/2001/XMLSchema");
-            _xmlWriter.WriteAttributeString("xmlns", "xsi", null, "http://www.w3.org/2001/XMLSchema-instance");
-            _xmlWriter.WriteAttributeString("xmlns", "gml", null, "http://www.opengis.net/gml/3.2");
+            _xmlWriter.WriteAttributeString("xsd", "xmlns", "http://www.w3.org/2001/XMLSchema");
+            _xmlWriter.WriteAttributeString("xsi", "xmlns", "http://www.w3.org/2001/XMLSchema-instance");
+            _xmlWriter.WriteAttributeString("gml", "xmlns", "http://www.opengis.net/gml/3.2");
             foreach (var ns in _namespaces)
             {
-                _xmlWriter.WriteAttributeString("xmlns", ns, null, ns);
+                _xmlWriter.WriteAttributeString(ns, "xmlns", ns);
             }
 
             _namespaces.Add("gml");
@@ -82,6 +80,12 @@ namespace CAD.DTM
             }
             EndElement();
         }
+
+        public void AddAttribute(string ns, string name, string value)
+        {
+            _xmlWriter.WriteAttributeString(name, ns, value);
+        }
+
         public void AddAttribute(string name, string value)
         {
             _xmlWriter.WriteAttributeString(name, value);
@@ -145,7 +149,7 @@ namespace CAD.DTM
             AddEmptyElement("atr", "IDPodani");
             AddEmptyElement("atr", "PopisObjektu");
             AddEmptyElement("atr", "IDEditora");
-            AddEmptyElement("atr", "DatumVkladu");
+            AddElement("atr", "DatumVkladu", DateTime.Now);
             AddEmptyElement("atr", "VkladOsoba");
             AddElement(null, "NazevZakazky", _exportCtx.NazevZakazky);
             AddEmptyElement(null, "CisloStavbyZakazky");
@@ -161,18 +165,19 @@ namespace CAD.DTM
             {
                 var polygon = _main.UdajeOVydeji.Polygon;
                 BeginElement(null, "OblastZmeny");
-                BeginElement("gml", "surfaceProperty", true);
-                BeginElement(null, "Polygon");
+                BeginElement("gml", "surfaceProperty", false);
+                BeginElement("gml", "Polygon");
+                AddAttribute("gml", "id", _main.AllocateUniqueId("03"));
                 AddAttribute("srsName", polygon.SrsName);
                 AddAttribute("srsDimension", polygon.SrsDimension);
-                BeginElement(null, "exterior");
-                BeginElement(null, "LinearRing");
+                BeginElement("gml", "exterior");
+                BeginElement("gml", "LinearRing");
                 var posListData = new StringBuilder();
                 foreach (var p in polygon.Points)
                 {
                     posListData.Append(p.ExportToDtm(2) + " ");
                 }
-                AddElement(null, "posList", posListData.ToString(0, posListData.Length - 1));
+                AddElement("gml", "posList", posListData.ToString(0, posListData.Length - 1));
                 EndElement();
                 EndElement();
                 EndElement();

@@ -11,6 +11,7 @@ namespace CAD.DTM.Gui
         void AddElement(string ns, string name, bool value);
         void BeginElement(string ns, string name, bool addNsToAttribute = false);
         void EndElement();
+        void AddAttribute(string ns, string name, string value);
         void AddAttribute(string name, string value);
         void AddAttribute(string name, int value);
         void AddStringData(string value);

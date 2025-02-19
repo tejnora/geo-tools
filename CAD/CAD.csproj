@@ -575,6 +575,7 @@
     <Compile Include="DrawTools\TextBoxTool.cs" />
     <Compile Include="DrawTools\LineTool.cs" />
     <Compile Include="DrawTools\SnapPoints.cs" />
+    <Compile Include="Tools\XmlWriter.cs" />
     <Compile Include="VFK\Converters\VfkBoolConverter.cs" />
     <Compile Include="VFK\DrawTools\VFKActivePoint.cs" />
     <Compile Include="GUI\ActivePointPropPage.xaml.cs">

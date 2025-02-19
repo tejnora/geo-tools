@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using CAD.DTM.Elements;
 
@@ -45,7 +46,9 @@ namespace CAD.DTM
 
         public string AllocateUniqueId(string name)
         {
-            return $"ID{_idAllocator++}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
+            if(DtmConfigurationSingleton.Instance.ElementSetting.ContainsKey(name))
+                return $"ID{_idAllocator++}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
+            return $"ID{_idAllocator++}_{name}";
         }
 
         public DtmUdajeOVydeji UdajeOVydeji { get; set; }
@@ -100,7 +103,7 @@ namespace CAD.DTM
             var lines = File.ReadAllLines(ctx.FileName);
             foreach (var line in lines)
             {
-                var items = line.Split(' ');
+                var items = Regex.Split(line, @"\s{2,}");
                 if (items.Length != 4)
                     throw new ArgumentOutOfRangeException("Format it is not correct.");
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);

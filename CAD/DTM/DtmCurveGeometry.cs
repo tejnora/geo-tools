@@ -8,6 +8,11 @@ namespace CAD.DTM
     class DtmCurveGeometry
     : IDtmGeometry
     {
+        public DtmCurveGeometry()
+        {
+            SrsName = "EPSG:5514";
+            SrsDimension = 3;
+        }
         public string Id { get; set; }
         public string SrsName { get; set; }
         public int SrsDimension { get; set; }
@@ -21,9 +26,9 @@ namespace CAD.DTM
                 posListData.Append(p.ExportToDtm(3) + " ");
             }
             exporter.BeginElement(null, "GeometrieObjektu");
-            exporter.BeginElement("gml", "curveProperty", true);
+            exporter.BeginElement("gml", "curveProperty", false);
             exporter.BeginElement("gml", "LineString");
-            exporter.AddAttribute("id", Id);
+            exporter.AddAttribute("gml", "id", Id);
             exporter.AddAttribute("srsName", SrsName);
             exporter.AddAttribute("srsDimension", SrsDimension);
             exporter.AddElement("gml", "posList", posListData.ToString(0, posListData.Length - 1));
