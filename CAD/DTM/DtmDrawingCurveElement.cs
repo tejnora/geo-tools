@@ -196,7 +196,7 @@ namespace CAD.DTM
         {
             if (Group == null)
                 return "";
-            return $"Group name: {Group.Name}";
+            return $"Group name: {Group.Name}, {_element.GetInfoAsString()}";
         }
 
         public void Export(IExport export)

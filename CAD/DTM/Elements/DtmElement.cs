@@ -113,5 +113,10 @@ namespace CAD.DTM.Elements
                 DatumZmeny = dateTime
             };
         }
+
+        public virtual string GetInfoAsString()
+        {
+            return "";
+        }
     }
 }
