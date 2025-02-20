@@ -148,6 +148,7 @@ namespace CAD.DTM
             if (!(snappoint is PodrobnyBodZPS zpz))
                 return DrawObjectState.Continue;
             var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
+            _curveGeometry.Points[_curveGeometry.Points.Count - 1] = (DtmPoint)pointGeometry.Point.Clone();
             _curveGeometry.Points.Add((DtmPoint)pointGeometry.Point.Clone());
             return DrawObjectState.Continue;
         }
