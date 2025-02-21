@@ -23,8 +23,11 @@ namespace CAD
     public partial class MainWin : Window, IMainWinInterface
     {
 
+
         public MainWin()
         {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
             InitLanguages();
             InitializeComponent();
             InitLayout();
