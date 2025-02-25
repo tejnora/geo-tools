@@ -7,8 +7,6 @@ using Color = System.Drawing.Color;
 using CAD.Utils;
 using System;
 using System.Linq;
-using CAD.Canvas.DrawTools;
-using System.Windows.Controls.Primitives;
 
 namespace CAD.DTM
 {
@@ -127,12 +125,13 @@ namespace CAD.DTM
             var dtmElement = (IDtmDrawingElement)drawobject;
             dtmElement.GetDtmElement.IsDeleted = false;
             _dtmMain.AddElementIfNotExist(dtmElement.Group.Name, dtmElement.GetDtmElement);
-            if (_layers[dtmElement.Group.Name] == null)
+            if (_layers.TryGetValue(dtmElement.Group.Name, out var layer))
             {
-                _layers[dtmElement.Group.Name] = new DtmDrawingGroup(dtmElement.Group.Name, drawobject);
+                layer.AddObject(drawobject);
             }
             else
             {
+                _layers[dtmElement.Group.Name] = new DtmDrawingGroup(dtmElement.Group.Name, _dtmMain.getElementsGroup(dtmElement.Group.Name));
                 _layers[dtmElement.Group.Name].AddObject(drawobject);
             }
         }

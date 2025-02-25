@@ -39,14 +39,15 @@ namespace CAD.DTM
         {
             if (!_groups.ContainsKey(groupName))
             {
-                _groups[groupName] = new DtmElementsGroup(groupName);
+                var group = DtmConfigurationSingleton.Instance.CreateGroup(groupName);
+                _groups[groupName] = group;
             }
             _groups[groupName].AddElementIfNotExist(dtmElementGetDtmElement, this);
         }
 
         public string AllocateUniqueId(string name)
         {
-            if(DtmConfigurationSingleton.Instance.ElementSetting.ContainsKey(name))
+            if (DtmConfigurationSingleton.Instance.ElementSetting.ContainsKey(name))
                 return $"ID{_idAllocator++}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
             return $"ID{_idAllocator++}_{name}";
         }
@@ -103,7 +104,7 @@ namespace CAD.DTM
             var lines = File.ReadAllLines(ctx.FileName);
             foreach (var line in lines)
             {
-                var items = Regex.Split(line, @"\s{2,}");
+                var items = Regex.Split(line, @"\s{1,}");
                 if (items.Length != 4)
                     throw new ArgumentOutOfRangeException("Format it is not correct.");
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);

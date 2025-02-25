@@ -75,5 +75,19 @@ namespace CAD.DTM.Configuration
             element.Init(ElementSetting[elementName]);
             return element;
         }
+
+        public DtmElementsGroup CreateGroup(string elementName)
+        {
+            var element = ElementSetting[elementName];
+            return new DtmElementsGroup(elementName)
+            {
+                CodeBase = element.CodeBase,
+                CodeSuffix = element.CodeSuffix,
+                KategorieObjektu = element.KategorieObjektu,
+                ObjektovyTypNazev = element.ObjektovyTypNazev,
+                ObsahovaCast = element.ObsahovaCast,
+                SkupinaObjektu = element.SkupinaObjektu
+            };
+        }
     }
 }
