@@ -89,7 +89,7 @@ namespace CAD.VFK.GUI
         }
         private string AdjustToString(string value, int pad)
         {
-            var number = double.Parse(value);
+            var number = double.Parse(value, CultureInfo.InvariantCulture);
             var res = string.Format(CultureInfo.InvariantCulture, "{0:0.00}", number);
             return res.PadLeft(pad, '0');
         }

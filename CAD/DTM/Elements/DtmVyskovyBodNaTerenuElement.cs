@@ -1,4 +1,5 @@
 ﻿using CAD.DTM.Gui;
+using System.Globalization;
 using System.Xml;
 
 namespace CAD.DTM.Elements
@@ -19,7 +20,7 @@ namespace CAD.DTM.Elements
                 switch (x.LocalName)
                 {
                     case "VyskaNaTerenu":
-                        VyskaNaTerenu = double.Parse(x.InnerText);
+                        VyskaNaTerenu = double.Parse(x.InnerText, CultureInfo.InvariantCulture);
                         break;
                 }
 

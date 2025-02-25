@@ -79,7 +79,7 @@ namespace CAD.DTM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.StackTrace, ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }

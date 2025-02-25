@@ -1,4 +1,5 @@
 ﻿using CAD.DTM.Gui;
+using System.Globalization;
 using System.Xml;
 
 namespace CAD.DTM.Elements
@@ -20,7 +21,7 @@ namespace CAD.DTM.Elements
                 switch (x.LocalName)
                 {
                     case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = double.Parse(x.InnerText);
+                        PrevazujiciPovrch = double.Parse(x.InnerText, CultureInfo.InvariantCulture);
                         break;
                 }
             }

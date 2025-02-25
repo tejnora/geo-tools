@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace CAD.DTM
 {
@@ -10,9 +11,9 @@ namespace CAD.DTM
         }
         public DtmPoint(string y, string x, string z)
         {
-            X = double.Parse(y);
-            Y = double.Parse(x);
-            Z = double.Parse(z);
+            X = double.Parse(y,CultureInfo.InvariantCulture);
+            Y = double.Parse(x, CultureInfo.InvariantCulture);
+            Z = double.Parse(z, CultureInfo.InvariantCulture);
         }
 
         public double X { get; set; }
