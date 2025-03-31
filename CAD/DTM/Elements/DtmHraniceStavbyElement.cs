@@ -1,4 +1,6 @@
-﻿using CAD.DTM.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Xml;
 
@@ -64,7 +66,13 @@ namespace CAD.DTM.Elements
                 UrovenUmisteniObjektuZPS = 0,
                 ZpusobPorizeniZPS = 1
             };
+        }
 
+        public override IEnumerable<string> Settings => Enum.GetNames(typeof(DtmTypStavby));
+
+        public override void SelectedSetting(string value)
+        {
+            TypStavby = (DtmTypStavby)Enum.Parse(typeof(DtmTypStavby), value);
         }
     }
 }

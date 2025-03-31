@@ -3,7 +3,6 @@ using System;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using CAD.DTM.Elements;
 using CAD.VFK;
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
@@ -26,6 +28,10 @@ namespace CAD.DTM.Elements
         public bool IsDeleted { get; set; } = false;
         public bool ExportToOutput => !IsDeleted && ZapisObjektu != 'r';
         public bool IsReferencePoint => ZapisObjektu == 'r';
+        static IEnumerable<string> _settingsEmpty = new List<string>();
+        public virtual IEnumerable<string> Settings => _settingsEmpty;
+        public virtual void SelectedSetting(string value) { }
+
         public virtual void ExportAttributesToDtm(IDtmExporter exporter)
         {
             throw new NotImplemented();

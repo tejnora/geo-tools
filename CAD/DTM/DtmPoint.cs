@@ -11,7 +11,7 @@ namespace CAD.DTM
         }
         public DtmPoint(string y, string x, string z)
         {
-            X = double.Parse(y,CultureInfo.InvariantCulture);
+            X = double.Parse(y, CultureInfo.InvariantCulture);
             Y = double.Parse(x, CultureInfo.InvariantCulture);
             Z = double.Parse(z, CultureInfo.InvariantCulture);
         }
@@ -33,8 +33,8 @@ namespace CAD.DTM
         {
             switch (srsDimension)
             {
-                case 2: return $"{X:##.00} {Y:##.00}";
-                case 3: return $"{X:##.00} {Y:##.00} {Z:##.00}";
+                case 2: return $"{X.ToString("##.00", CultureInfo.InvariantCulture)} {Y.ToString("##.00", CultureInfo.InvariantCulture)}";
+                case 3: return $"{X.ToString("##.00", CultureInfo.InvariantCulture)} {Y.ToString("##.00", CultureInfo.InvariantCulture)} {Z.ToString("##.00", CultureInfo.InvariantCulture)}";
             }
 
             throw new ArgumentOutOfRangeException();

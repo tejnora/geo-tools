@@ -23,6 +23,7 @@ namespace CAD.DTM.Gui
             : base(null, new StreamingContext())
         {
             _dtmMain = dtmMain;
+            IdentickeBody = new ObservableCollection<DtmIdentickeBodMapovani>();
             var identickeBody = _dtmMain.getElementsGroup("IdentickyBod");
             if (identickeBody == null)
                 return;
@@ -33,7 +34,6 @@ namespace CAD.DTM.Gui
                     continue;
                 NamereneBody.Add(cislo);
             }
-            IdentickeBody = new ObservableCollection<DtmIdentickeBodMapovani>();
             foreach (var bod in identickeBody.GetElementGroups())
             {
                 if (!TryGetPointData(bod, out var cislo, out var iBod, p => !p.IsReferencePoint || p.IsDeleted))

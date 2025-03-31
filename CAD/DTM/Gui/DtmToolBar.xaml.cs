@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
@@ -11,6 +12,7 @@ namespace CAD.DTM.Gui
     {
         public DtmToolBarCtx() : base(null, new StreamingContext())
         {
+            DtmLineSetting = new ObservableCollection<string>();
         }
         public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ObservableCollection<string>), null);
         public ObservableCollection<string> DtmLineElements
@@ -25,9 +27,30 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmLineElementSelected, value);
+                UpdateLineSetting();
                 UpdateDrawingLayer();
             }
         }
+        public readonly PropertyData _dtmLineSettings = RegisterProperty("DtmLineSetting", typeof(ObservableCollection<string>), null);
+        public ObservableCollection<string> DtmLineSetting
+        {
+            get => GetValue<ObservableCollection<string>>(_dtmLineSettings);
+            set => SetValue(_dtmLineSettings, value);
+        }
+
+        public readonly PropertyData _dtmLineSettingSelected = RegisterProperty("DtmLineSettingSelected", typeof(string), null);
+        public string DtmLineSettingSelected
+        {
+            get => GetValue<string>(_dtmLineSettingSelected);
+            set
+            {
+                SetValue(_dtmLineSettingSelected, value);
+                UpdateDrawingLayer();
+            }
+        }
+
+        public bool DtmLineSettingEnabled => DtmLineSetting.Count > 0;
+
         DataModel _dataModel;
         public DataModel DataModel
         {
@@ -35,14 +58,33 @@ namespace CAD.DTM.Gui
             set
             {
                 _dataModel = value;
+                UpdateLineSetting();
                 UpdateDrawingLayer();
             }
+        }
+        void UpdateLineSetting()
+        {
+            DtmLineSetting.Clear();
+            DtmLineSettingSelected = "";
+            var element = DtmConfigurationSingleton.Instance.CreateType(DtmLineElementSelected);
+            if (element != null)
+            {
+                foreach (var setting in element.Settings)
+                {
+                    DtmLineSetting.Add(setting);
+                }
+                if (DtmLineSetting.Count > 0)
+                {
+                    DtmLineSettingSelected = DtmLineSetting[0];
+                }
+            }
+            OnPropertyChanged("DtmLineSettingEnabled");
         }
         void UpdateDrawingLayer()
         {
             if (_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)
             {
-                dtmLayout.DtmLineElementSelected = DtmLineElementSelected;
+                dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected, DtmLineSettingSelected);
             }
         }
     }

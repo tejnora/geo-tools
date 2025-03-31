@@ -223,9 +223,10 @@ namespace CAD.DTM
                 Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point.Clone() }
             };
             var dtmLayer = (DtmDrawingLayerMain)layer;
-            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected);
+            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected.Item1);
+            _element.SelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
             _element.Geometry = _curveGeometry;
-            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected, this);
+            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
             Selected = true;
         }
 

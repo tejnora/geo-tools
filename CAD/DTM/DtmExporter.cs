@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using CAD.DTM.Gui;
 using System.Xml;
@@ -114,7 +115,7 @@ namespace CAD.DTM
         }
         public void AddElement(string ns, string name, double value)
         {
-            AddElement(ns, name, value.ToString("##.00"));
+            AddElement(ns, name, value.ToString("##.00",CultureInfo.InvariantCulture));
         }
         public void AddElement(string ns, string name, bool value)
         {
