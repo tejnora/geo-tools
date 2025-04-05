@@ -485,9 +485,13 @@
     <Compile Include="DTM\DtmIdentickeBodyProtocolBuilder.cs" />
     <Compile Include="DTM\DtmImportPointsCtx.cs" />
     <Compile Include="DTM\DtmPolygonGeometry.cs" />
+    <Compile Include="DTM\DtmSurfaceGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
     <Compile Include="DTM\Elements\DtmBudovaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DtmChodnikDefinicniBodElement.cs" />
+    <Compile Include="DTM\Elements\DtmChodnikPlochaElement.cs" />
+    <Compile Include="DTM\Elements\DtmCyklostezkaDefinicniBodElement.cs" />
+    <Compile Include="DTM\Elements\DtmCyklostezkaPlochaElement.cs" />
     <Compile Include="DTM\Elements\DtmElementSpolecneAtributy.cs" />
     <Compile Include="DTM\Elements\DtmHraniceBudovyElement.cs" />
     <Compile Include="DTM\Elements\DtmHraniceDopravniStavbyPlochyElement.cs" />
@@ -495,8 +499,10 @@
     <Compile Include="DTM\Elements\DtmHraniceStavbyElement.cs" />
     <Compile Include="DTM\Elements\DtmIdentickyBodElement.cs" />
     <Compile Include="DTM\Elements\DtmOstatniZastresenaStavbaDefinicniBodElement.cs" />
+    <Compile Include="DTM\Elements\DtmParkovisteOdstavnaPlochaDefinicniBod.cs" />
     <Compile Include="DTM\Elements\DtmPlotElement.cs" />
     <Compile Include="DTM\Elements\DtmPodrobnyBodZPSElement.cs" />
+    <Compile Include="DTM\Elements\DtmPrevazujiciPovrch.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyZPS.cs" />
     <Compile Include="DTM\Elements\DtmUdrzovanaPlochaZeleneDefinicniBodElement.cs" />

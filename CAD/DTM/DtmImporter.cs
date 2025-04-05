@@ -102,6 +102,8 @@ namespace CAD.DTM
                         return ParseCurveGeometry(e);
                     case "pointProperty":
                         return ParsePointGeometry(e);
+                    case "surfaceProperty":
+                        return ParseSurfaceProperty(e);
                     default:
                         throw new Exception("Invalid geometry.");
                 }
@@ -135,6 +137,14 @@ namespace CAD.DTM
                 throw new Exception("Invalid Point Geometry.");
             geometry.Point = new DtmPoint(values[0], values[1], values[2]);
             return geometry;
+        }
+
+        IDtmGeometry ParseSurfaceProperty(XmlElement xmlElement)
+        {
+            var polygon = (XmlElement)xmlElement.ChildNodes[0];
+            if (polygon.LocalName == "Polygon")
+                return new DtmSurfaceGeometry() { BaseGeometry = ParsePolygonGeometry(xmlElement) };
+            throw new Exception("Invalid surface geometry.");
         }
 
         IDtmGeometry ParseCurveGeometry(XmlElement xmlElement)

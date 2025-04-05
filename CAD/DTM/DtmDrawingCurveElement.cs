@@ -32,7 +32,14 @@ namespace CAD.DTM
         public DtmDrawingCurveElement(DtmElement element)
         {
             _element = element;
-            _curveGeometry = (DtmCurveGeometry)element.Geometry;
+            if (element.Geometry is DtmCurveGeometry)
+            {
+                _curveGeometry = (DtmCurveGeometry)element.Geometry;
+            }
+            else
+            {
+                //todo
+            }
         }
 
         public string Id { get; }
@@ -53,6 +60,8 @@ namespace CAD.DTM
 
         bool ProcessLines(Func<UnitPoint, UnitPoint, bool> doAction)
         {
+            if (_curveGeometry == null)
+                return false;
             var p1 = new UnitPoint(_curveGeometry.Points[0].X, _curveGeometry.Points[0].Y);
             var p2 = new UnitPoint();
             for (var i = 1; i < _curveGeometry.Points.Count; i++)
