@@ -334,5 +334,18 @@
     "KategorieObjektu": "Dopravní stavby",
     "SkupinaObjektu": "Silniční doprava",
     "ObsahovaCast": "ZPS"
+  },
+  "TrasaVodovodniPripojky": {
+    "Color": [ 0, 0, 255, 255 ],
+    "Width": 0.001,
+    "Type": "line",
+    "CodeBase": "0100000114",
+    "CodeSuffix": "02",
+    "Xmlns": "tvplin",
+    "ObjektovyTypNazev": "trasa vodovodní přípojky",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Vodovod",
+    "ObsahovaCast": "ZPS"
   }
+
 }

@@ -254,10 +254,14 @@ namespace CAD
             try
             {
                 DataModel.ImportPointsDtm(ctx);
+                CanvasCommand.CommandFitView();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                var resourceParams = new ResourceParams();
+                resourceParams.Add("msg", ex.Message);
+                LanguageDictionary.Current.ShowMessageBox("163", resourceParams, MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }

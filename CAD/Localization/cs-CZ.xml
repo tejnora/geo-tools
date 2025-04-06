@@ -168,6 +168,7 @@
 	<Value Id="160" Content="Automaticky namapuj"/>
 	<Value Id="161" Content="Zavřít"/>
 	<Value Id="162" Content="Zobraz protokol"/>
+	<Value Id="163" Text="Při importu souboru nastala chyba. (#msg#)" Caption="Pozor"/>
 
 	<Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
 	<Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>

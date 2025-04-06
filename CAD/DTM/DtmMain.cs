@@ -104,9 +104,10 @@ namespace CAD.DTM
             var lines = File.ReadAllLines(ctx.FileName);
             foreach (var line in lines)
             {
-                var items = Regex.Split(line, @"\s{1,}");
+                var lineT=line.Trim();
+                var items = Regex.Split(lineT, @"\s{1,}");
                 if (items.Length != 4)
-                    throw new ArgumentOutOfRangeException("Format it is not correct.");
+                    throw new ArgumentOutOfRangeException($"File must contains only for columns. But the number of columns is {items.Length}.");
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);
                 element.Geometry = new DtmPointGeometry
                 {
