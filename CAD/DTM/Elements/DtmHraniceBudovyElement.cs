@@ -15,7 +15,7 @@ namespace CAD.DTM.Elements
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
         }
-
+        public override DtmElementType ElementType => DtmElementType.Line;
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);

@@ -66,6 +66,8 @@ namespace CAD.DTM.Elements
             {"HraniceJinehoObjektu (Ano)",true },
             {"HraniceJinehoObjektu (Ne)",false },
         };
+
+        public override DtmElementType ElementType => DtmElementType.Line;
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
 
         public override void SelectedSetting(string value)

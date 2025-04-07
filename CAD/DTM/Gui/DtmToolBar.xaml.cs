@@ -102,7 +102,7 @@ namespace CAD.DTM.Gui
             };
             foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting)
             {
-                if (element.Value.ElementType != ElementType.Line)
+                if (element.Value.ElementType != DtmElementType.Line)
                     continue;
                 _ctx.DtmLineElements.Add(element.Key);
             }

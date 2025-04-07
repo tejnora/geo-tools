@@ -4,7 +4,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmUdrzovanaPlochaZeleneDefinicniBodElement
-        : DtmElement
+        : DtmBodBaseElement
     {
         public int TypUdrzovaneZelene { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)

@@ -68,6 +68,7 @@ namespace CAD.DTM.Elements
             };
         }
 
+        public override DtmElementType ElementType => DtmElementType.Line;
         public override IEnumerable<string> Settings => Enum.GetNames(typeof(DtmTypStavby));
 
         public override void SelectedSetting(string value)

@@ -492,6 +492,7 @@
     <Compile Include="DTM\Elements\DtmChodnikPlochaElement.cs" />
     <Compile Include="DTM\Elements\DtmCyklostezkaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DtmCyklostezkaPlochaElement.cs" />
+    <Compile Include="DTM\Elements\DtmElementGeneric.cs" />
     <Compile Include="DTM\Elements\DtmElementSpolecneAtributy.cs" />
     <Compile Include="DTM\Elements\DtmHraniceBudovyElement.cs" />
     <Compile Include="DTM\Elements\DtmHraniceDopravniStavbyPlochyElement.cs" />
@@ -502,6 +503,7 @@
     <Compile Include="DTM\Elements\DtmParkovisteOdstavnaPlochaDefinicniBod.cs" />
     <Compile Include="DTM\Elements\DtmPlotElement.cs" />
     <Compile Include="DTM\Elements\DtmPodrobnyBodZPSElement.cs" />
+    <Compile Include="DTM\Elements\DtmBodBaseElement.cs" />
     <Compile Include="DTM\Elements\DtmPrevazujiciPovrch.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyZPS.cs" />

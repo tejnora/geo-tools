@@ -50,12 +50,13 @@ namespace CAD.DTM.Configuration
             catch { }
         }
 
-        ElementType GetElementType(string value)
+        DtmElementType GetElementType(string value)
         {
             switch (value)
             {
-                case "point": return ElementType.Point;
-                case "line": return ElementType.Line;
+                case "point": return DtmElementType.Point;
+                case "line": return DtmElementType.Line;
+                case "plocha": return DtmElementType.Plocha;
             }
 
             throw new UnExpectException();
@@ -70,7 +71,7 @@ namespace CAD.DTM.Configuration
             if (ElementSetting.TryGetValue(elementName, out var option) && option.ClassType != null)
                 element = (DtmElement)Activator.CreateInstance(option.ClassType);
             else
-                element = (DtmElement)Activator.CreateInstance(typeof(DtmElement));
+                element = (DtmElement)Activator.CreateInstance(typeof(DtmElementGeneric));
             element.Init(ElementSetting[elementName]);
             return element;
         }

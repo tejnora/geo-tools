@@ -5,7 +5,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmPodrobnyBodZPSElement
-    : DtmElement
+    : DtmBodBaseElement
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -52,5 +52,11 @@ namespace CAD.DTM.Elements
                 ZpusobPorizeniZPS = 1
             };
         }
+
+        public override string GetInfoAsString()
+        {
+            return $"Cislo bodu: {CisloBodu}";
+        }
+
     }
 }

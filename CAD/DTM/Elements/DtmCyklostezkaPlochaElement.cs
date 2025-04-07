@@ -10,7 +10,7 @@ namespace CAD.DTM.Elements
         {
             PrevazujiciPovrch = DtmPrevazujiciPovrch.Nezjisteno;
         }
-
+        public override DtmElementType ElementType => DtmElementType.Plocha;
         DtmPrevazujiciPovrch PrevazujiciPovrch { get; set; }
         string OznaceniCyklostezky { get; set; }
 

@@ -8,7 +8,7 @@ namespace CAD.DTM.Elements
         public DtmChodnikPlochaElement()
         {
         }
-
+        public override DtmElementType ElementType => DtmElementType.Plocha;
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);

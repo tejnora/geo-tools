@@ -113,7 +113,7 @@ namespace CAD.DTM
                 {
                     Point = new DtmPoint("-" + items[1], "-" + items[2], items[3])
                 };
-                element.CisloBodu = items[0];
+                ((DtmBodBaseElement)element).CisloBodu = items[0];
                 AddElementIfNotExist(ctx.PointTypeSelected, element);
                 points.Add(element);
             }

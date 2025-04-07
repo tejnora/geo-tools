@@ -5,7 +5,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmChodnikDefinicniBodElement
-        : DtmElement
+        : DtmBodBaseElement
     {
         public double PrevazujiciPovrch { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)

@@ -13,6 +13,8 @@ namespace CAD.DTM.Elements
     {
         public int DruhPlotu { get; set; }
         public bool HraniceJinehoObjektu { get; set; }
+        public override DtmElementType ElementType => DtmElementType.Line;
+
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);

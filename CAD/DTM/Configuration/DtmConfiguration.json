@@ -36,7 +36,7 @@
     "ObsahovaCast": "ZPS"
   },
   "HraniceBudovy": {
-    "Color": [ 210, 217, 25, 255 ],
+    "Color": [ 214, 212, 212, 255 ],
     "Width": 0.001,
     "Type": "line",
     "CodeBase": "0100000299",

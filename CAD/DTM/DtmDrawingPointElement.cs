@@ -18,7 +18,7 @@ namespace CAD.DTM
         , IDrawObject
         , IDtmDrawingElement
     {
-        readonly DtmElement _element;
+        readonly DtmBodBaseElement _element;
         public DtmPointGeometry PointGeometry { get; }
         readonly UnitPoint _point;
         const int ThresholdPixel = 6;
@@ -26,7 +26,7 @@ namespace CAD.DTM
 
         public DtmDrawingPointElement(DtmElement element)
         {
-            _element = element;
+            _element = (DtmBodBaseElement)element;
             PointGeometry = (DtmPointGeometry)element.Geometry;
             _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
         }
@@ -147,7 +147,7 @@ namespace CAD.DTM
 
         public string GetInfoAsString()
         {
-            return $"Group name: {Group.Name}, Cislo bodu: {_element.CisloBodu}, Stav: {_element.ZapisObjektuPopis}, " +
+            return $"Group name: {Group.Name},{_element.GetInfoAsString()}, " +
                    $"[Y,X,Z]=[{PointGeometry.Point.X:##.00},{PointGeometry.Point.Y:##.00},{PointGeometry.Point.Z:##.00}]";
         }
 

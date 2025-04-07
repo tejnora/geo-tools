@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using CAD.Canvas;
@@ -9,13 +8,11 @@ using CAD.VFK;
 
 namespace CAD.DTM.Elements
 {
-    public class DtmElement
+    public abstract class DtmElement
     : IDtmElement
     {
         public char ZapisObjektu { get; set; }
         public IDtmGeometry Geometry { get; set; }
-        public string CisloBodu { get; set; }
-
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
         public DtmSpolecneAtributyObjektuDefinicnichBodu SpolecneAtributyObjektuDefinicnichBodu { get; set; }
@@ -25,6 +22,9 @@ namespace CAD.DTM.Elements
                 return new DtmDrawingPointElement(this);
             return new DtmDrawingCurveElement(this);
         }
+
+        public abstract DtmElementType ElementType { get; }
+
         public bool IsDeleted { get; set; } = false;
         public bool ExportToOutput
         {
@@ -120,7 +120,6 @@ namespace CAD.DTM.Elements
         public virtual void Init(DtmElementOption dtmElementOption)
         {
             ZapisObjektu = 'i';
-            CisloBodu = "";
             var dateTime = DateTime.Now;
             SpolecneAtributy = new DtmElementSpolecneAtributy
             {

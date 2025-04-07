@@ -4,7 +4,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     class DtmParkovisteOdstavnaPlochaDefinicniBod
-        : DtmElement
+        : DtmBodBaseElement
     {
         public DtmParkovisteOdstavnaPlochaDefinicniBod()
         {

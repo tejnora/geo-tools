@@ -15,7 +15,7 @@ namespace CAD.DTM
             var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, "Dtm/ImportPointsFileName");
             FileName = po.getString("");
             PointTypeElements = new ObservableCollection<string>();
-            foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting.Where(element => element.Value.ElementType == ElementType.Point))
+            foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting.Where(element => element.Value.ElementType == DtmElementType.Point))
             {
                 PointTypeElements.Add(element.Key);
             }

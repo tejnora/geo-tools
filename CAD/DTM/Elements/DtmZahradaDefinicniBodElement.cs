@@ -4,7 +4,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmZahradaDefinicniBodElement
-        : DtmElement
+        : DtmBodBaseElement
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {

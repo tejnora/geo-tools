@@ -5,7 +5,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmIdentickyBodElement
-        : DtmElement
+        : DtmBodBaseElement
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {

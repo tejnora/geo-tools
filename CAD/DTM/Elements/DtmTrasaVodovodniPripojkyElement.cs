@@ -58,6 +58,8 @@ namespace CAD.DTM.Elements
         {
             {"PE, DN25",new Tuple<string, uint>("PE",25)}
         };
+
+        public override DtmElementType ElementType => DtmElementType.Line;
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
 
         public override void SelectedSetting(string value)

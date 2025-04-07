@@ -17,6 +17,7 @@ namespace CAD.DTM.Elements
             ExportSpolecneAtributyObjektuZPS(exporter);
             exporter.AddElement("atr", "TypDopravniStavbyNeboPlochy", TypDopravniStavbyNeboPlochy);
         }
+        public override DtmElementType ElementType => DtmElementType.Plocha;
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
             foreach (XmlElement xe in xmlElement)

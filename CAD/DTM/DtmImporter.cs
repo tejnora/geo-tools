@@ -231,7 +231,8 @@ namespace CAD.DTM
                         element.SpolecneAtributyZPS = ParseDtmSpolecneAtributyZPS(e);
                         break;
                     case "CisloBodu":
-                        element.CisloBodu = e.InnerText;
+                        if(element is DtmBodBaseElement)
+                            ((DtmBodBaseElement)element).CisloBodu = e.InnerText;
                         break;
                 }
             }

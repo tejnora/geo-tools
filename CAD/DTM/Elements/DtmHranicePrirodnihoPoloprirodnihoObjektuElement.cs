@@ -12,6 +12,7 @@ namespace CAD.DTM.Elements
             ExportSpolecneAtributyObjektuZPS(exporter);
             exporter.AddElement("atr", "TypPrirodnihoPoloprirodnihoObjektu", TypPrirodnihoPoloprirodnihoObjektu);
         }
+        public override DtmElementType ElementType => DtmElementType.Line;
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
             foreach (XmlElement x in xmlElement)

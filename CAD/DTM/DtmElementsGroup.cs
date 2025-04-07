@@ -28,7 +28,7 @@ namespace CAD.DTM
             var output = new StringBuilder();
             foreach (var element in _elements)
             {
-                var ddd = element as DtmElement;
+                var ddd = element as DtmBodBaseElement;
                 var geometryPoint = ddd.Geometry as DtmPointGeometry;
                 if (string.IsNullOrEmpty(ddd.CisloBodu))
                     continue;

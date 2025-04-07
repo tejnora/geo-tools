@@ -8,6 +8,8 @@ namespace CAD.DTM.Elements
         : DtmElement
     {
         public double VyskaNaTerenu { get; set; }
+        public override DtmElementType ElementType => DtmElementType.Line;
+
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
