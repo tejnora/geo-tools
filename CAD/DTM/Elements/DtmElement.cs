@@ -26,7 +26,16 @@ namespace CAD.DTM.Elements
             return new DtmDrawingCurveElement(this);
         }
         public bool IsDeleted { get; set; } = false;
-        public bool ExportToOutput => !IsDeleted && ZapisObjektu != 'r';
+        public bool ExportToOutput
+        {
+            get
+            {
+                if (ZapisObjektu == 'r')
+                    return IsDeleted;
+                return !IsDeleted && ZapisObjektu != 'r';
+            }
+        }
+
         public bool IsReferencePoint => ZapisObjektu == 'r';
         static IEnumerable<string> _settingsEmpty = new List<string>();
         public virtual IEnumerable<string> Settings => _settingsEmpty;

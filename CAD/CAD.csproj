@@ -505,6 +505,7 @@
     <Compile Include="DTM\Elements\DtmPrevazujiciPovrch.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyZPS.cs" />
+    <Compile Include="DTM\Elements\DtmStavebneUpravenyVjezdNaPozemekElement.cs" />
     <Compile Include="DTM\Elements\DtmTrasaVodovodniPripojkyElement.cs" />
     <Compile Include="DTM\Elements\DtmUdrzovanaPlochaZeleneDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DtmVyskovyBodNaTerenuElement.cs" />
