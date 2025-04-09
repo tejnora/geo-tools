@@ -33,7 +33,7 @@ namespace CAD.DTM.Configuration
                         {
                             Color = Color.FromArgb(a, r, g, b),
                             Width = width,
-                            ElementType = GetElementType(value.GetProperty("Type").GetString()),
+                            ElementType = GetElementType(value.GetProperty("CodeSuffix").GetString()),
                             CodeBase = value.GetProperty("CodeBase").GetString(),
                             CodeSuffix = value.GetProperty("CodeSuffix").GetString(),
                             XmlNamespace = value.GetProperty("Xmlns").GetString(),
@@ -52,14 +52,16 @@ namespace CAD.DTM.Configuration
 
         DtmElementType GetElementType(string value)
         {
-            switch (value)
+            switch (int.Parse(value))
             {
-                case "point": return DtmElementType.Point;
-                case "line": return DtmElementType.Line;
-                case "plocha": return DtmElementType.Plocha;
+                case 1: return DtmElementType.Bod;
+                case 2: return DtmElementType.Linie;
+                case 3: return DtmElementType.Plocha;
+                case 4: return DtmElementType.DefinicniBod;
+                case 5: return DtmElementType.Obvod;
+                default:
+                    throw new UnExpectException();
             }
-
-            throw new UnExpectException();
         }
 
         public static DtmConfigurationSingleton Instance => _instance;

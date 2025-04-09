@@ -50,6 +50,7 @@ namespace CAD.DTM
             foreach (var g in group.GetElementGroups())
             {
                 var obj = g.CreateDrawObject();
+                if (obj == null) continue;
                 ((IDtmDrawingElement)obj).Group = this;
                 _objects.Add(obj);
             }

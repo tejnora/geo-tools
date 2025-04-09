@@ -4,28 +4,29 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     class DtmCyklostezkaDefinicniBodElement
-        : DtmBodBaseElement
+        : DtmDefinicniBodBaseElement
     {
         public DtmCyklostezkaDefinicniBodElement()
         {
-            PrevazujiciPovrch = DtmPrevazujiciPovrch.Nezjisteno;
+            PrevazujiciPovrch = DtmPrevazujiciPovrchEnum.Nezjisteno;
         }
-        DtmPrevazujiciPovrch PrevazujiciPovrch { get; set; }
+        DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         string OznaceniCyklostezky { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
-            ExportSpolecneAtributyObjektuZPS(exporter);
+            ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
             exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
             exporter.AddElement("atr", "OznaceniCyklostezky", OznaceniCyklostezky);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
                 {
                     case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrch)int.Parse(x.InnerText);
+                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
                         break;
                     case "OznaceniCyklostezky":
                         OznaceniCyklostezky = x.InnerText;

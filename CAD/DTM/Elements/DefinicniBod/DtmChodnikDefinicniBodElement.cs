@@ -1,26 +1,27 @@
 ﻿using CAD.DTM.Gui;
+using System.Globalization;
 using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    public class DtmUdrzovanaPlochaZeleneDefinicniBodElement
-        : DtmBodBaseElement
+    public class DtmChodnikDefinicniBodElement
+        : DtmDefinicniBodBaseElement
     {
-        public int TypUdrzovaneZelene { get; set; }
+        public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
-            exporter.AddElement("atr", "TypUdrzovaneZelene", TypUdrzovaneZelene);
+            exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
-            ImportSpolecneAtributyObjektuDefinicnichBodu(xmlElement);
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
                 {
-                    case "TypUdrzovaneZelene":
-                        TypUdrzovaneZelene = int.Parse(x.InnerText);
+                    case "PrevazujiciPovrch":
+                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
                         break;
                 }
             }

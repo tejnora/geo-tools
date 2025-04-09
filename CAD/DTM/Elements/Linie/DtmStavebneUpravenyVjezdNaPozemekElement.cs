@@ -1,15 +1,13 @@
 ﻿using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
-using System.Windows.Media.Media3D;
-using System;
 using System.Linq;
 using System.Xml;
 
 namespace CAD.DTM.Elements
 {
     class DtmStavebneUpravenyVjezdNaPozemekElement
-        : DtmElement
+        : DtmLinieElementBase
     {
         public uint PrujezdnaSirka { get; set; }
         public uint PrujezdnaVyska { get; set; }
@@ -28,6 +26,7 @@ namespace CAD.DTM.Elements
 
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
@@ -48,33 +47,21 @@ namespace CAD.DTM.Elements
         {
             return $"PrujezdnaSirka: {PrujezdnaSirka}, PrujezdnaVyska:{PrujezdnaVyska}, HraniceJinehoObjektu:{HraniceJinehoObjektu}";
         }
-
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
 
-            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS
-            {
-                TridaPresnostiPoloha = 3,
-                TridaPresnostiVyska = 3,
-                UrovenUmisteniObjektuZPS = 0,
-                ZpusobPorizeniZPS = 1
-            };
+            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
         }
         static Dictionary<string, bool> _values = new Dictionary<string, bool>()
         {
             {"HraniceJinehoObjektu (Ano)",true },
             {"HraniceJinehoObjektu (Ne)",false },
         };
-
-        public override DtmElementType ElementType => DtmElementType.Line;
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
-
         public override void SelectedSetting(string value)
         {
             HraniceJinehoObjektu = _values[value];
         }
-
-
     }
 }

@@ -4,26 +4,27 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     class DtmParkovisteOdstavnaPlochaDefinicniBod
-        : DtmBodBaseElement
+        : DtmDefinicniBodBaseElement
     {
         public DtmParkovisteOdstavnaPlochaDefinicniBod()
         {
-            PrevazujiciPovrch = DtmPrevazujiciPovrch.Nezjisteno;
+            PrevazujiciPovrch = DtmPrevazujiciPovrchEnum.Nezjisteno;
         }
-        DtmPrevazujiciPovrch PrevazujiciPovrch { get; set; }
+        DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
-            ExportSpolecneAtributyObjektuZPS(exporter);
+            ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
             exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
                 {
                     case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrch)int.Parse(x.InnerText);
+                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
                         break;
                 }
             }

@@ -3,8 +3,8 @@ using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    class DtmBudovaDefinicniBodElement
-        : DtmBodBaseElement
+    public class DtmZahradaDefinicniBodElement
+        : DtmDefinicniBodBaseElement
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -12,7 +12,7 @@ namespace CAD.DTM.Elements
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
-            ImportSpolecneAtributyObjektuDefinicnichBodu(xmlElement);
+            base.ImportDtmAttributes(xmlElement);
         }
     }
 }

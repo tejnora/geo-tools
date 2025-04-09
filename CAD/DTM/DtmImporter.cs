@@ -220,86 +220,10 @@ namespace CAD.DTM
 
         void ParseAtributyObjektu(XmlElement xmlElement, DtmElement element)
         {
-            foreach (XmlElement e in xmlElement)
-            {
-                switch (e.LocalName)
-                {
-                    case "SpolecneAtributyVsechObjektu":
-                        element.SpolecneAtributy = ParseSpolecneAtributyVsechObjektu(e);
-                        break;
-                    case "SpolecneAtributyObjektuZPS":
-                        element.SpolecneAtributyZPS = ParseDtmSpolecneAtributyZPS(e);
-                        break;
-                    case "CisloBodu":
-                        if(element is DtmBodBaseElement)
-                            ((DtmBodBaseElement)element).CisloBodu = e.InnerText;
-                        break;
-                }
-            }
             element.ImportDtmAttributes(xmlElement);
         }
 
-        DtmElementSpolecneAtributy ParseSpolecneAtributyVsechObjektu(XmlElement xmlElement)
-        {
-            var atributy = new DtmElementSpolecneAtributy();
-            foreach (XmlElement e in xmlElement)
-            {
-                switch (e.LocalName)
-                {
-                    case "DatumVkladu":
-                        atributy.DatumVkladu = DateTime.Parse(e.InnerText);
-                        break;
-                    case "DatumZmeny":
-                        atributy.DatumZmeny = DateTime.Parse(e.InnerText);
-                        break;
-                    case "ID":
-                        atributy.ID = e.InnerText;
-                        break;
-                    case "IDEditora":
-                        atributy.IDEditora = e.InnerText;
-                        break;
-                    case "IDZmeny":
-                        atributy.IDZmeny = e.InnerText;
-                        break;
-                    case "PopisObjektu":
-                        atributy.PopisObjektu = e.InnerText;
-                        break;
-                    case "VkladOsoba":
-                        atributy.VkladOsoba = e.InnerText;
-                        break;
-                    case "ZmenaOsoba":
-                        atributy.ZmenaOsoba = e.InnerText;
-                        break;
-                }
-            }
-            return atributy;
-        }
-
-        DtmSpolecneAtributyZPS ParseDtmSpolecneAtributyZPS(XmlElement xmlElement)
-        {
-            var atributy = new DtmSpolecneAtributyZPS();
-            foreach (XmlElement e in xmlElement)
-            {
-                switch (e.LocalName)
-                {
-                    case "UrovenUmisteniObjektuZPS":
-                        atributy.UrovenUmisteniObjektuZPS = int.Parse(e.InnerText);
-                        break;
-                    case "TridaPresnostiPoloha":
-                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
-                        break;
-                    case "TridaPresnostiVyska":
-                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
-                        break;
-                    case "ZpusobPorizeniZPS":
-                        atributy.ZpusobPorizeniZPS = int.Parse(e.InnerText);
-                        break;
-                }
-            }
-            return atributy;
-        }
-
-        XmlElement FindElement(XmlElement parent, string name)
+        public static XmlElement FindElement(XmlElement parent, string name)
         {
             foreach (XmlElement c in parent)
             {

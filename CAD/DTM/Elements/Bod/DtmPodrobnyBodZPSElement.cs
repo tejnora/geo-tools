@@ -17,17 +17,13 @@ namespace CAD.DTM.Elements
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
-            if (SpolecneAtributyZPS == null)
-                SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
                 {
                     case "ZpusobPorizeniPB_ZP":
                         SpolecneAtributyZPS.UrovenUmisteniObjektuZPS = int.Parse(x.InnerText);
-                        break;
-                    case "CisloBodu":
-                        CisloBodu = x.InnerText;
                         break;
                     case "TridaPresnostiPoloha":
                         SpolecneAtributyZPS.TridaPresnostiPoloha = int.Parse(x.InnerText);
@@ -44,19 +40,12 @@ namespace CAD.DTM.Elements
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
-            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS
-            {
-                TridaPresnostiPoloha = 3,
-                TridaPresnostiVyska = 3,
-                UrovenUmisteniObjektuZPS = 0,
-                ZpusobPorizeniZPS = 1
-            };
+            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
         }
 
         public override string GetInfoAsString()
         {
             return $"Cislo bodu: {CisloBodu}";
         }
-
     }
 }

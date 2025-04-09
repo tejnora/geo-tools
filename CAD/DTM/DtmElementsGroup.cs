@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Media;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
 using CAD.DTM.Gui;

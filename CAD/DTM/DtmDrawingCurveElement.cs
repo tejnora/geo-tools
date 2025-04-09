@@ -147,6 +147,7 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
+            if (_curveGeometry == null) return;
             var lastPoint = _curveGeometry.Points.Back();
             lastPoint.X = point.X;
             lastPoint.Y = point.Y;

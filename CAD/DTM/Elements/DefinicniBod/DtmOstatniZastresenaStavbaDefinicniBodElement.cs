@@ -1,10 +1,9 @@
 ﻿using CAD.DTM.Gui;
 using System.Xml;
-
 namespace CAD.DTM.Elements
 {
     public class DtmOstatniZastresenaStavbaDefinicniBodElement
-    : DtmBodBaseElement
+    : DtmDefinicniBodBaseElement
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -12,7 +11,7 @@ namespace CAD.DTM.Elements
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
-            ImportSpolecneAtributyObjektuDefinicnichBodu(xmlElement);
+            base.ImportDtmAttributes(xmlElement);
         }
     }
 }

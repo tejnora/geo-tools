@@ -5,7 +5,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     public class DtmHraniceBudovyElement
-        : DtmElement
+        : DtmLinieElementBase
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -14,18 +14,12 @@ namespace CAD.DTM.Elements
 
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
+            base.ImportDtmAttributes(xmlElement);
         }
-        public override DtmElementType ElementType => DtmElementType.Line;
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
-            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS
-            {
-                TridaPresnostiPoloha = 3,
-                TridaPresnostiVyska = 3,
-                UrovenUmisteniObjektuZPS = 0,
-                ZpusobPorizeniZPS = 1
-            };
+            SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
         }
     }
 }

@@ -15,12 +15,18 @@ namespace CAD.DTM.Elements
         public IDtmGeometry Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
-        public DtmSpolecneAtributyObjektuDefinicnichBodu SpolecneAtributyObjektuDefinicnichBodu { get; set; }
+        public DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; set; }
         public IDrawObject CreateDrawObject()
         {
-            if (Geometry is DtmPointGeometry)
-                return new DtmDrawingPointElement(this);
-            return new DtmDrawingCurveElement(this);
+            switch (ElementType)
+            {
+                case DtmElementType.Bod:
+                    return new DtmDrawingPointElement(this);
+                case DtmElementType.Linie:
+                    return new DtmDrawingCurveElement(this);
+                default:
+                    return null;
+            }
         }
 
         public abstract DtmElementType ElementType { get; }
@@ -48,7 +54,9 @@ namespace CAD.DTM.Elements
 
         public virtual void ImportDtmAttributes(XmlElement xmlElement)
         {
-
+            ImportSpolecneAtributyVsechObjektu(xmlElement);
+            ImportSpolecneAtributyZPS(xmlElement);
+            ImportSpolecneAtributyObjektuZPS_TI(xmlElement);
         }
         public string EvaluateZapisObjektuForExportToDtm()
         {
@@ -79,7 +87,85 @@ namespace CAD.DTM.Elements
             }
             exporter.EndElement();
         }
+        protected void ImportSpolecneAtributyVsechObjektu(XmlElement xmlElement)
+        {
+            xmlElement = DtmImporter.FindElement(xmlElement, "SpolecneAtributyVsechObjektu");
+            if (xmlElement == null)
+                return;
+            var atributy = new DtmElementSpolecneAtributy();
+            foreach (XmlElement e in xmlElement)
+            {
+                switch (e.LocalName)
+                {
+                    case "DatumVkladu":
+                        atributy.DatumVkladu = DateTime.Parse(e.InnerText);
+                        break;
+                    case "DatumZmeny":
+                        atributy.DatumZmeny = DateTime.Parse(e.InnerText);
+                        break;
+                    case "ID":
+                        atributy.ID = e.InnerText;
+                        break;
+                    case "IDEditora":
+                        atributy.IDEditora = e.InnerText;
+                        break;
+                    case "IDZmeny":
+                        atributy.IDZmeny = e.InnerText;
+                        break;
+                    case "PopisObjektu":
+                        atributy.PopisObjektu = e.InnerText;
+                        break;
+                    case "VkladOsoba":
+                        atributy.VkladOsoba = e.InnerText;
+                        break;
+                    case "ZmenaOsoba":
+                        atributy.ZmenaOsoba = e.InnerText;
+                        break;
+                }
+            }
+            SpolecneAtributy = atributy;
+        }
+        protected void ExportSpolecneAtributyObjektuZPS_TI(IDtmExporter exporter)
+        {
+            exporter.BeginElement("atr", "SpolecneAtributyObjektuZPS_TI", true);
+            exporter.AddElement(null, "UrovenUmisteniObjektuTI", SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI);
+            exporter.AddElement(null, "TridaPresnostiPoloha", SpolecneAtributyObjektuZPS_TI.TridaPresnostiPoloha);
+            exporter.AddElement(null, "TridaPresnostiVyska", SpolecneAtributyObjektuZPS_TI.TridaPresnostiVyska);
+            exporter.AddElement(null, "ZpusobPorizeniTI", SpolecneAtributyObjektuZPS_TI.ZpusobPorizeniTI);
+            exporter.AddElement(null, "StavObjektu", (int)SpolecneAtributyObjektuZPS_TI.StavObjektu);
+            exporter.EndElement();
 
+        }
+        protected void ImportSpolecneAtributyObjektuZPS_TI(XmlElement xmlElement)
+        {
+            xmlElement = DtmImporter.FindElement(xmlElement, "SpolecneAtributyObjektuZPS_TI");
+            if (xmlElement == null)
+                return;
+            var atributy = new DtmSpolecneAtributyObjektuZPS_TI();
+            foreach (XmlElement e in xmlElement)
+            {
+                switch (e.LocalName)
+                {
+                    case "UrovenUmisteniObjektuTI":
+                        atributy.UrovenUmisteniObjektuTI = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiPoloha":
+                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiVyska":
+                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
+                        break;
+                    case "ZpusobPorizeniTI":
+                        atributy.ZpusobPorizeniTI = int.Parse(e.InnerText);
+                        break;
+                    case "StavObjektu":
+                        atributy.StavObjektu = (DtmStavObjektuEnum)int.Parse(e.InnerText);
+                        break;
+                }
+            }
+            SpolecneAtributyObjektuZPS_TI = atributy;
+
+        }
         protected void ExportSpolecneAtributyObjektuZPS(IDtmExporter exporter)
         {
             exporter.BeginElement("atr", "SpolecneAtributyObjektuZPS", true);
@@ -89,28 +175,33 @@ namespace CAD.DTM.Elements
             exporter.AddElement(null, "ZpusobPorizeniZPS", SpolecneAtributyZPS.ZpusobPorizeniZPS);
             exporter.EndElement();
         }
-
-        protected void ExportSpolecneAtributyObjektuDefinicnichBodu(IDtmExporter exporter)
+        protected void ImportSpolecneAtributyZPS(XmlElement xmlElement)
         {
-            exporter.BeginElement("atr", "SpolecneAtributyObjektuDefinicnichBodu");
-            exporter.AddElement(null, "UrovenUmisteniObjektuZPS", SpolecneAtributyObjektuDefinicnichBodu.UrovenUmisteniObjektuZPS);
-            exporter.EndElement();
-        }
-
-        protected void ImportSpolecneAtributyObjektuDefinicnichBodu(XmlElement xmlElement)
-        {
-            var spolElem = xmlElement["SpolecneAtributyObjektuDefinicnichBodu"];
-            SpolecneAtributyObjektuDefinicnichBodu = new DtmSpolecneAtributyObjektuDefinicnichBodu();
-            foreach (XmlElement el in spolElem)
+            xmlElement = DtmImporter.FindElement(xmlElement, "SpolecneAtributyObjektuZPS");
+            if (xmlElement == null)
+                return;
+            var atributy = new DtmSpolecneAtributyZPS();
+            foreach (XmlElement e in xmlElement)
             {
-                switch (el.LocalName)
+                switch (e.LocalName)
                 {
                     case "UrovenUmisteniObjektuZPS":
-                        SpolecneAtributyObjektuDefinicnichBodu.UrovenUmisteniObjektuZPS = int.Parse(el.InnerText);
+                        atributy.UrovenUmisteniObjektuZPS = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiPoloha":
+                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
+                        break;
+                    case "TridaPresnostiVyska":
+                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
+                        break;
+                    case "ZpusobPorizeniZPS":
+                        atributy.ZpusobPorizeniZPS = int.Parse(e.InnerText);
                         break;
                 }
             }
+            SpolecneAtributyZPS = atributy;
         }
+
         public string ZapisObjektuPopis
         {
             get

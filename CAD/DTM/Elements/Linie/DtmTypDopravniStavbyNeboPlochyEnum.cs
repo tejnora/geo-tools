@@ -1,0 +1,29 @@
+﻿namespace CAD.DTM.Elements.Linie
+{
+    enum DtmTypDopravniStavbyNeboPlochyEnum
+    {
+        PozemniKomunikace=1,
+        Chodnik=2,
+        Cyklostezka=3,
+        Parkoviste=4,
+        DopravniOstruvek=5,
+        DeliciPas=6,
+        Najezd=7,
+        PridruzenaPlochaPozemniKomunikace=8,
+        TramvajovaDraha=9,
+        PozemniLanovaDraha=10,
+        SpecialniDraha=11,
+        ManipulacniPlocha=12,
+        MostniVaha=13,
+        PrikopNasypZarezDopravníStavby=14,
+        Nastupiste=15,
+        PlochaMostniKonstrukce=16,
+        PortalTunelu=17,
+        ProvozniPlochaTunelu=18,
+        PortalPodchodu=19,
+        ProvozniPlochaPodchodu=20,
+        SouhrnnaPlochaZeleznicnichDrah=21,
+        Jiny=22,
+        Nezjisteno=99
+    }
+}

@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CAD.DTM.Elements
+{
+    public class DtmLinieElementBase
+    : DtmElement
+    {
+        public override DtmElementType ElementType => DtmElementType.Linie;
+    }
+}

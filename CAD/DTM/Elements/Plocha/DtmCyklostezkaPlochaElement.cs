@@ -1,17 +1,17 @@
 ﻿using System.Xml;
+using CAD.DTM.Elements.Plocha;
 using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
 {
     internal class DtmCyklostezkaPlochaElement
-        : DtmElement
+        : DtmPlochaBaseElement
     {
         public DtmCyklostezkaPlochaElement()
         {
-            PrevazujiciPovrch = DtmPrevazujiciPovrch.Nezjisteno;
+            PrevazujiciPovrch = DtmPrevazujiciPovrchEnum.Nezjisteno;
         }
-        public override DtmElementType ElementType => DtmElementType.Plocha;
-        DtmPrevazujiciPovrch PrevazujiciPovrch { get; set; }
+        DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         string OznaceniCyklostezky { get; set; }
 
         public override void ExportAttributesToDtm(IDtmExporter exporter)
@@ -23,12 +23,13 @@ namespace CAD.DTM.Elements
 
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
+            base.ImportDtmAttributes(xmlElement);
             foreach (XmlElement x in xmlElement)
             {
                 switch (x.LocalName)
                 {
                     case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrch)int.Parse(x.InnerText);
+                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
                         break;
                     case "OznaceniCyklostezky":
                         OznaceniCyklostezky = x.InnerText;

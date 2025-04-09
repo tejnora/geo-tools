@@ -1,6 +1,6 @@
 ﻿namespace CAD.DTM.Elements
 {
-    enum DtmPrevazujiciPovrch
+    public enum DtmPrevazujiciPovrchEnum
     {
         Asfalt = 1,
         Beton = 2,

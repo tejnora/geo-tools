@@ -2,7 +2,6 @@
   "PodrobnyBodZPS": {
     "Color": [ 255, 255, 255, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000218",
     "CodeSuffix": "01",
     "Xmlns": "pobzps",
@@ -14,7 +13,6 @@
   "VyskovyBodNaTerenu": {
     "Color": [ 255, 255, 255, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000219",
     "CodeSuffix": "01",
     "Xmlns": "vybote",
@@ -26,7 +24,6 @@
   "IdentickyBod": {
     "Color": [ 255, 0, 0, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000220",
     "CodeSuffix": "01",
     "Xmlns": "idebod",
@@ -38,7 +35,6 @@
   "HraniceBudovy": {
     "Color": [ 214, 212, 212, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000299",
     "CodeSuffix": "02",
     "Xmlns": "hrabud",
@@ -50,7 +46,6 @@
   "HraniceZdi": {
     "Color": [ 217, 151, 28, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000302",
     "CodeSuffix": "02",
     "Xmlns": "hrazdi",
@@ -62,7 +57,6 @@
   "Plot": {
     "Color": [ 157, 217, 28, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000162",
     "CodeSuffix": "02",
     "Xmlns": "plotli",
@@ -74,7 +68,6 @@
   "StavebneUpravenyVjezdNaPozemek": {
     "Color": [ 217, 122, 28, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000165",
     "CodeSuffix": "02",
     "Xmlns": "suvjpo",
@@ -86,7 +79,6 @@
   "HraniceDopravniStavbyPlochy": {
     "Color": [ 217, 192, 28, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000304",
     "CodeSuffix": "02",
     "Xmlns": "hradsp",
@@ -98,7 +90,6 @@
   "HranicePrirodnihoPoloprirodnihoObjektu": {
     "Color": [ 66, 245, 75, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000305",
     "CodeSuffix": "02",
     "Xmlns": "hrappo",
@@ -110,7 +101,6 @@
   "UdrzovanaPlochaZeleneDefinicniBod": {
     "Color": [ 66, 245, 75, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000215",
     "CodeSuffix": "04",
     "Xmlns": "upzdef",
@@ -122,7 +112,6 @@
   "BudovaDefinicniBod": {
     "Color": [ 210, 217, 25, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000001",
     "CodeSuffix": "04",
     "Xmlns": "buddef",
@@ -134,7 +123,6 @@
   "ChodnikDefinicniBod": {
     "Color": [ 210, 217, 25, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000007",
     "CodeSuffix": "04",
     "Xmlns": "chodef",
@@ -146,7 +134,6 @@
   "HraniceStavby": {
     "Color": [ 210, 217, 25, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000300",
     "CodeSuffix": "02",
     "Xmlns": "hrasta",
@@ -158,7 +145,6 @@
   "ZahradaDefinicniBod": {
     "Color": [ 210, 217, 25, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000209",
     "CodeSuffix": "04",
     "Xmlns": "zahdef",
@@ -170,7 +156,6 @@
   "OstatniZastresenaStavbaDefinicniBod": {
     "Color": [ 210, 217, 25, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000314",
     "CodeSuffix": "04",
     "Xmlns": "ozsdef",
@@ -182,7 +167,6 @@
   "CyklostezkaDefinicniBod": {
     "Color": [ 0, 0, 100, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000009",
     "CodeSuffix": "04",
     "Xmlns": "cykdef",
@@ -194,7 +178,6 @@
   "ParkovisteOdstavnaPlochaDefinicniBod": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000011",
     "CodeSuffix": "04",
     "Xmlns": "paodef",
@@ -206,7 +189,6 @@
   "CyklostezkaPlocha": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000009",
     "CodeSuffix": "03",
     "Xmlns": "cykpol",
@@ -218,7 +200,6 @@
   "ChodnikPlocha": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000007",
     "CodeSuffix": "03",
     "Xmlns": "chopol",
@@ -227,10 +208,9 @@
     "SkupinaObjektu": "Silniční doprava",
     "ObsahovaCast": "ZPS"
   },
-  "ParkovisteOdstavnaPlochaPlocha": {
+  "ParkovisteOdstavnaPlocha": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000011",
     "CodeSuffix": "03",
     "Xmlns": "paopol",
@@ -242,7 +222,6 @@
   "UdrzovanaPlochaZelenePlocha": {
     "Color": [ 0, 255, 0, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000215",
     "CodeSuffix": "03",
     "Xmlns": "upzpol",
@@ -254,7 +233,6 @@
   "ProvozniPlochaPozemniKomunikaceDefinicniBod": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000005",
     "CodeSuffix": "04",
     "Xmlns": "pokdef",
@@ -266,7 +244,6 @@
   "NajezdDefinicniBod": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "point",
     "CodeBase": "0100000017",
     "CodeSuffix": "04",
     "Xmlns": "najdef",
@@ -278,7 +255,6 @@
   "ZedLinie": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000168",
     "CodeSuffix": "02",
     "Xmlns": "zedlin",
@@ -290,7 +266,6 @@
   "NeidentifikovanyObjekt": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000202",
     "CodeSuffix": "02",
     "Xmlns": "neilin",
@@ -302,7 +277,6 @@
   "HraniceSchodiste": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000301",
     "CodeSuffix": "02",
     "Xmlns": "hrasch",
@@ -314,7 +288,6 @@
   "NajezdPlocha": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000017",
     "CodeSuffix": "03",
     "Xmlns": "najpol",
@@ -326,7 +299,6 @@
   "ProvozniPlochaPozemniKomunikacePlocha": {
     "Color": [ 0, 100, 100, 255 ],
     "Width": 0.02,
-    "Type": "line",
     "CodeBase": "0100000005",
     "CodeSuffix": "03",
     "Xmlns": "pokpol",
@@ -338,7 +310,6 @@
   "TrasaVodovodniPripojky": {
     "Color": [ 0, 0, 255, 255 ],
     "Width": 0.001,
-    "Type": "line",
     "CodeBase": "0100000114",
     "CodeSuffix": "02",
     "Xmlns": "tvplin",
@@ -347,5 +318,4 @@
     "SkupinaObjektu": "Vodovod",
     "ObsahovaCast": "ZPS"
   }
-
 }

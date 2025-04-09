@@ -6,9 +6,11 @@ namespace CAD.DTM
 {
     public enum DtmElementType
     {
-        Point,
-        Line,
-        Plocha
+        Bod,
+        Linie,
+        Plocha,
+        DefinicniBod,
+        Obvod
    }
 
     public interface IDtmElement
