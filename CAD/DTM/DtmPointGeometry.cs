@@ -2,7 +2,7 @@
 
 namespace CAD.DTM
 {
-    class DtmPointGeometry
+    public class DtmPointGeometry
         : IDtmGeometry
     {
         public DtmPointGeometry()

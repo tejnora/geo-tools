@@ -24,6 +24,8 @@ namespace CAD.DTM.Elements
                     return new DtmDrawingPointElement(this);
                 case DtmElementType.Linie:
                     return new DtmDrawingCurveElement(this);
+                case DtmElementType.DefinicniBod:
+                    return new DtmDrawingDefinitionPointElement(this);
                 default:
                     return null;
             }

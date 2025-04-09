@@ -89,6 +89,7 @@ namespace CAD.DTM
         public double Width { get; set; }
         public string Name { get; set; }
         public Tuple<string, string> DtmLineElementSelected { get; set; }
+        public Tuple<string, string> DtmDefinicniBodSelected { get; set; }
 
         public Rect GetBoundingRect(ICanvas canvas)
         {

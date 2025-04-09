@@ -1,41 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using CAD.Canvas;
 using CAD.Canvas.DrawTools;
 using CAD.DTM.Elements;
 using CAD.Export;
-using CAD.Utils;
 using GeoBase.Utils;
+using CAD.Utils;
+using CAD.DTM.Configuration;
 
 namespace CAD.DTM
 {
-    class DtmDrawingPointElement
+    public class DtmDrawingDefinitionPointElement
         : DrawObjectBase
         , IDrawObject
         , IDtmDrawingElement
     {
-        readonly DtmBodBaseElement _element;
-        public DtmPointGeometry PointGeometry { get; }
+        DtmElement _element;
         readonly UnitPoint _point;
         const int ThresholdPixel = 6;
-        static readonly Font Font = new Font("Arial", 12F, System.Drawing.FontStyle.Regular, GraphicsUnit.Pixel, 0);
 
-        public DtmDrawingPointElement(DtmElement element)
+        public DtmDrawingDefinitionPointElement()
         {
-            _element = (DtmBodBaseElement)element;
+
+        }
+        public DtmDrawingDefinitionPointElement(DtmElement element)
+        {
+            _element = element;
             PointGeometry = (DtmPointGeometry)element.Geometry;
             _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
+
+        }
+        public DtmPointGeometry PointGeometry { get; private set; }
+        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
+        {
+            if (!(snap is PodrobnyBodZPS zpz))
+                return;
+            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
+            PointGeometry = new DtmPointGeometry()
+            {
+                Point = (DtmPoint)pointGeometry.Point.Clone()
+            };
+            var dtmLayer = (DtmDrawingLayerMain)layer;
+            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmDefinicniBodSelected.Item1);
+            _element.SelectedSetting(dtmLayer.DtmDefinicniBodSelected.Item2);
+            _element.Geometry = PointGeometry;
+            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
+            Selected = true;
         }
         public string Id { get; }
         public IDrawObject Clone()
         {
-            throw new NotImplementedException();
+            var l = new DtmDrawingDefinitionPointElement();
+            l.Copy(this);
+            return l;
         }
-
+        public virtual void Copy(DtmDrawingDefinitionPointElement origin)
+        {
+            base.Copy(origin);
+            _element = origin._element;
+            PointGeometry = origin.PointGeometry;
+        }
         public bool PointInObject(ICanvas canvas, UnitPoint point)
         {
             var rect = GetBoundingRect(canvas);
@@ -53,64 +81,18 @@ namespace CAD.DTM
             var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
             pen.EndCap = LineCap.Flat;
             pen.StartCap = LineCap.Flat;
-            var p1 = canvas.ToScreen(_point);
-            var p2 = p1;
-            p1.X -= 5;
-            p2.X += 5;
-            canvas.DrawLine(canvas, pen, p1, p2);
-            p1.X += 5;
-            p2.X -= 5;
-            p1.Y -= 5;
-            p2.Y += 5;
-            canvas.DrawLine(canvas, pen, p1, p2);
-
-            var f = new StringFormat();
-            f.Alignment = StringAlignment.Center;
-            p1.X += 10;
-            p1.Y -= 10;
-            var brush = new SolidBrush(Group.Options.Color);
-            canvas.Graphics.DrawString(_element.CisloBodu, Font, brush, p1.FromWpfPoint(), f);
-
+            var p = canvas.ToScreen(_point).FromWpfPoint();
+            canvas.Graphics.DrawRectangle(pen, p.X - 5f, p.Y - 5f, 10f, 10f);
             if (Selected && !_point.IsEmpty)
             {
                 DrawUtils.DrawNode(canvas, _point);
             }
         }
-
         public Rect GetBoundingRect(ICanvas canvas)
         {
             var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             var delta = canvas.ToUnit(2);
             return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
-        }
-
-        public void OnMouseMove(ICanvas canvas, UnitPoint point)
-        {
-
-        }
-
-        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
-        {
-            return DrawObjectState.DoneRepeat;
-        }
-
-        public DrawObjectState OnFinish()
-        {
-            return DrawObjectState.Drop;
-        }
-
-        public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
-        {
-        }
-
-        public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
-        {
-        }
-
-        public UnitPoint RepeatStartingPoint => new UnitPoint();
-        public INodePoint NodePoint(ICanvas canvas, UnitPoint point)
-        {
-            return null;
         }
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {
@@ -123,16 +105,32 @@ namespace CAD.DTM
             return (float)width;
         }
 
+        public void OnMouseMove(ICanvas canvas, UnitPoint point)
+        {
+
+        }
+        public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        {
+            return DrawObjectState.DoneRepeat;
+        }
+        public DrawObjectState OnFinish()
+        {
+            return DrawObjectState.Drop;
+        }
+        public void OnMouseUp(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
+        {
+        }
+        public void OnKeyDown(ICanvas canvas, KeyEventArgs e)
+        {
+        }
+        public UnitPoint RepeatStartingPoint => new UnitPoint();
+        public INodePoint NodePoint(ICanvas canvas, UnitPoint point)
+        {
+            return null;
+        }
+
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, List<IDrawObject> otherobj, Type[] runningsnaptypes, Type usersnaptype)
         {
-            var thWidth = ThresholdWidth(canvas, Group.Options.Width);
-            foreach (var snaptype in runningsnaptypes)
-            {
-                if (snaptype == typeof(PodrobnyBodZPS) && Group.Name != "PodrobnyBodZPS" && snaptype != typeof(VertextSnapPoint))
-                    return null;
-                if (HitUtil.CircleHitPoint(_point, thWidth, point))
-                    return new PodrobnyBodZPS(canvas, this, _point);
-            }
             return null;
         }
 
@@ -144,25 +142,17 @@ namespace CAD.DTM
         {
             return true;
         }
-
         public string GetInfoAsString()
         {
             return $"Group name: {Group.Name},{_element.GetInfoAsString()}, " +
                    $"[Y,X,Z]=[{PointGeometry.Point.X:##.00},{PointGeometry.Point.Y:##.00},{PointGeometry.Point.Z:##.00}]";
-        }
 
+        }
         public void Export(IExport export)
         {
             export.AddPoint(_point.X, _point.Y, Group.Options.Color);
-            if (!string.IsNullOrEmpty(_element.CisloBodu))
-            {
-                export.AddText(_element.CisloBodu, _point.X, _point.Y, 0.5, string.Empty, Group.Options.Color, 0);
-            }
         }
-        public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
-        {
-            throw new NotImplementedException();
-        }
+
         public IDtmDrawingGroup Group { get; set; }
         public IDtmElement GetDtmElement => _element;
     }
