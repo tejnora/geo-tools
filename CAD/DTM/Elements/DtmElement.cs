@@ -68,6 +68,15 @@ namespace CAD.DTM.Elements
             exporter.BeginElement("atr", "SpolecneAtributyVsechObjektu", true);
             exporter.AddElement(null, "DatumVkladu", SpolecneAtributy.DatumVkladu);
             exporter.AddElement(null, "DatumZmeny", SpolecneAtributy.DatumZmeny);
+            if (ZapisObjektu == 'r')
+            {
+                exporter.AddElement(null, "ID", SpolecneAtributy.ID);
+                exporter.AddElement(null, "IDEditora", SpolecneAtributy.IDEditora);
+                exporter.AddElement(null, "IDZmeny", SpolecneAtributy.IDZmeny);
+                exporter.AddElement(null, "PopisObjektu", SpolecneAtributy.PopisObjektu);
+                exporter.AddElement(null, "VkladOsoba", SpolecneAtributy.VkladOsoba);
+                exporter.AddElement(null, "ZmenaOsoba", SpolecneAtributy.ZmenaOsoba);
+            }
             exporter.EndElement();
         }
 

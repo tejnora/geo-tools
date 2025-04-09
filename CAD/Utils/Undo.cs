@@ -90,20 +90,24 @@ namespace CAD.Utils
         }
         public void AddLayerObjects(ICanvasLayer layer, IDrawObject objects)
         {
-            m_objects.Add(layer, new List<IDrawObject>() { objects });
+            if (!m_objects.ContainsKey(layer))
+            {
+                m_objects.Add(layer, new List<IDrawObject>());
+            }
+            m_objects[layer].Add(objects);
         }
         public override bool DoUndo(IModel data)
         {
-            foreach (ICanvasLayer layer in m_objects.Keys)
+            foreach (var layer in m_objects.Keys)
             {
-                foreach (IDrawObject obj in m_objects[layer])
+                foreach (var obj in m_objects[layer])
                     data.AddObject(layer, obj);
             }
             return true;
         }
         public override bool DoRedo(IModel data)
         {
-            foreach (ICanvasLayer layer in m_objects.Keys)
+            foreach (var layer in m_objects.Keys)
                 data.DeleteObjects(m_objects[layer]);
             return true;
         }
@@ -122,7 +126,7 @@ namespace CAD.Utils
                     if (obj is IVFKTool)
                         data.AddVFKObject(obj);
                     else
-                        data.AddObject(layer,obj);
+                        data.AddObject(layer, obj);
                 }
             }
             return true;

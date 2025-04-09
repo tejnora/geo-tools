@@ -252,7 +252,24 @@ namespace CAD.DTM
                     case "DatumZmeny":
                         atributy.DatumZmeny = DateTime.Parse(e.InnerText);
                         break;
-
+                    case "ID":
+                        atributy.ID = e.InnerText;
+                        break;
+                    case "IDEditora":
+                        atributy.IDEditora = e.InnerText;
+                        break;
+                    case "IDZmeny":
+                        atributy.IDZmeny = e.InnerText;
+                        break;
+                    case "PopisObjektu":
+                        atributy.PopisObjektu = e.InnerText;
+                        break;
+                    case "VkladOsoba":
+                        atributy.VkladOsoba = e.InnerText;
+                        break;
+                    case "ZmenaOsoba":
+                        atributy.ZmenaOsoba = e.InnerText;
+                        break;
                 }
             }
             return atributy;
