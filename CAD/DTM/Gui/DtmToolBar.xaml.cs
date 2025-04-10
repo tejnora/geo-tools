@@ -51,6 +51,24 @@ namespace CAD.DTM.Gui
 
         public bool DtmLineSettingEnabled => DtmLineSetting.Count > 0;
 
+        public readonly PropertyData _dtmPointElements = RegisterProperty("DtmPointElements", typeof(ObservableCollection<string>), null);
+        public ObservableCollection<string> DtmPointElements
+        {
+            get => GetValue<ObservableCollection<string>>(_dtmPointElements);
+            set => SetValue(_dtmPointElements, value);
+        }
+
+        public readonly PropertyData _dtmPointElementSelected = RegisterProperty("DtmPointElementSelected", typeof(string), null);
+        public string DtmPointElementSelected
+        {
+            get => GetValue<string>(_dtmPointElementSelected);
+            set
+            {
+                SetValue(_dtmPointElementSelected, value);
+                UpdateDrawingLayer();
+            }
+        }
+
         DataModel _dataModel;
         public DataModel DataModel
         {
@@ -82,10 +100,9 @@ namespace CAD.DTM.Gui
         }
         void UpdateDrawingLayer()
         {
-            if (_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)
-            {
-                dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected, DtmLineSettingSelected);
-            }
+            if (!(_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)) return;
+            dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected, DtmLineSettingSelected);
+            dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected, "");
         }
     }
 
@@ -93,21 +110,30 @@ namespace CAD.DTM.Gui
     {
         DtmToolBarCtx _ctx;
         public static GeoCadRoutedCommand DtmMultiLine = new GeoCadRoutedCommand("DtmMultiLine", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
+        public static GeoCadRoutedCommand DtmPoint = new GeoCadRoutedCommand("DtmPoint", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public DtmToolBar()
         {
             InitializeComponent();
             _ctx = new DtmToolBarCtx
             {
                 DtmLineElements = new ObservableCollection<string>(),
+                DtmPointElements = new ObservableCollection<string>()
             };
             foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting)
             {
-                if (element.Value.ElementType != DtmElementType.Linie)
-                    continue;
-                _ctx.DtmLineElements.Add(element.Key);
+                switch (element.Value.ElementType)
+                {
+                    case DtmElementType.Linie:
+                        _ctx.DtmLineElements.Add(element.Key);
+                        break;
+                    case DtmElementType.Bod:
+                        _ctx.DtmPointElements.Add(element.Key);
+                        break;
+                }
             }
 
             _ctx.DtmLineElementSelected = _ctx.DtmLineElements[0];
+            _ctx.DtmPointElementSelected = _ctx.DtmPointElements[1];
             DataContext = _ctx;
         }
         public override void Notify(NotificationType type, object additionData)

@@ -6,7 +6,7 @@ using System.Xml;
 namespace CAD.DTM.Elements
 {
     class DtmVyskovyBodNaTerenuElement
-        : DtmElement
+        : DtmBodBaseElement
     {
         public double VyskaNaTerenu { get; set; }
         public override DtmElementType ElementType => DtmElementType.Linie;

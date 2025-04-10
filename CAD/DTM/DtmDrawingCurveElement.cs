@@ -155,7 +155,7 @@ namespace CAD.DTM
 
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            if (!(snappoint is PodrobnyBodZPS zpz))
+            if (!(snappoint is DtmPodrobnyBodSnapPoint zpz))
                 return DrawObjectState.Continue;
             var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
             _curveGeometry.Points[_curveGeometry.Points.Count - 1] = (DtmPoint)pointGeometry.Point.Clone();
@@ -225,7 +225,7 @@ namespace CAD.DTM
 
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            if (!(snap is PodrobnyBodZPS zpz))
+            if (!(snap is DtmPodrobnyBodSnapPoint zpz))
                 return;
             var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
             _curveGeometry = new DtmCurveGeometry
@@ -242,7 +242,7 @@ namespace CAD.DTM
 
         public Type[] RunningSnaps
         {
-            get { return new[] { typeof(PodrobnyBodZPS) }; }
+            get { return new[] { typeof(DtmPodrobnyBodSnapPoint) }; }
         }
     }
 }

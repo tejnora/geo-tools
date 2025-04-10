@@ -31,29 +31,27 @@ namespace GeoHelper.Printing
 
         public static double toPixel(double mmValue)
         {
-            return mmValue*_mmToPixel;
+            return mmValue * _mmToPixel;
         }
 
         public static Point toPixel(Point point)
         {
-            return new Point(point.X*_mmToPixel, point.Y*_mmToPixel);
+            return new Point(point.X * _mmToPixel, point.Y * _mmToPixel);
         }
 
         public static FormattedText MakeText(string text, double textSize)
         {
-            return new FormattedText(text, CultureInfo.CurrentCulture,
-                                     FlowDirection.LeftToRight,
-                                     new Typeface("Arial"), textSize, Brushes.Black);
+            return new FormattedText(text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), textSize, Brushes.Black);
         }
 
         public static double toMM(double pixelValue)
         {
-            return pixelValue/_mmToPixel;
+            return pixelValue / _mmToPixel;
         }
 
         public static double GetRealWidth(double width, UInt32 percent)
         {
-            return width/100.0*percent;
+            return width / 100.0 * percent;
         }
 
         public virtual void OnRender(DrawingContext drawingContext, ref Point point, double width)
@@ -71,8 +69,8 @@ namespace GeoHelper.Printing
             FormattedText ftext = MakeText(text, vyskaFontu);
             ftext.SetFontWeight(fontWeight);
             ftext.SetForegroundBrush(brush);
-            double xFontIndent = (sirka - toMM(ftext.Width))/2;
-            double yFontIndet = (vyska - toMM(ftext.Height))/2;
+            double xFontIndent = (sirka - toMM(ftext.Width)) / 2;
+            double yFontIndet = (vyska - toMM(ftext.Height)) / 2;
             if (xFontIndent < 0 || yFontIndet < 0)
                 return;
             drawingContext.DrawText(ftext, toPixel(new Point(point.X + xFontIndent, point.Y + yFontIndet)));

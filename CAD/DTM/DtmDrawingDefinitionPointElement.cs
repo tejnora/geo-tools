@@ -37,19 +37,7 @@ namespace CAD.DTM
         public DtmPointGeometry PointGeometry { get; private set; }
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            if (!(snap is PodrobnyBodZPS zpz))
-                return;
-            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
-            PointGeometry = new DtmPointGeometry()
-            {
-                Point = (DtmPoint)pointGeometry.Point.Clone()
-            };
-            var dtmLayer = (DtmDrawingLayerMain)layer;
-            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmDefinicniBodSelected.Item1);
-            _element.SelectedSetting(dtmLayer.DtmDefinicniBodSelected.Item2);
-            _element.Geometry = PointGeometry;
-            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
-            Selected = true;
+            throw new NotImplementedException();
         }
         public string Id { get; }
         public IDrawObject Clone()

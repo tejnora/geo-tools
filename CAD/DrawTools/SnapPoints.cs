@@ -161,9 +161,9 @@ namespace CAD.Canvas.DrawTools
         }
     }
 
-    class PodrobnyBodZPS : SnapPointBase
+    class DtmPodrobnyBodSnapPoint : SnapPointBase
     {
-        public PodrobnyBodZPS(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)
+        public DtmPodrobnyBodSnapPoint(ICanvas canvas, IDrawObject owner, UnitPoint snappoint)
             : base(canvas, owner, snappoint)
         {
         }
