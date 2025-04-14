@@ -41,7 +41,7 @@ namespace CAD
             DataModel.AddDrawTool(VfkToolBar.VfkActivePoint.Name, new VfkActivePoint());
             DataModel.AddDrawTool(VfkToolBar.VfkMark.Name, new VfkMarkEdit());
             DataModel.AddDrawTool(VfkToolBar.VfkText.Name, new VfkTextsEdit());
-            DataModel.AddDrawTool(DtmToolBar.DtmMultiLine.Name, new DtmDrawingCurveElement());
+            DataModel.AddDrawTool(DtmToolBar.DtmMultiLine.Name, new DtmDrawingLineElement());
             DataModel.AddDrawTool(DtmToolBar.DtmPoint.Name, new DtmDrawingPointElement());
             _Canvas.Construct(this, DataModel);
 

@@ -476,8 +476,9 @@
     <Compile Include="DTM\Configuration\DtmConfigurationSingleton.cs" />
     <Compile Include="DTM\Configuration\DtmElementOption.cs" />
     <Compile Include="DTM\DtmCurveGeometry.cs" />
-    <Compile Include="DTM\DtmDrawingCurveElement.cs" />
+    <Compile Include="DTM\DtmDrawingLineElement.cs" />
     <Compile Include="DTM\DtmDrawingDefinitionPointElement.cs" />
+    <Compile Include="DTM\DtmDrawingPlochaElement.cs" />
     <Compile Include="DTM\DtmDrawingPointElement.cs" />
     <Compile Include="DTM\DtmDrawingGroup.cs" />
     <Compile Include="DTM\DtmDrawingLayerMain.cs" />

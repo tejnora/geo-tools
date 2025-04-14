@@ -1,58 +1,54 @@
-﻿using CAD.Canvas;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Forms;
-using CAD.Export;
-using GeoBase.Utils;
-using CAD.Utils;
-using CAD.Canvas.DrawTools;
-using CAD.DrawTools;
-using GeoHelper.Utils;
+﻿using CAD.Canvas.DrawTools;
+using CAD.Canvas;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
 using CAD.DTM.Gui;
+using CAD.Export;
+using CAD.Utils;
+using GeoBase.Utils;
+using GeoHelper.Utils;
+using System;
+using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Windows;
+using System.Windows.Forms;
+using CAD.DrawTools;
+using CAD.VFK;
 
 namespace CAD.DTM
 {
-    class DtmDrawingCurveElement
+    class DtmDrawingPlochaElement
         : DrawObjectBase
-            , IDrawObject
-            , IDtmDrawingElement
-            , ISnapList
+        , IDrawObject
+        , IDtmDrawingElement
+        , ISnapList
     {
         DtmElement _element;
         DtmCurveGeometry _curveGeometry;
         const int ThresholdPixel = 6;
-
-        public DtmDrawingCurveElement()
-        {
-
-        }
-
-        public DtmDrawingCurveElement(DtmElement element)
+        public DtmDrawingPlochaElement(DtmElement element)
         {
             _element = element;
             if (element.Geometry is DtmCurveGeometry)
             {
                 _curveGeometry = (DtmCurveGeometry)element.Geometry;
             }
-            else
+            else if (element.Geometry is DtmSurfaceGeometry)
             {
-                //todo
+                _curveGeometry = (DtmCurveGeometry)((DtmSurfaceGeometry)element.Geometry).BaseGeometry;
             }
         }
 
-        public string Id => DtmToolBar.DtmMultiLine.Name;
+        public string Id => "";
 
         public IDrawObject Clone()
         {
-            var l = new DtmDrawingCurveElement();
+            var l = new DtmDrawingLineElement();
             l.Copy(this);
             return l;
         }
 
-        public virtual void Copy(DtmDrawingCurveElement origin)
+        public virtual void Copy(DtmDrawingPlochaElement origin)
         {
             base.Copy(origin);
             _element = origin._element;
@@ -81,35 +77,33 @@ namespace CAD.DTM
         {
             double thWidth = ThresholdWidth(canvas, Group.Options.Width);
             return ProcessLines((p1, p2) => HitUtil.IsPointInLine(p1, p2, point, thWidth));
+            var fillPath = new GraphicsPath();
+            ProcessLines((p1, p2) =>
+            {
+                fillPath.AddLine(canvas.ToScreen(p1).FromWpfPoint(), canvas.ToScreen(p2).FromWpfPoint());
+                return false;
+            });
+            return fillPath.IsVisible(canvas.ToScreen(point).FromWpfPoint());
         }
 
         public bool ObjectInRectangle(ICanvas canvas, Rect rect, bool anyPoint)
         {
-            if (!anyPoint)
-            {
-                var bBox = GetBoundingRect(canvas);
-                return rect.Contains(bBox);
-            }
+            var bBox = GetBoundingRect(canvas);
+            return rect.IntersectsWith(bBox);
 
-            return ProcessLines((p1, p2) => HitUtil.LineIntersectWithRect(p1, p2, rect));
         }
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
             if (_curveGeometry == null || _curveGeometry.Points.Count <= 1)
                 return;
-            var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            var fillPath = new GraphicsPath();
             ProcessLines((p1, p2) =>
             {
-                canvas.DrawLine(canvas, pen, p1, p2);
-                if (!Selected) return false;
-                canvas.DrawLine(canvas, DrawUtils.SelectedPen, p1, p2);
-                DrawUtils.DrawNode(canvas, p1);
-                DrawUtils.DrawNode(canvas, p2);
+                fillPath.AddLine(canvas.ToScreen(p1).FromWpfPoint(), canvas.ToScreen(p2).FromWpfPoint());
                 return false;
             });
+            canvas.FillPath(canvas, new System.Drawing.SolidBrush(Group.Options.Color), fillPath);
         }
 
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
@@ -148,29 +142,15 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
-            if (_curveGeometry == null) return;
-            var lastPoint = _curveGeometry.Points.Back();
-            lastPoint.X = point.X;
-            lastPoint.Y = point.Y;
         }
 
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            if (!(snappoint is DtmPodrobnyBodSnapPoint zpz))
-                return DrawObjectState.Continue;
-            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
-            _curveGeometry.Points[_curveGeometry.Points.Count - 1] = (DtmPoint)pointGeometry.Point.Clone();
-            _curveGeometry.Points.Add((DtmPoint)pointGeometry.Point.Clone());
-            return DrawObjectState.Continue;
+            return DrawObjectState.Drop;
         }
 
         public DrawObjectState OnFinish()
         {
-            if (_curveGeometry.Points.Count > 2)
-            {
-                _curveGeometry.Points.Pop();
-                return DrawObjectState.Done;
-            }
             return DrawObjectState.Drop;
         }
 
@@ -226,19 +206,7 @@ namespace CAD.DTM
 
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            if (!(snap is DtmPodrobnyBodSnapPoint zpz))
-                return;
-            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
-            _curveGeometry = new DtmCurveGeometry
-            {
-                Points = new List<DtmPoint> { (DtmPoint)pointGeometry.Point.Clone(), (DtmPoint)pointGeometry.Point.Clone() }
-            };
-            var dtmLayer = (DtmDrawingLayerMain)layer;
-            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected.Item1);
-            _element.SelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
-            _element.Geometry = _curveGeometry;
-            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
-            Selected = true;
+            throw new NotImplemented();
         }
 
         public Type[] RunningSnaps

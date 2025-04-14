@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
@@ -23,10 +24,13 @@ namespace CAD.DTM.Elements
                 case DtmElementType.Bod:
                     return new DtmDrawingPointElement(this);
                 case DtmElementType.Linie:
-                    return new DtmDrawingCurveElement(this);
+                    return new DtmDrawingLineElement(this);
                 case DtmElementType.DefinicniBod:
                     return new DtmDrawingDefinitionPointElement(this);
+                case DtmElementType.Plocha:
+                    return new DtmDrawingPlochaElement(this);
                 default:
+                    Debug.Assert(false);
                     return null;
             }
         }

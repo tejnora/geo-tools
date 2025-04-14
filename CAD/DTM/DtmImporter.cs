@@ -103,7 +103,10 @@ namespace CAD.DTM
                     case "pointProperty":
                         return ParsePointGeometry(e);
                     case "surfaceProperty":
-                        return ParseSurfaceProperty(e);
+                        continue;
+                    //return ParseSurfaceProperty(e);
+                    case "multiCurveProperty":
+                        return ParseMultiCurveProperty(e);
                     default:
                         throw new Exception("Invalid geometry.");
                 }
@@ -145,6 +148,17 @@ namespace CAD.DTM
             if (polygon.LocalName == "Polygon")
                 return new DtmSurfaceGeometry() { BaseGeometry = ParsePolygonGeometry(xmlElement) };
             throw new Exception("Invalid surface geometry.");
+        }
+        IDtmGeometry ParseMultiCurveProperty(XmlElement xmlElement)
+        {
+            var multiCurveElement = FindElement(xmlElement, "MultiCurve");
+            if (multiCurveElement != null)
+            {
+                var curveMemberElement = FindElement(multiCurveElement, "curveMember");
+                if(curveMemberElement != null)
+                    return new DtmSurfaceGeometry() { BaseGeometry = ParseCurveGeometry(curveMemberElement) };
+            }
+            throw new Exception("Invalid multi-curve geometry.");
         }
 
         IDtmGeometry ParseCurveGeometry(XmlElement xmlElement)
