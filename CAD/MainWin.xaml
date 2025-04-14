@@ -265,8 +265,7 @@
                 <ad:DocumentPane SelectionChanged="OnMainDocumentChanged">
                 </ad:DocumentPane>
                 <ad:DockablePane>
-                    <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic"
-                                            Visibility="Visible" />
+                    <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic" IsCloseable="True"/>
                 </ad:DockablePane>
             </ad:ResizingPanel>
         </ad:DockingManager>

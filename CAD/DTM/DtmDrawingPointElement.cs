@@ -8,6 +8,7 @@ using CAD.Canvas;
 using CAD.Canvas.DrawTools;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
+using CAD.DTM.Gui;
 using CAD.Export;
 using CAD.Utils;
 using GeoBase.Utils;
@@ -21,7 +22,7 @@ namespace CAD.DTM
     {
         DtmBodBaseElement _element;
         public DtmPointGeometry PointGeometry { get; private set; }
-        readonly UnitPoint _point;
+        UnitPoint _point;
         const int ThresholdPixel = 6;
         static readonly Font Font = new Font("Arial", 12F, System.Drawing.FontStyle.Regular, GraphicsUnit.Pixel, 0);
         public DtmDrawingPointElement()
@@ -32,9 +33,13 @@ namespace CAD.DTM
         {
             _element = (DtmBodBaseElement)element;
             PointGeometry = (DtmPointGeometry)element.Geometry;
+            UpdatePoint();
+        }
+        void UpdatePoint()
+        {
             _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
         }
-        public string Id { get; }
+        public string Id => DtmToolBar.DtmPoint.Name;
         public IDrawObject Clone()
         {
             var l = new DtmDrawingPointElement();
@@ -101,7 +106,8 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
-
+            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y } };
+            UpdatePoint();
         }
 
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
@@ -166,7 +172,7 @@ namespace CAD.DTM
         {
             if (PointGeometry == null)
                 return "";
-            return $"Group name: {Group.Name},{_element.GetInfoAsString()}, " +
+            return $"{Group.Name}({_element.ZapisObjektu}),{_element.GetInfoAsString()}, " +
                    $"[Y,X,Z]=[{PointGeometry.Point.X:##.00},{PointGeometry.Point.Y:##.00},{PointGeometry.Point.Z:##.00}]";
         }
 
@@ -189,12 +195,13 @@ namespace CAD.DTM
             {
                 PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y } };
             }
+            UpdatePoint();
 
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
             _element.SelectedSetting(dtmLayer.DtmPointSelected.Item2);
             _element.Geometry = PointGeometry;
-            new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
+            new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
             Selected = true;
         }
         public IDtmDrawingGroup Group { get; set; }

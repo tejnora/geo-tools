@@ -30,4 +30,10 @@
               SelectedItem="{Binding Path=DtmPointElementSelected}"
               ItemsSource="{Binding Path=DtmPointElements}">
     </ComboBox>
+    <ComboBox Width="100"
+              SelectedItem="{Binding Path=DtmPointSettingSelected}"
+              ItemsSource="{Binding Path=DtmPointSetting}"
+              IsEnabled="{Binding Path=DtmPointSettingEnabled}">
+    </ComboBox>
+
 </UITools:GeoCadToolBar>

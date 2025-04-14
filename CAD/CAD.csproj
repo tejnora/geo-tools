@@ -492,7 +492,9 @@
     <Compile Include="DTM\Elements\Bod\DtmIdentickyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmPodrobnyBodZPSElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
+    <Compile Include="DTM\Elements\Bod\DtmTypZarizeniVodovodniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmVyskovyBodNaTerenuElement.cs" />
+    <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodTypeElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmBudovaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmChodnikDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmCyklostezkaDefinicniBodElement.cs" />

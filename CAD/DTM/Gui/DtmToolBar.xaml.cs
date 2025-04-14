@@ -13,6 +13,7 @@ namespace CAD.DTM.Gui
         public DtmToolBarCtx() : base(null, new StreamingContext())
         {
             DtmLineSetting = new ObservableCollection<string>();
+            DtmPointSetting = new ObservableCollection<string>();
         }
         public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ObservableCollection<string>), null);
         public ObservableCollection<string> DtmLineElements
@@ -51,13 +52,13 @@ namespace CAD.DTM.Gui
 
         public bool DtmLineSettingEnabled => DtmLineSetting.Count > 0;
 
+
         public readonly PropertyData _dtmPointElements = RegisterProperty("DtmPointElements", typeof(ObservableCollection<string>), null);
         public ObservableCollection<string> DtmPointElements
         {
             get => GetValue<ObservableCollection<string>>(_dtmPointElements);
             set => SetValue(_dtmPointElements, value);
         }
-
         public readonly PropertyData _dtmPointElementSelected = RegisterProperty("DtmPointElementSelected", typeof(string), null);
         public string DtmPointElementSelected
         {
@@ -65,9 +66,24 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmPointElementSelected, value);
+                UpdatePointSetting();
                 UpdateDrawingLayer();
             }
         }
+        public readonly PropertyData _dtmPointSettingSelected = RegisterProperty("DtmPointSettingSelected", typeof(string), null);
+        public string DtmPointSettingSelected
+        {
+            get => GetValue<string>(_dtmPointSettingSelected);
+            set => SetValue(_dtmPointSettingSelected, value);
+        }
+        public readonly PropertyData _dtmPointSettings = RegisterProperty("DtmPointSetting", typeof(ObservableCollection<string>), null);
+        public ObservableCollection<string> DtmPointSetting
+        {
+            get => GetValue<ObservableCollection<string>>(_dtmPointSettings);
+            set => SetValue(_dtmPointSettings, value);
+        }
+        public bool DtmPointSettingEnabled => DtmPointSetting.Count > 0;
+
 
         DataModel _dataModel;
         public DataModel DataModel
@@ -77,6 +93,7 @@ namespace CAD.DTM.Gui
             {
                 _dataModel = value;
                 UpdateLineSetting();
+                UpdatePointSetting();
                 UpdateDrawingLayer();
             }
         }
@@ -98,11 +115,32 @@ namespace CAD.DTM.Gui
             }
             OnPropertyChanged("DtmLineSettingEnabled");
         }
+
+        void UpdatePointSetting()
+        {
+            DtmPointSetting.Clear();
+            DtmPointSettingSelected = "";
+            var element = DtmConfigurationSingleton.Instance.CreateType(DtmPointElementSelected);
+            if (element != null)
+            {
+                foreach (var setting in element.Settings)
+                {
+                    DtmPointSetting.Add(setting);
+                }
+                if (DtmPointSetting.Count > 0)
+                {
+                    DtmPointSettingSelected = DtmPointSetting[0];
+                }
+            }
+            OnPropertyChanged("DtmPointSettingEnabled");
+
+        }
+
         void UpdateDrawingLayer()
         {
             if (!(_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)) return;
             dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected, DtmLineSettingSelected);
-            dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected, "");
+            dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected, DtmPointSettingSelected);
         }
     }
 

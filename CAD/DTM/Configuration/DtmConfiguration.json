@@ -317,5 +317,16 @@
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Vodovod",
     "ObsahovaCast": "ZPS"
+  },
+  "ZarizeniVodovodniPripojkyBodType": {
+    "Color": [ 0, 0, 255, 255 ],
+    "Width": 0.001,
+    "CodeBase": "0100000116",
+    "CodeSuffix": "01",
+    "Xmlns": "zvpbod",
+    "ObjektovyTypNazev": "zařízení vodovodní přípojky",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Vodovod",
+    "ObsahovaCast": "ZPS"
   }
 }

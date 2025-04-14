@@ -45,7 +45,7 @@ namespace CAD.DTM.Elements
 
         public override string GetInfoAsString()
         {
-            return $"Cislo bodu: {CisloBodu}";
+            return $"Cislo bodu: {SpolecneAtributy.ID}";
         }
     }
 }

@@ -16,16 +16,16 @@ using Pen = System.Drawing.Pen;
 
 namespace CAD.VFK.DrawTools
 {
-        public enum VfkMarkType
+    public enum VfkMarkType
     {
         Dpm,
         Op,
         Obbp,
         Ob
     }
-        public class VfkMark : VfkDrawObjectBase, IDrawObject
+    public class VfkMark : VfkDrawObjectBase, IDrawObject
     {
-                public VfkMark()
+        public VfkMark()
         {
 
         }
@@ -77,7 +77,7 @@ namespace CAD.VFK.DrawTools
             SetVfkElement(Singletons.VFKElements.GetElement(obItem.TYPPPD_KOD));
             P1 = new UnitPoint(-obItem.SOURADNICE_Y, -obItem.SOURADNICE_X);
         }
-                        public VfkMarkType VfkMarkType
+        public VfkMarkType VfkMarkType
         { get; set; }
 
         private UnitPoint P1
@@ -105,7 +105,7 @@ namespace CAD.VFK.DrawTools
         { get; set; }
         private VFKDataTableBaseItemWithProp Item
         { get; set; }
-                        public virtual string Id
+        public virtual string Id
         {
             get { return VfkToolBar.VfkMark.Name; }
         }
@@ -225,7 +225,7 @@ namespace CAD.VFK.DrawTools
         }
         public void Export(IExport export)
         {
-            export.AddPath(GetMarkPath().GetTransformPath(P1),Color,Width);
+            export.AddPath(GetMarkPath().GetTransformPath(P1), Color, Width);
         }
         private const int ThresholdPixel = 6;
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
@@ -308,96 +308,96 @@ namespace CAD.VFK.DrawTools
             switch (elementId)
             {
                 case 301://OrnaPuda:
-                    path.AddLine(new UnitPoint(0, 1.5), new UnitPoint(0, - 1.5));
-                    path.AddLine(new UnitPoint(0, 0.5),new UnitPoint(0.5, 1.0));
-                    path.AddLine(new UnitPoint(0.5, 1.0),new UnitPoint(1, 1.2));
-                    path.AddLine(new UnitPoint(1,1.2),new UnitPoint(1.5,1.25));
+                    path.AddLine(new UnitPoint(0, 1.5), new UnitPoint(0, -1.5));
+                    path.AddLine(new UnitPoint(0, 0.5), new UnitPoint(0.5, 1.0));
+                    path.AddLine(new UnitPoint(0.5, 1.0), new UnitPoint(1, 1.2));
+                    path.AddLine(new UnitPoint(1, 1.2), new UnitPoint(1.5, 1.25));
                     break;
                 case 302://Chmelnice:
-                    path.AddLine(new UnitPoint(0.5,1.5),new UnitPoint(0.5,1.5));
-                    path.AddLine(new UnitPoint(- 0.5, 1.5), new UnitPoint(0.5, 1.5));
+                    path.AddLine(new UnitPoint(0.5, 1.5), new UnitPoint(0.5, 1.5));
+                    path.AddLine(new UnitPoint(-0.5, 1.5), new UnitPoint(0.5, 1.5));
                     break;
                 case 304://Zaharada:
                     path.AddArc(new UnitPoint(), 0.75f, 0, -360);
-                    path.AddLine(new UnitPoint(0, - 0.75), new UnitPoint(1.75, - 0.75));
+                    path.AddLine(new UnitPoint(0, -0.75), new UnitPoint(1.75, -0.75));
                     break;
                 case 305://OvocnySad:
                     path.AddArc(new UnitPoint(), 0.75f, 0, 360);
-                    path.AddLine(new UnitPoint(0, - 0.75), new UnitPoint(0, - 1.25));
-                    path.AddLine(new UnitPoint(0, - 1.25), new UnitPoint(1.0, -1.25));
+                    path.AddLine(new UnitPoint(0, -0.75), new UnitPoint(0, -1.25));
+                    path.AddLine(new UnitPoint(0, -1.25), new UnitPoint(1.0, -1.25));
                     break;
                 case 306://TrvalyTravnatyPorost:
-                    path.AddLine(new UnitPoint(-0.5, - 0.75), new UnitPoint(-0.5, 0.75));
-                    path.AddLine(new UnitPoint(0.5, - 0.75),new UnitPoint(0.5, 0.75));
+                    path.AddLine(new UnitPoint(-0.5, -0.75), new UnitPoint(-0.5, 0.75));
+                    path.AddLine(new UnitPoint(0.5, -0.75), new UnitPoint(0.5, 0.75));
                     break;
                 case 308://tLesniPuda:
-                    path.AddLine(new UnitPoint(- 0.75,- 2.0f),new UnitPoint(0, 2.0f));
-                    path.AddLine(new UnitPoint(0.75, - 2.0f),new UnitPoint(0, 2.0f));
-                    path.AddLine(new UnitPoint(0.75, - 2.0f),new UnitPoint(1.75, - 2.0f));
+                    path.AddLine(new UnitPoint(-0.75, -2.0f), new UnitPoint(0, 2.0f));
+                    path.AddLine(new UnitPoint(0.75, -2.0f), new UnitPoint(0, 2.0f));
+                    path.AddLine(new UnitPoint(0.75, -2.0f), new UnitPoint(1.75, -2.0f));
                     break;
                 case 314://tPark:
-                    path.AddLine(new UnitPoint(- 1.0f, 0.75f),new UnitPoint(0, - 0.75f));
-                    path.AddLine(new UnitPoint(1.0f, 0.75f),new UnitPoint(0, - 0.75f));
-                    path.AddArc(new UnitPoint( - 0.8,  - 0.55), 0.2f, 0, 360);
-                    path.AddArc(new UnitPoint( 0.8,  - 0.55), 0.2f, 0, 360);
+                    path.AddLine(new UnitPoint(-1.0f, 0.75f), new UnitPoint(0, -0.75f));
+                    path.AddLine(new UnitPoint(1.0f, 0.75f), new UnitPoint(0, -0.75f));
+                    path.AddArc(new UnitPoint(-0.8, -0.55), 0.2f, 0, 360);
+                    path.AddArc(new UnitPoint(0.8, -0.55), 0.2f, 0, 360);
                     break;
                 case 315://Hrbitov:
-                    path.AddLine(new UnitPoint(0, 1.0f),new UnitPoint(0, - 1.0f));
-                    path.AddLine(new UnitPoint(1.0f, 0),new UnitPoint(- 1.0f, 0));
+                    path.AddLine(new UnitPoint(0, 1.0f), new UnitPoint(0, -1.0f));
+                    path.AddLine(new UnitPoint(1.0f, 0), new UnitPoint(-1.0f, 0));
                     break;
                 case 316://NeplodnaPuda:
                     path.AddArc(new UnitPoint(0, 0), 0.5f, 0, 360);
-                    path.AddLine(new UnitPoint(0.75f, 0),new UnitPoint(- 0.75f, 0));
+                    path.AddLine(new UnitPoint(0.75f, 0), new UnitPoint(-0.75f, 0));
                     break;
                 case 403://BudovaDrevena:
-                    path.AddLine(new UnitPoint(- 0.5f, 0),new UnitPoint(0.5f, 0));
+                    path.AddLine(new UnitPoint(-0.5f, 0), new UnitPoint(0.5f, 0));
                     break;
                 case 402://BudovaZdena:
                 case 404:
-                    path.AddArc( new UnitPoint(0, 0), 0.175f, 0, -360);
+                    path.AddArc(new UnitPoint(0, 0), 0.175f, 0, -360);
                     break;
                 case 105://tPBPPHranicniZnak:
                     path.AddArc(new UnitPoint(0, 0), 0.5f, 0, -360);
                     break;
-               /* case 409://Kostel:
-                case 412://PredmetMalehoRozsahu:
-                case 410://tSynagoga:
-                case 303://Vinice:
-                case 803://VodniNadrz:
-                //                case ElementType.tDobyvaciProstor:
-                case 318://NemovitaKulturniPamatka:
-                case 703://LoziskoSlatinARaselin:
-                case 804://MocalBazina:
-                case 307://Pastvina:
-                case 701://PovrchovaTezba:
-                case 802://VodniTokSireNad2metry:
-                case 408://CaraJakoVyplnShodiste:
-                case 1060://SymbolVondnihoTokuUzsiNez2m:
-                case 1029://SipkaKParcelnimuCisluVolna:
-                case 601://KovovyBetovnovyStozar:
-                case 420://MostekPropustek:
-                //case ElementType.tPredmetMalehoRozzsahuUrcenyStredem:
-                case 602://PrihradovyStozar
-                case 604://StozarVysilaci:
-                case 811://VerejnaStudna:
-                case 1033://SipkaKParcelnimuCislu:
-                case 103://PBPPBodJednoteneNivelacniSite:
-                case 102://PBPPPouzePodzemni:
-                case 104://PBPPBodPolohovehoBodovehoPole:
-                //                case ElementType.tPBPPStabilizovanyBodNivelacniSite:
-                case 1032://CaraProUmisteniSipky:
-                case 21700:
-                case 405://Budova dřevěná  evidovaná v SPI
-                case 411://Předmět malého rozsahu určený středem
-                case 101:*/
+                /* case 409://Kostel:
+                 case 412://PredmetMalehoRozsahu:
+                 case 410://tSynagoga:
+                 case 303://Vinice:
+                 case 803://VodniNadrz:
+                 //                case ElementType.tDobyvaciProstor:
+                 case 318://NemovitaKulturniPamatka:
+                 case 703://LoziskoSlatinARaselin:
+                 case 804://MocalBazina:
+                 case 307://Pastvina:
+                 case 701://PovrchovaTezba:
+                 case 802://VodniTokSireNad2metry:
+                 case 408://CaraJakoVyplnShodiste:
+                 case 1060://SymbolVondnihoTokuUzsiNez2m:
+                 case 1029://SipkaKParcelnimuCisluVolna:
+                 case 601://KovovyBetovnovyStozar:
+                 case 420://MostekPropustek:
+                 //case ElementType.tPredmetMalehoRozzsahuUrcenyStredem:
+                 case 602://PrihradovyStozar
+                 case 604://StozarVysilaci:
+                 case 811://VerejnaStudna:
+                 case 1033://SipkaKParcelnimuCislu:
+                 case 103://PBPPBodJednoteneNivelacniSite:
+                 case 102://PBPPPouzePodzemni:
+                 case 104://PBPPBodPolohovehoBodovehoPole:
+                 //                case ElementType.tPBPPStabilizovanyBodNivelacniSite:
+                 case 1032://CaraProUmisteniSipky:
+                 case 21700:
+                 case 405://Budova dřevěná  evidovaná v SPI
+                 case 411://Předmět malého rozsahu určený středem
+                 case 101:*/
                 default:
-                    path.AddLine(new UnitPoint(- 1.5f, - 1.5),new UnitPoint(1.5f, 1.5));
-                    path.AddLine(new UnitPoint(1.5f, - 1.5),new UnitPoint(- 1.5f, 1.5));
+                    path.AddLine(new UnitPoint(-1.5f, -1.5), new UnitPoint(1.5f, 1.5));
+                    path.AddLine(new UnitPoint(1.5f, -1.5), new UnitPoint(-1.5f, 1.5));
                     break;
             }
             return path;
         }
-                        public override void RegisterObject(IVFKMain aOwner)
+        public override void RegisterObject(IVFKMain aOwner)
         {
             switch (VfkMarkType)
             {
@@ -418,7 +418,8 @@ namespace CAD.VFK.DrawTools
                             dpm.SOURADNICE_X = -P1.Y;
                             dpm.SOURADNICE_Y = -P1.X;
                         }
-                    } break;
+                    }
+                    break;
                 case VfkMarkType.Op:
                     {
                         VFKOPTableItem op = Item as VFKOPTableItem;
@@ -429,7 +430,8 @@ namespace CAD.VFK.DrawTools
                         op.SOURADNICE_Y = -P1.X;
                         op.VELIKOST = 1;
                         op.UHEL = 0;
-                    } break;
+                    }
+                    break;
                 case VfkMarkType.Obbp:
                     {
                         VFKOBBPTableItem obbp = Item as VFKOBBPTableItem;
@@ -445,7 +447,8 @@ namespace CAD.VFK.DrawTools
                             obbp.SOURADNICE_X = -P1.Y;
                             obbp.SOURADNICE_Y = -P1.X;
                         }
-                    } break;
+                    }
+                    break;
                 case VfkMarkType.Ob:
                     {
                         VFKOBTableItem ob = Item as VFKOBTableItem;
@@ -456,9 +459,10 @@ namespace CAD.VFK.DrawTools
                         ob.UHEL = 0;
                         ob.SOURADNICE_X = -P1.Y;
                         ob.SOURADNICE_Y = -P1.X;
-                    } break;
+                    }
+                    break;
                 default:
-                    throw new UnExpectException(); 
+                    throw new UnExpectException();
             }
 
         }
@@ -479,7 +483,7 @@ namespace CAD.VFK.DrawTools
                     aOwner.DeleteOB(Item as VFKOBTableItem);
                     break;
                 default:
-                    throw new UnExpectException(); 
+                    throw new UnExpectException();
             }
             if (!Item.ItemFromImport())
                 Item = null;
@@ -520,19 +524,19 @@ namespace CAD.VFK.DrawTools
                     VfkMarkType = VfkMarkType.Ob;
                     break;
                 default:
-                    throw new UnExpectException(); 
+                    throw new UnExpectException();
             }
         }
-                        private PathImpl GetMarkPath()
+        private PathImpl GetMarkPath()
         {
             if (!_markCache.ContainsKey(VfkElement.TYPPPD_KOD))
                 _markCache[VfkElement.TYPPPD_KOD] = GetDrawMark(VfkElement.TYPPPD_KOD);
             return _markCache[VfkElement.TYPPPD_KOD];
         }
-            }
+    }
     internal class VfkMarkEdit : VfkMark, IObjectEditInstance
     {
-                public void Copy(ActivePointEdit acopy)
+        public void Copy(ActivePointEdit acopy)
         {
             base.Copy(acopy);
         }
@@ -542,7 +546,7 @@ namespace CAD.VFK.DrawTools
             l.Copy(this);
             return l;
         }
-                        public IDrawObject GetDrawObject()
+        public IDrawObject GetDrawObject()
         {
             return Clone();
         }
@@ -558,5 +562,5 @@ namespace CAD.VFK.DrawTools
         {
             return true;
         }
-            }
+    }
 }

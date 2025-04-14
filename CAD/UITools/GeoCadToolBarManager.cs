@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace CAD.UITools
 {
-    
+
     public enum NotificationType
     {
         DocumentChanged,
@@ -13,18 +13,18 @@ namespace CAD.UITools
         MergeInputBindings,
     }
 
-    
+
     public class GeoCadToolBarManager
     {
-        
+
         public GeoCadToolBarManager(IMainWinInterface owner)
         {
             Owner = owner;
             _toolBars = new List<GeoCadToolBar>();
         }
 
-        
-        
+
+
         private readonly List<GeoCadToolBar> _toolBars;
         private Document _document;
 
@@ -62,8 +62,8 @@ namespace CAD.UITools
 
         public IMainWinInterface Owner { get; private set; }
 
-        
-        
+
+
         public void ForceToolBarChange()
         {
             if (ToolChanged != null)
@@ -111,5 +111,5 @@ namespace CAD.UITools
             }
         }
 
-            }
+    }
 }

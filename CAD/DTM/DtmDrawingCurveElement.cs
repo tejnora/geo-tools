@@ -11,6 +11,7 @@ using CAD.DrawTools;
 using GeoHelper.Utils;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
@@ -42,7 +43,7 @@ namespace CAD.DTM
             }
         }
 
-        public string Id { get; }
+        public string Id => DtmToolBar.DtmMultiLine.Name;
 
         public IDrawObject Clone()
         {
@@ -206,7 +207,7 @@ namespace CAD.DTM
         {
             if (Group == null)
                 return "";
-            return $"Group name: {Group.Name}, {_element.GetInfoAsString()}";
+            return $"{Group.Name}({_element.ZapisObjektu}), {_element.GetInfoAsString()}";
         }
 
         public void Export(IExport export)

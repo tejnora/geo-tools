@@ -40,6 +40,5 @@ namespace CAD.DTM.Elements
         {
             return $"Vyska na terenu: {VyskaNaTerenu}";
         }
-
     }
 }

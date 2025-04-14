@@ -51,6 +51,7 @@ namespace CAD
                     _dockingManager.RestoreLayout(reader);
                 }
             }
+            _dockingManager.Hide(_seznamSouradnic);
         }
 
         private Document GetDocument()
@@ -62,20 +63,22 @@ namespace CAD
             return null;
         }
 
-        private void OnMainDocumentChanged(object sender, EventArgs e)
+        void OnMainDocumentChanged(object sender, EventArgs e)
         {
-            Document doc = GetDocument();
-            _toolBarManager.Document = GetDocument();
-            if (doc != null)
+            var doc = GetDocument();
+            if (_seznamSouradnic.State != DockableContentState.Hidden)
             {
-                if (doc.GetIsVfkMain() != null)
-                {
-                    _seznamSouradnic.SetDocument(doc);
-                    return;
-                }
+                _dockingManager.Hide(_seznamSouradnic);
+                _seznamSouradnic.SetDocument(null);
             }
-
-            _seznamSouradnic.SetDocument(null);
+            _toolBarManager.Document = GetDocument();
+            if (doc == null)
+                return;
+            if (doc.GetIsVfkMain() != null)
+            {
+                _dockingManager.Show(_seznamSouradnic, DockableContentState.Docked, AnchorStyle.Right);
+                _seznamSouradnic.SetDocument(doc);
+            }
         }
 
 
@@ -122,16 +125,13 @@ namespace CAD
         }
 
 
-
-        private void OnImportVfk(object aSender, EventArgs aArg)
+        void OnImportVfk(object aSender, EventArgs aArg)
         {
-            Document doc = GetDocument();
-            if (doc == null)
-            {
-                DocumentNew(string.Empty);
-                doc = GetDocument();
-            }
-
+            var doc = GetDocument();
+            if (doc != null)
+                CloseDocument();
+            DocumentNew(string.Empty);
+            doc = GetDocument();
             if (doc.ImportVfk(string.Empty))
                 OnMainDocumentChanged(this, EventArgs.Empty);
         }
@@ -144,12 +144,10 @@ namespace CAD
         void OnImportDtm(object aSender, EventArgs aArg)
         {
             var doc = GetDocument();
-            if (doc == null)
-            {
-                DocumentNew(string.Empty);
-                doc = GetDocument();
-            }
-
+            if (doc != null)
+                CloseDocument();
+            DocumentNew(string.Empty);
+            doc = GetDocument();
             if (doc.ImportDtm(string.Empty))
                 OnMainDocumentChanged(this, EventArgs.Empty);
         }
@@ -388,13 +386,13 @@ namespace CAD
                     GetDocument().CanvasCommand.CommandEdit(command);
                     break;
                 case GeoCadRoutedCommand.CommandTypes.Select:
-                    GetDocument().CanvasCommand.CommandEscape(false);
+                    GetDocument().CanvasCommand.CommandEscape(true);
                     break;
                 case GeoCadRoutedCommand.CommandTypes.Pan:
                     GetDocument().CanvasCommand.CommandPan();
                     break;
                 case GeoCadRoutedCommand.CommandTypes.Move:
-                    GetDocument().CanvasCommand.CommandMove(false);
+                    GetDocument().CanvasCommand.CommandMove(true);
                     break;
                 case GeoCadRoutedCommand.CommandTypes.InfoTool:
                     GetDocument().CanvasCommand.CommandInfoTool(command);

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
@@ -11,24 +8,24 @@ using GeoBase.Localization;
 using GeoBase.Utils;
 using VFK;
 using MessageBox = System.Windows.Forms.MessageBox;
-using SaveFileDialog=Microsoft.Win32.SaveFileDialog;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
 namespace CAD.VFK.GUI
 {
     public partial class SeznamSouradnic
     {
-                public SeznamSouradnic()
+        public SeznamSouradnic()
         {
             InitializeComponent();
             ActivePoints = null;
         }
-                        Document _mCurrentDocument;
+        Document _mCurrentDocument;
         public VfkActivePointCollection ActivePoints
         {
             get;
             set;
         }
-                        public void SetDocument(Document aDoc)
+        public void SetDocument(Document aDoc)
         {
             _mCurrentDocument = aDoc;
             _mDataGrid.DataContext = null;
@@ -44,7 +41,7 @@ namespace CAD.VFK.GUI
         }
         private void DataSourceRefreshHack()
         {
-            _mDataGrid.DataContext = this; 
+            _mDataGrid.DataContext = this;
         }
         public void OnExport(object sender, EventArgs args)
         {
@@ -62,7 +59,7 @@ namespace CAD.VFK.GUI
         private void DockableContent_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             VfkActivePoint vfkActivePoint = _mDataGrid.SelectedItem as VfkActivePoint;
-            if(vfkActivePoint!=null)
+            if (vfkActivePoint != null)
                 _mCurrentDocument.SelectAndScrollToActivePoint(vfkActivePoint);
         }
 
@@ -73,18 +70,18 @@ namespace CAD.VFK.GUI
             {
                 DependencyObject element = reference.InputHitTest(e.GetPosition(_mDataGrid))
                              as DependencyObject;
-                while (element!=null)
+                while (element != null)
                 {
                     element = UIHelpers.GetParentObject(element);
-                    if (element is DataGridRowHeader && _mDataGrid.SelectedItems.Count==1)
+                    if (element is DataGridRowHeader && _mDataGrid.SelectedItems.Count == 1)
                     {
                         var item = _mDataGrid.SelectedItems[0] as VfkActivePoint;
                         if (item != null)
                         {
                             SouradniceDialog dlg = new SouradniceDialog(item.VfkItem);
-                            if(dlg.ShowDialog().GetValueOrDefault(false))
+                            if (dlg.ShowDialog().GetValueOrDefault(false))
                             {
-                                if(!dlg.SouradniceDataContext.AssigneInto(item.VfkItem))
+                                if (!dlg.SouradniceDataContext.AssigneInto(item.VfkItem))
                                 {
                                     LanguageDictionary.Current.ShowMessageBox("132", null, MessageBoxButton.OK,
                                                      MessageBoxImage.Warning);
@@ -96,6 +93,6 @@ namespace CAD.VFK.GUI
                 }
             }
         }
-        
+
     }
 }
