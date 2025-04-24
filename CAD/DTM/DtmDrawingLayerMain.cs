@@ -42,7 +42,7 @@ namespace CAD.DTM
             }
 
             if (_dtmMain.UdajeOVydeji == null) return;
-            var pen = canvas.CreatePen(Color.FromArgb(100, 209, 231, 235), 0.001f);
+            var pen = canvas.CreatePen(Color.FromArgb(100, 209, 231, 235), 0.01f);
             pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
             ProcessLines((p1, p2) =>
