@@ -560,6 +560,7 @@
     <Compile Include="DTM\IDtmElementsGroup.cs" />
     <Compile Include="DTM\IDtmGeometry.cs" />
     <Compile Include="DTM\IDtmMain.cs" />
+    <Compile Include="DTM\UdajeOZmenach.cs" />
     <Compile Include="Export\DxfExport.cs" />
     <Compile Include="Export\IExport.cs" />
     <Compile Include="GUI\AboutBox.xaml.cs">

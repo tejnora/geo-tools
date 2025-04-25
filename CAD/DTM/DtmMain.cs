@@ -53,6 +53,7 @@ namespace CAD.DTM
         }
 
         public DtmUdajeOVydeji UdajeOVydeji { get; set; }
+        public UdajeOZmenach UdajeOZmenach { get; set; }
         public Dictionary<string, string> IndeticalPointsMapping { get; set; }
         public DtmIdentickyBodElement GetIdentickyBod(string cislo, bool referencni)
         {

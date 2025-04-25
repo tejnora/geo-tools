@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Xml;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
@@ -23,7 +24,7 @@ namespace CAD.DTM
             var DataJVFDTM = FindElement(JVFDTM, "DataJVFDTM");
             var data = FindElement(DataJVFDTM, "Data");
             ParseDataNode(data);
-            _main.UdajeOVydeji = ParseUdajeOVydeji(FindElement(DataJVFDTM, "DoprovodneInformace"));
+            ParseDoprovodneInformace(DataJVFDTM);
         }
 
         void ParseDataNode(XmlElement dataElement)
@@ -155,7 +156,7 @@ namespace CAD.DTM
             if (multiCurveElement != null)
             {
                 var curveMemberElement = FindElement(multiCurveElement, "curveMember");
-                if(curveMemberElement != null)
+                if (curveMemberElement != null)
                     return new DtmSurfaceGeometry() { BaseGeometry = ParseCurveGeometry(curveMemberElement) };
             }
             throw new Exception("Invalid multi-curve geometry.");
@@ -246,11 +247,24 @@ namespace CAD.DTM
             }
             return null;
         }
-        DtmUdajeOVydeji ParseUdajeOVydeji(XmlElement xmlElement)
+
+        void ParseDoprovodneInformace(XmlElement xmlElement)
         {
-            var udajeOVydejiXml = FindElement(xmlElement, "UdajeOVydeji");
-            if (udajeOVydejiXml == null)
-                return null;
+            var doprovodneInformace = FindElement(xmlElement, "DoprovodneInformace");
+            var udajeOVydejiXml = FindElement(doprovodneInformace, "UdajeOVydeji");
+            if (udajeOVydejiXml != null)
+            {
+                _main.UdajeOVydeji = ParseUdajeOVydeji(udajeOVydejiXml);
+                return;
+            }
+            var udajeOZmenach = FindElement(doprovodneInformace, "UdajeOZmenach");
+            if (udajeOZmenach != null)
+            {
+                _main.UdajeOZmenach = ParseUdajeOZmenach(udajeOZmenach);
+            }
+        }
+        DtmUdajeOVydeji ParseUdajeOVydeji(XmlElement udajeOVydejiXml)
+        {
             var vydej = new DtmUdajeOVydeji();
             foreach (XmlElement xn in udajeOVydejiXml)
             {
@@ -268,6 +282,26 @@ namespace CAD.DTM
                 }
             }
             return vydej;
+        }
+
+        UdajeOZmenach ParseUdajeOZmenach(XmlElement udajeOZmenach)
+        {
+            var zaznamZmeny = FindElement(udajeOZmenach, "ZaznamZmeny");
+            if (zaznamZmeny == null)
+                return null;
+            var zmena = new UdajeOZmenach();
+            foreach (XmlElement xn in zaznamZmeny)
+            {
+                switch (xn.LocalName)
+                {
+                    case "OblastZmeny":
+                        var surfaceProperty = FindElement(xn, "surfaceProperty");
+                        zmena.Polygon = ParsePolygonGeometry(surfaceProperty);
+                        break;
+                }
+            }
+            return zmena;
+
         }
     }
 }

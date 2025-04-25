@@ -41,20 +41,31 @@ namespace CAD.DTM
                 layer.Value.Draw(canvas, unitrect);
             }
 
-            if (_dtmMain.UdajeOVydeji == null) return;
-            var pen = canvas.CreatePen(Color.FromArgb(100, 209, 231, 235), 0.01f);
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-            ProcessLines((p1, p2) =>
+            DtmPolygonGeometry bbox = null;
+            if (_dtmMain.UdajeOVydeji != null)
             {
-                canvas.DrawLine(canvas, pen, p1, p2);
-                return false;
-            });
+                bbox = _dtmMain.UdajeOVydeji.Polygon;
+            }
+            else if (_dtmMain.UdajeOZmenach != null)
+            {
+                bbox = _dtmMain.UdajeOZmenach.Polygon;
+            }
+            if (bbox != null)
+            {
+                var pen = canvas.CreatePen(Color.FromArgb(100, 209, 231, 235), 0.01f);
+                pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                ProcessLines(bbox, (p1, p2) =>
+                {
+                    canvas.DrawLine(canvas, pen, p1, p2);
+                    return false;
+                });
+            }
         }
 
-        bool ProcessLines(Func<UnitPoint, UnitPoint, bool> doAction)
+        bool ProcessLines(DtmPolygonGeometry geometry, Func<UnitPoint, UnitPoint, bool> doAction)
         {
-            var points = _dtmMain.UdajeOVydeji.Polygon.Points;
+            var points = geometry.Points;
             var p1 = new UnitPoint(points[0].X, points[0].Y);
             var p2 = new UnitPoint();
             for (var i = 1; i < points.Count; i++)

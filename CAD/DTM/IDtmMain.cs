@@ -11,6 +11,7 @@ namespace CAD.DTM
         void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement);
         string AllocateUniqueId(string name);
         DtmUdajeOVydeji UdajeOVydeji { get; set; }
+        UdajeOZmenach UdajeOZmenach { get; set; }
 
         Dictionary<string, string> IndeticalPointsMapping { get; set; }
 
