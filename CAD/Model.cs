@@ -652,8 +652,12 @@ namespace CAD.Canvas
 
         public bool ShowVfkLayerManager()
         {
-            return _vfkDrawingLayerMain.ShowVfkLayerManager();
+            return _vfkDrawingLayerMain.ShowLayerManager();
         }
 
+        public bool ShowDtmLayerManager()
+        {
+            return _dtmDrawingLayerMain.ShowLayerManager();
+        }
     }
 }

@@ -7,10 +7,12 @@ using Color = System.Drawing.Color;
 using CAD.Utils;
 using System;
 using System.Linq;
+using CAD.DTM.Gui;
+using CAD.DTM.Configuration;
 
 namespace CAD.DTM
 {
-    class DtmDrawingLayerMain : ICanvasLayer
+    public class DtmDrawingLayerMain : ICanvasLayer
     {
         readonly IDtmMain _dtmMain;
         readonly Dictionary<string, ICanvasLayer> _layers = new Dictionary<string, ICanvasLayer>();
@@ -170,6 +172,24 @@ namespace CAD.DTM
                 dtmElement.GetDtmElement.IsDeleted = true;
                 deletedObjects.Add(new Tuple<ICanvasLayer, IDrawObject>(this, delObj.Item2));
             }
+        }
+
+        public bool ShowLayerManager()
+        {
+            var dialog = new DtmLayerManager();
+            foreach (var layer in _layers)
+            {
+                var dtmGroup = layer.Value as IDtmDrawingGroup;
+                dialog.AddElement(dtmGroup.Options.ElementType.ToString(), layer.Key, layer.Value.Visible);
+            }
+            if (!dialog.ShowDialog().GetValueOrDefault(false))
+                return false;
+            foreach (var layer in _layers)
+            {
+                var dtmGroup = layer.Value as IDtmDrawingGroup;
+                layer.Value.Visible = dialog.IsVisibleElement(dtmGroup.Options.ElementType.ToString(), layer.Key);
+            }
+            return true;
         }
     }
 }

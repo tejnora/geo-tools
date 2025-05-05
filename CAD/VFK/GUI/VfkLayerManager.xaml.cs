@@ -14,16 +14,16 @@ namespace CAD.VFK.GUI
 {
     public partial class VfkLayerManager : DialogBase
     {
-                public VfkLayerManager()
-            : base("VfkLayerManager")
+        public VfkLayerManager()
+        : base("VfkLayerManager")
         {
             InitializeComponent();
             DataContext = this;
             Nodes = new ObservableCollection<VfkLayerGroupNode>();
         }
-                        public ObservableCollection<VfkLayerGroupNode> Nodes
+        public ObservableCollection<VfkLayerGroupNode> Nodes
         { get; set; }
-                        public void AddElement(VfkElement element, bool visble)
+        public void AddElement(VfkElement element, bool visble)
         {
             var group = Nodes.FirstOrDefault(n => n.VfkGroup == element.Owner.Owner);
             if (group == null)
@@ -42,7 +42,7 @@ namespace CAD.VFK.GUI
             }
             return elements;
         }
-                        private void OnExpandAll(object sender, RoutedEventArgs e)
+        private void OnExpandAll(object sender, RoutedEventArgs e)
         {
             foreach (var node in Nodes)
                 node.ExpandAll();
@@ -65,7 +65,7 @@ namespace CAD.VFK.GUI
             foreach (var node in Nodes)
                 node.UnselectAll();
         }
-            }
+    }
 
     internal interface IVfkLayerManagerNode
     {
@@ -78,13 +78,13 @@ namespace CAD.VFK.GUI
 
     public class VfkLayerGroupNode : DataObjectBase<VfkLayerGroupNode>, IVfkLayerManagerNode
     {
-                public VfkLayerGroupNode(VfkElementGroup vfkGroup)
-            : base(null, new StreamingContext())
+        public VfkLayerGroupNode(VfkElementGroup vfkGroup)
+    : base(null, new StreamingContext())
         {
             Nodes = new ObservableCollection<VfkLayerSubGroupNode>();
             VfkGroup = vfkGroup;
         }
-                        public string Name
+        public string Name
         {
             get { return VfkGroup.Name; }
         }
@@ -102,7 +102,7 @@ namespace CAD.VFK.GUI
         { get; private set; }
         public ObservableCollection<VfkLayerSubGroupNode> Nodes
         { get; set; }
-                        public void AddElement(VfkElement element, bool visble)
+        public void AddElement(VfkElement element, bool visble)
         {
             var subGroup = Nodes.FirstOrDefault(n => n.VfkSubGroup == element.Owner);
             if (subGroup == null)
@@ -112,7 +112,7 @@ namespace CAD.VFK.GUI
             }
             subGroup.AddElement(element, visble);
         }
-                        public void ExpandAll()
+        public void ExpandAll()
         {
             IsExpanded = true;
             foreach (var node in Nodes)
@@ -142,17 +142,17 @@ namespace CAD.VFK.GUI
             foreach (var node in Nodes)
                 node.FillVfkElements(elements);
         }
-            }
+    }
 
     public class VfkLayerSubGroupNode : DataObjectBase<VfkLayerSubGroupNode>, IVfkLayerManagerNode
     {
-                public VfkLayerSubGroupNode(VfkElementSubGroup vfkSubGroup)
-            : base(null, new StreamingContext())
+        public VfkLayerSubGroupNode(VfkElementSubGroup vfkSubGroup)
+    : base(null, new StreamingContext())
         {
             VfkSubGroup = vfkSubGroup;
             Nodes = new ObservableCollection<VfkLayerItemNode>();
         }
-                        public string Name
+        public string Name
         {
             get { return VfkSubGroup.Description; }
         }
@@ -180,7 +180,7 @@ namespace CAD.VFK.GUI
         { get; set; }
         public VfkElementSubGroup VfkSubGroup
         { get; private set; }
-                        public void AddElement(VfkElement element, bool visble)
+        public void AddElement(VfkElement element, bool visble)
         {
             if (!Nodes.Any(n => n.VfkElement == element))
             {
@@ -197,7 +197,7 @@ namespace CAD.VFK.GUI
                 }
             }
         }
-                        public void ExpandAll()
+        public void ExpandAll()
         {
             IsExpanded = true;
             foreach (var node in Nodes)
@@ -227,17 +227,17 @@ namespace CAD.VFK.GUI
                 elements.Add(new NameObjectTwo<VfkElement, bool>(node.Name, node.VfkElement, node.IsVisible));
             }
         }
-            }
+    }
 
     public class VfkLayerItemNode : DataObjectBase<VfkLayerItemNode>
     {
-                public VfkLayerItemNode(VfkElement element, bool visible)
-            : base(null, new StreamingContext())
+        public VfkLayerItemNode(VfkElement element, bool visible)
+    : base(null, new StreamingContext())
         {
             VfkElement = element;
             IsVisible = visible;
         }
-                        public readonly PropertyData _isExpandedProperty = RegisterProperty("IsExpanded", typeof(bool), false);
+        public readonly PropertyData _isExpandedProperty = RegisterProperty("IsExpanded", typeof(bool), false);
         public bool IsExpanded
         {
             get { return GetValue<bool>(_isExpandedProperty); }
@@ -255,5 +255,5 @@ namespace CAD.VFK.GUI
         }
         public VfkElement VfkElement
         { get; private set; }
-            }
+    }
 }

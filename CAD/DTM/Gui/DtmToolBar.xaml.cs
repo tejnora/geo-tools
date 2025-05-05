@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+using System.Windows;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
 using CAD.UITools;
@@ -190,6 +191,11 @@ namespace CAD.DTM.Gui
                     break;
             }
 
+        }
+        void OnDtmLayerManager(object sender, RoutedEventArgs e)
+        {
+            if (ToolBarManager.Document.DataModel.ShowDtmLayerManager())
+                ToolBarManager.Document.CanvasCommand.InvalidateAll();
         }
     }
 }

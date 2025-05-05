@@ -11,6 +11,10 @@
                         CanExecute="OnCanExecute"
                         Executed="OnExecute" />
     </UITools:GeoCadToolBar.CommandBindings>
+    <Button ToolTip="Enable / Disable layers" Click="OnDtmLayerManager">
+        <Image Source="/CAD;component/Icons/VfkLevelManager.png"></Image>
+    </Button>
+
     <ToggleButton Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
         <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
     </ToggleButton>

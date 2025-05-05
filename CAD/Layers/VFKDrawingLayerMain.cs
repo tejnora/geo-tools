@@ -16,7 +16,6 @@ namespace CAD.Canvas.Layers
 {
     public interface IVFKDravingLayerMain
     {
-        bool ShowVfkLayerManager();
     }
 
     [Serializable]
@@ -335,7 +334,7 @@ namespace CAD.Canvas.Layers
 
 
 
-        public bool ShowVfkLayerManager()
+        public bool ShowLayerManager()
         {
             var dialog = new VfkLayerManager();
             var vfkElements = Singletons.VFKElements;

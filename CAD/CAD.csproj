@@ -192,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DTM\Gui\DtmLayerManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmToolBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -538,6 +542,9 @@
     </Compile>
     <Compile Include="DTM\Gui\DtmImportPointsDialog.xaml.cs">
       <DependentUpon>DtmImportPointsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DTM\Gui\DtmLayerManager.xaml.cs">
+      <DependentUpon>DtmLayerManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTM\Gui\DtmToolBar.xaml.cs">
       <DependentUpon>DtmToolBar.xaml</DependentUpon>
