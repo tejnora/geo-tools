@@ -230,7 +230,7 @@ namespace CAD.DTM
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected.Item1);
             _element.SelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
-            _element.Geometry = new DtmGeometryGroup { Geometries = { _curveGeometry } };
+            _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry>{ _curveGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
             Selected = true;
         }

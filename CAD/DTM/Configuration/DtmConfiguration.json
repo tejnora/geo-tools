@@ -328,5 +328,16 @@
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Vodovod",
     "ObsahovaCast": "ZPS"
+  },
+  "OstatniZastresenaStavbaPlocha": {
+    "Color": [ 0, 100, 100, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000314",
+    "CodeSuffix": "03",
+    "Xmlns": "ozspol",
+    "ObjektovyTypNazev": "chodník",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
   }
 }

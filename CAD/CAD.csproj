@@ -530,6 +530,7 @@
     <Compile Include="DTM\Elements\Linie\DtmTypStavbyEnum.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmChodnikPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmCyklostezkaPlochaElement.cs" />
+    <Compile Include="DTM\Elements\Plocha\DtmOstatniZastresenaStavbaPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmPlochaBaseElement.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyObjektuZPS_TI.cs" />
     <Compile Include="DTM\Gui\DtmExportDialog.xaml.cs">

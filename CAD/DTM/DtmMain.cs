@@ -112,7 +112,7 @@ namespace CAD.DTM
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);
                 element.Geometry = new DtmGeometryGroup
                 {
-                    Geometries = { new DtmPointGeometry { Point = new DtmPoint("-" + items[1], "-" + items[2], items[3]) } }
+                    Geometries = new List<IDtmGeometry> { new DtmPointGeometry { Point = new DtmPoint("-" + items[1], "-" + items[2], items[3]) } }
                 };
                 ((DtmBodBaseElement)element).CisloBodu = items[0];
                 AddElementIfNotExist(ctx.PointTypeSelected, element);
