@@ -30,7 +30,7 @@
         </TabItem>
         <TabItem>
             <TabItem.Header>
-                <TextBlock>Spolecne Atributy</TextBlock>
+                <TextBlock>Spolecne atributy</TextBlock>
             </TabItem.Header>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -63,6 +63,31 @@
                 <Label Grid.Column="1" Grid.Row="6" Content="{Binding Path=SpolecneAtributy.VkladOsoba}"/>
                 <Label Grid.Column="0" Grid.Row="7" Content="Zmena osoba:"/>
                 <Label Grid.Column="1" Grid.Row="7" Content="{Binding Path=SpolecneAtributy.ZmenaOsoba}"/>
+            </Grid>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock>Spolecne atributy ZPS</TextBlock>
+            </TabItem.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Uroven umisteni:"/>
+                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=SpolecneAtributyZPS.UrovenUmisteniObjektuZPS}"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="Trida presnosti polohy:"/>
+                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=SpolecneAtributyZPS.TridaPresnostiPoloha}"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="Trida presnosti vyska:"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=SpolecneAtributyZPS.TridaPresnostiVyska}"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="Zpusob porizeni:"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS}"/>
             </Grid>
         </TabItem>
     </TabControl>

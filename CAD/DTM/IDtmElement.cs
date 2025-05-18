@@ -29,5 +29,6 @@ namespace CAD.DTM
         char EvaluateZapisObjektuForGui();
         void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter);
         DtmElementSpolecneAtributy SpolecneAtributy { get; }
+        DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; }
     }
 }
