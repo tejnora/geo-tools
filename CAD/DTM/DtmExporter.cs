@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using CAD.DTM.Gui;
-using System.Xml;
 using CAD.DTM.Configuration;
+using CAD.Utils;
 
 namespace CAD.DTM
 {
@@ -14,6 +15,7 @@ namespace CAD.DTM
         readonly IDtmMain _main;
         CAD.Tools.XmlWriter _xmlWriter;
         HashSet<string> _namespaces;
+        readonly List<DtmPoint> _exportedPoints = new List<DtmPoint>();
         DtmExportCtx _exportCtx;
         public DtmExporter(IDtmMain main)
         {
@@ -99,6 +101,12 @@ namespace CAD.DTM
         {
             _xmlWriter.WriteString(value);
         }
+
+        public void MarkPoint(DtmPoint point)
+        {
+            _exportedPoints.Add(point);
+        }
+
         public void AddElement(string ns, string name, string text)
         {
             BeginElement(ns, name);
@@ -115,7 +123,7 @@ namespace CAD.DTM
         }
         public void AddElement(string ns, string name, double value)
         {
-            AddElement(ns, name, value.ToString("##.00",CultureInfo.InvariantCulture));
+            AddElement(ns, name, value.ToString("##.00", CultureInfo.InvariantCulture));
         }
         public void AddElement(string ns, string name, bool value)
         {
@@ -162,6 +170,19 @@ namespace CAD.DTM
             AddElement(null, "AZI", _exportCtx.AZI);
             AddElement(null, "DatumOvereni", _exportCtx.DatumOvereni.ToString("yyyy-MM-dd"));
             AddElement(null, "CisloOvereni", _exportCtx.CisloOvereni);
+            var oblastZmenyPoints = ConvexHull<DtmPoint>.GetConvexHull(_exportedPoints);
+            oblastZmenyPoints.Add(oblastZmenyPoints.First());
+            var surfaceGeometry = new DtmSurfaceGeometry
+            {
+                Id = _main.AllocateUniqueId("03"),
+                Points = oblastZmenyPoints,
+                SrsDimension = 2,
+                SrsName = "EPSG:5514"
+            };
+            BeginElement(null, "OblastZmeny");
+            surfaceGeometry.ExportToDtm(this);
+            EndElement();
+            /*
             if (_main.UdajeOVydeji != null)
             {
                 var polygon = _main.UdajeOVydeji.Polygon;
@@ -185,6 +206,7 @@ namespace CAD.DTM
                 EndElement();
                 EndElement();
             }
+            */
             AddElement(null, "Konsolidace", false);
         }
         void AddEmptyElement(string ns, string name)

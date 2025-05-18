@@ -13,7 +13,7 @@ namespace CAD.DTM.Elements
     : IDtmElement
     {
         public char ZapisObjektu { get; set; }
-        public IDtmGeometry Geometry { get; set; }
+        public IDtmGeometryGroup Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
         public DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; set; }

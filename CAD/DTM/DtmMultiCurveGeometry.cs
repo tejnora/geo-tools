@@ -1,24 +1,16 @@
-﻿
+﻿using CAD.DTM.Gui;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using CAD.DTM.Gui;
+using System.Threading.Tasks;
 
 namespace CAD.DTM
 {
-    class DtmCurveGeometry
-    : IDtmGeometry
+    class DtmMultiCurveGeometry
+    : DtmCurveGeometry
     {
-        public DtmCurveGeometry()
-        {
-            SrsName = "EPSG:5514";
-            SrsDimension = 3;
-        }
-        public string Id { get; set; }
-        public string SrsName { get; set; }
-        public int SrsDimension { get; set; }
-        public List<DtmPoint> Points { get; set; }
-
-        public virtual void ExportToDtm(IDtmExporter exporter)
+        public override void ExportToDtm(IDtmExporter exporter)
         {
             var posListData = new StringBuilder();
             foreach (var p in Points)
@@ -26,12 +18,16 @@ namespace CAD.DTM
                 posListData.Append(p.ExportToDtm(3) + " ");
                 exporter.MarkPoint(p);
             }
-            exporter.BeginElement("gml", "curveProperty", false);
-            exporter.BeginElement("gml", "LineString");
+            exporter.BeginElement("gml", "multiCurveProperty", false);
+            exporter.BeginElement("gml", "MultiCurve");
             exporter.AddAttribute("gml", "id", Id);
             exporter.AddAttribute("srsName", SrsName);
             exporter.AddAttribute("srsDimension", SrsDimension);
+            exporter.BeginElement("gml", "curveMember");
+            exporter.BeginElement("gml", "LineString");
             exporter.AddElement("gml", "posList", posListData.ToString(0, posListData.Length - 1));
+            exporter.EndElement();
+            exporter.EndElement();
             exporter.EndElement();
             exporter.EndElement();
         }

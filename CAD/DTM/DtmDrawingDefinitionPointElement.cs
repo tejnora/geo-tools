@@ -30,7 +30,7 @@ namespace CAD.DTM
         public DtmDrawingDefinitionPointElement(DtmElement element)
         {
             _element = element;
-            PointGeometry = (DtmPointGeometry)element.Geometry;
+            PointGeometry = element.Geometry.GetDrawGeometry<DtmPointGeometry>();
             _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
 
         }

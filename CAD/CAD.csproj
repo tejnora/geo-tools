@@ -488,8 +488,10 @@
     <Compile Include="DTM\DtmDrawingLayerMain.cs" />
     <Compile Include="DTM\DtmExportCtx.cs" />
     <Compile Include="DTM\DtmExporter.cs" />
+    <Compile Include="DTM\DtmGeometryGroup.cs" />
     <Compile Include="DTM\DtmIdentickeBodyProtocolBuilder.cs" />
     <Compile Include="DTM\DtmImportPointsCtx.cs" />
+    <Compile Include="DTM\DtmMultiCurveGeometry.cs" />
     <Compile Include="DTM\DtmPolygonGeometry.cs" />
     <Compile Include="DTM\DtmSurfaceGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
@@ -566,6 +568,7 @@
     <Compile Include="DTM\IDtmElement.cs" />
     <Compile Include="DTM\IDtmElementsGroup.cs" />
     <Compile Include="DTM\IDtmGeometry.cs" />
+    <Compile Include="DTM\IDtmGeometryGroup.cs" />
     <Compile Include="DTM\IDtmMain.cs" />
     <Compile Include="DTM\UdajeOZmenach.cs" />
     <Compile Include="Export\DxfExport.cs" />
@@ -608,6 +611,7 @@
     <Compile Include="DrawTools\LineTool.cs" />
     <Compile Include="DrawTools\SnapPoints.cs" />
     <Compile Include="Tools\XmlWriter.cs" />
+    <Compile Include="Utils\ConvexHull.cs" />
     <Compile Include="VFK\Converters\VfkBoolConverter.cs" />
     <Compile Include="VFK\DrawTools\VFKActivePoint.cs" />
     <Compile Include="GUI\ActivePointPropPage.xaml.cs">

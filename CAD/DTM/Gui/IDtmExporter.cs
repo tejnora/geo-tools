@@ -15,5 +15,6 @@ namespace CAD.DTM.Gui
         void AddAttribute(string name, string value);
         void AddAttribute(string name, int value);
         void AddStringData(string value);
+        void MarkPoint(DtmPoint point);
     }
 }

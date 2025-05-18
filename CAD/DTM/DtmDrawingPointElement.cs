@@ -32,7 +32,7 @@ namespace CAD.DTM
         public DtmDrawingPointElement(DtmElement element)
         {
             _element = (DtmBodBaseElement)element;
-            PointGeometry = (DtmPointGeometry)element.Geometry;
+            PointGeometry = element.Geometry.GetDrawGeometry<DtmPointGeometry>();
             UpdatePoint();
         }
         void UpdatePoint()
@@ -200,7 +200,7 @@ namespace CAD.DTM
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
             _element.SelectedSetting(dtmLayer.DtmPointSelected.Item2);
-            _element.Geometry = PointGeometry;
+            _element.Geometry = new DtmGeometryGroup { Geometries = { PointGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
             Selected = true;
         }

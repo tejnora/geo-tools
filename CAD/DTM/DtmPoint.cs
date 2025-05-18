@@ -1,9 +1,12 @@
-﻿using System;
+﻿using CAD.Utils;
+using System;
 using System.Globalization;
 
 namespace CAD.DTM
 {
-    public class DtmPoint : ICloneable
+    public class DtmPoint
+        : ICloneable
+        , IPointConvexHull
     {
         public DtmPoint()
         {

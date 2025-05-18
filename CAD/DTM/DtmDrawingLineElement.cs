@@ -34,14 +34,7 @@ namespace CAD.DTM
         public DtmDrawingLineElement(DtmElement element)
         {
             _element = element;
-            if (element.Geometry is DtmCurveGeometry)
-            {
-                _curveGeometry = (DtmCurveGeometry)element.Geometry;
-            }
-            else
-            {
-                Debug.Assert(false);
-            }
+            _curveGeometry = element.Geometry.GetDrawGeometry<DtmCurveGeometry>();
         }
 
         public string Id => DtmToolBar.DtmMultiLine.Name;
@@ -237,7 +230,7 @@ namespace CAD.DTM
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected.Item1);
             _element.SelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
-            _element.Geometry = _curveGeometry;
+            _element.Geometry = new DtmGeometryGroup { Geometries = { _curveGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
             Selected = true;
         }

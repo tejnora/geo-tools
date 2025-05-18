@@ -20,7 +20,7 @@ namespace CAD.DTM
         DtmElementType ElementType { get; }
         bool IsDeleted { get; set; }
         bool ExportToOutput { get; }
-        IDtmGeometry Geometry { get; set; }
+        IDtmGeometryGroup Geometry { get; set; }
         IEnumerable<string> Settings { get; }
         void SelectedSetting(string value);
         void ExportAttributesToDtm(IDtmExporter exporter);

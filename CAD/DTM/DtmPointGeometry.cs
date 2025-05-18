@@ -16,14 +16,13 @@ namespace CAD.DTM
         public DtmPoint Point { get; set; }
         public void ExportToDtm(IDtmExporter exporter)
         {
-            exporter.BeginElement(null, "GeometrieObjektu");
             exporter.BeginElement("gml", "pointProperty");
             exporter.BeginElement("gml", "Point");
             exporter.AddAttribute("gml", "id", Id);
             exporter.AddAttribute("srsName", SrsName);
             exporter.AddAttribute("srsDimension", SrsDimension);
             exporter.AddElement("gml", "pos", Point.ExportToDtm(3));
-            exporter.EndElement();
+            exporter.MarkPoint(Point);
             exporter.EndElement();
             exporter.EndElement();
         }

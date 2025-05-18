@@ -93,47 +93,58 @@ namespace CAD.DTM
             }
         }
 
-        IDtmGeometry ParseGeometrieObjektu(XmlElement xmlElement)
+        IDtmGeometryGroup ParseGeometrieObjektu(XmlElement xmlElement)
         {
+            var geometryGroup = new DtmGeometryGroup { Geometries = new List<IDtmGeometry>() };
             foreach (XmlElement e in xmlElement)
             {
+                IDtmGeometry geometry;
                 switch (e.LocalName)
                 {
                     case "curveProperty":
-                        return ParseCurveGeometry(e);
+                        geometry = ParseCurveGeometry<DtmCurveGeometry>(e, false);
+                        break;
                     case "pointProperty":
-                        return ParsePointGeometry(e);
+                        geometry = ParsePointGeometry(e);
+                        break;
                     case "surfaceProperty":
-                        continue;
-                    //return ParseSurfaceProperty(e);
+                        geometry = ParseSurfaceProperty(e);
+                        break;
                     case "multiCurveProperty":
-                        return ParseMultiCurveProperty(e);
+                        geometry = ParseMultiCurveProperty(e);
+                        break;
                     default:
                         throw new Exception("Invalid geometry.");
                 }
+                geometryGroup.Geometries.Add(geometry);
             }
-            throw new Exception("Invalid geometry.");
+            return geometryGroup;
         }
 
-        IDtmGeometry ParsePointGeometry(XmlElement xmlElement)
+        void ParseGeometryAttributes(IDtmGeometry geometry, XmlElement xmlElement)
         {
-            var geometry = new DtmPointGeometry();
-            var point = (XmlElement)xmlElement.ChildNodes[0];
-            foreach (XmlAttribute attribute in point.Attributes)
+            foreach (XmlAttribute attribute in xmlElement.Attributes)
             {
                 switch (attribute.LocalName)
                 {
                     case "id":
                         geometry.Id = attribute.InnerText;
                         break;
-                    case "SrsName":
+                    case "srsName":
                         geometry.SrsName = attribute.InnerText;
                         break;
-                    case "SrsDimension":
+                    case "srsDimension":
                         geometry.SrsDimension = int.Parse(attribute.InnerText);
                         break;
                 }
             }
+        }
+
+        IDtmGeometry ParsePointGeometry(XmlElement xmlElement)
+        {
+            var geometry = new DtmPointGeometry();
+            var point = (XmlElement)xmlElement.ChildNodes[0];
+            ParseGeometryAttributes(geometry, point);
             if (point.ChildNodes.Count != 1 && point.ChildNodes[0].LocalName != "pos")
                 throw new Exception("Invalid curve geometry.");
             var values = point.ChildNodes[0].InnerText.Split(' ');
@@ -147,39 +158,28 @@ namespace CAD.DTM
         {
             var polygon = (XmlElement)xmlElement.ChildNodes[0];
             if (polygon.LocalName == "Polygon")
-                return new DtmSurfaceGeometry() { BaseGeometry = ParsePolygonGeometry(xmlElement) };
+                return ParsePolygonGeometry<DtmSurfaceGeometry>(xmlElement);
             throw new Exception("Invalid surface geometry.");
         }
         IDtmGeometry ParseMultiCurveProperty(XmlElement xmlElement)
         {
             var multiCurveElement = FindElement(xmlElement, "MultiCurve");
-            if (multiCurveElement != null)
-            {
-                var curveMemberElement = FindElement(multiCurveElement, "curveMember");
-                if (curveMemberElement != null)
-                    return new DtmSurfaceGeometry() { BaseGeometry = ParseCurveGeometry(curveMemberElement) };
-            }
-            throw new Exception("Invalid multi-curve geometry.");
+            if (multiCurveElement == null)
+                throw new Exception("Invalid multi-curve geometry.");
+            var curveMemberElement = FindElement(multiCurveElement, "curveMember");
+            var dtmGeometry = ParseCurveGeometry<DtmMultiCurveGeometry>(curveMemberElement, true);
+            ParseGeometryAttributes(dtmGeometry, multiCurveElement);
+            //todo
+            return dtmGeometry;
         }
 
-        IDtmGeometry ParseCurveGeometry(XmlElement xmlElement)
+        IDtmGeometry ParseCurveGeometry<T>(XmlElement xmlElement, bool skipAttributes) where T : DtmCurveGeometry, new()
         {
-            var geometry = new DtmCurveGeometry();
+            var geometry = new T();
             var lineString = (XmlElement)xmlElement.ChildNodes[0];
-            foreach (XmlAttribute attribute in lineString.Attributes)
+            if (!skipAttributes)
             {
-                switch (attribute.LocalName)
-                {
-                    case "id":
-                        geometry.Id = attribute.InnerText;
-                        break;
-                    case "SrsName":
-                        geometry.SrsName = attribute.InnerText;
-                        break;
-                    case "SrsDimension":
-                        geometry.SrsDimension = int.Parse(attribute.InnerText);
-                        break;
-                }
+                ParseGeometryAttributes(geometry, lineString);
             }
             if (lineString.ChildNodes.Count != 1 && lineString.ChildNodes[0].LocalName != "LineString")
                 throw new Exception("Invalid curve geometry.");
@@ -198,23 +198,11 @@ namespace CAD.DTM
             }
             return geometry;
         }
-        DtmPolygonGeometry ParsePolygonGeometry(XmlElement xmlElement)
+        DtmPolygonGeometry ParsePolygonGeometry<T>(XmlElement xmlElement) where T : DtmPolygonGeometry, new()
         {
-            var geometry = new DtmPolygonGeometry();
+            var geometry = new T();
             var polygon = FindElement(xmlElement, "Polygon");
-            foreach (XmlAttribute attribute in polygon.Attributes)
-            {
-                switch (attribute.LocalName)
-                {
-                    case "srsName":
-                        geometry.SrsName = attribute.InnerText;
-                        break;
-                    case "srsDimension":
-                        geometry.SrsDimension = int.Parse(attribute.InnerText);
-                        break;
-                }
-            }
-
+            ParseGeometryAttributes(geometry, polygon);
             var exterior = FindElement(polygon, "exterior");
             var linearRing = FindElement(exterior, "LinearRing");
             var posList = FindElement(linearRing, "posList");
@@ -277,7 +265,7 @@ namespace CAD.DTM
                         vydej.TypDatoveSady = int.Parse(xn.InnerText);
                         break;
                     case "ObvodDatoveSady":
-                        vydej.Polygon = ParsePolygonGeometry(xn);
+                        vydej.Polygon = ParsePolygonGeometry<DtmPolygonGeometry>(xn);
                         break;
                 }
             }
@@ -296,7 +284,7 @@ namespace CAD.DTM
                 {
                     case "OblastZmeny":
                         var surfaceProperty = FindElement(xn, "surfaceProperty");
-                        zmena.Polygon = ParsePolygonGeometry(surfaceProperty);
+                        zmena.Polygon = ParsePolygonGeometry<DtmPolygonGeometry>(surfaceProperty);
                         break;
                 }
             }

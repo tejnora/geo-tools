@@ -24,19 +24,12 @@ namespace CAD.DTM
         , ISnapList
     {
         DtmElement _element;
-        DtmCurveGeometry _curveGeometry;
+        DtmSurfaceGeometry _curveGeometry;
         const int ThresholdPixel = 6;
         public DtmDrawingPlochaElement(DtmElement element)
         {
             _element = element;
-            if (element.Geometry is DtmCurveGeometry)
-            {
-                _curveGeometry = (DtmCurveGeometry)element.Geometry;
-            }
-            else if (element.Geometry is DtmSurfaceGeometry)
-            {
-                _curveGeometry = (DtmCurveGeometry)((DtmSurfaceGeometry)element.Geometry).BaseGeometry;
-            }
+            _curveGeometry = element.Geometry.GetDrawGeometry<DtmSurfaceGeometry>();
         }
 
         public string Id => "";
@@ -77,13 +70,14 @@ namespace CAD.DTM
         {
             double thWidth = ThresholdWidth(canvas, Group.Options.Width);
             return ProcessLines((p1, p2) => HitUtil.IsPointInLine(p1, p2, point, thWidth));
-            var fillPath = new GraphicsPath();
-            ProcessLines((p1, p2) =>
-            {
-                fillPath.AddLine(canvas.ToScreen(p1).FromWpfPoint(), canvas.ToScreen(p2).FromWpfPoint());
-                return false;
-            });
-            return fillPath.IsVisible(canvas.ToScreen(point).FromWpfPoint());
+            /*            var fillPath = new GraphicsPath();
+                        ProcessLines((p1, p2) =>
+                        {
+                            fillPath.AddLine(canvas.ToScreen(p1).FromWpfPoint(), canvas.ToScreen(p2).FromWpfPoint());
+                            return false;
+                        });
+                        return fillPath.IsVisible(canvas.ToScreen(point).FromWpfPoint());
+            */
         }
 
         public bool ObjectInRectangle(ICanvas canvas, Rect rect, bool anyPoint)

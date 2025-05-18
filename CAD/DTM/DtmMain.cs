@@ -105,14 +105,14 @@ namespace CAD.DTM
             var lines = File.ReadAllLines(ctx.FileName);
             foreach (var line in lines)
             {
-                var lineT=line.Trim();
+                var lineT = line.Trim();
                 var items = Regex.Split(lineT, @"\s{1,}");
                 if (items.Length != 4)
                     throw new ArgumentOutOfRangeException($"File must contains only for columns. But the number of columns is {items.Length}.");
                 var element = DtmConfigurationSingleton.Instance.CreateType(ctx.PointTypeSelected);
-                element.Geometry = new DtmPointGeometry
+                element.Geometry = new DtmGeometryGroup
                 {
-                    Point = new DtmPoint("-" + items[1], "-" + items[2], items[3])
+                    Geometries = { new DtmPointGeometry { Point = new DtmPoint("-" + items[1], "-" + items[2], items[3]) } }
                 };
                 ((DtmBodBaseElement)element).CisloBodu = items[0];
                 AddElementIfNotExist(ctx.PointTypeSelected, element);

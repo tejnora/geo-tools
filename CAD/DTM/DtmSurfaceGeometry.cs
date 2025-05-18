@@ -4,17 +4,13 @@ using CAD.DTM.Gui;
 namespace CAD.DTM
 {
     class DtmSurfaceGeometry
-    : IDtmGeometry
+    : DtmPolygonGeometry
     {
-        public IDtmGeometry BaseGeometry { get; set; }
-        public string Id
+        public override void ExportToDtm(IDtmExporter exporter)
         {
-            get => BaseGeometry.Id;
-            set => BaseGeometry.Id = value;
-        }
-        public void ExportToDtm(IDtmExporter exporter)
-        {
-            throw new NotImplementedException();
+            exporter.BeginElement("gml", "surfaceProperty", false);
+            base.ExportToDtmInternal(exporter, 2);
+            exporter.EndElement();
         }
     }
 }

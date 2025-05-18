@@ -53,8 +53,11 @@ namespace CAD.DTM
         {
             if (_elements.Contains(dtmElementGetDtmElement))
                 return;
-            Debug.Assert(string.IsNullOrEmpty(dtmElementGetDtmElement.Geometry.Id));
-            dtmElementGetDtmElement.Geometry.Id = dtmMain.AllocateUniqueId(Name);
+            foreach (var geometry in dtmElementGetDtmElement.Geometry.Geometries)
+            {
+                Debug.Assert(string.IsNullOrEmpty(geometry.Id));
+                geometry.Id = dtmMain.AllocateUniqueId(Name);
+            }
             _elements.Add(dtmElementGetDtmElement);
         }
 
@@ -79,7 +82,9 @@ namespace CAD.DTM
                 element.ExportSpolecneAtributyVsechObjektu(exporter);
                 element.ExportAttributesToDtm(exporter);
                 exporter.EndElement();
+                exporter.BeginElement(null, "GeometrieObjektu");
                 element.Geometry.ExportToDtm(exporter);
+                exporter.EndElement();
                 exporter.EndElement();
             }
             exporter.EndElement();
