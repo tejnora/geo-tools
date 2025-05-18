@@ -669,6 +669,9 @@ namespace CAD.VFK.DrawTools
             points[points.Length - 1] = MultiLineSegments[MultiLineSegments.Count - 1].P2;
             export.AddPolyline(ref points, Color, Width);
         }
+
+        public Type PropPageType { get; }
+
         public override void RegisterObject(IVFKMain aOwner)
         {
             bool newItem = Item == null;

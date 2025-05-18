@@ -329,6 +329,8 @@ namespace CAD.Canvas.DrawTools
             export.AddLine(P1, P2, Color, Width);
         }
 
+        public Type PropPageType { get; }
+
         public void ExtendLineToPoint(UnitPoint newpoint)
         {
             UnitPoint newlinepoint = HitUtil.NearestPointOnLine(P1, P2, newpoint, true);

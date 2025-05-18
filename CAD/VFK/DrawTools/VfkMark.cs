@@ -227,6 +227,8 @@ namespace CAD.VFK.DrawTools
         {
             export.AddPath(GetMarkPath().GetTransformPath(P1), Color, Width);
         }
+
+        public Type PropPageType { get; }
         private const int ThresholdPixel = 6;
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {

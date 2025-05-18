@@ -13,17 +13,16 @@ using CAD.Canvas.Layers;
 using CAD.Canvas.DrawTools;
 using CAD.VFK;
 using CAD.VFK.DrawTools;
-using CAD.VFK.GUI;
 using GeoBase.Localization;
 using GeoBase.Utils;
 using VFK;
 using CAD.DTM;
+using CAD.GUI;
 
 namespace CAD.Canvas
 {
     public class DataModel : IModel
     {
-
         public DataModel()
         {
             _toolTypes.Clear();
@@ -41,25 +40,24 @@ namespace CAD.Canvas
             _centerPoint = new UnitPoint(0, 0);
             VfkMain = null;
         }
-
-
-
         static Dictionary<string, Type> _toolTypes = new Dictionary<string, Type>();
-        private Dictionary<string, IDrawObject> _drawObjectTypes = new Dictionary<string, IDrawObject>();
-        private Dictionary<string, IEditTool> m_editTools = new Dictionary<string, IEditTool>();
-        private UndoRedoBuffer _undoBuffer = new UndoRedoBuffer();
-        private UnitPoint _centerPoint = UnitPoint.Empty;
-        private double _zoom = 0.01f;
-        private GridLayer _gridLayer = new GridLayer();
-        private BackgroundLayer _backgroundLayer = new BackgroundLayer();
-        private List<ICanvasLayer> _layers = new List<ICanvasLayer>();
-        private ImageBackgroundLayer _imageBackgroundLayer = new ImageBackgroundLayer();
-        private ICanvasLayer _activeLayer;
-        private readonly Dictionary<IDrawObject, bool> _selection = new Dictionary<IDrawObject, bool>();
-        private UInt32 _slaveCounter;
-        private readonly List<Color> _colors = new List<Color> { Color.White, Color.Black, Color.Red, Color.Yellow };
+        Dictionary<string, IDrawObject> _drawObjectTypes = new Dictionary<string, IDrawObject>();
+        Dictionary<string, IEditTool> m_editTools = new Dictionary<string, IEditTool>();
+        UndoRedoBuffer _undoBuffer = new UndoRedoBuffer();
+        UnitPoint _centerPoint = UnitPoint.Empty;
+        double _zoom = 0.01f;
+        GridLayer _gridLayer = new GridLayer();
+        BackgroundLayer _backgroundLayer = new BackgroundLayer();
+        List<ICanvasLayer> _layers = new List<ICanvasLayer>();
+        ImageBackgroundLayer _imageBackgroundLayer = new ImageBackgroundLayer();
+        ICanvasLayer _activeLayer;
+        readonly Dictionary<IDrawObject, bool> _selection = new Dictionary<IDrawObject, bool>();
+        IDrawObject _focusetObject = null;
 
-        private readonly List<double> _widths = new List<double>
+        UInt32 _slaveCounter;
+        readonly List<Color> _colors = new List<Color> { Color.White, Color.Black, Color.Red, Color.Yellow };
+
+        readonly List<double> _widths = new List<double>
             { 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008 };
 
         public bool IsDirty
@@ -321,7 +319,6 @@ namespace CAD.Canvas
         {
             return _selection.ContainsKey(drawobject);
         }
-
         public void AddSelectedObject(IDrawObject drawobject)
         {
             DrawObjectBase obj = drawobject as DrawObjectBase;
@@ -360,6 +357,21 @@ namespace CAD.Canvas
             }
 
             _selection.Clear();
+        }
+        public IDrawObject FocusetObject
+        {
+            get => _focusetObject;
+            set
+            {
+                _focusetObject = value;
+                ShowPropNode(_focusetObject);
+            }
+        }
+
+        void ShowPropNode(IDrawObject drawObject)
+        {
+            var palette = (PropPagePalette)DocumentEnvironemt.Instance.GetPalette(DockablePalette.DtmPropPage);
+            palette.Load(drawObject);
         }
 
         public ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, Type[] runningsnaptypes, Type usersnaptype)

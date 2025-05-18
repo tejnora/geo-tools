@@ -196,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DTM\Gui\DtmPropPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmToolBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,6 +221,10 @@
     <Page Include="GUI\DrawLayerProp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\PropPagePalette.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -476,6 +484,7 @@
       <DependentUpon>MultiSelectPointDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\PlochaConverter.cs" />
+    <Compile Include="DocumentEnvironemt.cs" />
     <Compile Include="DrawTools\ISnapList.cs" />
     <Compile Include="DTM\Configuration\DtmConfigurationSingleton.cs" />
     <Compile Include="DTM\Configuration\DtmElementOption.cs" />
@@ -549,6 +558,9 @@
     <Compile Include="DTM\Gui\DtmLayerManager.xaml.cs">
       <DependentUpon>DtmLayerManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTM\Gui\DtmPropPage.xaml.cs">
+      <DependentUpon>DtmPropPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DTM\Gui\DtmToolBar.xaml.cs">
       <DependentUpon>DtmToolBar.xaml</DependentUpon>
     </Compile>
@@ -577,6 +589,11 @@
     <Compile Include="GUI\AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\IPropPage.cs" />
+    <Compile Include="GUI\PropPagePalette.xaml.cs">
+      <DependentUpon>PropPagePalette.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IDockableContent.cs" />
     <Compile Include="InfoTools\InfoPropPage.cs" />
     <Compile Include="InfoTools\VfkMeasureArea.xaml.cs">
       <DependentUpon>VfkMeasureArea.xaml</DependentUpon>

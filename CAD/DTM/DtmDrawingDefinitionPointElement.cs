@@ -11,6 +11,7 @@ using CAD.Export;
 using GeoBase.Utils;
 using CAD.Utils;
 using CAD.DTM.Configuration;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
@@ -140,6 +141,8 @@ namespace CAD.DTM
         {
             export.AddPoint(_point.X, _point.Y, Group.Options.Color);
         }
+
+        public Type PropPageType => typeof(DtmPropPage);
 
         public IDtmDrawingGroup Group { get; set; }
         public IDtmElement GetDtmElement => _element;

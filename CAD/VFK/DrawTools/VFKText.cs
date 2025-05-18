@@ -283,6 +283,9 @@ namespace CAD.VFK.DrawTools
             string styleName = export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.0, _fontName);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, UhelNatoceni);
         }
+
+        public Type PropPageType { get; }
+
         public override void RegisterObject(IVFKMain aOwner)
         {
             bool newItem = Item == null;

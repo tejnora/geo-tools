@@ -13,6 +13,7 @@ using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 namespace CAD.VFK.GUI
 {
     public partial class SeznamSouradnic
+    : IDockableContent
     {
         public SeznamSouradnic()
         {
@@ -24,6 +25,10 @@ namespace CAD.VFK.GUI
         {
             get;
             set;
+        }
+        public void Reset()
+        {
+            SetDocument(null);
         }
         public void SetDocument(Document aDoc)
         {
@@ -93,6 +98,5 @@ namespace CAD.VFK.GUI
                 }
             }
         }
-
     }
 }

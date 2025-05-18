@@ -17,7 +17,13 @@ using VFK;
 
 namespace CAD
 {
-    public partial class Document : AvalonDock.DocumentContent, ICanvasOwner
+    public enum DocumentType
+    {
+        Simple,
+        Vfk,
+        Dtm
+    }
+    public partial class Document : ICanvasOwner
     {
         public Document(string aFileName, IMainWinInterface aOwner)
         {
@@ -191,9 +197,13 @@ namespace CAD
             var dialog = new VFKEdidOfParcel(DataModel.VfkMain);
             dialog.ShowDialog();
         }
-        public VFKMain GetIsVfkMain()
+        public DocumentType GetDocumentType()
         {
-            return DataModel.VfkMain;
+            if (DataModel.VfkMain != null)
+                return DocumentType.Vfk;
+            if (DataModel.DtmMain != null)
+                return DocumentType.Dtm;
+            return DocumentType.Simple;
         }
         public void OnGenerateSip()
         {
@@ -258,7 +268,7 @@ namespace CAD
                 CanvasCommand.CommandFitView();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var resourceParams = new ResourceParams();
                 resourceParams.Add("msg", ex.Message);

@@ -76,6 +76,10 @@ namespace CAD.DTM.Elements
                 throw new ArgumentOutOfRangeException();
             return ZapisObjektu.ToString();
         }
+        public char EvaluateZapisObjektuForGui()
+        {
+            return IsDeleted ? 'd' : ZapisObjektu;
+        }
 
         public void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter)
         {

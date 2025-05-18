@@ -184,6 +184,9 @@ namespace CAD.DTM
                 export.AddText(_element.CisloBodu, _point.X, _point.Y, 0.5, string.Empty, Group.Options.Color, 0);
             }
         }
+
+        public Type PropPageType => typeof(DtmPropPage);
+
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
             if (snap is DtmPodrobnyBodSnapPoint bodSnap)

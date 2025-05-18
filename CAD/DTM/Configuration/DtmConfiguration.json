@@ -187,7 +187,7 @@
     "ObsahovaCast": "ZPS"
   },
   "CyklostezkaPlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000009",
     "CodeSuffix": "03",
@@ -198,7 +198,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ChodnikPlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100],
     "Width": 0.02,
     "CodeBase": "0100000007",
     "CodeSuffix": "03",
@@ -209,7 +209,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ParkovisteOdstavnaPlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100],
     "Width": 0.02,
     "CodeBase": "0100000011",
     "CodeSuffix": "03",
@@ -220,7 +220,7 @@
     "ObsahovaCast": "ZPS"
   },
   "UdrzovanaPlochaZelenePlocha": {
-    "Color": [ 0, 255, 0, 255 ],
+    "Color": [ 0, 255, 0, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000215",
     "CodeSuffix": "03",
@@ -286,7 +286,7 @@
     "ObsahovaCast": "ZPS"
   },
   "NajezdPlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100],
     "Width": 0.02,
     "CodeBase": "0100000017",
     "CodeSuffix": "03",
@@ -297,7 +297,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ProvozniPlochaPozemniKomunikacePlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100],
     "Width": 0.02,
     "CodeBase": "0100000005",
     "CodeSuffix": "03",
@@ -330,7 +330,7 @@
     "ObsahovaCast": "ZPS"
   },
   "OstatniZastresenaStavbaPlocha": {
-    "Color": [ 0, 100, 100, 255 ],
+    "Color": [ 0, 100, 100, 100],
     "Width": 0.02,
     "CodeBase": "0100000314",
     "CodeSuffix": "03",
@@ -338,6 +338,17 @@
     "ObjektovyTypNazev": "chodník",
     "KategorieObjektu": "Součásti a příslušenství staveb",
     "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ParkovisteOdstavnaPlochaPlocha": {
+    "Color": [ 0, 100, 100, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000011",
+    "CodeSuffix": "03",
+    "Xmlns": "paopol",
+    "ObjektovyTypNazev": "parkoviště, odstavná plocha",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Silniční doprava",
     "ObsahovaCast": "ZPS"
   }
 }

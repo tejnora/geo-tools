@@ -1,4 +1,5 @@
 ﻿using CAD.Canvas;
+using CAD.DTM.Elements;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace CAD.DTM
         Plocha,
         DefinicniBod,
         Obvod
-   }
+    }
 
     public interface IDtmElement
     {
@@ -25,6 +26,8 @@ namespace CAD.DTM
         void SelectedSetting(string value);
         void ExportAttributesToDtm(IDtmExporter exporter);
         string EvaluateZapisObjektuForExportToDtm();
+        char EvaluateZapisObjektuForGui();
         void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter);
+        DtmElementSpolecneAtributy SpolecneAtributy { get; }
     }
 }

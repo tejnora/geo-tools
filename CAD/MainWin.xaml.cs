@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using System.Windows;
@@ -17,13 +19,12 @@ using VFK.GUI;
 using Registry = GeoBase.Utils.Registry;
 using ProgramOption = GeoBase.Utils.ProgramOption;
 using CAD.DTM.Gui;
+using CAD.VFK.GUI;
 
 namespace CAD
 {
     public partial class MainWin : Window, IMainWinInterface
     {
-
-
         public MainWin()
         {
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -32,16 +33,18 @@ namespace CAD
             InitializeComponent();
             InitLayout();
             InitToolBars();
+            InitDockablePalette();
         }
 
+        void InitDockablePalette()
+        {
+            DocumentEnvironemt.Instance.RegisterPalette(DockablePalette.SeznamSouradnic, _seznamSouradnic);
+            DocumentEnvironemt.Instance.RegisterPalette(DockablePalette.DtmPropPage, _dtmPropPage);
+        }
 
-
-        private GeoCadToolBarManager _toolBarManager;
-        private bool _lockUpdateToolBar;
-
-
-
-        private void DockingManagerControl_Loaded(object sender, EventArgs arg)
+        GeoCadToolBarManager _toolBarManager;
+        bool _lockUpdateToolBar;
+        void DockingManagerControl_Loaded(object sender, EventArgs arg)
         {
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize");
             if (po.isString())
@@ -51,10 +54,10 @@ namespace CAD
                     _dockingManager.RestoreLayout(reader);
                 }
             }
-            _dockingManager.Hide(_seznamSouradnic);
+            DocumentEnvironemt.Instance.HideAllPalette(_dockingManager);
         }
 
-        private Document GetDocument()
+        Document GetDocument()
         {
             if (_dockingManager == null || _dockingManager.ActiveDocument == null)
                 return null;
@@ -66,24 +69,26 @@ namespace CAD
         void OnMainDocumentChanged(object sender, EventArgs e)
         {
             var doc = GetDocument();
-            if (_seznamSouradnic.State != DockableContentState.Hidden)
-            {
-                _dockingManager.Hide(_seznamSouradnic);
-                _seznamSouradnic.SetDocument(null);
-            }
+            DocumentEnvironemt.Instance.HideAllPalette(_dockingManager);
             _toolBarManager.Document = GetDocument();
             if (doc == null)
                 return;
-            if (doc.GetIsVfkMain() != null)
+            switch (doc.GetDocumentType())
             {
-                _dockingManager.Show(_seznamSouradnic, DockableContentState.Docked, AnchorStyle.Right);
-                _seznamSouradnic.SetDocument(doc);
+                case DocumentType.Vfk:
+                    _dockingManager.Show(DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic), DockableContentState.Docked, AnchorStyle.Right);
+                    ((SeznamSouradnic)DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic)).SetDocument(doc);
+                    break;
+                case DocumentType.Dtm:
+                    _dockingManager.Show(DocumentEnvironemt.Instance.GetPalette(DockablePalette.DtmPropPage), DockableContentState.Docked, AnchorStyle.Right);
+                    break;
+                case DocumentType.Simple:
+                    break;
+                default:
+                    Debug.Fail("Unsupported document type");
+                    break;
             }
         }
-
-
-
-
         private void OnAddRaster(object sender, EventArgs e)
         {
             Document doc = GetDocument();
@@ -182,12 +187,12 @@ namespace CAD
             args.CanExecute = doc != null && doc.IsImportedVfk();
         }
 
-        private void OnRemoveVFKData(object aSender, EventArgs aArg)
+        void OnRemoveVFKData(object aSender, EventArgs aArg)
         {
-            Document doc = GetDocument();
+            var doc = GetDocument();
             if (doc == null) return;
             doc.RemoveVfk();
-            _seznamSouradnic.SetDocument(null);
+            ((IDockableContent)DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic)).Reset();
         }
 
         private void OnCanRemoveVFKData(object sender, CanExecuteRoutedEventArgs args)
@@ -210,7 +215,7 @@ namespace CAD
 
         private void OnSeznamSouradnicVFK(object aSender, EventArgs aArgs)
         {
-            _dockingManager.Show(_seznamSouradnic);
+            _dockingManager.Show(DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic));
         }
 
         private void OnCanSeznamSouradnicVFK(object sender, CanExecuteRoutedEventArgs args)
@@ -307,12 +312,10 @@ namespace CAD
             _dockingManager.MainDocumentPane.Items.Add(doc);
             doc.CanvasCommand.CommandFitView();
         }
-
         public void CloseDocument()
         {
             ((DocumentContent)_dockingManager.ActiveDocument).Close();
         }
-
         public void UpdateToolBars(GeoCadRoutedCommand command)
         {
             if (_lockUpdateToolBar) return;
@@ -320,9 +323,6 @@ namespace CAD
             _toolBarManager.Command = command;
             _lockUpdateToolBar = false;
         }
-
-
-
         private void InitLanguages()
         {
             LanguageDictionary.RegisterDictionary(
@@ -330,7 +330,6 @@ namespace CAD
                 new XmlLanguageDictionary("Languages/cs-CZ.xml", string.Empty));
             LanguageContext.Instance.Culture = CultureInfo.GetCultureInfo("cs-CZ");
         }
-
         private void InitLayout()
         {
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowPos");
@@ -401,26 +400,22 @@ namespace CAD
                     throw new ArgumentOutOfRangeException();
             }
         }
-
         void OnImportPointsDtm(object sender, ExecutedRoutedEventArgs e)
         {
             var doc = GetDocument();
             if (doc.ImportPointsDtm())
                 OnMainDocumentChanged(this, EventArgs.Empty);
         }
-
         void CanImportPointsDtm(object sender, CanExecuteRoutedEventArgs args)
         {
             var doc = GetDocument();
             args.CanExecute = doc != null && doc.DataModel.ActiveLayer is DtmDrawingLayerMain;
         }
-
         void OnIdentickeBodyMapovaniDtm(object sender, ExecutedRoutedEventArgs e)
         {
             var doc = GetDocument();
             doc.ShowIdetickeBodyMapovaniDialog();
         }
-
         void CanIdentickeBodyMapovaniDtm(object sender, CanExecuteRoutedEventArgs args)
         {
             var doc = GetDocument();

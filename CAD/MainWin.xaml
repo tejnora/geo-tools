@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
         xmlns:VFKGui="clr-namespace:CAD.VFK.GUI" xmlns:UITools="clr-namespace:CAD.UITools"
-        xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" loc:Translate.Uid="0"
+        xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
+        xmlns:gui="clr-namespace:CAD.DTM.Gui"
+        xmlns:gui1="clr-namespace:CAD.GUI"
+        loc:Translate.Uid="0"
         Title="{loc:Translate GeoCad}"
         Width="{loc:Translate 865}"
         Height="{loc:Translate 800}">
@@ -259,13 +262,15 @@
                 </TextBlock>
             </StatusBarItem>
         </StatusBar>
-        <ad:DockingManager x:Name="_dockingManager"
-                           Loaded="DockingManagerControl_Loaded">
+        <ad:DockingManager x:Name="_dockingManager" Loaded="DockingManagerControl_Loaded">
             <ad:ResizingPanel Orientation="Horizontal">
                 <ad:DocumentPane SelectionChanged="OnMainDocumentChanged">
                 </ad:DocumentPane>
                 <ad:DockablePane>
                     <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic" IsCloseable="True"/>
+                </ad:DockablePane>
+                <ad:DockablePane>
+                    <gui1:PropPagePalette x:Name="_dtmPropPage" IsCloseable="True"/>
                 </ad:DockablePane>
             </ad:ResizingPanel>
         </ad:DockingManager>

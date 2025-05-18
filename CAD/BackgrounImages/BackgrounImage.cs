@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Forms;
 using CAD.Canvas;
 using CAD.Export;
 using CAD.Utils;
@@ -130,6 +131,8 @@ namespace CAD.BackgrounImages
 
         public bool Selected { get; set; }
         public bool Highlighted { get; set; }
+        public Type PropPageType { get; }
+
         public void GetObjectData(XmlWriter wr)
         {
         }

@@ -716,6 +716,9 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
+
+        public Type PropPageType { get; }
+
         public void OnDeserialization(object sender)
         {
             UpdateArcFrom3Points();

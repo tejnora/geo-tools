@@ -195,6 +195,8 @@ namespace CAD.DTM
 
         }
 
+        public Type PropPageType => typeof(DtmPropPage);
+
         public IDtmDrawingGroup Group { get; set; }
         public IDtmElement GetDtmElement => _element;
 

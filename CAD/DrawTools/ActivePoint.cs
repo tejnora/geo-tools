@@ -265,6 +265,8 @@ namespace CAD.Canvas.DrawTools
         public virtual void Export(IExport export)
         {
         }
+
+        public Type PropPageType { get; }
         static int ThresholdPixel = 6;
         public static double ThresholdWidth(ICanvas canvas, double objectwidth)
         {

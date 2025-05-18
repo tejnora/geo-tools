@@ -646,6 +646,9 @@ namespace CAD.Canvas.DrawTools
         public void Export(IExport export)
         {
         }
+
+        public Type PropPageType { get; }
+
         protected virtual void DrawNodes(ICanvas canvas)
         {
             if (CurPoint == ECurrentPoint.StartAngle && LastPoint != UnitPoint.Empty)

@@ -87,9 +87,10 @@ namespace CAD.Canvas
         void AddSelectedObject(IDrawObject drawobject);
         void RemoveSelectedObject(IDrawObject drawobject);
         IEnumerable<IDrawObject> SelectedObjects { get; }
+
         int SelectedCount { get; }
         void ClearSelectedObjects();
-
+        IDrawObject FocusetObject { get; set; }
         ISnapPoint SnapPoint(ICanvas canvas, UnitPoint point, Type[] runningsnaptypes, Type usersnaptype);
 
         List<Color> getColors();
@@ -170,6 +171,7 @@ namespace CAD.Canvas
         void Export(IExport export);
         bool Selected { get; set; }
         bool Highlighted { get; set; }
+        Type PropPageType { get; }
     }
     public interface IEditTool
     {

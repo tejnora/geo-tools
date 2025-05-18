@@ -312,6 +312,9 @@ namespace CAD.Canvas.DrawTools
             string styleName=export.AddStyle(false, 0.0, 1, 0.0, false, false, 0.2, FontFamily.Name);
             export.AddText(Text, P1.X, P1.Y, height, styleName, Color, 0);
         }
+
+        public Type PropPageType { get; }
+
         public void OnDeserialization(object sender)
         {
             try

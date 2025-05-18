@@ -468,31 +468,27 @@ namespace CAD.Canvas
         {
             if (selected == null)
                 return;
-            /*
-            //it is not possilbe selected active point
-            for (Int32 i = 0; i < selected.Count; )
-            {
-                if (selected[i] is VfkActivePoint)
-                {
-                    selected.Remove(selected[i]);
-                    continue;
-                }
-                i++;
-            }
-             */
-            bool add = ModifierKeys == Keys.Shift;
-            bool toggle = ModifierKeys == Keys.Control;
-            bool invalidate = false;
-            bool anyoldsel = false;
-            int selcount = 0;
+            var add = ModifierKeys == Keys.Shift;
+            var toggle = ModifierKeys == Keys.Control;
+            var invalidate = false;
+            var anyoldsel = false;
+            var selcount = 0;
             if (selected != null)
                 selcount = selected.Count;
-            foreach (IDrawObject obj in _model.SelectedObjects)
+            foreach (var obj in _model.SelectedObjects)
             {
                 anyoldsel = true;
                 break;
             }
 
+            if (selectOnlyOne && selcount > 0)
+            {
+                _model.FocusetObject = selected[0];
+            }
+            else
+            {
+                _model.FocusetObject = null;
+            }
             if (toggle || add)
             {
                 if (toggle && selcount > 0)
@@ -506,7 +502,6 @@ namespace CAD.Canvas
                             _model.AddSelectedObject(obj);
                     }
                 }
-
                 if (add && selcount > 0)
                 {
                     invalidate = true;
@@ -532,7 +527,6 @@ namespace CAD.Canvas
                             if (_model.IsSelected(selected[i]))
                                 break;
                         }
-
                         i--;
                         if (i < 0)
                             i = selected.Count - 1;
