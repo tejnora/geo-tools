@@ -4,14 +4,13 @@ namespace CAD.DTM.Elements
 {
     public class DtmElementSpolecneAtributy
     {
-        public DateTime DatumVkladu { get; set; }
-        public DateTime DatumZmeny { get; set; }
-        public string ID { get; set; }
-        public string IDEditora { get; set; }
-        public string IDZmeny { get; set; }
-        public string PopisObjektu { get; set; }
-        public string VkladOsoba { get; set; }
-        public string ZmenaOsoba { get; set; }
-
+        public DateTime DatumVkladu;
+        public DateTime DatumZmeny;
+        public string ID;
+        public string IDEditora;
+        public string IDZmeny;
+        public string PopisObjektu;
+        public string VkladOsoba;
+        public string ZmenaOsoba;
     }
 }

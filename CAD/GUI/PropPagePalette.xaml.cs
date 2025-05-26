@@ -9,6 +9,7 @@ namespace CAD.GUI
     : IDockableContent
     {
         Dictionary<Type, UIElement> _propPageCache = new Dictionary<Type, UIElement>();
+        UIElement _lastControl;
         public PropPagePalette()
         {
             InitializeComponent();
@@ -19,7 +20,6 @@ namespace CAD.GUI
         }
         public void Load(IDrawObject drawObject)
         {
-            _stack.Children.Clear();
             var propPageType = drawObject?.PropPageType;
             if (propPageType == null)
                 return;
@@ -28,8 +28,17 @@ namespace CAD.GUI
                 guiControl = (UIElement)Activator.CreateInstance(propPageType);
                 _propPageCache[propPageType] = guiControl;
             }
+
+            if (_lastControl != guiControl)
+            {
+                if (_lastControl != null)
+                {
+                    _stack.Children.Remove(_lastControl);
+                }
+                _stack.Children.Add(guiControl);
+                _lastControl = guiControl;
+            }
             ((IPropPage)guiControl).Load(drawObject);
-            _stack.Children.Add(guiControl);
         }
     }
 }

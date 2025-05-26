@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using CAD.GUI;
-using System.Windows.Controls;
 using CAD.Canvas;
-using System.Windows;
 using CAD.DTM.Elements;
 using System.Text.RegularExpressions;
+using CAD.Utils;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace CAD.DTM.Gui
 {
-    public partial class DtmPropPage : UserControl, IPropPage, INotifyPropertyChanged
+    public partial class DtmPropPage : IPropPage, INotifyPropertyChanged
     {
         public DtmPropPage()
         {
@@ -22,36 +19,39 @@ namespace CAD.DTM.Gui
             SpolecneAtributy = new SpolecneAtributyTabData();
             SpolecneAtributyZPS = new SpolecneAtributyZPSTabData();
         }
-
         public GeneralTabData General { get; }
         public SpolecneAtributyTabData SpolecneAtributy { get; }
         public SpolecneAtributyZPSTabData SpolecneAtributyZPS { get; }
+
+        public Visibility IsAdditionalPropertiesVisible { get; set; }
+
         public void Load(IDrawObject drawObject)
         {
             var dtmElement = (IDtmDrawingElement)(drawObject);
             General.Load(dtmElement);
             SpolecneAtributy.Load(dtmElement.GetDtmElement);
             SpolecneAtributyZPS.Load(dtmElement.GetDtmElement);
+
+            var additionalProperties = dtmElement.GetDtmElement.AdditionalPropertiesGui;
+            if (additionalProperties != null)
+            {
+                IsAdditionalPropertiesVisible = Visibility.Visible;
+                additionalProperties.Load(_additionalProperties);
+            }
+            else
+            {
+                IsAdditionalPropertiesVisible = Visibility.Collapsed;
+            }
             OnPropertyChanged("");
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
     }
 
-    public class GeneralTabData : DependencyObject
+    public class GeneralTabData : ModelBase
     {
         public void Load(IDtmDrawingElement drawObject)
         {
@@ -75,61 +75,101 @@ namespace CAD.DTM.Gui
             }
             Typ = element.ElementType.ToString();
         }
-        public string Nazev { get; private set; }
-        public string Zapis { get; private set; }
-        public string Typ { get; private set; }
+        string _nazev;
+        public string Nazev
+        {
+            get => _nazev;
+            private set => SetField(ref _nazev, value);
+        }
+        string _zapis;
+        public string Zapis
+        {
+            get => _zapis;
+            private set => SetField(ref _zapis, value);
+        }
+
+        string _typ;
+        public string Typ { get => _typ; private set => SetField(ref _typ, value); }
     }
 
-    public class SpolecneAtributyTabData : DependencyObject
+    public class SpolecneAtributyTabData : ModelBase
     {
         DtmElementSpolecneAtributy _owner;
         public void Load(IDtmElement element)
         {
             _owner = element.SpolecneAtributy;
         }
-        public DateTime DatumVkladu => _owner.DatumVkladu;
-        public DateTime DatumZmeny => _owner.DatumZmeny;
-        public string ID => _owner.ID;
-        public string IDEditora => _owner.IDEditora;
-        public string IDZmeny => _owner.IDZmeny;
-        public string PopisObjektu => _owner.PopisObjektu;
-        public string VkladOsoba => _owner.VkladOsoba;
-        public string ZmenaOsoba => _owner.ZmenaOsoba;
+        public DateTime DatumVkladu
+        {
+            get => _owner.DatumVkladu;
+            set => SetField(ref _owner.DatumVkladu, value);
+        }
+        public DateTime DatumZmeny
+        {
+            get => _owner.DatumZmeny;
+            set => SetField(ref _owner.DatumZmeny, value);
+        }
+        public string ID
+        {
+            get => _owner.ID;
+            set => SetField(ref _owner.ID, value);
+        }
+        public string IDEditora
+        {
+            get => _owner.IDEditora;
+            set => SetField(ref _owner.IDEditora, value);
+        }
+        public string IDZmeny
+        {
+            get => _owner.IDZmeny;
+            set => SetField(ref _owner.IDZmeny, value);
+        }
+        public string PopisObjektu
+        {
+            get => _owner.PopisObjektu;
+            set => SetField(ref _owner.PopisObjektu, value);
+        }
+        public string VkladOsoba
+        {
+            get => _owner.VkladOsoba;
+            set => SetField(ref _owner.VkladOsoba, value);
+        }
+        public string ZmenaOsoba
+        {
+            get => _owner.ZmenaOsoba;
+            set => SetField(ref _owner.ZmenaOsoba, value);
+        }
     }
 
-    public class SpolecneAtributyZPSTabData : DependencyObject
+    public class SpolecneAtributyZPSTabData : ModelBase
     {
         DtmSpolecneAtributyZPS _owner;
         public void Load(IDtmElement element)
         {
-            _owner = element.SpolecneAtributyZPS;
+            IsVisible = element.SpolecneAtributyZPS == null ? Visibility.Collapsed : Visibility.Visible;
+            _owner = element.SpolecneAtributyZPS ?? new DtmSpolecneAtributyZPS();
         }
-        public int UrovenUmisteniObjektuZPS => _owner.UrovenUmisteniObjektuZPS;
-        public int TridaPresnostiPoloha => _owner.TridaPresnostiPoloha;
-        public int TridaPresnostiVyska => _owner.TridaPresnostiVyska;
+        public Visibility IsVisible { get; private set; }
 
-        public string ZpusobPorizeniZPS
+        public int UrovenUmisteniObjektuZPS
         {
-            get
-            {
-                switch (_owner.ZpusobPorizeniZPS)
-                {
-                    case 1:
-                        return "geodeticky - terestricky";
-                    case 2:
-                        return "geodeticky - fotogrammetricky";
-                    case 3:
-                        return "geodeticky - pozemním laserovým skenováním";
-                    case 4:
-                        return "přibližným zákresem";
-                    case 5:
-                        return "odvozením";
-                    default:
-                        return "nezjištěno";
-                }
-            }
+            get => _owner.UrovenUmisteniObjektuZPS;
+            set => SetField(ref _owner.UrovenUmisteniObjektuZPS, value);
         }
-
+        public int TridaPresnostiPoloha
+        {
+            get => _owner.TridaPresnostiPoloha;
+            set => SetField(ref _owner.TridaPresnostiPoloha, value);
+        }
+        public int TridaPresnostiVyska
+        {
+            get => _owner.TridaPresnostiVyska;
+            set => SetField(ref _owner.TridaPresnostiVyska, value);
+        }
+        public int ZpusobPorizeniZPS
+        {
+            get => _owner.ZpusobPorizeniZPS;
+            set => SetField(ref _owner.ZpusobPorizeniZPS, value);
+        }
     }
-
 }

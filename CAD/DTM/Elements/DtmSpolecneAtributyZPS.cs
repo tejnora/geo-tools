@@ -9,9 +9,9 @@
             UrovenUmisteniObjektuZPS = 0;
             ZpusobPorizeniZPS = 1;
         }
-        public int UrovenUmisteniObjektuZPS { get; set; }
-        public int TridaPresnostiPoloha { get; set; }
-        public int TridaPresnostiVyska { get; set; }
-        public int ZpusobPorizeniZPS { get; set; }
+        public int UrovenUmisteniObjektuZPS;
+        public int TridaPresnostiPoloha;
+        public int TridaPresnostiVyska;
+        public int ZpusobPorizeniZPS;
     }
 }

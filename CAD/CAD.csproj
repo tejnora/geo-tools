@@ -488,6 +488,7 @@
     <Compile Include="DrawTools\ISnapList.cs" />
     <Compile Include="DTM\Configuration\DtmConfigurationSingleton.cs" />
     <Compile Include="DTM\Configuration\DtmElementOption.cs" />
+    <Compile Include="DTM\Converters\ZpusobPorizeniZPSConverter.cs" />
     <Compile Include="DTM\DtmCurveGeometry.cs" />
     <Compile Include="DTM\DtmDrawingLineElement.cs" />
     <Compile Include="DTM\DtmDrawingDefinitionPointElement.cs" />
@@ -525,6 +526,7 @@
     <Compile Include="DTM\Elements\DtmPrevazujiciPovrchEnum.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyZPS.cs" />
     <Compile Include="DTM\Elements\DtmStavObjektuEnum.cs" />
+    <Compile Include="DTM\Elements\IAdditionalPropertiesGui.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceBudovyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceDopravniStavbyPlochyElement.cs" />
@@ -630,6 +632,7 @@
     <Compile Include="DrawTools\SnapPoints.cs" />
     <Compile Include="Tools\XmlWriter.cs" />
     <Compile Include="Utils\ConvexHull.cs" />
+    <Compile Include="Utils\ModelBase.cs" />
     <Compile Include="VFK\Converters\VfkBoolConverter.cs" />
     <Compile Include="VFK\DrawTools\VFKActivePoint.cs" />
     <Compile Include="GUI\ActivePointPropPage.xaml.cs">

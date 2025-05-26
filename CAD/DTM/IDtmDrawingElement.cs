@@ -1,5 +1,4 @@
-﻿using CAD.DTM.Configuration;
-namespace CAD.DTM
+﻿namespace CAD.DTM
 {
     public interface IDtmDrawingElement
     {
