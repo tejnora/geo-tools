@@ -3,13 +3,20 @@ using CAD.DTM.Gui;
 using System.Collections.Generic;
 using System;
 using System.Globalization;
+using System.Windows.Controls;
 using System.Xml;
+using CAD.DTM.Elements.Bod.Gui;
 
 namespace CAD.DTM.Elements
 {
     public class DtmZarizeniVodovodniPripojkyBodTypeElement
         : DtmBodBaseElement
+        , IAdditionalPropertiesGui
     {
+        public DtmZarizeniVodovodniPripojkyBodTypeElement()
+        {
+
+        }
         public DtmTypZarizeniVodovodniPripojkyEnum TypZarizeniVodovodniPripojky { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -39,11 +46,12 @@ namespace CAD.DTM.Elements
         {
             return $"Type zarizeni vodovodni pripojky: {TypZarizeniVodovodniPripojky}";
         }
-        public override IEnumerable<string> Settings => Enum.GetNames(typeof(DtmTypZarizeniVodovodniPripojkyEnum));
-        public override void SelectedSetting(string value)
+        public override IAdditionalPropertiesGui AdditionalPropertiesGui => this;
+        static readonly DtmZarizeniVodovodniPripojkyBodPP GUIControl = new DtmZarizeniVodovodniPripojkyBodPP();
+        public void InitGui(ContentControl additionalProperties)
         {
-            TypZarizeniVodovodniPripojky = (DtmTypZarizeniVodovodniPripojkyEnum)Enum.Parse(typeof(DtmTypZarizeniVodovodniPripojkyEnum), value);
+            additionalProperties.Content = GUIControl;
+            GUIControl.SetElement(this);
         }
-
     }
 }

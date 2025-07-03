@@ -36,7 +36,7 @@ namespace CAD.DTM.Gui
             if (additionalProperties != null)
             {
                 IsAdditionalPropertiesVisible = Visibility.Visible;
-                additionalProperties.Load(_additionalProperties);
+                additionalProperties.InitGui(_additionalProperties);
             }
             else
             {

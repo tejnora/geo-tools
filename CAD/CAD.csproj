@@ -176,6 +176,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DTM\Elements\Bod\Gui\DtmZarizeniVodovodniPripojkyBodPP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DTM\Gui\DtmExportDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -512,6 +520,12 @@
     <Compile Include="DTM\Elements\Bod\DtmTypZarizeniVodovodniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmVyskovyBodNaTerenuElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodTypeElement.cs" />
+    <Compile Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml.cs">
+      <DependentUpon>DtmPodrobnyBodZPSElementPP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DTM\Elements\Bod\Gui\DtmZarizeniVodovodniPripojkyBodPP.xaml.cs">
+      <DependentUpon>DtmZarizeniVodovodniPripojkyBodPP.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DTM\Elements\DefinicniBod\DtmBudovaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmChodnikDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmCyklostezkaDefinicniBodElement.cs" />

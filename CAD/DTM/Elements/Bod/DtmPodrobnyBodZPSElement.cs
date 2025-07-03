@@ -1,11 +1,14 @@
 ﻿using CAD.DTM.Configuration;
+using CAD.DTM.Elements.Bod.Gui;
 using CAD.DTM.Gui;
+using System.Windows.Controls;
 using System.Xml;
 
 namespace CAD.DTM.Elements
 {
     public class DtmPodrobnyBodZPSElement
     : DtmBodBaseElement
+    , IAdditionalPropertiesGui
     {
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
@@ -42,7 +45,13 @@ namespace CAD.DTM.Elements
             base.Init(dtmElementOption);
             SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
         }
-
+        public override IAdditionalPropertiesGui AdditionalPropertiesGui => this;
+        static readonly DtmPodrobnyBodZPSElementPP GUIControl = new DtmPodrobnyBodZPSElementPP();
+        public void InitGui(ContentControl additionalProperties)
+        {
+            additionalProperties.Content = GUIControl;
+            GUIControl.SetElement(this);
+        }
         public override string GetInfoAsString()
         {
             return $"Cislo bodu: {SpolecneAtributy.ID}";

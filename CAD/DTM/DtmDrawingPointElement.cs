@@ -203,7 +203,7 @@ namespace CAD.DTM
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
             _element.SelectedSetting(dtmLayer.DtmPointSelected.Item2);
-            _element.Geometry = new DtmGeometryGroup { Geometries = { PointGeometry } };
+            _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
             Selected = true;
         }

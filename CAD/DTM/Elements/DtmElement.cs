@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
 using System.Xml;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
@@ -17,7 +16,7 @@ namespace CAD.DTM.Elements
         public IDtmGeometryGroup Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
-        public IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
+        public virtual IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
         public DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; set; }
         public IDrawObject CreateDrawObject()
         {
