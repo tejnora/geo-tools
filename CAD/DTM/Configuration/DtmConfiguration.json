@@ -198,7 +198,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ChodnikPlocha": {
-    "Color": [ 0, 100, 100, 100],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000007",
     "CodeSuffix": "03",
@@ -209,7 +209,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ParkovisteOdstavnaPlocha": {
-    "Color": [ 0, 100, 100, 100],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000011",
     "CodeSuffix": "03",
@@ -286,7 +286,7 @@
     "ObsahovaCast": "ZPS"
   },
   "NajezdPlocha": {
-    "Color": [ 0, 100, 100, 100],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000017",
     "CodeSuffix": "03",
@@ -297,7 +297,7 @@
     "ObsahovaCast": "ZPS"
   },
   "ProvozniPlochaPozemniKomunikacePlocha": {
-    "Color": [ 0, 100, 100, 100],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000005",
     "CodeSuffix": "03",
@@ -330,7 +330,7 @@
     "ObsahovaCast": "ZPS"
   },
   "OstatniZastresenaStavbaPlocha": {
-    "Color": [ 0, 100, 100, 100],
+    "Color": [ 0, 100, 100, 100 ],
     "Width": 0.02,
     "CodeBase": "0100000314",
     "CodeSuffix": "03",
@@ -349,6 +349,83 @@
     "ObjektovyTypNazev": "parkoviště, odstavná plocha",
     "KategorieObjektu": "Dopravní stavby",
     "SkupinaObjektu": "Silniční doprava",
+    "ObsahovaCast": "ZPS"
+  },
+  "SchodisteDefinicniBod": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000166",
+    "CodeSuffix": "04",
+    "Xmlns": "schdef",
+    "ObjektovyTypNazev": "schodiště",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "PrikopNasepZarezDopravniStavbyDefinicniBod": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000051",
+    "CodeSuffix": "04",
+    "Xmlns": "pnzdef",
+    "ObjektovyTypNazev": "příkop, násep, zářez dopravní stavby",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "NadrzZdrzSeVzdouvacimObjektemDefinicniBod": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000072",
+    "CodeSuffix": "04",
+    "Xmlns": "nsvdef",
+    "ObjektovyTypNazev": "nádrž, zdrž se vzdouvacím objektem",
+    "KategorieObjektu": "Vodní díla",
+    "SkupinaObjektu": "Nádrž",
+    "ObsahovaCast": "ZPS"
+  },
+  "PrubehPropustku": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000195",
+    "CodeSuffix": "02",
+    "Xmlns": "prupro",
+    "ObjektovyTypNazev": "průběh propustku",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "TerenniHrana": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000217",
+    "CodeSuffix": "02",
+    "Xmlns": "terhra",
+    "ObjektovyTypNazev": "terénní hrana",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Terénní útvar",
+    "ObsahovaCast": "ZPS"
+  },
+  "SchodistePlocha": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000166",
+    "CodeSuffix": "03",
+    "Xmlns": "schpol",
+    "ObjektovyTypNazev": "schodiště",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "PrikopNasepZarezDopravniStavbyPlocha": {
+    "Color": [ 66, 245, 75, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000051",
+    "CodeSuffix": "03",
+    "Xmlns": "pnzpol",
+    "ObjektovyTypNazev": "příkop, násep, zářez dopravní stavby",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
     "ObsahovaCast": "ZPS"
   }
 }

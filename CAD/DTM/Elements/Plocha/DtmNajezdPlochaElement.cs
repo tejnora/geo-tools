@@ -3,13 +3,14 @@ using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
+    class DtmNajezdPlochaElement
         : DtmPlochaBaseElement
     {
-        public DtmChodnikPlochaElement()
+        public DtmNajezdPlochaElement()
         {
+            PrevazujiciPovrch = DtmPrevazujiciPovrchEnum.Nezjisteno;
         }
-        public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
+        DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
@@ -28,6 +29,9 @@ namespace CAD.DTM.Elements
                 }
             }
         }
-
+        public override string GetInfoAsString()
+        {
+            return $"Prevazujici provrch: {PrevazujiciPovrch}";
+        }
     }
 }

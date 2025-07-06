@@ -1,20 +1,19 @@
-﻿using CAD.DTM.Gui;
-using System.Xml;
+﻿using System.Xml;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
-        : DtmPlochaBaseElement
+    class DtmNajezdDefinicniBodElement
+        : DtmDefinicniBodBaseElement
     {
-        public DtmChodnikPlochaElement()
-        {
-        }
         public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
+
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
-            ExportSpolecneAtributyObjektuZPS(exporter);
+            ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
             exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
         }
+
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
             base.ImportDtmAttributes(xmlElement);
@@ -29,5 +28,9 @@ namespace CAD.DTM.Elements
             }
         }
 
+        public override string GetInfoAsString()
+        {
+            return $"Prevazujici povrch: {PrevazujiciPovrch}";
+        }
     }
 }

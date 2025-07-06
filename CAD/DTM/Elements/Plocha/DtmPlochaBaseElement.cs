@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAD.DTM.Elements.Plocha
+namespace CAD.DTM.Elements
 {
     public class DtmPlochaBaseElement
     : DtmElement

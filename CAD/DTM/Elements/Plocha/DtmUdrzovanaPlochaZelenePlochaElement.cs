@@ -3,17 +3,18 @@ using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
+    class DtmUdrzovanaPlochaZelenePlochaElement
         : DtmPlochaBaseElement
     {
-        public DtmChodnikPlochaElement()
+        public DtmUdrzovanaPlochaZelenePlochaElement()
         {
+            TypUdrzovaneZelene = DtmTypUdrzovaneZeleneEnum.Nezjisteno;
         }
-        public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
+        DtmTypUdrzovaneZeleneEnum TypUdrzovaneZelene { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
+            exporter.AddElement("atr", "TypUdrzovaneZelene", (int)TypUdrzovaneZelene);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
@@ -22,12 +23,15 @@ namespace CAD.DTM.Elements
             {
                 switch (x.LocalName)
                 {
-                    case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
+                    case "TypUdrzovaneZelene":
+                        TypUdrzovaneZelene = (DtmTypUdrzovaneZeleneEnum)int.Parse(x.InnerText);
                         break;
                 }
             }
         }
-
+        public override string GetInfoAsString()
+        {
+            return $"Typ udrzovaci zelene: {TypUdrzovaneZelene}";
+        }
     }
 }

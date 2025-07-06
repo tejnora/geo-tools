@@ -1,4 +1,4 @@
-﻿namespace CAD.DTM.Elements.Plocha
+﻿namespace CAD.DTM.Elements
 {
     public class DtmOstatniZastresenaStavbaPlochaElement
         : DtmElement

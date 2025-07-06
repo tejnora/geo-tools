@@ -1,19 +1,16 @@
-﻿using CAD.DTM.Gui;
-using System.Xml;
+﻿using System.Xml;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
+    class DtmSchodistePlochaElement
         : DtmPlochaBaseElement
     {
-        public DtmChodnikPlochaElement()
-        {
-        }
-        public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
+        public DtmDruhSchodisteEnum DruhSchodiste { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
+            exporter.AddElement("atr", "DruhSchodiste", (int)DruhSchodiste);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
@@ -22,12 +19,16 @@ namespace CAD.DTM.Elements
             {
                 switch (x.LocalName)
                 {
-                    case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
+                    case "DruhSchodiste":
+                        DruhSchodiste = (DtmDruhSchodisteEnum)int.Parse(x.InnerText);
                         break;
                 }
             }
         }
 
+        public override string GetInfoAsString()
+        {
+            return $"Druh schodiste:{DruhSchodiste}";
+        }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System.Xml;
-using CAD.DTM.Elements.Plocha;
 using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
 {
-    internal class DtmCyklostezkaPlochaElement
+    class DtmCyklostezkaPlochaElement
         : DtmPlochaBaseElement
     {
         public DtmCyklostezkaPlochaElement()

@@ -3,17 +3,19 @@ using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
-        : DtmPlochaBaseElement
+    enum TypTerenniHranyEnum
     {
-        public DtmChodnikPlochaElement()
-        {
-        }
-        public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
+
+    }
+    class DtmTerenniHranaElement
+        : DtmLinieElementBase
+    {
+        public TypTerenniHranyEnum TypTerenniHrany { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
+            exporter.AddElement("atr", "TypTerenniHrany", (int)TypTerenniHrany);
+
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
         {
@@ -22,12 +24,15 @@ namespace CAD.DTM.Elements
             {
                 switch (x.LocalName)
                 {
-                    case "PrevazujiciPovrch":
-                        PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
+                    case "TypTerenniHrany":
+                        TypTerenniHrany = (TypTerenniHranyEnum)int.Parse(x.InnerText);
                         break;
                 }
             }
         }
-
+        public override string GetInfoAsString()
+        {
+            return $"Typ terenni hrany: {TypTerenniHrany}";
+        }
     }
 }

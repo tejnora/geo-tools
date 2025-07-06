@@ -3,16 +3,15 @@ using System.Xml;
 
 namespace CAD.DTM.Elements
 {
-    class DtmChodnikPlochaElement
+    class DtmProvozniPlochaPozemniKomunikacePlochaElement
         : DtmPlochaBaseElement
     {
-        public DtmChodnikPlochaElement()
-        {
-        }
+        public DtmTypPozemniKomunikaceEnum TypPozemniKomunikace { get; set; }
         public DtmPrevazujiciPovrchEnum PrevazujiciPovrch { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
+            exporter.AddElement("atr", "TypPozemniKomunikace", (int)TypPozemniKomunikace);
             exporter.AddElement("atr", "PrevazujiciPovrch", (int)PrevazujiciPovrch);
         }
         public override void ImportDtmAttributes(XmlElement xmlElement)
@@ -22,12 +21,18 @@ namespace CAD.DTM.Elements
             {
                 switch (x.LocalName)
                 {
+                    case "TypPozemniKomunikace":
+                        TypPozemniKomunikace = (DtmTypPozemniKomunikaceEnum)int.Parse(x.InnerText);
+                        break;
                     case "PrevazujiciPovrch":
                         PrevazujiciPovrch = (DtmPrevazujiciPovrchEnum)int.Parse(x.InnerText);
                         break;
                 }
             }
         }
-
+        public override string GetInfoAsString()
+        {
+            return $"Typ pozemni komunikace:{TypPozemniKomunikace}, Prevazujici povrch:{PrevazujiciPovrch}";
+        }
     }
 }
