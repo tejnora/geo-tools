@@ -548,6 +548,7 @@
     <Compile Include="DTM\Elements\DtmStavObjektuEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypPozemniKomunikaceEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypUdrzovaneZeleneEnum.cs" />
+    <Compile Include="DTM\Elements\DtmTypZdiEnum.cs" />
     <Compile Include="DTM\Elements\IAdditionalPropertiesGui.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceBudovyElement.cs" />
@@ -555,6 +556,7 @@
     <Compile Include="DTM\Elements\Linie\DtmHranicePrirodnihoPoloprirodnihoObjektuElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceSchodisteElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceStavbyElement.cs" />
+    <Compile Include="DTM\Elements\Linie\DtmHraniceZdiElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmLinieElementBase.cs" />
     <Compile Include="DTM\Elements\Linie\DtmNeidentifikovanyObjektElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmPlotElement.cs" />
