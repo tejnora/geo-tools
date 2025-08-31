@@ -12,7 +12,7 @@ namespace CAD.DTM.Elements.Bod.Gui
             InitializeComponent();
             DataContext = _data;
         }
-        public void SetElement(DtmZarizeniVodovodniPripojkyBodTypeElement element)
+        public void SetElement(DtmZarizeniVodovodniPripojkyBodElement element)
         {
             _data.SetElement(element);
         }
@@ -21,9 +21,9 @@ namespace CAD.DTM.Elements.Bod.Gui
     class DtmZarizeniVodovodniPripojkyBodPPData
     : ModelBase
     {
-        DtmZarizeniVodovodniPripojkyBodTypeElement _element;
+        DtmZarizeniVodovodniPripojkyBodElement _element;
         bool _loading = false;
-        public void SetElement(DtmZarizeniVodovodniPripojkyBodTypeElement element)
+        public void SetElement(DtmZarizeniVodovodniPripojkyBodElement element)
         {
             _loading = true;
             _element = element;

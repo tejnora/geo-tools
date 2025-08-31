@@ -329,7 +329,7 @@
     "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "ZPS"
   },
-  "ZarizeniVodovodniPripojkyBodType": {
+  "ZarizeniVodovodniPripojkyBod": {
     "Color": [ 0, 0, 255, 255 ],
     "Width": 0.001,
     "CodeBase": "0100000116",

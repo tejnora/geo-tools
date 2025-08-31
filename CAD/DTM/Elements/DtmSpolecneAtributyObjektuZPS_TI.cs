@@ -7,7 +7,7 @@
             UrovenUmisteniObjektuTI = 0;
             TridaPresnostiPoloha = 3;
             TridaPresnostiVyska = 3;
-            ZpusobPorizeniTI = 0;
+            ZpusobPorizeniTI = 3;
             StavObjektu = DtmStavObjektuEnum.Nezjisteno;
 
         }

@@ -72,15 +72,25 @@ namespace CAD.DTM
             pen.EndCap = LineCap.Flat;
             pen.StartCap = LineCap.Flat;
             var p1 = canvas.ToScreen(_point);
-            var p2 = p1;
-            p1.X -= 5;
-            p2.X += 5;
-            canvas.DrawLine(canvas, pen, p1, p2);
-            p1.X += 5;
-            p2.X -= 5;
-            p1.Y -= 5;
-            p2.Y += 5;
-            canvas.DrawLine(canvas, pen, p1, p2);
+            switch (_element.DrawingMark)
+            {
+                case DtmBodDrawingMarkEnum.Cross:
+                    var p2 = p1;
+                    p1.X -= 5;
+                    p2.X += 5;
+                    canvas.DrawLine(canvas, pen, p1, p2);
+                    p1.X += 5;
+                    p2.X -= 5;
+                    p1.Y -= 5;
+                    p2.Y += 5;
+                    canvas.DrawLine(canvas, pen, p1, p2);
+                    break;
+                case DtmBodDrawingMarkEnum.Circle:
+                    canvas.DrawCircle(canvas, pen, p1, 5);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             var f = new StringFormat();
             f.Alignment = StringAlignment.Center;
@@ -106,7 +116,10 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
-            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y } };
+            if (PointGeometry == null)
+                return;
+            PointGeometry.Point.X=point.X;
+            PointGeometry.Point.Y = point.Y;
             UpdatePoint();
         }
 

@@ -514,13 +514,14 @@
     <Compile Include="DTM\DtmSurfaceGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
     <Compile Include="DTM\Elements\Bod\DtmBodBaseElement.cs" />
+    <Compile Include="DTM\Elements\Bod\DtmBodDrawingMarkEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmIdentickyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmPodrobnyBodZPSElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\Bod\DtmTypZarizeniVodovodniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmVyskovyBodNaTerenuElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmZarizeniKanalizacniPripojkyBodElement.cs" />
-    <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodTypeElement.cs" />
+    <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml.cs">
       <DependentUpon>DtmPodrobnyBodZPSElementPP.xaml</DependentUpon>
     </Compile>
@@ -552,6 +553,7 @@
     <Compile Include="DTM\Elements\DtmTypUdrzovaneZeleneEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZarizeniKanalizacniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZdiEnum.cs" />
+    <Compile Include="DTM\Elements\DtmUceloveZarazeniStokoveSiteEnum.cs" />
     <Compile Include="DTM\Elements\IAdditionalPropertiesGui.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceBudovyElement.cs" />

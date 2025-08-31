@@ -14,7 +14,7 @@ namespace CAD.DTM.Elements
         {
 
         }
-
+        public override DtmBodDrawingMarkEnum DrawingMark => DtmBodDrawingMarkEnum.Circle;
         public DtmTypZarizeniKanalizacniPripojkyEnum TypZarizeniKanalizacniPripojky { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {

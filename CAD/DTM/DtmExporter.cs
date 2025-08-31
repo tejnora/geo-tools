@@ -15,7 +15,7 @@ namespace CAD.DTM
         readonly IDtmMain _main;
         CAD.Tools.XmlWriter _xmlWriter;
         HashSet<string> _namespaces;
-        readonly List<DtmPoint> _exportedPoints = new List<DtmPoint>();
+        List<DtmPoint> _exportedPoints = new List<DtmPoint>();
         DtmExportCtx _exportCtx;
         public DtmExporter(IDtmMain main)
         {
@@ -104,6 +104,8 @@ namespace CAD.DTM
 
         public void MarkPoint(DtmPoint point)
         {
+            if (_exportedPoints == null)
+                return;
             _exportedPoints.Add(point);
         }
 
@@ -171,6 +173,7 @@ namespace CAD.DTM
             AddElement(null, "DatumOvereni", _exportCtx.DatumOvereni.ToString("yyyy-MM-dd"));
             AddElement(null, "CisloOvereni", _exportCtx.CisloOvereni);
             var oblastZmenyPoints = ConvexHull<DtmPoint>.GetConvexHull(_exportedPoints);
+            _exportedPoints = null;
             oblastZmenyPoints.Add(oblastZmenyPoints.First());
             var surfaceGeometry = new DtmSurfaceGeometry
             {

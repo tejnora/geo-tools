@@ -12,12 +12,14 @@ namespace CAD.DTM.Elements
     {
         public string Material { get; set; }
         public uint Dimenze { get; set; }
-        public DtmDruhStokoveSiteEnum DtmDruhStokoveSite { get; set; }
+        public DtmDruhStokoveSiteEnum DruhStokoveSite { get; set; }
+        public DtmUceloveZarazeniStokoveSiteEnum UceloveZarazeniStokoveSite { get; set; }
 
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS_TI(exporter);
-            exporter.AddElement("atr", "DruhStokoveSite", (int)DtmDruhStokoveSite);
+            exporter.AddElement("atr", "UceloveZarazeniStokoveSite", (int)UceloveZarazeniStokoveSite);
+            exporter.AddElement("atr", "DruhStokoveSite", (int)DruhStokoveSite);
             exporter.AddElement("atr", "Dimenze", (int)Dimenze);
             exporter.AddElement("atr", "Material", Material);
         }
@@ -35,26 +37,30 @@ namespace CAD.DTM.Elements
                         Dimenze = uint.Parse(x.InnerText);
                         break;
                     case "DruhStokoveSite":
-                        DtmDruhStokoveSite = (DtmDruhStokoveSiteEnum)int.Parse(x.InnerText);
+                        DruhStokoveSite = (DtmDruhStokoveSiteEnum)int.Parse(x.InnerText);
+                        break;
+                    case "UceloveZarazeniStokoveSite":
+                        UceloveZarazeniStokoveSite = (DtmUceloveZarazeniStokoveSiteEnum)int.Parse(x.InnerText);
                         break;
                 }
             }
         }
         public override string GetInfoAsString()
         {
-            return $"Material: {Material}, Dimenze:{Dimenze}, Druh stokove site:{DtmDruhStokoveSite}";
+            return $"Material: {Material}, Dimenze:{Dimenze}, Druh stokove site:{DruhStokoveSite}, Ucelove zarazeni stokove site:{UceloveZarazeniStokoveSite}";
         }
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
             Material = "PVC";
             Dimenze = 150;
-            DtmDruhStokoveSite = DtmDruhStokoveSiteEnum.Gravitacni;
+            DruhStokoveSite = DtmDruhStokoveSiteEnum.Gravitacni;
+            UceloveZarazeniStokoveSite = DtmUceloveZarazeniStokoveSiteEnum.Splazkova;
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
         }
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {
-            {"PVC, 150",new Tuple<string, uint>("PVC",150)}
+            {"PVC, 150, Gravitacni, Splazkova",new Tuple<string, uint>("PVC",150)}
         };
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
 

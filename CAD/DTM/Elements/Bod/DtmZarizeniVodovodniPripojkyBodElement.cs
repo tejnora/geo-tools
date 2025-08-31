@@ -10,14 +10,15 @@ using System;
 
 namespace CAD.DTM.Elements
 {
-    public class DtmZarizeniVodovodniPripojkyBodTypeElement
+    public class DtmZarizeniVodovodniPripojkyBodElement
         : DtmBodBaseElement
         , IAdditionalPropertiesGui
     {
-        public DtmZarizeniVodovodniPripojkyBodTypeElement()
+        public DtmZarizeniVodovodniPripojkyBodElement()
         {
 
         }
+        public override DtmBodDrawingMarkEnum DrawingMark => DtmBodDrawingMarkEnum.Circle;
         public DtmTypZarizeniVodovodniPripojkyEnum TypZarizeniVodovodniPripojky { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {

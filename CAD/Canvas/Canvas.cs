@@ -169,6 +169,11 @@ namespace CAD.Canvas
             _canvas.DrawPath(aCanvas, aPen, aPath, offset);
         }
 
+        public void DrawCircle(ICanvas canvas, Pen pen, Point point, float radius)
+        {
+            _canvas.DrawCircle(canvas, pen, point, radius);
+        }
+
         public void FillPath(ICanvas aCanvas, Brush aBrush, GraphicsPath aPath)
         {
             _canvas.FillPath(aCanvas, aBrush, aPath);
@@ -1189,6 +1194,11 @@ namespace CAD.Canvas
         public void DrawLine(ICanvas canvas, Pen pen, Point p1, Point p2)
         {
             canvas.Graphics.DrawLine(pen, p1.FromWpfPoint(), p2.FromWpfPoint());
+        }
+
+        public void DrawCircle(ICanvas canvas, Pen pen, Point point, float radius)
+        {
+            canvas.Graphics.DrawEllipse(pen, (float)point.X - radius, (float)point.Y - radius, radius + radius, radius + radius);
         }
 
         public void DrawArc(ICanvas canvas, Pen pen, UnitPoint center, float radius, float startAngle, float sweepAngle)

@@ -54,6 +54,7 @@ namespace CAD.Canvas
         void FillPath(ICanvas aCanvas, Brush aBrush, GraphicsPath aPath);
         Size MeasureString(ICanvas aCanvas, string aText, Font aFont, Size aSize, StringFormat aFormat, out int aNumberOfCharacter, out int aNumberOfLines);
         void DrawPath(ICanvas aCanvas, Pen aPen, PathImpl aPath, UnitPoint offset);
+        void DrawCircle(ICanvas canvas, Pen pen, Point point, float radius);
     }
     public enum ExportType
     {
