@@ -75,8 +75,13 @@ namespace CAD.DTM.Gui
         public string DtmPointSettingSelected
         {
             get => GetValue<string>(_dtmPointSettingSelected);
-            set => SetValue(_dtmPointSettingSelected, value);
+            set
+            {
+                SetValue(_dtmPointSettingSelected, value);
+                UpdateDrawingLayer();
+            }
         }
+
         public readonly PropertyData _dtmPointSettings = RegisterProperty("DtmPointSetting", typeof(ObservableCollection<string>), null);
         public ObservableCollection<string> DtmPointSetting
         {

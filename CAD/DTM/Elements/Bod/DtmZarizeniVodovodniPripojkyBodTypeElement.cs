@@ -1,11 +1,12 @@
 ﻿using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
-using System.Collections.Generic;
-using System;
 using System.Globalization;
 using System.Windows.Controls;
 using System.Xml;
 using CAD.DTM.Elements.Bod.Gui;
+using CAD.DTM.Elements.Linie;
+using System.Collections.Generic;
+using System;
 
 namespace CAD.DTM.Elements
 {
@@ -40,11 +41,16 @@ namespace CAD.DTM.Elements
         {
             base.Init(dtmElementOption);
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
-            TypZarizeniVodovodniPripojky = DtmTypZarizeniVodovodniPripojkyEnum.Jine;
+            TypZarizeniVodovodniPripojky = DtmTypZarizeniVodovodniPripojkyEnum.SachtaMernaAKontrolní;
         }
         public override string GetInfoAsString()
         {
             return $"Type zarizeni vodovodni pripojky: {TypZarizeniVodovodniPripojky}";
+        }
+        public override IEnumerable<string> Settings => Enum.GetNames(typeof(DtmTypZarizeniVodovodniPripojkyEnum));
+        public override void SelectedSetting(string value)
+        {
+            TypZarizeniVodovodniPripojky = (DtmTypZarizeniVodovodniPripojkyEnum)Enum.Parse(typeof(DtmTypZarizeniVodovodniPripojkyEnum), value);
         }
         public override IAdditionalPropertiesGui AdditionalPropertiesGui => this;
         static readonly DtmZarizeniVodovodniPripojkyBodPP GUIControl = new DtmZarizeniVodovodniPripojkyBodPP();

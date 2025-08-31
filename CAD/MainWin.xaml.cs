@@ -403,8 +403,7 @@ namespace CAD
         void OnImportPointsDtm(object sender, ExecutedRoutedEventArgs e)
         {
             var doc = GetDocument();
-            if (doc.ImportPointsDtm())
-                OnMainDocumentChanged(this, EventArgs.Empty);
+            doc.ImportPointsDtm();
         }
         void CanImportPointsDtm(object sender, CanExecuteRoutedEventArgs args)
         {

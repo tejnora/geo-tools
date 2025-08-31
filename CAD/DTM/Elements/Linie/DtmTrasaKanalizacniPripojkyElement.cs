@@ -1,21 +1,23 @@
-﻿using CAD.DTM.Configuration;
-using CAD.DTM.Gui;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 using System.Xml;
+using CAD.DTM.Configuration;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
 {
-    class DtmTrasaVodovodniPripojkyElement
+    class DtmTrasaKanalizacniPripojkyElement
         : DtmLinieElementBase
     {
         public string Material { get; set; }
         public uint Dimenze { get; set; }
+        public DtmDruhStokoveSiteEnum DtmDruhStokoveSite { get; set; }
 
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS_TI(exporter);
+            exporter.AddElement("atr", "DruhStokoveSite", (int)DtmDruhStokoveSite);
             exporter.AddElement("atr", "Dimenze", (int)Dimenze);
             exporter.AddElement("atr", "Material", Material);
         }
@@ -32,24 +34,27 @@ namespace CAD.DTM.Elements
                     case "Dimenze":
                         Dimenze = uint.Parse(x.InnerText);
                         break;
+                    case "DruhStokoveSite":
+                        DtmDruhStokoveSite = (DtmDruhStokoveSiteEnum)int.Parse(x.InnerText);
+                        break;
                 }
             }
         }
         public override string GetInfoAsString()
         {
-            return $"Material: {Material}, Dimenze:{Dimenze}";
+            return $"Material: {Material}, Dimenze:{Dimenze}, Druh stokove site:{DtmDruhStokoveSite}";
         }
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
-            Material = "PE";
-            Dimenze = 25;
+            Material = "PVC";
+            Dimenze = 150;
+            DtmDruhStokoveSite = DtmDruhStokoveSiteEnum.Gravitacni;
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
         }
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {
-            {"PE, DN25",new Tuple<string, uint>("PE",25)},
-            {"PE, DN32",new Tuple<string, uint>("PE",32)}
+            {"PVC, 150",new Tuple<string, uint>("PVC",150)}
         };
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
 

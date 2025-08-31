@@ -519,6 +519,7 @@
     <Compile Include="DTM\Elements\Bod\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\Bod\DtmTypZarizeniVodovodniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmVyskovyBodNaTerenuElement.cs" />
+    <Compile Include="DTM\Elements\Bod\DtmZarizeniKanalizacniPripojkyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodTypeElement.cs" />
     <Compile Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml.cs">
       <DependentUpon>DtmPodrobnyBodZPSElementPP.xaml</DependentUpon>
@@ -541,6 +542,7 @@
     <Compile Include="DTM\Elements\DefinicniBod\DtmUdrzovanaPlochaZeleneDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmZahradaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DtmDruhSchodisteEnum.cs" />
+    <Compile Include="DTM\Elements\DtmDruhStokoveSiteEnum.cs" />
     <Compile Include="DTM\Elements\DtmElementGeneric.cs" />
     <Compile Include="DTM\Elements\DtmElementSpolecneAtributy.cs" />
     <Compile Include="DTM\Elements\DtmPrevazujiciPovrchEnum.cs" />
@@ -548,6 +550,7 @@
     <Compile Include="DTM\Elements\DtmStavObjektuEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypPozemniKomunikaceEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypUdrzovaneZeleneEnum.cs" />
+    <Compile Include="DTM\Elements\DtmTypZarizeniKanalizacniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZdiEnum.cs" />
     <Compile Include="DTM\Elements\IAdditionalPropertiesGui.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
@@ -563,10 +566,12 @@
     <Compile Include="DTM\Elements\Linie\DtmPrubehPropustkuElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmStavebneUpravenyVjezdNaPozemekElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTerenniHranaElement.cs" />
+    <Compile Include="DTM\Elements\Linie\DtmTrasaKanalizacniPripojkyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaVodovodniPripojkyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypDopravniStavbyNeboPlochyEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypPrirodnihoPoloprirodnihoObjektuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypStavbyEnum.cs" />
+    <Compile Include="DTM\Elements\Plocha\DtmBudovaPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmChodnikPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmCyklostezkaPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmNajezdPlochaElement.cs" />
@@ -577,6 +582,7 @@
     <Compile Include="DTM\Elements\Plocha\DtmProvozniPlochaPozemniKomunikacePlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmSchodistePlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmUdrzovanaPlochaZelenePlochaElement.cs" />
+    <Compile Include="DTM\Elements\Plocha\DtmZahradaPlochaElement.cs" />
     <Compile Include="DTM\Gui\DtmExportDialog.xaml.cs">
       <DependentUpon>DtmExportDialog.xaml</DependentUpon>
     </Compile>

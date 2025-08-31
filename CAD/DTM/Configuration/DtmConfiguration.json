@@ -318,6 +318,17 @@
     "SkupinaObjektu": "Vodovod",
     "ObsahovaCast": "ZPS"
   },
+  "TrasaKanalizacniPripojky": {
+    "Color": [ 255, 128, 0, 255 ],
+    "Width": 0.001,
+    "CodeBase": "0100000122",
+    "CodeSuffix": "02",
+    "Xmlns": "trkapr",
+    "ObjektovyTypNazev": "trasa kanalizační přípojky",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Kanalizace",
+    "ObsahovaCast": "ZPS"
+  },
   "ZarizeniVodovodniPripojkyBodType": {
     "Color": [ 0, 0, 255, 255 ],
     "Width": 0.001,
@@ -327,6 +338,17 @@
     "ObjektovyTypNazev": "zařízení vodovodní přípojky",
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Vodovod",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZarizeniKanalizacniPripojkyBod": {
+    "Color": [ 255, 128, 0, 255 ],
+    "Width": 0.001,
+    "CodeBase": "0100000124",
+    "CodeSuffix": "01",
+    "Xmlns": "zkpbod",
+    "ObjektovyTypNazev": "zařízení kanalizační přípojky",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "ZPS"
   },
   "OstatniZastresenaStavbaPlocha": {
@@ -426,6 +448,28 @@
     "ObjektovyTypNazev": "příkop, násep, zářez dopravní stavby",
     "KategorieObjektu": "Dopravní stavby",
     "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "BudovaPlocha": {
+    "Color": [ 66, 245, 75, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000001",
+    "CodeSuffix": "03",
+    "Xmlns": "budpol",
+    "ObjektovyTypNazev": "budova",
+    "KategorieObjektu": "Budovy",
+    "SkupinaObjektu": "Objekt budovy",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZahradaPlocha": {
+    "Color": [ 0, 245, 0, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000209",
+    "CodeSuffix": "03",
+    "Xmlns": "zahpol",
+    "ObjektovyTypNazev": "zahrada",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
     "ObsahovaCast": "ZPS"
   }
 }
