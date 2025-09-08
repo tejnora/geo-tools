@@ -542,6 +542,7 @@
     <Compile Include="DTM\Elements\DefinicniBod\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmUdrzovanaPlochaZeleneDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmZahradaDefinicniBodElement.cs" />
+    <Compile Include="DTM\Elements\DefinicniBod\DtmZedDefinicniBod.cs" />
     <Compile Include="DTM\Elements\DtmDruhSchodisteEnum.cs" />
     <Compile Include="DTM\Elements\DtmDruhStokoveSiteEnum.cs" />
     <Compile Include="DTM\Elements\DtmElementGeneric.cs" />

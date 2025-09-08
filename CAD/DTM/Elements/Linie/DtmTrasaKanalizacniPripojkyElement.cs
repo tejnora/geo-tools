@@ -57,6 +57,7 @@ namespace CAD.DTM.Elements
             DruhStokoveSite = DtmDruhStokoveSiteEnum.Gravitacni;
             UceloveZarazeniStokoveSite = DtmUceloveZarazeniStokoveSiteEnum.Splazkova;
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
+            SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI = -1;
         }
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {

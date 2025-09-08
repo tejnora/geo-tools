@@ -471,5 +471,93 @@
     "KategorieObjektu": "Vodstvo, vegetace a terén",
     "SkupinaObjektu": "Hospodářská plocha",
     "ObsahovaCast": "ZPS"
+  },
+  "ZedDefinicniBod": {
+    "Color": [ 200, 0, 0, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000168",
+    "CodeSuffix": "04",
+    "Xmlns": "zeddef",
+    "ObjektovyTypNazev": "zeď",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "SklenikDefinicniBod": {
+    "Color": [ 0, 0, 200, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000179",
+    "CodeSuffix": "04",
+    "Xmlns": "skldef",
+    "ObjektovyTypNazev": "skleník",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ManipulacniPlochaDefinicniBod": {
+    "Color": [ 0, 100, 200, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000055",
+    "CodeSuffix": "04",
+    "Xmlns": "mapdef",
+    "ObjektovyTypNazev": "manipulační plocha",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZedPlocha": {
+    "Color": [ 0, 100, 200, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000168",
+    "CodeSuffix": "03",
+    "Xmlns": "zedpol",
+    "ObjektovyTypNazev": "zeď",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "SklenikPlocha": {
+    "Color": [ 0, 30, 30, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000179",
+    "CodeSuffix": "03",
+    "Xmlns": "sklpol",
+    "ObjektovyTypNazev": "skleník",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ManipulacniPlochaPlocha": {
+    "Color": [ 50, 50, 200, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000055",
+    "CodeSuffix": "03",
+    "Xmlns": "mappol",
+    "ObjektovyTypNazev": "manipulační plocha",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZemedelskaPlochaPlocha": {
+    "Color": [ 0, 180, 0, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000207",
+    "CodeSuffix": "03",
+    "Xmlns": "zeppol",
+    "ObjektovyTypNazev": "zemědělská plocha",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZemedelskaPlochaDefinicniBod": {
+    "Color": [ 0, 255, 0, 255 ],
+    "Width": 0.02,
+    "CodeBase": "0100000207",
+    "CodeSuffix": "04",
+    "Xmlns": "zepdef",
+    "ObjektovyTypNazev": "zemědělská plocha",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
+    "ObsahovaCast": "ZPS"
   }
 }

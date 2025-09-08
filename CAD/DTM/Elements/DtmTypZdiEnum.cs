@@ -1,6 +1,6 @@
 ﻿namespace CAD.DTM.Elements
 {
-    enum DtmTypZdiEnum
+    public enum DtmTypZdiEnum
     {
         VolneStojici=1,
         Operna=2,

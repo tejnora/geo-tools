@@ -694,7 +694,7 @@ namespace CAD.Canvas
                 case DrawObjectState.DoneRepeat:
                     _model.AddObject(_model.ActiveLayer, _newObject);
                     _model.FocusetObject = _newObject;
-                    _newObject = _model.CreateObject(_newObject.Id, _newObject.RepeatStartingPoint, null);
+                    _newObject = _model.CreateObject(_newObject.Id, _newObject.RepeatStartingPoint, snapPoint);
                     DoInvalidate(true);
                     if (_propPageWindow != null)
                     {

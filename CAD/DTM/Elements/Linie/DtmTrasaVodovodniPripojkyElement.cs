@@ -45,6 +45,7 @@ namespace CAD.DTM.Elements
             Material = "PE";
             Dimenze = 25;
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
+            SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI = -1;
         }
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {

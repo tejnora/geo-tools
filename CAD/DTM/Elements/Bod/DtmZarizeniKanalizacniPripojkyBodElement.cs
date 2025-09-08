@@ -38,6 +38,7 @@ namespace CAD.DTM.Elements
         {
             base.Init(dtmElementOption);
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
+            SpolecneAtributyObjektuZPS_TI.ZpusobPorizeniTI = 1;
             TypZarizeniKanalizacniPripojky = DtmTypZarizeniKanalizacniPripojkyEnum.RevizniSachta;
         }
         public override string GetInfoAsString()
