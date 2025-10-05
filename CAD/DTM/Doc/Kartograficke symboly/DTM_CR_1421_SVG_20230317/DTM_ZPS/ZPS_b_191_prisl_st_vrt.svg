@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 662 662">
+  <path d="M331 200c-72.2 0-131 58.8-131 131s58.8 131 131 131 131-58.8 131-131-58.8-131-131-131z"/>
+  <circle cx="331" cy="331" r="225" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="12"/>
+  <path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="12" d="M331 6v650M6 331h650"/>
+</svg>

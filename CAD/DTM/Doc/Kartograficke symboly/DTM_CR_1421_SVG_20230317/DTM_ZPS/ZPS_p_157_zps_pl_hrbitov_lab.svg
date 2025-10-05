@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 462 462">
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="12">
+    <path d="M81 156v150M6 231h150"/>
+  </g>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="12">
+    <path d="M381 156v150M306 231h150"/>
+  </g>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="12">
+    <path d="M231 6v150M156 81h150"/>
+  </g>
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="12">
+    <path d="M231 306v150M156 381h150"/>
+  </g>
+</svg>
