@@ -125,6 +125,12 @@ namespace CAD.DTM
 
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
+            if (!(snappoint is DtmPodrobnyBodSnapPoint zpz))
+                return DrawObjectState.Continue;
+            var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
+            PointGeometry.Point.X = pointGeometry.Point.X;
+            PointGeometry.Point.Y = pointGeometry.Point.Y;
+            PointGeometry.Point.Z = pointGeometry.Point.Z;
             return DrawObjectState.DoneRepeat;
         }
 
