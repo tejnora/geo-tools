@@ -174,6 +174,11 @@ namespace CAD.Canvas
             _canvas.DrawCircle(canvas, pen, point, radius);
         }
 
+        public void DrawSymbol(ICanvas canvas, Image image, UnitPoint p1, UnitPoint imageSize)
+        {
+            _canvas.DrawSymbol(canvas, image, p1, imageSize);
+        }
+
         public void FillPath(ICanvas aCanvas, Brush aBrush, GraphicsPath aPath)
         {
             _canvas.FillPath(aCanvas, aBrush, aPath);
@@ -1128,6 +1133,10 @@ namespace CAD.Canvas
         {
             return value / _inche * m_screenResolution * _model.Zoom;
         }
+        public double ToScreenWithoutZoom(double value)
+        {
+            return value / _inche * m_screenResolution;
+        }
 
         public double ToUnit(double screenvalue)
         {
@@ -1189,6 +1198,16 @@ namespace CAD.Canvas
             System.Drawing.Point tmpp1 = ToScreen(p1).FromWpfPoint();
             System.Drawing.Point tmpp2 = ToScreen(p2).FromWpfPoint();
             canvas.Graphics.DrawLine(pen, tmpp1, tmpp2);
+        }
+
+        public void DrawSymbol(ICanvas canvas, Image image, UnitPoint p1, UnitPoint imageSize)
+        {
+            var point = ToScreen(p1).FromWpfPoint();
+            var sizeX = ToScreenWithoutZoom(imageSize.X * 0.004);
+            var sizeY = ToScreenWithoutZoom(imageSize.Y * 0.004);
+            point.X -= (int)(sizeX / 2.0);
+            point.Y -= (int)(sizeY / 2.0);
+            canvas.Graphics.DrawImage(image, point.X, point.Y, (float)sizeX, (float)sizeY);
         }
 
         public void DrawLine(ICanvas canvas, Pen pen, Point p1, Point p2)

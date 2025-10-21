@@ -496,6 +496,8 @@
     <Compile Include="DrawTools\ISnapList.cs" />
     <Compile Include="DTM\Configuration\DtmConfigurationSingleton.cs" />
     <Compile Include="DTM\Configuration\DtmElementOption.cs" />
+    <Compile Include="DTM\Configuration\DtmGraphicElement.cs" />
+    <Compile Include="DTM\Configuration\DtmGraphicElementScaleEnum.cs" />
     <Compile Include="DTM\Converters\ZpusobPorizeniZPSConverter.cs" />
     <Compile Include="DTM\DtmCurveGeometry.cs" />
     <Compile Include="DTM\DtmDrawingLineElement.cs" />
@@ -513,8 +515,8 @@
     <Compile Include="DTM\DtmPolygonGeometry.cs" />
     <Compile Include="DTM\DtmSurfaceGeometry.cs" />
     <Compile Include="DTM\DtmUdajeOVydeji.cs" />
+    <Compile Include="DTM\DtmUtils.cs" />
     <Compile Include="DTM\Elements\Bod\DtmBodBaseElement.cs" />
-    <Compile Include="DTM\Elements\Bod\DtmBodDrawingMarkEnum.cs" />
     <Compile Include="DTM\Elements\Bod\DtmIdentickyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmPodrobnyBodZPSElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmSpolecneAtributyObjektuDefinicnichBodu.cs" />

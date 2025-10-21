@@ -17,6 +17,11 @@ namespace CAD.DTM.Elements
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
         public virtual IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
+        public virtual DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale)
+        {
+            return dtmElement.GetGraphicElement("_", scale);
+        }
+
         public DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; set; }
         public IDrawObject CreateDrawObject()
         {

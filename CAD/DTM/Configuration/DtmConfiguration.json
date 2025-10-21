@@ -1,7 +1,12 @@
 {
   "PodrobnyBodZPS": {
-    "Color": [ 255, 255, 255, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 100, 100, 100, 255 ],
+        "Width": 0.6,
+        "Symbol": "ZPS_b_218_podr_bod_zps.png"
+      }
+    ],
     "CodeBase": "0100000218",
     "CodeSuffix": "01",
     "Xmlns": "pobzps",
@@ -11,8 +16,13 @@
     "ObsahovaCast": "ZPS"
   },
   "VyskovyBodNaTerenu": {
-    "Color": [ 255, 255, 255, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 168, 112, 0, 255 ],
+        "Width": 0.8,
+        "Symbol": "ZPS_b_219_podr_bod_vyska.png"
+      }
+    ],
     "CodeBase": "0100000219",
     "CodeSuffix": "01",
     "Xmlns": "vybote",
@@ -22,6 +32,13 @@
     "ObsahovaCast": "ZPS"
   },
   "IdentickyBod": {
+    "Graphic": [
+      {
+        "Color": [ 178, 0, 0, 255 ],
+        "Width": 0.8,
+        "Symbol": "ZPS_b_219_podr_bod_vyska.png"
+      }
+    ],
     "Color": [ 255, 0, 0, 255 ],
     "Width": 0.02,
     "CodeBase": "0100000220",
@@ -330,8 +347,29 @@
     "ObsahovaCast": "ZPS"
   },
   "ZarizeniVodovodniPripojkyBod": {
-    "Color": [ 0, 0, 255, 255 ],
-    "Width": 0.001,
+    "Graphic": {
+      "SachtaVodovodniZruseno": [
+        {
+          "Color": [ 0, 92, 230, 255 ],
+          "Width": 2,
+          "Symbol": "TI_b_116_vod_prip_zar_vod.png"
+        }
+      ],
+      "SachtaMernaAKontrolní": [
+        {
+          "Color": [ 0, 92, 230, 255 ],
+          "Width": 2,
+          "Symbol": "TI_b_116_vod_prip_zar_mer_kontr.png"
+        }
+      ],
+      "Jine": [
+        {
+          "Color": [ 0, 92, 230, 255 ],
+          "Width": 1,
+          "Symbol": "TI_b_116_vod_prip_zar_jine.png"
+        }
+      ]
+    },
     "CodeBase": "0100000116",
     "CodeSuffix": "01",
     "Xmlns": "zvpbod",
@@ -341,8 +379,43 @@
     "ObsahovaCast": "ZPS"
   },
   "ZarizeniKanalizacniPripojkyBod": {
-    "Color": [ 255, 128, 0, 255 ],
-    "Width": 0.001,
+    "Graphic": {
+      "RevizniSachta": [
+        {
+          "Color": [ 145, 89, 4, 255 ],
+          "Width": 2,
+          "Symbol": "ZPS_b_124_kan_prip_zar_kan.png"
+        }
+      ],
+      "MernaSachta": [
+        {
+          "Color": [ 145, 89, 4, 255 ],
+          "Width": 2,
+          "Symbol": "ZPS_b_124_kan_prip_zar_cerp_st.png"
+        }
+      ],
+      "DomovniCerpaciStanice": [
+        {
+          "Color": [ 145, 89, 4, 255 ],
+          "Width": 1,
+          "Symbol": "ZPS_b_124_kan_prip_zar_cerp_st.png"
+        }
+      ],
+      "VsakovaciZarizeniSPrepadem": [
+        {
+          "Color": [ 145, 89, 4, 255 ],
+          "Width": 1,
+          "Symbol": "ZPS_b_124_kan_prip_zar_vs_prep.png"
+        }
+      ],
+      "Jine": [
+        {
+          "Color": [ 145, 89, 4, 255 ],
+          "Width": 1,
+          "Symbol": "ZPS_b_124_kan_prip_zar_jine.png"
+        }
+      ]
+    },
     "CodeBase": "0100000124",
     "CodeSuffix": "01",
     "Xmlns": "zkpbod",

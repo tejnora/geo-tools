@@ -55,7 +55,7 @@ namespace CAD.BackgrounImages
             initImage();
             if (_image == null) return;
          //   if(_image!=null)
-                //canvas.DrawImage(canvas, _image);
+                //canvas.DrawSymbol(canvas, _image);
         }
         public Rect GetBoundingRect(ICanvas canvas)
         {

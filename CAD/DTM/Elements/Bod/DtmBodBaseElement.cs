@@ -9,7 +9,6 @@ namespace CAD.DTM.Elements
         public string CisloBodu { get; set; }
 
         public override DtmElementType ElementType => DtmElementType.Bod;
-        public virtual DtmBodDrawingMarkEnum DrawingMark => DtmBodDrawingMarkEnum.Cross;
 
         public override void Init(DtmElementOption dtmElementOption)
         {

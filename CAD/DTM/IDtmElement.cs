@@ -1,4 +1,5 @@
 ﻿using CAD.Canvas;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
@@ -32,5 +33,6 @@ namespace CAD.DTM
         DtmElementSpolecneAtributy SpolecneAtributy { get; }
         DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; }
         IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
+        DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale);
     }
 }

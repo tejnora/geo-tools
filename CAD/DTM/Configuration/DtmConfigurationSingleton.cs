@@ -3,8 +3,11 @@ using System;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Controls;
 using CAD.DTM.Elements;
 using CAD.VFK;
+using GeoBase.Utils;
+using Image = System.Drawing.Image;
 
 namespace CAD.DTM.Configuration
 {
@@ -23,16 +26,8 @@ namespace CAD.DTM.Configuration
                     foreach (var field in root.EnumerateObject())
                     {
                         var value = field.Value;
-                        var width = (float)value.GetProperty("Width").GetDouble();
-                        var color = value.GetProperty("Color");
-                        var r = color[0].GetInt32();
-                        var g = color[1].GetInt32();
-                        var b = color[2].GetInt32();
-                        var a = color[3].GetInt32();
-                        var elementOption = new DtmElementOption
+                        var elementOption = new DtmElementOption()
                         {
-                            Color = Color.FromArgb(a, r, g, b),
-                            Width = width,
                             ElementType = GetElementType(value.GetProperty("CodeSuffix").GetString()),
                             CodeBase = value.GetProperty("CodeBase").GetString(),
                             CodeSuffix = value.GetProperty("CodeSuffix").GetString(),
@@ -43,11 +38,74 @@ namespace CAD.DTM.Configuration
                             ObsahovaCast = value.GetProperty("ObsahovaCast").GetString(),
                             ClassType = Type.GetType($"CAD.DTM.Elements.Dtm{field.Name}Element")
                         };
+                        ParseGraphicElement(elementOption, value);
+                        try
+                        {
+                            var width = (float)value.GetProperty("Width").GetDouble();
+                            var color = value.GetProperty("Color");
+                            var r = color[0].GetInt32();
+                            var g = color[1].GetInt32();
+                            var b = color[2].GetInt32();
+                            var a = color[3].GetInt32();
+                            elementOption.Color = Color.FromArgb(a, r, g, b);
+                            elementOption.Width = width;
+                        }
+                        catch
+                        {
+
+                        }
+
                         ElementSetting[field.Name] = elementOption;
                     }
                 }
             }
             catch { }
+        }
+
+        void ParseGraphicElement(DtmElementOption dtmElement, JsonElement jsonElement)
+        {
+            if (!jsonElement.TryGetProperty("Graphic", out var graphic))
+                return;
+            IList<DtmGraphicElement> definitionByScales;
+            switch (graphic.ValueKind)
+            {
+                case JsonValueKind.Object:
+                    foreach (var field in graphic.EnumerateObject())
+                    {
+                        definitionByScales = ParseGraphicElementArray(field.Value);
+                        dtmElement.RegisterGraphicElementByType(field.Name, definitionByScales);
+                    }
+                    break;
+                case JsonValueKind.Array:
+                    definitionByScales = ParseGraphicElementArray(graphic);
+                    dtmElement.RegisterGraphicElementByType("_", definitionByScales);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        IList<DtmGraphicElement> ParseGraphicElementArray(JsonElement jsonScaleElement)
+        {
+            var elements = new List<DtmGraphicElement>();
+            foreach (var field in jsonScaleElement.EnumerateArray())
+            {
+                var width = (float)field.GetProperty("Width").GetDouble();
+                var color = field.GetProperty("Color");
+                var r = color[0].GetInt32();
+                var g = color[1].GetInt32();
+                var b = color[2].GetInt32();
+                var a = color[3].GetInt32();
+                var symbol = field.GetProperty("Symbol").GetString();
+                elements.Add(new DtmGraphicElement()
+                {
+                    Color = Color.FromArgb(a, r, g, b),
+                    Size = new UnitPoint(width, width),
+                    Symbol = Image.FromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "DtmSymbols", symbol))
+                });
+            }
+
+            return elements;
         }
 
         DtmElementType GetElementType(string value)

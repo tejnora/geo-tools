@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using CAD.Export;
@@ -18,6 +19,8 @@ using Brush = System.Drawing.Brush;
 using Font = System.Drawing.Font;
 using StringFormat = System.Drawing.StringFormat;
 using FontStyle = System.Drawing.FontStyle;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 
 namespace CAD.Canvas
@@ -55,6 +58,8 @@ namespace CAD.Canvas
         Size MeasureString(ICanvas aCanvas, string aText, Font aFont, Size aSize, StringFormat aFormat, out int aNumberOfCharacter, out int aNumberOfLines);
         void DrawPath(ICanvas aCanvas, Pen aPen, PathImpl aPath, UnitPoint offset);
         void DrawCircle(ICanvas canvas, Pen pen, Point point, float radius);
+
+        void DrawSymbol(ICanvas canvas, Image image, UnitPoint p1, UnitPoint imageSize);
     }
     public enum ExportType
     {

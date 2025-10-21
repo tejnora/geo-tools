@@ -18,7 +18,10 @@ namespace CAD.DTM.Elements
         {
 
         }
-        public override DtmBodDrawingMarkEnum DrawingMark => DtmBodDrawingMarkEnum.Circle;
+        public override DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale)
+        {
+            return dtmElement.GetGraphicElement(TypZarizeniVodovodniPripojky.ToString(), scale);
+        }
         public DtmTypZarizeniVodovodniPripojkyEnum TypZarizeniVodovodniPripojky { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
