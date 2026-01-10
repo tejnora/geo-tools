@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using CAD.DTM.Configuration;
+using CAD.DTM.Elements.GUI;
 using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
@@ -59,6 +60,14 @@ namespace CAD.DTM.Elements
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
             SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI = -1;
         }
+
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmReadonlyCustomProperty("Materiál:", Material));
+            properties.AddProperty(new DtmReadonlyCustomProperty("Dimenze:", Dimenze.ToString()));
+            properties.AddProperty(new DtmReadonlyCustomProperty("Druh stokové sitě:", DruhStokoveSite.ToString()));
+        }
+
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {
             {"PVC, 150, Gravitacni, Splazkova",new Tuple<string, uint>("PVC",150)}

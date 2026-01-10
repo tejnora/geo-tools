@@ -94,11 +94,16 @@
                 <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS, Converter={StaticResource zpusobPorizeniZPSConverter}}"/>
             </Grid>
         </TabItem>
-        <TabItem Visibility="{Binding Path=IsAdditionalPropertiesVisible}">
+        <TabItem Visibility="{Binding Path=CustomPropertiesVisibility}">
             <TabItem.Header>
                 <TextBlock>Dodatecne parametry</TextBlock>
             </TabItem.Header>
-            <ContentControl Name="_additionalProperties"></ContentControl>
+            <Grid Name="_customPropertiesGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
         </TabItem>
     </TabControl>
 </UserControl>

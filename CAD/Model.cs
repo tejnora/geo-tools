@@ -363,6 +363,8 @@ namespace CAD.Canvas
             get => _focusetObject;
             set
             {
+                if (_focusetObject == value)
+                    return;
                 _focusetObject = value;
                 ShowPropNode(_focusetObject);
             }

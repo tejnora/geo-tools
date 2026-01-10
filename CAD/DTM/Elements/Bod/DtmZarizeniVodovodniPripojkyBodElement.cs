@@ -1,18 +1,15 @@
 ﻿using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Globalization;
-using System.Windows.Controls;
 using System.Xml;
-using CAD.DTM.Elements.Bod.Gui;
-using CAD.DTM.Elements.Linie;
 using System.Collections.Generic;
 using System;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
     public class DtmZarizeniVodovodniPripojkyBodElement
         : DtmBodBaseElement
-        , IAdditionalPropertiesGui
     {
         public DtmZarizeniVodovodniPripojkyBodElement()
         {
@@ -58,12 +55,9 @@ namespace CAD.DTM.Elements
         {
             TypZarizeniVodovodniPripojky = (DtmTypZarizeniVodovodniPripojkyEnum)Enum.Parse(typeof(DtmTypZarizeniVodovodniPripojkyEnum), value);
         }
-        public override IAdditionalPropertiesGui AdditionalPropertiesGui => this;
-        static readonly DtmZarizeniVodovodniPripojkyBodPP GUIControl = new DtmZarizeniVodovodniPripojkyBodPP();
-        public void InitGui(ContentControl additionalProperties)
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
-            additionalProperties.Content = GUIControl;
-            GUIControl.SetElement(this);
+            properties.AddProperty(new DtmReadonlyCustomProperty("Typ zařízení vodovodní přípojky:", TypZarizeniVodovodniPripojky.ToString()));
         }
     }
 }

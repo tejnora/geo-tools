@@ -39,6 +39,7 @@ namespace CAD.Canvas
         Point ToScreen(UnitPoint unitpoint);
         GraphicsPath ToScreen(GraphicsPath aPath);
         double ToScreen(double unitvalue);
+        double ToScreenWithoutZoom(double unitvalue);
         double ToUnit(double screenvalue);
         UnitPoint ToUnit(Point screenpoint);
         double getZoom();
@@ -60,11 +61,12 @@ namespace CAD.Canvas
         void DrawCircle(ICanvas canvas, Pen pen, Point point, float radius);
 
         void DrawSymbol(ICanvas canvas, Image image, UnitPoint p1, UnitPoint imageSize);
+        double SymbolScaleCoefficient { get; }
     }
     public enum ExportType
     {
         Dxf
-    } ;
+    };
     public interface IModel
     {
         double Zoom { get; set; }
@@ -128,7 +130,7 @@ namespace CAD.Canvas
         void AddObject(IDrawObject drawobject);
         void Export(IExport export);
 
-        void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer,IDrawObject>> deletedObjects);
+        void DeleteObjects(IEnumerable<IDrawObject> objects, List<Tuple<ICanvasLayer, IDrawObject>> deletedObjects);
     }
     public interface ISnapPoint
     {
@@ -201,6 +203,7 @@ namespace CAD.Canvas
     public interface ICanvasCommand
     {
         void CommandSelectDrawTool(GeoCadRoutedCommand command);
+        void UpadateDrawToolProperties();
         void CommandEdit(GeoCadRoutedCommand command);
         void CommandEscape(bool updateToolBar);
         void CommandPan();
@@ -208,7 +211,6 @@ namespace CAD.Canvas
         void CommandFitView();
         void CommandSelectVFKActiveObject(VfkActivePoint activePoint);
         void CommandInfoTool(GeoCadRoutedCommand command);
-
         void InvalidateAll();
     }
 

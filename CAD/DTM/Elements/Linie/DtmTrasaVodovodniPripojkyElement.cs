@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Xml;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
@@ -47,13 +48,17 @@ namespace CAD.DTM.Elements
             SpolecneAtributyObjektuZPS_TI = new DtmSpolecneAtributyObjektuZPS_TI();
             SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI = -1;
         }
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmReadonlyCustomProperty("Materiál:", Material));
+            properties.AddProperty(new DtmReadonlyCustomProperty("Dimenze:", Dimenze.ToString()));
+        }
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()
         {
             {"PE, DN25",new Tuple<string, uint>("PE",25)},
             {"PE, DN32",new Tuple<string, uint>("PE",32)}
         };
         public override IEnumerable<string> Settings => _values.Select((n) => n.Key);
-
         public override void SelectedSetting(string value)
         {
             Material = _values[value].Item1;

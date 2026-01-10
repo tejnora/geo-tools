@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Xml;
 using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
@@ -37,6 +38,11 @@ namespace CAD.DTM.Elements
                 }
             }
         }
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmReadonlyCustomProperty("Typ zařízení kanalizační přípojky:", TypZarizeniKanalizacniPripojky.ToString()));
+        }
+
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);

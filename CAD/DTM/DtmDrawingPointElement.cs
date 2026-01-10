@@ -85,44 +85,11 @@ namespace CAD.DTM
             }
             if (Selected && !_point.IsEmpty)
             {
-                DrawUtils.DrawNode(canvas, _point);
+                var symbolSize = new System.Windows.Size(
+                    canvas.ToScreenWithoutZoom(graphicElement.Size.X * 0.5 * canvas.SymbolScaleCoefficient),
+                    canvas.ToScreenWithoutZoom(graphicElement.Size.Y * 0.5 * canvas.SymbolScaleCoefficient));
+                DrawUtils.DrawNode(canvas, _point, symbolSize);
             }
-            /*                var p1 = canvas.ToScreen(_point);
-                            var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
-                            pen.EndCap = LineCap.Flat;
-                            pen.StartCap = LineCap.Flat;
-                            switch (_element.DrawingMark)
-                            {
-                                case DtmBodDrawingMarkEnum.Cross:
-                                    var p2 = p1;
-                                    p1.X -= 5;
-                                    p2.X += 5;
-                                    canvas.DrawLine(canvas, pen, p1, p2);
-                                    p1.X += 5;
-                                    p2.X -= 5;
-                                    p1.Y -= 5;
-                                    p2.Y += 5;
-                                    canvas.DrawLine(canvas, pen, p1, p2);
-                                    break;
-                                case DtmBodDrawingMarkEnum.Circle:
-                                    canvas.DrawCircle(canvas, pen, p1, 5);
-                                    break;
-                                default:
-                                    throw new ArgumentOutOfRangeException();
-                            }
-                            var f = new StringFormat();
-                            f.Alignment = StringAlignment.Center;
-                            p1.X += 10;
-                            p1.Y -= 10;
-                            var brush = new SolidBrush(Group.Options.Color);
-                            canvas.Graphics.DrawString(_element.CisloBodu, Font, brush, p1.FromWpfPoint(), f);
-
-                            if (Selected && !_point.IsEmpty)
-                            {
-                                DrawUtils.DrawNode(canvas, _point);
-                            }
-
-                        }*/
         }
 
         public Rect GetBoundingRect(ICanvas canvas)
@@ -134,12 +101,11 @@ namespace CAD.DTM
             var graphicElement = _element.GetGraphicElement(Group.Options, scale);
             if (graphicElement == null)
                 return Rect.Empty;
-            var deltaX = graphicElement.Size.X / 2.0;
-            var deltaY = graphicElement.Size.Y / 2.0;
+            var deltaX = graphicElement.Size.X / 2.0 * canvas.SymbolScaleCoefficient;
+            var deltaY = graphicElement.Size.Y / 2.0 * canvas.SymbolScaleCoefficient;
+            deltaX /= canvas.getZoom();
+            deltaY /= canvas.getZoom();
             return ScreenUtils.GetRect(new UnitPoint(_point.X - deltaX, _point.Y - deltaY), new UnitPoint(_point.X + deltaX, _point.Y + deltaY), thWidth);
-            /*var delta = canvas.ToUnit(2);
-            return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
-            */
         }
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
@@ -252,7 +218,7 @@ namespace CAD.DTM
             _element.SelectedSetting(dtmLayer.DtmPointSelected.Item2);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
-            Selected = true;
+            Selected = false;
         }
         public IDtmDrawingGroup Group { get; set; }
         public IDtmElement GetDtmElement => _element;

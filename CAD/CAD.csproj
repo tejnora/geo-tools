@@ -176,14 +176,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DTM\Elements\Bod\Gui\DtmZarizeniVodovodniPripojkyBodPP.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DTM\Gui\DtmExportDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -524,12 +516,6 @@
     <Compile Include="DTM\Elements\Bod\DtmVyskovyBodNaTerenuElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmZarizeniKanalizacniPripojkyBodElement.cs" />
     <Compile Include="DTM\Elements\Bod\DtmZarizeniVodovodniPripojkyBodElement.cs" />
-    <Compile Include="DTM\Elements\Bod\Gui\DtmPodrobnyBodZPSElementPP.xaml.cs">
-      <DependentUpon>DtmPodrobnyBodZPSElementPP.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DTM\Elements\Bod\Gui\DtmZarizeniVodovodniPripojkyBodPP.xaml.cs">
-      <DependentUpon>DtmZarizeniVodovodniPripojkyBodPP.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DTM\Elements\DefinicniBod\DtmBudovaDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmChodnikDefinicniBodElement.cs" />
     <Compile Include="DTM\Elements\DefinicniBod\DtmCyklostezkaDefinicniBodElement.cs" />
@@ -557,7 +543,10 @@
     <Compile Include="DTM\Elements\DtmTypZarizeniKanalizacniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZdiEnum.cs" />
     <Compile Include="DTM\Elements\DtmUceloveZarazeniStokoveSiteEnum.cs" />
-    <Compile Include="DTM\Elements\IAdditionalPropertiesGui.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmCustomElementProperties.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmReadonlyCustomProperty.cs" />
+    <Compile Include="DTM\Elements\GUI\IDtmCustomElementProperties.cs" />
+    <Compile Include="DTM\Elements\GUI\IDtmCustomProperty.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceBudovyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmHraniceDopravniStavbyPlochyElement.cs" />

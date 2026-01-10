@@ -4,6 +4,7 @@ using CAD.DTM.Elements;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
 using System.Windows;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM
 {
@@ -32,7 +33,7 @@ namespace CAD.DTM
         void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter);
         DtmElementSpolecneAtributy SpolecneAtributy { get; }
         DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; }
-        IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
+        void InitGUICustomProperties(IDtmCustomElementProperties properties);
         DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale);
     }
 }

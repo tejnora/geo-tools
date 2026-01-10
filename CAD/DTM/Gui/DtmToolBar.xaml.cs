@@ -29,8 +29,10 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmLineElementSelected, value);
+                _updateToolSettingLock = true;
                 UpdateLineSetting();
-                UpdateDrawingLayer();
+                _updateToolSettingLock = false;
+                UpdateToolSetting();
             }
         }
         public readonly PropertyData _dtmLineSettings = RegisterProperty("DtmLineSetting", typeof(ObservableCollection<string>), null);
@@ -47,7 +49,7 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmLineSettingSelected, value);
-                UpdateDrawingLayer();
+                UpdateToolSetting();
             }
         }
 
@@ -67,8 +69,10 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmPointElementSelected, value);
+                _updateToolSettingLock = true;
                 UpdatePointSetting();
-                UpdateDrawingLayer();
+                _updateToolSettingLock = false;
+                UpdateToolSetting();
             }
         }
         public readonly PropertyData _dtmPointSettingSelected = RegisterProperty("DtmPointSettingSelected", typeof(string), null);
@@ -78,7 +82,7 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmPointSettingSelected, value);
-                UpdateDrawingLayer();
+                UpdateToolSetting();
             }
         }
 
@@ -90,18 +94,22 @@ namespace CAD.DTM.Gui
         }
         public bool DtmPointSettingEnabled => DtmPointSetting.Count > 0;
 
-
+        Document _document;
         DataModel _dataModel;
-        public DataModel DataModel
+        ICanvasCommand _canvasCommand;
+        public void SetDocument(Document document)
         {
-            get => _dataModel;
-            set
-            {
-                _dataModel = value;
-                UpdateLineSetting();
-                UpdatePointSetting();
-                UpdateDrawingLayer();
-            }
+            if (_document == document)
+                return;
+            _canvasCommand = null;
+            _document = document;
+            _dataModel = document?.DataModel;
+            if (_document == null)
+                return;
+            UpdateLineSetting();
+            UpdatePointSetting();
+            UpdateToolSetting();
+            _canvasCommand = _document.CanvasCommand;
         }
         void UpdateLineSetting()
         {
@@ -142,11 +150,15 @@ namespace CAD.DTM.Gui
 
         }
 
-        void UpdateDrawingLayer()
+        bool _updateToolSettingLock = false;
+        void UpdateToolSetting()
         {
+            if (_updateToolSettingLock)
+                return;
             if (!(_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)) return;
             dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected, DtmLineSettingSelected);
             dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected, DtmPointSettingSelected);
+            _canvasCommand?.UpadateDrawToolProperties();
         }
     }
 
@@ -190,7 +202,7 @@ namespace CAD.DTM.Gui
                         IsEnabled = ToolBarManager.Document?.DataModel.ActiveLayer is DtmDrawingLayerMain;
                         if (IsEnabled)
                         {
-                            _ctx.DataModel = ToolBarManager.Document.DataModel;
+                            _ctx.SetDocument(ToolBarManager.Document);
                         }
                     }
                     break;

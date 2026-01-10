@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Xml;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
+using CAD.DTM.Elements.GUI;
 using CAD.DTM.Gui;
 using CAD.VFK;
 
@@ -16,7 +17,9 @@ namespace CAD.DTM.Elements
         public IDtmGeometryGroup Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
-        public virtual IAdditionalPropertiesGui AdditionalPropertiesGui { get; }
+        public virtual void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+        }
         public virtual DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale)
         {
             return dtmElement.GetGraphicElement("_", scale);

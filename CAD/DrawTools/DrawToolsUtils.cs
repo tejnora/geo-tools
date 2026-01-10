@@ -1,5 +1,5 @@
 using System;
-using System.Windows;
+using System.Drawing;
 using CAD.Utils;
 using CAD.VFK;
 using GeoBase.Utils;
@@ -7,6 +7,8 @@ using VFK;
 using VFK.Tables;
 using Pen = System.Drawing.Pen;
 using Color = System.Drawing.Color;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 using SizeF = System.Drawing.SizeF;
 
 namespace CAD.Canvas.DrawTools
@@ -34,9 +36,8 @@ namespace CAD.Canvas.DrawTools
                 return;
             if (r.Top < 0 || r.Bottom > canvas.ClientRectangle.Height)
                 return;
-            canvas.Graphics.FillRectangle(System.Drawing.Brushes.White, r);
-            r.Inflate(1, 1);
-            canvas.Graphics.DrawRectangle(System.Drawing.Pens.Black, ScreenUtils.ConvertRect(r));
+            var whiteColor = Color.FromArgb(100, 255, 255, 255);
+            canvas.Graphics.FillRectangle(new SolidBrush(whiteColor), r);
         }
         static public void DrawNode(ICanvas canvas, UnitPoint nodepoint)
         {

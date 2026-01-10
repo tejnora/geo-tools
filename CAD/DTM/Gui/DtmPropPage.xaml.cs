@@ -6,11 +6,14 @@ using System.Text.RegularExpressions;
 using CAD.Utils;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Gui
 {
     public partial class DtmPropPage : IPropPage, INotifyPropertyChanged
     {
+        DtmCustomElementProperties _customProperties = new DtmCustomElementProperties();
         public DtmPropPage()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace CAD.DTM.Gui
         public SpolecneAtributyTabData SpolecneAtributy { get; }
         public SpolecneAtributyZPSTabData SpolecneAtributyZPS { get; }
 
-        public Visibility IsAdditionalPropertiesVisible { get; set; }
+        public Visibility CustomPropertiesVisibility { get; set; }
 
         public void Load(IDrawObject drawObject)
         {
@@ -31,19 +34,42 @@ namespace CAD.DTM.Gui
             General.Load(dtmElement);
             SpolecneAtributy.Load(dtmElement.GetDtmElement);
             SpolecneAtributyZPS.Load(dtmElement.GetDtmElement);
-
-            var additionalProperties = dtmElement.GetDtmElement.AdditionalPropertiesGui;
-            if (additionalProperties != null)
+            _customProperties.Clear();
+            dtmElement.GetDtmElement.InitGUICustomProperties(_customProperties);
+            if (_customProperties.Properties.Count > 0)
             {
-                IsAdditionalPropertiesVisible = Visibility.Visible;
-                additionalProperties.InitGui(_additionalProperties);
+                CustomPropertiesVisibility = Visibility.Visible;
+                InitCustomProperties();
             }
             else
             {
-                IsAdditionalPropertiesVisible = Visibility.Collapsed;
+                CustomPropertiesVisibility = Visibility.Collapsed;
             }
             OnPropertyChanged("");
         }
+
+        public void InitCustomProperties()
+        {
+            for (var i = _customPropertiesGrid.RowDefinitions.Count; i < _customProperties.Properties.Count; i++)
+            {
+                _customPropertiesGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+            _customPropertiesGrid.Children.Clear();
+            var counter = -1;
+            foreach (var property in _customProperties.Properties)
+            {
+                ++counter;
+                var nameLabel = new Label { Content = property.Name };
+                Grid.SetRow(nameLabel, counter);
+                Grid.SetColumn(nameLabel, 0);
+                _customPropertiesGrid.Children.Add(nameLabel);
+                var valueLabel = new Label { Content = property.Value };
+                Grid.SetRow(valueLabel, counter);
+                Grid.SetColumn(valueLabel, 1);
+                _customPropertiesGrid.Children.Add(valueLabel);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
         {

@@ -16,7 +16,7 @@ namespace CAD.UITools
             InfoTool
         }
         public GeoCadRoutedCommand(string name, Type ownerType, CommandTypes commandType)
-: base(name, ownerType)
+            : base(name, ownerType)
         {
             HasState = true;
             CommandType = commandType;

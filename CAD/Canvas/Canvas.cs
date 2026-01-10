@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using CAD.InfoTools;
@@ -108,6 +109,11 @@ namespace CAD.Canvas
             return _canvas.ToScreen(unitvalue);
         }
 
+        public double ToScreenWithoutZoom(double unitvalue)
+        {
+            return _canvas.ToScreenWithoutZoom(unitvalue);
+        }
+
         public double ToUnit(double screenvalue)
         {
             return _canvas.ToUnit(screenvalue);
@@ -178,6 +184,8 @@ namespace CAD.Canvas
         {
             _canvas.DrawSymbol(canvas, image, p1, imageSize);
         }
+
+        public double SymbolScaleCoefficient => _canvas.SymbolScaleCoefficient;
 
         public void FillPath(ICanvas aCanvas, Brush aBrush, GraphicsPath aPath)
         {
@@ -485,19 +493,11 @@ namespace CAD.Canvas
             var selcount = 0;
             if (selected != null)
                 selcount = selected.Count;
+            IDrawObject focusedNode = _model.FocusetObject;
             foreach (var obj in _model.SelectedObjects)
             {
                 anyoldsel = true;
                 break;
-            }
-
-            if (selectOnlyOne && selcount > 0)
-            {
-                _model.FocusetObject = selected[0];
-            }
-            else
-            {
-                _model.FocusetObject = null;
             }
             if (toggle || add)
             {
@@ -507,22 +507,35 @@ namespace CAD.Canvas
                     foreach (IDrawObject obj in selected)
                     {
                         if (_model.IsSelected(obj))
+                        {
+                            if (_model.FocusetObject == obj)
+                            {
+                                focusedNode = null;
+                            }
                             _model.RemoveSelectedObject(obj);
+                        }
                         else
+                        {
                             _model.AddSelectedObject(obj);
+                            focusedNode = obj;
+                        }
                     }
                 }
                 if (add && selcount > 0)
                 {
                     invalidate = true;
                     foreach (IDrawObject obj in selected)
+                    {
                         _model.AddSelectedObject(obj);
+                    }
+                    focusedNode = selected[selcount - 1];
                 }
             }
             else if (selcount == 0 && anyoldsel)
             {
                 invalidate = true;
                 _model.ClearSelectedObjects();
+                focusedNode = null;
             }
             else if (selcount > 0)
             {
@@ -542,11 +555,13 @@ namespace CAD.Canvas
                             i = selected.Count - 1;
                         _model.ClearSelectedObjects();
                         _model.AddSelectedObject(selected[i]);
+                        focusedNode = selected[i];
                     }
                     else
                     {
                         _model.ClearSelectedObjects();
                         _model.AddSelectedObject(selected[0]);
+                        focusedNode = selected[0];
                     }
                 }
                 else
@@ -554,9 +569,10 @@ namespace CAD.Canvas
                     _model.ClearSelectedObjects();
                     foreach (IDrawObject obj in selected)
                         _model.AddSelectedObject(obj);
+                    focusedNode = selected[selcount - 1];
                 }
             }
-
+            _model.FocusetObject = focusedNode;
             if (invalidate)
                 DoInvalidate(false);
         }
@@ -711,6 +727,7 @@ namespace CAD.Canvas
                 case DrawObjectState.Drop:
                     {
                         _newObject = null;
+                        CommandEscape(true);
                         DoInvalidate(true);
                     }
                     break;
@@ -1203,12 +1220,13 @@ namespace CAD.Canvas
         public void DrawSymbol(ICanvas canvas, Image image, UnitPoint p1, UnitPoint imageSize)
         {
             var point = ToScreen(p1).FromWpfPoint();
-            var sizeX = ToScreenWithoutZoom(imageSize.X * 0.004);
-            var sizeY = ToScreenWithoutZoom(imageSize.Y * 0.004);
+            var sizeX = ToScreenWithoutZoom(imageSize.X * SymbolScaleCoefficient);
+            var sizeY = ToScreenWithoutZoom(imageSize.Y * SymbolScaleCoefficient);
             point.X -= (int)(sizeX / 2.0);
             point.Y -= (int)(sizeY / 2.0);
             canvas.Graphics.DrawImage(image, point.X, point.Y, (float)sizeX, (float)sizeY);
         }
+        public double SymbolScaleCoefficient => 0.004;
 
         public void DrawLine(ICanvas canvas, Pen pen, Point p1, Point p2)
         {
@@ -1319,6 +1337,15 @@ namespace CAD.Canvas
             _model.ClearSelectedObjects();
             _commandType = ECommandType.Draw;
             _drawObjectId = command;
+            UpadateDrawToolProperties();
+        }
+
+        public void UpadateDrawToolProperties()
+        {
+            if (_commandType != ECommandType.Draw)
+            {
+                return;
+            }
             if (_commandSelectDrawTool.ContainsKey(_drawObjectId))
             {
                 _newObject = _commandSelectDrawTool[_drawObjectId];
