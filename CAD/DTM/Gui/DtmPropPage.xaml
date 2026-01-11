@@ -9,134 +9,210 @@
     <UserControl.Resources>
         <converters:ZpusobPorizeniZPSConverter x:Key="zpusobPorizeniZPSConverter"/>
     </UserControl.Resources>
-    <TabControl>
-        <TabItem>
-            <TabItem.Header>
-                <TextBlock>Vseobecny</TextBlock>
-            </TabItem.Header>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Content="Nazev objektu:"/>
-                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=General.Nazev}"/>
-                <Label Grid.Column="0" Grid.Row="1" Content="Type objektu:"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=General.Typ}"/>
-                <Label Grid.Column="0" Grid.Row="2" Content="Zapis objektu:"/>
-                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=General.Zapis}"/>
-            </Grid>
-        </TabItem>
-        <TabItem>
-            <TabItem.Header>
-                <TextBlock>Spolecne atributy</TextBlock>
-            </TabItem.Header>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Content="Datum vkladu:"/>
-                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=SpolecneAtributy.DatumVkladu}"/>
-                <Label Grid.Column="0" Grid.Row="1" Content="Datum zmeny:"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=SpolecneAtributy.DatumZmeny}"/>
-                <Label Grid.Column="0" Grid.Row="2" Content="ID:"/>
-                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=SpolecneAtributy.ID}"/>
-                <Label Grid.Column="0" Grid.Row="3" Content="ID editor:"/>
-                <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=SpolecneAtributy.IDEditora}"/>
-                <Label Grid.Column="0" Grid.Row="4" Content="ID zmeny:"/>
-                <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=SpolecneAtributy.IDZmeny}"/>
-                <Label Grid.Column="0" Grid.Row="5" Content="Popis objektu:"/>
-                <Label Grid.Column="1" Grid.Row="5" Content="{Binding Path=SpolecneAtributy.PopisObjektu}"/>
-                <Label Grid.Column="0" Grid.Row="6" Content="Vklad osoba:"/>
-                <Label Grid.Column="1" Grid.Row="6" Content="{Binding Path=SpolecneAtributy.VkladOsoba}"/>
-                <Label Grid.Column="0" Grid.Row="7" Content="Zmena osoba:"/>
-                <Label Grid.Column="1" Grid.Row="7" Content="{Binding Path=SpolecneAtributy.ZmenaOsoba}"/>
-            </Grid>
-        </TabItem>
-        <TabItem Visibility="{Binding Path=SpolecneAtributyZPS.IsVisible}">
-            <TabItem.Header>
-                <TextBlock>Spolecne atributy ZPS</TextBlock>
-            </TabItem.Header>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Content="Uroven umisteni:"/>
-                <ComboBox Grid.Column="1" Grid.Row="0" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.UrovenUmisteniObjektuZPS}" 
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Nazev objektu:"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=General.Nazev}"/>
+        </Grid>
+        <TabControl Name="_tabControl">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Vseobecny</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Type objektu:"/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=General.Typ}"/>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Zapis objektu:"/>
+                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=General.Zapis}"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock>Spolecne atributy</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Datum vkladu:"/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=SpolecneAtributy.DatumVkladu}"/>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Datum zmeny:"/>
+                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=SpolecneAtributy.DatumZmeny}"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="ID:"/>
+                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=SpolecneAtributy.ID}"/>
+                    <Label Grid.Column="0" Grid.Row="3" Content="ID editor:"/>
+                    <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=SpolecneAtributy.IDEditora}"/>
+                    <Label Grid.Column="0" Grid.Row="4" Content="ID zmeny:"/>
+                    <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=SpolecneAtributy.IDZmeny}"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="Popis objektu:"/>
+                    <Label Grid.Column="1" Grid.Row="5" Content="{Binding Path=SpolecneAtributy.PopisObjektu}"/>
+                    <Label Grid.Column="0" Grid.Row="6" Content="Vklad osoba:"/>
+                    <Label Grid.Column="1" Grid.Row="6" Content="{Binding Path=SpolecneAtributy.VkladOsoba}"/>
+                    <Label Grid.Column="0" Grid.Row="7" Content="Zmena osoba:"/>
+                    <Label Grid.Column="1" Grid.Row="7" Content="{Binding Path=SpolecneAtributy.ZmenaOsoba}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="{Binding Path=SpolecneAtributyZPS.IsVisible}">
+                <TabItem.Header>
+                    <TextBlock>Spolecne atributy ZPS</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Uroven umisteni:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="0" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.UrovenUmisteniObjektuZPS}" 
                           IsEnabled="{Binding Path=General.IsEditable}">
-                    <ComboBoxItem Tag="-3">3. úroveň pod povrchem</ComboBoxItem>
-                    <ComboBoxItem Tag="-2">2. úroveň pod povrchem</ComboBoxItem>
-                    <ComboBoxItem Tag="-1">1. úroveň pod povrchem</ComboBoxItem>
-                    <ComboBoxItem Tag="0">na povrchu</ComboBoxItem>
-                    <ComboBoxItem Tag="1">1. úroveň nad povrchem</ComboBoxItem>
-                    <ComboBoxItem Tag="2">2. úroveň nad povrchem</ComboBoxItem>
-                    <ComboBoxItem Tag="2">3. úroveň nad povrchem</ComboBoxItem>
-                </ComboBox>
-                <Label Grid.Column="0" Grid.Row="1" Content="Trida presnosti polohy:"/>
-                <ComboBox Grid.Column="1" Grid.Row="1" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiPoloha}" 
+                        <ComboBoxItem Tag="-3">3. úroveň pod povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="-2">2. úroveň pod povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="-1">1. úroveň pod povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="0">na povrchu</ComboBoxItem>
+                        <ComboBoxItem Tag="1">1. úroveň nad povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="2">2. úroveň nad povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="2">3. úroveň nad povrchem</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Trida presnosti polohy:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiPoloha}" 
                           IsEnabled="{Binding Path=General.IsEditable}">
-                    <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
-                    <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
-                    <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
-                    <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
-                    <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
-                    <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
-                </ComboBox>
-                <Label Grid.Column="0" Grid.Row="2" Content="Trida presnosti vyska:"/>
-                <ComboBox Grid.Column="1" Grid.Row="2" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiVyska}" 
+                        <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                        <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                        <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                        <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                        <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                        <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Trida presnosti vyska:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="2" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiVyska}" 
                           IsEnabled="{Binding Path=General.IsEditable}">
-                    <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
-                    <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
-                    <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
-                    <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
-                    <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
-                    <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
-                </ComboBox>
-                <Label Grid.Column="0" Grid.Row="3" Content="Zpusob porizeni:"/>
-                <ComboBox Grid.Column="1" Grid.Row="3" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS}" 
+                        <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                        <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                        <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                        <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                        <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                        <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="3" Content="Zpusob porizeni:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="3" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS}" 
                           IsEnabled="{Binding Path=General.IsEditable}">
-                    <ComboBoxItem Tag="1">geodeticky - terestricky</ComboBoxItem>
-                    <ComboBoxItem Tag="2">geodeticky - fotogrammetricky</ComboBoxItem>
-                    <ComboBoxItem Tag="3">geodeticky - pozemním laserovým skenováním</ComboBoxItem>
-                    <ComboBoxItem Tag="4">přibližným zákresem</ComboBoxItem>
-                    <ComboBoxItem Tag="5">odvozením</ComboBoxItem>
-                    <ComboBoxItem Tag="99">nezjištěno</ComboBoxItem>
-                </ComboBox>
-            </Grid>
-        </TabItem>
-        <TabItem Visibility="{Binding Path=CustomPropertiesVisibility}">
-            <TabItem.Header>
-                <TextBlock>Dodatecne parametry</TextBlock>
-            </TabItem.Header>
-            <Grid Name="_customPropertiesGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-            </Grid>
-        </TabItem>
-    </TabControl>
+                        <ComboBoxItem Tag="1">geodeticky - terestricky</ComboBoxItem>
+                        <ComboBoxItem Tag="2">geodeticky - fotogrammetricky</ComboBoxItem>
+                        <ComboBoxItem Tag="3">geodeticky - pozemním laserovým skenováním</ComboBoxItem>
+                        <ComboBoxItem Tag="4">přibližným zákresem</ComboBoxItem>
+                        <ComboBoxItem Tag="5">odvozením</ComboBoxItem>
+                        <ComboBoxItem Tag="99">nezjištěno</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="{Binding Path=SpolecneAtributyObjektuZPS_TI.IsVisible}">
+                <TabItem.Header>
+                    <TextBlock>Spolecne atributy ZPS_TI</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Úroveň umístění objektu TI vzhledem k povrchu:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="0" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                        <ComboBoxItem Tag="-1">pod povrchem</ComboBoxItem>
+                        <ComboBoxItem Tag="0">na povrchu</ComboBoxItem>
+                        <ComboBoxItem Tag="1">nad povrchem</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Trida presnosti polohy:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyObjektuZPS_TI.TridaPresnostiPoloha}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                        <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                        <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                        <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                        <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                        <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                        <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Trida presnosti vyska:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="2" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyObjektuZPS_TI.TridaPresnostiVyska}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                        <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                        <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                        <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                        <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                        <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                        <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="3" Content="Způsob pořízení objektu technické infrastruktury:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="3" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyObjektuZPS_TI.ZpusobPorizeniTI}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                        <ComboBoxItem Tag="1">geodeticky - terestricky</ComboBoxItem>
+                        <ComboBoxItem Tag="2">geodeticky - terestricky před záhozem</ComboBoxItem>
+                        <ComboBoxItem Tag="3">geodeticky - terestricky po záhozu</ComboBoxItem>
+                        <ComboBoxItem Tag="4">geodeticky - fotogrammetricky</ComboBoxItem>
+                        <ComboBoxItem Tag="5">geodeticky - pozemním laserovým skenováním</ComboBoxItem>
+                        <ComboBoxItem Tag="6">přibližným zákresem</ComboBoxItem>
+                        <ComboBoxItem Tag="7">vyhledáno</ComboBoxItem>
+                        <ComboBoxItem Tag="8">odvozením</ComboBoxItem>
+                        <ComboBoxItem Tag="99">nezjištěno</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="0" Grid.Row="4" Content="Stav objektu:"/>
+                    <ComboBox Grid.Column="1" Grid.Row="4" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyObjektuZPS_TI.StavObjektu}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                        <ComboBoxItem Tag="NeverejnyUdaj">neveřejný údaj</ComboBoxItem>
+                        <ComboBoxItem Tag="Provozovano">provozováno</ComboBoxItem>
+                        <ComboBoxItem Tag="Neprovozovano">neprovozováno</ComboBoxItem>
+                        <ComboBoxItem Tag="Nezjisteno">nezjištěno</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="{Binding Path=CustomPropertiesVisibility}">
+                <TabItem.Header>
+                    <TextBlock>Dodatecne parametry</TextBlock>
+                </TabItem.Header>
+                <Grid Name="_customPropertiesGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
 </UserControl>

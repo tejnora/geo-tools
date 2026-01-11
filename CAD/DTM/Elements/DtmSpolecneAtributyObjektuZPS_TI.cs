@@ -11,11 +11,10 @@
             StavObjektu = DtmStavObjektuEnum.Nezjisteno;
 
         }
-        public int UrovenUmisteniObjektuTI { get; set; }
-        public int TridaPresnostiPoloha { get; set; }
-        public int TridaPresnostiVyska { get; set; }
-        public int ZpusobPorizeniTI { get; set; }
-        public DtmStavObjektuEnum StavObjektu { get; set; }
-
+        public int UrovenUmisteniObjektuTI;
+        public int TridaPresnostiPoloha;
+        public int TridaPresnostiVyska;
+        public int ZpusobPorizeniTI;
+        public DtmStavObjektuEnum StavObjektu;
     }
 }

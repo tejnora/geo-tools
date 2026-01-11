@@ -33,6 +33,7 @@ namespace CAD.DTM
         void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter);
         DtmElementSpolecneAtributy SpolecneAtributy { get; }
         DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; }
+        DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; }
         void InitGUICustomProperties(IDtmCustomElementProperties properties);
         DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale);
     }

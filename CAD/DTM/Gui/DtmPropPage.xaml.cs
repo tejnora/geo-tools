@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using CAD.DTM.Elements.GUI;
+using System.Windows.Forms;
 
 namespace CAD.DTM.Gui
 {
@@ -21,19 +22,23 @@ namespace CAD.DTM.Gui
             General = new GeneralTabData();
             SpolecneAtributy = new SpolecneAtributyTabData();
             SpolecneAtributyZPS = new SpolecneAtributyZPSTabData();
+            SpolecneAtributyObjektuZPS_TI = new SpolecneAtributyObjektuZPS_TITabData();
         }
         public GeneralTabData General { get; }
         public SpolecneAtributyTabData SpolecneAtributy { get; }
         public SpolecneAtributyZPSTabData SpolecneAtributyZPS { get; }
+        public SpolecneAtributyObjektuZPS_TITabData SpolecneAtributyObjektuZPS_TI { get; }
 
         public Visibility CustomPropertiesVisibility { get; set; }
 
         public void Load(IDrawObject drawObject)
         {
+            var selectedIndex = _tabControl.SelectedIndex;
             var dtmElement = (IDtmDrawingElement)(drawObject);
             General.Load(dtmElement);
             SpolecneAtributy.Load(dtmElement.GetDtmElement);
             SpolecneAtributyZPS.Load(dtmElement.GetDtmElement);
+            SpolecneAtributyObjektuZPS_TI.Load(dtmElement.GetDtmElement);
             _customProperties.Clear();
             dtmElement.GetDtmElement.InitGUICustomProperties(_customProperties);
             if (_customProperties.Properties.Count > 0)
@@ -45,7 +50,26 @@ namespace CAD.DTM.Gui
             {
                 CustomPropertiesVisibility = Visibility.Collapsed;
             }
+            _tabControl.SelectedIndex = UpdateSelectedIndex(selectedIndex);
             OnPropertyChanged("");
+        }
+
+        int UpdateSelectedIndex(int index)
+        {
+            if (index == -1)
+                return 0;
+            if (index == 4 && CustomPropertiesVisibility == Visibility.Collapsed)
+                --index;
+            if (index == 3 && SpolecneAtributyObjektuZPS_TI.IsVisible == Visibility.Collapsed)
+                --index;
+            if (index == 2 && SpolecneAtributyZPS.IsVisible == Visibility.Collapsed)
+            {
+                if (SpolecneAtributyObjektuZPS_TI.IsVisible == Visibility.Visible)
+                    index = 3;
+                else
+                    --index;
+            }
+            return index;
         }
 
         public void InvalidateCanvas()
@@ -65,7 +89,7 @@ namespace CAD.DTM.Gui
             {
                 ++counter;
                 property.PropPage = this;
-                var nameLabel = new Label { Content = property.Name };
+                var nameLabel = new System.Windows.Controls.Label { Content = property.Name };
                 Grid.SetRow(nameLabel, counter);
                 Grid.SetColumn(nameLabel, 0);
                 _customPropertiesGrid.Children.Add(nameLabel);
@@ -215,5 +239,43 @@ namespace CAD.DTM.Gui
             get => _owner.ZpusobPorizeniZPS;
             set => SetField(ref _owner.ZpusobPorizeniZPS, value);
         }
+    }
+
+    public class SpolecneAtributyObjektuZPS_TITabData : ModelBase
+    {
+        DtmSpolecneAtributyObjektuZPS_TI _owner;
+        public void Load(IDtmElement element)
+        {
+            IsVisible = element.SpolecneAtributyObjektuZPS_TI == null ? Visibility.Collapsed : Visibility.Visible;
+            _owner = element.SpolecneAtributyObjektuZPS_TI ?? new DtmSpolecneAtributyObjektuZPS_TI();
+        }
+        public Visibility IsVisible { get; private set; }
+
+        public int UrovenUmisteniObjektuTI
+        {
+            get => _owner.UrovenUmisteniObjektuTI;
+            set => SetField(ref _owner.UrovenUmisteniObjektuTI, value);
+        }
+        public int TridaPresnostiPoloha
+        {
+            get => _owner.TridaPresnostiPoloha;
+            set => SetField(ref _owner.TridaPresnostiPoloha, value);
+        }
+        public int TridaPresnostiVyska
+        {
+            get => _owner.TridaPresnostiVyska;
+            set => SetField(ref _owner.TridaPresnostiVyska, value);
+        }
+        public int ZpusobPorizeniTI
+        {
+            get => _owner.ZpusobPorizeniTI;
+            set => SetField(ref _owner.ZpusobPorizeniTI, value);
+        }
+        public DtmStavObjektuEnum StavObjektu
+        {
+            get => _owner.StavObjektu;
+            set => SetField(ref _owner.StavObjektu, value);
+        }
+
     }
 }
