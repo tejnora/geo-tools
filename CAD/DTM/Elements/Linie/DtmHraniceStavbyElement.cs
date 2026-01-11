@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Xml;
+using CAD.DTM.Elements.GUI;
+using CAD.DTM.Elements.Linie;
 
 namespace CAD.DTM.Elements
 {
@@ -31,6 +33,11 @@ namespace CAD.DTM.Elements
                         break;
                 }
             }
+        }
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmEnumCustomProperty<DtmTypStavbyEnum>
+                ("TypStavby:", TypStavby, cv => TypStavby = cv));
         }
         public override void Init(DtmElementOption dtmElementOption)
         {

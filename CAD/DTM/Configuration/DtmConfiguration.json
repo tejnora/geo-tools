@@ -346,6 +346,17 @@
     "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "ZPS"
   },
+  "TrasaOdbernehoPlynovehoZarizeni": {
+    "Color": [ 255, 255, 0, 255 ],
+    "Width": 0.001,
+    "CodeBase": "0100000110",
+    "CodeSuffix": "02",
+    "Xmlns": "toplin",
+    "ObjektovyTypNazev": "trasa odběrného plynového zařízení",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Plynovod",
+    "ObsahovaCast": "ZPS"
+  },
   "ZarizeniVodovodniPripojkyBod": {
     "Graphic": {
       "SachtaVodovodniZruseno": [

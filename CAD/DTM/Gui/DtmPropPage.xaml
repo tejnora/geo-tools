@@ -85,13 +85,46 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" Grid.Row="0" Content="Uroven umisteni:"/>
-                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=SpolecneAtributyZPS.UrovenUmisteniObjektuZPS}"/>
+                <ComboBox Grid.Column="1" Grid.Row="0" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.UrovenUmisteniObjektuZPS}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                    <ComboBoxItem Tag="-3">3. úroveň pod povrchem</ComboBoxItem>
+                    <ComboBoxItem Tag="-2">2. úroveň pod povrchem</ComboBoxItem>
+                    <ComboBoxItem Tag="-1">1. úroveň pod povrchem</ComboBoxItem>
+                    <ComboBoxItem Tag="0">na povrchu</ComboBoxItem>
+                    <ComboBoxItem Tag="1">1. úroveň nad povrchem</ComboBoxItem>
+                    <ComboBoxItem Tag="2">2. úroveň nad povrchem</ComboBoxItem>
+                    <ComboBoxItem Tag="2">3. úroveň nad povrchem</ComboBoxItem>
+                </ComboBox>
                 <Label Grid.Column="0" Grid.Row="1" Content="Trida presnosti polohy:"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=SpolecneAtributyZPS.TridaPresnostiPoloha}"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiPoloha}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                    <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                    <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                    <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                    <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                    <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                    <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                </ComboBox>
                 <Label Grid.Column="0" Grid.Row="2" Content="Trida presnosti vyska:"/>
-                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=SpolecneAtributyZPS.TridaPresnostiVyska}"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.TridaPresnostiVyska}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                    <ComboBoxItem Tag="1">třída přesnosti 1</ComboBoxItem>
+                    <ComboBoxItem Tag="2">třída přesnosti 2</ComboBoxItem>
+                    <ComboBoxItem Tag="3">třída přesnosti 3</ComboBoxItem>
+                    <ComboBoxItem Tag="4">třída přesnosti 4</ComboBoxItem>
+                    <ComboBoxItem Tag="5">třída přesnosti 5</ComboBoxItem>
+                    <ComboBoxItem Tag="9">přesnost nevyhovuje ani třídě přesnosti 5, nebo není známa</ComboBoxItem>
+                </ComboBox>
                 <Label Grid.Column="0" Grid.Row="3" Content="Zpusob porizeni:"/>
-                <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS, Converter={StaticResource zpusobPorizeniZPSConverter}}"/>
+                <ComboBox Grid.Column="1" Grid.Row="3" SelectedValuePath="Tag"  SelectedValue="{Binding Path=SpolecneAtributyZPS.ZpusobPorizeniZPS}" 
+                          IsEnabled="{Binding Path=General.IsEditable}">
+                    <ComboBoxItem Tag="1">geodeticky - terestricky</ComboBoxItem>
+                    <ComboBoxItem Tag="2">geodeticky - fotogrammetricky</ComboBoxItem>
+                    <ComboBoxItem Tag="3">geodeticky - pozemním laserovým skenováním</ComboBoxItem>
+                    <ComboBoxItem Tag="4">přibližným zákresem</ComboBoxItem>
+                    <ComboBoxItem Tag="5">odvozením</ComboBoxItem>
+                    <ComboBoxItem Tag="99">nezjištěno</ComboBoxItem>
+                </ComboBox>
             </Grid>
         </TabItem>
         <TabItem Visibility="{Binding Path=CustomPropertiesVisibility}">

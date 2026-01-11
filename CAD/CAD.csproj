@@ -538,13 +538,18 @@
     <Compile Include="DTM\Elements\DtmPrevazujiciPovrchEnum.cs" />
     <Compile Include="DTM\Elements\DtmSpolecneAtributyZPS.cs" />
     <Compile Include="DTM\Elements\DtmStavObjektuEnum.cs" />
+    <Compile Include="DTM\Elements\DtmTlakovaHladinaPlynovodniSiteEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypPozemniKomunikaceEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypUdrzovaneZeleneEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZarizeniKanalizacniPripojkyEnum.cs" />
     <Compile Include="DTM\Elements\DtmTypZdiEnum.cs" />
     <Compile Include="DTM\Elements\DtmUceloveZarazeniStokoveSiteEnum.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmBoolCustomProperty.cs" />
     <Compile Include="DTM\Elements\GUI\DtmCustomElementProperties.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmEnumCustomProperty.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmUIntCustomProperty.cs" />
     <Compile Include="DTM\Elements\GUI\DtmReadonlyCustomProperty.cs" />
+    <Compile Include="DTM\Elements\GUI\DtmStringCustomProperty.cs" />
     <Compile Include="DTM\Elements\GUI\IDtmCustomElementProperties.cs" />
     <Compile Include="DTM\Elements\GUI\IDtmCustomProperty.cs" />
     <Compile Include="DTM\Elements\Linie\DtmDruhPlotuEnum.cs" />
@@ -561,10 +566,12 @@
     <Compile Include="DTM\Elements\Linie\DtmStavebneUpravenyVjezdNaPozemekElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTerenniHranaElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaKanalizacniPripojkyElement.cs" />
+    <Compile Include="DTM\Elements\Linie\DtmTrasaOdbernehoPlynovehoZarizeniElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaVodovodniPripojkyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypDopravniStavbyNeboPlochyEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypPrirodnihoPoloprirodnihoObjektuEnum.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypStavbyEnum.cs" />
+    <Compile Include="DTM\Elements\Linie\DtmZedLinieElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmBudovaPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmChodnikPlochaElement.cs" />
     <Compile Include="DTM\Elements\Plocha\DtmCyklostezkaPlochaElement.cs" />
@@ -624,6 +631,7 @@
     <Compile Include="GUI\AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\IntegerTextBox.cs" />
     <Compile Include="GUI\IPropPage.cs" />
     <Compile Include="GUI\PropPagePalette.xaml.cs">
       <DependentUpon>PropPagePalette.xaml</DependentUpon>

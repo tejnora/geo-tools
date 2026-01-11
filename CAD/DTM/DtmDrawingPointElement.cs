@@ -76,10 +76,14 @@ namespace CAD.DTM
             canvas.DrawSymbol(canvas, graphicElement.Symbol, _point, graphicElement.Size);
             if (!string.IsNullOrEmpty(_element.CisloBodu))
             {
-                var textPoint = _point + graphicElement.Size;
+                var textPoint = _point;
                 var f = new StringFormat();
                 f.Alignment = StringAlignment.Center;
                 var p1 = canvas.ToScreen(textPoint);
+                var sizeX = canvas.ToScreenWithoutZoom(graphicElement.Size.X * canvas.SymbolScaleCoefficient);
+                var sizeY = canvas.ToScreenWithoutZoom(graphicElement.Size.Y * canvas.SymbolScaleCoefficient);
+                p1.X = p1.X + 1.5 * sizeX;
+                p1.Y = p1.Y - 1.5 * sizeY;
                 var brush = new SolidBrush(graphicElement.Color);
                 canvas.Graphics.DrawString(_element.CisloBodu, Font, brush, p1.FromWpfPoint(), f);
             }

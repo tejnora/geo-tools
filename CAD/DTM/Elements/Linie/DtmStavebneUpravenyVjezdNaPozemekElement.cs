@@ -1,4 +1,6 @@
 ﻿using CAD.DTM.Configuration;
+using CAD.DTM.Elements.GUI;
+using CAD.DTM.Elements.Linie;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,9 +52,15 @@ namespace CAD.DTM.Elements
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);
-
             SpolecneAtributyZPS = new DtmSpolecneAtributyZPS();
         }
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmBoolCustomProperty("Hranice jiného objektu?", HraniceJinehoObjektu, cv => HraniceJinehoObjektu = cv));
+            properties.AddProperty(new DtmUIntCustomProperty("Průjezdná šířka:", PrujezdnaSirka, cv => PrujezdnaSirka = cv));
+            properties.AddProperty(new DtmUIntCustomProperty("Průjezdná výška:", PrujezdnaVyska, cv => PrujezdnaVyska = cv));
+        }
+
         static Dictionary<string, bool> _values = new Dictionary<string, bool>()
         {
             {"HraniceJinehoObjektu (Ano)",true },

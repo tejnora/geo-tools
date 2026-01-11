@@ -48,6 +48,11 @@ namespace CAD.DTM.Gui
             OnPropertyChanged("");
         }
 
+        public void InvalidateCanvas()
+        {
+            //todo
+        }
+
         public void InitCustomProperties()
         {
             for (var i = _customPropertiesGrid.RowDefinitions.Count; i < _customProperties.Properties.Count; i++)
@@ -59,14 +64,16 @@ namespace CAD.DTM.Gui
             foreach (var property in _customProperties.Properties)
             {
                 ++counter;
+                property.PropPage = this;
                 var nameLabel = new Label { Content = property.Name };
                 Grid.SetRow(nameLabel, counter);
                 Grid.SetColumn(nameLabel, 0);
                 _customPropertiesGrid.Children.Add(nameLabel);
-                var valueLabel = new Label { Content = property.Value };
-                Grid.SetRow(valueLabel, counter);
-                Grid.SetColumn(valueLabel, 1);
-                _customPropertiesGrid.Children.Add(valueLabel);
+                var editControl = property.GetEditControl();
+                Grid.SetRow(editControl, counter);
+                Grid.SetColumn(editControl, 1);
+                editControl.IsEnabled = General.IsEditable;
+                _customPropertiesGrid.Children.Add(editControl);
             }
         }
 
@@ -88,15 +95,19 @@ namespace CAD.DTM.Gui
             {
                 case 'i':
                     Zapis = "Novy";
+                    IsEditable = true;
                     break;
                 case 'd':
                     Zapis = "Smazany";
+                    IsEditable = false;
                     break;
                 case 'u':
                     Zapis = "Aktualizovany";
+                    IsEditable = false;
                     break;
                 case 'r':
                     Zapis = "Referencni";
+                    IsEditable = false;
                     break;
             }
             Typ = element.ElementType.ToString();
@@ -116,6 +127,13 @@ namespace CAD.DTM.Gui
 
         string _typ;
         public string Typ { get => _typ; private set => SetField(ref _typ, value); }
+
+        bool _isEditable = true;
+        public bool IsEditable
+        {
+            get => _isEditable;
+            private set => SetField(ref _isEditable, value);
+        }
     }
 
     public class SpolecneAtributyTabData : ModelBase

@@ -57,7 +57,8 @@ namespace CAD.DTM.Elements
         }
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
-            properties.AddProperty(new DtmReadonlyCustomProperty("Typ zařízení vodovodní přípojky:", TypZarizeniVodovodniPripojky.ToString()));
+            properties.AddProperty(new DtmEnumCustomProperty<DtmTypZarizeniVodovodniPripojkyEnum>
+                ("Typ zařízení vodovodní přípojky:", TypZarizeniVodovodniPripojky, (cv) => TypZarizeniVodovodniPripojky = cv));
         }
     }
 }

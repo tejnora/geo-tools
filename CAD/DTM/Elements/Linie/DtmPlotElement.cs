@@ -4,6 +4,7 @@ using CAD.DTM.Gui;
 using System.Collections.Generic;
 using System;
 using System.Xml;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
@@ -42,6 +43,13 @@ namespace CAD.DTM.Elements
                 }
             }
         }
+
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmEnumCustomProperty<DtmDruhPlotuEnum>("Druh plotu:", DruhPlotu, cv => DruhPlotu = cv));
+            properties.AddProperty(new DtmBoolCustomProperty("Hranice jiného objektu?", HraniceJinehoObjektu, cv => HraniceJinehoObjektu = cv));
+        }
+
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);

@@ -2,13 +2,14 @@
 using CAD.DTM.Gui;
 using System.Globalization;
 using System.Xml;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
     class DtmVyskovyBodNaTerenuElement
         : DtmBodBaseElement
     {
-        public double VyskaNaTerenu { get; set; }
+        public string VyskaNaTerenu { get; set; }
         public override void ExportAttributesToDtm(IDtmExporter exporter)
         {
             ExportSpolecneAtributyObjektuZPS(exporter);
@@ -22,11 +23,15 @@ namespace CAD.DTM.Elements
                 switch (x.LocalName)
                 {
                     case "VyskaNaTerenu":
-                        VyskaNaTerenu = double.Parse(x.InnerText, CultureInfo.InvariantCulture);
+                        VyskaNaTerenu = x.InnerText;
                         break;
                 }
 
             }
+        }
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            properties.AddProperty(new DtmStringCustomProperty("Výška na terénu:", VyskaNaTerenu, cv => VyskaNaTerenu = cv));
         }
         public override void Init(DtmElementOption dtmElementOption)
         {
