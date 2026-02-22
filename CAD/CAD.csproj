@@ -566,6 +566,7 @@
     <Compile Include="DTM\Elements\Linie\DtmStavebneUpravenyVjezdNaPozemekElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTerenniHranaElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaKanalizacniPripojkyElement.cs" />
+    <Compile Include="DTM\Elements\Linie\DtmTrasaOdbernehoElektrickehoZarizeniElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaOdbernehoPlynovehoZarizeniElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTrasaVodovodniPripojkyElement.cs" />
     <Compile Include="DTM\Elements\Linie\DtmTypDopravniStavbyNeboPlochyEnum.cs" />

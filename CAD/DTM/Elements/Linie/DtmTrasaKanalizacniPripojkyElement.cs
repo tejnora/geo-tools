@@ -63,9 +63,10 @@ namespace CAD.DTM.Elements
 
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
-            properties.AddProperty(new DtmReadonlyCustomProperty("Materiál:", Material));
-            properties.AddProperty(new DtmReadonlyCustomProperty("Dimenze:", Dimenze.ToString()));
-            properties.AddProperty(new DtmReadonlyCustomProperty("Druh stokové sitě:", DruhStokoveSite.ToString()));
+            properties.AddProperty(new DtmStringCustomProperty("Materiál:", Material, cv => Material = cv));
+            properties.AddProperty(new DtmUIntCustomProperty("Dimenze:", Dimenze, cv => Dimenze = cv));
+            properties.AddProperty(new DtmEnumCustomProperty<DtmDruhStokoveSiteEnum>("Druh stokové sitě:", DruhStokoveSite, (cv) => DruhStokoveSite = cv));
+            properties.AddProperty(new DtmEnumCustomProperty<DtmUceloveZarazeniStokoveSiteEnum>("Učlove zařízení stokove sitě:", UceloveZarazeniStokoveSite, (cv) => UceloveZarazeniStokoveSite = cv));
         }
 
         static Dictionary<string, Tuple<string, uint>> _values = new Dictionary<string, Tuple<string, uint>>()

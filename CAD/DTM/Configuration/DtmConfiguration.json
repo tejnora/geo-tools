@@ -346,6 +346,17 @@
     "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "ZPS"
   },
+  "TrasaOdbernehoElektrickehoZarizeni": {
+    "Color": [ 230, 0, 0, 255 ],
+    "Width": 0.001,
+    "CodeBase": "0100000100",
+    "CodeSuffix": "02",
+    "Xmlns": "toelin",
+    "ObjektovyTypNazev": "trasa odběrného elektrického zařízení",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "ZPS"
+  },
   "TrasaOdbernehoPlynovehoZarizeni": {
     "Color": [ 255, 255, 0, 255 ],
     "Width": 0.001,
