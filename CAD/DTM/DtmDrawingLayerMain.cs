@@ -145,8 +145,7 @@ namespace CAD.DTM
             }
             else
             {
-                _layers[dtmElement.Group.Name] = new DtmDrawingGroup(dtmElement.Group.Name, _dtmMain.getElementsGroup(dtmElement.Group.Name));
-                _layers[dtmElement.Group.Name].AddObject(drawobject);
+                _layers[dtmElement.Group.Name] = new DtmDrawingGroup(dtmElement.Group.Name, drawobject);
             }
         }
 
