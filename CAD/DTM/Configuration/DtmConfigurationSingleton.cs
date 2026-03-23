@@ -3,11 +3,14 @@ using System;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Controls;
 using CAD.DTM.Elements;
 using CAD.VFK;
 using GeoBase.Utils;
 using Image = System.Drawing.Image;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace CAD.DTM.Configuration
 {
@@ -148,6 +151,24 @@ namespace CAD.DTM.Configuration
                 ObsahovaCast = element.ObsahovaCast,
                 SkupinaObjektu = element.SkupinaObjektu
             };
+        }
+
+        public static string ToNiceName(string name, DtmElementType category)
+        {
+            var splittedValues = Regex.Split(name, @"(?<!^)(?=[A-Z])");
+            if (category == DtmElementType.Bod)
+            {
+                if (splittedValues.Last() == "Bod")
+                    Array.Resize(ref splittedValues, splittedValues.Length - 1);
+            }
+            else if (category == DtmElementType.DefinicniBod)
+                Array.Resize(ref splittedValues, splittedValues.Length - 2);
+            for (var i = 1; i < splittedValues.Length; i++)
+            {
+                splittedValues[i] = splittedValues[i].ToLowerInvariant();
+            }
+            var res = string.Join(" ", splittedValues);
+            return res;
         }
     }
 }

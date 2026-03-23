@@ -10,29 +10,47 @@
         <CommandBinding Command="gui:DtmToolBar.DtmPoint"
                         CanExecute="OnCanExecute"
                         Executed="OnExecute" />
+        <CommandBinding Command="gui:DtmToolBar.DtmDefinitionPoint"
+                        CanExecute="OnCanExecute"
+                        Executed="OnExecute" />
     </UITools:GeoCadToolBar.CommandBindings>
     <Button ToolTip="Enable / Disable layers" Click="OnDtmLayerManager">
         <Image Source="/CAD;component/Icons/VfkLevelManager.png"></Image>
     </Button>
 
-    <ToggleButton Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
+    <ToggleButton  Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
         <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
     </ToggleButton>
     <ComboBox Width="120"
               SelectedItem="{Binding Path=DtmLineElementSelected}"
-              ItemsSource="{Binding Path=DtmLineElements}">
+              ItemsSource="{Binding Path=DtmLineElements}"
+              DisplayMemberPath="DisplayName">
     </ComboBox>
     <ComboBox Width="100"
               SelectedItem="{Binding Path=DtmLineSettingSelected}"
               ItemsSource="{Binding Path=DtmLineSetting}"
               IsEnabled="{Binding Path=DtmLineSettingEnabled}">
     </ComboBox>
-    <ToggleButton Command="gui:DtmToolBar.DtmPoint" ToolTip="Point">
+    <ToggleButton  Command="{Binding CurrentPointCommand}" ToolTip="Point" Name="_pointToggleButton">
         <Image Source="/CAD;component/Icons/VfkMarks.png"></Image>
     </ToggleButton>
     <ComboBox Width="120"
               SelectedItem="{Binding Path=DtmPointElementSelected}"
               ItemsSource="{Binding Path=DtmPointElements}">
+        <ComboBox.GroupStyle>
+            <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="5,1,1,1" FontWeight="Bold" Text="{Binding Name}"/>
+                    </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+            </GroupStyle>
+        </ComboBox.GroupStyle>
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Margin="15,1,1,1" Text="{Binding DisplayName}"/>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
     </ComboBox>
     <ComboBox Width="100"
               SelectedItem="{Binding Path=DtmPointSettingSelected}"

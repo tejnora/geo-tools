@@ -116,7 +116,13 @@
     "ObsahovaCast": "ZPS"
   },
   "UdrzovanaPlochaZeleneDefinicniBod": {
-    "Color": [ 66, 245, 75, 255 ],
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "Width": 0.02,
     "CodeBase": "0100000215",
     "CodeSuffix": "04",
@@ -127,7 +133,13 @@
     "ObsahovaCast": "ZPS"
   },
   "BudovaDefinicniBod": {
-    "Color": [ 210, 217, 25, 255 ],
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "Width": 0.02,
     "CodeBase": "0100000001",
     "CodeSuffix": "04",
@@ -138,7 +150,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ChodnikDefinicniBod": {
-    "Color": [ 210, 217, 25, 255 ],
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "Width": 0.02,
     "CodeBase": "0100000007",
     "CodeSuffix": "04",
@@ -160,8 +178,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ZahradaDefinicniBod": {
-    "Color": [ 210, 217, 25, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000209",
     "CodeSuffix": "04",
     "Xmlns": "zahdef",
@@ -171,8 +194,13 @@
     "ObsahovaCast": "ZPS"
   },
   "OstatniZastresenaStavbaDefinicniBod": {
-    "Color": [ 210, 217, 25, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000314",
     "CodeSuffix": "04",
     "Xmlns": "ozsdef",
@@ -182,8 +210,13 @@
     "ObsahovaCast": "ZPS"
   },
   "CyklostezkaDefinicniBod": {
-    "Color": [ 0, 0, 100, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000009",
     "CodeSuffix": "04",
     "Xmlns": "cykdef",
@@ -193,8 +226,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ParkovisteOdstavnaPlochaDefinicniBod": {
-    "Color": [ 0, 100, 100, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000011",
     "CodeSuffix": "04",
     "Xmlns": "paodef",
@@ -248,8 +286,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ProvozniPlochaPozemniKomunikaceDefinicniBod": {
-    "Color": [ 0, 100, 100, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000005",
     "CodeSuffix": "04",
     "Xmlns": "pokdef",
@@ -259,8 +302,13 @@
     "ObsahovaCast": "ZPS"
   },
   "NajezdDefinicniBod": {
-    "Color": [ 0, 100, 100, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000017",
     "CodeSuffix": "04",
     "Xmlns": "najdef",
@@ -469,8 +517,13 @@
     "ObsahovaCast": "ZPS"
   },
   "SchodisteDefinicniBod": {
-    "Color": [ 66, 245, 75, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000166",
     "CodeSuffix": "04",
     "Xmlns": "schdef",
@@ -480,8 +533,13 @@
     "ObsahovaCast": "ZPS"
   },
   "PrikopNasepZarezDopravniStavbyDefinicniBod": {
-    "Color": [ 66, 245, 75, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000051",
     "CodeSuffix": "04",
     "Xmlns": "pnzdef",
@@ -491,8 +549,13 @@
     "ObsahovaCast": "ZPS"
   },
   "NadrzZdrzSeVzdouvacimObjektemDefinicniBod": {
-    "Color": [ 66, 245, 75, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000072",
     "CodeSuffix": "04",
     "Xmlns": "nsvdef",
@@ -568,8 +631,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ZedDefinicniBod": {
-    "Color": [ 200, 0, 0, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000168",
     "CodeSuffix": "04",
     "Xmlns": "zeddef",
@@ -579,8 +647,13 @@
     "ObsahovaCast": "ZPS"
   },
   "SklenikDefinicniBod": {
-    "Color": [ 0, 0, 200, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000179",
     "CodeSuffix": "04",
     "Xmlns": "skldef",
@@ -590,8 +663,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ManipulacniPlochaDefinicniBod": {
-    "Color": [ 0, 100, 200, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000055",
     "CodeSuffix": "04",
     "Xmlns": "mapdef",
@@ -645,8 +723,13 @@
     "ObsahovaCast": "ZPS"
   },
   "ZemedelskaPlochaDefinicniBod": {
-    "Color": [ 0, 255, 0, 255 ],
-    "Width": 0.02,
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
     "CodeBase": "0100000207",
     "CodeSuffix": "04",
     "Xmlns": "zepdef",

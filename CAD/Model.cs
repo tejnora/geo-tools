@@ -530,8 +530,6 @@ namespace CAD.Canvas
             return string.Format("SlaveId{0}", _slaveCounter++);
         }
 
-
-
         public void Save(string filename)
         {
             try

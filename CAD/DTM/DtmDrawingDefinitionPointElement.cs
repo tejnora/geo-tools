@@ -21,7 +21,7 @@ namespace CAD.DTM
         , IDtmDrawingElement
     {
         DtmElement _element;
-        readonly UnitPoint _point;
+        UnitPoint _point;
         const int ThresholdPixel = 6;
 
         public DtmDrawingDefinitionPointElement()
@@ -32,15 +32,26 @@ namespace CAD.DTM
         {
             _element = element;
             PointGeometry = element.Geometry.GetDrawGeometry<DtmPointGeometry>();
-            _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
+            UpdatePoint();
 
         }
+        void UpdatePoint()
+        {
+            _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
+        }
+
         public DtmPointGeometry PointGeometry { get; private set; }
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            throw new NotImplementedException();
+            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y } };
+            UpdatePoint();
+            var dtmLayer = (DtmDrawingLayerMain)layer;
+            _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
+            _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
+            new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
+            Selected = false;
         }
-        public string Id { get; }
+        public string Id => DtmToolBar.DtmDefinitionPoint.Name;
         public IDrawObject Clone()
         {
             var l = new DtmDrawingDefinitionPointElement();
@@ -67,6 +78,20 @@ namespace CAD.DTM
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
+ //*
+            var scale = DtmUtils.GetScale(canvas);
+            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            if (graphicElement == null)
+                return;
+            canvas.DrawSymbol(canvas, graphicElement.Symbol, _point, graphicElement.Size);
+            if (Selected && !_point.IsEmpty)
+            {
+                var symbolSize = new System.Windows.Size(
+                    canvas.ToScreenWithoutZoom(graphicElement.Size.X * 0.5 * canvas.SymbolScaleCoefficient),
+                    canvas.ToScreenWithoutZoom(graphicElement.Size.Y * 0.5 * canvas.SymbolScaleCoefficient));
+                DrawUtils.DrawNode(canvas, _point, symbolSize);
+            }
+/*/
             var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
             pen.EndCap = LineCap.Flat;
             pen.StartCap = LineCap.Flat;
@@ -76,12 +101,26 @@ namespace CAD.DTM
             {
                 DrawUtils.DrawNode(canvas, _point);
             }
+//*/
         }
         public Rect GetBoundingRect(ICanvas canvas)
-        {
+        {   
+//*
+            var thWidth = ThresholdWidth(canvas, Group.Options.Width);
+            var scale = DtmUtils.GetScale(canvas);
+            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            if (graphicElement == null)
+                return Rect.Empty;
+            var deltaX = graphicElement.Size.X / 2.0 * canvas.SymbolScaleCoefficient;
+            var deltaY = graphicElement.Size.Y / 2.0 * canvas.SymbolScaleCoefficient;
+            deltaX /= canvas.getZoom();
+            deltaY /= canvas.getZoom();
+            return ScreenUtils.GetRect(new UnitPoint(_point.X - deltaX, _point.Y - deltaY), new UnitPoint(_point.X + deltaX, _point.Y + deltaY), thWidth);
+/*/
             var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             var delta = canvas.ToUnit(2);
             return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
+//*/
         }
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {
@@ -96,10 +135,15 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
-
+            PointGeometry.Point.X = point.X;
+            PointGeometry.Point.Y = point.Y;
+            UpdatePoint();
         }
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
+            PointGeometry.Point.X = point.X;
+            PointGeometry.Point.Y = point.Y;
+            UpdatePoint();
             return DrawObjectState.DoneRepeat;
         }
         public DrawObjectState OnFinish()

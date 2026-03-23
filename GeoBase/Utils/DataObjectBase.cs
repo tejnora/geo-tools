@@ -658,7 +658,7 @@ namespace GeoBase.Utils
 
         protected static PropertyData RegisterProperty(string name, Type type, object defaultValue)
         {
-            if (!type.IsSerializable) throw new InvalidPropertyException(name);
+//            if (!type.IsSerializable) throw new InvalidPropertyException(name);
             var property = new PropertyData(name, type, defaultValue);
             return property;
         }

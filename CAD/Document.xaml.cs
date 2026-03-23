@@ -49,6 +49,7 @@ namespace CAD
             DataModel.AddDrawTool(VfkToolBar.VfkText.Name, new VfkTextsEdit());
             DataModel.AddDrawTool(DtmToolBar.DtmMultiLine.Name, new DtmDrawingLineElement());
             DataModel.AddDrawTool(DtmToolBar.DtmPoint.Name, new DtmDrawingPointElement());
+            DataModel.AddDrawTool(DtmToolBar.DtmDefinitionPoint.Name, new DtmDrawingDefinitionPointElement());
             _Canvas.Construct(this, DataModel);
 
             _Canvas.RunningSnapsDefault = new Type[]

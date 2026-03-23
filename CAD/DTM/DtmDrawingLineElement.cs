@@ -151,7 +151,7 @@ namespace CAD.DTM
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
             if (_curveGeometry == null) return DrawObjectState.Drop;
-            if (!(snappoint is DtmPodrobnyBodSnapPoint zpz))
+            if (!(snappoint is DtmPodrobnyBodSnapPoint zpz)) 
                 return DrawObjectState.Continue;
             var pointGeometry = ((DtmDrawingPointElement)zpz.Owner).PointGeometry;
             _curveGeometry.Points[_curveGeometry.Points.Count - 1] = (DtmPoint)pointGeometry.Point.Clone();
