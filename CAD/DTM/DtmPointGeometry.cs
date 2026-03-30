@@ -21,7 +21,7 @@ namespace CAD.DTM
             exporter.AddAttribute("gml", "id", Id);
             exporter.AddAttribute("srsName", SrsName);
             exporter.AddAttribute("srsDimension", SrsDimension);
-            exporter.AddElement("gml", "pos", Point.ExportToDtm(3));
+            exporter.AddElement("gml", "pos", Point.ExportToDtm(SrsDimension));
             exporter.MarkPoint(Point);
             exporter.EndElement();
             exporter.EndElement();

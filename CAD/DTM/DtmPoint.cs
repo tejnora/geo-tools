@@ -32,12 +32,13 @@ namespace CAD.DTM
             return new DtmPoint { X = -Y, Y = -X, Z = Z };
         }
 
+        static string NumberPattern = "0.00";
         public string ExportToDtm(int srsDimension)
         {
             switch (srsDimension)
             {
-                case 2: return $"{X.ToString("##.00", CultureInfo.InvariantCulture)} {Y.ToString("##.00", CultureInfo.InvariantCulture)}";
-                case 3: return $"{X.ToString("##.00", CultureInfo.InvariantCulture)} {Y.ToString("##.00", CultureInfo.InvariantCulture)} {Z.ToString("##.00", CultureInfo.InvariantCulture)}";
+                case 2: return $"{X.ToString(NumberPattern, CultureInfo.InvariantCulture)} {Y.ToString(NumberPattern, CultureInfo.InvariantCulture)}";
+                case 3: return $"{X.ToString(NumberPattern, CultureInfo.InvariantCulture)} {Y.ToString(NumberPattern, CultureInfo.InvariantCulture)} {Z.ToString(NumberPattern, CultureInfo.InvariantCulture)}";
             }
 
             throw new ArgumentOutOfRangeException();

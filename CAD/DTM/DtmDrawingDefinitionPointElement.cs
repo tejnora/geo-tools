@@ -43,7 +43,7 @@ namespace CAD.DTM
         public DtmPointGeometry PointGeometry { get; private set; }
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y } };
+            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y }, SrsDimension = 2 };
             UpdatePoint();
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
@@ -78,7 +78,7 @@ namespace CAD.DTM
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
- //*
+            //*
             var scale = DtmUtils.GetScale(canvas);
             var graphicElement = _element.GetGraphicElement(Group.Options, scale);
             if (graphicElement == null)
@@ -91,21 +91,21 @@ namespace CAD.DTM
                     canvas.ToScreenWithoutZoom(graphicElement.Size.Y * 0.5 * canvas.SymbolScaleCoefficient));
                 DrawUtils.DrawNode(canvas, _point, symbolSize);
             }
-/*/
-            var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
-            pen.EndCap = LineCap.Flat;
-            pen.StartCap = LineCap.Flat;
-            var p = canvas.ToScreen(_point).FromWpfPoint();
-            canvas.Graphics.DrawRectangle(pen, p.X - 5f, p.Y - 5f, 10f, 10f);
-            if (Selected && !_point.IsEmpty)
-            {
-                DrawUtils.DrawNode(canvas, _point);
-            }
-//*/
+            /*/
+                        var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
+                        pen.EndCap = LineCap.Flat;
+                        pen.StartCap = LineCap.Flat;
+                        var p = canvas.ToScreen(_point).FromWpfPoint();
+                        canvas.Graphics.DrawRectangle(pen, p.X - 5f, p.Y - 5f, 10f, 10f);
+                        if (Selected && !_point.IsEmpty)
+                        {
+                            DrawUtils.DrawNode(canvas, _point);
+                        }
+            //*/
         }
         public Rect GetBoundingRect(ICanvas canvas)
-        {   
-//*
+        {
+            //*
             var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             var scale = DtmUtils.GetScale(canvas);
             var graphicElement = _element.GetGraphicElement(Group.Options, scale);
@@ -116,11 +116,11 @@ namespace CAD.DTM
             deltaX /= canvas.getZoom();
             deltaY /= canvas.getZoom();
             return ScreenUtils.GetRect(new UnitPoint(_point.X - deltaX, _point.Y - deltaY), new UnitPoint(_point.X + deltaX, _point.Y + deltaY), thWidth);
-/*/
-            var thWidth = ThresholdWidth(canvas, Group.Options.Width);
-            var delta = canvas.ToUnit(2);
-            return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
-//*/
+            /*/
+                        var thWidth = ThresholdWidth(canvas, Group.Options.Width);
+                        var delta = canvas.ToUnit(2);
+                        return ScreenUtils.GetRect(new UnitPoint(_point.X - delta, _point.Y - delta), new UnitPoint(_point.X + delta, _point.Y + delta), thWidth);
+            //*/
         }
         public static float ThresholdWidth(ICanvas canvas, float objectwidth)
         {

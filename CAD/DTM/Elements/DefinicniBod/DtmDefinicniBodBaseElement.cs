@@ -1,5 +1,6 @@
 ﻿using CAD.DTM.Gui;
 using System.Xml;
+using CAD.DTM.Elements.GUI;
 
 namespace CAD.DTM.Elements
 {
@@ -40,5 +41,11 @@ namespace CAD.DTM.Elements
             exporter.EndElement();
         }
 
+        public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
+        {
+            base.InitGUICustomProperties(properties);
+            SpolecneAtributyObjektuDefinicnichBodu = new DtmSpolecneAtributyObjektuDefinicnichBodu
+                { UrovenUmisteniObjektuZPS = 0 };
+        }
     }
 }
