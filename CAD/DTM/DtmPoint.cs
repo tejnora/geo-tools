@@ -18,6 +18,11 @@ namespace CAD.DTM
             Y = double.Parse(x, CultureInfo.InvariantCulture);
             Z = double.Parse(z, CultureInfo.InvariantCulture);
         }
+        public DtmPoint(string y, string x)
+        {
+            X = double.Parse(y, CultureInfo.InvariantCulture);
+            Y = double.Parse(x, CultureInfo.InvariantCulture);
+        }
 
         public double X { get; set; }
         public double Y { get; set; }

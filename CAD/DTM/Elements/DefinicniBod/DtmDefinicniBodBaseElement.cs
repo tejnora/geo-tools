@@ -37,7 +37,8 @@ namespace CAD.DTM.Elements
         protected void ExportSpolecneAtributyObjektuDefinicnichBodu(IDtmExporter exporter)
         {
             exporter.BeginElement("atr", "SpolecneAtributyObjektuDefinicnichBodu");
-            exporter.AddElement(null, "UrovenUmisteniObjektuZPS", SpolecneAtributyObjektuDefinicnichBodu.UrovenUmisteniObjektuZPS);
+            exporter.AddElement("atr", "ICS", "");
+            exporter.AddElement("atr", "UrovenUmisteniObjektuZPS", SpolecneAtributyObjektuDefinicnichBodu.UrovenUmisteniObjektuZPS);
             exporter.EndElement();
         }
 
@@ -45,7 +46,7 @@ namespace CAD.DTM.Elements
         {
             base.InitGUICustomProperties(properties);
             SpolecneAtributyObjektuDefinicnichBodu = new DtmSpolecneAtributyObjektuDefinicnichBodu
-                { UrovenUmisteniObjektuZPS = 0 };
+            { UrovenUmisteniObjektuZPS = 0 };
         }
     }
 }

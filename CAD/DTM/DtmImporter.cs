@@ -148,9 +148,25 @@ namespace CAD.DTM
             if (point.ChildNodes.Count != 1 && point.ChildNodes[0].LocalName != "pos")
                 throw new Exception("Invalid curve geometry.");
             var values = point.ChildNodes[0].InnerText.Split(' ');
-            if (values.Length != 3)
-                throw new Exception("Invalid Point Geometry.");
-            geometry.Point = new DtmPoint(values[0], values[1], values[2]);
+            switch (geometry.SrsDimension)
+            {
+                case 2:
+                    {
+                        if (values.Length != 2)
+                            throw new Exception("Invalid Point Geometry.");
+                        geometry.Point = new DtmPoint(values[0], values[1]);
+                    }
+                    break;
+                case 3:
+                    {
+                        if (values.Length != 3)
+                            throw new Exception("Invalid Point Geometry.");
+                        geometry.Point = new DtmPoint(values[0], values[1], values[2]);
+                    }
+                    break;
+                default:
+                    throw new Exception($"Dimension '{geometry.SrsDimension}' is not valid.");
+            }
             return geometry;
         }
 

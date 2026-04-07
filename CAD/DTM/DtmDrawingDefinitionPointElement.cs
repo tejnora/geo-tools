@@ -43,7 +43,7 @@ namespace CAD.DTM
         public DtmPointGeometry PointGeometry { get; private set; }
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y }, SrsDimension = 2 };
+            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y }, SrsDimension = 3 };
             UpdatePoint();
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
