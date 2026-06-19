@@ -737,5 +737,157 @@
     "KategorieObjektu": "Vodstvo, vegetace a terén",
     "SkupinaObjektu": "Hospodářská plocha",
     "ObsahovaCast": "ZPS"
+  },
+  "ZarizeniElektrickeSite": {
+    "Graphic": [
+      {
+        "Color": [ 230, 0, 0, 255 ],
+        "Width": 0.1,
+        "Symbol": "TI_b_101_el_ved_zar_skrin.png"
+      }
+    ],
+    "CodeBase": "0100000101",
+    "CodeSuffix": "01",
+    "Xmlns": "zaelsi",
+    "ObjektovyTypNazev": "zařízení elektrické sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaElektrickeSite": {
+    "Graphic": [
+      {
+        "Color": [ 230, 0, 0, 255 ],
+        "Width": 0.15,
+        "Symbol": "TI_l_098_el_ved_trasa_vn.png"
+      }
+    ],
+    "CodeBase": "0100000098",
+    "CodeSuffix": "02",
+    "Xmlns": "trelsi",
+    "ObjektovyTypNazev": "trasa elektrické sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "TI"
+  },
+  "OPObjektuElektrickeSite": {
+    "Color": [ 230, 0, 0, 50 ],
+    "Width": 0.1,
+    "CodeBase": "0100000281",
+    "CodeSuffix": "03",
+    "Xmlns": "opepol",
+    "ObjektovyTypNazev": "ochranné pásmo elektrické sítě",
+    "KategorieObjektu": "Ochranná a bezpečnostní pásma",
+    "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
+    "ObsahovaCast": "TI"
+  },
+  "PovrchovyZnakTI": {
+    "Graphic": [
+      {
+        "Color": [ 128, 128, 128, 255 ],
+        "Width": 0.1,
+        "Symbol": "TI_b_135_zar_st_ti_pov_znak_jiny.png"
+      }
+    ],
+    "CodeBase": "0100000135",
+    "CodeSuffix": "01",
+    "Xmlns": "poznti",
+    "ObjektovyTypNazev": "povrchový znak TI",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Zařízení staveb technické infrastruktury",
+    "ObsahovaCast": "TI"
+  },
+  "TechnickyKanal": {
+    "Color": [ 104, 104, 104, 255 ],
+    "Width": 0.03,
+    "CodeBase": "0100000092",
+    "CodeSuffix": "02",
+    "Xmlns": "tkalin",
+    "ObjektovyTypNazev": "technický kanál",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Sdílená stavba / objekt technické infrastruktury",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaSiteEK": {
+    "Color": [ 197, 0, 255, 255 ],
+    "Width": 0.1,
+    "CodeBase": "0100000105",
+    "CodeSuffix": "02",
+    "Xmlns": "trsiek",
+    "ObjektovyTypNazev": "trasa sítě EK",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektronická komunikace",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaStokoveSite": {
+    "Color": [ 145, 89, 4, 255 ],
+    "Width": 0.15,
+    "CodeBase": "0100000121",
+    "CodeSuffix": "02",
+    "Xmlns": "trstsi",
+    "ObjektovyTypNazev": "trasa stokové sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Kanalizace",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaVodovodniSite": {
+    "Color": [ 0, 92, 230, 255 ],
+    "Width": 0.15,
+    "CodeBase": "0100000113",
+    "CodeSuffix": "02",
+    "Xmlns": "trvosi",
+    "ObjektovyTypNazev": "trasa vodovodní sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Vodovod",
+    "ObsahovaCast": "TI"
+  },
+  "OPPlynovodniSite": {
+    "Color": [ 76, 230, 0, 50 ],
+    "Width": 0.1,
+    "CodeBase": "0100000283",
+    "CodeSuffix": "03",
+    "Xmlns": "opplsi",
+    "ObjektovyTypNazev": "ochranné pásmo plynovodní sítě",
+    "KategorieObjektu": "Ochranná a bezpečnostní pásma",
+    "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
+    "ObsahovaCast": "TI"
+  },
+  "SdilenyObjektTI": {
+    "Graphic": [
+      {
+        "Color": [ 104, 104, 104, 255 ],
+        "Width": 0.1,
+        "Symbol": "TI_b_093_sdil_st_ti_rozv_is.png"
+      }
+    ],
+    "CodeBase": "0100000093",
+    "CodeSuffix": "01",
+    "Xmlns": "sotbod",
+    "ObjektovyTypNazev": "sdílený objekt TI",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Sdílená stavba / objekt technické infrastruktury",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaPlynovodniPripojky": {
+    "Color": [ 76, 230, 0, 255 ],
+    "Width": 0.15,
+    "CodeBase": "0100000328",
+    "CodeSuffix": "02",
+    "Xmlns": "tpplin",
+    "ObjektovyTypNazev": "trasa plynovodní přípojky",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Plynovod",
+    "ObsahovaCast": "TI"
+  },
+  "TrasaPlynovodniSite": {
+    "Color": [ 76, 230, 0, 255 ],
+    "Width": 0.15,
+    "CodeBase": "0100000109",
+    "CodeSuffix": "02",
+    "Xmlns": "trplsi",
+    "ObjektovyTypNazev": "trasa plynovodní sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Plynovod",
+    "ObsahovaCast": "TI"
   }
 }
