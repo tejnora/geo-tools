@@ -889,5 +889,60 @@
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Plynovod",
     "ObsahovaCast": "TI"
+  },
+  "TrasaMistniElektrickeSite": {
+    "Color": [ 230, 0, 0, 255 ],
+    "Width": 0.15,
+    "CodeBase": "0100000098",
+    "CodeSuffix": "02",
+    "Xmlns": "trelsi",
+    "ObjektovyTypNazev": "trasa elektrické sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "TI"
+  },
+  "ProvozniProstorElektrickeSite": {
+    "Color": [ 230, 0, 0, 50 ],
+    "Width": 0.1,
+    "CodeBase": "0100000322",
+    "CodeSuffix": "03",
+    "Xmlns": "ppepol",
+    "ObjektovyTypNazev": "provozní prostor elektrické sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "TI"
+  },
+  "PlynovodKoridorZameruLinie": {
+    "Color": [ 76, 230, 0, 255],
+    "Width": 0.1,
+    "CodeBase": "0100000354",
+    "CodeSuffix": "02",
+    "Xmlns": "pyklin",
+    "ObjektovyTypNazev": "plynovod – koridor záměru",
+    "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
+    "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
+    "ObsahovaCast": "TI"
+  },
+  "OPObjektuVodovodu": {
+    "Color": [ 76, 230, 0, 50 ],
+    "Width": 0.1,
+    "CodeBase": "0100000279",
+    "CodeSuffix": "03",
+    "Xmlns": "opobvo",
+    "ObjektovyTypNazev": "ochranné pásmo objektu vodovodu",
+    "KategorieObjektu": "Ochranná a bezpečnostní pásma",
+    "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
+    "ObsahovaCast": "TI"
+  },
+  "PodperneZarizeni": {
+    "Color": [ 255, 255, 255, 255 ],
+    "Width": 2,
+    "CodeBase": "0100000095",
+    "CodeSuffix": "01",
+    "Xmlns": "podzar",
+    "ObjektovyTypNazev": "podpěrné zařízení",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Sdílená stavba / objekt technické infrastruktury",
+    "ObsahovaCast": "TI"
   }
 }

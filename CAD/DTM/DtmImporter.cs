@@ -135,6 +135,8 @@ namespace CAD.DTM
                         break;
                     case "srsDimension":
                         geometry.SrsDimension = int.Parse(attribute.InnerText);
+                        if (geometry.SrsDimension != 2 && geometry.SrsDimension != 3)
+                            throw new Exception($"Point dimension {geometry.SrsDimension} is not valid.");
                         break;
                 }
             }
@@ -201,16 +203,26 @@ namespace CAD.DTM
                 throw new Exception("Invalid curve geometry.");
             var posList = lineString.ChildNodes[0];
             var coordinates = posList.InnerText.Split(' ');
-            if (coordinates.Length % 3 != 0)
+            var pointsDimension = 0;
+            if (!skipAttributes)
             {
-                throw new Exception($"Coordinates are not in correct format.");
+                pointsDimension = geometry.SrsDimension;
             }
-            var count = coordinates.Length / 3;
+            else
+            {
+                if (coordinates.Length % 3 != 0)
+                {
+                    throw new Exception($"Coordinates are not in correct format.");
+                }
+                pointsDimension = 3;
+            }
+
+            var count = coordinates.Length / pointsDimension;
             geometry.Points = new List<DtmPoint>(count);
             for (var i = 0; i < count; i++)
             {
-                var beginIdx = i * 3;
-                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], coordinates[beginIdx + 2]));
+                var beginIdx = i * pointsDimension;
+                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], pointsDimension == 3 ? coordinates[beginIdx + 2] : "0"));
             }
             return geometry;
         }
