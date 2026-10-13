@@ -1,0 +1,8 @@
+<Project>
+
+  <PropertyGroup>
+    <Deterministic>false</Deterministic>
+    <NoWarn>$(NoWarn);SYSLIB0011;WFO1000</NoWarn>
+  </PropertyGroup>
+
+</Project>

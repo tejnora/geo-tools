@@ -8,7 +8,7 @@ namespace GeoCalculationsTest.Transformation
     class Identity2DTransformation
     {
         [Test]
-        [Ignore]//todo
+        [Ignore("todo")]
         public void Test1()
         {
             var globalPointsArray = new double[3][];

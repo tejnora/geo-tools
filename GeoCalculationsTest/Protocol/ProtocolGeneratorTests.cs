@@ -309,7 +309,7 @@ namespace GeoCalculationsTest.Protocol
         }
 
         [Test]
-        [Ignore]
+        [Ignore("Ignored")]
         public void Deviations()
         {
             var node = ProtocolGrammar.Terms.Parse("<deviations Variable=\"Deviations\" Name=\"PolarMethodDeviation\"/>");

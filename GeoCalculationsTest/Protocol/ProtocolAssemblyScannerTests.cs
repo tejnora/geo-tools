@@ -38,7 +38,7 @@ namespace GeoCalculationsTest.Protocol
             Assert.Contains(typeof(ProtocolAttributeTestClass), new Collection<Type>(types.ToList()));
         }
 
-        [Ignore]
+        [Ignore("Ignored")]
         public void ProtocolPropertyDataAttribute()
         {
             var types = ScanProtocolResultData.GetCalculationResults(Assembly.GetAssembly(typeof(ProtocolAssemblyScannerTests)));
