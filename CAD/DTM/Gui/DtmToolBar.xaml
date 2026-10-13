@@ -18,6 +18,7 @@
         <Image Source="/CAD;component/Icons/VfkLevelManager.png"></Image>
     </Button>
 
+    <Button ToolTip="Validace DTM" Click="OnDtmValidate" Content="✔" />
     <ToggleButton  Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
         <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
     </ToggleButton>

@@ -18,6 +18,7 @@
     <Resource Include="GUI\*.png" />
     <Resource Include="Localization\cs-CZ.xml" CopyToOutputDirectory="Always" />
     <EmbeddedResource Include="Resources\hmove.cur" />
+    <Content Include="DTM\Doc\xsd\**\*.xsd" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

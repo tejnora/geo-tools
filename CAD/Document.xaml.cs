@@ -7,6 +7,7 @@ using CAD.Canvas.DrawTools;
 using System.IO;
 using CAD.DTM;
 using CAD.DTM.Gui;
+using CAD.DTM.Validation;
 using CAD.VFK;
 using CAD.VFK.DrawTools;
 using CAD.VFK.GUI;
@@ -226,6 +227,12 @@ namespace CAD
             if (!result.HasValue || !result.Value) return;
             try
             {
+                var validation = new DtmValidator(DataModel.DtmMain, ctx).Validate();
+                if (validation.HasErrors)
+                {
+                    new DtmValidationDialog(validation).ShowDialog();
+                    return;
+                }
                 DataModel.DtmMain.Export(ctx);
             }
             catch (ExportExcetiption ex)
@@ -237,6 +244,12 @@ namespace CAD
                 System.Windows.MessageBox.Show("Neočekávaná chyba", "Neočekávaná chyba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+        public void ValidateDtm()
+        {
+            if (DataModel.DtmMain == null) return;
+            var validation = new DtmValidator(DataModel.DtmMain).Validate();
+            new DtmValidationDialog(validation).ShowDialog();
         }
         public bool ImportDtm(string location)
         {

@@ -273,6 +273,10 @@ namespace CAD.DTM.Gui
             }
 
         }
+        void OnDtmValidate(object sender, RoutedEventArgs e)
+        {
+            ToolBarManager.Document.ValidateDtm();
+        }
         void OnDtmLayerManager(object sender, RoutedEventArgs e)
         {
             if (ToolBarManager.Document.DataModel.ShowDtmLayerManager())
