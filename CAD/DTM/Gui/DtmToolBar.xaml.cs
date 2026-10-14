@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Windows.Data;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
 using CAD.UITools;
+using GeoBase;
 using GeoBase.Utils;
 using System.Windows.Input;
 
@@ -20,10 +22,10 @@ namespace CAD.DTM.Gui
             DtmLineSetting = new ObservableCollection<string>();
             DtmPointSetting = new ObservableCollection<string>();
         }
-        public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ObservableCollection<DtmLineElement>), null);
-        public ObservableCollection<DtmLineElement> DtmLineElements
+        public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ListCollectionView), null);
+        public ListCollectionView DtmLineElements
         {
-            get => GetValue<ObservableCollection<DtmLineElement>>(_dtmLineElements);
+            get => GetValue<ListCollectionView>(_dtmLineElements);
             set => SetValue(_dtmLineElements, value);
         }
         public readonly PropertyData _dtmLineElementSelected = RegisterProperty("DtmLineElementSelected", typeof(DtmLineElement), null);
@@ -192,13 +194,17 @@ namespace CAD.DTM.Gui
     {
         string _displayName;
         public string Name { get; set; }
+        public string ObjektovyTypNazev { get; set; }
+        public string KategorieObjektu { get; set; }
         public string DisplayName
         {
             get
             {
                 if (_displayName != null)
                     return _displayName;
-                _displayName = DtmConfigurationSingleton.ToNiceName(Name, Category);
+                _displayName = !string.IsNullOrWhiteSpace(ObjektovyTypNazev)
+                    ? ObjektovyTypNazev
+                    : DtmConfigurationSingleton.ToNiceName(Name, Category);
                 return _displayName;
             }
         }
@@ -209,13 +215,17 @@ namespace CAD.DTM.Gui
     {
         string _displayName;
         public string Name { get; set; }
+        public string Category { get; set; }
+        public string ObjektovyTypNazev { get; set; }
         public string DisplayName
         {
             get
             {
                 if (_displayName != null)
                     return _displayName;
-                _displayName = DtmConfigurationSingleton.ToNiceName(Name, DtmElementType.Linie);
+                _displayName = !string.IsNullOrWhiteSpace(ObjektovyTypNazev)
+                    ? ObjektovyTypNazev
+                    : DtmConfigurationSingleton.ToNiceName(Name, DtmElementType.Linie);
                 return _displayName;
             }
         }
@@ -231,27 +241,37 @@ namespace CAD.DTM.Gui
         {
             InitializeComponent();
             var dtmPointsElement = new List<DtmPointElement>();
+            var dtmLinesElement = new List<DtmLineElement>();
             _ctx = new DtmToolBarCtx
             {
-                DtmLineElements = new ObservableCollection<DtmLineElement>(),
-                PointToggleButton=_pointToggleButton
+                PointToggleButton = _pointToggleButton
             };
             foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting)
             {
                 switch (element.Value.ElementType)
                 {
                     case DtmElementType.Linie:
-                        _ctx.DtmLineElements.Add(new DtmLineElement { Name = element.Key });
+                        dtmLinesElement.Add(new DtmLineElement { Name = element.Key, Category = element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
                         break;
                     case DtmElementType.Bod:
                     case DtmElementType.DefinicniBod:
-                        dtmPointsElement.Add(new DtmPointElement { Name = element.Key, Category = element.Value.ElementType });
+                        dtmPointsElement.Add(new DtmPointElement
+                        {
+                            Name = element.Key,
+                            Category = element.Value.ElementType,
+                            ObjektovyTypNazev = element.Value.ObjektovyTypNazev,
+                            KategorieObjektu = element.Value.KategorieObjektu
+                        });
                         break;
                 }
             }
             _ctx.DtmPointElements = new ListCollectionView(dtmPointsElement);
             _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
-            _ctx.DtmLineElementSelected = _ctx.DtmLineElements[0];
+            _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("KategorieObjektu"));
+            _ctx.DtmLineElements = new ListCollectionView(dtmLinesElement);
+            _ctx.DtmLineElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            _ctx.DtmLineElements.MoveCurrentToFirst();
+            _ctx.DtmLineElementSelected = (DtmLineElement)_ctx.DtmLineElements.CurrentItem;
             _ctx.DtmPointElements.MoveCurrentToFirst();
             _ctx.DtmPointElementSelected = (DtmPointElement)_ctx.DtmPointElements.CurrentItem;
             DataContext = _ctx;
@@ -273,6 +293,72 @@ namespace CAD.DTM.Gui
             }
 
         }
+        static bool IsGroupHeader(object sender, MouseButtonEventArgs e) =>
+            e.OriginalSource is FrameworkElement fe && fe.Name == "GroupHeader" && fe.TemplatedParent == sender;
+
+        void OnGroupHeaderMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (IsGroupHeader(sender, e))
+                e.Handled = true;
+        }
+
+        const string CollapsedGroupsKey = "Dtm/CollapsedGroups";
+        HashSet<string> _collapsedGroups;
+
+        HashSet<string> CollapsedGroups
+        {
+            get
+            {
+                if (_collapsedGroups == null)
+                {
+                    var value = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, CollapsedGroupsKey).getString(string.Empty);
+                    _collapsedGroups = new HashSet<string>(value.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
+                }
+                return _collapsedGroups;
+            }
+        }
+
+        static string GetGroupPath(FrameworkElement groupItem)
+        {
+            var names = new List<string>();
+            DependencyObject current = groupItem;
+            while (current != null)
+            {
+                if (current is System.Windows.Controls.GroupItem item && item.DataContext is CollectionViewGroup group)
+                    names.Insert(0, group.Name?.ToString() ?? string.Empty);
+                current = VisualTreeHelper.GetParent(current);
+            }
+            var owner = System.Windows.Controls.ItemsControl.GetItemsOwner(groupItem) as FrameworkElement;
+            return (owner?.Name ?? string.Empty) + ">" + string.Join(">", names);
+        }
+
+        void OnGroupLoaded(object sender, RoutedEventArgs e)
+        {
+            var group = (FrameworkElement)sender;
+            group.Tag = CollapsedGroups.Contains(GetGroupPath(group)) ? "Collapsed" : null;
+        }
+
+        void OnGroupHeaderMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsGroupHeader(sender, e))
+                return;
+            var group = (FrameworkElement)sender;
+            var path = GetGroupPath(group);
+            if ((string)group.Tag == "Collapsed")
+            {
+                group.Tag = null;
+                CollapsedGroups.Remove(path);
+            }
+            else
+            {
+                group.Tag = "Collapsed";
+                CollapsedGroups.Add(path);
+            }
+            SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, CollapsedGroupsKey,
+                new ProgramOption(string.Join("|", CollapsedGroups)));
+            e.Handled = true;
+        }
+
         void OnDtmValidate(object sender, RoutedEventArgs e)
         {
             ToolBarManager.Document.ValidateDtm();

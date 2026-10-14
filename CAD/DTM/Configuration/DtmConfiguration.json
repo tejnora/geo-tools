@@ -711,6 +711,249 @@
     "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
     "ObsahovaCast": "ZPS"
   },
+  "DvurNadvoriPlocha": {
+    "Color": [ 245, 245, 245, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000189",
+    "CodeSuffix": "03",
+    "Xmlns": "dvnpol",
+    "ObjektovyTypNazev": "dvůr, nádvoří",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "DvurNadvoriDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000189",
+    "CodeSuffix": "04",
+    "Xmlns": "dvndef",
+    "ObjektovyTypNazev": "dvůr, nádvoří",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "HristePlocha": {
+    "Color": [ 255, 250, 219, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000152",
+    "CodeSuffix": "03",
+    "Xmlns": "hripol",
+    "ObjektovyTypNazev": "hřiště",
+    "KategorieObjektu": "Rekreační, kulturní a sakrální stavby",
+    "SkupinaObjektu": "Sportoviště a hřiště pro rekreaci",
+    "ObsahovaCast": "ZPS"
+  },
+  "HristeDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000152",
+    "CodeSuffix": "04",
+    "Xmlns": "hridef",
+    "ObjektovyTypNazev": "hřiště",
+    "KategorieObjektu": "Rekreační, kulturní a sakrální stavby",
+    "SkupinaObjektu": "Sportoviště a hřiště pro rekreaci",
+    "ObsahovaCast": "ZPS"
+  },
+  "HrbitovPlocha": {
+    "Color": [ 210, 212, 188, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000157",
+    "CodeSuffix": "03",
+    "Xmlns": "hrbpol",
+    "ObjektovyTypNazev": "hřbitov",
+    "KategorieObjektu": "Rekreační, kulturní a sakrální stavby",
+    "SkupinaObjektu": "Stavba kulturní, sakrální",
+    "ObsahovaCast": "ZPS"
+  },
+  "HrbitovDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000157",
+    "CodeSuffix": "04",
+    "Xmlns": "hrbdef",
+    "ObjektovyTypNazev": "hřbitov",
+    "KategorieObjektu": "Rekreační, kulturní a sakrální stavby",
+    "SkupinaObjektu": "Stavba kulturní, sakrální",
+    "ObsahovaCast": "ZPS"
+  },
+  "JezeroPlocha": {
+    "Color": [ 217, 242, 255, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000205",
+    "CodeSuffix": "03",
+    "Xmlns": "jezpol",
+    "ObjektovyTypNazev": "jezero",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Přírodní vodní plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "JezeroDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000205",
+    "CodeSuffix": "04",
+    "Xmlns": "jezdef",
+    "ObjektovyTypNazev": "jezero",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Přírodní vodní plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "KominPlocha": {
+    "Color": [ 210, 210, 210, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000177",
+    "CodeSuffix": "03",
+    "Xmlns": "kompol",
+    "ObjektovyTypNazev": "komín",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "KominDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000177",
+    "CodeSuffix": "04",
+    "Xmlns": "komdef",
+    "ObjektovyTypNazev": "komín",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "LesPlocha": {
+    "Color": [ 211, 224, 188, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000211",
+    "CodeSuffix": "03",
+    "Xmlns": "lespol",
+    "ObjektovyTypNazev": "les",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "LesDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000211",
+    "CodeSuffix": "04",
+    "Xmlns": "lesdef",
+    "ObjektovyTypNazev": "les",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Hospodářská plocha",
+    "ObsahovaCast": "ZPS"
+  },
+  "RampaPlocha": {
+    "Color": [ 230, 230, 230, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000173",
+    "CodeSuffix": "03",
+    "Xmlns": "rampol",
+    "ObjektovyTypNazev": "rampa",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "RampaDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000173",
+    "CodeSuffix": "04",
+    "Xmlns": "ramdef",
+    "ObjektovyTypNazev": "rampa",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "TerasaPlocha": {
+    "Color": [ 230, 230, 230, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000175",
+    "CodeSuffix": "03",
+    "Xmlns": "terpol",
+    "ObjektovyTypNazev": "terasa",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "TerasaDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000175",
+    "CodeSuffix": "04",
+    "Xmlns": "terdef",
+    "ObjektovyTypNazev": "terasa",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZahradniBazenPlocha": {
+    "Color": [ 222, 235, 255, 100 ],
+    "Width": 0.02,
+    "CodeBase": "0100000181",
+    "CodeSuffix": "03",
+    "Xmlns": "zabpol",
+    "ObjektovyTypNazev": "zahradní bazén",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
+  "ZahradniBazenDefinicniBod": {
+    "Graphic": [
+      {
+        "Color": [ 255, 255, 255, 255 ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "CodeBase": "0100000181",
+    "CodeSuffix": "04",
+    "Xmlns": "zabdef",
+    "ObjektovyTypNazev": "zahradní bazén",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS"
+  },
   "ZemedelskaPlochaPlocha": {
     "Color": [ 0, 180, 0, 100 ],
     "Width": 0.02,

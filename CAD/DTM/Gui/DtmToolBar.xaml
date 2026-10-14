@@ -14,6 +14,29 @@
                         CanExecute="OnCanExecute"
                         Executed="OnExecute" />
     </UITools:GeoCadToolBar.CommandBindings>
+    <UITools:GeoCadToolBar.Resources>
+        <Style x:Key="CollapsibleGroupItemStyle" TargetType="{x:Type GroupItem}">
+            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="OnGroupHeaderMouseUp" />
+            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="OnGroupHeaderMouseDown" />
+            <EventSetter Event="Loaded" Handler="OnGroupLoaded" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                        <StackPanel>
+                            <TextBlock x:Name="GroupHeader" Margin="5,1,1,1" FontWeight="Bold" Background="Transparent"
+                                       Text="{Binding Name, StringFormat='▾ {0}'}"/>
+                            <ItemsPresenter x:Name="GroupItems" Margin="10,0,0,0" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Collapsed">
+                                <Setter TargetName="GroupItems" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UITools:GeoCadToolBar.Resources>
     <Button ToolTip="Enable / Disable layers" Click="OnDtmLayerManager">
         <Image Source="/CAD;component/Icons/VfkLevelManager.png"></Image>
     </Button>
@@ -22,10 +45,17 @@
     <ToggleButton  Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
         <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
     </ToggleButton>
-    <ComboBox Width="120"
+    <ComboBox Width="120" x:Name="_lineCombo"
               SelectedItem="{Binding Path=DtmLineElementSelected}"
-              ItemsSource="{Binding Path=DtmLineElements}"
-              DisplayMemberPath="DisplayName">
+              ItemsSource="{Binding Path=DtmLineElements}">
+        <ComboBox.GroupStyle>
+            <GroupStyle ContainerStyle="{StaticResource CollapsibleGroupItemStyle}" />
+        </ComboBox.GroupStyle>
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Margin="15,1,1,1" Text="{Binding DisplayName}"/>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
     </ComboBox>
     <ComboBox Width="100"
               SelectedItem="{Binding Path=DtmLineSettingSelected}"
@@ -35,21 +65,16 @@
     <ToggleButton  Command="{Binding CurrentPointCommand}" ToolTip="Point" Name="_pointToggleButton">
         <Image Source="/CAD;component/Icons/VfkMarks.png"></Image>
     </ToggleButton>
-    <ComboBox Width="120"
+    <ComboBox Width="120" x:Name="_pointCombo"
               SelectedItem="{Binding Path=DtmPointElementSelected}"
               ItemsSource="{Binding Path=DtmPointElements}">
         <ComboBox.GroupStyle>
-            <GroupStyle>
-                <GroupStyle.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="5,1,1,1" FontWeight="Bold" Text="{Binding Name}"/>
-                    </DataTemplate>
-                </GroupStyle.HeaderTemplate>
-            </GroupStyle>
+            <GroupStyle ContainerStyle="{StaticResource CollapsibleGroupItemStyle}" />
+            <GroupStyle ContainerStyle="{StaticResource CollapsibleGroupItemStyle}" />
         </ComboBox.GroupStyle>
         <ComboBox.ItemTemplate>
             <DataTemplate>
-                <TextBlock Margin="15,1,1,1" Text="{Binding DisplayName}"/>
+                <TextBlock Margin="25,1,1,1" Text="{Binding DisplayName}"/>
             </DataTemplate>
         </ComboBox.ItemTemplate>
     </ComboBox>

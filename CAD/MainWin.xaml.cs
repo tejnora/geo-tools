@@ -34,6 +34,13 @@ namespace CAD
             InitLayout();
             InitToolBars();
             InitDockablePalette();
+            Closing += OnMainWinClosing;
+        }
+
+        void OnMainWinClosing(object sender, EventArgs e)
+        {
+            onSavePosAndSize(sender, e);
+            Singletons.Registry.Save();
         }
 
         void InitDockablePalette()
