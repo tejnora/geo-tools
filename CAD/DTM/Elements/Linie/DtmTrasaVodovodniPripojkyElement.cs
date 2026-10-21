@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
 using System;
@@ -14,28 +14,6 @@ namespace CAD.DTM.Elements
         public string Material { get; set; }
         public uint Dimenze { get; set; }
 
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS_TI(exporter);
-            exporter.AddElement("atr", "Dimenze", (int)Dimenze);
-            exporter.AddElement("atr", "Material", Material);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "Material":
-                        Material = x.InnerText;
-                        break;
-                    case "Dimenze":
-                        Dimenze = uint.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
         public override string GetInfoAsString()
         {
             return $"Material: {Material}, Dimenze:{Dimenze}";

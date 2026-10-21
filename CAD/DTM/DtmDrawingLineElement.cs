@@ -1,6 +1,7 @@
 ﻿using CAD.Canvas;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Forms;
@@ -57,19 +58,23 @@ namespace CAD.DTM
         {
             if (_curveGeometry == null)
                 return false;
-            var p1 = new UnitPoint(_curveGeometry.Points[0].X, _curveGeometry.Points[0].Y);
-            var p2 = new UnitPoint();
-            for (var i = 1; i < _curveGeometry.Points.Count; i++)
+            foreach (var curve in Curves)
             {
-                p2.X = _curveGeometry.Points[i].X;
-                p2.Y = _curveGeometry.Points[i].Y;
-                if (doAction(p1, p2))
-                    return true;
-                (p1, p2) = (p2, p1);
+                if (curve.Points == null || curve.Points.Count == 0) continue;
+                var p1 = new UnitPoint(curve.Points[0].X, curve.Points[0].Y);
+                var p2 = new UnitPoint();
+                for (var i = 1; i < curve.Points.Count; i++)
+                {
+                    p2.X = curve.Points[i].X;
+                    p2.Y = curve.Points[i].Y;
+                    if (doAction(p1, p2)) return true;
+                    (p1, p2) = (p2, p1);
+                }
             }
 
             return false;
         }
+        IEnumerable<DtmCurveGeometry> Curves => _curveGeometry is DtmMultiCurveGeometry multi ? multi.Curves : new[] { _curveGeometry };
 
         public bool PointInObject(ICanvas canvas, UnitPoint point)
         {
@@ -126,7 +131,7 @@ namespace CAD.DTM
             var minY = double.MaxValue;
             var maxX = double.MinValue;
             var maxY = double.MinValue;
-            foreach (var lineSegment in _curveGeometry.Points)
+            foreach (var lineSegment in Curves.SelectMany(c => c.Points))
             {
                 minX = Math.Min(lineSegment.X, minX);
                 minY = Math.Min(lineSegment.Y, minY);
@@ -207,12 +212,14 @@ namespace CAD.DTM
 
         public void Export(IExport export)
         {
-            if (_curveGeometry.Points.Count <= 1)
-                return;
-            var points = new UnitPoint[_curveGeometry.Points.Count];
-            for (var i = 0; i < _curveGeometry.Points.Count; i++)
-                points[i] = new UnitPoint(_curveGeometry.Points[i].X, _curveGeometry.Points[i].Y);
-            export.AddPolyline(ref points, Group.Options.Color, Group.Options.Width);
+            foreach (var curve in Curves)
+            {
+                if (curve.Points.Count <= 1) continue;
+                var points = new UnitPoint[curve.Points.Count];
+                for (var i = 0; i < curve.Points.Count; i++)
+                    points[i] = new UnitPoint(curve.Points[i].X, curve.Points[i].Y);
+                export.AddPolyline(ref points, Group.Options.Color, Group.Options.Width);
+            }
 
         }
 
@@ -232,7 +239,7 @@ namespace CAD.DTM
             };
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmLineElementSelected.Item1);
-            _element.SelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
+            _element.ApplySelectedSetting(dtmLayer.DtmLineElementSelected.Item2);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { _curveGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmLineElementSelected.Item1, this);
             Selected = true;

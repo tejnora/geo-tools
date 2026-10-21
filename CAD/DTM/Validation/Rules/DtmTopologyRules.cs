@@ -97,7 +97,7 @@ namespace CAD.DTM.Validation.Rules
             foreach (var item in items)
             {
                 var set = SetKey(ctx, item);
-                foreach (var g in item.Geometries.OfType<DtmCurveGeometry>())
+                foreach (var g in item.Geometries.OfType<DtmCurveGeometry>().SelectMany(g => g is DtmMultiCurveGeometry multi ? multi.Curves : new[] { g }))
                 {
                     var pts = g.Points;
                     if (pts == null) continue;

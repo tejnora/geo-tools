@@ -16,6 +16,12 @@ namespace CAD.DTM.Validation
         {
             get
             {
+                if (Element is DtmElement element && element.SchemaAttributes != null)
+                {
+                    element.SchemaAttributes.SynchronizeLegacyValues();
+                    var levelAttribute = element.SchemaAttributes.Fields().FirstOrDefault(f => f.Attribute.Name.StartsWith("UrovenUmisteniObjektu", StringComparison.Ordinal));
+                    if (levelAttribute.Path != null && int.TryParse(element.SchemaAttributes.Get<string>(levelAttribute.Path), out var level)) return level;
+                }
                 if (Element.SpolecneAtributyZPS != null) return Element.SpolecneAtributyZPS.UrovenUmisteniObjektuZPS;
                 if (Element.SpolecneAtributyObjektuZPS_TI != null) return Element.SpolecneAtributyObjektuZPS_TI.UrovenUmisteniObjektuTI;
                 return 0;
@@ -24,7 +30,7 @@ namespace CAD.DTM.Validation
         public char Mode => Element.EvaluateZapisObjektuForGui();
         public DtmElementType Type => Element.ElementType;
         public IEnumerable<DtmPoint> Points => Geometries.SelectMany(DtmValidationContext.GetPoints);
-        public IEnumerable<DtmPoint> LinePoints => Geometries.OfType<DtmCurveGeometry>().SelectMany(g => g.Points ?? new List<DtmPoint>());
+        public IEnumerable<DtmPoint> LinePoints => Geometries.OfType<DtmCurveGeometry>().SelectMany(DtmValidationContext.GetPoints);
         public IEnumerable<IDtmGeometry> Geometries => Element.Geometry?.Geometries ?? Enumerable.Empty<IDtmGeometry>();
     }
 
@@ -84,6 +90,10 @@ namespace CAD.DTM.Validation
         {
             switch (geometry)
             {
+                case DtmMultiCurveGeometry multi:
+                    foreach (var member in multi.Curves)
+                        foreach (var pt in member.Points ?? new List<DtmPoint>()) yield return pt;
+                    break;
                 case DtmPointGeometry p:
                     if (p.Point != null) yield return p.Point;
                     break;
@@ -92,12 +102,13 @@ namespace CAD.DTM.Validation
                     break;
                 case DtmPolygonGeometry pg:
                     foreach (var pt in pg.Points ?? new List<DtmPoint>()) yield return pt;
+                    foreach (var ring in pg.InteriorRings)
+                        foreach (var pt in ring) yield return pt;
                     break;
             }
         }
 
-        public static bool HasZ(IDtmGeometry geometry) =>
-            geometry is DtmPointGeometry || geometry is DtmCurveGeometry || geometry.SrsDimension == 3;
+        public static bool HasZ(IDtmGeometry geometry) => geometry.SrsDimension == 3;
 
         public List<DtmPoint> GetChangeArea()
         {

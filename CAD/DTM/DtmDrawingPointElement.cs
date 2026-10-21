@@ -69,8 +69,9 @@ namespace CAD.DTM
         {
             if (PointGeometry == null)
                 return;
+            UpdatePoint();
             var scale = DtmUtils.GetScale(canvas);
-            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            var graphicElement = _element.ResolveGraphicElement(Group.Options, scale);
             if (graphicElement == null)
                 return;
             canvas.DrawSymbol(canvas, graphicElement.Symbol, _point, graphicElement.Size);
@@ -100,9 +101,10 @@ namespace CAD.DTM
         {
             if (PointGeometry == null)
                 return Rect.Empty;
+            UpdatePoint();
             var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             var scale = DtmUtils.GetScale(canvas);
-            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            var graphicElement = _element.ResolveGraphicElement(Group.Options, scale);
             if (graphicElement == null)
                 return Rect.Empty;
             var deltaX = graphicElement.Size.X / 2.0 * canvas.SymbolScaleCoefficient;
@@ -219,7 +221,7 @@ namespace CAD.DTM
 
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
-            _element.SelectedSetting(dtmLayer.DtmPointSelected.Item2);
+            _element.ApplySelectedSetting(dtmLayer.DtmPointSelected.Item2);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
             Selected = false;

@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.Linie;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
@@ -12,24 +12,7 @@ namespace CAD.DTM.Elements
         : DtmLinieElementBase
     {
         public DtmTypDopravniStavbyNeboPlochyEnum TypDopravniStavbyNeboPlochy { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "TypDopravniStavbyNeboPlochy", (int)TypDopravniStavbyNeboPlochy);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement xe in xmlElement)
-            {
-                switch (xe.LocalName)
-                {
-                    case "TypDopravniStavbyNeboPlochy":
-                        TypDopravniStavbyNeboPlochy = (DtmTypDopravniStavbyNeboPlochyEnum)int.Parse(xe.InnerText);
-                        break;
-                }
-            }
-        }
+
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
             properties.AddProperty(new DtmEnumCustomProperty<DtmTypDopravniStavbyNeboPlochyEnum>

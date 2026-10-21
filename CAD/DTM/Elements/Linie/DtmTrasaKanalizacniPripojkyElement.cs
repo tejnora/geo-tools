@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -16,36 +16,6 @@ namespace CAD.DTM.Elements
         public DtmDruhStokoveSiteEnum DruhStokoveSite { get; set; }
         public DtmUceloveZarazeniStokoveSiteEnum UceloveZarazeniStokoveSite { get; set; }
 
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS_TI(exporter);
-            exporter.AddElement("atr", "UceloveZarazeniStokoveSite", (int)UceloveZarazeniStokoveSite);
-            exporter.AddElement("atr", "DruhStokoveSite", (int)DruhStokoveSite);
-            exporter.AddElement("atr", "Dimenze", (int)Dimenze);
-            exporter.AddElement("atr", "Material", Material);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "Material":
-                        Material = x.InnerText;
-                        break;
-                    case "Dimenze":
-                        Dimenze = uint.Parse(x.InnerText);
-                        break;
-                    case "DruhStokoveSite":
-                        DruhStokoveSite = (DtmDruhStokoveSiteEnum)int.Parse(x.InnerText);
-                        break;
-                    case "UceloveZarazeniStokoveSite":
-                        UceloveZarazeniStokoveSite = (DtmUceloveZarazeniStokoveSiteEnum)int.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
         public override string GetInfoAsString()
         {
             return $"Material: {Material}, Dimenze:{Dimenze}, Druh stokove site:{DruhStokoveSite}, Ucelove zarazeni stokove site:{UceloveZarazeniStokoveSite}";

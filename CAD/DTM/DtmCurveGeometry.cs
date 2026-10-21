@@ -5,7 +5,7 @@ using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
-    class DtmCurveGeometry
+    public class DtmCurveGeometry
     : IDtmGeometry
     {
         public DtmCurveGeometry()
@@ -23,7 +23,7 @@ namespace CAD.DTM
             var posListData = new StringBuilder();
             foreach (var p in Points)
             {
-                posListData.Append(p.ExportToDtm(3) + " ");
+                posListData.Append(p.ExportToDtm(SrsDimension) + " ");
                 exporter.MarkPoint(p);
             }
             exporter.BeginElement("gml", "curveProperty", false);

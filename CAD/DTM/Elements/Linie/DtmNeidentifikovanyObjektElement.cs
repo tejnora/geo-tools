@@ -1,4 +1,4 @@
-﻿using System.Xml;
+using System.Xml;
 using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
@@ -6,14 +6,6 @@ namespace CAD.DTM.Elements
     class DtmNeidentifikovanyObjektElement
         : DtmLinieElementBase
     {
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-        }
 
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-        }
     }
 }

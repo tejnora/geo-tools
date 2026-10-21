@@ -12,6 +12,7 @@ using CAD.UITools;
 using GeoBase;
 using GeoBase.Utils;
 using System.Windows.Input;
+using System.Linq;
 
 namespace CAD.DTM.Gui
 {
@@ -23,6 +24,13 @@ namespace CAD.DTM.Gui
             DtmPointSetting = new ObservableCollection<string>();
         }
         public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ListCollectionView), null);
+        public ListCollectionView DtmAreaElements { get; set; }
+        DtmLineElement _areaSelected;
+        public DtmLineElement DtmAreaElementSelected
+        {
+            get => _areaSelected;
+            set { _areaSelected = value; UpdateToolSetting(); OnPropertyChanged("DtmAreaElementSelected"); }
+        }
         public ListCollectionView DtmLineElements
         {
             get => GetValue<ListCollectionView>(_dtmLineElements);
@@ -170,6 +178,7 @@ namespace CAD.DTM.Gui
             if (!(_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)) return;
             dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected.Name, DtmLineSettingSelected);
             dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected.Name, DtmPointSettingSelected);
+            dtmLayout.DtmAreaSelected = DtmAreaElementSelected?.Name;
             UpdateCurrentPointCommand();
             _canvasCommand?.UpadateDrawToolProperties();
         }
@@ -237,11 +246,13 @@ namespace CAD.DTM.Gui
         public static GeoCadRoutedCommand DtmMultiLine = new GeoCadRoutedCommand("DtmMultiLine", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public static GeoCadRoutedCommand DtmPoint = new GeoCadRoutedCommand("DtmPoint", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public static GeoCadRoutedCommand DtmDefinitionPoint = new GeoCadRoutedCommand("DtmDefinitionPoint", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
+        public static GeoCadRoutedCommand DtmArea = new GeoCadRoutedCommand("DtmArea", typeof(DtmToolBar), GeoCadRoutedCommand.CommandTypes.DrawTool);
         public DtmToolBar()
         {
             InitializeComponent();
             var dtmPointsElement = new List<DtmPointElement>();
             var dtmLinesElement = new List<DtmLineElement>();
+            var dtmAreaElements = new List<DtmLineElement>();
             _ctx = new DtmToolBarCtx
             {
                 PointToggleButton = _pointToggleButton
@@ -250,8 +261,11 @@ namespace CAD.DTM.Gui
             {
                 switch (element.Value.ElementType)
                 {
+                    case DtmElementType.Plocha:
+                        dtmAreaElements.Add(new DtmLineElement { Name = element.Key, Category = (element.Value.ObsahovaCast ?? "Ostatní") + " / " + element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
+                        break;
                     case DtmElementType.Linie:
-                        dtmLinesElement.Add(new DtmLineElement { Name = element.Key, Category = element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
+                        dtmLinesElement.Add(new DtmLineElement { Name = element.Key, Category = element.Value.ObsahovaCast + " / " + element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
                         break;
                     case DtmElementType.Bod:
                     case DtmElementType.DefinicniBod:
@@ -260,12 +274,15 @@ namespace CAD.DTM.Gui
                             Name = element.Key,
                             Category = element.Value.ElementType,
                             ObjektovyTypNazev = element.Value.ObjektovyTypNazev,
-                            KategorieObjektu = element.Value.KategorieObjektu
+                            KategorieObjektu = element.Value.ObsahovaCast + " / " + element.Value.KategorieObjektu
                         });
                         break;
                 }
             }
             _ctx.DtmPointElements = new ListCollectionView(dtmPointsElement);
+            _ctx.DtmAreaElements = new ListCollectionView(dtmAreaElements);
+            _ctx.DtmAreaElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            _ctx.DtmAreaElementSelected = dtmAreaElements.FirstOrDefault();
             _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
             _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("KategorieObjektu"));
             _ctx.DtmLineElements = new ListCollectionView(dtmLinesElement);

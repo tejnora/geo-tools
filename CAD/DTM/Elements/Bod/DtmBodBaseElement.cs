@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using System.Xml;
 
 namespace CAD.DTM.Elements
@@ -15,18 +15,5 @@ namespace CAD.DTM.Elements
             base.Init(dtmElementOption);
         }
 
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "CisloBodu":
-                        CisloBodu = x.InnerText;
-                        break;
-                }
-            }
-        }
     }
 }

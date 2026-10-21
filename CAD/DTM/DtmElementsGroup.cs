@@ -71,20 +71,27 @@ namespace CAD.DTM
             if (!HasSameElementsForExport())
                 return;
             var ns = DtmConfigurationSingleton.Instance.ElementSetting[Name].XmlNamespace;
-            exporter.BeginElement("objtyp", Name);
+            exporter.BeginElement("objtyp", DtmSchema.Instance.Objects[Name].ExchangeName);
             ExportToDtmGroupData(exporter, ns);
             exporter.BeginElement(ns, "ZaznamyObjektu");
             foreach (var element in _elements.Where(element => element.ExportToOutput))
             {
                 exporter.BeginElement(ns, "ZaznamObjektu", true);
                 exporter.AddElement("cmn", "ZapisObjektu", element.EvaluateZapisObjektuForExportToDtm());
-                exporter.BeginElement(null, "AtributyObjektu");
-                element.ExportSpolecneAtributyVsechObjektu(exporter);
-                element.ExportAttributesToDtm(exporter);
+                exporter.BeginElement(ns, "AtributyObjektu");
+                if (element is DtmElement typed && typed.SchemaAttributes != null)
+                    typed.SchemaAttributes.Export(exporter);
+                else
+                {
+                    element.ExportSpolecneAtributyVsechObjektu(exporter);
+                    element.ExportAttributesToDtm(exporter);
+                }
                 exporter.EndElement();
-                exporter.BeginElement(null, "GeometrieObjektu");
+                exporter.BeginElement(ns, "GeometrieObjektu");
                 element.Geometry.ExportToDtm(exporter);
                 exporter.EndElement();
+                if (element is DtmElement record && record.SchemaAttributes != null)
+                    foreach (var field in record.SchemaAttributes.RecordXml()) DtmSchemaAttributes.WriteElement(exporter, field);
                 exporter.EndElement();
             }
             exporter.EndElement();
@@ -93,13 +100,13 @@ namespace CAD.DTM
         void ExportToDtmGroupData(IDtmExporter dtmExporter, string ns)
         {
             dtmExporter.BeginElement(ns, "ObjektovyTypNazev");
-            dtmExporter.AddAttribute("code_base", CodeBase);
-            dtmExporter.AddAttribute("code_suffix", CodeSuffix);
+            if (CodeBase != null) dtmExporter.AddAttribute("code_base", CodeBase);
+            if (CodeSuffix != null) dtmExporter.AddAttribute("code_suffix", CodeSuffix);
             dtmExporter.AddStringData(ObjektovyTypNazev);
             dtmExporter.EndElement();
-            dtmExporter.AddElement(ns, "KategorieObjektu", KategorieObjektu);
-            dtmExporter.AddElement(ns, "SkupinaObjektu", SkupinaObjektu);
-            dtmExporter.AddElement(ns, "ObsahovaCast", ObsahovaCast);
+            if (KategorieObjektu != null) dtmExporter.AddElement(ns, "KategorieObjektu", KategorieObjektu);
+            if (SkupinaObjektu != null) dtmExporter.AddElement(ns, "SkupinaObjektu", SkupinaObjektu);
+            if (ObsahovaCast != null) dtmExporter.AddElement(ns, "ObsahovaCast", ObsahovaCast);
         }
 
     }

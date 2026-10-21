@@ -37,7 +37,7 @@ namespace CAD.DTM
             return new DtmPoint { X = -Y, Y = -X, Z = Z };
         }
 
-        static string NumberPattern = "0.00";
+        const string NumberPattern = "0.00###############";
         public string ExportToDtm(int srsDimension)
         {
             switch (srsDimension)

@@ -21,11 +21,13 @@ namespace CAD.DTM
         }
         public void AddElementGroup(string elementType, IDtmElementsGroup group)
         {
+            elementType = DtmSchema.CanonicalName(elementType);
             _groups.Add(elementType, group);
         }
 
         public IDtmElementsGroup getElementsGroup(string elementType)
         {
+            elementType = DtmSchema.CanonicalName(elementType);
             _groups.TryGetValue(elementType, out var group);
             return group;
         }
@@ -37,6 +39,7 @@ namespace CAD.DTM
 
         public void AddElementIfNotExist(string groupName, IDtmElement dtmElementGetDtmElement)
         {
+            groupName = DtmSchema.CanonicalName(groupName);
             if (!_groups.ContainsKey(groupName))
             {
                 var group = DtmConfigurationSingleton.Instance.CreateGroup(groupName);
@@ -47,9 +50,14 @@ namespace CAD.DTM
 
         public string AllocateUniqueId(string name)
         {
-            if (DtmConfigurationSingleton.Instance.ElementSetting.ContainsKey(name))
-                return $"ID{_idAllocator++}_{DtmConfigurationSingleton.Instance.ElementSetting[name].CodeSuffix}";
-            return $"ID{_idAllocator++}_{name}";
+            var suffix = DtmConfigurationSingleton.Instance.ElementSetting.TryGetValue(name, out var option) ? option.CodeSuffix ?? name : name;
+            var used = new HashSet<string>(_groups.Values.SelectMany(g => g.GetElementGroups())
+                .SelectMany(e => e.Geometry?.Geometries ?? Array.Empty<IDtmGeometry>())
+                .SelectMany(g => g is DtmMultiCurveGeometry multi ? multi.Curves.Cast<IDtmGeometry>().Prepend(g) : new[] { g })
+                .Select(g => g.Id));
+            string id;
+            do { id = $"ID{_idAllocator++}_{suffix}"; } while (used.Contains(id));
+            return id;
         }
 
         public DtmUdajeOVydeji UdajeOVydeji { get; set; }

@@ -44,7 +44,7 @@ namespace CAD.DTM.Validation.Rules
                 }
                 new DtmExporter(ctx.Main).CreateFile(exportCtx);
 
-                var schemas = new XmlSchemaSet();
+                var schemas = new XmlSchemaSet { XmlResolver = new XmlUrlResolver() };
                 schemas.Add("objtyp", xsdPath);
                 var settings = new XmlReaderSettings { ValidationType = ValidationType.Schema, Schemas = schemas };
                 settings.ValidationEventHandler += (s, e) =>

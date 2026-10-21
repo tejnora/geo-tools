@@ -13,6 +13,7 @@ namespace CAD.DTM.Validation.Rules
 
         protected override IEnumerable<DtmValidationRule> CreateChildren()
         {
+            yield return new DtmSchemaAttributesRule();
             yield return new DtmAttributesRule();
             yield return new DtmIcsRule();
             yield return new DtmHeightAccuracyClassRule();

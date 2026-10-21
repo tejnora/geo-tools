@@ -1,33 +1,33 @@
-﻿using CAD.DTM.Gui;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
-    class DtmMultiCurveGeometry
-    : DtmCurveGeometry
+    public class DtmMultiCurveGeometry : DtmCurveGeometry
     {
+        public List<DtmCurveGeometry> Members { get; set; } = new();
+        public IEnumerable<DtmCurveGeometry> Curves => Members.Count > 0 ? Members : new[] { new DtmCurveGeometry { Points = Points, SrsDimension = SrsDimension, SrsName = SrsName } };
+
         public override void ExportToDtm(IDtmExporter exporter)
         {
-            var posListData = new StringBuilder();
-            foreach (var p in Points)
-            {
-                posListData.Append(p.ExportToDtm(3) + " ");
-                exporter.MarkPoint(p);
-            }
-            exporter.BeginElement("gml", "multiCurveProperty", false);
+            exporter.BeginElement("gml", "multiCurveProperty");
             exporter.BeginElement("gml", "MultiCurve");
             exporter.AddAttribute("gml", "id", Id);
             exporter.AddAttribute("srsName", SrsName);
             exporter.AddAttribute("srsDimension", SrsDimension);
-            exporter.BeginElement("gml", "curveMember");
-            exporter.BeginElement("gml", "LineString");
-            exporter.AddElement("gml", "posList", posListData.ToString(0, posListData.Length - 1));
-            exporter.EndElement();
-            exporter.EndElement();
+            foreach (var member in Curves)
+            {
+                exporter.BeginElement("gml", "curveMember");
+                exporter.BeginElement("gml", "LineString");
+                if (!string.IsNullOrEmpty(member.Id)) exporter.AddAttribute("gml", "id", member.Id);
+                exporter.AddAttribute("srsName", member.SrsName);
+                exporter.AddAttribute("srsDimension", member.SrsDimension);
+                exporter.AddElement("gml", "posList", string.Join(" ", member.Points.Select(p => p.ExportToDtm(member.SrsDimension))));
+                foreach (var point in member.Points) exporter.MarkPoint(point);
+                exporter.EndElement();
+                exporter.EndElement();
+            }
             exporter.EndElement();
             exporter.EndElement();
         }

@@ -64,7 +64,7 @@ namespace CAD
             DocumentEnvironemt.Instance.HideAllPalette(_dockingManager);
         }
 
-        Document GetDocument()
+        internal Document GetDocument()
         {
             if (_dockingManager == null || _dockingManager.ActiveDocument == null)
                 return null;

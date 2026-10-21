@@ -1,174 +1,151 @@
-﻿using System.IO;
 using System;
-using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Windows.Controls;
-using CAD.DTM.Elements;
-using CAD.VFK;
-using GeoBase.Utils;
-using Image = System.Drawing.Image;
+using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
+using CAD.DTM.Elements;
+using GeoBase.Utils;
 
 namespace CAD.DTM.Configuration
 {
     public class DtmConfigurationSingleton
     {
-        static readonly DtmConfigurationSingleton _instance = new DtmConfigurationSingleton();
-        DtmConfigurationSingleton()
+        static readonly Lazy<DtmConfigurationSingleton> Singleton = new(() => Load(
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "DtmConfiguration.json"),
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "DtmSymbols")));
+        public static DtmConfigurationSingleton Instance => Singleton.Value;
+        public Dictionary<string, DtmElementOption> ElementSetting { get; } = new(StringComparer.Ordinal);
+        public List<string> Diagnostics { get; } = new();
+        readonly Dictionary<string, Image> _symbols = new(StringComparer.OrdinalIgnoreCase);
+
+        DtmConfigurationSingleton() { }
+
+        public static DtmConfigurationSingleton Load(string filename, string symbolDirectory)
         {
-            ElementSetting = new Dictionary<string, DtmElementOption>();
-            try
+            var result = new DtmConfigurationSingleton();
+            using var document = JsonDocument.Parse(File.ReadAllText(filename));
+            foreach (var field in document.RootElement.EnumerateObject())
             {
-                var jsonString = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "\\Data\\DtmConfiguration.json");
-                using (var document = JsonDocument.Parse(jsonString))
+                try
                 {
-                    var root = document.RootElement;
-                    foreach (var field in root.EnumerateObject())
+                    var value = field.Value;
+                    var name = DtmSchema.CanonicalName(field.Name);
+                    if (!DtmSchema.Instance.Objects.TryGetValue(name, out var schema))
+                        throw new InvalidDataException("Chybí definice XSD.");
+                    var option = new DtmElementOption
                     {
-                        var value = field.Value;
-                        var elementOption = new DtmElementOption()
-                        {
-                            ElementType = GetElementType(value.GetProperty("CodeSuffix").GetString()),
-                            CodeBase = value.GetProperty("CodeBase").GetString(),
-                            CodeSuffix = value.GetProperty("CodeSuffix").GetString(),
-                            XmlNamespace = value.GetProperty("Xmlns").GetString(),
-                            ObjektovyTypNazev = value.GetProperty("ObjektovyTypNazev").GetString(),
-                            KategorieObjektu = value.GetProperty("KategorieObjektu").GetString(),
-                            SkupinaObjektu = value.GetProperty("SkupinaObjektu").GetString(),
-                            ObsahovaCast = value.GetProperty("ObsahovaCast").GetString(),
-                            ClassType = Type.GetType($"CAD.DTM.Elements.Dtm{field.Name}Element")
-                        };
-                        ParseGraphicElement(elementOption, value);
-                        try
-                        {
-                            var width = (float)value.GetProperty("Width").GetDouble();
-                            var color = value.GetProperty("Color");
-                            var r = color[0].GetInt32();
-                            var g = color[1].GetInt32();
-                            var b = color[2].GetInt32();
-                            var a = color[3].GetInt32();
-                            elementOption.Color = Color.FromArgb(a, r, g, b);
-                            elementOption.Width = width;
-                        }
-                        catch
-                        {
-
-                        }
-
-                        ElementSetting[field.Name] = elementOption;
+                        Name = name,
+                        ElementType = Enum.Parse<DtmElementType>(schema.ElementType),
+                        CodeBase = String(value, "CodeBase"), CodeSuffix = String(value, "CodeSuffix"),
+                        XmlNamespace = String(value, "Xmlns"), ObjektovyTypNazev = String(value, "ObjektovyTypNazev"),
+                        KategorieObjektu = String(value, "KategorieObjektu"), SkupinaObjektu = String(value, "SkupinaObjektu"),
+                        ObsahovaCast = String(value, "ObsahovaCast"), GraphicSource = String(value, "GraphicSource"),
+                        GraphicAttribute = String(value, "GraphicAttribute"),
+                        ClassType = typeof(DtmElement).Assembly.GetType($"CAD.DTM.Elements.Dtm{name}Element"),
+                        Width = value.TryGetProperty("Width", out var width) ? (float)width.GetDouble() : 0.00018f,
+                        Color = value.TryGetProperty("Color", out var color) ? ColorValue(color) : Color.Gray
+                    };
+                    if (option.ClassType == null || option.ClassType.IsAbstract)
+                        throw new InvalidDataException("Chybí implementace objektu.");
+                    if (value.TryGetProperty("Graphic", out var graphic))
+                    {
+                        if (graphic.ValueKind == JsonValueKind.Array)
+                            option.RegisterGraphicElementByType("_", result.ReadGraphics(name, graphic, symbolDirectory));
+                        else
+                            foreach (var variant in graphic.EnumerateObject())
+                                option.RegisterGraphicElementByType(variant.Name, result.ReadGraphics(name, variant.Value, symbolDirectory));
                     }
+                    if (option.GetGraphicElement("_", DtmGraphicElementScaleEnum._500) == null
+                        && option.ElementType is DtmElementType.Bod or DtmElementType.DefinicniBod)
+                        option.RegisterGraphicElementByType("_", new[] { result.NeutralGraphic(option.Color) });
+                    if (!result.ElementSetting.TryAdd(name, option))
+                        throw new InvalidDataException("Duplicitní název nebo alias objektu.");
+                }
+                catch (Exception ex) when (ex is not OutOfMemoryException)
+                {
+                    throw new InvalidDataException($"DTM konfigurace: {field.Name}: {ex.Message}", ex);
                 }
             }
-            catch { }
+            var missing = DtmSchema.Instance.Objects.Keys.Except(result.ElementSetting.Keys).ToArray();
+            if (missing.Length > 0) throw new InvalidDataException("DTM konfigurace neobsahuje: " + string.Join(", ", missing));
+            return result;
         }
 
-        void ParseGraphicElement(DtmElementOption dtmElement, JsonElement jsonElement)
-        {
-            if (!jsonElement.TryGetProperty("Graphic", out var graphic))
-                return;
-            IList<DtmGraphicElement> definitionByScales;
-            switch (graphic.ValueKind)
-            {
-                case JsonValueKind.Object:
-                    foreach (var field in graphic.EnumerateObject())
-                    {
-                        definitionByScales = ParseGraphicElementArray(field.Value);
-                        dtmElement.RegisterGraphicElementByType(field.Name, definitionByScales);
-                    }
-                    break;
-                case JsonValueKind.Array:
-                    definitionByScales = ParseGraphicElementArray(graphic);
-                    dtmElement.RegisterGraphicElementByType("_", definitionByScales);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
+        static string String(JsonElement value, string property) =>
+            value.TryGetProperty(property, out var field) && field.ValueKind == JsonValueKind.String ? field.GetString() : null;
 
-        IList<DtmGraphicElement> ParseGraphicElementArray(JsonElement jsonScaleElement)
+        static Color ColorValue(JsonElement value) => Color.FromArgb(value[3].GetInt32(), value[0].GetInt32(), value[1].GetInt32(), value[2].GetInt32());
+
+        IList<DtmGraphicElement> ReadGraphics(string name, JsonElement array, string directory)
         {
-            var elements = new List<DtmGraphicElement>();
-            foreach (var field in jsonScaleElement.EnumerateArray())
+            var result = new List<DtmGraphicElement>();
+            foreach (var value in array.EnumerateArray())
             {
-                var width = (float)field.GetProperty("Width").GetDouble();
-                var color = field.GetProperty("Color");
-                var r = color[0].GetInt32();
-                var g = color[1].GetInt32();
-                var b = color[2].GetInt32();
-                var a = color[3].GetInt32();
-                var symbol = field.GetProperty("Symbol").GetString();
-                elements.Add(new DtmGraphicElement()
+                var filename = value.GetProperty("Symbol").GetString();
+                var color = ColorValue(value.GetProperty("Color"));
+                Image image;
+                try
                 {
-                    Color = Color.FromArgb(a, r, g, b),
-                    Size = new UnitPoint(width, width),
-                    Symbol = Image.FromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "DtmSymbols", symbol))
-                });
+                    if (!_symbols.TryGetValue(filename, out image))
+                    {
+                        using var source = Image.FromFile(Path.Combine(directory, filename));
+                        image = new Bitmap(source);
+                        _symbols.Add(filename, image);
+                    }
+                }
+                catch (Exception ex) when (ex is FileNotFoundException or ArgumentException or OutOfMemoryException)
+                {
+                    Diagnostics.Add($"{name}: symbol {filename}: {ex.Message}; použita neutrální značka.");
+                    image = NeutralGraphic(color).Symbol;
+                }
+                var size = value.GetProperty("Width").GetDouble();
+                result.Add(new DtmGraphicElement { Color = color, Size = new UnitPoint(size, size), Symbol = image });
             }
-
-            return elements;
+            return result;
         }
 
-        DtmElementType GetElementType(string value)
+        DtmGraphicElement NeutralGraphic(Color color)
         {
-            switch (int.Parse(value))
+            var bitmap = new Bitmap(32, 32);
+            using (var graphics = Graphics.FromImage(bitmap))
+            using (var pen = new Pen(color, 3))
             {
-                case 1: return DtmElementType.Bod;
-                case 2: return DtmElementType.Linie;
-                case 3: return DtmElementType.Plocha;
-                case 4: return DtmElementType.DefinicniBod;
-                case 5: return DtmElementType.Obvod;
-                default:
-                    throw new UnExpectException();
+                graphics.Clear(Color.Transparent);
+                graphics.DrawEllipse(pen, 5, 5, 22, 22);
+                graphics.DrawLine(pen, 16, 2, 16, 30);
+                graphics.DrawLine(pen, 2, 16, 30, 16);
             }
+            return new DtmGraphicElement { Color = color, Size = new UnitPoint(0.8, 0.8), Symbol = bitmap };
         }
-
-        public static DtmConfigurationSingleton Instance => _instance;
-        public Dictionary<string, DtmElementOption> ElementSetting { get; }
 
         public DtmElement CreateType(string elementName)
         {
-            DtmElement element;
-            if (ElementSetting.TryGetValue(elementName, out var option) && option.ClassType != null)
-                element = (DtmElement)Activator.CreateInstance(option.ClassType);
-            else
-                element = (DtmElement)Activator.CreateInstance(typeof(DtmElementGeneric));
-            element.Init(ElementSetting[elementName]);
+            elementName = DtmSchema.CanonicalName(elementName);
+            if (!ElementSetting.TryGetValue(elementName, out var option))
+                throw new InvalidDataException($"Neznámý typ objektu DTM: {elementName}.");
+            var element = (DtmElement)Activator.CreateInstance(option.ClassType);
+            element.Init(option);
+            element.SchemaAttributes?.CaptureLegacyValues();
             return element;
         }
 
         public DtmElementsGroup CreateGroup(string elementName)
         {
-            var element = ElementSetting[elementName];
+            elementName = DtmSchema.CanonicalName(elementName);
+            var option = ElementSetting[elementName];
             return new DtmElementsGroup(elementName)
             {
-                CodeBase = element.CodeBase,
-                CodeSuffix = element.CodeSuffix,
-                KategorieObjektu = element.KategorieObjektu,
-                ObjektovyTypNazev = element.ObjektovyTypNazev,
-                ObsahovaCast = element.ObsahovaCast,
-                SkupinaObjektu = element.SkupinaObjektu
+                CodeBase = option.CodeBase, CodeSuffix = option.CodeSuffix, KategorieObjektu = option.KategorieObjektu,
+                ObjektovyTypNazev = option.ObjektovyTypNazev, ObsahovaCast = option.ObsahovaCast, SkupinaObjektu = option.SkupinaObjektu
             };
         }
 
         public static string ToNiceName(string name, DtmElementType category)
         {
-            var splittedValues = Regex.Split(name, @"(?<!^)(?=[A-Z])");
-            if (category == DtmElementType.Bod)
-            {
-                if (splittedValues.Last() == "Bod")
-                    Array.Resize(ref splittedValues, splittedValues.Length - 1);
-            }
-            else if (category == DtmElementType.DefinicniBod)
-                Array.Resize(ref splittedValues, splittedValues.Length - 2);
-            for (var i = 1; i < splittedValues.Length; i++)
-            {
-                splittedValues[i] = splittedValues[i].ToLowerInvariant();
-            }
-            var res = string.Join(" ", splittedValues);
-            return res;
+            name = Regex.Replace(name, "(DefinicniBod|Plocha|Bod)$", "");
+            return Regex.Replace(name, @"(?<!^)(?=[A-Z][a-z])", " ");
         }
     }
 }

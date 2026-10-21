@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
 using System.Globalization;
 using System.Xml;
@@ -20,24 +20,7 @@ namespace CAD.DTM.Elements
             return dtmElement.GetGraphicElement(TypZarizeniVodovodniPripojky.ToString(), scale);
         }
         public DtmTypZarizeniVodovodniPripojkyEnum TypZarizeniVodovodniPripojky { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS_TI(exporter);
-            exporter.AddElement("atr", "TypZarizeniVodovodniPripojky", (int)TypZarizeniVodovodniPripojky);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "TypZarizeniVodovodniPripojky":
-                        TypZarizeniVodovodniPripojky = (DtmTypZarizeniVodovodniPripojkyEnum)int.Parse(x.InnerText, CultureInfo.InvariantCulture);
-                        break;
-                }
-            }
-        }
+
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);

@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.GUI;
 using CAD.DTM.Gui;
 using System;
@@ -16,24 +16,7 @@ namespace CAD.DTM.Elements
             base.Init(dtmElementOption);
             TypZemedelskePlochy = DtmTypZemedelskePlochyEnum.Nezjisteno;
         }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
-            exporter.AddElement("atr", "TypZemedelskePlochy", (int)TypZemedelskePlochy);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "TypZemedelskePlochy":
-                        TypZemedelskePlochy = (DtmTypZemedelskePlochyEnum)int.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
+
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
             base.InitGUICustomProperties(properties);

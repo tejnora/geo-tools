@@ -40,7 +40,19 @@ namespace CAD.DTM.Gui
             SpolecneAtributyZPS.Load(dtmElement.GetDtmElement);
             SpolecneAtributyObjektuZPS_TI.Load(dtmElement.GetDtmElement);
             _customProperties.Clear();
-            dtmElement.GetDtmElement.InitGUICustomProperties(_customProperties);
+            var schemaAttributes = (dtmElement.GetDtmElement as DtmElement)?.SchemaAttributes;
+            if (schemaAttributes != null)
+            {
+                schemaAttributes.SynchronizeLegacyValues();
+                if (dtmElement.GetDtmElement.Geometry != null)
+                    _customProperties.AddProperty(new DtmGeometryCustomProperty((DtmElement)dtmElement.GetDtmElement));
+                foreach (var field in schemaAttributes.Fields())
+                    _customProperties.AddProperty(new DtmSchemaCustomProperty(schemaAttributes, field.Path, field.Attribute, field.Required));
+            }
+            else dtmElement.GetDtmElement.InitGUICustomProperties(_customProperties);
+            // Schema editors include every shared group, including DI and TI groups absent from the old tabs.
+            for (var i = 1; i <= 3; i++)
+                ((TabItem)_tabControl.Items[i]).Visibility = schemaAttributes != null ? Visibility.Collapsed : Visibility.Visible;
             if (_customProperties.Properties.Count > 0)
             {
                 CustomPropertiesVisibility = Visibility.Visible;
@@ -50,7 +62,7 @@ namespace CAD.DTM.Gui
             {
                 CustomPropertiesVisibility = Visibility.Collapsed;
             }
-            _tabControl.SelectedIndex = UpdateSelectedIndex(selectedIndex);
+            _tabControl.SelectedIndex = schemaAttributes != null && selectedIndex is >= 1 and <= 3 ? 4 : UpdateSelectedIndex(selectedIndex);
             OnPropertyChanged("");
         }
 
@@ -74,7 +86,8 @@ namespace CAD.DTM.Gui
 
         public void InvalidateCanvas()
         {
-            //todo
+            if (System.Windows.Application.Current?.MainWindow is MainWin main)
+                main.GetDocument()?.CanvasCommand.InvalidateAll();
         }
 
         public void InitCustomProperties()
@@ -89,7 +102,7 @@ namespace CAD.DTM.Gui
             {
                 ++counter;
                 property.PropPage = this;
-                var nameLabel = new System.Windows.Controls.Label { Content = property.Name };
+                var nameLabel = new System.Windows.Controls.Label { Content = new TextBlock { Text = property.Name, TextWrapping = TextWrapping.Wrap, MaxWidth = 180 } };
                 Grid.SetRow(nameLabel, counter);
                 Grid.SetColumn(nameLabel, 0);
                 _customPropertiesGrid.Children.Add(nameLabel);
@@ -127,7 +140,7 @@ namespace CAD.DTM.Gui
                     break;
                 case 'u':
                     Zapis = "Aktualizovany";
-                    IsEditable = false;
+                    IsEditable = true;
                     break;
                 case 'r':
                     Zapis = "Referencni";

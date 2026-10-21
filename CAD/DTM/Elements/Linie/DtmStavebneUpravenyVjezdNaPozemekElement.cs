@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.GUI;
 using CAD.DTM.Elements.Linie;
 using CAD.DTM.Gui;
@@ -18,33 +18,7 @@ namespace CAD.DTM.Elements
         public DtmStavebneUpravenyVjezdNaPozemekElement()
         {
         }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "PrujezdnaSirka", (int)PrujezdnaSirka);
-            exporter.AddElement("atr", "PrujezdnaVyska", (int)PrujezdnaVyska);
-            exporter.AddElement("atr", "HraniceJinehoObjektu", HraniceJinehoObjektu ? "1" : "0");
-        }
 
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "PrujezdnaSirka":
-                        PrujezdnaSirka = uint.Parse(x.InnerText);
-                        break;
-                    case "PrujezdnaVyska":
-                        PrujezdnaVyska = uint.Parse(x.InnerText);
-                        break;
-                    case "HraniceJinehoObjektu":
-                        HraniceJinehoObjektu = x.InnerText != "0";
-                        break;
-                }
-            }
-        }
         public override string GetInfoAsString()
         {
             return $"PrujezdnaSirka: {PrujezdnaSirka}, PrujezdnaVyska:{PrujezdnaVyska}, HraniceJinehoObjektu:{HraniceJinehoObjektu}";

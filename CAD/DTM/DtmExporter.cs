@@ -6,6 +6,7 @@ using System.Text;
 using CAD.DTM.Gui;
 using CAD.DTM.Configuration;
 using CAD.Utils;
+using CAD.DTM.Elements;
 
 namespace CAD.DTM
 {
@@ -23,7 +24,12 @@ namespace CAD.DTM
         }
         public void CreateFile(DtmExportCtx ctx)
         {
+            var errors = _main.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()
+                .Where(e => e.ExportToOutput).OfType<DtmElement>()
+                .SelectMany(e => (e.SchemaAttributes?.Validate() ?? Array.Empty<string>()).Select(message => g.Key + ": " + message))).ToArray();
+            if (errors.Length > 0) throw new InvalidOperationException("Export DTM: opravte atributy objektů.\n" + string.Join("\n", errors.Take(25)));
             _exportCtx = ctx;
+            _exportedPoints = new List<DtmPoint>();
 
             try
             {
@@ -61,12 +67,14 @@ namespace CAD.DTM
             _xmlWriter.WriteAttributeString("xsd", "xmlns", "http://www.w3.org/2001/XMLSchema");
             _xmlWriter.WriteAttributeString("xsi", "xmlns", "http://www.w3.org/2001/XMLSchema-instance");
             _xmlWriter.WriteAttributeString("gml", "xmlns", "http://www.opengis.net/gml/3.2");
+            _xmlWriter.WriteAttributeString("xlink", "xmlns", "http://www.w3.org/1999/xlink");
             foreach (var ns in _namespaces)
             {
                 _xmlWriter.WriteAttributeString(ns, "xmlns", ns);
             }
 
             _namespaces.Add("gml");
+            _namespaces.Add("xlink");
         }
         void AddHead()
         {

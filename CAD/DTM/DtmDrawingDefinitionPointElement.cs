@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using System.Windows;
@@ -47,6 +48,7 @@ namespace CAD.DTM
             UpdatePoint();
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
+            _element.ApplySelectedSetting(dtmLayer.DtmPointSelected.Item2);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
             new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
             Selected = false;
@@ -78,9 +80,17 @@ namespace CAD.DTM
 
         public void Draw(ICanvas canvas, Rect unitrect)
         {
+            UpdatePoint();
+            foreach (var multi in _element.Geometry.Geometries.OfType<DtmMultiCurveGeometry>())
+            {
+                var pen = canvas.CreatePen(Group.Options.Color, Group.Options.Width);
+                foreach (var curve in multi.Curves)
+                    for (var i = 1; i < curve.Points.Count; i++)
+                        canvas.DrawLine(canvas, pen, new UnitPoint(curve.Points[i - 1].X, curve.Points[i - 1].Y), new UnitPoint(curve.Points[i].X, curve.Points[i].Y));
+            }
             //*
             var scale = DtmUtils.GetScale(canvas);
-            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            var graphicElement = _element.ResolveGraphicElement(Group.Options, scale);
             if (graphicElement == null)
                 return;
             canvas.DrawSymbol(canvas, graphicElement.Symbol, _point, graphicElement.Size);
@@ -105,17 +115,22 @@ namespace CAD.DTM
         }
         public Rect GetBoundingRect(ICanvas canvas)
         {
+            UpdatePoint();
             //*
             var thWidth = ThresholdWidth(canvas, Group.Options.Width);
             var scale = DtmUtils.GetScale(canvas);
-            var graphicElement = _element.GetGraphicElement(Group.Options, scale);
+            var graphicElement = _element.ResolveGraphicElement(Group.Options, scale);
             if (graphicElement == null)
                 return Rect.Empty;
             var deltaX = graphicElement.Size.X / 2.0 * canvas.SymbolScaleCoefficient;
             var deltaY = graphicElement.Size.Y / 2.0 * canvas.SymbolScaleCoefficient;
             deltaX /= canvas.getZoom();
             deltaY /= canvas.getZoom();
-            return ScreenUtils.GetRect(new UnitPoint(_point.X - deltaX, _point.Y - deltaY), new UnitPoint(_point.X + deltaX, _point.Y + deltaY), thWidth);
+            var bounds = ScreenUtils.GetRect(new UnitPoint(_point.X - deltaX, _point.Y - deltaY), new UnitPoint(_point.X + deltaX, _point.Y + deltaY), thWidth);
+            foreach (var multi in _element.Geometry.Geometries.OfType<DtmMultiCurveGeometry>())
+                foreach (var curve in multi.Curves)
+                    foreach (var vertex in curve.Points) bounds.Union(new System.Windows.Point(vertex.X, vertex.Y));
+            return bounds;
             /*/
                         var thWidth = ThresholdWidth(canvas, Group.Options.Width);
                         var delta = canvas.ToUnit(2);

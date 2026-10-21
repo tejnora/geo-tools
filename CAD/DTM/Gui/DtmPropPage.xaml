@@ -206,12 +206,14 @@
                 <TabItem.Header>
                     <TextBlock>Dodatecne parametry</TextBlock>
                 </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" MaxHeight="650">
                 <Grid Name="_customPropertiesGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                 </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </StackPanel>

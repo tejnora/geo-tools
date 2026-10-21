@@ -51,6 +51,7 @@ namespace CAD
             DataModel.AddDrawTool(DtmToolBar.DtmMultiLine.Name, new DtmDrawingLineElement());
             DataModel.AddDrawTool(DtmToolBar.DtmPoint.Name, new DtmDrawingPointElement());
             DataModel.AddDrawTool(DtmToolBar.DtmDefinitionPoint.Name, new DtmDrawingDefinitionPointElement());
+            DataModel.AddDrawTool(DtmToolBar.DtmArea.Name, new DtmDrawingPlochaElement());
             _Canvas.Construct(this, DataModel);
 
             _Canvas.RunningSnapsDefault = new Type[]

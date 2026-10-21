@@ -4,6 +4,7 @@
                        xmlns:UITools="clr-namespace:CAD.UITools"
                        xmlns:gui="clr-namespace:CAD.DTM.Gui">
     <UITools:GeoCadToolBar.CommandBindings>
+        <CommandBinding Command="gui:DtmToolBar.DtmArea" CanExecute="OnCanExecute" Executed="OnExecute" />
         <CommandBinding Command="gui:DtmToolBar.DtmMultiLine"
                         CanExecute="OnCanExecute"
                         Executed="OnExecute" />
@@ -42,6 +43,11 @@
     </Button>
 
     <Button ToolTip="Validace DTM" Click="OnDtmValidate" Content="✔" />
+    <ToggleButton Command="gui:DtmToolBar.DtmArea" ToolTip="Plocha: vrcholy z podrobných bodů, H přidá otvor, dokončení jako u linie" Content="▱" />
+    <ComboBox Width="140" SelectedItem="{Binding DtmAreaElementSelected}" ItemsSource="{Binding DtmAreaElements}">
+        <ComboBox.GroupStyle><GroupStyle ContainerStyle="{StaticResource CollapsibleGroupItemStyle}" /></ComboBox.GroupStyle>
+        <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}" /></DataTemplate></ComboBox.ItemTemplate>
+    </ComboBox>
     <ToggleButton  Command="gui:DtmToolBar.DtmMultiLine" ToolTip="Line">
         <Image Source="/CAD;component/Icons/VfkLine.png"></Image>
     </ToggleButton>

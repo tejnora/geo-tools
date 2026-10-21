@@ -1,0 +1,23 @@
+{
+  "ObjectCount": 358,
+  "GeneratedClassCount": 295,
+  "XsdVersion": "1.4.3",
+  "CatalogueVersion": "1.4.2.1",
+  "ContentParts": {
+    "TI": 123,
+    "ZPS": 176,
+    "DI": 58,
+    "other": 1
+  },
+  "CatalogueMatches": {
+    "exact": 192,
+    "neutral": 95,
+    "related": 71
+  },
+  "SymbolMatches": {
+    "catalogue": 188,
+    "neutral": 105,
+    "centroid": 65
+  },
+  "Rendering": "Basic appearance at 1:500; solid lines and simple area fills. See DtmCoverage.json for object-level sources and fallbacks."
+}

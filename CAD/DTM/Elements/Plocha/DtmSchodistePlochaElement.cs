@@ -1,4 +1,4 @@
-﻿using System.Xml;
+using System.Xml;
 using CAD.DTM.Gui;
 
 namespace CAD.DTM.Elements
@@ -7,24 +7,6 @@ namespace CAD.DTM.Elements
         : DtmPlochaBaseElement
     {
         public DtmDruhSchodisteEnum DruhSchodiste { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "DruhSchodiste", (int)DruhSchodiste);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "DruhSchodiste":
-                        DruhSchodiste = (DtmDruhSchodisteEnum)int.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
 
         public override string GetInfoAsString()
         {

@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Gui;
+using CAD.DTM.Gui;
 using System.Xml;
 
 namespace CAD.DTM.Elements
@@ -19,24 +19,7 @@ namespace CAD.DTM.Elements
         : DtmDefinicniBodBaseElement
     {
         public TypNadrzeZdrzeSeVzdouvacimObjektemEnum TypNadrzeZdrzeSeVzdouvacimObjektem { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuDefinicnichBodu(exporter);
-            exporter.AddElement("atr", "TypNadrzeZdrzeSeVzdouvacimObjektem", (int)TypNadrzeZdrzeSeVzdouvacimObjektem);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "TypNadrzeZdrzeSeVzdouvacimObjektem":
-                        TypNadrzeZdrzeSeVzdouvacimObjektem = (TypNadrzeZdrzeSeVzdouvacimObjektemEnum)int.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
+
         public override string GetInfoAsString()
         {
             return $"Typ nádrže, zdrže se vzdouvacím objektem: {TypNadrzeZdrzeSeVzdouvacimObjektem}";

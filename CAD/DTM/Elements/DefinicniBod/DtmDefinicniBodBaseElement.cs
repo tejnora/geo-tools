@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Gui;
+using CAD.DTM.Gui;
 using System.Xml;
 using CAD.DTM.Elements.GUI;
 
@@ -9,12 +9,7 @@ namespace CAD.DTM.Elements
     {
         public override DtmElementType ElementType => DtmElementType.DefinicniBod;
 
-        protected DtmSpolecneAtributyObjektuDefinicnichBodu SpolecneAtributyObjektuDefinicnichBodu { get; set; }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            ImportSpolecneAtributyObjektuDefinicnichBodu(xmlElement);
-        }
+        protected DtmSpolecneAtributyObjektuDefinicnichBodu SpolecneAtributyObjektuDefinicnichBodu { get; set; } = new();
 
         protected void ImportSpolecneAtributyObjektuDefinicnichBodu(XmlElement xmlElement)
         {
@@ -45,7 +40,7 @@ namespace CAD.DTM.Elements
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
             base.InitGUICustomProperties(properties);
-            SpolecneAtributyObjektuDefinicnichBodu = new DtmSpolecneAtributyObjektuDefinicnichBodu
+            SpolecneAtributyObjektuDefinicnichBodu ??= new DtmSpolecneAtributyObjektuDefinicnichBodu
             { UrovenUmisteniObjektuZPS = 0 };
         }
     }

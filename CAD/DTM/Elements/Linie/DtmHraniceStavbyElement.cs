@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using CAD.DTM.Configuration;
 using CAD.DTM.Gui;
@@ -16,24 +16,7 @@ namespace CAD.DTM.Elements
             TypStavby = DtmTypStavbyEnum.OstatniZastresenaStavba;
         }
         public DtmTypStavbyEnum TypStavby { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "TypStavby", (int)TypStavby);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "TypStavby":
-                        TypStavby = (DtmTypStavbyEnum)int.Parse(x.InnerText);
-                        break;
-                }
-            }
-        }
+
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
             properties.AddProperty(new DtmEnumCustomProperty<DtmTypStavbyEnum>

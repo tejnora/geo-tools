@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.Linie;
 using CAD.DTM.Gui;
 using System.Collections.Generic;
@@ -13,36 +13,6 @@ namespace CAD.DTM.Elements
     {
         public DtmDruhPlotuEnum DruhPlotu { get; set; }
         public bool HraniceJinehoObjektu { get; set; }
-
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "DruhPlotu", (int)DruhPlotu);
-            exporter.AddElement("atr", "HraniceJinehoObjektu", HraniceJinehoObjektu);
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "DruhPlotu":
-                        DruhPlotu = (DtmDruhPlotuEnum)int.Parse(x.InnerText);
-                        break;
-                    case "HraniceJinehoObjektu":
-                        {
-                            if (bool.TryParse(x.InnerText, out var value))
-                            {
-                                HraniceJinehoObjektu = value;
-                                continue;
-                            }
-                            HraniceJinehoObjektu = int.Parse(x.InnerText) == 1;
-                        }
-                        break;
-                }
-            }
-        }
 
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {

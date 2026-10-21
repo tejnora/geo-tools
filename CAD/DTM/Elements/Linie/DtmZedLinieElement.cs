@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.GUI;
 using CAD.DTM.Gui;
 using System;
@@ -16,28 +16,7 @@ namespace CAD.DTM.Elements
         }
         public DtmTypZdiEnum TypZdi { get; set; }
         public bool HraniceJinehoObjektu { get; set; }
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS(exporter);
-            exporter.AddElement("atr", "TypZdi", (int)TypZdi);
-            exporter.AddElement("atr", "HraniceJinehoObjektu", HraniceJinehoObjektu ? "1" : "0");
-        }
-        public override void ImportDtmAttributes(XmlElement xmlElement)
-        {
-            base.ImportDtmAttributes(xmlElement);
-            foreach (XmlElement x in xmlElement)
-            {
-                switch (x.LocalName)
-                {
-                    case "TypZdi":
-                        TypZdi = (DtmTypZdiEnum)int.Parse(x.InnerText);
-                        break;
-                    case "HraniceJinehoObjektu":
-                        HraniceJinehoObjektu = x.InnerText != "0";
-                        break;
-                }
-            }
-        }
+
         public override void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
             properties.AddProperty(new DtmEnumCustomProperty<DtmTypZdiEnum>("Typ zdi:", TypZdi, cv => TypZdi = cv));

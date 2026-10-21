@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Xml;
@@ -20,9 +20,15 @@ namespace CAD.DTM
         {
             var xmlDocument = new XmlDocument();
             xmlDocument.Load(location);
+            ParseDocument(xmlDocument);
+        }
+
+        public void ParseDocument(XmlDocument xmlDocument)
+        {
             var JVFDTM = xmlDocument["JVFDTM", "objtyp"];
             var DataJVFDTM = FindElement(JVFDTM, "DataJVFDTM");
             var data = FindElement(DataJVFDTM, "Data");
+            if (data == null) throw new FormatException("Soubor neobsahuje JVFDTM / DataJVFDTM / Data.");
             ParseDataNode(data);
             ParseDoprovodneInformace(DataJVFDTM);
         }
@@ -31,8 +37,8 @@ namespace CAD.DTM
         {
             foreach (XmlElement element in dataElement)
             {
-                var group = new DtmElementsGroup(element.LocalName);
-                _main.AddElementGroup(element.LocalName, group);
+                var group = new DtmElementsGroup(DtmSchema.CanonicalName(element.LocalName));
+                _main.AddElementGroup(group.Name, group);
                 ParseElementsGroup(element, group);
             }
         }
@@ -89,8 +95,12 @@ namespace CAD.DTM
                     case "GeometrieObjektu":
                         element.Geometry = ParseGeometrieObjektu(e);
                         break;
+                    default:
+                        element.SchemaAttributes?.ImportRecordAttribute(e);
+                        break;
                 }
             }
+            element.SchemaAttributes?.ApplyToLegacyValues();
         }
 
         IDtmGeometryGroup ParseGeometrieObjektu(XmlElement xmlElement)
@@ -98,155 +108,15 @@ namespace CAD.DTM
             var geometryGroup = new DtmGeometryGroup { Geometries = new List<IDtmGeometry>() };
             foreach (XmlElement e in xmlElement)
             {
-                IDtmGeometry geometry;
-                switch (e.LocalName)
-                {
-                    case "curveProperty":
-                        geometry = ParseCurveGeometry<DtmCurveGeometry>(e, false);
-                        break;
-                    case "pointProperty":
-                        geometry = ParsePointGeometry(e);
-                        break;
-                    case "surfaceProperty":
-                        geometry = ParseSurfaceProperty(e);
-                        break;
-                    case "multiCurveProperty":
-                        geometry = ParseMultiCurveProperty(e);
-                        break;
-                    default:
-                        throw new Exception("Invalid geometry.");
-                }
+                var geometry = DtmGeometryXml.Read(e);
                 geometryGroup.Geometries.Add(geometry);
             }
             return geometryGroup;
         }
 
-        void ParseGeometryAttributes(IDtmGeometry geometry, XmlElement xmlElement)
-        {
-            foreach (XmlAttribute attribute in xmlElement.Attributes)
-            {
-                switch (attribute.LocalName)
-                {
-                    case "id":
-                        geometry.Id = attribute.InnerText;
-                        break;
-                    case "srsName":
-                        geometry.SrsName = attribute.InnerText;
-                        break;
-                    case "srsDimension":
-                        geometry.SrsDimension = int.Parse(attribute.InnerText);
-                        if (geometry.SrsDimension != 2 && geometry.SrsDimension != 3)
-                            throw new Exception($"Point dimension {geometry.SrsDimension} is not valid.");
-                        break;
-                }
-            }
-        }
-
-        IDtmGeometry ParsePointGeometry(XmlElement xmlElement)
-        {
-            var geometry = new DtmPointGeometry();
-            var point = (XmlElement)xmlElement.ChildNodes[0];
-            ParseGeometryAttributes(geometry, point);
-            if (point.ChildNodes.Count != 1 && point.ChildNodes[0].LocalName != "pos")
-                throw new Exception("Invalid curve geometry.");
-            var values = point.ChildNodes[0].InnerText.Split(' ');
-            switch (geometry.SrsDimension)
-            {
-                case 2:
-                    {
-                        if (values.Length != 2)
-                            throw new Exception("Invalid Point Geometry.");
-                        geometry.Point = new DtmPoint(values[0], values[1]);
-                    }
-                    break;
-                case 3:
-                    {
-                        if (values.Length != 3)
-                            throw new Exception("Invalid Point Geometry.");
-                        geometry.Point = new DtmPoint(values[0], values[1], values[2]);
-                    }
-                    break;
-                default:
-                    throw new Exception($"Dimension '{geometry.SrsDimension}' is not valid.");
-            }
-            return geometry;
-        }
-
-        IDtmGeometry ParseSurfaceProperty(XmlElement xmlElement)
-        {
-            var polygon = (XmlElement)xmlElement.ChildNodes[0];
-            if (polygon.LocalName == "Polygon")
-                return ParsePolygonGeometry<DtmSurfaceGeometry>(xmlElement);
-            throw new Exception("Invalid surface geometry.");
-        }
-        IDtmGeometry ParseMultiCurveProperty(XmlElement xmlElement)
-        {
-            var multiCurveElement = FindElement(xmlElement, "MultiCurve");
-            if (multiCurveElement == null)
-                throw new Exception("Invalid multi-curve geometry.");
-            var curveMemberElement = FindElement(multiCurveElement, "curveMember");
-            var dtmGeometry = ParseCurveGeometry<DtmMultiCurveGeometry>(curveMemberElement, true);
-            ParseGeometryAttributes(dtmGeometry, multiCurveElement);
-            //todo
-            return dtmGeometry;
-        }
-
-        IDtmGeometry ParseCurveGeometry<T>(XmlElement xmlElement, bool skipAttributes) where T : DtmCurveGeometry, new()
-        {
-            var geometry = new T();
-            var lineString = (XmlElement)xmlElement.ChildNodes[0];
-            if (!skipAttributes)
-            {
-                ParseGeometryAttributes(geometry, lineString);
-            }
-            if (lineString.ChildNodes.Count != 1 && lineString.ChildNodes[0].LocalName != "LineString")
-                throw new Exception("Invalid curve geometry.");
-            var posList = lineString.ChildNodes[0];
-            var coordinates = posList.InnerText.Split(' ');
-            var pointsDimension = 0;
-            if (!skipAttributes)
-            {
-                pointsDimension = geometry.SrsDimension;
-            }
-            else
-            {
-                if (coordinates.Length % 3 != 0)
-                {
-                    throw new Exception($"Coordinates are not in correct format.");
-                }
-                pointsDimension = 3;
-            }
-
-            var count = coordinates.Length / pointsDimension;
-            geometry.Points = new List<DtmPoint>(count);
-            for (var i = 0; i < count; i++)
-            {
-                var beginIdx = i * pointsDimension;
-                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], pointsDimension == 3 ? coordinates[beginIdx + 2] : "0"));
-            }
-            return geometry;
-        }
         DtmPolygonGeometry ParsePolygonGeometry<T>(XmlElement xmlElement) where T : DtmPolygonGeometry, new()
         {
-            var geometry = new T();
-            var polygon = FindElement(xmlElement, "Polygon");
-            ParseGeometryAttributes(geometry, polygon);
-            var exterior = FindElement(polygon, "exterior");
-            var linearRing = FindElement(exterior, "LinearRing");
-            var posList = FindElement(linearRing, "posList");
-            var coordinates = posList.InnerText.Split(' ');
-            if (coordinates.Length % 2 != 0)
-            {
-                throw new Exception($"Coordinates are not in correct format.");
-            }
-            var count = coordinates.Length / 2;
-            geometry.Points = new List<DtmPoint>(count);
-            for (var i = 0; i < count; i++)
-            {
-                var beginIdx = i * 2;
-                geometry.Points.Add(new DtmPoint(coordinates[beginIdx], coordinates[beginIdx + 1], "0"));
-            }
-            return geometry;
+            return DtmGeometryXml.Polygon<T>(FindElement(xmlElement, "Polygon"));
         }
 
         void ParseAtributyObjektu(XmlElement xmlElement, DtmElement element)
@@ -256,6 +126,7 @@ namespace CAD.DTM
 
         public static XmlElement FindElement(XmlElement parent, string name)
         {
+            if (parent == null) return null;
             foreach (XmlElement c in parent)
             {
                 if (c.LocalName == name)

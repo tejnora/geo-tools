@@ -1,4 +1,4 @@
-﻿using CAD.DTM.Configuration;
+using CAD.DTM.Configuration;
 using CAD.DTM.Elements.GUI;
 using CAD.DTM.Gui;
 
@@ -7,10 +7,7 @@ namespace CAD.DTM.Elements
     class DtmTrasaOdbernehoElektrickehoZarizeniElement
         : DtmLinieElementBase
     {
-        public override void ExportAttributesToDtm(IDtmExporter exporter)
-        {
-            ExportSpolecneAtributyObjektuZPS_TI(exporter);
-        }
+
         public override void Init(DtmElementOption dtmElementOption)
         {
             base.Init(dtmElementOption);

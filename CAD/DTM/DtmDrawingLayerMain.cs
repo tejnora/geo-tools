@@ -103,6 +103,7 @@ namespace CAD.DTM
         public string Name { get; set; }
         public Tuple<string, string> DtmLineElementSelected { get; set; }
         public Tuple<string, string> DtmPointSelected { get; set; }
+        public string DtmAreaSelected { get; set; }
 
         public Rect GetBoundingRect(ICanvas canvas)
         {

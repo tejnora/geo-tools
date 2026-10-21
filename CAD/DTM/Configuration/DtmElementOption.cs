@@ -5,6 +5,9 @@ namespace CAD.DTM.Configuration
 {
     public class DtmElementOption
     {
+        public string Name { get; set; }
+        public string GraphicSource { get; set; }
+        public string GraphicAttribute { get; set; }
         readonly Dictionary<string, IList<DtmGraphicElement>> _graphicElements = new Dictionary<string, IList<DtmGraphicElement>>();
 
         public DtmElementOption()
@@ -17,9 +20,11 @@ namespace CAD.DTM.Configuration
 
         public DtmGraphicElement GetGraphicElement(string @type, DtmGraphicElementScaleEnum scale)
         {
-            if (_graphicElements.TryGetValue(@type, out var graphicElements) && (int)scale < graphicElements.Count)
+            if (!_graphicElements.TryGetValue(@type, out var graphicElements))
+                _graphicElements.TryGetValue("_", out graphicElements);
+            if (graphicElements != null && graphicElements.Count > 0)
             {
-                return graphicElements[(int)scale];
+                return graphicElements[(int)scale >= 0 && (int)scale < graphicElements.Count ? (int)scale : 0];
             }
             return null;
         }

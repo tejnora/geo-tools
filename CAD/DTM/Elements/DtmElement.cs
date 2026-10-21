@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Xml;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
@@ -17,12 +18,22 @@ namespace CAD.DTM.Elements
         public IDtmGeometryGroup Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }
         public DtmSpolecneAtributyZPS SpolecneAtributyZPS { get; set; }
+        public DtmSchemaAttributes SchemaAttributes { get; private set; }
+        public DtmElementOption Options { get; private set; }
         public virtual void InitGUICustomProperties(IDtmCustomElementProperties properties)
         {
         }
         public virtual DtmGraphicElement GetGraphicElement(DtmElementOption dtmElement, DtmGraphicElementScaleEnum scale)
         {
             return dtmElement.GetGraphicElement("_", scale);
+        }
+
+        public DtmGraphicElement ResolveGraphicElement(DtmElementOption option, DtmGraphicElementScaleEnum scale)
+        {
+            if (option.GraphicAttribute == null) return GetGraphicElement(option, scale);
+            SchemaAttributes?.SynchronizeLegacyValues();
+            var value = SchemaAttributes?.Get<string>(option.GraphicAttribute);
+            return option.GetGraphicElement(value ?? "_", scale);
         }
 
         public DtmSpolecneAtributyObjektuZPS_TI SpolecneAtributyObjektuZPS_TI { get; set; }
@@ -62,16 +73,29 @@ namespace CAD.DTM.Elements
         public virtual IEnumerable<string> Settings => _settingsEmpty;
         public virtual void SelectedSetting(string value) { }
 
+        public void ApplySelectedSetting(string value)
+        {
+            SelectedSetting(value);
+            if (string.IsNullOrEmpty(value) || SchemaAttributes == null) return;
+            var settings = Settings.ToArray();
+            foreach (var property in GetType().GetProperties().Where(p => p.PropertyType.IsEnum && Enum.GetNames(p.PropertyType).SequenceEqual(settings)))
+                if (DtmSchema.Instance.Attributes.ContainsKey(property.Name))
+                    SchemaAttributes.SetText(property.Name, Convert.ToInt64(property.GetValue(this)).ToString(System.Globalization.CultureInfo.InvariantCulture));
+        }
+
         public virtual void ExportAttributesToDtm(IDtmExporter exporter)
         {
-            throw new NotImplemented();
+            if (SchemaAttributes == null) throw new InvalidOperationException("Objekt nemá definici XSD.");
+            SchemaAttributes.Export(exporter, false);
         }
 
         public virtual void ImportDtmAttributes(XmlElement xmlElement)
         {
+            SchemaAttributes?.Import(xmlElement);
             ImportSpolecneAtributyVsechObjektu(xmlElement);
             ImportSpolecneAtributyZPS(xmlElement);
             ImportSpolecneAtributyObjektuZPS_TI(xmlElement);
+            SchemaAttributes?.ApplyToLegacyValues();
         }
         public string EvaluateZapisObjektuForExportToDtm()
         {
@@ -92,6 +116,12 @@ namespace CAD.DTM.Elements
 
         public void ExportSpolecneAtributyVsechObjektu(IDtmExporter exporter)
         {
+            if (SchemaAttributes != null)
+            {
+                foreach (var element in SchemaAttributes.ToXml().Where(e => e.Name.LocalName == "SpolecneAtributyVsechObjektu"))
+                    DtmSchemaAttributes.WriteElement(exporter, element);
+                return;
+            }
             exporter.BeginElement("atr", "SpolecneAtributyVsechObjektu", true);
             exporter.AddElement(null, "DatumVkladu", SpolecneAtributy.DatumVkladu);
             exporter.AddElement(null, "DatumZmeny", SpolecneAtributy.DatumZmeny);
@@ -238,6 +268,13 @@ namespace CAD.DTM.Elements
 
         public virtual void Init(DtmElementOption dtmElementOption)
         {
+            Options = dtmElementOption;
+            if (dtmElementOption.Name != null && DtmSchema.Instance.Objects.TryGetValue(dtmElementOption.Name, out var definition))
+            {
+                SchemaAttributes = new DtmSchemaAttributes(this, definition);
+                if (definition.Attributes.Any(a => a.Name == "SpolecneAtributyObjektuZPS")) SpolecneAtributyZPS = new();
+                if (definition.Attributes.Any(a => a.Name == "SpolecneAtributyObjektuZPS_TI")) SpolecneAtributyObjektuZPS_TI = new();
+            }
             ZapisObjektu = 'i';
             var dateTime = DateTime.Now;
             SpolecneAtributy = new DtmElementSpolecneAtributy
@@ -245,6 +282,11 @@ namespace CAD.DTM.Elements
                 DatumVkladu = dateTime,
                 DatumZmeny = dateTime
             };
+            if (SchemaAttributes != null)
+            {
+                SchemaAttributes.Set("SpolecneAtributyVsechObjektu/DatumVkladu", dateTime);
+                SchemaAttributes.Set("SpolecneAtributyVsechObjektu/DatumZmeny", dateTime);
+            }
         }
 
         public virtual string GetInfoAsString()
