@@ -49,15 +49,17 @@ namespace CAD.DTM.Validation
 
     public class DtmValidationIssue
     {
-        public DtmValidationIssue(string objectName, string message, bool isWarning = false)
+        public DtmValidationIssue(string objectName, string message, bool isWarning = false, IDtmElement element = null)
         {
             IsWarning = isWarning;
             ObjectName = objectName;
             Message = message;
+            Element = element;
         }
         public bool IsWarning { get; }
         public string ObjectName { get; }
         public string Message { get; }
+        public IDtmElement Element { get; }
         public override string ToString() => string.IsNullOrEmpty(ObjectName) ? Message : $"{ObjectName}: {Message}";
     }
 
@@ -80,6 +82,8 @@ namespace CAD.DTM.Validation
 
         public void AddError(string objectName, string message) => _issues.Add(new DtmValidationIssue(objectName, message));
         public void AddWarning(string objectName, string message) => _issues.Add(new DtmValidationIssue(objectName, message, true));
+        public void AddObjectError(DtmValidationItem item, string message) => _issues.Add(new DtmValidationIssue(item.Name, message, element: item.Element));
+        public void AddObjectWarning(DtmValidationItem item, string message) => _issues.Add(new DtmValidationIssue(item.Name, message, true, item.Element));
 
         public DtmRuleStatus Status
         {

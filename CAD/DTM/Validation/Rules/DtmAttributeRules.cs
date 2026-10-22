@@ -69,9 +69,9 @@ namespace CAD.DTM.Validation.Rules
                 var a = item.Element.SpolecneAtributyZPS;
                 if (a == null) continue;
                 if (a.TridaPresnostiPoloha > max)
-                    result.AddError(item.Name, $"Třída přesnosti v poloze {a.TridaPresnostiPoloha} je horší než {max}.");
+                    result.AddObjectError(item, $"Třída přesnosti v poloze {a.TridaPresnostiPoloha} je horší než {max}.");
                 if (a.TridaPresnostiVyska > max)
-                    result.AddError(item.Name, $"Třída přesnosti ve výšce {a.TridaPresnostiVyska} je horší než {max}.");
+                    result.AddObjectError(item, $"Třída přesnosti ve výšce {a.TridaPresnostiVyska} je horší než {max}.");
             }
         }
     }
@@ -99,7 +99,7 @@ namespace CAD.DTM.Validation.Rules
                 var a = item.Element.SpolecneAtributy;
                 if (a == null) continue;
                 if (a.DatumVkladu != default && a.DatumVkladu < min)
-                    result.AddError(item.Name, $"DatumVkladu ({a.DatumVkladu:yyyy-MM-dd}) je starší než {min:yyyy-MM-dd}.");
+                    result.AddObjectError(item, $"DatumVkladu ({a.DatumVkladu:yyyy-MM-dd}) je starší než {min:yyyy-MM-dd}.");
             }
         }
     }
@@ -116,11 +116,11 @@ namespace CAD.DTM.Validation.Rules
                 var a = item.Element.SpolecneAtributyZPS;
                 if (a == null) continue;
                 if (a.TridaPresnostiPoloha < 1 || a.TridaPresnostiPoloha > 5)
-                    result.AddError(item.Name, $"Třída přesnosti v poloze {a.TridaPresnostiPoloha} není v číselníku (1–5).");
+                    result.AddObjectError(item, $"Třída přesnosti v poloze {a.TridaPresnostiPoloha} není v číselníku (1–5).");
                 if (a.TridaPresnostiVyska < 1 || a.TridaPresnostiVyska > 5)
-                    result.AddError(item.Name, $"Třída přesnosti ve výšce {a.TridaPresnostiVyska} není v číselníku (1–5).");
+                    result.AddObjectError(item, $"Třída přesnosti ve výšce {a.TridaPresnostiVyska} není v číselníku (1–5).");
                 if (a.UrovenUmisteniObjektuZPS < -3 || a.UrovenUmisteniObjektuZPS > 3)
-                    result.AddError(item.Name, $"Úroveň umístění {a.UrovenUmisteniObjektuZPS} není v rozsahu -3 až 3.");
+                    result.AddObjectError(item, $"Úroveň umístění {a.UrovenUmisteniObjektuZPS} není v rozsahu -3 až 3.");
             }
         }
     }
@@ -148,7 +148,7 @@ namespace CAD.DTM.Validation.Rules
             {
                 var a = item.Element.SpolecneAtributyZPS;
                 if (a == null || a.TridaPresnostiVyska < 1)
-                    result.AddError(item.Name, "Není vyplněna třída přesnosti ve výšce.");
+                    result.AddObjectError(item, "Není vyplněna třída přesnosti ve výšce.");
             }
         }
     }
@@ -165,14 +165,14 @@ namespace CAD.DTM.Validation.Rules
                 switch (item.Element)
                 {
                     case DtmHraniceStavbyElement s when s.TypStavby == DtmTypStavbyEnum.Nezjisteno:
-                        result.AddError(item.Name, "Hranice stavby, typ stavby: nezjištěno.");
+                        result.AddObjectError(item, "Hranice stavby, typ stavby: nezjištěno.");
                         break;
                     case DtmHraniceDopravniStavbyPlochyElement d when d.TypDopravniStavbyNeboPlochy == DtmTypDopravniStavbyNeboPlochyEnum.Nezjisteno
                         || d.TypDopravniStavbyNeboPlochy == DtmTypDopravniStavbyNeboPlochyEnum.Jiny:
-                        result.AddError(item.Name, $"Hranice dopravní stavby nebo plochy, typ: {d.TypDopravniStavbyNeboPlochy}.");
+                        result.AddObjectError(item, $"Hranice dopravní stavby nebo plochy, typ: {d.TypDopravniStavbyNeboPlochy}.");
                         break;
                     case DtmHranicePrirodnihoPoloprirodnihoObjektuElement p when p.TypPrirodnihoPoloprirodnihoObjektu == DtmTypPrirodnihoPoloprirodnihoObjektuEnum.Nezjisteno:
-                        result.AddError(item.Name, "Hranice přírodního a polopřírodního objektu, typ: nezjištěno.");
+                        result.AddObjectError(item, "Hranice přírodního a polopřírodního objektu, typ: nezjištěno.");
                         break;
                 }
             }

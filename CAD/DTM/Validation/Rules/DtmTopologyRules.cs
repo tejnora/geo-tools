@@ -13,6 +13,7 @@ namespace CAD.DTM.Validation.Rules
 
         protected override IEnumerable<DtmValidationRule> CreateChildren()
         {
+            yield return new DtmOriginalStateAvailableRule();
             yield return new DtmVertexPodrobnyBodRule();
             yield return new DtmLineOverlapRule();
             yield return new DtmLineCrossingRule();
@@ -26,6 +27,18 @@ namespace CAD.DTM.Validation.Rules
             yield return new DtmSolitaryPodrobnyBodRule();
             yield return new DtmSkippedRule("3.12", "Obvod OKZPS", "Vyžaduje oblast kompletní ZPS (OKZPS), která není v modelu k dispozici.");
             yield return new DtmPointToLineDistanceRule();
+        }
+    }
+
+    public class DtmOriginalStateAvailableRule : DtmValidationRule
+    {
+        public override string Code => "3.0";
+        public override string Name => "Dostupnost původního stavu aktualizací";
+        public override string Description => "Doplňková kontrola úplnosti ověření změn. Bez původního stavu aktualizace nelze ověřit všechny zaniklé vazby na referenční objekty.";
+        protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
+        {
+            foreach (var item in ctx.ChangedItems.Where(i => i.Mode == 'u' && ctx.OriginalOf(i) == null))
+                result.AddObjectWarning(item, "Původní stav aktualizace není dostupný. Nový stav je kontrolován, ale zánik původních vazeb nelze úplně ověřit.");
         }
     }
 
@@ -145,14 +158,17 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             var pb = new HashSet<string>(ctx.PodrobneBody.SelectMany(i => i.Points.Select(p => i.Level + "|" + DtmGeometryMath.Key3D(p))));
+            var originalPb = new HashSet<string>(ctx.OriginalItems.Where(ctx.IsPodrobnyBod)
+                .SelectMany(i => i.Points.Select(p => i.Level + "|" + DtmGeometryMath.Key3D(p))));
             var count = 0;
             foreach (var item in ctx.PointObjects.Concat(ctx.Lines))
             {
                 foreach (var p in item.Geometries.Where(g => g is DtmPointGeometry || g is DtmCurveGeometry).SelectMany(DtmValidationContext.GetPoints))
                 {
                     if (pb.Contains(item.Level + "|" + DtmGeometryMath.Key3D(p))) continue;
+                    if (!DtmValidationContext.IsChanged(item) && !originalPb.Contains(item.Level + "|" + DtmGeometryMath.Key3D(p))) continue;
                     if (count++ < DtmTopologyHelper.MaxIssues)
-                        result.AddError(item.Name, $"Vrchol {DtmTopologyHelper.Coord(p.X, p.Y)} Z={p.Z:0.00} nemá podrobný bod.");
+                        result.AddObjectError(item, $"Vrchol {DtmTopologyHelper.Coord(p.X, p.Y)} Z={p.Z:0.00} nemá podrobný bod.");
                 }
             }
         }
@@ -171,13 +187,14 @@ namespace CAD.DTM.Validation.Rules
             {
                 var a = pair.Item1;
                 var b = pair.Item2;
+                if (!DtmValidationContext.IsChangedPair(a.Item, b.Item)) continue;
                 if (a.Set != b.Set || a.Item == b.Item) continue;
                 var rel = DtmGeometryMath.Relate(a.A, a.B, b.A, b.B, eps);
                 if (rel.Kind != DtmSegmentRelationKind.Overlap) continue;
                 // zcela shodne linie patri do kontroly duplicity 3.6
                 if (IsIdentical(a.Item, b.Item)) continue;
                 if (count++ < DtmTopologyHelper.MaxIssues)
-                    result.AddError(a.Item.Name, $"Překrývá se s {b.Item.Name} v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
+                    result.AddObjectError(a.Item, $"Překrývá se s {b.Item.Name} v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
             }
         }
 
@@ -203,13 +220,14 @@ namespace CAD.DTM.Validation.Rules
             {
                 var a = pair.Item1;
                 var b = pair.Item2;
+                if (!DtmValidationContext.IsChangedPair(a.Item, b.Item)) continue;
                 if (a.Set != b.Set || a.Item == b.Item) continue;
                 var rel = DtmGeometryMath.Relate(a.A, a.B, b.A, b.B, eps);
                 if (rel.Kind != DtmSegmentRelationKind.Point) continue;
                 var p = new DtmPoint { X = rel.X, Y = rel.Y };
                 if (IsEnd(a.Item, p, eps) && IsEnd(b.Item, p, eps)) continue;
                 if (count++ < DtmTopologyHelper.MaxIssues)
-                    result.AddError(a.Item.Name, $"Kříží se s {b.Item.Name} v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
+                    result.AddObjectError(a.Item, $"Kříží se s {b.Item.Name} v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
             }
         }
 
@@ -233,7 +251,7 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             var eps = ctx.Settings.GeometryTolerance;
-            foreach (var item in ctx.Lines)
+            foreach (var item in ctx.Lines.Where(DtmValidationContext.IsChanged))
             {
                 foreach (var g in item.Geometries.OfType<DtmCurveGeometry>())
                 {
@@ -251,7 +269,7 @@ namespace CAD.DTM.Validation.Rules
                                 && DtmGeometryMath.Distance2D(new DtmPoint { X = rel.X, Y = rel.Y }, pts[0]) <= eps;
                             if (closing) continue;
                             found = true;
-                            result.AddError(item.Name, $"Linie se kříží sama se sebou v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
+                            result.AddObjectError(item, $"Linie se kříží sama se sebou v místě {DtmTopologyHelper.Coord(rel.X, rel.Y)}.");
                         }
                 }
             }
@@ -266,11 +284,11 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             var count = 0;
-            foreach (var s in DtmTopologyHelper.Segments(ctx, ctx.Lines))
+            foreach (var s in DtmTopologyHelper.Segments(ctx, ctx.Lines.Where(DtmValidationContext.IsChanged)))
             {
                 if (DtmGeometryMath.Distance3D(s.A, s.B) > 1e-6) continue;
                 if (count++ < DtmTopologyHelper.MaxIssues)
-                    result.AddError(s.Item.Name, $"Segment {s.Index + 1} má nulovou délku v místě {DtmTopologyHelper.Coord(s.A.X, s.A.Y)}.");
+                    result.AddObjectError(s.Item, $"Segment {s.Index + 1} má nulovou délku v místě {DtmTopologyHelper.Coord(s.A.X, s.A.Y)}.");
             }
         }
     }
@@ -290,11 +308,12 @@ namespace CAD.DTM.Validation.Rules
                 for (var i = 0; i < items.Count; i++)
                     for (var j = i + 1; j < items.Count; j++)
                     {
+                        if (!DtmValidationContext.IsChangedPair(items[i], items[j])) continue;
                         var maxDz = MaxDz(items[i], items[j]);
                         if (maxDz < 0.005)
-                            result.AddError(items[i].Name, $"Duplicitní linie s {items[j].Name} (shodné XYZ).");
+                            result.AddObjectError(items[i], $"Duplicitní linie s {items[j].Name} (shodné XYZ).");
                         else if (maxDz < ctx.Settings.MinDuplicateZDifference)
-                            result.AddWarning(items[i].Name, $"Linie se shoduje s {items[j].Name} v XY, rozdíl Z je {maxDz:0.00} m.");
+                            result.AddObjectWarning(items[i], $"Linie se shoduje s {items[j].Name} v XY, rozdíl Z je {maxDz:0.00} m.");
                     }
             }
         }
@@ -330,14 +349,24 @@ namespace CAD.DTM.Validation.Rules
             {
                 var list = g.ToList();
                 var distinct = list.Select(x => x.Item).Distinct().ToList();
-                if (distinct.Count > 1)
-                    result.AddError(distinct[0].Name, $"Duplicitní bod s {distinct[1].Name} v místě {DtmTopologyHelper.Coord(list[0].P.X, list[0].P.Y)} Z={list[0].P.Z:0.00}.");
+                var changed = distinct.FirstOrDefault(DtmValidationContext.IsChanged);
+                if (distinct.Count > 1 && changed != null)
+                {
+                    distinct.Remove(changed);
+                    distinct.Insert(0, changed);
+                    result.AddObjectError(distinct[0], $"Duplicitní bod s {distinct[1].Name} v místě {DtmTopologyHelper.Coord(list[0].P.X, list[0].P.Y)} Z={list[0].P.Z:0.00}.");
+                }
             }
             foreach (var g in ctx.DefinitionPoints.GroupBy(d => d.Level + "|" + string.Join(";", d.Points.Select(DtmGeometryMath.Key2D))))
             {
                 var list = g.ToList();
-                if (list.Count > 1)
-                    result.AddError(list[0].Name, $"Duplicitní definiční bod s {list[1].Name}.");
+                var changed = list.FirstOrDefault(DtmValidationContext.IsChanged);
+                if (list.Count > 1 && changed != null)
+                {
+                    list.Remove(changed);
+                    list.Insert(0, changed);
+                    result.AddObjectError(list[0], $"Duplicitní definiční bod s {list[1].Name}.");
+                }
             }
         }
     }
@@ -357,10 +386,11 @@ namespace CAD.DTM.Validation.Rules
                 for (var j = i + 1; j < pts.Count && pts[j].P.X - pts[i].P.X < min; j++)
                 {
                     if (pts[i].Item == pts[j].Item) continue;
+                    if (!DtmValidationContext.IsChangedPair(pts[i].Item, pts[j].Item)) continue;
                     var d = DtmGeometryMath.Distance3D(pts[i].P, pts[j].P);
                     if (d <= 0.0005 || d >= min) continue;
                     if (count++ < DtmTopologyHelper.MaxIssues)
-                        result.AddWarning(pts[i].Item.Name, $"Vzdálenost od {pts[j].Item.Name} je {d:0.000} m, v místě {DtmTopologyHelper.Coord(pts[i].P.X, pts[i].P.Y)}.");
+                        result.AddObjectWarning(pts[i].Item, $"Vzdálenost od {pts[j].Item.Name} je {d:0.000} m, v místě {DtmTopologyHelper.Coord(pts[i].P.X, pts[i].P.Y)}.");
                 }
         }
     }
@@ -373,12 +403,12 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             var count = 0;
-            foreach (var s in DtmTopologyHelper.Segments(ctx, ctx.Lines))
+            foreach (var s in DtmTopologyHelper.Segments(ctx, ctx.Lines.Where(DtmValidationContext.IsChanged)))
             {
                 var d = DtmGeometryMath.Distance3D(s.A, s.B);
                 if (d <= 1e-6 || d >= ctx.Settings.MinSegmentLength) continue;
                 if (count++ < DtmTopologyHelper.MaxIssues)
-                    result.AddWarning(s.Item.Name, $"Segment {s.Index + 1} má délku {d:0.000} m v místě {DtmTopologyHelper.Coord(s.A.X, s.A.Y)}.");
+                    result.AddObjectWarning(s.Item, $"Segment {s.Index + 1} má délku {d:0.000} m v místě {DtmTopologyHelper.Coord(s.A.X, s.A.Y)}.");
             }
         }
     }
@@ -393,13 +423,16 @@ namespace CAD.DTM.Validation.Rules
             var area = ctx.GetChangeArea();
             var used = new HashSet<string>(ctx.PointObjects.Concat(ctx.Lines)
                 .SelectMany(i => i.Points.Select(p => i.Level + "|" + DtmGeometryMath.Key3D(p))));
+            var originallyUsed = new HashSet<string>(ctx.OriginalItems.Where(i => ctx.IsPointObject(i) || ctx.IsLine(i))
+                .SelectMany(i => i.Points.Select(p => i.Level + "|" + DtmGeometryMath.Key3D(p))));
             foreach (var item in ctx.PodrobneBody)
             {
                 foreach (var p in item.Points)
                 {
                     if (area != null && area.Count >= 3 && !DtmGeometryMath.IsInsideOrOnBoundary(p, area, ctx.Settings.OnBoundaryTolerance)) continue;
+                    if (!DtmValidationContext.IsChanged(item) && !originallyUsed.Contains(item.Level + "|" + DtmGeometryMath.Key3D(p))) continue;
                     if (!used.Contains(item.Level + "|" + DtmGeometryMath.Key3D(p)))
-                        result.AddError(item.Name, $"Podrobný bod {DtmTopologyHelper.Coord(p.X, p.Y)} Z={p.Z:0.00} není vrcholem žádného objektu.");
+                        result.AddObjectError(item, $"Podrobný bod {DtmTopologyHelper.Coord(p.X, p.Y)} Z={p.Z:0.00} není vrcholem žádného objektu.");
                 }
             }
         }
@@ -421,13 +454,14 @@ namespace CAD.DTM.Validation.Rules
             {
                 foreach (var x in pts)
                 {
+                    if (!DtmValidationContext.IsChangedPair(x.Item, s.Item)) continue;
                     if (x.P.X < s.MinX - min || x.P.X > s.MaxX + min || x.P.Y < s.MinY - min || x.P.Y > s.MaxY + min) continue;
                     if (x.Item.Level != s.Item.Level) continue;
                     var d = DtmGeometryMath.DistanceToSegment3D(x.P, s.A, s.B);
                     // body lezici ve vrcholu linie (d ~ 0) jsou v poradku
                     if (d <= 0.0005 || d >= min) continue;
                     if (count++ < DtmTopologyHelper.MaxIssues)
-                        result.AddWarning(x.Item.Name, $"Bod je {d:0.000} m od linie {s.Item.Name} v místě {DtmTopologyHelper.Coord(x.P.X, x.P.Y)}.");
+                        result.AddObjectWarning(x.Item, $"Bod je {d:0.000} m od linie {s.Item.Name} v místě {DtmTopologyHelper.Coord(x.P.X, x.P.Y)}.");
                 }
             }
         }

@@ -18,6 +18,20 @@ namespace CAD.GUI
         {
 
         }
+        GridLength _validationHeight = new GridLength(1, GridUnitType.Star);
+        public void SetValidationDocument(Document document)
+        {
+            _validationPanel.SetDocument(document);
+            var visible = document?.IsDtmValidationVisible == true;
+            _validationPanel.Visibility = _validationSplitter.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            if (visible && _validationRow.Height.Value == 0)
+                _validationRow.Height = _validationHeight;
+            else if (!visible)
+            {
+                if (_validationRow.Height.Value > 0) _validationHeight = _validationRow.Height;
+                _validationRow.Height = new GridLength(0);
+            }
+        }
         public void Load(IDrawObject drawObject)
         {
             var propPageType = drawObject?.PropPageType;

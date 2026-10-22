@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Windows.Data;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
 using CAD.Canvas;
 using CAD.DTM.Configuration;
 using CAD.UITools;
@@ -20,8 +19,6 @@ namespace CAD.DTM.Gui
     {
         public DtmToolBarCtx() : base(null, new StreamingContext())
         {
-            DtmLineSetting = new ObservableCollection<string>();
-            DtmPointSetting = new ObservableCollection<string>();
         }
         public readonly PropertyData _dtmLineElements = RegisterProperty("DtmLineElements", typeof(ListCollectionView), null);
         public ListCollectionView DtmAreaElements { get; set; }
@@ -43,33 +40,9 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmLineElementSelected, value);
-                _updateToolSettingLock = true;
-                UpdateLineSetting();
-                _updateToolSettingLock = false;
                 UpdateToolSetting();
             }
         }
-        public readonly PropertyData _dtmLineSettings = RegisterProperty("DtmLineSetting", typeof(ObservableCollection<string>), null);
-        public ObservableCollection<string> DtmLineSetting
-        {
-            get => GetValue<ObservableCollection<string>>(_dtmLineSettings);
-            set => SetValue(_dtmLineSettings, value);
-        }
-
-        public readonly PropertyData _dtmLineSettingSelected = RegisterProperty("DtmLineSettingSelected", typeof(string), null);
-        public string DtmLineSettingSelected
-        {
-            get => GetValue<string>(_dtmLineSettingSelected);
-            set
-            {
-                SetValue(_dtmLineSettingSelected, value);
-                UpdateToolSetting();
-            }
-        }
-
-        public bool DtmLineSettingEnabled => DtmLineSetting.Count > 0;
-
-
         public readonly PropertyData _dtmPointElements = RegisterProperty("DtmPointElements", typeof(ListCollectionView), null);
         public ListCollectionView DtmPointElements
         {
@@ -83,107 +56,46 @@ namespace CAD.DTM.Gui
             set
             {
                 SetValue(_dtmPointElementSelected, value);
-                _updateToolSettingLock = true;
-                UpdatePointSetting();
-                _updateToolSettingLock = false;
                 UpdateToolSetting();
             }
         }
-        public readonly PropertyData _dtmPointSettingSelected = RegisterProperty("DtmPointSettingSelected", typeof(string), null);
-        public string DtmPointSettingSelected
-        {
-            get => GetValue<string>(_dtmPointSettingSelected);
-            set
-            {
-                SetValue(_dtmPointSettingSelected, value);
-                UpdateToolSetting();
-            }
-        }
-
-        public readonly PropertyData _dtmPointSettings = RegisterProperty("DtmPointSetting", typeof(ObservableCollection<string>), null);
-        public ObservableCollection<string> DtmPointSetting
-        {
-            get => GetValue<ObservableCollection<string>>(_dtmPointSettings);
-            set => SetValue(_dtmPointSettings, value);
-        }
-
         ICommand _currentPointCommand = DtmToolBar.DtmPoint;
         public ICommand CurrentPointCommand
         {
             get => _currentPointCommand;
         }
 
-        public bool DtmPointSettingEnabled => DtmPointSetting.Count > 0;
-
         Document _document;
+        public bool IsValidationVisible => _document?.IsDtmValidationVisible ?? SingletonsBase.Registry
+            .getEntry(Registry.SubKey.kCurrentUser, DtmValidationPanel.VisibilitySettingKey).getBool(false);
         DataModel _dataModel;
         ICanvasCommand _canvasCommand;
         public void SetDocument(Document document)
         {
             if (_document == document)
+            {
+                OnPropertyChanged(nameof(IsValidationVisible));
                 return;
+            }
             _canvasCommand = null;
             _document = document;
+            OnPropertyChanged(nameof(IsValidationVisible));
             _dataModel = document?.DataModel;
             if (_document == null)
                 return;
-            UpdateLineSetting();
-            UpdatePointSetting();
             UpdateToolSetting();
             _canvasCommand = _document.CanvasCommand;
         }
-        void UpdateLineSetting()
-        {
-            DtmLineSetting.Clear();
-            DtmLineSettingSelected = "";
-            var element = DtmConfigurationSingleton.Instance.CreateType(DtmLineElementSelected.Name);
-            if (element != null)
-            {
-                foreach (var setting in element.Settings)
-                {
-                    DtmLineSetting.Add(setting);
-                }
-                if (DtmLineSetting.Count > 0)
-                {
-                    DtmLineSettingSelected = DtmLineSetting[0];
-                }
-            }
-            OnPropertyChanged("DtmLineSettingEnabled");
-        }
-
-        void UpdatePointSetting()
-        {
-            DtmPointSetting.Clear();
-            DtmPointSettingSelected = "";
-            var element = DtmConfigurationSingleton.Instance.CreateType(DtmPointElementSelected.Name);
-            if (element != null)
-            {
-                foreach (var setting in element.Settings)
-                {
-                    DtmPointSetting.Add(setting);
-                }
-                if (DtmPointSetting.Count > 0)
-                {
-                    DtmPointSettingSelected = DtmPointSetting[0];
-                }
-            }
-            OnPropertyChanged("DtmPointSettingEnabled");
-        }
-
-        bool _updateToolSettingLock = false;
         void UpdateToolSetting()
         {
-            if (_updateToolSettingLock)
-                return;
             if (!(_dataModel?.ActiveLayer is DtmDrawingLayerMain dtmLayout)) return;
-            dtmLayout.DtmLineElementSelected = new Tuple<string, string>(DtmLineElementSelected.Name, DtmLineSettingSelected);
-            dtmLayout.DtmPointSelected = new Tuple<string, string>(DtmPointElementSelected.Name, DtmPointSettingSelected);
+            dtmLayout.DtmLineElementSelected = DtmLineElementSelected.Name;
+            dtmLayout.DtmPointSelected = DtmPointElementSelected.Name;
             dtmLayout.DtmAreaSelected = DtmAreaElementSelected?.Name;
             UpdateCurrentPointCommand();
             _canvasCommand?.UpadateDrawToolProperties();
         }
 
-        public ToggleButton PointToggleButton { get; set; }
         void UpdateCurrentPointCommand()
         {
             var currentCommand = DtmPointElementSelected.Category == DtmElementType.Bod
@@ -191,10 +103,7 @@ namespace CAD.DTM.Gui
                 : DtmToolBar.DtmDefinitionPoint;
             if (currentCommand == _currentPointCommand)
                 return;
-            var isChecked = PointToggleButton.IsChecked;
             _currentPointCommand = currentCommand;
-            _currentPointCommand.Execute(null);
-            PointToggleButton.IsChecked = isChecked;
             OnPropertyChanged("CurrentPointCommand");
         }
     }
@@ -204,6 +113,7 @@ namespace CAD.DTM.Gui
         string _displayName;
         public string Name { get; set; }
         public string ObjektovyTypNazev { get; set; }
+        public string ObsahovaCast { get; set; }
         public string KategorieObjektu { get; set; }
         public string DisplayName
         {
@@ -225,6 +135,7 @@ namespace CAD.DTM.Gui
         string _displayName;
         public string Name { get; set; }
         public string Category { get; set; }
+        public string ObsahovaCast { get; set; }
         public string ObjektovyTypNazev { get; set; }
         public string DisplayName
         {
@@ -253,19 +164,16 @@ namespace CAD.DTM.Gui
             var dtmPointsElement = new List<DtmPointElement>();
             var dtmLinesElement = new List<DtmLineElement>();
             var dtmAreaElements = new List<DtmLineElement>();
-            _ctx = new DtmToolBarCtx
-            {
-                PointToggleButton = _pointToggleButton
-            };
+            _ctx = new DtmToolBarCtx();
             foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting)
             {
                 switch (element.Value.ElementType)
                 {
                     case DtmElementType.Plocha:
-                        dtmAreaElements.Add(new DtmLineElement { Name = element.Key, Category = (element.Value.ObsahovaCast ?? "Ostatní") + " / " + element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
+                        dtmAreaElements.Add(new DtmLineElement { Name = element.Key, ObsahovaCast = element.Value.ObsahovaCast, Category = element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
                         break;
                     case DtmElementType.Linie:
-                        dtmLinesElement.Add(new DtmLineElement { Name = element.Key, Category = element.Value.ObsahovaCast + " / " + element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
+                        dtmLinesElement.Add(new DtmLineElement { Name = element.Key, ObsahovaCast = element.Value.ObsahovaCast, Category = element.Value.KategorieObjektu, ObjektovyTypNazev = element.Value.ObjektovyTypNazev });
                         break;
                     case DtmElementType.Bod:
                     case DtmElementType.DefinicniBod:
@@ -273,19 +181,23 @@ namespace CAD.DTM.Gui
                         {
                             Name = element.Key,
                             Category = element.Value.ElementType,
+                            ObsahovaCast = element.Value.ObsahovaCast,
                             ObjektovyTypNazev = element.Value.ObjektovyTypNazev,
-                            KategorieObjektu = element.Value.ObsahovaCast + " / " + element.Value.KategorieObjektu
+                            KategorieObjektu = element.Value.KategorieObjektu
                         });
                         break;
                 }
             }
             _ctx.DtmPointElements = new ListCollectionView(dtmPointsElement);
             _ctx.DtmAreaElements = new ListCollectionView(dtmAreaElements);
+            _ctx.DtmAreaElements.GroupDescriptions.Add(new PropertyGroupDescription("ObsahovaCast"));
             _ctx.DtmAreaElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
             _ctx.DtmAreaElementSelected = dtmAreaElements.FirstOrDefault();
             _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("ObsahovaCast"));
             _ctx.DtmPointElements.GroupDescriptions.Add(new PropertyGroupDescription("KategorieObjektu"));
             _ctx.DtmLineElements = new ListCollectionView(dtmLinesElement);
+            _ctx.DtmLineElements.GroupDescriptions.Add(new PropertyGroupDescription("ObsahovaCast"));
             _ctx.DtmLineElements.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
             _ctx.DtmLineElements.MoveCurrentToFirst();
             _ctx.DtmLineElementSelected = (DtmLineElement)_ctx.DtmLineElements.CurrentItem;
@@ -310,6 +222,22 @@ namespace CAD.DTM.Gui
             }
 
         }
+        void OnElementSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            if (!combo.IsLoaded || !combo.IsEnabled || combo.SelectedItem == null ||
+                (!combo.IsDropDownOpen && !combo.IsKeyboardFocusWithin) ||
+                !(ToolBarManager?.Document?.DataModel.ActiveLayer is DtmDrawingLayerMain))
+                return;
+
+            combo.GetBindingExpression(ComboBox.SelectedItemProperty)?.UpdateSource();
+            var command = combo == _areaCombo ? DtmArea
+                : combo == _lineCombo ? DtmMultiLine
+                : (GeoCadRoutedCommand)_ctx.CurrentPointCommand;
+            if (command.CanExecute(null, this))
+                command.Execute(null, this);
+        }
+
         static bool IsGroupHeader(object sender, MouseButtonEventArgs e) =>
             e.OriginalSource is FrameworkElement fe && fe.Name == "GroupHeader" && fe.TemplatedParent == sender;
 
@@ -378,7 +306,7 @@ namespace CAD.DTM.Gui
 
         void OnDtmValidate(object sender, RoutedEventArgs e)
         {
-            ToolBarManager.Document.ValidateDtm();
+            ToolBarManager.Document.ToggleDtmValidationPanel();
         }
         void OnDtmLayerManager(object sender, RoutedEventArgs e)
         {

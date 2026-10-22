@@ -14,6 +14,13 @@ namespace CAD.DTM.Elements
     public abstract class DtmElement
     : IDtmElement
     {
+        internal CAD.DTM.Validation.DtmValidationSnapshot ValidationOriginal { get; private set; }
+        internal void CaptureValidationOriginal()
+        {
+            if (ValidationOriginal == null && (ZapisObjektu == 'r' || ZapisObjektu == 'd'))
+                ValidationOriginal = new CAD.DTM.Validation.DtmValidationSnapshot(this);
+        }
+
         public char ZapisObjektu { get; set; }
         public IDtmGeometryGroup Geometry { get; set; }
         public DtmElementSpolecneAtributy SpolecneAtributy { get; set; }

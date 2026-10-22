@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Forms;
 using CAD.Canvas;
 using CAD.UITools;
 using CAD.Canvas.DrawTools;
 using System.IO;
+using System.Linq;
 using CAD.DTM;
 using CAD.DTM.Gui;
 using CAD.DTM.Validation;
@@ -33,6 +34,7 @@ namespace CAD
             Title = "<New Document>";
             FileName = string.Empty;
             DataModel = new DataModel();
+            DataModel.ContentChanged += (_, _) => MarkDtmValidationStale();
             if (aFileName.Length > 0 && File.Exists(aFileName) && DataModel.Load(aFileName))
             {
                 Title = aFileName;
@@ -228,10 +230,13 @@ namespace CAD
             if (!result.HasValue || !result.Value) return;
             try
             {
+                _dtmValidationExportContext = ctx;
                 var validation = new DtmValidator(DataModel.DtmMain, ctx).Validate();
+                DtmValidationResult = validation;
+                if (validation.HasErrors || IsDtmValidationVisible)
+                    ((MainWin)_owner).ShowDtmValidationPanel(this);
                 if (validation.HasErrors)
                 {
-                    new DtmValidationDialog(validation).ShowDialog();
                     return;
                 }
                 DataModel.DtmMain.Export(ctx);
@@ -249,8 +254,48 @@ namespace CAD
         public void ValidateDtm()
         {
             if (DataModel.DtmMain == null) return;
-            var validation = new DtmValidator(DataModel.DtmMain).Validate();
-            new DtmValidationDialog(validation).ShowDialog();
+            DtmValidationResult = new DtmValidator(DataModel.DtmMain, _dtmValidationExportContext).Validate();
+            ((MainWin)_owner).ShowDtmValidationPanel(this);
+        }
+        DtmExportCtx _dtmValidationExportContext;
+        DtmValidationResult _dtmValidationResult;
+        internal DtmValidationResult DtmValidationResult
+        {
+            get => _dtmValidationResult;
+            private set
+            {
+                _dtmValidationResult = value;
+                IsDtmValidationStale = false;
+                DtmValidationStateChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        bool _isDtmValidationStale;
+        internal bool IsDtmValidationStale
+        {
+            get => DataModel.DtmMain != null && (DtmValidationResult == null || _isDtmValidationStale);
+            private set => _isDtmValidationStale = value;
+        }
+        internal event EventHandler DtmValidationStateChanged;
+        internal void MarkDtmValidationStale()
+        {
+            if (DataModel.DtmMain == null || _isDtmValidationStale) return;
+            IsDtmValidationStale = true;
+            DtmValidationStateChanged?.Invoke(this, EventArgs.Empty);
+        }
+        internal bool IsDtmValidationVisible { get; set; } = GeoBase.SingletonsBase.Registry
+            .getEntry(Registry.SubKey.kCurrentUser, DtmValidationPanel.VisibilitySettingKey).getBool(false);
+        public void ToggleDtmValidationPanel() => ((MainWin)_owner).ToggleDtmValidationPanel(this);
+        internal bool SelectDtmValidationObject(IDtmElement element)
+        {
+            var drawing = DataModel.Layers.OfType<DtmDrawingLayerMain>()
+                .Select(layer => layer.FindObject(element)).FirstOrDefault(o => o != null);
+            if (drawing == null) return false;
+            if (DataModel.SelectedCount == 1 && DataModel.IsSelected(drawing) && DataModel.FocusetObject == drawing) return true;
+            DataModel.ClearSelectedObjects();
+            DataModel.AddSelectedObject(drawing);
+            DataModel.FocusetObject = drawing;
+            CanvasCommand.InvalidateAll();
+            return true;
         }
         public bool ImportDtm(string location)
         {

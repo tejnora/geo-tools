@@ -19,6 +19,7 @@ namespace CAD.DTM
         List<IDtmElement> _elements = new List<IDtmElement>();
         public void AddElement(IDtmElement element)
         {
+            (element as DtmElement)?.CaptureValidationOriginal();
             _elements.Add(element);
         }
 
@@ -58,6 +59,7 @@ namespace CAD.DTM
                 Debug.Assert(string.IsNullOrEmpty(geometry.Id));
                 geometry.Id = dtmMain.AllocateUniqueId(Name);
             }
+            (dtmElementGetDtmElement as DtmElement)?.CaptureValidationOriginal();
             _elements.Add(dtmElementGetDtmElement);
         }
 

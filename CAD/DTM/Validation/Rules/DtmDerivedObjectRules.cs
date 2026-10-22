@@ -40,13 +40,13 @@ namespace CAD.DTM.Validation.Rules
 
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
-            foreach (var item in ctx.Areas)
+            foreach (var item in ctx.Areas.Where(DtmValidationContext.IsChanged))
             {
                 var ring = DtmAreaHelper.Ring(item);
                 if (ring == null || ring.Count < 3) continue;
                 var a = DtmGeometryMath.Area2D(ring);
                 if (a < ctx.Settings.MinAreaSize)
-                    result.AddError(item.Name, $"Plocha má výměru {a:0.000} m².");
+                    result.AddObjectError(item, $"Plocha má výměru {a:0.000} m².");
             }
         }
     }
@@ -59,15 +59,26 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             var defs = ctx.DefinitionPoints.SelectMany(d => d.Points.Select(p => new { Item = d, P = p })).ToList();
+            var originalDefs = ctx.OriginalItems.Where(d => d.IsZps && d.Type == DtmElementType.DefinicniBod)
+                .SelectMany(d => d.Points.Select(p => new { Item = d, P = p })).ToList();
             foreach (var area in ctx.Areas)
             {
                 var ring = DtmAreaHelper.Ring(area);
                 if (ring == null || ring.Count < 3) continue;
                 var count = defs.Count(d => d.Item.Level == area.Level && DtmGeometryMath.IsInsideOrOnBoundary(d.P, ring, ctx.Settings.GeometryTolerance));
+                if (!DtmValidationContext.IsChanged(area))
+                {
+                    var original = ctx.OriginalOf(area);
+                    var originalRing = original == null ? null : DtmAreaHelper.Ring(original);
+                    if (originalRing == null || originalRing.Count < 3) continue;
+                    var before = originalDefs.Count(d => d.Item.Level == original.Level && DtmGeometryMath.IsInsideOrOnBoundary(d.P, originalRing, ctx.Settings.GeometryTolerance));
+                    // Report a newly missing point, or a new/worsened excess of points.
+                    if (!(count == 0 && before > 0) && !(count > 1 && (before <= 1 || count > before))) continue;
+                }
                 if (count == 0)
-                    result.AddError(area.Name, "Plocha neobsahuje definiční bod.");
+                    result.AddObjectError(area, "Plocha neobsahuje definiční bod.");
                 else if (count > 1)
-                    result.AddError(area.Name, $"Plocha obsahuje {count} definičních bodů.");
+                    result.AddObjectError(area, $"Plocha obsahuje {count} definičních bodů.");
             }
         }
     }
@@ -88,10 +99,11 @@ namespace CAD.DTM.Validation.Rules
                 {
                     var a = areas[i];
                     var b = areas[j];
+                    if (!DtmValidationContext.IsChangedPair(a.Item, b.Item)) continue;
                     if (a.Item.Level != b.Item.Level || a.Item.Group != b.Item.Group) continue;
                     if (!DtmGeometryMath.BoxesOverlap(a.Box, b.Box, tol)) continue;
                     if (Collides(a.Ring, b.Ring, tol) || Collides(b.Ring, a.Ring, tol))
-                        result.AddError(a.Item.Name, $"Plocha se překrývá s {b.Item.Name}.");
+                        result.AddObjectError(a.Item, $"Plocha se překrývá s {b.Item.Name}.");
                 }
         }
 
@@ -128,12 +140,16 @@ namespace CAD.DTM.Validation.Rules
         {
             var areas = ctx.Areas.Select(a => new { a.Level, Ring = DtmAreaHelper.Ring(a) })
                 .Where(a => a.Ring != null && a.Ring.Count >= 3).ToList();
+            var originalAreas = ctx.OriginalItems.Where(a => a.IsZps && a.Type == DtmElementType.Plocha)
+                .Select(a => new { a.Level, Ring = DtmAreaHelper.Ring(a) })
+                .Where(a => a.Ring != null && a.Ring.Count >= 3).ToList();
             foreach (var d in ctx.DefinitionPoints)
             {
                 foreach (var p in d.Points)
                 {
+                    if (!DtmValidationContext.IsChanged(d) && !originalAreas.Any(a => a.Level == d.Level && DtmGeometryMath.IsInsideOrOnBoundary(p, a.Ring, ctx.Settings.GeometryTolerance))) continue;
                     if (!areas.Any(a => a.Level == d.Level && DtmGeometryMath.IsInsideOrOnBoundary(p, a.Ring, ctx.Settings.GeometryTolerance)))
-                        result.AddError(d.Name, $"Definiční bod {DtmTopologyHelper.Coord(p.X, p.Y)} neleží v žádné ploše.");
+                        result.AddObjectError(d, $"Definiční bod {DtmTopologyHelper.Coord(p.X, p.Y)} neleží v žádné ploše.");
                 }
             }
         }

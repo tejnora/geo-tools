@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using CAD.GUI;
 using CAD.Canvas;
 using CAD.DTM.Elements;
@@ -87,7 +87,11 @@ namespace CAD.DTM.Gui
         public void InvalidateCanvas()
         {
             if (System.Windows.Application.Current?.MainWindow is MainWin main)
-                main.GetDocument()?.CanvasCommand.InvalidateAll();
+            {
+                var document = main.GetDocument();
+                document?.DataModel.NotifyContentChanged();
+                document?.CanvasCommand.InvalidateAll();
+            }
         }
 
         public void InitCustomProperties()

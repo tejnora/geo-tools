@@ -29,10 +29,12 @@ namespace CAD
             _palette[type] = content;
         }
 
-        public void HideAllPalette(DockingManager manager)
+        public void HideAllPalette(DockingManager manager, DockablePalette? activePalette = null)
         {
             foreach (var dockableContent in _palette)
             {
+                if (dockableContent.Key == activePalette)
+                    continue;
                 if (dockableContent.Value.State == DockableContentState.Hidden)
                     continue;
                 manager.Hide(dockableContent.Value);

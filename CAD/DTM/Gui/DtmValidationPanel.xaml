@@ -1,0 +1,40 @@
+<UserControl x:Class="CAD.DTM.Gui.DtmValidationPanel"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                MinHeight="120">
+        <DockPanel Margin="4">
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6">
+                <Button x:Name="_runValidation" DockPanel.Dock="Right" Content="Spustit validaci" Click="OnValidate" Padding="8,3" IsEnabled="False" />
+                <TextBlock Text="Validace DTM" FontWeight="Bold" VerticalAlignment="Center" />
+            </DockPanel>
+            <Border x:Name="_staleWarning" DockPanel.Dock="Top" Margin="0,0,0,6" Padding="6" Background="#FFFFE4A3" Visibility="Collapsed">
+                <TextBlock Text="Data nemají aktuální validaci. Spusťte validaci." Foreground="#FF704600" TextWrapping="Wrap" />
+            </Border>
+            <TextBlock DockPanel.Dock="Top" Margin="0,0,0,6" TextWrapping="Wrap" Text="{Binding Path=Summary}" />
+            <TreeView ItemsSource="{Binding Path=Nodes}" SelectedItemChanged="OnSelectedIssueChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=OneWay}" />
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                        <Grid PreviewMouseLeftButtonDown="OnIssueClick" ToolTipService.ShowDuration="60000" ToolTipService.IsEnabled="{Binding Path=HasToolTip}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.ToolTip>
+                                <ToolTip>
+                                    <TextBlock Text="{Binding Path=ToolTip}" TextWrapping="Wrap" MaxWidth="520" />
+                                </ToolTip>
+                            </Grid.ToolTip>
+                            <TextBlock Text="{Binding Path=Icon}" Foreground="{Binding Path=Brush}" FontWeight="Bold" Width="20" />
+                            <TextBlock Grid.Column="1" Text="{Binding Path=Text}" Foreground="{Binding Path=Brush}" TextWrapping="Wrap" />
+                        </Grid>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </DockPanel>
+</UserControl>

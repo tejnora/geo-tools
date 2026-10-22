@@ -63,7 +63,8 @@ namespace CAD.DTM.Validation
 
         public DtmValidationResult Validate()
         {
-            return new DtmValidationResult(_rules.Select(r => r.Validate(_context)).ToList());
+            var context = new DtmValidationContext(_context.Main, _context.ExportCtx, _context.Settings);
+            return new DtmValidationResult(_rules.Select(r => r.Validate(context)).ToList());
         }
     }
 }

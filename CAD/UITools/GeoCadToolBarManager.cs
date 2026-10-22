@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GeoBase.Utils;
 
 namespace CAD.UITools
 {
@@ -90,8 +91,25 @@ namespace CAD.UITools
             _toolBars.Add(toolBar);
             toolBar.ToolBarManager = this;
             toolBar.BandIndex = _toolBars.Count - 1;
+            var key = "ToolBars/" + toolBar.GetType().Name;
+            var band = GeoBase.SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, key + "/Band");
+            var index = GeoBase.SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, key + "/BandIndex");
+            if (band.isInt() && band.getInt() >= 0)
+                toolBar.Band = band.getInt();
+            if (index.isInt() && index.getInt() >= 0)
+                toolBar.BandIndex = index.getInt();
             if (toolBarTray != null)
                 toolBarTray.ToolBars.Add(toolBar);
+        }
+
+        public void SaveLayout()
+        {
+            foreach (var toolBar in _toolBars)
+            {
+                var key = "ToolBars/" + toolBar.GetType().Name;
+                GeoBase.SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, key + "/Band", new ProgramOption(toolBar.Band));
+                GeoBase.SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, key + "/BandIndex", new ProgramOption(toolBar.BandIndex));
+            }
         }
 
         public void UnRegisterToolBar(GeoCadToolBar toolBar)

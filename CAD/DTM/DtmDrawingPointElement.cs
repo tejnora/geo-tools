@@ -220,10 +220,9 @@ namespace CAD.DTM
             UpdatePoint();
 
             var dtmLayer = (DtmDrawingLayerMain)layer;
-            _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected.Item1);
-            _element.ApplySelectedSetting(dtmLayer.DtmPointSelected.Item2);
+            _element = (DtmBodBaseElement)DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
-            new DtmDrawingGroup(dtmLayer.DtmPointSelected.Item1, this);
+            new DtmDrawingGroup(dtmLayer.DtmPointSelected, this);
             Selected = false;
         }
         public IDtmDrawingGroup Group { get; set; }

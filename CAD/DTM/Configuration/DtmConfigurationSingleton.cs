@@ -127,7 +127,22 @@ namespace CAD.DTM.Configuration
                 throw new InvalidDataException($"Neznámý typ objektu DTM: {elementName}.");
             var element = (DtmElement)Activator.CreateInstance(option.ClassType);
             element.Init(option);
-            element.SchemaAttributes?.CaptureLegacyValues();
+            if (element.SchemaAttributes != null)
+            {
+                foreach (var field in element.SchemaAttributes.Fields())
+                {
+                    int? value = field.Attribute.Name switch
+                    {
+                        "UrovenUmisteniObjektuZPS" or "UrovenUmisteniObjektuTI" or "UrovenUmisteniObjektuDI" => 0,
+                        "TridaPresnostiPoloha" or "TridaPresnostiVyska" => 3,
+                        "ZpusobPorizeniZPS" or "ZpusobPorizeniPB_ZPS" or "ZpusobPorizeniTI" or "ZpusobPorizeniDI" => 1,
+                        _ => null
+                    };
+                    if (value.HasValue)
+                        element.SchemaAttributes.Set(field.Path, value.Value);
+                }
+                element.SchemaAttributes.CaptureLegacyValues();
+            }
             return element;
         }
 

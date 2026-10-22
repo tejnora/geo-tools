@@ -219,10 +219,11 @@ namespace CAD.Utils
             m_undoBuffer.Clear();
             m_redoBuffer.Clear();
         }
+        public event EventHandler Changed;
         public bool Dirty
         {
             get { return m_dirty; }
-            set { m_dirty = value; }
+            set { m_dirty = value; if (value) Changed?.Invoke(this, EventArgs.Empty); }
         }
         public bool CanCapture
         {

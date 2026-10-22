@@ -10,7 +10,7 @@ namespace CAD.DTM.Validation.Rules
         {
             foreach (var item in ctx.Items)
                 if (item.Element is DtmElement element && element.SchemaAttributes != null)
-                    foreach (var error in element.SchemaAttributes.Validate()) result.AddError(item.Name, error);
+                    foreach (var error in element.SchemaAttributes.Validate()) result.AddObjectError(item, error);
         }
     }
 }

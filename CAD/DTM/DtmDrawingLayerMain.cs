@@ -96,13 +96,19 @@ namespace CAD.DTM
         }
 
         public IEnumerable<IDrawObject> Objects => null;
+        public IDrawObject FindObject(IDtmElement element)
+        {
+            if (!Visible || element == null || element.IsDeleted || element.EvaluateZapisObjektuForGui() == 'd') return null;
+            return _layers.Values.Where(l => l.Visible).SelectMany(l => l.Objects)
+                .FirstOrDefault(o => o is IDtmDrawingElement drawing && ReferenceEquals(drawing.GetDtmElement, element));
+        }
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
         public Color Color { get; set; }
         public double Width { get; set; }
         public string Name { get; set; }
-        public Tuple<string, string> DtmLineElementSelected { get; set; }
-        public Tuple<string, string> DtmPointSelected { get; set; }
+        public string DtmLineElementSelected { get; set; }
+        public string DtmPointSelected { get; set; }
         public string DtmAreaSelected { get; set; }
 
         public Rect GetBoundingRect(ICanvas canvas)

@@ -21,12 +21,12 @@ namespace CAD.DTM.Validation.Rules
                     foreach (var p in DtmValidationContext.GetPoints(g))
                     {
                         if (double.IsNaN(p.X) || double.IsNaN(p.Y) || p.X < s.MinX || p.X > s.MaxX || p.Y < s.MinY || p.Y > s.MaxY)
-                            result.AddError(item.Name, $"X,Y ({p.X:0.00} {p.Y:0.00}) mimo povolený rozsah / 3. kvadrant S-JTSK.");
+                            result.AddObjectError(item, $"X,Y ({p.X:0.00} {p.Y:0.00}) mimo povolený rozsah / 3. kvadrant S-JTSK.");
                         if (item.IsZps && DtmValidationContext.HasZ(g))
                         {
                             var minZ = isDefPoint ? s.MinZDefinicniBod : s.MinZ;
                             if (double.IsNaN(p.Z) || p.Z < minZ || p.Z > s.MaxZ)
-                                result.AddError(item.Name, $"Z ({p.Z:0.00}) mimo povolený rozsah {minZ}–{s.MaxZ} m n. m.");
+                                result.AddObjectError(item, $"Z ({p.Z:0.00}) mimo povolený rozsah {minZ}–{s.MaxZ} m n. m.");
                         }
                     }
                 }
@@ -52,7 +52,7 @@ namespace CAD.DTM.Validation.Rules
                     {
                         var hasZ = DtmValidationContext.HasZ(g);
                         if (!IsCm(p.X) || !IsCm(p.Y) || (hasZ && !IsCm(p.Z)))
-                            result.AddError(item.Name, $"Souřadnice ({p.X} {p.Y}{(hasZ ? " " + p.Z : "")}) mají vyšší přesnost než cm.");
+                            result.AddObjectError(item, $"Souřadnice ({p.X} {p.Y}{(hasZ ? " " + p.Z : "")}) mají vyšší přesnost než cm.");
                     }
         }
     }
@@ -79,7 +79,7 @@ namespace CAD.DTM.Validation.Rules
                 {
                     var outside = DtmValidationContext.GetPoints(g).FirstOrDefault(p => !IsInsideOrOnBoundary(p, area, ctx.Settings.OnBoundaryTolerance));
                     if (outside != null)
-                        result.AddError(item.Name, $"Bod ({outside.X:0.00} {outside.Y:0.00}) leží mimo oblast změny.");
+                        result.AddObjectError(item, $"Bod ({outside.X:0.00} {outside.Y:0.00}) leží mimo oblast změny.");
                 }
             }
         }

@@ -12,10 +12,13 @@ namespace CAD.DTM.Validation
         public string Name { get; set; }
         public IDtmElement Element { get; set; }
         public bool IsZps { get; set; }
+        internal int? SnapshotLevel { get; set; }
+        internal IReadOnlyList<IDtmGeometry> SnapshotGeometries { get; set; }
         public int Level
         {
             get
             {
+                if (SnapshotLevel.HasValue) return SnapshotLevel.Value;
                 if (Element is DtmElement element && element.SchemaAttributes != null)
                 {
                     element.SchemaAttributes.SynchronizeLegacyValues();
@@ -31,13 +34,14 @@ namespace CAD.DTM.Validation
         public DtmElementType Type => Element.ElementType;
         public IEnumerable<DtmPoint> Points => Geometries.SelectMany(DtmValidationContext.GetPoints);
         public IEnumerable<DtmPoint> LinePoints => Geometries.OfType<DtmCurveGeometry>().SelectMany(DtmValidationContext.GetPoints);
-        public IEnumerable<IDtmGeometry> Geometries => Element.Geometry?.Geometries ?? Enumerable.Empty<IDtmGeometry>();
+        public IEnumerable<IDtmGeometry> Geometries => SnapshotGeometries ?? (IEnumerable<IDtmGeometry>)Element.Geometry?.Geometries ?? Enumerable.Empty<IDtmGeometry>();
     }
 
     public class DtmValidationContext
     {
         List<DtmValidationItem> _items;
         List<DtmValidationItem> _target;
+        List<DtmValidationItem> _original;
 
         public DtmValidationContext(IDtmMain main, DtmExportCtx exportCtx, DtmValidationSettings settings)
         {
@@ -53,7 +57,28 @@ namespace CAD.DTM.Validation
         public IReadOnlyList<DtmValidationItem> Items => _items ?? (_items = CollectItems(e => e.ExportToOutput));
 
         // Cilovy stav: vsechny nesmazane objekty (vcetne referencnich).
-        public IReadOnlyList<DtmValidationItem> TargetItems => _target ?? (_target = CollectItems(e => !e.IsDeleted));
+        public IReadOnlyList<DtmValidationItem> TargetItems => _target ?? (_target = CollectItems(e => !e.IsDeleted && e.EvaluateZapisObjektuForGui() != 'd'));
+
+        public IReadOnlyList<DtmValidationItem> OriginalItems => _original ?? (_original = CollectOriginalItems());
+        public IEnumerable<DtmValidationItem> ChangedItems => TargetItems.Where(IsChanged);
+        public IEnumerable<DtmValidationItem> DeletedItems => Items.Where(i => i.Mode == 'd');
+        public static bool IsChanged(DtmValidationItem item) => item.Element.ExportToOutput && (item.Mode == 'i' || item.Mode == 'u');
+        public static bool IsChangedPair(DtmValidationItem a, DtmValidationItem b) => IsChanged(a) || IsChanged(b);
+        public DtmValidationItem OriginalOf(DtmValidationItem item) => OriginalItems.FirstOrDefault(i => ReferenceEquals(i.Element, item.Element));
+
+        List<DtmValidationItem> CollectOriginalItems()
+        {
+            var result = new List<DtmValidationItem>();
+            foreach (var item in CollectItems(e => true))
+                if (item.Element is DtmElement element && element.ValidationOriginal != null)
+                    result.Add(element.ValidationOriginal.CreateItem(item));
+            return result;
+        }
+
+        internal bool IsPodrobnyBod(DtmValidationItem i) => i.IsZps && Settings.PodrobnyBodGroups.Contains(i.Group);
+        internal bool IsPointObject(DtmValidationItem i) => i.IsZps && i.Type == DtmElementType.Bod
+            && !Settings.PodrobnyBodGroups.Contains(i.Group) && !Settings.PointsExcludedFromTopology.Contains(i.Group);
+        internal bool IsLine(DtmValidationItem i) => i.IsZps && i.Type == DtmElementType.Linie && i.LinePoints.Count() >= 2;
 
         public IEnumerable<DtmValidationItem> ZpsTarget => TargetItems.Where(i => i.IsZps);
         public IEnumerable<DtmValidationItem> PodrobneBody => ZpsTarget.Where(i => Settings.PodrobnyBodGroups.Contains(i.Group));

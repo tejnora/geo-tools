@@ -25,6 +25,7 @@ namespace CAD.Canvas
     {
         public DataModel()
         {
+            _undoBuffer.Changed += (_, _) => NotifyContentChanged();
             _toolTypes.Clear();
             _toolTypes[DrawToolBar.Line.Name] = typeof(Line);
             _toolTypes[Circle.ObjectType] = typeof(Circle);
@@ -59,6 +60,9 @@ namespace CAD.Canvas
 
         readonly List<double> _widths = new List<double>
             { 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008 };
+
+        public event EventHandler ContentChanged;
+        public void NotifyContentChanged() => ContentChanged?.Invoke(this, EventArgs.Empty);
 
         public bool IsDirty
         {
@@ -618,6 +622,7 @@ namespace CAD.Canvas
             _dtmDrawingLayerMain = new DtmDrawingLayerMain(DtmMain);
             _layers.Insert(0, _dtmDrawingLayerMain);
             _activeLayer = _layers[0];
+            NotifyContentChanged();
         }
 
         public void ImportPointsDtm(DtmImportPointsCtx dataCtx)
@@ -629,6 +634,7 @@ namespace CAD.Canvas
                 new DtmDrawingGroup(dataCtx.PointTypeSelected, drawObject);
                 _dtmDrawingLayerMain.AddObject(drawObject);
             }
+            NotifyContentChanged();
         }
 
         public void OnRemoveVfkData()

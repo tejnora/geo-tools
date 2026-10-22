@@ -39,6 +39,9 @@ namespace CAD
 
         void OnMainWinClosing(object sender, EventArgs e)
         {
+            var document = GetDocument();
+            if (document?.GetDocumentType() == DocumentType.Dtm)
+                SaveDtmValidationPanelState(document);
             onSavePosAndSize(sender, e);
             Singletons.Registry.Save();
         }
@@ -51,15 +54,24 @@ namespace CAD
 
         GeoCadToolBarManager _toolBarManager;
         bool _lockUpdateToolBar;
+        bool _restoringDockLayout;
         void DockingManagerControl_Loaded(object sender, EventArgs arg)
         {
+            _dockingManager.Loaded -= DockingManagerControl_Loaded;
             ProgramOption po = Singletons.Registry.getEntry(Registry.SubKey.kCurrentUser, "MainWindowDockPosAndSize");
             if (po.isString())
             {
-                using (System.IO.StringReader reader = new System.IO.StringReader(po.getString()))
+                _restoringDockLayout = true;
+                try
                 {
-                    _dockingManager.RestoreLayout(reader);
+                    using (var reader = new System.IO.StringReader(po.getString()))
+                        _dockingManager.RestoreLayout(reader);
                 }
+                finally
+                {
+                    _restoringDockLayout = false;
+                }
+                return;
             }
             DocumentEnvironemt.Instance.HideAllPalette(_dockingManager);
         }
@@ -75,19 +87,28 @@ namespace CAD
 
         void OnMainDocumentChanged(object sender, EventArgs e)
         {
+            if (_restoringDockLayout)
+                return;
             var doc = GetDocument();
-            DocumentEnvironemt.Instance.HideAllPalette(_dockingManager);
+            _dtmPropPage.SetValidationDocument(doc?.GetDocumentType() == DocumentType.Dtm ? doc : null);
+            DockablePalette? activePalette = doc?.GetDocumentType() switch
+            {
+                DocumentType.Vfk => DockablePalette.SeznamSouradnic,
+                DocumentType.Dtm => DockablePalette.DtmPropPage,
+                _ => null
+            };
+            DocumentEnvironemt.Instance.HideAllPalette(_dockingManager, activePalette);
             _toolBarManager.Document = GetDocument();
             if (doc == null)
                 return;
             switch (doc.GetDocumentType())
             {
                 case DocumentType.Vfk:
-                    _dockingManager.Show(DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic), DockableContentState.Docked, AnchorStyle.Right);
+                    ShowPalette(DockablePalette.SeznamSouradnic);
                     ((SeznamSouradnic)DocumentEnvironemt.Instance.GetPalette(DockablePalette.SeznamSouradnic)).SetDocument(doc);
                     break;
                 case DocumentType.Dtm:
-                    _dockingManager.Show(DocumentEnvironemt.Instance.GetPalette(DockablePalette.DtmPropPage), DockableContentState.Docked, AnchorStyle.Right);
+                    ShowPalette(DockablePalette.DtmPropPage);
                     break;
                 case DocumentType.Simple:
                     break;
@@ -95,6 +116,33 @@ namespace CAD
                     Debug.Fail("Unsupported document type");
                     break;
             }
+        }
+        void ShowPalette(DockablePalette type)
+        {
+            var palette = DocumentEnvironemt.Instance.GetPalette(type);
+            if (palette.State == DockableContentState.Hidden)
+                _dockingManager.Show(palette);
+        }
+        internal void ShowDtmValidationPanel(Document document)
+        {
+            document.IsDtmValidationVisible = true;
+            _dtmPropPage.SetValidationDocument(document);
+            ShowPalette(DockablePalette.DtmPropPage);
+            SaveDtmValidationPanelState(document);
+        }
+
+        internal void ToggleDtmValidationPanel(Document document)
+        {
+            document.IsDtmValidationVisible = _dtmPropPage.State == DockableContentState.Hidden || !document.IsDtmValidationVisible;
+            _dtmPropPage.SetValidationDocument(document);
+            ShowPalette(DockablePalette.DtmPropPage);
+            SaveDtmValidationPanelState(document);
+        }
+        void SaveDtmValidationPanelState(Document document)
+        {
+            Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, DtmValidationPanel.VisibilitySettingKey,
+                new ProgramOption(document.IsDtmValidationVisible));
+            _toolBarManager.NotifyDocumentChanged();
         }
         private void OnAddRaster(object sender, EventArgs e)
         {
@@ -253,6 +301,7 @@ namespace CAD
 
         private void onSavePosAndSize(object sender, EventArgs arg)
         {
+            _toolBarManager.SaveLayout();
             Singletons.Registry.setEntry(Registry.SubKey.kCurrentUser, "MainWindowPos",
                 new ProgramOption(new Point(Left, Top)));
             if (WindowState != WindowState.Maximized)

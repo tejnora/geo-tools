@@ -28,7 +28,7 @@ namespace CAD.DTM.Validation.Rules
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
             foreach (var item in ctx.Items.Where(i => !i.Geometries.Any()))
-                result.AddError(item.Name, "Objekt nemá geometrii.");
+                result.AddObjectError(item, "Objekt nemá geometrii.");
         }
     }
 
@@ -42,7 +42,7 @@ namespace CAD.DTM.Validation.Rules
             foreach (var item in ctx.Items)
                 foreach (var g in item.Geometries)
                     if (!(g is DtmPointGeometry) && !(g is DtmCurveGeometry) && !(g is DtmPolygonGeometry))
-                        result.AddError(item.Name, $"Nepovolený typ geometrie {g.GetType().Name}.");
+                        result.AddObjectError(item, $"Nepovolený typ geometrie {g.GetType().Name}.");
         }
     }
 
@@ -67,7 +67,7 @@ namespace CAD.DTM.Validation.Rules
                         _ => "unknown"
                     });
                     if (!actual.SequenceEqual(element.SchemaAttributes.Definition.Geometries))
-                        result.AddError(item.Name, "Geometrie neodpovídá XSD: " + string.Join(", ", element.SchemaAttributes.Definition.Geometries));
+                        result.AddObjectError(item, "Geometrie neodpovídá XSD: " + string.Join(", ", element.SchemaAttributes.Definition.Geometries));
                     continue;
                 }
                 switch (item.Element.ElementType)
@@ -75,15 +75,15 @@ namespace CAD.DTM.Validation.Rules
                     case DtmElementType.Bod:
                     case DtmElementType.DefinicniBod:
                         if (geometries.Any(g => !(g is DtmPointGeometry)))
-                            result.AddError(item.Name, "Bodový objekt musí mít bodovou geometrii.");
+                            result.AddObjectError(item, "Bodový objekt musí mít bodovou geometrii.");
                         break;
                     case DtmElementType.Linie:
                         if (geometries.Any(g => !(g is DtmCurveGeometry)))
-                            result.AddError(item.Name, "Liniový objekt musí mít liniovou geometrii.");
+                            result.AddObjectError(item, "Liniový objekt musí mít liniovou geometrii.");
                         break;
                     case DtmElementType.Plocha:
                         if (geometries.Any(g => !(g is DtmPolygonGeometry)))
-                            result.AddError(item.Name, "Plošný objekt musí mít plošnou geometrii.");
+                            result.AddObjectError(item, "Plošný objekt musí mít plošnou geometrii.");
                         break;
                 }
             }
@@ -100,7 +100,7 @@ namespace CAD.DTM.Validation.Rules
             foreach (var item in ctx.Items)
                 foreach (var g in item.Geometries.OfType<DtmPointGeometry>())
                     if (g.Point == null)
-                        result.AddError(item.Name, "Bodová geometrie nemá souřadnice.");
+                        result.AddObjectError(item, "Bodová geometrie nemá souřadnice.");
         }
     }
 
@@ -114,7 +114,7 @@ namespace CAD.DTM.Validation.Rules
             foreach (var item in ctx.Items)
                 foreach (var g in item.Geometries.OfType<DtmCurveGeometry>().SelectMany(g => g is DtmMultiCurveGeometry multi ? multi.Curves : new[] { g }))
                     if ((g.Points?.Count ?? 0) < 2)
-                        result.AddError(item.Name, "Liniová geometrie musí mít nejméně 2 body.");
+                        result.AddObjectError(item, "Liniová geometrie musí mít nejméně 2 body.");
         }
     }
 
@@ -131,7 +131,7 @@ namespace CAD.DTM.Validation.Rules
                     foreach (var p in new[] { g.Points }.Concat(g.InteriorRings))
                     {
                         if (p == null || p.Count < 4 || p[0].X != p[p.Count - 1].X || p[0].Y != p[p.Count - 1].Y)
-                            result.AddError(item.Name, "Plošná geometrie musí být uzavřená a mít nejméně 4 body.");
+                            result.AddObjectError(item, "Plošná geometrie musí být uzavřená a mít nejméně 4 body.");
                     }
                 }
         }
