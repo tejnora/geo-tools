@@ -1,8 +1,7 @@
-﻿using GeoBase;
 using GeoBase.Gui;
-using GeoBase.Utils;
 using System;
-using System.Windows.Input;
+using System.IO;
+using System.Windows;
 
 namespace CAD.DTM.Gui
 {
@@ -15,6 +14,7 @@ namespace CAD.DTM.Gui
             _ctx = ctx;
             DataContext = _ctx;
             InitializeComponent();
+            CAD.GUI.DialogLayout.ApplyButtonBar(this);
         }
         public Nullable<bool> DoModal()
         {
@@ -27,28 +27,25 @@ namespace CAD.DTM.Gui
 
         void OnExportButtonClick(object sender, EventArgs aArgs)
         {
+            if (!_ctx.PrepareOutputFile()) return;
+            if (File.Exists(_ctx.FileName) && MessageBox.Show(this,
+                DtmExportCtx.ExportText("DtmExportOverwrite", "Soubor již existuje. Chcete jej přepsat?") + "\n" + _ctx.FileName,
+                DtmExportCtx.ExportText("DtmExportTitle", "Export DTM"),
+                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
             _ctx.SaveValuesToRegistry();
             DialogResult = true;
             SavePosAndSize();
             Close();
         }
-        void OnCanExportButtonClick(object sender, CanExecuteRoutedEventArgs args)
+        void OnDirectoryChooser(object sender, EventArgs aArgs)
         {
-            _ctx.Validate();
-            args.CanExecute = !_ctx.HasErrors;
-        }
-
-        void OnFileChooser(object sender, EventArgs aArgs)
-        {
-            var dlg = new Microsoft.Win32.SaveFileDialog
+            var dlg = new Microsoft.Win32.OpenFolderDialog
             {
-                Filter = "DTM (*.xml)|*.xml",
-                FileName = _ctx.FileName
+                Title = DtmExportCtx.ExportText("DtmExportDirectoryTitle", "Vyberte výstupní adresář"),
+                InitialDirectory = Directory.Exists(_ctx.OutputDirectory) ? _ctx.OutputDirectory : string.Empty,
+                Multiselect = false
             };
-            var result = dlg.ShowDialog();
-            if (result != true) return;
-            _ctx.FileName = dlg.FileName;
+            if (dlg.ShowDialog(this) == true) _ctx.OutputDirectory = dlg.FolderName;
         }
-
     }
 }

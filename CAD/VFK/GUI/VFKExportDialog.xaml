@@ -5,20 +5,22 @@
                 xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
                 loc:Translate.Uid="120"
                 Title="{loc:Translate Default=VFKExport}"
-                SizeToContent="WidthAndHeight">
+                Style="{DynamicResource DialogWindowStyle}" Background="#F7F8FA" WindowStartupLocation="CenterOwner"
+                Width="640" MinWidth="480"
+                Height="210" MinHeight="190">
     <Gui:DialogBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+                <ResourceDictionary Source="../../Themes/DialogForms.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Gui:DialogBase.Resources>
-    <Grid>
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid VerticalAlignment="Center">
+        <Grid VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -28,14 +30,11 @@
                    loc:Translate.Uid="32"
                    Content="{loc:Translate Default=FileName:}" />
             <TextBox Grid.Column="1"
-                     Height="22"
                      Name="_mFileName"
                      Text="{Binding Path=FileName}" />
-            <Button Grid.Column="2"
+            <Button Style="{StaticResource DialogBrowseButtonStyle}" Grid.Column="2"
                     Name="_mFileChooser"
                     Click="OnFileChooser"
-                    MaxWidth="20"
-                    MinWidth="20"
                     Content="..." />
         </Grid>
         <StackPanel Orientation="Horizontal"

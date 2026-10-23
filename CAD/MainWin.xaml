@@ -264,7 +264,7 @@
         </StatusBar>
         <ad:DockingManager x:Name="_dockingManager" Loaded="DockingManagerControl_Loaded">
             <ad:ResizingPanel Orientation="Horizontal">
-                <ad:DocumentPane SelectionChanged="OnMainDocumentChanged">
+                <ad:DocumentPane>
                 </ad:DocumentPane>
                 <ad:DockablePane>
                     <VFKGui:SeznamSouradnic x:Name="_seznamSouradnic" IsCloseable="True"/>

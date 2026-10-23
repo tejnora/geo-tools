@@ -16,7 +16,19 @@ namespace CAD.GUI
         }
         public void Reset()
         {
+            _stack.Children.Clear();
+            _lastControl = null;
+            _propPageCache.Clear();
+        }
 
+        public void SetDocument(Document document)
+        {
+            SetValidationDocument(document);
+            var model = document?.DataModel;
+            var selected = model?.FocusetObject;
+            if (selected == null || !model.IsSelected(selected))
+                selected = model?.GetFirstSelected();
+            Load(selected);
         }
         GridLength _validationHeight = new GridLength(1, GridUnitType.Star);
         public void SetValidationDocument(Document document)
@@ -36,7 +48,10 @@ namespace CAD.GUI
         {
             var propPageType = drawObject?.PropPageType;
             if (propPageType == null)
+            {
+                Reset();
                 return;
+            }
             if (!_propPageCache.TryGetValue(propPageType, out var guiControl))
             {
                 guiControl = (UIElement)Activator.CreateInstance(propPageType);

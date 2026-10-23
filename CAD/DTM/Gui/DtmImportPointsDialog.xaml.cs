@@ -1,4 +1,4 @@
-﻿using GeoBase;
+using GeoBase;
 using GeoBase.Gui;
 using GeoBase.Utils;
 using System;
@@ -15,6 +15,7 @@ namespace CAD.DTM.Gui
             _ctx = ctx;
             DataContext = ctx;
             InitializeComponent();
+            CAD.GUI.DialogLayout.ApplyButtonBar(this);
         }
         public Nullable<bool> DoModal()
         {

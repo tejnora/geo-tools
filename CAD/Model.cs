@@ -612,17 +612,18 @@ namespace CAD.Canvas
             _activeLayer = _layers[0];
         }
 
-        public void ImportDtm(DtmImportCtx dataCtx)
+        public bool ImportDtm(DtmImportCtx dataCtx)
         {
             if (_layers[0] is DtmDrawingLayerMain)
                 _layers.RemoveAt(0);
             DtmMain = new DtmMain();
             if (!DtmMain.Import(dataCtx))
-                return;
+                return false;
             _dtmDrawingLayerMain = new DtmDrawingLayerMain(DtmMain);
             _layers.Insert(0, _dtmDrawingLayerMain);
             _activeLayer = _layers[0];
             NotifyContentChanged();
+            return true;
         }
 
         public void ImportPointsDtm(DtmImportPointsCtx dataCtx)

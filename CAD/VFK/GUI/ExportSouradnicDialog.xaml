@@ -4,17 +4,18 @@
                 xmlns:Gui="clr-namespace:GeoBase.Gui;assembly=GeoBase"
                 xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase" loc:Translate.Uid="133"
                 Title="{loc:Translate Default=ExportInfo}"
-                ResizeMode="NoResize"
-                SizeToContent="WidthAndHeight">
+                Style="{DynamicResource DialogWindowStyle}" Background="#F7F8FA" WindowStartupLocation="CenterOwner"
+                Width="520" MinWidth="440"
+                Height="300" MinHeight="280">
     <Gui:DialogBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Converters/Converters.xaml" />
-                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+                <ResourceDictionary Source="../../Themes/DialogForms.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Gui:DialogBase.Resources>
-    <Grid>
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

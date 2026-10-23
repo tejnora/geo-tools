@@ -5,17 +5,17 @@
                 xmlns:Utils="clr-namespace:CAD.Utils;assembly=GeoBase"
                 xmlns:loc="clr-namespace:GeoBase.Localization;assembly=GeoBase"
                 Title="SouradniceDialog"
-                ResizeMode="NoResize"
-                Height="300"
-                Width="287">
+                Style="{DynamicResource DialogWindowStyle}" Background="#F7F8FA" WindowStartupLocation="CenterOwner"
+                Width="560" MinWidth="480"
+                Height="560" MinHeight="540">
     <Gui:DialogBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Themes/Settings.xaml" />
+                <ResourceDictionary Source="../../Themes/DialogForms.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Gui:DialogBase.Resources>
-    <Grid>
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

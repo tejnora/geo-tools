@@ -55,6 +55,9 @@ namespace CAD
             DataModel.AddDrawTool(DtmToolBar.DtmDefinitionPoint.Name, new DtmDrawingDefinitionPointElement());
             DataModel.AddDrawTool(DtmToolBar.DtmArea.Name, new DtmDrawingPlochaElement());
             _Canvas.Construct(this, DataModel);
+            _Canvas.HandleCreated += (_, _) => QueueInitialFitView();
+            _Canvas.VisibleChanged += (_, _) => QueueInitialFitView();
+            _Canvas.SizeChanged += (_, _) => QueueInitialFitView();
 
             _Canvas.RunningSnapsDefault = new Type[]
                 {
@@ -77,6 +80,68 @@ namespace CAD
             _Canvas.AddQuickSnapType(Keys.D, typeof(DivisionSnapPoint));
 
         }
+        bool _initialFitViewPending;
+        bool _initialFitViewQueued;
+        internal void FitViewWhenReady()
+        {
+            _initialFitViewPending = true;
+            QueueInitialFitView();
+        }
+
+        void QueueInitialFitView()
+        {
+            if (!_initialFitViewPending || _initialFitViewQueued || _Canvas.IsDisposed) return;
+            _initialFitViewQueued = true;
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ContextIdle, new Action(() =>
+            {
+                _initialFitViewQueued = false;
+                if (!_initialFitViewPending || _Canvas.IsDisposed || !_Canvas.IsHandleCreated || !_Canvas.Visible ||
+                    _Canvas.ClientSize.Width <= 0 || _Canvas.ClientSize.Height <= 0) return;
+                _initialFitViewPending = false;
+                _Canvas.CommandFitView();
+            }));
+        }
+
+        FrameworkElement _tabHeader;
+        bool _middleButtonPressedOnTab;
+
+        public override void OnApplyTemplate()
+        {
+            if (_tabHeader != null)
+            {
+                _tabHeader.PreviewMouseDown -= OnTabMouseDown;
+                _tabHeader.PreviewMouseUp -= OnTabMouseUp;
+                _tabHeader.MouseLeave -= OnTabMouseLeave;
+            }
+            _middleButtonPressedOnTab = false;
+            base.OnApplyTemplate();
+            _tabHeader = DragEnabledArea;
+            if (_tabHeader != null)
+            {
+                _tabHeader.PreviewMouseDown += OnTabMouseDown;
+                _tabHeader.PreviewMouseUp += OnTabMouseUp;
+                _tabHeader.MouseLeave += OnTabMouseLeave;
+            }
+        }
+
+        void OnTabMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != System.Windows.Input.MouseButton.Middle) return;
+            _middleButtonPressedOnTab = true;
+            e.Handled = true;
+        }
+
+        void OnTabMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != System.Windows.Input.MouseButton.Middle) return;
+            var close = _middleButtonPressedOnTab;
+            _middleButtonPressedOnTab = false;
+            e.Handled = true;
+            if (close && ContainerPane?.GetManager() != null) Close();
+        }
+
+        void OnTabMouseLeave(object sender, System.Windows.Input.MouseEventArgs e) => _middleButtonPressedOnTab = false;
+
         private readonly IMainWinInterface _owner;
         public ICanvasCommand CanvasCommand
         {
@@ -151,7 +216,7 @@ namespace CAD
             {
                 var dlg = new VFKImportDialog(vfkDataContext) { Owner = (MainWin)_owner };
                 bool? result = dlg.DoModal();
-                if (result == false)
+                if (result != true)
                     return false;
             }
             if (DataModel.IsImportedVfkFile() && LanguageDictionary.Current.ShowMessageBox("92", null, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -166,7 +231,6 @@ namespace CAD
                                                   MessageBoxImage.Error);
                 return false;
             }
-            CanvasCommand.CommandFitView();
             return true;
         }
         public void ExportVfk()
@@ -302,13 +366,11 @@ namespace CAD
             var ctx = new DtmImportCtx();
             var dlg = new DtmImportDialog(ctx) { Owner = (MainWin)_owner };
             var result = dlg.DoModal();
-            if (result == false)
+            if (result != true)
                 return false;
             try
             {
-                DataModel.ImportDtm(ctx);
-                CanvasCommand.CommandFitView();
-                return true;
+                return DataModel.ImportDtm(ctx);
             }
             catch
             {

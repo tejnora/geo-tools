@@ -34,6 +34,7 @@ namespace CAD
             InitLayout();
             InitToolBars();
             InitDockablePalette();
+            _dockingManager.PropertyChanged += OnDockingManagerPropertyChanged;
             Closing += OnMainWinClosing;
         }
 
@@ -85,12 +86,18 @@ namespace CAD
             return null;
         }
 
+        void OnDockingManagerPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(DockingManager.ActiveDocument))
+                OnMainDocumentChanged(sender, EventArgs.Empty);
+        }
+
         void OnMainDocumentChanged(object sender, EventArgs e)
         {
             if (_restoringDockLayout)
                 return;
             var doc = GetDocument();
-            _dtmPropPage.SetValidationDocument(doc?.GetDocumentType() == DocumentType.Dtm ? doc : null);
+            _dtmPropPage.SetDocument(doc?.GetDocumentType() == DocumentType.Dtm ? doc : null);
             DockablePalette? activePalette = doc?.GetDocumentType() switch
             {
                 DocumentType.Vfk => DockablePalette.SeznamSouradnic,
@@ -187,13 +194,7 @@ namespace CAD
 
         void OnImportVfk(object aSender, EventArgs aArg)
         {
-            var doc = GetDocument();
-            if (doc != null)
-                CloseDocument();
-            DocumentNew(string.Empty);
-            doc = GetDocument();
-            if (doc.ImportVfk(string.Empty))
-                OnMainDocumentChanged(this, EventArgs.Empty);
+            ImportNewDocument(doc => doc.ImportVfk(string.Empty));
         }
 
         void OnCanImportVfk(object sender, CanExecuteRoutedEventArgs args)
@@ -203,13 +204,7 @@ namespace CAD
 
         void OnImportDtm(object aSender, EventArgs aArg)
         {
-            var doc = GetDocument();
-            if (doc != null)
-                CloseDocument();
-            DocumentNew(string.Empty);
-            doc = GetDocument();
-            if (doc.ImportDtm(string.Empty))
-                OnMainDocumentChanged(this, EventArgs.Empty);
+            ImportNewDocument(doc => doc.ImportDtm(string.Empty));
         }
 
         void CanImportDtm(object sender, CanExecuteRoutedEventArgs args)
@@ -362,15 +357,41 @@ namespace CAD
 
         public void DocumentNew(string aName)
         {
-            Document doc = new Document(aName, this);
+            AddDocument(new Document(aName, this));
+        }
+
+        internal bool ImportNewDocument(Func<Document, bool> import) =>
+            ImportNewDocument(() => new Document(string.Empty, this), import, AddDocument);
+
+        internal static bool ImportNewDocument(Func<Document> createDocument, Func<Document, bool> import, Action<Document> addDocument)
+        {
+            var document = createDocument();
+            var added = false;
+            try
+            {
+                if (!import(document)) return false;
+                addDocument(document);
+                added = true;
+                return true;
+            }
+            finally
+            {
+                if (!added) document.CanvasCtrl.Dispose();
+            }
+        }
+
+        void AddDocument(Document doc)
+        {
             doc.InfoTip = "Info tipo for " + doc.Title;
             doc.ContentTypeDescription = "Sample document";
             _dockingManager.MainDocumentPane.Items.Add(doc);
-            doc.CanvasCommand.CommandFitView();
+            doc.SetAsActive();
+            OnMainDocumentChanged(this, EventArgs.Empty);
+            doc.FitViewWhenReady();
         }
         public void CloseDocument()
         {
-            ((DocumentContent)_dockingManager.ActiveDocument).Close();
+            (_dockingManager.ActiveDocument as DocumentContent)?.Close();
         }
         public void UpdateToolBars(GeoCadRoutedCommand command)
         {

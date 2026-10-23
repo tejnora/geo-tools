@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Dictionary EnglishName="English" CultureName="English" Culture="en-US">
 	<Value Id="0" Title="GeoCad" Width="855" Height="800" />
 	<Value Id="1" Header="Soubor"/>
@@ -173,4 +173,16 @@
 	<Value Id="E1" Text="Bod #number# nemá ověřené souřadnice polohy."/>
 	<Value Id="E2" Text="Bod #number# má nevalidní počet souřadnic obrazu. Kontaktuj Davidka"/>
 	<Value Id="E3" Text="Bod #number# už v souřadnicích existuje."/>
+	<Value Id="DtmExportDirectory" Content="Výstupní adresář:"/>
+	<Value Id="DtmExportUid" Content="UID_SUBJEKTU:"/>
+	<Value Id="DtmExportRegion" Content="PREFIX_KRAJE:"/>
+	<Value Id="DtmExportCgad" Content="CGAD:"/>
+	<Value Id="DtmExportFileName" Content="Název souboru:"/>
+	<Value Id="DtmExportDirectoryError" Text="Vyberte existující výstupní adresář."/>
+	<Value Id="DtmExportUidError" Text="UID musí mít tvar SUBJ-00000001 (osm číslic)."/>
+	<Value Id="DtmExportRegionError" Text="Vyberte kraj."/>
+	<Value Id="DtmExportCgadError" Text="CGAD musí obsahovat 1 až 5 číslic."/>
+	<Value Id="DtmExportOverwrite" Text="Soubor již existuje. Chcete jej přepsat?"/>
+	<Value Id="DtmExportTitle" Text="Export DTM"/>
+	<Value Id="DtmExportDirectoryTitle" Text="Vyberte výstupní adresář"/>
 </Dictionary>

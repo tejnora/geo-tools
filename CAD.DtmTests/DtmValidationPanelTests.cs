@@ -159,6 +159,85 @@ public class DtmValidationPanelTests
         Assert.That(warning.Visibility, Is.EqualTo(Visibility.Visible));
     }
 
+    [Test]
+    public void SwitchingActiveDocumentsRestoresTheSelectedObjectsProperties()
+    {
+        var palette = new PropPagePalette();
+        DocumentEnvironemt.Instance.RegisterPalette(DockablePalette.DtmPropPage, palette);
+        var first = new Document("", null);
+        var firstMain = first.DataModel.DtmMain = new DtmMain();
+        var firstPoint = AddPoint(firstMain, -500000);
+        firstPoint.SchemaAttributes.Set("SpolecneAtributyVsechObjektu/PopisObjektu", "First");
+        var firstLayer = new DtmDrawingLayerMain(firstMain);
+        first.DataModel.AddLayer(firstLayer);
+        var firstDrawing = firstLayer.FindObject(firstPoint);
+        first.DataModel.AddSelectedObject(firstDrawing);
+        first.DataModel.FocusetObject = firstDrawing;
+
+        var second = new Document("", null);
+        var secondMain = second.DataModel.DtmMain = new DtmMain();
+        var secondPoint = AddPoint(secondMain, -500100);
+        secondPoint.SchemaAttributes.Set("SpolecneAtributyVsechObjektu/PopisObjektu", "Second");
+        var secondLayer = new DtmDrawingLayerMain(secondMain);
+        second.DataModel.AddLayer(secondLayer);
+        var secondDrawing = secondLayer.FindObject(secondPoint);
+        second.DataModel.AddSelectedObject(secondDrawing);
+        second.DataModel.FocusetObject = secondDrawing;
+
+        var pane = new AvalonDock.DocumentPane();
+        var manager = new AvalonDock.DockingManager { Content = pane };
+        manager.PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(AvalonDock.DockingManager.ActiveDocument))
+                palette.SetDocument(manager.ActiveDocument as Document);
+        };
+        pane.Items.Add(first);
+        pane.Items.Add(second);
+        var stack = (StackPanel)palette.FindName("_stack");
+        first.SetAsActive();
+        Assert.That(stack.Children.OfType<DtmPropPage>().Single().SpolecneAtributy.PopisObjektu, Is.EqualTo("First"));
+        second.SetAsActive();
+        var page = stack.Children.OfType<DtmPropPage>().Single();
+        Assert.That(page.SpolecneAtributy.PopisObjektu, Is.EqualTo("Second"));
+        page.SpolecneAtributy.PopisObjektu = "Edited second";
+        Assert.That(firstPoint.SpolecneAtributy.PopisObjektu, Is.EqualTo("First"));
+        Assert.That(secondPoint.SpolecneAtributy.PopisObjektu, Is.EqualTo("Edited second"));
+        first.SetAsActive();
+        Assert.That(stack.Children.OfType<DtmPropPage>().Single().SpolecneAtributy.PopisObjektu, Is.EqualTo("First"));
+        Assert.That(first.DataModel.FocusetObject, Is.SameAs(firstDrawing));
+        Assert.That(second.DataModel.FocusetObject, Is.SameAs(secondDrawing));
+    }
+
+    [Test]
+    public void DocumentWithoutSelectionClearsPropertiesAndSelectionFallbackRestoresThem()
+    {
+        var palette = new PropPagePalette();
+        DocumentEnvironemt.Instance.RegisterPalette(DockablePalette.DtmPropPage, palette);
+        var document = new Document("", null);
+        var main = document.DataModel.DtmMain = new DtmMain();
+        var point = AddPoint(main, -500000);
+        var layer = new DtmDrawingLayerMain(main);
+        document.DataModel.AddLayer(layer);
+        var drawing = layer.FindObject(point);
+        document.DataModel.AddSelectedObject(drawing);
+        document.DataModel.FocusetObject = drawing;
+        palette.SetDocument(document);
+        var stack = (StackPanel)palette.FindName("_stack");
+        Assert.That(stack.Children, Has.Count.EqualTo(1));
+        document.DataModel.ClearSelectedObjects();
+        palette.SetDocument(document);
+        Assert.That(stack.Children, Is.Empty);
+        document.DataModel.FocusetObject = null;
+        document.DataModel.AddSelectedObject(drawing);
+        palette.SetDocument(document);
+        Assert.That(stack.Children, Has.Count.EqualTo(1));
+        palette.Load(null);
+        Assert.That(stack.Children, Is.Empty);
+        palette.SetDocument(document);
+        palette.SetDocument(null);
+        Assert.That(stack.Children, Is.Empty);
+    }
+
     static DtmElement AddPoint(DtmMain main, double x)
     {
         var element = DtmConfigurationSingleton.Instance.CreateType("PodrobnyBodZPS");
