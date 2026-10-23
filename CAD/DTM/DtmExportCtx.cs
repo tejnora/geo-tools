@@ -23,6 +23,7 @@ namespace CAD.DTM
             UidSubjektu = ReadFromRegistry("Dtm/ExportUidSubjektu");
             PrefixKraje = ReadFromRegistry("Dtm/ExportPrefixKraje");
             Cgad = ReadFromRegistry("Dtm/ExportCgad");
+            DescriptionInSketch = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, "Dtm/ExportDescriptionInSketch").getBool(false);
             NazevZakazky = ReadFromRegistry("Dtm/ExportNazevZakazky");
             Zpracovatel = ReadFromRegistry("Dtm/ExportZpracovatel");
             OrganizaceZpracovatele = ReadFromRegistry("Dtm/ExportOrganizaceZpracovatele");
@@ -39,6 +40,7 @@ namespace CAD.DTM
             SaveToRegistry(UidSubjektu, "Dtm/ExportUidSubjektu");
             SaveToRegistry(PrefixKraje, "Dtm/ExportPrefixKraje");
             SaveToRegistry(Cgad, "Dtm/ExportCgad");
+            SingletonsBase.Registry.setEntry(Registry.SubKey.kCurrentUser, "Dtm/ExportDescriptionInSketch", new ProgramOption(DescriptionInSketch));
             SaveToRegistry(FileName, "Dtm/ExportFileName");
             SaveToRegistry(NazevZakazky, "Dtm/ExportNazevZakazky");
             SaveToRegistry(Zpracovatel, "Dtm/ExportZpracovatel");
@@ -189,8 +191,17 @@ namespace CAD.DTM
             && Regions.Any(r => r.Key == PrefixKraje)
             && Regex.IsMatch(Cgad ?? "", @"\A[0-9]{1,5}\z");
 
-        public string GeneratedFileName => HasValidNaming
-            ? $"{UidSubjektu}_{PrefixKraje}_{Cgad.PadLeft(5, '0')}_JVF.jvf.xml" : string.Empty;
+        public readonly PropertyData DescriptionInSketchProperty = RegisterProperty("DescriptionInSketch", typeof(bool), false);
+        public bool DescriptionInSketch
+        {
+            get => GetValue<bool>(DescriptionInSketchProperty);
+            set => SetValue(DescriptionInSketchProperty, value);
+        }
+
+        internal string GadFileNamePrefix => HasValidNaming
+            ? $"{UidSubjektu}_{PrefixKraje}_{Cgad.PadLeft(5, '0')}" : string.Empty;
+
+        public string GeneratedFileName => HasValidNaming ? GadFileNamePrefix + "_JVF.jvf.xml" : string.Empty;
 
         public string OutputPath => HasValidNaming && Directory.Exists(OutputDirectory)
             ? Path.Combine(OutputDirectory, GeneratedFileName) : string.Empty;

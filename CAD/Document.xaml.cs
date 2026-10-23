@@ -289,31 +289,20 @@ namespace CAD
         public void ExportDtm()
         {
             var ctx = new DtmExportCtx();
-            var exportDialog = new DtmExportDialog(ctx);
+            var exportDialog = new DtmExportDialog(ctx) { Owner = (MainWin)_owner };
             var result = exportDialog.ShowDialog();
             if (!result.HasValue || !result.Value) return;
-            try
+            _dtmValidationExportContext = ctx;
+            var progress = new DtmExportProgress(ctx.FileName, () =>
             {
-                _dtmValidationExportContext = ctx;
                 var validation = new DtmValidator(DataModel.DtmMain, ctx).Validate();
                 DtmValidationResult = validation;
                 if (validation.HasErrors || IsDtmValidationVisible)
                     ((MainWin)_owner).ShowDtmValidationPanel(this);
-                if (validation.HasErrors)
-                {
-                    return;
-                }
-                DataModel.DtmMain.Export(ctx);
-            }
-            catch (ExportExcetiption ex)
-            {
-                System.Windows.MessageBox.Show(ex.Message, "Chyba pri exportu", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception)
-            {
-                System.Windows.MessageBox.Show("Neočekávaná chyba", "Neočekávaná chyba", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
+                return validation;
+            }, () => new DtmExporter(DataModel.DtmMain).CreateFile(ctx),
+                () => DtmGadFilesValidator.Validate(ctx.OutputDirectory, ctx.GadFileNamePrefix, ctx.DescriptionInSketch));
+            new DtmExportProgressDialog(progress) { Owner = (MainWin)_owner }.ShowDialog();
         }
         public void ValidateDtm()
         {
