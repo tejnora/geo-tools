@@ -35,6 +35,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" loc:Translate.Uid="DtmExportDirectory" Content="{loc:Translate Výstupní adresář:}"/>
             <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" MinWidth="100" Text="{Binding Path=OutputDirectory, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
@@ -70,6 +71,28 @@
                       ToolTip="Samostatný soubor PP.pdf se nevyžaduje, pokud je popisové pole součástí správně pojmenovaného měřického náčrtu MN.pdf.">
                 <TextBlock Text="Popisové pole je součástí měřického náčrtu" TextWrapping="Wrap"/>
             </CheckBox>
+            <StackPanel Grid.Row="14" Grid.ColumnSpan="3">
+                <CheckBox IsChecked="{Binding SignOutputDirectory, Mode=TwoWay}" Checked="OnSigningChanged" Unchecked="OnSigningChanged">
+                    <TextBlock Text="Podepsat výstupní adresář" TextWrapping="Wrap" />
+                </CheckBox>
+                <StackPanel>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SignOutputDirectory}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock x:Name="_signingCertificate" TextWrapping="Wrap" Margin="0,4" />
+                    <Button Content="Nastavení podpisu…" Click="OnSigningSettings" HorizontalAlignment="Left" Margin="0,4,0,8" />
+                    <TextBlock Text="Podepíší se všechny soubory včetně podadresářů. Podpis zahrnuje časové razítko PostSignum."
+                               Foreground="#596273" TextWrapping="Wrap" Margin="0,0,0,8" />
+                </StackPanel>
+                <TextBlock x:Name="_signingError" Foreground="Firebrick" TextWrapping="Wrap" />
+            </StackPanel>
         </Grid>
         </ScrollViewer>
     </Gui:DialogBase.DialogContent>

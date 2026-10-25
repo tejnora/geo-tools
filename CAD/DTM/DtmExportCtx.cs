@@ -198,6 +198,15 @@ namespace CAD.DTM
             set => SetValue(DescriptionInSketchProperty, value);
         }
 
+        public readonly PropertyData SignOutputDirectoryProperty = RegisterProperty("SignOutputDirectory", typeof(bool), false);
+        public bool SignOutputDirectory
+        {
+            get => GetValue<bool>(SignOutputDirectoryProperty);
+            set => SetValue(SignOutputDirectoryProperty, value);
+        }
+        internal Signing.DtmSigningSettings SigningSettings { get; set; }
+        internal bool ReplaceSignatureConfirmed { get; set; }
+
         internal string GadFileNamePrefix => HasValidNaming
             ? $"{UidSubjektu}_{PrefixKraje}_{Cgad.PadLeft(5, '0')}" : string.Empty;
 

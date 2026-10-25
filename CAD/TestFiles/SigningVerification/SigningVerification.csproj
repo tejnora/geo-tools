@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>CAD.DtmTests</AssemblyName>
+    <CADVerificationOutput Condition="'$(CADVerificationOutput)' == ''">../../obj/SigningBuild/</CADVerificationOutput>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAD"><HintPath>$(CADVerificationOutput)CAD.dll</HintPath></Reference>
+    <Reference Include="GeoBase"><HintPath>$(CADVerificationOutput)GeoBase.dll</HintPath></Reference>
+    <Content Include="$(CADVerificationOutput)Languages/cs-CZ.xml" Link="Languages/cs-CZ.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

@@ -301,8 +301,11 @@ namespace CAD
                     ((MainWin)_owner).ShowDtmValidationPanel(this);
                 return validation;
             }, () => new DtmExporter(DataModel.DtmMain).CreateFile(ctx),
-                () => DtmGadFilesValidator.Validate(ctx.OutputDirectory, ctx.GadFileNamePrefix, ctx.DescriptionInSketch));
-            new DtmExportProgressDialog(progress) { Owner = (MainWin)_owner }.ShowDialog();
+                () => DtmGadFilesValidator.Validate(ctx.OutputDirectory, ctx.GadFileNamePrefix, ctx.DescriptionInSketch),
+                ctx.SignOutputDirectory ? () => new CAD.DTM.Signing.DtmDirectorySigner().SignAsync(
+                    ctx.OutputDirectory, ctx.SigningSettings, ctx.CisloOvereni, ctx.DatumOvereni, ctx.ReplaceSignatureConfirmed) : null);
+            try { new DtmExportProgressDialog(progress) { Owner = (MainWin)_owner }.ShowDialog(); }
+            finally { if (ctx.SigningSettings != null) ctx.SigningSettings.Password = ""; }
         }
         public void ValidateDtm()
         {

@@ -28,10 +28,15 @@ namespace CAD.DTM
 
     internal sealed class DtmExportAction : INotifyPropertyChanged
     {
-        readonly Func<DtmExportActionResult> _execute;
+        readonly Func<Task<DtmExportActionResult>> _execute;
         readonly string _initialDetail;
 
         internal DtmExportAction(string name, string detail, Func<DtmExportActionResult> execute, bool requiresPreviousSuccess = true)
+            : this(name, detail, () => Task.FromResult(execute()), requiresPreviousSuccess)
+        {
+        }
+
+        internal DtmExportAction(string name, string detail, Func<Task<DtmExportActionResult>> execute, bool requiresPreviousSuccess = true)
         {
             Name = name;
             _initialDetail = Detail = detail;
@@ -78,7 +83,7 @@ namespace CAD.DTM
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(string.Empty));
         }
 
-        internal DtmExportActionResult Execute() => _execute();
+        internal Task<DtmExportActionResult> ExecuteAsync() => _execute();
     }
 
     internal sealed class DtmExportProgress
@@ -86,13 +91,13 @@ namespace CAD.DTM
         bool _started;
 
         internal DtmExportProgress(string outputPath, Func<DtmValidationResult> validate, Action export,
-            Func<DtmExportActionResult> validateGadFiles = null)
-            : this(CreateActions(outputPath, validate, export, validateGadFiles))
+            Func<DtmExportActionResult> validateGadFiles = null, Func<Task<DtmExportActionResult>> signDirectory = null)
+            : this(CreateActions(outputPath, validate, export, validateGadFiles, signDirectory))
         {
         }
 
         static IEnumerable<DtmExportAction> CreateActions(string outputPath, Func<DtmValidationResult> validate,
-            Action export, Func<DtmExportActionResult> validateGadFiles)
+            Action export, Func<DtmExportActionResult> validateGadFiles, Func<Task<DtmExportActionResult>> signDirectory)
         {
             yield return new DtmExportAction("Validace DTM", "Kontrola stejnými pravidly jako na paletce validace DTM.",
                 () => DescribeValidation(validate()));
@@ -105,6 +110,8 @@ namespace CAD.DTM
                 yield return new DtmExportAction("Kontrola náležitostí GAD DTM",
                     "Existence a názvy příloh podle metodiky ČÚZK 2.1, kapitola 5.2.", validateGadFiles,
                     requiresPreviousSuccess: false);
+            if (signDirectory != null)
+                yield return new DtmExportAction("Podepsání adresáře", Path.GetDirectoryName(outputPath), signDirectory);
         }
 
         internal DtmExportProgress(IEnumerable<DtmExportAction> actions)
@@ -134,7 +141,7 @@ namespace CAD.DTM
                 {
                     action.SetStatus(DtmExportActionStatus.Running, "Akce právě probíhá.");
                     await render();
-                    var result = action.Execute();
+                    var result = await action.ExecuteAsync();
                     action.SetStatus(result.Status, result.Detail);
                     if (result.Status == DtmExportActionStatus.Failed) failures.Add(action.Name);
                 }

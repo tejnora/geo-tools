@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TestFiles\SigningVerification\**\*.cs" />
     <Compile Remove="Resources\XmlLanguageDictionary.cs;Utils\BigInteger.cs;Utils\MenuItemCollection.cs;VFK\VFKRegisterIFace.cs;VFK\VFKSimpleActivePoint.cs;VFK\VFKSimpleLine.cs;VFK\VFKSimpleMark.cs" />
     <Resource Include="Icons\*.png" />
     <Resource Include="GUI\*.png" />
