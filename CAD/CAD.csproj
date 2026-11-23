@@ -38,4 +38,11 @@
     <Copy SourceFiles="@(LocalizationFiles)" DestinationFolder="$(OutDir)Languages\" />
   </Target>
 
+  <Target Name="PublishLocalization" AfterTargets="Publish">
+    <ItemGroup>
+      <PublishLocalizationFiles Include="$(ProjectDir)Localization\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PublishLocalizationFiles)" DestinationFolder="$(PublishDir)Languages\" />
+  </Target>
+
 </Project>

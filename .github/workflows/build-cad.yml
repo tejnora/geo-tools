@@ -1,0 +1,47 @@
+name: Build CAD
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Publish CAD
+        run: dotnet publish CAD/CAD.csproj -c Release -r win-x64 --self-contained true -o publish/CAD
+
+      - name: Create zip
+        shell: pwsh
+        run: Compress-Archive -Path publish/CAD/* -DestinationPath CAD.zip
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CAD-${{ github.sha }}
+          path: publish/CAD/
+          retention-days: 30
+
+      - name: Update "latest" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          git tag -f latest
+          git push -f origin latest
+          gh release delete latest --yes 2>$null
+          gh release create latest CAD.zip `
+            --title "CAD - latest build" `
+            --notes "Automaticky build z commitu ${{ github.sha }}" `
+            --prerelease
