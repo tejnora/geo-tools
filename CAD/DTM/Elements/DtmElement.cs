@@ -116,6 +116,15 @@ namespace CAD.DTM.Elements
                 throw new ArgumentOutOfRangeException();
             return ZapisObjektu.ToString();
         }
+        /// <summary>JVF DTM 1.5 record context for GAD export: ZaznamObjektuIns / ZaznamObjektuUpd / ZaznamObjektuDel.</summary>
+        public string EvaluateExportContext() => EvaluateZapisObjektuForExportToDtm() switch
+        {
+            "i" => "Ins",
+            "u" => "Upd",
+            "d" => "Del",
+            var other => throw new ArgumentOutOfRangeException(nameof(ZapisObjektu), other, "Neznámý způsob zápisu objektu.")
+        };
+
         public char EvaluateZapisObjektuForGui()
         {
             return IsDeleted ? 'd' : ZapisObjektu;
@@ -143,6 +152,9 @@ namespace CAD.DTM.Elements
             }
             exporter.EndElement();
         }
+        // Nillable attributes (e.g. TridaPresnostiVyska of DTI) may be empty in JVF DTM 1.5.
+        static int ParseInt(string text) => int.TryParse(text, out var value) ? value : 0;
+
         protected void ImportSpolecneAtributyVsechObjektu(XmlElement xmlElement)
         {
             xmlElement = DtmImporter.FindElement(xmlElement, "SpolecneAtributyVsechObjektu");
@@ -154,10 +166,10 @@ namespace CAD.DTM.Elements
                 switch (e.LocalName)
                 {
                     case "DatumVkladu":
-                        atributy.DatumVkladu = DateTime.Parse(e.InnerText);
+                        if (DateTime.TryParse(e.InnerText, out var vklad)) atributy.DatumVkladu = vklad;
                         break;
                     case "DatumZmeny":
-                        atributy.DatumZmeny = DateTime.Parse(e.InnerText);
+                        if (DateTime.TryParse(e.InnerText, out var zmena)) atributy.DatumZmeny = zmena;
                         break;
                     case "ID":
                         atributy.ID = e.InnerText;
@@ -203,19 +215,19 @@ namespace CAD.DTM.Elements
                 switch (e.LocalName)
                 {
                     case "UrovenUmisteniObjektuTI":
-                        atributy.UrovenUmisteniObjektuTI = int.Parse(e.InnerText);
+                        atributy.UrovenUmisteniObjektuTI = ParseInt(e.InnerText);
                         break;
                     case "TridaPresnostiPoloha":
-                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
+                        atributy.TridaPresnostiPoloha = ParseInt(e.InnerText);
                         break;
                     case "TridaPresnostiVyska":
-                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
+                        atributy.TridaPresnostiVyska = ParseInt(e.InnerText);
                         break;
                     case "ZpusobPorizeniTI":
-                        atributy.ZpusobPorizeniTI = int.Parse(e.InnerText);
+                        atributy.ZpusobPorizeniTI = ParseInt(e.InnerText);
                         break;
                     case "StavObjektu":
-                        atributy.StavObjektu = (DtmStavObjektuEnum)int.Parse(e.InnerText);
+                        atributy.StavObjektu = (DtmStavObjektuEnum)ParseInt(e.InnerText);
                         break;
                 }
             }
@@ -242,16 +254,16 @@ namespace CAD.DTM.Elements
                 switch (e.LocalName)
                 {
                     case "UrovenUmisteniObjektuZPS":
-                        atributy.UrovenUmisteniObjektuZPS = int.Parse(e.InnerText);
+                        atributy.UrovenUmisteniObjektuZPS = ParseInt(e.InnerText);
                         break;
                     case "TridaPresnostiPoloha":
-                        atributy.TridaPresnostiPoloha = int.Parse(e.InnerText);
+                        atributy.TridaPresnostiPoloha = ParseInt(e.InnerText);
                         break;
                     case "TridaPresnostiVyska":
-                        atributy.TridaPresnostiVyska = int.Parse(e.InnerText);
+                        atributy.TridaPresnostiVyska = ParseInt(e.InnerText);
                         break;
                     case "ZpusobPorizeniZPS":
-                        atributy.ZpusobPorizeniZPS = int.Parse(e.InnerText);
+                        atributy.ZpusobPorizeniZPS = ParseInt(e.InnerText);
                         break;
                 }
             }

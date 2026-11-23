@@ -13,7 +13,7 @@ Zip stačí rozbalit a spustit `CAD.exe`. Nic se neinstaluje a .NET není potře
 
 ## Digitální technická mapa (DTM)
 
-- **Import a export JVF DTM** (XML podle XSD schémat ČÚZK), včetně údajů o změnách a údajů o výdeji
+- **Import a export JVF DTM 1.5.0.2** (XML podle XSD schémat ČÚZK, platných od listopadu 2026), včetně údajů o změnách a údajů o výdeji; starší soubory 1.4.3 lze stále načíst
 - **Import bodů** ze seznamu souřadnic
 - **Editace objektů DTM**: body, linie a plochy, jejich atributy a geometrie, vykreslení kartografickými symboly podle katalogu DTM ČR
 - **Správa vrstev** DTM

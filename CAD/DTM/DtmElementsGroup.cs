@@ -78,22 +78,22 @@ namespace CAD.DTM
             exporter.BeginElement(ns, "ZaznamyObjektu");
             foreach (var element in _elements.Where(element => element.ExportToOutput))
             {
-                exporter.BeginElement(ns, "ZaznamObjektu", true);
-                exporter.AddElement("cmn", "ZapisObjektu", element.EvaluateZapisObjektuForExportToDtm());
+                if (element is not DtmElement record || record.SchemaAttributes == null)
+                    throw new System.InvalidOperationException(Name + ": objekt nemá definici XSD, nelze jej exportovat.");
+                // JVF DTM 1.5: the kind of change is the record element itself (ZaznamObjektuIns/Upd/Del).
+                var context = record.EvaluateExportContext();
+                var layout = record.SchemaAttributes.Definition.Contexts[context];
+                exporter.BeginElement(ns, "ZaznamObjektu" + context, true);
                 exporter.BeginElement(ns, "AtributyObjektu");
-                if (element is DtmElement typed && typed.SchemaAttributes != null)
-                    typed.SchemaAttributes.Export(exporter);
-                else
+                record.SchemaAttributes.Export(exporter, context);
+                exporter.EndElement();
+                if (layout.GeometryType != null && (layout.GeometryRequired || element.Geometry?.Geometries.Count > 0))
                 {
-                    element.ExportSpolecneAtributyVsechObjektu(exporter);
-                    element.ExportAttributesToDtm(exporter);
+                    exporter.BeginElement(ns, "GeometrieObjektu");
+                    DtmGeometryXml.Write(exporter, layout.GeometryType, element.Geometry.Geometries);
+                    exporter.EndElement();
                 }
-                exporter.EndElement();
-                exporter.BeginElement(ns, "GeometrieObjektu");
-                element.Geometry.ExportToDtm(exporter);
-                exporter.EndElement();
-                if (element is DtmElement record && record.SchemaAttributes != null)
-                    foreach (var field in record.SchemaAttributes.RecordXml()) DtmSchemaAttributes.WriteElement(exporter, field);
+                foreach (var field in record.SchemaAttributes.RecordXml(context)) DtmSchemaAttributes.WriteElement(exporter, field);
                 exporter.EndElement();
             }
             exporter.EndElement();

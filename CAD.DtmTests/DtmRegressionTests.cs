@@ -1,9 +1,11 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
 using CAD.DTM;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
@@ -18,6 +20,9 @@ public class DtmRegressionTests
     [TestCase("SUBJ-00006299_CZ053_00003.jvf.xml")]
     [TestCase("vydej_zps_ref.jvf.xml")]
     [TestCase("vydej_zps_ref_jvf_1_5.jvf.xml")]
+    [TestCase("jvf1502_ukazkaZPS.jvf.xml")]
+    [TestCase("jvf1502_ukazka_DI.jvf.xml")]
+    [TestCase("jvf1502_ukazka_TI.jvf.xml")]
     public void SampleFilesImportAndPreserveAllAttributeValues(string filename)
     {
         var main = new DtmMain();
@@ -36,6 +41,76 @@ public class DtmRegressionTests
                 count++;
             }
         Assert.That(count, Is.GreaterThan(0));
+    }
+
+    [Test]
+    public void Jvf15IssueCanBeEditedAndExportedAsValidGad()
+    {
+        // Real JVF DTM 1.5.0.2 issue of ZPS: delete one reference object, add a new point, export GAD DTM.
+        var main = new DtmMain();
+        new DtmImporter(main).ParseFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "Samples", "vydej_zps_ref_jvf_1_5.jvf.xml"));
+        var lines = main.getElementsGroup("HraniceStavby").GetElementGroups().Cast<DtmElement>().ToList();
+        Assert.That(lines.All(e => e.ZapisObjektu == 'r'), Is.True);
+        lines[0].IsDeleted = true;
+        var definitionPoint = main.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()).Cast<DtmElement>().First(e => e.ElementType == DtmElementType.DefinicniBod);
+        definitionPoint.IsDeleted = true;
+        var point = DtmConfigurationSingleton.Instance.CreateType("PodrobnyBodZPS");
+        foreach (var (path, value) in new[] { ("UrovenUmisteniObjektuZPS", "0"), ("TridaPresnostiPoloha", "3"), ("TridaPresnostiVyska", "3"), ("ZpusobPorizeniPB_ZPS", "1"), ("CisloBodu", "1001") })
+            point.SchemaAttributes.SetText(path, value);
+        point.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { new DtmPointGeometry { Point = new DtmPoint { X = -1034180, Y = -628690, Z = 268.5 } } } };
+        main.AddElementIfNotExist("PodrobnyBodZPS", point);
+
+        var filename = Path.Combine(TestContext.CurrentContext.WorkDirectory, "gad-from-jvf15.xml");
+        new DtmExporter(main).CreateFile(new DtmExportCtx
+        {
+            FileName = filename, NazevZakazky = "Test", Zpracovatel = "Test", OrganizaceZpracovatele = "Test", AZI = "1234",
+            CisloOvereni = "1/2026", DatumMereni = new DateTime(2026, 11, 1), DatumZpracovani = new DateTime(2026, 11, 2), DatumOvereni = new DateTime(2026, 11, 3)
+        });
+        var document = XDocument.Load(filename);
+        var schemas = new System.Xml.Schema.XmlSchemaSet { XmlResolver = new XmlUrlResolver() };
+        schemas.Add("objtyp", Path.Combine(DtmSchema.XsdDirectory, "index", "index_data.xsd"));
+        var errors = new System.Collections.Generic.List<string>();
+        document.Validate(schemas, (_, e) => errors.Add(e.Message));
+        Assert.That(errors, Is.Empty, string.Join(Environment.NewLine, errors));
+        var records = document.Descendants().Where(e => e.Name.LocalName.StartsWith("ZaznamObjektu") && e.Name.LocalName != "ZaznamyObjektu").Select(e => e.Name.LocalName).ToList();
+        Assert.That(records, Is.EquivalentTo(new[] { "ZaznamObjektuDel", "ZaznamObjektuDel", "ZaznamObjektuIns" }));
+        Assert.That(document.Descendants(XName.Get("DoprovodneInformaceGAD", "dopinf")).Count(), Is.EqualTo(1));
+
+        var copy = new DtmMain();
+        new DtmImporter(copy).ParseFile(filename);
+        var all = copy.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()).Cast<DtmElement>().ToList();
+        Assert.That(all.Select(e => e.ZapisObjektu), Is.EquivalentTo(new[] { 'd', 'd', 'i' }));
+    }
+
+    [TestCase("jvf1502_ukazkaZPS.jvf.xml")]
+    [TestCase("jvf1502_ukazka_DI.jvf.xml")]
+    [TestCase("jvf1502_ukazka_TI.jvf.xml")]
+    public void Jvf15SampleObjectsCanBeExportedAsValidGad(string filename)
+    {
+        // Official JVF DTM 1.5.0.2 samples (ZPS area with hole and outline, DI and TI objects): every object exported as ZaznamObjektuDel.
+        var main = new DtmMain();
+        new DtmImporter(main).ParseFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "Samples", filename));
+        var elements = main.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()).Cast<DtmElement>().ToList();
+        Assert.That(elements, Is.Not.Empty);
+        // Reference objects are deleted (ZaznamObjektuDel); objects of an update file (ZaznamObjektuIns) are exported again.
+        foreach (var element in elements.Where(e => e.ZapisObjektu == 'r')) element.IsDeleted = true;
+        var output = Path.Combine(TestContext.CurrentContext.WorkDirectory, "gad-delete-" + filename);
+        new DtmExporter(main).CreateFile(new DtmExportCtx
+        {
+            FileName = output, NazevZakazky = "Test", Zpracovatel = "Test", OrganizaceZpracovatele = "Test", AZI = "1234",
+            CisloOvereni = "1/2026", DatumMereni = new DateTime(2026, 11, 1), DatumZpracovani = new DateTime(2026, 11, 2), DatumOvereni = new DateTime(2026, 11, 3)
+        });
+        var document = XDocument.Load(output);
+        var schemas = new XmlSchemaSet { XmlResolver = new XmlUrlResolver() };
+        schemas.Add("objtyp", Path.Combine(DtmSchema.XsdDirectory, "index", "index_data.xsd"));
+        var errors = new List<string>();
+        document.Validate(schemas, (_, e) => errors.Add(e.Message));
+        Assert.That(errors, Is.Empty, string.Join(Environment.NewLine, errors));
+        var copy = new DtmMain();
+        new DtmImporter(copy).ParseFile(output);
+        var reimported = copy.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()).Cast<DtmElement>().ToList();
+        Assert.That(reimported.Count, Is.EqualTo(elements.Count));
+        Assert.That(reimported.SelectMany(e => e.Geometry.Geometries).Count(), Is.EqualTo(elements.SelectMany(e => e.Geometry.Geometries).Count()));
     }
 
     [Test]

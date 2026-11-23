@@ -1,23 +1,22 @@
 {
-  "ObjectCount": 358,
-  "GeneratedClassCount": 295,
-  "XsdVersion": "1.4.3",
+  "ObjectCount": 393,
+  "GeneratedClassCount": 330,
+  "XsdVersion": "1.5.0.2",
   "CatalogueVersion": "1.4.2.1",
   "ContentParts": {
-    "TI": 123,
-    "ZPS": 176,
-    "DI": 58,
-    "other": 1
+    "TI": 142,
+    "ZPS": 179,
+    "DI": 72
   },
   "CatalogueMatches": {
-    "exact": 192,
-    "neutral": 95,
-    "related": 71
+    "exact": 191,
+    "neutral": 128,
+    "related": 74
   },
   "SymbolMatches": {
-    "catalogue": 188,
-    "neutral": 105,
-    "centroid": 65
+    "catalogue": 190,
+    "neutral": 137,
+    "centroid": 66
   },
   "Rendering": "Basic appearance at 1:500; solid lines and simple area fills. See DtmCoverage.json for object-level sources and fallbacks."
 }

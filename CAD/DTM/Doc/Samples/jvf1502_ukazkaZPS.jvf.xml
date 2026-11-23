@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ukázka exportu kresby ZPS -->
+<objtyp:JVFDTM xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:pokpol="pokpol" xmlns:objtyp="objtyp" xmlns:cmn="cmn" xmlns:atr="atr"
+  xmlns:dopinf="dopinf">
+  <objtyp:DataJVFDTM>
+    <cmn:VerzeJVFDTM>1.5.0.2</cmn:VerzeJVFDTM>
+    <cmn:DatumZapisu>2026-09-04T12:00:00</cmn:DatumZapisu>
+    <cmn:TypZapisu>kompletní zápis</cmn:TypZapisu>
+    <objtyp:Data>
+      <objtyp:ProvozniPlochaPozemniKomunikacePlocha>
+        <pokpol:ObjektovyTypNazev code_base="0100000005" code_suffix="03">provozní plocha pozemní komunikace</pokpol:ObjektovyTypNazev>
+        <pokpol:KategorieObjektu>Dopravní stavby</pokpol:KategorieObjektu>
+        <pokpol:SkupinaObjektu>Silniční doprava</pokpol:SkupinaObjektu>
+        <pokpol:ObsahovaCast>ZPS</pokpol:ObsahovaCast>
+        <pokpol:ZaznamyObjektu>
+          <ZaznamObjektuRefV xmlns="pokpol">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <atr:DatumVkladu>2023-05-18T00:00:00</atr:DatumVkladu>
+                <atr:DatumZmeny>2025-03-20T10:45:10</atr:DatumZmeny>
+                <atr:ID>42003010000244994</atr:ID>
+                <atr:IDEditora>SUBJ-00004332</atr:IDEditora>
+                <atr:IDZmeny>PGAD-75E7582A-1A26-4B6E-ACC7-2269FFAD7C48</atr:IDZmeny>
+                <atr:PopisObjektu/>
+                <atr:VkladOsoba>Jan Novák</atr:VkladOsoba>
+                <atr:ZmenaOsoba>Jan Novák</atr:ZmenaOsoba>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <atr:ICS/>
+                <atr:TridaPresnostiPoloha>3</atr:TridaPresnostiPoloha>
+                <atr:TridaPresnostiVyska>3</atr:TridaPresnostiVyska>
+                <atr:UrovenUmisteniObjektuZPS>0</atr:UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <atr:TypPozemniKomunikace>1</atr:TypPozemniKomunikace>
+              <atr:PrevazujiciPovrch>99</atr:PrevazujiciPovrch>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <cmn:Plocha2D>
+                <Polygon xmlns="http://www.opengis.net/gml/3.2" gml:id="ID42003010000244994_03" srsDimension="2" srsName="EPSG:5514">
+                  <exterior>
+                    <LinearRing>
+                      <posList>-736312.59 -972742.89 -736329.42 -972754.37 -736345.00 -972750.00 -736330.00 -972735.00 -736312.59 -972742.89</posList>
+                    </LinearRing>
+                  </exterior>
+                </Polygon>
+              </cmn:Plocha2D>
+              <cmn:Obvod3D>
+                <LineString xmlns="http://www.opengis.net/gml/3.2" gml:id="ID42003010000244994_02" srsDimension="3" srsName="EPSG:5514">
+                  <posList>-736312.59 -972742.89 350.00 -736329.42 -972754.37 350.00 -736345.00 -972750.00 350.00 -736330.00 -972735.00 350.00 -736312.59 -972742.89 350.00</posList>
+                </LineString>
+              </cmn:Obvod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="pokpol">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <atr:DatumVkladu>2023-05-18T00:00:00</atr:DatumVkladu>
+                <atr:DatumZmeny>2025-03-20T10:45:10</atr:DatumZmeny>
+                <atr:ID>420030100002449945</atr:ID>
+                <atr:IDEditora>SUBJ-00004332</atr:IDEditora>
+                <atr:IDZmeny>PGAD-75E7582A-1A26-4B6E-ACC7-2269FFAD7C48</atr:IDZmeny>
+                <atr:PopisObjektu/>
+                <atr:VkladOsoba>Jan Novák</atr:VkladOsoba>
+                <atr:ZmenaOsoba>Jan Novák</atr:ZmenaOsoba>
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <atr:ICS/>
+                <atr:TridaPresnostiPoloha>3</atr:TridaPresnostiPoloha>
+                <atr:TridaPresnostiVyska>3</atr:TridaPresnostiVyska>
+                <atr:UrovenUmisteniObjektuZPS>0</atr:UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <atr:TypPozemniKomunikace>1</atr:TypPozemniKomunikace>
+              <atr:PrevazujiciPovrch>99</atr:PrevazujiciPovrch>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <cmn:Plocha2D>
+                <Polygon xmlns="http://www.opengis.net/gml/3.2" gml:id="ID420030100002449945_03" srsDimension="2" srsName="EPSG:5514">
+                  <exterior>
+                    <LinearRing>
+                      <posList>-736300.00 -972740.00 -736360.00 -972740.00 -736360.00 -972780.00 -736300.00 -972780.00 -736300.00 -972740.00</posList>
+                    </LinearRing>
+                  </exterior>
+                  <interior>
+                    <LinearRing>
+                      <posList>-736320.00 -972750.00 -736340.00 -972750.00 -736340.00 -972770.00 -736320.00 -972770.00 -736320.00 -972750.00</posList>
+                    </LinearRing>
+                  </interior>
+                </Polygon>
+              </cmn:Plocha2D>
+              <cmn:Obvod3D>
+                <LineString  xmlns="http://www.opengis.net/gml/3.2" gml:id="ID420030100002449945-1_02" srsDimension="3" srsName="EPSG:5514">
+                  <posList>-736300.00 -972740.00 350.00 -736360.00 -972740.00 350.00 -736360.00 -972780.00 350.00 -736300.00 -972780.00 350.00 -736300.00 -972740.00 350.00</posList>
+                </LineString>
+                <LineString xmlns="http://www.opengis.net/gml/3.2" gml:id="ID420030100002449945-2_02" srsDimension="3" srsName="EPSG:5514">
+                  <posList>-736320.00 -972750.00 350.00 -736340.00 -972750.00 350.00 -736340.00 -972770.00 350.00 -736320.00 -972770.00 350.00 -736320.00 -972750.00 350.00</posList>
+                </LineString>
+              </cmn:Obvod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+        </pokpol:ZaznamyObjektu>
+      </objtyp:ProvozniPlochaPozemniKomunikacePlocha>
+    </objtyp:Data>
+    <DoprovodneInformaceVydejZPS xmlns="dopinf">
+      <UdajeOZmenach>
+        <ZaznamZmeny>
+          <atr:IDPodani>a6e042ec-cfae-4e0a-99a4-f30db1733d42</atr:IDPodani>
+          <NazevZakazky>Název zakázky</NazevZakazky>
+          <Zpracovatel>Zpracovatel</Zpracovatel>
+          <OrganizaceZpracovatele>Organizace zpracovatele</OrganizaceZpracovatele>
+          <DatumMereni>2023-10-10</DatumMereni>
+          <DatumZpracovani>2023-10-15</DatumZpracovani>
+          <Konsolidace>0</Konsolidace>
+        </ZaznamZmeny>
+      </UdajeOZmenach>
+      <OblastiKompletniZPS xmlns="dopinf">
+        <ZaznamOKZPS>
+          <atr:UrovenUmisteniObjektuZPS>0</atr:UrovenUmisteniObjektuZPS>
+          <TypZaznamuOKZPS>REF</TypZaznamuOKZPS>
+          <GeometrieObjektu>
+            <PlochaZPS>
+              <surfaceProperty xmlns="http://www.opengis.net/gml/3.2">
+                <Polygon srsName="EPSG:5514" srsDimension="2" gml:id="ID1_02">
+                  <exterior>
+                    <LinearRing>
+                      <posList>-736312.59 -972742.89 -736329.42 -972754.37 -736345.00 -972750.00 -736330.00 -972735.00 -736312.59 -972742.89</posList>
+                    </LinearRing>
+                  </exterior>
+                </Polygon>
+              </surfaceProperty>
+            </PlochaZPS>
+          </GeometrieObjektu>
+        </ZaznamOKZPS>
+      </OblastiKompletniZPS>
+      <UdajeOVydeji>
+        <DatumPlatnosti>2025-01-30T00:00:00</DatumPlatnosti>
+        <TypDatoveSady>3</TypDatoveSady>
+        <PopisDatoveSady>ZPS - kresba</PopisDatoveSady>
+        <ObvodDatoveSady>
+          <Polygon xmlns="http://www.opengis.net/gml/3.2" srsName="EPSG:5514" srsDimension="2" gml:id="ID2_02">
+            <exterior>
+              <LinearRing>
+                <posList>-736312.59 -972742.89 -736329.42 -972754.37 -736345.00 -972750.00 -736330.00 -972735.00 -736312.59 -972742.89</posList>
+              </LinearRing>
+            </exterior>
+          </Polygon>
+        </ObvodDatoveSady>
+      </UdajeOVydeji>
+    </DoprovodneInformaceVydejZPS>
+  </objtyp:DataJVFDTM>
+</objtyp:JVFDTM>

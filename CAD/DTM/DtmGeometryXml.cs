@@ -2,19 +2,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using CAD.DTM.Gui;
 
 namespace CAD.DTM
 {
     public static class DtmGeometryXml
     {
-        const string GmlNamespace = "http://www.opengis.net/gml/3.2";
+        public const string GmlNamespace = "http://www.opengis.net/gml/3.2";
+
+        /// <summary>
+        /// Reads the content of GeometrieObjektu. JVF DTM 1.5 wraps the GML in cmn:Bod2D/Bod3D/Linie2D/Linie3D/Plocha2D/Plocha3D
+        /// (ZPS areas: cmn:Plocha2D with gml:Polygon and cmn:Obvod3D with gml:LineString members); JVF DTM 1.4.3 has the GML
+        /// properties directly.
+        /// </summary>
+        public static List<IDtmGeometry> ReadGeometrieObjektu(XmlElement geometrieObjektu)
+        {
+            var result = new List<IDtmGeometry>();
+            foreach (var child in geometrieObjektu.ChildNodes.OfType<XmlElement>())
+            {
+                if (child.NamespaceURI == GmlNamespace)
+                {
+                    result.Add(Read(child));
+                    continue;
+                }
+                var inner = child.ChildNodes.OfType<XmlElement>().ToList();
+                if (child.LocalName == "Obvod3D" || child.LocalName == "Obvod2D")
+                    result.Add(Outline(inner));
+                else if (inner.Count == 1 && inner[0].LocalName == "Polygon")
+                    result.Add(Polygon<DtmSurfaceGeometry>(inner[0]));
+                else if (inner.Count == 1 && inner[0].NamespaceURI == GmlNamespace)
+                    result.Add(Read(inner[0]));
+                else
+                    throw new FormatException("Nepodporovaná geometrie: " + child.LocalName);
+            }
+            return result;
+        }
 
         public static IDtmGeometry Read(XmlElement property)
         {
-            // JVF DTM 1.5 wraps the GML property in cmn:Bod2D/Bod3D/Linie2D/Linie3D/Plocha2D/Plocha3D...
-            while (property.NamespaceURI != GmlNamespace
-                   && property.ChildNodes.OfType<XmlElement>().FirstOrDefault() is { NamespaceURI: GmlNamespace } inner)
-                property = inner;
             var value = property.ChildNodes.OfType<XmlElement>().FirstOrDefault()
                 ?? throw new FormatException("Chybí geometrie " + property.LocalName);
             return property.LocalName switch
@@ -27,9 +52,102 @@ namespace CAD.DTM
             };
         }
 
+        /// <summary>
+        /// Writes GeometrieObjektu content for a JVF DTM 1.5 geometry type (cmn:GeometrieObjektu*Type).
+        /// </summary>
+        public static void Write(IDtmExporter exporter, string geometryType, IList<IDtmGeometry> geometries)
+        {
+            switch (geometryType)
+            {
+                case "GeometrieObjektuBod2DType":
+                case "GeometrieObjektuBod3DType":
+                    WrapSingle<DtmPointGeometry>(exporter, geometryType, "Bod", geometries);
+                    break;
+                case "GeometrieObjektuLinie2DType":
+                case "GeometrieObjektuLinie3DType":
+                    WrapSingle<DtmCurveGeometry>(exporter, geometryType, "Linie", geometries, g => g is not DtmMultiCurveGeometry);
+                    break;
+                case "GeometrieObjektuPlocha2DDTIType":
+                case "GeometrieObjektuPlocha3DDTIType":
+                    {
+                        var dimension = Dimension(geometryType);
+                        var polygon = Single<DtmPolygonGeometry>(geometries, "plocha");
+                        exporter.BeginElement("cmn", "Plocha" + dimension + "D");
+                        exporter.BeginElement("gml", "surfaceProperty");
+                        WithDimension(polygon, dimension, () => polygon.ExportToDtmInternal(exporter, dimension));
+                        exporter.EndElement();
+                        exporter.EndElement();
+                        break;
+                    }
+                case "GeometrieObjektuPlochaZPSType":
+                    WritePlochaZPS(exporter, geometries);
+                    break;
+                default:
+                    throw new InvalidOperationException("Neznámý typ geometrie: " + geometryType);
+            }
+        }
+
+        static void WrapSingle<T>(IDtmExporter exporter, string geometryType, string wrapper, IList<IDtmGeometry> geometries, Func<T, bool> filter = null) where T : class, IDtmGeometry
+        {
+            var dimension = Dimension(geometryType);
+            var geometry = Single(geometries, wrapper.ToLowerInvariant(), filter);
+            exporter.BeginElement("cmn", wrapper + dimension + "D");
+            WithDimension(geometry, dimension, () => geometry.ExportToDtm(exporter));
+            exporter.EndElement();
+        }
+
+        static void WritePlochaZPS(IDtmExporter exporter, IList<IDtmGeometry> geometries)
+        {
+            var polygon = Single<DtmPolygonGeometry>(geometries, "plocha");
+            exporter.BeginElement("cmn", "Plocha2D");
+            WithDimension(polygon, 2, () => polygon.ExportToDtmInternal(exporter, 2));
+            exporter.EndElement();
+
+            var outline = geometries.OfType<DtmMultiCurveGeometry>().FirstOrDefault();
+            var curves = outline != null
+                ? outline.Curves.ToList()
+                : new[] { polygon.Points }.Concat(polygon.InteriorRings)
+                    .Select(ring => new DtmCurveGeometry { Points = ring, SrsName = polygon.SrsName, SrsDimension = 3 }).ToList();
+            // Outline ids: ID<n>_02 for a single ring, ID<n>-<k>_02 when the area has holes (JVF DTM structure, Plocha ZPS).
+            var baseId = polygon.Id != null && polygon.Id.EndsWith("_03", StringComparison.Ordinal) ? polygon.Id[..^3] : polygon.Id;
+            var ids = curves.Select(c => c.Id).ToList();
+            var generate = ids.Any(string.IsNullOrEmpty) || ids.Distinct().Count() != ids.Count || ids.Contains(polygon.Id);
+            exporter.BeginElement("cmn", "Obvod3D");
+            for (var i = 0; i < curves.Count; i++)
+            {
+                var curve = curves[i];
+                exporter.BeginElement("gml", "LineString");
+                exporter.AddAttribute("gml", "id", generate ? (curves.Count == 1 ? baseId + "_02" : $"{baseId}-{i + 1}_02") : curve.Id);
+                exporter.AddAttribute("srsName", curve.SrsName ?? polygon.SrsName);
+                exporter.AddAttribute("srsDimension", 3);
+                exporter.AddElement("gml", "posList", string.Join(" ", curve.Points.Select(p => p.ExportToDtm(3))));
+                foreach (var point in curve.Points) exporter.MarkPoint(point);
+                exporter.EndElement();
+            }
+            exporter.EndElement();
+        }
+
+        static int Dimension(string geometryType) => geometryType.Contains("3D", StringComparison.Ordinal) ? 3 : 2;
+
+        static T Single<T>(IList<IDtmGeometry> geometries, string description, Func<T, bool> filter = null) where T : class, IDtmGeometry
+        {
+            var candidates = geometries.OfType<T>().Where(g => filter == null || filter(g)).ToList();
+            if (candidates.Count != 1)
+                throw new InvalidOperationException($"Objekt musí mít právě jednu geometrii typu {description} (nalezeno {candidates.Count}).");
+            return candidates[0];
+        }
+
+        static void WithDimension(IDtmGeometry geometry, int dimension, Action action)
+        {
+            var original = geometry.SrsDimension;
+            geometry.SrsDimension = dimension;
+            try { action(); }
+            finally { geometry.SrsDimension = original; }
+        }
+
         public static void Attributes(IDtmGeometry geometry, XmlElement element, IDtmGeometry inherited = null)
         {
-            geometry.Id = element.GetAttribute("id", "http://www.opengis.net/gml/3.2");
+            geometry.Id = element.GetAttribute("id", GmlNamespace);
             geometry.SrsName = element.HasAttribute("srsName") ? element.GetAttribute("srsName") : inherited?.SrsName ?? "EPSG:5514";
             geometry.SrsDimension = element.HasAttribute("srsDimension") ? XmlConvert.ToInt32(element.GetAttribute("srsDimension")) : inherited?.SrsDimension ?? 2;
             if (geometry.SrsDimension is not (2 or 3)) throw new FormatException("Rozměr souřadnic musí být 2 nebo 3.");
@@ -76,6 +194,18 @@ namespace CAD.DTM
             foreach (var member in element.ChildNodes.OfType<XmlElement>().Where(e => e.LocalName == "curveMember"))
                 result.Members.Add(Curve(member.ChildNodes.OfType<XmlElement>().Single(), result));
             if (result.Members.Count == 0) throw new FormatException("MultiCurve neobsahuje žádný člen.");
+            result.Points = result.Members[0].Points;
+            return result;
+        }
+
+        /// <summary>JVF DTM 1.5 ZPS area outline: cmn:Obvod3D with one gml:LineString per ring (exterior first).</summary>
+        static DtmMultiCurveGeometry Outline(List<XmlElement> lineStrings)
+        {
+            if (lineStrings.Count == 0) throw new FormatException("Obvod plochy neobsahuje žádnou linii.");
+            var result = new DtmMultiCurveGeometry();
+            Attributes(result, lineStrings[0]);
+            foreach (var lineString in lineStrings)
+                result.Members.Add(Curve(lineString, result));
             result.Points = result.Members[0].Points;
             return result;
         }

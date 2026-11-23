@@ -210,7 +210,7 @@
     "CodeBase": "0100000347",
     "CodeSuffix": "02",
     "Xmlns": "cdklin",
-    "ObjektovyTypNazev": "cyklistická doprava – koridor záměru",
+    "ObjektovyTypNazev": "cyklistická doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -229,7 +229,7 @@
     "CodeBase": "0100000347",
     "CodeSuffix": "03",
     "Xmlns": "cdkpol",
-    "ObjektovyTypNazev": "cyklistická doprava – koridor záměru",
+    "ObjektovyTypNazev": "cyklistická doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -248,7 +248,7 @@
     "CodeBase": "0100000348",
     "CodeSuffix": "01",
     "Xmlns": "cdmbod",
-    "ObjektovyTypNazev": "cyklistická doprava – místo záměru",
+    "ObjektovyTypNazev": "cyklistická doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -279,12 +279,31 @@
     "CodeBase": "0100000348",
     "CodeSuffix": "03",
     "Xmlns": "cdmpol",
-    "ObjektovyTypNazev": "cyklistická doprava – místo záměru",
+    "ObjektovyTypNazev": "cyklistická doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "CyklistickaDopravaMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "CyklistickaDopravaPS": {
+    "CodeBase": "0200000006",
+    "CodeSuffix": "03",
+    "Xmlns": "cydops",
+    "ObjektovyTypNazev": "cyklistická doprava - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "CyklistickaDopravaPS",
     "Color": [
       110,
       110,
@@ -529,7 +548,7 @@
     "CodeBase": "0100000341",
     "CodeSuffix": "02",
     "Xmlns": "ddklin",
-    "ObjektovyTypNazev": "drážní doprava – koridor záměru",
+    "ObjektovyTypNazev": "drážní doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -548,7 +567,7 @@
     "CodeBase": "0100000341",
     "CodeSuffix": "03",
     "Xmlns": "ddkpol",
-    "ObjektovyTypNazev": "drážní doprava – koridor záměru",
+    "ObjektovyTypNazev": "drážní doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -567,7 +586,7 @@
     "CodeBase": "0100000342",
     "CodeSuffix": "01",
     "Xmlns": "ddmbod",
-    "ObjektovyTypNazev": "drážní doprava – místo záměru",
+    "ObjektovyTypNazev": "drážní doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -598,12 +617,31 @@
     "CodeBase": "0100000342",
     "CodeSuffix": "03",
     "Xmlns": "ddmpol",
-    "ObjektovyTypNazev": "drážní doprava – místo záměru",
+    "ObjektovyTypNazev": "drážní doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "DrazniDopravaMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "DrazniDopravaPS": {
+    "CodeBase": "0200000002",
+    "CodeSuffix": "03",
+    "Xmlns": "drdops",
+    "ObjektovyTypNazev": "drážní doprava - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "DrazniDopravaPS",
     "Color": [
       110,
       110,
@@ -966,7 +1004,7 @@
     "CodeBase": "0100000350",
     "CodeSuffix": "02",
     "Xmlns": "esklin",
-    "ObjektovyTypNazev": "elektrická síť – koridor záměru",
+    "ObjektovyTypNazev": "elektrická síť - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -985,7 +1023,7 @@
     "CodeBase": "0100000350",
     "CodeSuffix": "03",
     "Xmlns": "eskpol",
-    "ObjektovyTypNazev": "elektrická síť – koridor záměru",
+    "ObjektovyTypNazev": "elektrická síť - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1004,7 +1042,7 @@
     "CodeBase": "0100000351",
     "CodeSuffix": "01",
     "Xmlns": "esmbod",
-    "ObjektovyTypNazev": "elektrická síť – místo záměru",
+    "ObjektovyTypNazev": "elektrická síť - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1035,7 +1073,7 @@
     "CodeBase": "0100000351",
     "CodeSuffix": "03",
     "Xmlns": "esmpol",
-    "ObjektovyTypNazev": "elektrická síť – místo záměru",
+    "ObjektovyTypNazev": "elektrická síť - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1050,11 +1088,30 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "ElektrickaSitPS": {
+    "CodeBase": "0200000008",
+    "CodeSuffix": "03",
+    "Xmlns": "elsips",
+    "ObjektovyTypNazev": "elektrická síť - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "ElektrickaSitPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "ElektronickaKomunikaceKoridorZameruLinie": {
     "CodeBase": "0100000352",
     "CodeSuffix": "02",
     "Xmlns": "ekklin",
-    "ObjektovyTypNazev": "elektronická komunikace – koridor záměru",
+    "ObjektovyTypNazev": "elektronická komunikace - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1073,7 +1130,7 @@
     "CodeBase": "0100000352",
     "CodeSuffix": "03",
     "Xmlns": "ekkpol",
-    "ObjektovyTypNazev": "elektronická komunikace – koridor záměru",
+    "ObjektovyTypNazev": "elektronická komunikace - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1092,7 +1149,7 @@
     "CodeBase": "0100000353",
     "CodeSuffix": "01",
     "Xmlns": "ekmbod",
-    "ObjektovyTypNazev": "elektronická komunikace – místo záměru",
+    "ObjektovyTypNazev": "elektronická komunikace - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1123,12 +1180,31 @@
     "CodeBase": "0100000353",
     "CodeSuffix": "03",
     "Xmlns": "ekmpol",
-    "ObjektovyTypNazev": "elektronická komunikace – místo záměru",
+    "ObjektovyTypNazev": "elektronická komunikace - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "ElektronickaKomunikaceMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "ElektronickaKomunikacePS": {
+    "CodeBase": "0200000009",
+    "CodeSuffix": "03",
+    "Xmlns": "elkops",
+    "ObjektovyTypNazev": "elektronická komunikace - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "ElektronickaKomunikacePS",
     "Color": [
       110,
       110,
@@ -1187,6 +1263,25 @@
     ],
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet6:row345"
+  },
+  "HorniHranaObrubyLinie": {
+    "CodeBase": "0100000380",
+    "CodeSuffix": "02",
+    "Xmlns": "hholin",
+    "ObjektovyTypNazev": "horní hrana obruby",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS",
+    "ElementType": "Linie",
+    "ExchangeName": "HorniHranaObrubyLinie",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
   },
   "HospodarskyNevyuzivanaPlochaDefinicniBod": {
     "CodeBase": "0100000213",
@@ -1616,6 +1711,37 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet10:row5"
   },
+  "HydrantVodovodniSiteBod": {
+    "CodeBase": "0100000387",
+    "CodeSuffix": "01",
+    "Xmlns": "hydbod",
+    "ObjektovyTypNazev": "hydrant vodovodní sítě",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Vodovod",
+    "ObsahovaCast": "TI",
+    "ElementType": "Bod",
+    "ExchangeName": "HydrantVodovodniSiteBod",
+    "Graphic": [
+      {
+        "Color": [
+          110,
+          110,
+          110,
+          255
+        ],
+        "Width": 0.8,
+        "Symbol": "dtm_neutral_point.png"
+      }
+    ],
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "IdentickyBod": {
     "CodeBase": "0100000220",
     "CodeSuffix": "01",
@@ -1797,6 +1923,44 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet12:row13"
   },
+  "JinaStavbaDIPS": {
+    "CodeBase": "0200000020",
+    "CodeSuffix": "03",
+    "Xmlns": "jidips",
+    "ObjektovyTypNazev": "jiná stavba DI - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "JinaStavbaDIPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "JinaStavbaTIPS": {
+    "CodeBase": "0200000021",
+    "CodeSuffix": "03",
+    "Xmlns": "jitips",
+    "ObjektovyTypNazev": "jiná stavba TI - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "JinaStavbaTIPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "JinaTechnologickaStavbaTI": {
     "CodeBase": "0100000096",
     "CodeSuffix": "01",
@@ -1819,6 +1983,25 @@
         "Symbol": "TI_b_096_sdil_st_ti_jina.png"
       }
     ],
+    "Color": [
+      52,
+      52,
+      52,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "catalogue:sheet8:row93"
+  },
+  "JinaTechnologickaStavbaTIPlocha": {
+    "CodeBase": "0100000096",
+    "CodeSuffix": "03",
+    "Xmlns": "jitpol",
+    "ObjektovyTypNazev": "jiná technologická stavba TI",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Sdílená stavba / objekt technické infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "JinaTechnologickaStavbaTIPlocha",
     "Color": [
       52,
       52,
@@ -1959,11 +2142,49 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "JineZarizeniStavebTILinie": {
+    "CodeBase": "0100000139",
+    "CodeSuffix": "02",
+    "Xmlns": "jizlin",
+    "ObjektovyTypNazev": "jiné zařízení staveb TI",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Zařízení staveb technické infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Linie",
+    "ExchangeName": "JineZarizeniStavebTILinie",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "JineZarizeniStavebTIPlocha": {
+    "CodeBase": "0100000139",
+    "CodeSuffix": "03",
+    "Xmlns": "jizpol",
+    "ObjektovyTypNazev": "jiné zařízení staveb TI",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Zařízení staveb technické infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "JineZarizeniStavebTIPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "KanalizaceKoridorZameruLinie": {
     "CodeBase": "0100000358",
     "CodeSuffix": "02",
     "Xmlns": "kaklin",
-    "ObjektovyTypNazev": "kanalizace – koridor záměru",
+    "ObjektovyTypNazev": "kanalizace - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -1982,7 +2203,7 @@
     "CodeBase": "0100000358",
     "CodeSuffix": "03",
     "Xmlns": "kakpol",
-    "ObjektovyTypNazev": "kanalizace – koridor záměru",
+    "ObjektovyTypNazev": "kanalizace - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -2001,7 +2222,7 @@
     "CodeBase": "0100000359",
     "CodeSuffix": "01",
     "Xmlns": "kanbod",
-    "ObjektovyTypNazev": "kanalizace – místo záměru",
+    "ObjektovyTypNazev": "kanalizace - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -2032,12 +2253,31 @@
     "CodeBase": "0100000359",
     "CodeSuffix": "03",
     "Xmlns": "kampol",
-    "ObjektovyTypNazev": "kanalizace – koridor záměru",
+    "ObjektovyTypNazev": "kanalizace - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "KanalizaceMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "KanalizacePS": {
+    "CodeBase": "0200000012",
+    "CodeSuffix": "03",
+    "Xmlns": "kanaps",
+    "ObjektovyTypNazev": "kanalizace - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "KanalizacePS",
     "Color": [
       110,
       110,
@@ -2057,6 +2297,25 @@
     "ObsahovaCast": "TI",
     "ElementType": "Linie",
     "ExchangeName": "Kolektor",
+    "Color": [
+      104,
+      104,
+      104,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "catalogue:sheet8:row5"
+  },
+  "KolektorPlocha": {
+    "CodeBase": "0100000091",
+    "CodeSuffix": "03",
+    "Xmlns": "kolpol",
+    "ObjektovyTypNazev": "kolektor",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Sdílená stavba / objekt technické infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "KolektorPlocha",
     "Color": [
       104,
       104,
@@ -2170,7 +2429,7 @@
     "CodeBase": "0100000345",
     "CodeSuffix": "02",
     "Xmlns": "ldklin",
-    "ObjektovyTypNazev": "letecká doprava – koridor záměru",
+    "ObjektovyTypNazev": "letecká doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -2189,7 +2448,7 @@
     "CodeBase": "0100000345",
     "CodeSuffix": "03",
     "Xmlns": "ldkpol",
-    "ObjektovyTypNazev": "letecká doprava – koridor záměru",
+    "ObjektovyTypNazev": "letecká doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -2208,7 +2467,7 @@
     "CodeBase": "0100000346",
     "CodeSuffix": "01",
     "Xmlns": "ldmbod",
-    "ObjektovyTypNazev": "letecká doprava – místo záměru",
+    "ObjektovyTypNazev": "letecká doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -2239,12 +2498,31 @@
     "CodeBase": "0100000346",
     "CodeSuffix": "03",
     "Xmlns": "ldmpol",
-    "ObjektovyTypNazev": "letecká doprava – místo záměru",
+    "ObjektovyTypNazev": "letecká doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "LeteckaDopravaMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "LeteckaDopravaPS": {
+    "CodeBase": "0200000004",
+    "CodeSuffix": "03",
+    "Xmlns": "ledops",
+    "ObjektovyTypNazev": "letecká doprava - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "LeteckaDopravaPS",
     "Color": [
       110,
       110,
@@ -2806,13 +3084,13 @@
     "GraphicSource": "catalogue:sheet11:row243"
   },
   "O6": {
-    "CodeBase": null,
-    "CodeSuffix": null,
+    "CodeBase": "0100000372",
+    "CodeSuffix": "03",
     "Xmlns": "o6",
     "ObjektovyTypNazev": "o6",
-    "KategorieObjektu": null,
-    "SkupinaObjektu": null,
-    "ObsahovaCast": null,
+    "KategorieObjektu": "Ochranná a bezpečnostní pásma",
+    "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
+    "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "O6",
     "Color": [
@@ -2902,7 +3180,7 @@
     "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "TI",
     "ElementType": "Bod",
-    "ExchangeName": "ObjektstokoveSiteBod",
+    "ExchangeName": "ObjektStokoveSiteBod",
     "Graphic": [
       {
         "Color": [
@@ -2933,7 +3211,7 @@
     "SkupinaObjektu": "Kanalizace",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
-    "ExchangeName": "ObjektstokoveSitePlocha",
+    "ExchangeName": "ObjektStokoveSitePlocha",
     "Color": [
       110,
       110,
@@ -3100,6 +3378,25 @@
     "Width": 0.00025,
     "GraphicSource": "catalogue:sheet6:row5"
   },
+  "ObvodTunelu": {
+    "CodeBase": "0100000379",
+    "CodeSuffix": "03",
+    "Xmlns": "otupol",
+    "ObjektovyTypNazev": "obvod tunelu",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "ObvodTunelu",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "OchrannaSachtaVrtu": {
     "CodeBase": "0100000192",
     "CodeSuffix": "01",
@@ -3181,6 +3478,25 @@
     "Width": 0.0005,
     "GraphicSource": "catalogue:sheet9:row72"
   },
+  "OdpadoveHospodarstviPS": {
+    "CodeBase": "0200000015",
+    "CodeSuffix": "03",
+    "Xmlns": "odhops",
+    "ObjektovyTypNazev": "odpadové hospodářství - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "OdpadoveHospodarstviPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "OdpadoveHospodarstviZamerBod": {
     "CodeBase": "0100000364",
     "CodeSuffix": "01",
@@ -3250,6 +3566,25 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "OPDalniceProReklamniZarizeni": {
+    "CodeBase": "0100000388",
+    "CodeSuffix": "03",
+    "Xmlns": "soppol",
+    "ObjektovyTypNazev": "ochranné pásmo dálnice pro reklamní zařízení",
+    "KategorieObjektu": "Ochranná a bezpečnostní pásma",
+    "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "OPDalniceProReklamniZarizeni",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "OPDrazniStavby": {
     "CodeBase": "0100000295",
     "CodeSuffix": "03",
@@ -3278,7 +3613,7 @@
     "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
-    "ExchangeName": "OPObjektuElektrickeSite",
+    "ExchangeName": "OPElektrickeSite",
     "Color": [
       230,
       0,
@@ -3554,16 +3889,16 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet15:row50"
   },
-  "OPVodnihoDilaIAIIKategorieHlediskaTBD": {
+  "OPVodnihoDila": {
     "CodeBase": "0100000293",
     "CodeSuffix": "03",
     "Xmlns": "opvodi",
-    "ObjektovyTypNazev": "ochranné pásmo vodního díla I. a II. kategorie z hlediska technickobezpečnostního dohledu",
+    "ObjektovyTypNazev": "ochranné pásmo vodního díla",
     "KategorieObjektu": "Ochranná a bezpečnostní pásma",
     "SkupinaObjektu": "Ochranné a bezpečnostní pásmo",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
-    "ExchangeName": "OPVodnihoDilaIAIIKategorieHlediskaTBD",
+    "ExchangeName": "OPVodnihoDila",
     "Color": [
       0,
       92,
@@ -3995,6 +4330,37 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet11:row109"
   },
+  "OznacnikZastavkyHromadneDopravyBod": {
+    "CodeBase": "0100000374",
+    "CodeSuffix": "01",
+    "Xmlns": "oznbod",
+    "ObjektovyTypNazev": "označník zastávky hromadné dopravy",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "DI",
+    "ElementType": "Bod",
+    "ExchangeName": "OznacnikZastavkyHromadneDopravyBod",
+    "Graphic": [
+      {
+        "Color": [
+          110,
+          110,
+          110,
+          255
+        ],
+        "Width": 0.8,
+        "Symbol": "dtm_neutral_point.png"
+      }
+    ],
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "ParkovisteOdstavnaPlochaDefinicniBod": {
     "CodeBase": "0100000011",
     "CodeSuffix": "04",
@@ -4268,7 +4634,7 @@
     "CodeBase": "0100000354",
     "CodeSuffix": "02",
     "Xmlns": "pyklin",
-    "ObjektovyTypNazev": "plynovod – koridor záměru",
+    "ObjektovyTypNazev": "plynovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -4287,7 +4653,7 @@
     "CodeBase": "0100000354",
     "CodeSuffix": "03",
     "Xmlns": "pykpol",
-    "ObjektovyTypNazev": "plynovod – koridor záměru",
+    "ObjektovyTypNazev": "plynovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -4306,7 +4672,7 @@
     "CodeBase": "0100000355",
     "CodeSuffix": "01",
     "Xmlns": "pymbod",
-    "ObjektovyTypNazev": "plynovod – místo záměru",
+    "ObjektovyTypNazev": "plynovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -4337,12 +4703,31 @@
     "CodeBase": "0100000355",
     "CodeSuffix": "03",
     "Xmlns": "pympol",
-    "ObjektovyTypNazev": "plynovod – místo záměru",
+    "ObjektovyTypNazev": "plynovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "PlynovodMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "PlynovodPS": {
+    "CodeBase": "0200000010",
+    "CodeSuffix": "03",
+    "Xmlns": "plynps",
+    "ObjektovyTypNazev": "plynovod - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "PlynovodPS",
     "Color": [
       110,
       110,
@@ -5083,11 +5468,30 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "PrivadecPovrchovychVodPS": {
+    "CodeBase": "0200000017",
+    "CodeSuffix": "03",
+    "Xmlns": "prpops",
+    "ObjektovyTypNazev": "přivaděč povrchových vod - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "PrivadecPovrchovychVodPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "ProduktovodKoridorZameruLinie": {
     "CodeBase": "0100000360",
     "CodeSuffix": "02",
     "Xmlns": "prklin",
-    "ObjektovyTypNazev": "produktovod – koridor záměru",
+    "ObjektovyTypNazev": "produktovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -5106,7 +5510,7 @@
     "CodeBase": "0100000360",
     "CodeSuffix": "03",
     "Xmlns": "prkpol",
-    "ObjektovyTypNazev": "produktovod – koridor záměru",
+    "ObjektovyTypNazev": "produktovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -5125,7 +5529,7 @@
     "CodeBase": "0100000361",
     "CodeSuffix": "01",
     "Xmlns": "prmbod",
-    "ObjektovyTypNazev": "produktovod – místo záměru",
+    "ObjektovyTypNazev": "produktovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -5156,12 +5560,31 @@
     "CodeBase": "0100000361",
     "CodeSuffix": "03",
     "Xmlns": "prmpol",
-    "ObjektovyTypNazev": "produktovod – místo záměru",
+    "ObjektovyTypNazev": "produktovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "ProduktovodMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "ProduktovodPS": {
+    "CodeBase": "0200000013",
+    "CodeSuffix": "03",
+    "Xmlns": "prodps",
+    "ObjektovyTypNazev": "produktovod - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "ProduktovodPS",
     "Color": [
       110,
       110,
@@ -5259,16 +5682,16 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet7:row65"
   },
-  "ProtipovodnoveOpatreniKoridorZameruLinie": {
-    "CodeBase": "0100000365",
-    "CodeSuffix": "02",
-    "Xmlns": "prplin",
-    "ObjektovyTypNazev": "protipovodňové opatření - koridor záměru",
-    "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
-    "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
+  "ProtipovodnoveOpatreniPS": {
+    "CodeBase": "0200000016",
+    "CodeSuffix": "03",
+    "Xmlns": "propps",
+    "ObjektovyTypNazev": "protipovodňové a ostatní opatření v krajině - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
     "ObsahovaCast": "TI",
-    "ElementType": "Linie",
-    "ExchangeName": "ProtipovodnoveOpatreniKoridorZameruLinie",
+    "ElementType": "Plocha",
+    "ExchangeName": "ProtipovodnoveOpatreniPS",
     "Color": [
       110,
       110,
@@ -5278,16 +5701,35 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
-  "ProtipovodnoveOpatreniKoridorZameruPlocha": {
+  "ProtipovodnoveOpatreniZamerLinie": {
+    "CodeBase": "0100000365",
+    "CodeSuffix": "02",
+    "Xmlns": "prplin",
+    "ObjektovyTypNazev": "protipovodňové a ostatní opatření v krajině - záměr",
+    "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
+    "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Linie",
+    "ExchangeName": "ProtipovodnoveOpatreniZamerLinie",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "ProtipovodnoveOpatreniZamerPlocha": {
     "CodeBase": "0100000365",
     "CodeSuffix": "03",
     "Xmlns": "prppol",
-    "ObjektovyTypNazev": "protipovodňové opatření - koridor záměru",
+    "ObjektovyTypNazev": "protipovodňové a ostatní opatření v krajině - záměr",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
-    "ExchangeName": "ProtipovodnoveOpatreniKoridorZameruPlocha",
+    "ExchangeName": "ProtipovodnoveOpatreniZamerPlocha",
     "Color": [
       110,
       110,
@@ -5504,25 +5946,6 @@
     "Width": 0.00013000000000000002,
     "GraphicSource": "catalogue:sheet11:row218"
   },
-  "PrubehTechnologickeKonstrukce": {
-    "CodeBase": "0100000185",
-    "CodeSuffix": "02",
-    "Xmlns": "prteko",
-    "ObjektovyTypNazev": "průběh technologické konstrukce",
-    "KategorieObjektu": "Součásti a příslušenství staveb",
-    "SkupinaObjektu": "Stavba společná pro více skupin",
-    "ObsahovaCast": "ZPS",
-    "ElementType": "Linie",
-    "ExchangeName": "PrubehTechnologickeKonstrukce",
-    "Color": [
-      0,
-      0,
-      0,
-      255
-    ],
-    "Width": 0.00017999999999999998,
-    "GraphicSource": "catalogue:sheet11:row174"
-  },
   "RampaDefinicniBod": {
     "CodeBase": "0100000173",
     "CodeSuffix": "04",
@@ -5572,6 +5995,56 @@
     ],
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet11:row125"
+  },
+  "RozestavenaPlochaDefinicniBod": {
+    "CodeBase": "0100000381",
+    "CodeSuffix": "04",
+    "Xmlns": "rpldef",
+    "ObjektovyTypNazev": "rozestavěná plocha",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS",
+    "ElementType": "DefinicniBod",
+    "ExchangeName": "RozestavenaPlochaDefinicniBod",
+    "Graphic": [
+      {
+        "Color": [
+          110,
+          110,
+          110,
+          255
+        ],
+        "Width": 0.5,
+        "Symbol": "ZPS_db.png"
+      }
+    ],
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "RozestavenaPlochaPlocha": {
+    "CodeBase": "0100000381",
+    "CodeSuffix": "03",
+    "Xmlns": "rplpol",
+    "ObjektovyTypNazev": "rozestavěná plocha",
+    "KategorieObjektu": "Součásti a příslušenství staveb",
+    "SkupinaObjektu": "Stavba společná pro více skupin",
+    "ObsahovaCast": "ZPS",
+    "ElementType": "Plocha",
+    "ExchangeName": "RozestavenaPlochaPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
   },
   "SchodisteDefinicniBod": {
     "CodeBase": "0100000166",
@@ -5661,6 +6134,25 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "SdilenaStavbaTIPS": {
+    "CodeBase": "0200000018",
+    "CodeSuffix": "03",
+    "Xmlns": "sdstps",
+    "ObjektovyTypNazev": "sdílená stavba TI - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "SdilenaStavbaTIPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "SdilenyObjektTI": {
     "CodeBase": "0100000093",
     "CodeSuffix": "01",
@@ -5696,7 +6188,7 @@
     "CodeBase": "0100000339",
     "CodeSuffix": "02",
     "Xmlns": "sdklin",
-    "ObjektovyTypNazev": "silniční doprava – koridor záměru",
+    "ObjektovyTypNazev": "silniční doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -5715,7 +6207,7 @@
     "CodeBase": "0100000339",
     "CodeSuffix": "03",
     "Xmlns": "sdkpol",
-    "ObjektovyTypNazev": "silniční doprava – koridor záměru",
+    "ObjektovyTypNazev": "silniční doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -5734,7 +6226,7 @@
     "CodeBase": "0100000340",
     "CodeSuffix": "01",
     "Xmlns": "sdmbod",
-    "ObjektovyTypNazev": "silniční doprava – místo záměru",
+    "ObjektovyTypNazev": "silniční doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -5765,12 +6257,31 @@
     "CodeBase": "0100000340",
     "CodeSuffix": "03",
     "Xmlns": "sdmpol",
-    "ObjektovyTypNazev": "silniční doprava – místo záměru",
+    "ObjektovyTypNazev": "silniční doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "SilnicniDopravaMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "SilnicniDopravaPS": {
+    "CodeBase": "0200000001",
+    "CodeSuffix": "03",
+    "Xmlns": "sidops",
+    "ObjektovyTypNazev": "silniční doprava - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "SilnicniDopravaPS",
     "Color": [
       110,
       110,
@@ -6200,6 +6711,25 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet8:row167"
   },
+  "StavbaProPesiPS": {
+    "CodeBase": "0200000005",
+    "CodeSuffix": "03",
+    "Xmlns": "stprps",
+    "ObjektovyTypNazev": "stavba pro pěší - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "StavbaProPesiPS",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "StavbaProZpevneniPovrchuDefinicniBod": {
     "CodeBase": "0100000187",
     "CodeSuffix": "04",
@@ -6600,11 +7130,49 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet8:row11"
   },
+  "TechnologickyPortalLinie": {
+    "CodeBase": "0100000373",
+    "CodeSuffix": "02",
+    "Xmlns": "teplin",
+    "ObjektovyTypNazev": "technologický portál",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "DI",
+    "ElementType": "Linie",
+    "ExchangeName": "TechnologickyPortalLinie",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "TechnologickyPortalPlocha": {
+    "CodeBase": "0100000373",
+    "CodeSuffix": "03",
+    "Xmlns": "teppol",
+    "ObjektovyTypNazev": "technologický portál",
+    "KategorieObjektu": "Dopravní stavby",
+    "SkupinaObjektu": "Dopravní stavba společná pro více skupin",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "TechnologickyPortalPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "TeplovodKoridorZameruLinie": {
     "CodeBase": "0100000362",
     "CodeSuffix": "02",
     "Xmlns": "teklin",
-    "ObjektovyTypNazev": "teplovod – koridor záměru",
+    "ObjektovyTypNazev": "teplovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -6623,7 +7191,7 @@
     "CodeBase": "0100000362",
     "CodeSuffix": "03",
     "Xmlns": "tekpol",
-    "ObjektovyTypNazev": "teplovod – koridor záměru",
+    "ObjektovyTypNazev": "teplovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -6642,7 +7210,7 @@
     "CodeBase": "0100000363",
     "CodeSuffix": "01",
     "Xmlns": "tembod",
-    "ObjektovyTypNazev": "teplovod – místo záměru",
+    "ObjektovyTypNazev": "teplovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -6673,12 +7241,31 @@
     "CodeBase": "0100000363",
     "CodeSuffix": "03",
     "Xmlns": "tempol",
-    "ObjektovyTypNazev": "teplovod – místo záměru",
+    "ObjektovyTypNazev": "teplovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "TeplovodMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "TeplovodPS": {
+    "CodeBase": "0200000014",
+    "CodeSuffix": "03",
+    "Xmlns": "teplps",
+    "ObjektovyTypNazev": "teplovod - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "TeplovodPS",
     "Color": [
       110,
       110,
@@ -6761,7 +7348,7 @@
     "CodeBase": "0100000349",
     "CodeSuffix": "01",
     "Xmlns": "tkmbod",
-    "ObjektovyTypNazev": "terminál kombinované dopravy – místo záměru",
+    "ObjektovyTypNazev": "terminál kombinované dopravy - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -6792,12 +7379,31 @@
     "CodeBase": "0100000349",
     "CodeSuffix": "03",
     "Xmlns": "tkmpol",
-    "ObjektovyTypNazev": "terminál kombinované dopravy – místo záměru",
+    "ObjektovyTypNazev": "terminál kombinované dopravy - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "TerminalKombinovaneDopravyMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "TerminalKombinovaneDopravyPS": {
+    "CodeBase": "0200000007",
+    "CodeSuffix": "03",
+    "Xmlns": "tekops",
+    "ObjektovyTypNazev": "terminál kombinované dopravy - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "TerminalKombinovaneDopravyPS",
     "Color": [
       110,
       110,
@@ -7374,6 +7980,25 @@
     "Width": 0.00018,
     "GraphicSource": "neutral"
   },
+  "TrasaTrakcnihoTrolejovehoVedeni": {
+    "CodeBase": "0100000382",
+    "CodeSuffix": "02",
+    "Xmlns": "ttvlin",
+    "ObjektovyTypNazev": "trasa trakčního trolejového vedení",
+    "KategorieObjektu": "Stavby technické infrastruktury",
+    "SkupinaObjektu": "Elektrické vedení",
+    "ObsahovaCast": "TI",
+    "ElementType": "Linie",
+    "ExchangeName": "TrasaTrakcnihoTrolejovehoVedeni",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
   "TrasaVodovodniPripojky": {
     "CodeBase": "0100000114",
     "CodeSuffix": "02",
@@ -7502,7 +8127,7 @@
     "SkupinaObjektu": "Důlní dílo, důlní stavba",
     "ObsahovaCast": "ZPS",
     "ElementType": "Plocha",
-    "ExchangeName": "UlozneMistoTezebnihoOdpaduPlochau",
+    "ExchangeName": "UlozneMistoTezebnihoOdpaduPlocha",
     "Color": [
       232,
       229,
@@ -7553,6 +8178,25 @@
     "ObsahovaCast": "ZPS",
     "ElementType": "Plocha",
     "ExchangeName": "VegetacniMisaPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "VerejneProstranstviPS": {
+    "CodeBase": "0200000019",
+    "CodeSuffix": "03",
+    "Xmlns": "veprps",
+    "ObjektovyTypNazev": "veřejné prostranství - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "VerejneProstranstviPS",
     "Color": [
       110,
       110,
@@ -7673,7 +8317,7 @@
     "CodeBase": "0100000343",
     "CodeSuffix": "02",
     "Xmlns": "vdklin",
-    "ObjektovyTypNazev": "vodní doprava – koridor záměru",
+    "ObjektovyTypNazev": "vodní doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -7692,7 +8336,7 @@
     "CodeBase": "0100000343",
     "CodeSuffix": "03",
     "Xmlns": "vdkpol",
-    "ObjektovyTypNazev": "vodní doprava – koridor záměru",
+    "ObjektovyTypNazev": "vodní doprava - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -7711,7 +8355,7 @@
     "CodeBase": "0100000344",
     "CodeSuffix": "01",
     "Xmlns": "vdmbod",
-    "ObjektovyTypNazev": "vodní doprava – místo záměru",
+    "ObjektovyTypNazev": "vodní doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
@@ -7742,12 +8386,31 @@
     "CodeBase": "0100000344",
     "CodeSuffix": "03",
     "Xmlns": "vdmpol",
-    "ObjektovyTypNazev": "vodní doprava – místo záměru",
+    "ObjektovyTypNazev": "vodní doprava - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "DI",
     "ElementType": "Plocha",
     "ExchangeName": "VodniDopravaMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "VodniDopravaPS": {
+    "CodeBase": "0200000003",
+    "CodeSuffix": "03",
+    "Xmlns": "vodops",
+    "ObjektovyTypNazev": "vodní doprava - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "DI",
+    "ElementType": "Plocha",
+    "ExchangeName": "VodniDopravaPS",
     "Color": [
       110,
       110,
@@ -7788,6 +8451,25 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet12:row5"
   },
+  "VodniTokLinie": {
+    "CodeBase": "0100000203",
+    "CodeSuffix": "02",
+    "Xmlns": "votlin",
+    "ObjektovyTypNazev": "vodní tok",
+    "KategorieObjektu": "Vodstvo, vegetace a terén",
+    "SkupinaObjektu": "Přírodní vodní plocha",
+    "ObsahovaCast": "ZPS",
+    "ElementType": "Linie",
+    "ExchangeName": "VodniTokLinie",
+    "Color": [
+      230,
+      246,
+      255,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "catalogue:sheet12:row5"
+  },
   "VodniTokPlocha": {
     "CodeBase": "0100000203",
     "CodeSuffix": "03",
@@ -7811,7 +8493,7 @@
     "CodeBase": "0100000356",
     "CodeSuffix": "02",
     "Xmlns": "voklin",
-    "ObjektovyTypNazev": "vodovod – koridor záměru",
+    "ObjektovyTypNazev": "vodovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -7830,7 +8512,7 @@
     "CodeBase": "0100000356",
     "CodeSuffix": "03",
     "Xmlns": "vokpol",
-    "ObjektovyTypNazev": "vodovod – koridor záměru",
+    "ObjektovyTypNazev": "vodovod - koridor záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -7849,7 +8531,7 @@
     "CodeBase": "0100000357",
     "CodeSuffix": "01",
     "Xmlns": "vombod",
-    "ObjektovyTypNazev": "vodovod – místo záměru",
+    "ObjektovyTypNazev": "vodovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
@@ -7880,12 +8562,31 @@
     "CodeBase": "0100000357",
     "CodeSuffix": "03",
     "Xmlns": "vompol",
-    "ObjektovyTypNazev": "vodovod – místo záměru",
+    "ObjektovyTypNazev": "vodovod - místo záměru",
     "KategorieObjektu": "Záměry na provedení změn dopravní a technické infrastruktury",
     "SkupinaObjektu": "Záměr na provedení změn dopravní a technické infrastruktury",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
     "ExchangeName": "VodovodMistoZameruPlocha",
+    "Color": [
+      110,
+      110,
+      110,
+      255
+    ],
+    "Width": 0.00018,
+    "GraphicSource": "neutral"
+  },
+  "VodovodPS": {
+    "CodeBase": "0200000011",
+    "CodeSuffix": "03",
+    "Xmlns": "vovops",
+    "ObjektovyTypNazev": "vodovod - plánovaná stavba",
+    "KategorieObjektu": "Plánované stavební práce infrastruktury",
+    "SkupinaObjektu": "Plánovaná stavební práce infrastruktury",
+    "ObsahovaCast": "TI",
+    "ElementType": "Plocha",
+    "ExchangeName": "VodovodPS",
     "Color": [
       110,
       110,
@@ -7926,16 +8627,16 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet11:row200"
   },
-  "VyrobnaElektrinyNad50kWBod": {
+  "VyrobnaElektrinyNad100kWBod": {
     "CodeBase": "0100000102",
     "CodeSuffix": "01",
     "Xmlns": "velbod",
-    "ObjektovyTypNazev": "výrobna elektřiny nad 50 kW",
+    "ObjektovyTypNazev": "výrobna elektřiny nad 100 kW",
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Elektrické vedení",
     "ObsahovaCast": "TI",
     "ElementType": "Bod",
-    "ExchangeName": "VyrobnaElektrinyNad50kWBod",
+    "ExchangeName": "VyrobnaElektrinyNad100kWBod",
     "Graphic": [
       {
         "Color": [
@@ -7957,16 +8658,16 @@
     "Width": 0.00018,
     "GraphicSource": "catalogue:sheet8:row162"
   },
-  "VyrobnaElektrinyNad50kWPlocha": {
+  "VyrobnaElektrinyNad100kWPlocha": {
     "CodeBase": "0100000102",
     "CodeSuffix": "03",
     "Xmlns": "velpol",
-    "ObjektovyTypNazev": "výrobna elektřiny nad 50 kW",
+    "ObjektovyTypNazev": "výrobna elektřiny nad 100 kW",
     "KategorieObjektu": "Stavby technické infrastruktury",
     "SkupinaObjektu": "Elektrické vedení",
     "ObsahovaCast": "TI",
     "ElementType": "Plocha",
-    "ExchangeName": "VyrobnaElektrinyNad50kWPlocha",
+    "ExchangeName": "VyrobnaElektrinyNad100kWPlocha",
     "Color": [
       242,
       206,

@@ -143,6 +143,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "CyklistickaDopravaPS",
+    "Xsd": "cyklisticka_doprava_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "CyklistickaDopravaPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "CyklostezkaDefinicniBod",
     "Xsd": "cyklostezka-defbod.xsd",
     "ExistingClass": true,
@@ -279,6 +290,17 @@
     "Xsd": "drazni_doprava_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "DrazniDopravaMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "DrazniDopravaPS",
+    "Xsd": "drazni_doprava_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "DrazniDopravaPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -440,6 +462,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "ElektrickaSitPS",
+    "Xsd": "elektricka_sit_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "ElektrickaSitPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "ElektronickaKomunikaceKoridorZameruLinie",
     "Xsd": "elektronicka_komunikace_koridor_zameru-linie.xsd",
     "ExistingClass": false,
@@ -484,6 +517,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "ElektronickaKomunikacePS",
+    "Xsd": "elektronicka_komunikace_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "ElektronickaKomunikacePS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "HeliportBod",
     "Xsd": "heliport-bod.xsd",
     "ExistingClass": false,
@@ -503,6 +547,17 @@
     "Match": "exact",
     "Simplified": true,
     "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "HorniHranaObrubyLinie",
+    "Xsd": "horni_hrana_obruby-linie.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "HorniHranaObrubyLinie",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
     "GraphicAttribute": null
   },
   {
@@ -726,6 +781,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "HydrantVodovodniSiteBod",
+    "Xsd": "hydrant_vodovodni_site-bod.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "HydrantVodovodniSiteBod",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": false,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "IdentickyBod",
     "Xsd": "identicky_bod-bod.xsd",
     "ExistingClass": true,
@@ -803,6 +869,28 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "JinaStavbaDIPS",
+    "Xsd": "jina_stavba_DI_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "JinaStavbaDIPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "JinaStavbaTIPS",
+    "Xsd": "jina_stavba_TI_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "JinaStavbaTIPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "JinaTechnologickaStavbaTI",
     "Xsd": "jina_technologicka_stavba_TI-bod.xsd",
     "ExistingClass": false,
@@ -810,6 +898,17 @@
     "GraphicSource": "catalogue:sheet8:row93",
     "Match": "exact",
     "Simplified": false,
+    "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "JinaTechnologickaStavbaTIPlocha",
+    "Xsd": "jina_technologicka_stavba_TI-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "JinaTechnologickaStavbaTIPlocha",
+    "GraphicSource": "catalogue:sheet8:row93",
+    "Match": "related",
+    "Simplified": true,
     "SymbolMatch": "catalogue",
     "GraphicAttribute": null
   },
@@ -869,6 +968,28 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "JineZarizeniStavebTILinie",
+    "Xsd": "jine_zarizeni_staveb_TI-linie.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "JineZarizeniStavebTILinie",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "JineZarizeniStavebTIPlocha",
+    "Xsd": "jine_zarizeni_staveb_TI-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "JineZarizeniStavebTIPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "KanalizaceKoridorZameruLinie",
     "Xsd": "kanalizace_koridor_zameru-linie.xsd",
     "ExistingClass": false,
@@ -913,12 +1034,34 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "KanalizacePS",
+    "Xsd": "kanalizace_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "KanalizacePS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "Kolektor",
     "Xsd": "kolektor-linie.xsd",
     "ExistingClass": false,
     "ExchangeName": "Kolektor",
     "GraphicSource": "catalogue:sheet8:row5",
     "Match": "exact",
+    "Simplified": true,
+    "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "KolektorPlocha",
+    "Xsd": "kolektor-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "KolektorPlocha",
+    "GraphicSource": "catalogue:sheet8:row5",
+    "Match": "related",
     "Simplified": true,
     "SymbolMatch": "catalogue",
     "GraphicAttribute": null
@@ -1005,6 +1148,17 @@
     "Xsd": "letecka_doprava_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "LeteckaDopravaMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "LeteckaDopravaPS",
+    "Xsd": "letecka_doprava_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "LeteckaDopravaPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -1279,7 +1433,7 @@
     "Object": "ObjektStokoveSiteBod",
     "Xsd": "objekt_stokove_site-bod.xsd",
     "ExistingClass": false,
-    "ExchangeName": "ObjektstokoveSiteBod",
+    "ExchangeName": "ObjektStokoveSiteBod",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": false,
@@ -1290,7 +1444,7 @@
     "Object": "ObjektStokoveSitePlocha",
     "Xsd": "objekt_stokove_site-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "ObjektstokoveSitePlocha",
+    "ExchangeName": "ObjektStokoveSitePlocha",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -1375,6 +1529,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "ObvodTunelu",
+    "Xsd": "obvod_tunelu-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "ObvodTunelu",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "OchrannaSachtaVrtu",
     "Xsd": "ochranna_sachta_vrtu-bod.xsd",
     "ExistingClass": false,
@@ -1405,6 +1570,17 @@
     "Match": "exact",
     "Simplified": true,
     "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "OdpadoveHospodarstviPS",
+    "Xsd": "odpadove_hospodarstvi_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "OdpadoveHospodarstviPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
     "GraphicAttribute": null
   },
   {
@@ -1441,6 +1617,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "OPDalniceProReklamniZarizeni",
+    "Xsd": "OP_dalnice_pro_reklamni_zarizeni-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "OPDalniceProReklamniZarizeni",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "OPDrazniStavby",
     "Xsd": "OP_drazni_stavby-plocha.xsd",
     "ExistingClass": false,
@@ -1455,7 +1642,7 @@
     "Object": "OPElektrickeSite",
     "Xsd": "OP_elektricke_site-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "OPObjektuElektrickeSite",
+    "ExchangeName": "OPElektrickeSite",
     "GraphicSource": "catalogue:sheet15:row15",
     "Match": "exact",
     "Simplified": true,
@@ -1617,10 +1804,10 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "OPVodnihoDilaIAIIKategorieHlediskaTBD",
-    "Xsd": "OP_vodniho_dila_I_II_kategorie_hlediska_TBD-plocha.xsd",
+    "Object": "OPVodnihoDila",
+    "Xsd": "OP_vodniho_dila-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "OPVodnihoDilaIAIIKategorieHlediskaTBD",
+    "ExchangeName": "OPVodnihoDila",
     "GraphicSource": "catalogue:sheet15:row90",
     "Match": "exact",
     "Simplified": true,
@@ -1815,6 +2002,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "OznacnikZastavkyHromadneDopravyBod",
+    "Xsd": "oznacnik_zastavky_hromadne_dopravy-bod.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "OznacnikZastavkyHromadneDopravyBod",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": false,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "ParkovisteOdstavnaPlochaDefinicniBod",
     "Xsd": "parkoviste_odstavna_plocha-defbod.xsd",
     "ExistingClass": false,
@@ -1973,6 +2171,17 @@
     "Xsd": "plynovod_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "PlynovodMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "PlynovodPS",
+    "Xsd": "plynovod_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "PlynovodPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2233,6 +2442,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "PrivadecPovrchovychVodPS",
+    "Xsd": "privadec_povrchovych_vod_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "PrivadecPovrchovychVodPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "ProduktovodKoridorZameruLinie",
     "Xsd": "produktovod_koridor_zameru-linie.xsd",
     "ExistingClass": false,
@@ -2270,6 +2490,17 @@
     "Xsd": "produktovod_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "ProduktovodMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "ProduktovodPS",
+    "Xsd": "produktovod_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "ProduktovodPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2321,10 +2552,10 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "ProtipovodnoveOpatreniKoridorZameruLinie",
-    "Xsd": "protipovodnove_opatreni_koridor_zameru-linie.xsd",
+    "Object": "ProtipovodnoveOpatreniPS",
+    "Xsd": "protipovodnove_opatreni_PS-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "ProtipovodnoveOpatreniKoridorZameruLinie",
+    "ExchangeName": "ProtipovodnoveOpatreniPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2332,10 +2563,21 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "ProtipovodnoveOpatreniKoridorZameruPlocha",
-    "Xsd": "protipovodnove_opatreni_koridor_zameru-plocha.xsd",
+    "Object": "ProtipovodnoveOpatreniZamerLinie",
+    "Xsd": "protipovodnove_opatreni_zamer-linie.xsd",
     "ExistingClass": false,
-    "ExchangeName": "ProtipovodnoveOpatreniKoridorZameruPlocha",
+    "ExchangeName": "ProtipovodnoveOpatreniZamerLinie",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "ProtipovodnoveOpatreniZamerPlocha",
+    "Xsd": "protipovodnove_opatreni_zamer-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "ProtipovodnoveOpatreniZamerPlocha",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2442,17 +2684,6 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "PrubehTechnologickeKonstrukce",
-    "Xsd": "prubeh_technologicke_konstrukce-linie.xsd",
-    "ExistingClass": false,
-    "ExchangeName": "PrubehTechnologickeKonstrukce",
-    "GraphicSource": "catalogue:sheet11:row174",
-    "Match": "exact",
-    "Simplified": true,
-    "SymbolMatch": "catalogue",
-    "GraphicAttribute": null
-  },
-  {
     "Object": "RampaDefinicniBod",
     "Xsd": "rampa-defbod.xsd",
     "ExistingClass": true,
@@ -2472,6 +2703,28 @@
     "Match": "exact",
     "Simplified": true,
     "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "RozestavenaPlochaDefinicniBod",
+    "Xsd": "rozestavena_plocha-defbod.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "RozestavenaPlochaDefinicniBod",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": false,
+    "SymbolMatch": "centroid",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "RozestavenaPlochaPlocha",
+    "Xsd": "rozestavena_plocha-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "RozestavenaPlochaPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
     "GraphicAttribute": null
   },
   {
@@ -2512,6 +2765,17 @@
     "Xsd": "sdilena_stavba_TI_koridor_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "SdilenaStavbaTIKoridorZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "SdilenaStavbaTIPS",
+    "Xsd": "sdilena_stavba_TI_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "SdilenaStavbaTIPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2567,6 +2831,17 @@
     "Xsd": "silnicni_doprava_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "SilnicniDopravaMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "SilnicniDopravaPS",
+    "Xsd": "silnicni_doprava_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "SilnicniDopravaPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -2736,6 +3011,17 @@
     "Match": "exact",
     "Simplified": true,
     "SymbolMatch": "catalogue",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "StavbaProPesiPS",
+    "Xsd": "stavba_pro_pesi_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "StavbaProPesiPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
     "GraphicAttribute": null
   },
   {
@@ -2915,6 +3201,28 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "TechnologickyPortalLinie",
+    "Xsd": "technologicky_portal-linie.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "TechnologickyPortalLinie",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "TechnologickyPortalPlocha",
+    "Xsd": "technologicky_portal-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "TechnologickyPortalPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "TeplovodKoridorZameruLinie",
     "Xsd": "teplovod_koridor_zameru-linie.xsd",
     "ExistingClass": false,
@@ -2952,6 +3260,17 @@
     "Xsd": "teplovod_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "TeplovodMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "TeplovodPS",
+    "Xsd": "teplovod_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "TeplovodPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -3007,6 +3326,17 @@
     "Xsd": "terminal_kombinovane_dopravy_misto_zameru-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "TerminalKombinovaneDopravyMistoZameruPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "TerminalKombinovaneDopravyPS",
+    "Xsd": "terminal_kombinovane_dopravy_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "TerminalKombinovaneDopravyPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -3278,6 +3608,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "TrasaTrakcnihoTrolejovehoVedeni",
+    "Xsd": "trasa_trakcniho_trolejoveho_vedeni-linie.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "TrasaTrakcnihoTrolejovehoVedeni",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "TrasaVodovodniPripojky",
     "Xsd": "trasa_vodovodni_pripojky-linie.xsd",
     "ExistingClass": true,
@@ -3336,7 +3677,7 @@
     "Object": "UlozneMistoTezebnihoOdpaduPlocha",
     "Xsd": "ulozne_misto_tezebniho_odpadu-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "UlozneMistoTezebnihoOdpaduPlochau",
+    "ExchangeName": "UlozneMistoTezebnihoOdpaduPlocha",
     "GraphicSource": "catalogue:sheet9:row22",
     "Match": "exact",
     "Simplified": true,
@@ -3359,6 +3700,17 @@
     "Xsd": "vegetacni_misa-plocha.xsd",
     "ExistingClass": false,
     "ExchangeName": "VegetacniMisaPlocha",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "VerejneProstranstviPS",
+    "Xsd": "verejne_prostranstvi_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "VerejneProstranstviPS",
     "GraphicSource": "neutral",
     "Match": "neutral",
     "Simplified": true,
@@ -3465,6 +3817,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "VodniDopravaPS",
+    "Xsd": "vodni_doprava_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "VodniDopravaPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "VodniTokDefinicniBod",
     "Xsd": "vodni_tok-defbod.xsd",
     "ExistingClass": false,
@@ -3473,6 +3836,17 @@
     "Match": "related",
     "Simplified": false,
     "SymbolMatch": "centroid",
+    "GraphicAttribute": null
+  },
+  {
+    "Object": "VodniTokLinie",
+    "Xsd": "vodni_tok-linie.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "VodniTokLinie",
+    "GraphicSource": "catalogue:sheet12:row5",
+    "Match": "related",
+    "Simplified": true,
+    "SymbolMatch": "catalogue",
     "GraphicAttribute": null
   },
   {
@@ -3531,6 +3905,17 @@
     "GraphicAttribute": null
   },
   {
+    "Object": "VodovodPS",
+    "Xsd": "vodovod_PS-plocha.xsd",
+    "ExistingClass": false,
+    "ExchangeName": "VodovodPS",
+    "GraphicSource": "neutral",
+    "Match": "neutral",
+    "Simplified": true,
+    "SymbolMatch": "neutral",
+    "GraphicAttribute": null
+  },
+  {
     "Object": "Vrt",
     "Xsd": "vrt-bod.xsd",
     "ExistingClass": false,
@@ -3542,10 +3927,10 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "VyrobnaElektrinyNad50kWBod",
-    "Xsd": "vyrobna_elektriny_nad50kw-bod.xsd",
+    "Object": "VyrobnaElektrinyNad100kWBod",
+    "Xsd": "vyrobna_elektriny_nad100kw-bod.xsd",
     "ExistingClass": false,
-    "ExchangeName": "VyrobnaElektrinyNad50kWBod",
+    "ExchangeName": "VyrobnaElektrinyNad100kWBod",
     "GraphicSource": "catalogue:sheet8:row162",
     "Match": "exact",
     "Simplified": false,
@@ -3553,10 +3938,10 @@
     "GraphicAttribute": null
   },
   {
-    "Object": "VyrobnaElektrinyNad50kWPlocha",
-    "Xsd": "vyrobna_elektriny_nad50kw-plocha.xsd",
+    "Object": "VyrobnaElektrinyNad100kWPlocha",
+    "Xsd": "vyrobna_elektriny_nad100kw-plocha.xsd",
     "ExistingClass": false,
-    "ExchangeName": "VyrobnaElektrinyNad50kWPlocha",
+    "ExchangeName": "VyrobnaElektrinyNad100kWPlocha",
     "GraphicSource": "catalogue:sheet8:row155",
     "Match": "exact",
     "Simplified": true,

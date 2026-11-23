@@ -36,9 +36,56 @@ def normalized(value):
     return re.sub('[^a-z0-9]', '', unicodedata.normalize('NFKD', value.lower()).encode('ascii', 'ignore').decode())
 
 
+JVF_VERSION = '1.5.0.2'
+# JVF DTM 1.5 geometry wrapper types (common.xsd) mapped to the GML properties the application works with.
+GEOMETRY_TYPES = {
+    'GeometrieObjektuBod2DType': ['pointProperty'],
+    'GeometrieObjektuBod3DType': ['pointProperty'],
+    'GeometrieObjektuLinie2DType': ['curveProperty'],
+    'GeometrieObjektuLinie3DType': ['curveProperty'],
+    'GeometrieObjektuPlocha2DDTIType': ['surfaceProperty'],
+    'GeometrieObjektuPlocha3DDTIType': ['surfaceProperty'],
+    'GeometrieObjektuPlochaZPSType': ['surfaceProperty', 'multiCurveProperty'],
+}
+
+
+def reference(e):
+    """Attribute reference from <xs:element ref="atr:X"/> or <xs:element name="X" type="atr:XType"/>."""
+    # A locally declared group (name + type) is qualified by the object's own namespace, not atr.
+    result = {'Name': (e.get('ref') or e.get('name')).split(':')[-1],
+              'Namespace': 'gml' if e.get('ref', '').startswith('gml:') else 'local' if e.get('name') else 'atr',
+              'Required': e.get('minOccurs', '1') != '0'}
+    if e.get('type', '').startswith('atr:'):
+        result['Type'] = e.get('type').split(':')[-1]
+    return result
+
+
+def record_contexts(schema):
+    """Record layout per JVF 1.5 context (RefV, Ins, Upd, Del, ...), keyed by context name."""
+    contexts = {}
+    for record in schema.findall('xs:element', NS):
+        name = record.get('name', '')
+        if not name.startswith('ZaznamObjektu') or name == 'ZaznamObjektu':
+            continue
+        context_type = schema.find(f'xs:complexType[@name="{record.get("type").split(":")[-1]}"]', NS)
+        sequence = context_type.find('xs:sequence', NS)
+        attributes = sequence.find('xs:element[@name="AtributyObjektu"]/xs:complexType', NS)
+        geometry = sequence.find('xs:element[@name="GeometrieObjektu"]', NS)
+        contexts[name[len('ZaznamObjektu'):]] = {
+            'Attributes': [reference(e) for e in attributes.find('*', NS).findall('xs:element', NS)] if attributes is not None else [],
+            'RecordAttributes': [reference(e) for e in sequence.findall('xs:element', NS) if e.get('ref', '').startswith('atr:')],
+            'GeometryType': geometry.get('type').split(':')[-1] if geometry is not None else None,
+            'GeometryRequired': geometry is not None and geometry.get('minOccurs', '1') != '0',
+        }
+    return contexts
+
+
 def main():
     attributes_root = ET.parse(ROOT / 'Doc/xsd/common/atributy.xsd').getroot()
     declarations = {e.attrib['name']: e for e in attributes_root.findall('xs:element', NS)}
+    # Named attribute group types (SpolecneAtributyObjektuZPSInsType, ...) used by record contexts.
+    attribute_types = {t.get('name'): [reference(e) for e in t.findall('.//xs:element', NS)]
+                       for t in attributes_root.findall('xs:complexType', NS)}
     definitions = {}
     for name, node in declarations.items():
         restriction = node.find('xs:simpleType/xs:restriction', NS)
@@ -61,7 +108,22 @@ def main():
                           'Required': e.get('minOccurs', '1') != '0'} for e in children],
             'Facets': {e.tag[len(XS):]: e.get('value') for e in (restriction if restriction is not None else [])
                        if e.tag != XS + 'enumeration' and 'value' in e.attrib},
+            'Nillable': node.get('nillable') == 'true',
         }
+    # JVF 1.5 has no global group elements; a group (e.g. SpolecneAtributyObjektuZPS) is defined by one type per
+    # context. The editable definition is the union of all context variants, the reference (Ref) variant first.
+    groups = collections.defaultdict(list)
+    for type_name in sorted(attribute_types, key=lambda t: (not re.search(r'RefType$', t), t)):
+        match = re.fullmatch(r'(.+?)(RefDel|InsZPS|InsDTI|UpdZPS|UpdDTI|Ref|Ins|Upd|Del|Pe)Type', type_name)
+        if match:
+            groups[match.group(1)].append(type_name)
+    for group, type_names in groups.items():
+        children = {}
+        for type_name in type_names:
+            for child in attribute_types[type_name]:
+                children.setdefault(child['Name'], dict(child) if type_name == type_names[0] else dict(child, Required=False))
+        definitions[group] = {'Name': group, 'Type': 'complex', 'Description': group, 'Values': {},
+                              'Children': list(children.values()), 'Facets': {}, 'Nillable': False}
 
     with zipfile.ZipFile(ROOT / 'Doc/Katalog-kartografickych-symbolu-DTM-CR-verze-1-4-2-1.xlsx') as book:
         strings = [''.join(e.itertext()) for e in ET.fromstring(book.read('xl/sharedStrings.xml'))]
@@ -112,19 +174,20 @@ def main():
         def code(field):
             e = schema.find(f'.//xs:attribute[@name="{field}"]', NS)
             return e.get('fixed') if e is not None else None
-        geometries = [e.get('ref').split(':')[-1] for e in schema.findall('.//xs:element', NS) if e.get('ref', '').startswith('gml:')]
         suffix = code('code_suffix')
         element_type = {'01': 'Bod', '02': 'Linie', '03': 'Plocha', '04': 'DefinicniBod'}.get(suffix, 'Plocha')
-        attrs = schema.find('.//xs:element[@name="AtributyObjektu"]/xs:complexType', NS)
-        refs = [{'Name': e.get('ref').split(':')[-1], 'Namespace': 'atr', 'Required': e.get('minOccurs', '1') != '0'}
-                for e in attrs.findall('.//xs:element', NS)]
-        record_sequence = schema.find('.//xs:element[@name="ZaznamObjektu"]/xs:complexType/xs:sequence', NS)
-        record_attributes = [{'Name': e.get('ref').split(':')[-1], 'Namespace': 'atr', 'Required': e.get('minOccurs', '1') != '0'}
-                             for e in record_sequence.findall('xs:element', NS) if e.get('ref', '').startswith('atr:')]
+        contexts = record_contexts(schema)
+        # The complete (reference) record is the editable attribute set; GAD export uses the Ins/Upd/Del contexts.
+        reference_context = contexts.get('RefV') or contexts['Ins']
+        refs = [{k: v for k, v in r.items() if k != 'Type'} for r in reference_context['Attributes']]
+        record_attributes = [{k: v for k, v in r.items() if k != 'Type'} for r in reference_context['RecordAttributes']]
+        geometry_type = reference_context['GeometryType']
+        geometries = GEOMETRY_TYPES[geometry_type]
         object_type = schema.find('xs:element', NS).get('type').split(':')[-1]
         exchange_name = exchange_names.get(namespace_prefixes[schema.get('targetNamespace')] + ':' + object_type, name)
         schemas[name] = {'Name': name, 'ExchangeName': exchange_name, 'File': file.name, 'ElementType': element_type,
-                         'Geometries': geometries, 'Attributes': refs, 'RecordAttributes': record_attributes}
+                         'Geometries': geometries, 'GeometryType': geometry_type, 'Attributes': refs,
+                         'RecordAttributes': record_attributes, 'Contexts': contexts}
         option = {
             'CodeBase': code('code_base'), 'CodeSuffix': suffix, 'Xmlns': schema.get('targetNamespace'),
             'ObjektovyTypNazev': fixed('ObjektovyTypNazev'), 'KategorieObjektu': fixed('KategorieObjektu'),
@@ -239,7 +302,7 @@ def main():
             enums.append(f'    public enum DtmSchema{attr["Name"]}Enum\n    {{\n' + ',\n'.join(members) + '\n    }')
     generated = ROOT / 'Elements/Generated/DtmSchemaElements.g.cs'
     save(generated, '// <auto-generated />\n// Regenerate with Tools/generate_dtm.py.\nusing System;\n\nnamespace CAD.DTM.Elements\n{\n' + '\n\n'.join(enums + models) + '\n}\n')
-    save(ROOT / 'Configuration/DtmSchema.json', json_text({'Attributes': definitions, 'Objects': schemas}))
+    save(ROOT / 'Configuration/DtmSchema.json', json_text({'Version': JVF_VERSION, 'Attributes': definitions, 'Types': attribute_types, 'Objects': schemas}))
     # Old spellings are input aliases only; generated XML always uses XSD names.
     aliases = {'ParkovisteOdstavnaPlocha': 'ParkovisteOdstavnaPlochaPlocha', 'OPObjektuElektrickeSite': 'OPElektrickeSite'}
     aliases.update({obj['ExchangeName']: name for name, obj in schemas.items() if obj['ExchangeName'] != name})
@@ -253,7 +316,7 @@ def main():
     save(ROOT / 'Configuration/DtmSymbolSources.json', json_text(symbol_sources))
     save(ROOT / 'Doc/DtmCoverage.json', json_text(coverage))
     save(ROOT / 'Doc/DtmCoverageSummary.json', json_text({
-        'ObjectCount': len(schemas), 'GeneratedClassCount': len(models), 'XsdVersion': '1.4.3', 'CatalogueVersion': '1.4.2.1',
+        'ObjectCount': len(schemas), 'GeneratedClassCount': len(models), 'XsdVersion': JVF_VERSION, 'CatalogueVersion': '1.4.2.1',
         'ContentParts': dict(collections.Counter(o['ObsahovaCast'] or 'other' for o in config.values())),
         'CatalogueMatches': dict(collections.Counter(o['Match'] for o in coverage)),
         'SymbolMatches': dict(collections.Counter(o['SymbolMatch'] for o in coverage)),

@@ -50,6 +50,16 @@ namespace CAD.DTM.Elements
         Value3 = 3
     }
 
+    public enum DtmSchemaUrovenUmisteniObjektuPSPIEnum
+    {
+        [System.ComponentModel.Description("pod povrchem")]
+        ValueMinus1 = -1,
+        [System.ComponentModel.Description("na povrchu")]
+        Value0 = 0,
+        [System.ComponentModel.Description("nad povrchem")]
+        Value1 = 1
+    }
+
     public enum DtmSchemaPrevazujiciPovrchEnum
     {
         [System.ComponentModel.Description("asfalt")]
@@ -66,6 +76,8 @@ namespace CAD.DTM.Elements
         Value6 = 6,
         [System.ComponentModel.Description("nezpevněno")]
         Value7 = 7,
+        [System.ComponentModel.Description("zpevněný propustný")]
+        Value8 = 8,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -94,7 +106,7 @@ namespace CAD.DTM.Elements
         Value10 = 10,
         [System.ComponentModel.Description("neveřejně přístupná účelová komunikace")]
         Value11 = 11,
-        [System.ComponentModel.Description("nezjištěno/neurčeno")]
+        [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
 
@@ -138,6 +150,20 @@ namespace CAD.DTM.Elements
         Value99 = 99
     }
 
+    public enum DtmSchemaTypObjektuSilnicniDopravyPSEnum
+    {
+        [System.ComponentModel.Description("dálnice")]
+        Value1 = 1,
+        [System.ComponentModel.Description("silnice")]
+        Value2 = 2,
+        [System.ComponentModel.Description("místní komunikace")]
+        Value3 = 3,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
+    }
+
     public enum DtmSchemaTypDrahyEnum
     {
         [System.ComponentModel.Description("železniční")]
@@ -147,7 +173,11 @@ namespace CAD.DTM.Elements
         [System.ComponentModel.Description("lanová")]
         Value3 = 3,
         [System.ComponentModel.Description("speciální")]
-        Value4 = 4
+        Value4 = 4,
+        [System.ComponentModel.Description("trolejbusová")]
+        Value5 = 5,
+        [System.ComponentModel.Description("nezjištěno/neurčeno")]
+        Value99 = 99
     }
 
     public enum DtmSchemaTypUsekuZeleznicniTrateEnum
@@ -186,7 +216,7 @@ namespace CAD.DTM.Elements
         Value1 = 1,
         [System.ComponentModel.Description("konvenční")]
         Value2 = 2,
-        [System.ComponentModel.Description("nezjištěno")]
+        [System.ComponentModel.Description("nezjištěno/neurčeno")]
         Value99 = 99
     }
 
@@ -212,6 +242,8 @@ namespace CAD.DTM.Elements
         Value4 = 4,
         [System.ComponentModel.Description("odvozením")]
         Value5 = 5,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS")]
+        Value6 = 6,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -252,6 +284,8 @@ namespace CAD.DTM.Elements
         Value4 = 4,
         [System.ComponentModel.Description("odvozením")]
         Value5 = 5,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS")]
+        Value6 = 6,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -268,6 +302,18 @@ namespace CAD.DTM.Elements
         Value4 = 4,
         [System.ComponentModel.Description("konstrukčně")]
         Value5 = 5,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS")]
+        Value6 = 6,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS před záhozem")]
+        Value7 = 7,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS po záhozu")]
+        Value8 = 8,
+        [System.ComponentModel.Description("geodeticky - terestricky před záhozem")]
+        Value9 = 9,
+        [System.ComponentModel.Description("geodeticky - terestricky po záhozu")]
+        Value10 = 10,
+        [System.ComponentModel.Description("vyhledáním")]
+        Value11 = 11,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -284,7 +330,7 @@ namespace CAD.DTM.Elements
         Value4 = 4,
         [System.ComponentModel.Description("jiné")]
         Value98 = 98,
-        [System.ComponentModel.Description("nezjištěno/neurčeno")]
+        [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
 
@@ -368,7 +414,7 @@ namespace CAD.DTM.Elements
     {
         [System.ComponentModel.Description("úrovňový")]
         Value1 = 1,
-        [System.ComponentModel.Description("mimoúrovňový")]
+        [System.ComponentModel.Description("vyvýšený")]
         Value2 = 2,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
@@ -378,10 +424,18 @@ namespace CAD.DTM.Elements
     {
         [System.ComponentModel.Description("podzemní")]
         Value1 = 1,
+        [System.ComponentModel.Description("pojezdová dráha")]
+        Value2 = 2,
+        [System.ComponentModel.Description("odbavovací plocha")]
+        Value3 = 3,
+        [System.ComponentModel.Description("manipulační plocha")]
+        Value4 = 4,
+        [System.ComponentModel.Description("odbavovací budova")]
+        Value5 = 5,
+        [System.ComponentModel.Description("hangár")]
+        Value6 = 6,
         [System.ComponentModel.Description("jiná")]
-        Value98 = 98,
-        [System.ComponentModel.Description("nezjištěno")]
-        Value99 = 99
+        Value98 = 98
     }
 
     public enum DtmSchemaTypZarizeniProLeteckyProvozEnum
@@ -508,10 +562,16 @@ namespace CAD.DTM.Elements
         Value5 = 5,
         [System.ComponentModel.Description("přibližným zákresem")]
         Value6 = 6,
-        [System.ComponentModel.Description("vyhledáno")]
+        [System.ComponentModel.Description("vyhledáním")]
         Value7 = 7,
         [System.ComponentModel.Description("odvozením")]
         Value8 = 8,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS")]
+        Value9 = 9,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS před záhozem")]
+        Value10 = 10,
+        [System.ComponentModel.Description("geodeticky - technologií GNSS po záhozu")]
+        Value11 = 11,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -532,7 +592,7 @@ namespace CAD.DTM.Elements
         Value6 = 6,
         [System.ComponentModel.Description("vsakovací objekt")]
         Value7 = 7,
-        [System.ComponentModel.Description("nezjištěno/neurčeno")]
+        [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
 
@@ -578,8 +638,6 @@ namespace CAD.DTM.Elements
 
     public enum DtmSchemaStavObjektuEnum
     {
-        [System.ComponentModel.Description("neveřejný údaj")]
-        Value0 = 0,
         [System.ComponentModel.Description("provozováno")]
         Value1 = 1,
         [System.ComponentModel.Description("neprovozováno")]
@@ -666,8 +724,6 @@ namespace CAD.DTM.Elements
 
     public enum DtmSchemaStavTrasySiteTIEnum
     {
-        [System.ComponentModel.Description("neveřejný údaj")]
-        Value0 = 0,
         [System.ComponentModel.Description("provozováno")]
         Value1 = 1,
         [System.ComponentModel.Description("neprovozováno")]
@@ -716,6 +772,8 @@ namespace CAD.DTM.Elements
 
     public enum DtmSchemaMaximalniNapetovaHladinaEnum
     {
+        [System.ComponentModel.Description("uzemnění")]
+        Value0 = 0,
         [System.ComponentModel.Description("NN")]
         Value1 = 1,
         [System.ComponentModel.Description("VN")]
@@ -724,12 +782,16 @@ namespace CAD.DTM.Elements
         Value3 = 3,
         [System.ComponentModel.Description("ZVN")]
         Value4 = 4,
+        [System.ComponentModel.Description("UVN")]
+        Value5 = 5,
         [System.ComponentModel.Description("nezjištěno/neurčeno")]
         Value99 = 99
     }
 
     public enum DtmSchemaMaximalniProvozniNapetiEnum
     {
+        [System.ComponentModel.Description("uzemnění")]
+        Value0 = 0,
         [System.ComponentModel.Description("0,4 kV")]
         Value1 = 1,
         [System.ComponentModel.Description("0,5 kV")]
@@ -752,6 +814,46 @@ namespace CAD.DTM.Elements
         Value10 = 10,
         [System.ComponentModel.Description("400 kV")]
         Value11 = 11,
+        [System.ComponentModel.Description("0,11 kV")]
+        Value12 = 12,
+        [System.ComponentModel.Description("0,23 kV")]
+        Value13 = 13,
+        [System.ComponentModel.Description("0,6 kV")]
+        Value14 = 14,
+        [System.ComponentModel.Description("0,75 kV")]
+        Value15 = 15,
+        [System.ComponentModel.Description("1,5 kV")]
+        Value16 = 16,
+        [System.ComponentModel.Description("15 kV")]
+        Value17 = 17,
+        [System.ComponentModel.Description("25 kV")]
+        Value18 = 18,
+        [System.ComponentModel.Description("2x25 kV")]
+        Value19 = 19,
+        [System.ComponentModel.Description("800 kV")]
+        Value20 = 20,
+        [System.ComponentModel.Description("jiné")]
+        Value98 = 98,
+        [System.ComponentModel.Description("nezjištěno")]
+        Value99 = 99
+    }
+
+    public enum DtmSchemaDruhElektrickehoProuduEnum
+    {
+        [System.ComponentModel.Description("AC")]
+        Value1 = 1,
+        [System.ComponentModel.Description("DC")]
+        Value2 = 2,
+        [System.ComponentModel.Description("AC/DC")]
+        Value3 = 3
+    }
+
+    public enum DtmSchemaDruhElektrickehoProuduTrakcnihoVedeniEnum
+    {
+        [System.ComponentModel.Description("AC")]
+        Value1 = 1,
+        [System.ComponentModel.Description("DC")]
+        Value2 = 2,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -830,6 +932,32 @@ namespace CAD.DTM.Elements
         Value99 = 99
     }
 
+    public enum DtmSchemaTypObjektuElektrickeSitePSEnum
+    {
+        [System.ComponentModel.Description("geotermální elektrárna")]
+        Value1 = 1,
+        [System.ComponentModel.Description("jaderná elektrárna")]
+        Value2 = 2,
+        [System.ComponentModel.Description("vodní elektrárna")]
+        Value3 = 3,
+        [System.ComponentModel.Description("fotovoltaická elektrárna")]
+        Value4 = 4,
+        [System.ComponentModel.Description("tepelná elektrárna")]
+        Value5 = 5,
+        [System.ComponentModel.Description("větrná elektrárna")]
+        Value6 = 6,
+        [System.ComponentModel.Description("bioplynová elektrárna")]
+        Value7 = 7,
+        [System.ComponentModel.Description("stanice elektrické sítě")]
+        Value8 = 8,
+        [System.ComponentModel.Description("trasa elektrické sítě")]
+        Value9 = 9,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
+    }
+
     public enum DtmSchemaTypStaniceElektrickeSiteEnum
     {
         [System.ComponentModel.Description("transformační stanice")]
@@ -842,6 +970,8 @@ namespace CAD.DTM.Elements
         Value4 = 4,
         [System.ComponentModel.Description("stanice přenosové soustavy")]
         Value5 = 5,
+        [System.ComponentModel.Description("trakční napájecí stanice")]
+        Value6 = 6,
         [System.ComponentModel.Description("jiná")]
         Value98 = 98
     }
@@ -876,8 +1006,6 @@ namespace CAD.DTM.Elements
 
     public enum DtmSchemaMaterialTrasySiteEKEnum
     {
-        [System.ComponentModel.Description("neveřejný údaj")]
-        Value0 = 0,
         [System.ComponentModel.Description("metalická")]
         Value1 = 1,
         [System.ComponentModel.Description("optická")]
@@ -946,8 +1074,6 @@ namespace CAD.DTM.Elements
 
     public enum DtmSchemaTypZarizeniPlynovodniSiteEnum
     {
-        [System.ComponentModel.Description("neveřejný údaj")]
-        Value0 = 0,
         [System.ComponentModel.Description("šoupě")]
         Value1 = 1,
         [System.ComponentModel.Description("skříň")]
@@ -996,6 +1122,22 @@ namespace CAD.DTM.Elements
         Value2 = 2,
         [System.ComponentModel.Description("zásobník plynu")]
         Value3 = 3,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
+    }
+
+    public enum DtmSchemaTypObjektuPlynovodniSitePSEnum
+    {
+        [System.ComponentModel.Description("výrobna plynu")]
+        Value1 = 1,
+        [System.ComponentModel.Description("stanice")]
+        Value2 = 2,
+        [System.ComponentModel.Description("zásobník plynu")]
+        Value3 = 3,
+        [System.ComponentModel.Description("trasa plynovodní sítě")]
+        Value4 = 4,
         [System.ComponentModel.Description("jiný")]
         Value98 = 98,
         [System.ComponentModel.Description("neurčeno")]
@@ -1062,6 +1204,22 @@ namespace CAD.DTM.Elements
         Value6 = 6,
         [System.ComponentModel.Description("jiný")]
         Value98 = 98
+    }
+
+    public enum DtmSchemaTypObjektuVodovodniSitePSEnum
+    {
+        [System.ComponentModel.Description("zdroj vody")]
+        Value1 = 1,
+        [System.ComponentModel.Description("vodojem")]
+        Value2 = 2,
+        [System.ComponentModel.Description("úpravna vody")]
+        Value3 = 3,
+        [System.ComponentModel.Description("trasa vodovodní sítě")]
+        Value4 = 4,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
     }
 
     public enum DtmSchemaTypObjektuVodovodniSiteZameruEnum
@@ -1190,6 +1348,18 @@ namespace CAD.DTM.Elements
         Value99 = 99
     }
 
+    public enum DtmSchemaTypObjektuStokoveSitePSEnum
+    {
+        [System.ComponentModel.Description("čistírna odpadních vod")]
+        Value1 = 1,
+        [System.ComponentModel.Description("trasa stokové sítě")]
+        Value2 = 2,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
+    }
+
     public enum DtmSchemaTypZarizeniSiteProduktovoduEnum
     {
         [System.ComponentModel.Description("šachta")]
@@ -1239,6 +1409,20 @@ namespace CAD.DTM.Elements
         [System.ComponentModel.Description("jiný")]
         Value98 = 98,
         [System.ComponentModel.Description("nezjištěno/neurčeno")]
+        Value99 = 99
+    }
+
+    public enum DtmSchemaTypObjektuTeplovodniSitePSEnum
+    {
+        [System.ComponentModel.Description("teplárna")]
+        Value1 = 1,
+        [System.ComponentModel.Description("kotelna")]
+        Value2 = 2,
+        [System.ComponentModel.Description("trasa teplovodní sítě")]
+        Value3 = 3,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98,
+        [System.ComponentModel.Description("neurčeno")]
         Value99 = 99
     }
 
@@ -1336,6 +1520,12 @@ namespace CAD.DTM.Elements
         Value2 = 2,
         [System.ComponentModel.Description("venkovní hodiny")]
         Value3 = 3,
+        [System.ComponentModel.Description("svítidlo")]
+        Value4 = 4,
+        [System.ComponentModel.Description("osvětlení")]
+        Value5 = 5,
+        [System.ComponentModel.Description("jiné")]
+        Value98 = 98,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -1583,7 +1773,23 @@ namespace CAD.DTM.Elements
         [System.ComponentModel.Description("jiné zařízení na odstraňování, využívání nebo sběr odpadů")]
         Value3 = 3,
         [System.ComponentModel.Description("odkaliště")]
-        Value4 = 4
+        Value4 = 4,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
+    }
+
+    public enum DtmSchemaTypObjektuOdpadovehoHospodarstviPSEnum
+    {
+        [System.ComponentModel.Description("skládka odpadů")]
+        Value1 = 1,
+        [System.ComponentModel.Description("spalovna")]
+        Value2 = 2,
+        [System.ComponentModel.Description("jiné zařízení na odstraňování, využívání nebo sběr odpadů")]
+        Value3 = 3,
+        [System.ComponentModel.Description("odkaliště")]
+        Value4 = 4,
+        [System.ComponentModel.Description("neurčeno")]
+        Value99 = 99
     }
 
     public enum DtmSchemaTypOPPozemniKomunikaceEnum
@@ -1613,9 +1819,7 @@ namespace CAD.DTM.Elements
         [System.ComponentModel.Description("OP speciální dráhy")]
         Value4 = 4,
         [System.ComponentModel.Description("OP visuté lanové dráhy")]
-        Value5 = 5,
-        [System.ComponentModel.Description("OP trolejbusové dráhy")]
-        Value6 = 6
+        Value5 = 5
     }
 
     public enum DtmSchemaTypOPLetisteEnum
@@ -1724,7 +1928,7 @@ namespace CAD.DTM.Elements
         Value12 = 12,
         [System.ComponentModel.Description("mostní váha")]
         Value13 = 13,
-        [System.ComponentModel.Description("příkop, násyp, zářez dopravní stavby")]
+        [System.ComponentModel.Description("příkop, násep, zářez dopravní stavby")]
         Value14 = 14,
         [System.ComponentModel.Description("nástupiště")]
         Value15 = 15,
@@ -1752,8 +1956,6 @@ namespace CAD.DTM.Elements
         Value1 = 1,
         [System.ComponentModel.Description("jezero")]
         Value2 = 2,
-        [System.ComponentModel.Description("vodní plocha neurčená")]
-        Value3 = 3,
         [System.ComponentModel.Description("zemědělská plocha")]
         Value4 = 4,
         [System.ComponentModel.Description("zahrada")]
@@ -1810,6 +2012,8 @@ namespace CAD.DTM.Elements
         Value7 = 7,
         [System.ComponentModel.Description("vegetační mísa")]
         Value8 = 8,
+        [System.ComponentModel.Description("rozestavěná plocha")]
+        Value9 = 9,
         [System.ComponentModel.Description("nezjištěno")]
         Value99 = 99
     }
@@ -1832,10 +2036,76 @@ namespace CAD.DTM.Elements
         Value7 = 7
     }
 
+    public enum DtmSchemaTypPrubehuJineTechnologickeStavbyTIEnum
+    {
+        [System.ComponentModel.Description("převěs trakčního trolejového vedení železniční dráhy")]
+        Value1 = 1,
+        [System.ComponentModel.Description("převěs trakčního trolejového vedení jiné dráhy")]
+        Value2 = 2,
+        [System.ComponentModel.Description("jiný")]
+        Value98 = 98
+    }
+
+    public enum DtmSchemaUmisteniOznacnikuEnum
+    {
+        [System.ComponentModel.Description("samostatný nosič")]
+        Value1 = 1,
+        [System.ComponentModel.Description("sdílené podpěrné zařízení")]
+        Value2 = 2,
+        [System.ComponentModel.Description("stavba zastřešení")]
+        Value3 = 3,
+        [System.ComponentModel.Description("jiné")]
+        Value4 = 4
+    }
+
+    public enum DtmSchemaDruhHromadneDopravyEnum
+    {
+        [System.ComponentModel.Description("autobusová")]
+        Value1 = 1,
+        [System.ComponentModel.Description("trolejbusová")]
+        Value2 = 2,
+        [System.ComponentModel.Description("tramvajová")]
+        Value3 = 3,
+        [System.ComponentModel.Description("lanová")]
+        Value4 = 4,
+        [System.ComponentModel.Description("přívoz")]
+        Value5 = 5,
+        [System.ComponentModel.Description("sdílená")]
+        Value6 = 6
+    }
+
+    public enum DtmSchemaTypHydrantuVodovodniSiteEnum
+    {
+        [System.ComponentModel.Description("garantovaný")]
+        Value1 = 1,
+        [System.ComponentModel.Description("obecný")]
+        Value2 = 2,
+        [System.ComponentModel.Description("nezjištěno")]
+        Value99 = 99
+    }
+
+    public enum DtmSchemaDimenzeHydrantuVodovodniSiteEnum
+    {
+        [System.ComponentModel.Description("DN 80")]
+        Value1 = 1,
+        [System.ComponentModel.Description("DN 100")]
+        Value2 = 2,
+        [System.ComponentModel.Description("DN 125")]
+        Value3 = 3,
+        [System.ComponentModel.Description("DN 150")]
+        Value4 = 4,
+        [System.ComponentModel.Description("DN 200")]
+        Value5 = 5,
+        [System.ComponentModel.Description("jiná")]
+        Value98 = 98,
+        [System.ComponentModel.Description("nezjištěno")]
+        Value99 = 99
+    }
+
     [DtmGeneratedElement]
     public sealed class DtmBPPlynovodniSiteElement : DtmPlochaBaseElement
     {
-
+        public DtmSchemaTlakovaHladinaPlynovodniSiteEnum? TlakovaHladinaPlynovodniSite { get => SchemaAttributes.Get<DtmSchemaTlakovaHladinaPlynovodniSiteEnum?>("TlakovaHladinaPlynovodniSite"); set => SchemaAttributes.Set("TlakovaHladinaPlynovodniSite", value); }
     }
 
     [DtmGeneratedElement]
@@ -1882,6 +2152,12 @@ namespace CAD.DTM.Elements
 
     [DtmGeneratedElement]
     public sealed class DtmCyklistickaDopravaMistoZameruPlochaElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmCyklistickaDopravaPSElement : DtmPlochaBaseElement
     {
 
     }
@@ -1959,8 +2235,17 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmDrazniDopravaPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypDrahyEnum? TypDrahy { get => SchemaAttributes.Get<DtmSchemaTypDrahyEnum?>("TypDrahy"); set => SchemaAttributes.Set("TypDrahy", value); }
+        public DtmSchemaKategorieZeleznicniTrateEnum? KategorieZeleznicniTrate { get => SchemaAttributes.Get<DtmSchemaKategorieZeleznicniTrateEnum?>("KategorieZeleznicniTrate"); set => SchemaAttributes.Set("KategorieZeleznicniTrate", value); }
+        public DtmSchemaTypZeleznicniTrateEnum? TypZeleznicniTrate { get => SchemaAttributes.Get<DtmSchemaTypZeleznicniTrateEnum?>("TypZeleznicniTrate"); set => SchemaAttributes.Set("TypZeleznicniTrate", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmDrobnaKulturniStavbaBodElement : DtmBodBaseElement
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypDrobneKulturniStavbyEnum? TypDrobneKulturniStavby { get => SchemaAttributes.Get<DtmSchemaTypDrobneKulturniStavbyEnum?>("TypDrobneKulturniStavby"); set => SchemaAttributes.Set("TypDrobneKulturniStavby", value); }
     }
 
@@ -1979,6 +2264,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmDrobnaSakralniStavbaBodElement : DtmBodBaseElement
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypDrobneSakralniStavbyEnum? TypDrobneSakralniStavby { get => SchemaAttributes.Get<DtmSchemaTypDrobneSakralniStavbyEnum?>("TypDrobneSakralniStavby"); set => SchemaAttributes.Set("TypDrobneSakralniStavby", value); }
     }
 
@@ -2031,6 +2317,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmElektrickaSitPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuElektrickeSitePSEnum? TypObjektuElektrickeSitePS { get => SchemaAttributes.Get<DtmSchemaTypObjektuElektrickeSitePSEnum?>("TypObjektuElektrickeSitePS"); set => SchemaAttributes.Set("TypObjektuElektrickeSitePS", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmElektronickaKomunikaceKoridorZameruLinieElement : DtmLinieElementBase
     {
 
@@ -2055,6 +2347,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmElektronickaKomunikacePSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmHeliportBodElement : DtmBodBaseElement
     {
         public string OznaceniObjektu { get => SchemaAttributes.Get<string>("OznaceniObjektu"); set => SchemaAttributes.Set("OznaceniObjektu", value); }
@@ -2068,6 +2366,12 @@ namespace CAD.DTM.Elements
         public string OznaceniObjektu { get => SchemaAttributes.Get<string>("OznaceniObjektu"); set => SchemaAttributes.Set("OznaceniObjektu", value); }
         public string OznaceniHeliportu { get => SchemaAttributes.Get<string>("OznaceniHeliportu"); set => SchemaAttributes.Set("OznaceniHeliportu", value); }
         public DtmSchemaUmisteniHeliportuEnum? UmisteniHeliportu { get => SchemaAttributes.Get<DtmSchemaUmisteniHeliportuEnum?>("UmisteniHeliportu"); set => SchemaAttributes.Set("UmisteniHeliportu", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmHorniHranaObrubyLinieElement : DtmLinieElementBase
+    {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -2085,24 +2389,26 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmHraniceOstatniPlochyElement : DtmLinieElementBase
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypOstatniPlochyEnum? TypOstatniPlochy { get => SchemaAttributes.Get<DtmSchemaTypOstatniPlochyEnum?>("TypOstatniPlochy"); set => SchemaAttributes.Set("TypOstatniPlochy", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmHranicePodzemnihoObjektuZPSElement : DtmLinieElementBase
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmHraniceUdrzovaneZeleneElement : DtmLinieElementBase
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmHraniceVodnihoDilaElement : DtmLinieElementBase
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypVodnihoDilaEnum? TypVodnihoDila { get => SchemaAttributes.Get<DtmSchemaTypVodnihoDilaEnum?>("TypVodnihoDila"); set => SchemaAttributes.Set("TypVodnihoDila", value); }
     }
 
@@ -2128,6 +2434,16 @@ namespace CAD.DTM.Elements
     public sealed class DtmHrazPlochaElement : DtmPlochaBaseElement
     {
 
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmHydrantVodovodniSiteBodElement : DtmBodBaseElement
+    {
+        public string ICME { get => SchemaAttributes.Get<string>("ICME"); set => SchemaAttributes.Set("ICME", value); }
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaTypHydrantuVodovodniSiteEnum? TypHydrantuVodovodniSite { get => SchemaAttributes.Get<DtmSchemaTypHydrantuVodovodniSiteEnum?>("TypHydrantuVodovodniSite"); set => SchemaAttributes.Set("TypHydrantuVodovodniSite", value); }
+        public DtmSchemaTypMediaVodovodniSiteEnum? TypMediaVodovodniSite { get => SchemaAttributes.Get<DtmSchemaTypMediaVodovodniSiteEnum?>("TypMediaVodovodniSite"); set => SchemaAttributes.Set("TypMediaVodovodniSite", value); }
+        public DtmSchemaDimenzeHydrantuVodovodniSiteEnum? DimenzeHydrantuVodovodniSite { get => SchemaAttributes.Get<DtmSchemaDimenzeHydrantuVodovodniSiteEnum?>("DimenzeHydrantuVodovodniSite"); set => SchemaAttributes.Set("DimenzeHydrantuVodovodniSite", value); }
     }
 
     [DtmGeneratedElement]
@@ -2157,7 +2473,25 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmJinaStavbaDIPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmJinaStavbaTIPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmJinaTechnologickaStavbaTIElement : DtmBodBaseElement
+    {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmJinaTechnologickaStavbaTIPlochaElement : DtmPlochaBaseElement
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
     }
@@ -2201,6 +2535,22 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmJineZarizeniStavebTILinieElement : DtmLinieElementBase
+    {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaTypJinehoZarizeniStavebTIEnum? TypJinehoZarizeniStavebTI { get => SchemaAttributes.Get<DtmSchemaTypJinehoZarizeniStavebTIEnum?>("TypJinehoZarizeniStavebTI"); set => SchemaAttributes.Set("TypJinehoZarizeniStavebTI", value); }
+        public DtmSchemaUmisteniObjektuEnum? UmisteniObjektu { get => SchemaAttributes.Get<DtmSchemaUmisteniObjektuEnum?>("UmisteniObjektu"); set => SchemaAttributes.Set("UmisteniObjektu", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmJineZarizeniStavebTIPlochaElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaTypJinehoZarizeniStavebTIEnum? TypJinehoZarizeniStavebTI { get => SchemaAttributes.Get<DtmSchemaTypJinehoZarizeniStavebTIEnum?>("TypJinehoZarizeniStavebTI"); set => SchemaAttributes.Set("TypJinehoZarizeniStavebTI", value); }
+        public DtmSchemaUmisteniObjektuEnum? UmisteniObjektu { get => SchemaAttributes.Get<DtmSchemaUmisteniObjektuEnum?>("UmisteniObjektu"); set => SchemaAttributes.Set("UmisteniObjektu", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmKanalizaceKoridorZameruLinieElement : DtmLinieElementBase
     {
 
@@ -2225,9 +2575,23 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmKanalizacePSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuStokoveSitePSEnum? TypObjektuStokoveSitePS { get => SchemaAttributes.Get<DtmSchemaTypObjektuStokoveSitePSEnum?>("TypObjektuStokoveSitePS"); set => SchemaAttributes.Set("TypObjektuStokoveSitePS", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmKolektorElement : DtmLinieElementBase
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaVedeniSiteVJineStavbeEnum? VedeniSiteVJineStavbe { get => SchemaAttributes.Get<DtmSchemaVedeniSiteVJineStavbeEnum?>("VedeniSiteVJineStavbe"); set => SchemaAttributes.Set("VedeniSiteVJineStavbe", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmKolektorPlochaElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaVedeniSiteVJineStavbeEnum? VedeniSiteVJineStavbe { get => SchemaAttributes.Get<DtmSchemaVedeniSiteVJineStavbeEnum?>("VedeniSiteVJineStavbe"); set => SchemaAttributes.Set("VedeniSiteVJineStavbe", value); }
     }
 
     [DtmGeneratedElement]
@@ -2255,6 +2619,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmLeteckaDopravaPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmLeteckaStavbaBodElement : DtmBodBaseElement
     {
         public string OznaceniObjektu { get => SchemaAttributes.Get<string>("OznaceniObjektu"); set => SchemaAttributes.Set("OznaceniObjektu", value); }
@@ -2272,7 +2642,7 @@ namespace CAD.DTM.Elements
     public sealed class DtmLetisteElement : DtmPlochaBaseElement
     {
         public DtmSchemaDruhLetisteEnum? DruhLetiste { get => SchemaAttributes.Get<DtmSchemaDruhLetisteEnum?>("DruhLetiste"); set => SchemaAttributes.Set("DruhLetiste", value); }
-        public string OznaceniLetiste { get => SchemaAttributes.Get<string>("OznaceniLetiste"); set => SchemaAttributes.Set("OznaceniLetiste", value); }
+        public string ICAOKodLetiste { get => SchemaAttributes.Get<string>("ICAOKodLetiste"); set => SchemaAttributes.Set("ICAOKodLetiste", value); }
     }
 
     [DtmGeneratedElement]
@@ -2302,7 +2672,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmMelioracniSachtaElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -2350,6 +2720,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmNosicTechnickehoZarizeniElement : DtmBodBaseElement
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypNosiceTechnickehoZarizeniEnum? TypNosiceTechnickehoZarizeni { get => SchemaAttributes.Get<DtmSchemaTypNosiceTechnickehoZarizeniEnum?>("TypNosiceTechnickehoZarizeni"); set => SchemaAttributes.Set("TypNosiceTechnickehoZarizeni", value); }
     }
 
@@ -2453,9 +2824,15 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmObvodTuneluElement : DtmPlochaBaseElement
+    {
+        public string OznaceniTunelu { get => SchemaAttributes.Get<string>("OznaceniTunelu"); set => SchemaAttributes.Set("OznaceniTunelu", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmOchrannaSachtaVrtuElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -2468,6 +2845,12 @@ namespace CAD.DTM.Elements
     public sealed class DtmOdkalistePlochaElement : DtmPlochaBaseElement
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmOdpadoveHospodarstviPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuOdpadovehoHospodarstviPSEnum? TypObjektuOdpadovehoHospodarstviPS { get => SchemaAttributes.Get<DtmSchemaTypObjektuOdpadovehoHospodarstviPSEnum?>("TypObjektuOdpadovehoHospodarstviPS"); set => SchemaAttributes.Set("TypObjektuOdpadovehoHospodarstviPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -2489,6 +2872,13 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmOPDalniceProReklamniZarizeniElement : DtmPlochaBaseElement
+    {
+        public string IDObjektuSilnicniStavby { get => SchemaAttributes.Get<string>("IDObjektuSilnicniStavby"); set => SchemaAttributes.Set("IDObjektuSilnicniStavby", value); }
+        public string CisloETahu { get => SchemaAttributes.Get<string>("CisloETahu"); set => SchemaAttributes.Set("CisloETahu", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmOPDrazniStavbyElement : DtmPlochaBaseElement
     {
         public string IDObjektuDrazniStavby { get => SchemaAttributes.Get<string>("IDObjektuDrazniStavby"); set => SchemaAttributes.Set("IDObjektuDrazniStavby", value); }
@@ -2498,7 +2888,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmOPElektrickeSiteElement : DtmPlochaBaseElement
     {
-
+        public DtmSchemaMaximalniNapetovaHladinaEnum? MaximalniNapetovaHladina { get => SchemaAttributes.Get<DtmSchemaMaximalniNapetovaHladinaEnum?>("MaximalniNapetovaHladina"); set => SchemaAttributes.Set("MaximalniNapetovaHladina", value); }
     }
 
     [DtmGeneratedElement]
@@ -2541,7 +2931,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmOPPlynovodniSiteElement : DtmPlochaBaseElement
     {
-
+        public DtmSchemaTlakovaHladinaPlynovodniSiteEnum? TlakovaHladinaPlynovodniSite { get => SchemaAttributes.Get<DtmSchemaTlakovaHladinaPlynovodniSiteEnum?>("TlakovaHladinaPlynovodniSite"); set => SchemaAttributes.Set("TlakovaHladinaPlynovodniSite", value); }
     }
 
     [DtmGeneratedElement]
@@ -2589,7 +2979,7 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmOPVodnihoDilaIAIIKategorieHlediskaTBDElement : DtmPlochaBaseElement
+    public sealed class DtmOPVodnihoDilaElement : DtmPlochaBaseElement
     {
 
     }
@@ -2699,6 +3089,13 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmOznacnikZastavkyHromadneDopravyBodElement : DtmBodBaseElement
+    {
+        public DtmSchemaUmisteniOznacnikuEnum? UmisteniOznacniku { get => SchemaAttributes.Get<DtmSchemaUmisteniOznacnikuEnum?>("UmisteniOznacniku"); set => SchemaAttributes.Set("UmisteniOznacniku", value); }
+        public DtmSchemaDruhHromadneDopravyEnum? DruhHromadneDopravy { get => SchemaAttributes.Get<DtmSchemaDruhHromadneDopravyEnum?>("DruhHromadneDopravy"); set => SchemaAttributes.Set("DruhHromadneDopravy", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmParkovisteOdstavnaPlochaDefinicniBodElement : DtmDefinicniBodBaseElement
     {
         public DtmSchemaPrevazujiciPovrchEnum? PrevazujiciPovrch { get => SchemaAttributes.Get<DtmSchemaPrevazujiciPovrchEnum?>("PrevazujiciPovrch"); set => SchemaAttributes.Set("PrevazujiciPovrch", value); }
@@ -2725,13 +3122,13 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmPlavebniKomoraBodElement : DtmBodBaseElement
     {
-
+        public string OznaceniObjektu { get => SchemaAttributes.Get<string>("OznaceniObjektu"); set => SchemaAttributes.Set("OznaceniObjektu", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmPlavebniKomoraPlochaElement : DtmPlochaBaseElement
     {
-
+        public string OznaceniObjektu { get => SchemaAttributes.Get<string>("OznaceniObjektu"); set => SchemaAttributes.Set("OznaceniObjektu", value); }
     }
 
     [DtmGeneratedElement]
@@ -2780,6 +3177,12 @@ namespace CAD.DTM.Elements
     public sealed class DtmPlynovodMistoZameruPlochaElement : DtmPlochaBaseElement
     {
         public DtmSchemaTypObjektuPlynovodniSiteZameruEnum? TypObjektuPlynovodniSiteZameru { get => SchemaAttributes.Get<DtmSchemaTypObjektuPlynovodniSiteZameruEnum?>("TypObjektuPlynovodniSiteZameru"); set => SchemaAttributes.Set("TypObjektuPlynovodniSiteZameru", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmPlynovodPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuPlynovodniSitePSEnum? TypObjektuPlynovodniSitePS { get => SchemaAttributes.Get<DtmSchemaTypObjektuPlynovodniSitePSEnum?>("TypObjektuPlynovodniSitePS"); set => SchemaAttributes.Set("TypObjektuPlynovodniSitePS", value); }
     }
 
     [DtmGeneratedElement]
@@ -2916,6 +3319,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmPrivadecPovrchovychVodPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmProduktovodKoridorZameruLinieElement : DtmLinieElementBase
     {
 
@@ -2940,8 +3349,15 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmProduktovodPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmProtihlukovaStenaElement : DtmLinieElementBase
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public bool? HraniceJinehoObjektu { get => SchemaAttributes.Get<bool?>("HraniceJinehoObjektu"); set => SchemaAttributes.Set("HraniceJinehoObjektu", value); }
     }
 
@@ -2954,6 +3370,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmProtipovodnovaZabranaLinieElement : DtmLinieElementBase
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypProtipovodnoveZabranyEnum? TypProtipovodnoveZabrany { get => SchemaAttributes.Get<DtmSchemaTypProtipovodnoveZabranyEnum?>("TypProtipovodnoveZabrany"); set => SchemaAttributes.Set("TypProtipovodnoveZabrany", value); }
         public bool? HraniceJinehoObjektu { get => SchemaAttributes.Get<bool?>("HraniceJinehoObjektu"); set => SchemaAttributes.Set("HraniceJinehoObjektu", value); }
     }
@@ -2965,13 +3382,19 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmProtipovodnoveOpatreniKoridorZameruLinieElement : DtmLinieElementBase
+    public sealed class DtmProtipovodnoveOpatreniPSElement : DtmPlochaBaseElement
     {
 
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmProtipovodnoveOpatreniKoridorZameruPlochaElement : DtmPlochaBaseElement
+    public sealed class DtmProtipovodnoveOpatreniZamerLinieElement : DtmLinieElementBase
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmProtipovodnoveOpatreniZamerPlochaElement : DtmPlochaBaseElement
     {
 
     }
@@ -3010,12 +3433,20 @@ namespace CAD.DTM.Elements
     public sealed class DtmPrubehJineTechnologickeStavbyTIElement : DtmLinieElementBase
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
+        public DtmSchemaTypPrubehuJineTechnologickeStavbyTIEnum? TypPrubehuJineTechnologickeStavbyTI { get => SchemaAttributes.Get<DtmSchemaTypPrubehuJineTechnologickeStavbyTIEnum?>("TypPrubehuJineTechnologickeStavbyTI"); set => SchemaAttributes.Set("TypPrubehuJineTechnologickeStavbyTI", value); }
+        public DtmSchemaVedeniSiteVJineStavbeEnum? VedeniSiteVJineStavbe { get => SchemaAttributes.Get<DtmSchemaVedeniSiteVJineStavbeEnum?>("VedeniSiteVJineStavbe"); set => SchemaAttributes.Set("VedeniSiteVJineStavbe", value); }
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmPrubehTechnologickeKonstrukceElement : DtmLinieElementBase
+    public sealed class DtmRozestavenaPlochaDefinicniBodElement : DtmDefinicniBodBaseElement
     {
-        public bool? HraniceJinehoObjektu { get => SchemaAttributes.Get<bool?>("HraniceJinehoObjektu"); set => SchemaAttributes.Set("HraniceJinehoObjektu", value); }
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmRozestavenaPlochaPlochaElement : DtmPlochaBaseElement
+    {
+
     }
 
     [DtmGeneratedElement]
@@ -3026,6 +3457,12 @@ namespace CAD.DTM.Elements
 
     [DtmGeneratedElement]
     public sealed class DtmSdilenaStavbaTIKoridorZameruPlochaElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmSdilenaStavbaTIPSElement : DtmPlochaBaseElement
     {
 
     }
@@ -3059,6 +3496,12 @@ namespace CAD.DTM.Elements
     public sealed class DtmSilnicniDopravaMistoZameruPlochaElement : DtmPlochaBaseElement
     {
 
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmSilnicniDopravaPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuSilnicniDopravyPSEnum? TypObjektuSilnicniDopravyPS { get => SchemaAttributes.Get<DtmSchemaTypObjektuSilnicniDopravyPSEnum?>("TypObjektuSilnicniDopravyPS"); set => SchemaAttributes.Set("TypObjektuSilnicniDopravyPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3116,7 +3559,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmSloupTechnologickeKonstrukceElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3180,6 +3623,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmStavbaProPesiPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmStavbaProZpevneniPovrchuDefinicniBodElement : DtmDefinicniBodBaseElement
     {
 
@@ -3218,19 +3667,20 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmStojanNabijeniVydejniStojanElement : DtmBodBaseElement
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypNabijecihoVydejnihoMediaEnum? TypNabijecihoVydejnihoMedia { get => SchemaAttributes.Get<DtmSchemaTypNabijecihoVydejnihoMediaEnum?>("TypNabijecihoVydejnihoMedia"); set => SchemaAttributes.Set("TypNabijecihoVydejnihoMedia", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmStudnaNaVerejnemProstranstviElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmStupenBodElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3260,6 +3710,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmSvodidloElement : DtmLinieElementBase
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypSvodidlaEnum? TypSvodidla { get => SchemaAttributes.Get<DtmSchemaTypSvodidlaEnum?>("TypSvodidla"); set => SchemaAttributes.Set("TypSvodidla", value); }
     }
 
@@ -3268,6 +3719,19 @@ namespace CAD.DTM.Elements
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypTechnickehoKanaluEnum? TypTechnickehoKanalu { get => SchemaAttributes.Get<DtmSchemaTypTechnickehoKanaluEnum?>("TypTechnickehoKanalu"); set => SchemaAttributes.Set("TypTechnickehoKanalu", value); }
+        public DtmSchemaVedeniSiteVJineStavbeEnum? VedeniSiteVJineStavbe { get => SchemaAttributes.Get<DtmSchemaVedeniSiteVJineStavbeEnum?>("VedeniSiteVJineStavbe"); set => SchemaAttributes.Set("VedeniSiteVJineStavbe", value); }
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmTechnologickyPortalLinieElement : DtmLinieElementBase
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmTechnologickyPortalPlochaElement : DtmPlochaBaseElement
+    {
+
     }
 
     [DtmGeneratedElement]
@@ -3295,6 +3759,12 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmTeplovodPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuTeplovodniSitePSEnum? TypObjektuTeplovodniSitePS { get => SchemaAttributes.Get<DtmSchemaTypObjektuTeplovodniSitePSEnum?>("TypObjektuTeplovodniSitePS"); set => SchemaAttributes.Set("TypObjektuTeplovodniSitePS", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmTerminalKombinovaneDopravyMistoZameruBodElement : DtmBodBaseElement
     {
 
@@ -3302,6 +3772,12 @@ namespace CAD.DTM.Elements
 
     [DtmGeneratedElement]
     public sealed class DtmTerminalKombinovaneDopravyMistoZameruPlochaElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmTerminalKombinovaneDopravyPSElement : DtmPlochaBaseElement
     {
 
     }
@@ -3385,6 +3861,7 @@ namespace CAD.DTM.Elements
         public DtmSchemaMaximalniProvozniNapetiEnum? MaximalniProvozniNapeti { get => SchemaAttributes.Get<DtmSchemaMaximalniProvozniNapetiEnum?>("MaximalniProvozniNapeti"); set => SchemaAttributes.Set("MaximalniProvozniNapeti", value); }
         public string ProvozniNapeti { get => SchemaAttributes.Get<string>("ProvozniNapeti"); set => SchemaAttributes.Set("ProvozniNapeti", value); }
         public DtmSchemaIzolaceVenkovnihoVedeniEnum? IzolaceVenkovnihoVedeni { get => SchemaAttributes.Get<DtmSchemaIzolaceVenkovnihoVedeniEnum?>("IzolaceVenkovnihoVedeni"); set => SchemaAttributes.Set("IzolaceVenkovnihoVedeni", value); }
+        public DtmSchemaDruhElektrickehoProuduEnum? DruhElektrickehoProudu { get => SchemaAttributes.Get<DtmSchemaDruhElektrickehoProuduEnum?>("DruhElektrickehoProudu"); set => SchemaAttributes.Set("DruhElektrickehoProudu", value); }
     }
 
     [DtmGeneratedElement]
@@ -3476,6 +3953,15 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmTrasaTrakcnihoTrolejovehoVedeniElement : DtmLinieElementBase
+    {
+        public DtmSchemaStavTrasySiteTIEnum? StavTrasySiteTI { get => SchemaAttributes.Get<DtmSchemaStavTrasySiteTIEnum?>("StavTrasySiteTI"); set => SchemaAttributes.Set("StavTrasySiteTI", value); }
+        public string ProvozniNapeti { get => SchemaAttributes.Get<string>("ProvozniNapeti"); set => SchemaAttributes.Set("ProvozniNapeti", value); }
+        public DtmSchemaDruhElektrickehoProuduTrakcnihoVedeniEnum? DruhElektrickehoProuduTrakcnihoVedeni { get => SchemaAttributes.Get<DtmSchemaDruhElektrickehoProuduTrakcnihoVedeniEnum?>("DruhElektrickehoProuduTrakcnihoVedeni"); set => SchemaAttributes.Set("DruhElektrickehoProuduTrakcnihoVedeni", value); }
+        public DtmSchemaTypDrahyEnum? TypDrahy { get => SchemaAttributes.Get<DtmSchemaTypDrahyEnum?>("TypDrahy"); set => SchemaAttributes.Set("TypDrahy", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmTrasaVodovodniSiteElement : DtmLinieElementBase
     {
         public string ICME { get => SchemaAttributes.Get<string>("ICME"); set => SchemaAttributes.Set("ICME", value); }
@@ -3512,21 +3998,27 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmVisutaLanovaDrahaElement : DtmLinieElementBase
+    public sealed class DtmVerejneProstranstviPSElement : DtmPlochaBaseElement
     {
 
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmVisutaLanovaDrahaElement : DtmLinieElementBase
+    {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmVnitrniCleneniBudovStavebElement : DtmLinieElementBase
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmVnitrniCleneniDopravniPlochyElement : DtmLinieElementBase
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3570,9 +4062,22 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmVodniDopravaPSElement : DtmPlochaBaseElement
+    {
+
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmVodniTokDefinicniBodElement : DtmDefinicniBodBaseElement
     {
 
+    }
+
+    [DtmGeneratedElement]
+    public sealed class DtmVodniTokLinieElement : DtmLinieElementBase
+    {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
+        public bool? HraniceJinehoObjektu { get => SchemaAttributes.Get<bool?>("HraniceJinehoObjektu"); set => SchemaAttributes.Set("HraniceJinehoObjektu", value); }
     }
 
     [DtmGeneratedElement]
@@ -3606,13 +4111,20 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
+    public sealed class DtmVodovodPSElement : DtmPlochaBaseElement
+    {
+        public DtmSchemaTypObjektuVodovodniSitePSEnum? TypObjektuVodovodniSitePS { get => SchemaAttributes.Get<DtmSchemaTypObjektuVodovodniSitePSEnum?>("TypObjektuVodovodniSitePS"); set => SchemaAttributes.Set("TypObjektuVodovodniSitePS", value); }
+    }
+
+    [DtmGeneratedElement]
     public sealed class DtmVrtElement : DtmBodBaseElement
     {
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
         public DtmSchemaTypVrtuEnum? TypVrtu { get => SchemaAttributes.Get<DtmSchemaTypVrtuEnum?>("TypVrtu"); set => SchemaAttributes.Set("TypVrtu", value); }
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmVyrobnaElektrinyNad50kWBodElement : DtmBodBaseElement
+    public sealed class DtmVyrobnaElektrinyNad100kWBodElement : DtmBodBaseElement
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypVyrobnyElektrinyEnum? TypVyrobnyElektriny { get => SchemaAttributes.Get<DtmSchemaTypVyrobnyElektrinyEnum?>("TypVyrobnyElektriny"); set => SchemaAttributes.Set("TypVyrobnyElektriny", value); }
@@ -3620,7 +4132,7 @@ namespace CAD.DTM.Elements
     }
 
     [DtmGeneratedElement]
-    public sealed class DtmVyrobnaElektrinyNad50kWPlochaElement : DtmPlochaBaseElement
+    public sealed class DtmVyrobnaElektrinyNad100kWPlochaElement : DtmPlochaBaseElement
     {
         public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypVyrobnyElektrinyEnum? TypVyrobnyElektriny { get => SchemaAttributes.Get<DtmSchemaTypVyrobnyElektrinyEnum?>("TypVyrobnyElektriny"); set => SchemaAttributes.Set("TypVyrobnyElektriny", value); }
@@ -3630,7 +4142,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmVytahVChodnikuElement : DtmBodBaseElement
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3642,7 +4154,7 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmZabradliElement : DtmLinieElementBase
     {
-
+        public DtmSchemaZpusobPorizeniZPSEnum? ZpusobPorizeniZPS { get => SchemaAttributes.Get<DtmSchemaZpusobPorizeniZPSEnum?>("ZpusobPorizeniZPS"); set => SchemaAttributes.Set("ZpusobPorizeniZPS", value); }
     }
 
     [DtmGeneratedElement]
@@ -3655,12 +4167,14 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmZarizeniKanalizacniPripojkyDefinicniBodElement : DtmDefinicniBodBaseElement
     {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypZarizeniKanalizacniPripojkyEnum? TypZarizeniKanalizacniPripojky { get => SchemaAttributes.Get<DtmSchemaTypZarizeniKanalizacniPripojkyEnum?>("TypZarizeniKanalizacniPripojky"); set => SchemaAttributes.Set("TypZarizeniKanalizacniPripojky", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmZarizeniKanalizacniPripojkyPlochaElement : DtmPlochaBaseElement
     {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypZarizeniKanalizacniPripojkyEnum? TypZarizeniKanalizacniPripojky { get => SchemaAttributes.Get<DtmSchemaTypZarizeniKanalizacniPripojkyEnum?>("TypZarizeniKanalizacniPripojky"); set => SchemaAttributes.Set("TypZarizeniKanalizacniPripojky", value); }
     }
 
@@ -3738,12 +4252,14 @@ namespace CAD.DTM.Elements
     [DtmGeneratedElement]
     public sealed class DtmZarizeniVodovodniPripojkyDefinicniBodElement : DtmDefinicniBodBaseElement
     {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypZarizeniVodovodniPripojkyEnum? TypZarizeniVodovodniPripojky { get => SchemaAttributes.Get<DtmSchemaTypZarizeniVodovodniPripojkyEnum?>("TypZarizeniVodovodniPripojky"); set => SchemaAttributes.Set("TypZarizeniVodovodniPripojky", value); }
     }
 
     [DtmGeneratedElement]
     public sealed class DtmZarizeniVodovodniPripojkyPlochaElement : DtmPlochaBaseElement
     {
+        public DtmSchemaStavObjektuEnum? StavObjektu { get => SchemaAttributes.Get<DtmSchemaStavObjektuEnum?>("StavObjektu"); set => SchemaAttributes.Set("StavObjektu", value); }
         public DtmSchemaTypZarizeniVodovodniPripojkyEnum? TypZarizeniVodovodniPripojky { get => SchemaAttributes.Get<DtmSchemaTypZarizeniVodovodniPripojkyEnum?>("TypZarizeniVodovodniPripojky"); set => SchemaAttributes.Set("TypZarizeniVodovodniPripojky", value); }
     }
 

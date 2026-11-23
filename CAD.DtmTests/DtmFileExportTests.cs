@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,7 +53,9 @@ public class DtmFileExportTests
         new DtmImporter(copy).ParseFile(filename);
         Assert.That(copy.GetElementGroups().Count(), Is.EqualTo(4));
         Assert.That(copy.getElementsGroup("O6"), Is.Not.Null);
-        Assert.That(((DtmElement)copy.getElementsGroup("OPElektrickeSite").GetElementGroups().Single()).SchemaAttributes.RecordXml().Count(), Is.EqualTo(1));
+        var area = (DtmElement)copy.getElementsGroup("BudovaPlocha").GetElementGroups().Single();
+        Assert.That(area.Geometry.Geometries.Select(g => g.GetType()), Is.EqualTo(new[] { typeof(DtmSurfaceGeometry), typeof(DtmMultiCurveGeometry) }));
+        Assert.That(document.Root.Descendants(XName.Get("VerzeJVFDTM", "cmn")).Single().Value, Is.EqualTo("1.5.0.2"));
     }
 
     [Test]

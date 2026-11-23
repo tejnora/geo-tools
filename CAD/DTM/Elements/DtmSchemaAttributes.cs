@@ -166,24 +166,58 @@ namespace CAD.DTM.Elements
             CaptureLegacyValues();
         }
 
-        public IReadOnlyList<string> Validate()
+        /// <summary>
+        /// Validates the values against the XSD. Without a context the complete (reference) record is checked;
+        /// with a JVF DTM 1.5 context (Ins, Upd, Del) only the attributes of that record variant are checked.
+        /// </summary>
+        public IReadOnlyList<string> Validate(string context = null)
         {
             SynchronizeLegacyValues();
             var errors = new List<string>();
-            foreach (var field in Fields())
-                if (field.Required && !_values.ContainsKey(field.Path)) errors.Add(field.Path + ": povinný údaj není vyplněn.");
-            foreach (var reference in Definition.Attributes.Concat(Definition.RecordAttributes))
-            {
-                try
-                {
-                    var node = Build(reference, reference.Name);
-                    if (node == null) continue;
-                    new XDocument(node).Validate(AttributeSchemas.Value, (_, e) => errors.Add(reference.Name + ": " + e.Message));
-                }
-                catch (XmlException ex) { errors.Add(reference.Name + ": " + ex.Message); }
-            }
+            var (attributes, recordAttributes) = References(context);
+            foreach (var reference in attributes.Concat(recordAttributes))
+                Validate(reference, reference.Name, errors);
             return errors;
         }
+
+        void Validate(DtmAttributeReference reference, string path, List<string> errors)
+        {
+            var attribute = DtmSchema.Instance.Attributes[reference.Name];
+            if (IsGroup(attribute))
+            {
+                if (!reference.Required && !IsPresent(path)) return;
+                foreach (var child in Children(reference, attribute))
+                    Validate(child, path + "/" + child.Name, errors);
+                return;
+            }
+            if (!IsPresent(path))
+            {
+                if (reference.Required) errors.Add(path + ": povinný údaj není vyplněn.");
+                return;
+            }
+            if (!AttributeSchemas.Value.GlobalElements.Contains(new XmlQualifiedName(reference.Name, "atr"))) return;
+            try
+            {
+                var node = Build(reference, path);
+                if (node != null) new XDocument(node).Validate(AttributeSchemas.Value, (_, e) => errors.Add(path + ": " + e.Message));
+            }
+            catch (XmlException ex) { errors.Add(path + ": " + ex.Message); }
+        }
+
+        (IReadOnlyList<DtmAttributeReference> Attributes, IReadOnlyList<DtmAttributeReference> RecordAttributes) References(string context)
+        {
+            if (context == null) return (Definition.Attributes, Definition.RecordAttributes);
+            if (!Definition.Contexts.TryGetValue(context, out var record))
+                throw new InvalidOperationException($"{Definition.Name}: kontext záznamu {context} není ve schématu JVF DTM definován.");
+            return (record.Attributes, record.RecordAttributes);
+        }
+
+        static bool IsGroup(DtmAttributeDefinition attribute) => attribute.Type == "complex" && !attribute.Children.Any(c => c.Namespace == "gml");
+
+        static IEnumerable<DtmAttributeReference> Children(DtmAttributeReference reference, DtmAttributeDefinition attribute) =>
+            reference.Type != null && DtmSchema.Instance.Types.TryGetValue(reference.Type, out var typed) ? typed : attribute.Children;
+
+        bool IsPresent(string path) => _values.ContainsKey(path) || _values.Keys.Any(p => p.StartsWith(path + "/", StringComparison.Ordinal));
 
         public static string ValidateValue(DtmAttributeDefinition definition, string text)
         {
@@ -198,10 +232,13 @@ namespace CAD.DTM.Elements
             return error;
         }
 
-        public IEnumerable<XElement> ToXml(bool includeCommon = true)
+        public IEnumerable<XElement> ToXml(bool includeCommon = true) => ToXml(null, includeCommon);
+
+        /// <summary>Attribute elements of the record; with a context (Ins, Upd, Del) in the layout of that JVF DTM 1.5 record variant.</summary>
+        public IEnumerable<XElement> ToXml(string context, bool includeCommon = true)
         {
             SynchronizeLegacyValues();
-            foreach (var reference in Definition.Attributes)
+            foreach (var reference in References(context).Attributes)
             {
                 if (!includeCommon && reference.Name == "SpolecneAtributyVsechObjektu") continue;
                 var element = Build(reference, reference.Name);
@@ -209,9 +246,9 @@ namespace CAD.DTM.Elements
             }
         }
 
-        public IEnumerable<XElement> RecordXml()
+        public IEnumerable<XElement> RecordXml(string context = null)
         {
-            foreach (var reference in Definition.RecordAttributes)
+            foreach (var reference in References(context).RecordAttributes)
             {
                 var element = Build(reference, reference.Name);
                 if (element != null) yield return element;
@@ -220,13 +257,17 @@ namespace CAD.DTM.Elements
 
         XElement Build(DtmAttributeReference reference, string path)
         {
-            var present = _values.ContainsKey(path) || _values.Keys.Any(p => p.StartsWith(path + "/", StringComparison.Ordinal));
-            if (!reference.Required && !present) return null;
             var attribute = DtmSchema.Instance.Attributes[reference.Name];
-            var element = new XElement(XName.Get(reference.Name, "atr"));
+            var group = IsGroup(attribute);
+            var children = group ? Children(reference, attribute).ToList() : null;
+            var present = group ? children.Any(c => IsPresent(path + "/" + c.Name)) : IsPresent(path);
+            if (!reference.Required && !present) return null;
+            // Groups declared locally in the object schema (JVF DTM 1.5) are qualified by the object's namespace.
+            var ns = reference.Namespace == "local" ? _owner.Options?.XmlNamespace ?? "atr" : "atr";
+            var element = new XElement(XName.Get(reference.Name, ns));
             if (attribute.Type == "complex")
             {
-                if (attribute.Children.Any(c => c.Namespace == "gml"))
+                if (!group)
                 {
                     if (_values.TryGetValue(path, out var raw))
                     {
@@ -236,19 +277,24 @@ namespace CAD.DTM.Elements
                     }
                     return element;
                 }
-                foreach (var child in attribute.Children)
+                foreach (var child in children)
                 {
                     var nested = Build(child, path + "/" + child.Name);
                     if (nested != null) element.Add(nested);
                 }
             }
-            else if (_values.TryGetValue(path, out var text)) element.Value = text;
+            else if (_values.TryGetValue(path, out var text) && text.Length > 0) element.Value = text;
+            // An empty value of a nillable non-string attribute (JVF DTM 1.5, e.g. TridaPresnostiVyska of DTI) is written as xsi:nil.
+            else if (attribute.Nillable && attribute.Type != "string")
+                element.SetAttributeValue(XName.Get("nil", "http://www.w3.org/2001/XMLSchema-instance"), "true");
             return element;
         }
 
-        public void Export(IDtmExporter exporter, bool includeCommon = true)
+        public void Export(IDtmExporter exporter, bool includeCommon = true) => Export(exporter, null, includeCommon);
+
+        public void Export(IDtmExporter exporter, string context, bool includeCommon = true)
         {
-            foreach (var element in ToXml(includeCommon)) WriteElement(exporter, element);
+            foreach (var element in ToXml(context, includeCommon)) WriteElement(exporter, element);
         }
 
         internal static void WriteElement(IDtmExporter exporter, XElement element)

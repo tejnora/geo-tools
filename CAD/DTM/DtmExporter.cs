@@ -26,7 +26,7 @@ namespace CAD.DTM
         {
             var errors = _main.GetElementGroups().SelectMany(g => g.Value.GetElementGroups()
                 .Where(e => e.ExportToOutput).OfType<DtmElement>()
-                .SelectMany(e => (e.SchemaAttributes?.Validate() ?? Array.Empty<string>()).Select(message => g.Key + ": " + message))).ToArray();
+                .SelectMany(e => (e.SchemaAttributes?.Validate(e.EvaluateExportContext()) ?? Array.Empty<string>()).Select(message => g.Key + ": " + message))).ToArray();
             if (errors.Length > 0) throw new InvalidOperationException("Export DTM: opravte atributy objektů.\n" + string.Join("\n", errors.Take(25)));
             _exportCtx = ctx;
             _exportedPoints = new List<DtmPoint>();
@@ -78,7 +78,7 @@ namespace CAD.DTM
         }
         void AddHead()
         {
-            AddElement("cmn", "VerzeJVFDTM", "1.4.3");
+            AddElement("cmn", "VerzeJVFDTM", DtmSchema.Instance.Version);
             AddElement("cmn", "DatumZapisu", DateTime.Now);
             AddElement("cmn", "TypZapisu", "změnové věty");
         }
@@ -154,10 +154,17 @@ namespace CAD.DTM
 
         void ExportDoprovodneInformace()
         {
-            BeginElement("dopinf", "DoprovodneInformace", true);
+            // JVF DTM 1.5: accompanying information of an update GAD DTM (doprovodne_informace.xsd, DoprovodneInformaceGADType).
+            BeginElement("dopinf", "DoprovodneInformaceGAD", true);
             BeginElement(null, "UdajeOZmenach");
             BeginElement(null, "ZaznamZmeny");
             ExportZaznamZmeny();
+            EndElement();
+            EndElement();
+            // Required element; the application does not maintain areas of complete ZPS, so the record is nil.
+            BeginElement(null, "OblastiKompletniZPS");
+            BeginElement(null, "ZaznamOKZPS");
+            AddAttribute("xsi", "nil", "true");
             EndElement();
             EndElement();
             EndElement();
@@ -165,14 +172,7 @@ namespace CAD.DTM
 
         void ExportZaznamZmeny()
         {
-            AddEmptyElement("atr", "IDPodani");
-            AddEmptyElement("atr", "PopisObjektu");
-            AddEmptyElement("atr", "IDEditora");
-            AddElement("atr", "DatumVkladu", DateTime.Now);
-            AddEmptyElement("atr", "VkladOsoba");
             AddElement(null, "NazevZakazky", _exportCtx.NazevZakazky);
-            AddEmptyElement(null, "CisloStavbyZakazky");
-            AddEmptyElement(null, "PartnerInvestor");
             AddElement(null, "Zpracovatel", _exportCtx.Zpracovatel);
             AddElement(null, "OrganizaceZpracovatele", _exportCtx.OrganizaceZpracovatele);
             AddElement(null, "DatumMereni", _exportCtx.DatumMereni.ToString("yyyy-MM-dd"));
@@ -193,31 +193,6 @@ namespace CAD.DTM
             BeginElement(null, "OblastZmeny");
             surfaceGeometry.ExportToDtm(this);
             EndElement();
-            /*
-            if (_main.UdajeOVydeji != null)
-            {
-                var polygon = _main.UdajeOVydeji.Polygon;
-                BeginElement(null, "OblastZmeny");
-                BeginElement("gml", "surfaceProperty", false);
-                BeginElement("gml", "Polygon");
-                AddAttribute("gml", "id", _main.AllocateUniqueId("03"));
-                AddAttribute("srsName", polygon.SrsName);
-                AddAttribute("srsDimension", polygon.SrsDimension);
-                BeginElement("gml", "exterior");
-                BeginElement("gml", "LinearRing");
-                var posListData = new StringBuilder();
-                foreach (var p in polygon.Points)
-                {
-                    posListData.Append(p.ExportToDtm(2) + " ");
-                }
-                AddElement("gml", "posList", posListData.ToString(0, posListData.Length - 1));
-                EndElement();
-                EndElement();
-                EndElement();
-                EndElement();
-                EndElement();
-            }
-            */
             AddElement(null, "Konsolidace", false);
         }
         void AddEmptyElement(string ns, string name)

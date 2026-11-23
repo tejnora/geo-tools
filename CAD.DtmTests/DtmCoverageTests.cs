@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,7 +31,7 @@ public class DtmCoverageTests
     {
         var config = DtmConfigurationSingleton.Instance;
         var files = Directory.GetFiles(Path.Combine(DtmSchema.XsdDirectory, "objekty"), "*.xsd");
-        Assert.That(files, Has.Length.EqualTo(358));
+        Assert.That(files, Has.Length.EqualTo(393));
         Assert.That(config.ElementSetting.Keys, Is.EquivalentTo(ObjectNames));
         Assert.That(config.Diagnostics, Is.Empty, string.Join("\n", config.Diagnostics));
         foreach (var file in files)
@@ -77,8 +77,10 @@ public class DtmCoverageTests
         xmlDoc.LoadXml(envelope.ToString());
         new DtmImporter(main).ParseDocument(xmlDoc);
         var imported = (DtmElement)main.getElementsGroup(name).GetElementGroups().Single();
-        var before = new XElement("Attributes", attrs.ToXml(), attrs.RecordXml());
-        var after = new XElement("Attributes", imported.SchemaAttributes.ToXml(), imported.SchemaAttributes.RecordXml());
+        // A new object is exported as ZaznamObjektuIns; only the attributes of that JVF DTM 1.5 context are transferred.
+        Assert.That(imported.ZapisObjektu, Is.EqualTo('i'));
+        var before = new XElement("Attributes", attrs.ToXml("Ins"), attrs.RecordXml("Ins"));
+        var after = new XElement("Attributes", imported.SchemaAttributes.ToXml("Ins"), imported.SchemaAttributes.RecordXml("Ins"));
         // Namespace declarations may move during serialization; compare expanded XML names and values.
         foreach (var root in new[] { before, after })
             foreach (var node in root.DescendantsAndSelf()) node.Attributes().Where(a => a.IsNamespaceDeclaration).Remove();

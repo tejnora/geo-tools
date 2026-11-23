@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Xml;
 using CAD.DTM.Configuration;
 using CAD.DTM.Elements;
@@ -71,6 +72,7 @@ namespace CAD.DTM
                             foreach (XmlElement xmlElement in xmlGroup)
                             {
                                 var element = DtmConfigurationSingleton.Instance.CreateType(group.Name);
+                                element.ZapisObjektu = ZapisObjektuFromContext(xmlElement.LocalName);
                                 ParseZaznamObjektu(xmlElement, element);
                                 group.AddElement(element);
                             }
@@ -103,15 +105,25 @@ namespace CAD.DTM
             element.SchemaAttributes?.ApplyToLegacyValues();
         }
 
+        /// <summary>
+        /// JVF DTM 1.5 encodes the kind of change in the record element name (ZaznamObjektuIns, ZaznamObjektuRefV, ...);
+        /// JVF DTM 1.4.3 uses ZaznamObjektu with a cmn:ZapisObjektu child, which overrides this default.
+        /// </summary>
+        internal static char ZapisObjektuFromContext(string recordName)
+        {
+            var context = recordName.StartsWith("ZaznamObjektu", StringComparison.Ordinal) ? recordName.Substring("ZaznamObjektu".Length) : recordName;
+            return context switch
+            {
+                "Ins" or "PeIns" => 'i',
+                "Upd" or "PeUpd" => 'u',
+                "Del" or "PeDel" => 'd',
+                _ => 'r'
+            };
+        }
+
         IDtmGeometryGroup ParseGeometrieObjektu(XmlElement xmlElement)
         {
-            var geometryGroup = new DtmGeometryGroup { Geometries = new List<IDtmGeometry>() };
-            foreach (XmlElement e in xmlElement)
-            {
-                var geometry = DtmGeometryXml.Read(e);
-                geometryGroup.Geometries.Add(geometry);
-            }
-            return geometryGroup;
+            return new DtmGeometryGroup { Geometries = DtmGeometryXml.ReadGeometrieObjektu(xmlElement) };
         }
 
         DtmPolygonGeometry ParsePolygonGeometry<T>(XmlElement xmlElement) where T : DtmPolygonGeometry, new()
@@ -137,7 +149,9 @@ namespace CAD.DTM
 
         void ParseDoprovodneInformace(XmlElement xmlElement)
         {
-            var doprovodneInformace = FindElement(xmlElement, "DoprovodneInformace");
+            // JVF DTM 1.5 uses context specific elements (DoprovodneInformaceGAD, DoprovodneInformaceVydejZPS, ...).
+            var doprovodneInformace = FindElement(xmlElement, "DoprovodneInformace")
+                ?? xmlElement?.ChildNodes.OfType<XmlElement>().FirstOrDefault(e => e.LocalName.StartsWith("DoprovodneInformace", StringComparison.Ordinal));
             var udajeOVydejiXml = FindElement(doprovodneInformace, "UdajeOVydeji");
             if (udajeOVydejiXml != null)
             {

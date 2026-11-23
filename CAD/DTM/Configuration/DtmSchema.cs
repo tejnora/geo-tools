@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +11,17 @@ namespace CAD.DTM.Configuration
         public string Name { get; set; }
         public string Namespace { get; set; } = "atr";
         public bool Required { get; set; }
+        /// <summary>Named attribute group type of a record context (e.g. SpolecneAtributyObjektuZPSInsType).</summary>
+        public string Type { get; set; }
+    }
+
+    /// <summary>Record layout of one JVF DTM 1.5 context (ZaznamObjektuIns, ZaznamObjektuUpd, ...).</summary>
+    public sealed class DtmRecordContext
+    {
+        public List<DtmAttributeReference> Attributes { get; set; } = new();
+        public List<DtmAttributeReference> RecordAttributes { get; set; } = new();
+        public string GeometryType { get; set; }
+        public bool GeometryRequired { get; set; }
     }
 
     public sealed class DtmAttributeDefinition
@@ -21,6 +32,7 @@ namespace CAD.DTM.Configuration
         public Dictionary<string, string> Values { get; set; } = new();
         public List<DtmAttributeReference> Children { get; set; } = new();
         public Dictionary<string, string> Facets { get; set; } = new();
+        public bool Nillable { get; set; }
     }
 
     public sealed class DtmObjectDefinition
@@ -30,6 +42,9 @@ namespace CAD.DTM.Configuration
         public string ExchangeName { get; set; }
         public string ElementType { get; set; }
         public List<string> Geometries { get; set; } = new();
+        /// <summary>cmn:GeometrieObjektu*Type of the object, e.g. GeometrieObjektuBod3DType.</summary>
+        public string GeometryType { get; set; }
+        public Dictionary<string, DtmRecordContext> Contexts { get; set; } = new();
         public List<DtmAttributeReference> Attributes { get; set; } = new();
         public List<DtmAttributeReference> RecordAttributes { get; set; } = new();
     }
@@ -39,7 +54,9 @@ namespace CAD.DTM.Configuration
         static readonly Lazy<DtmSchema> Schema = new(() => ReadResource<DtmSchema>("DtmSchema.json"));
         static readonly Lazy<Dictionary<string, string>> Aliases = new(() => ReadResource<Dictionary<string, string>>("DtmAliases.json"));
         public static DtmSchema Instance => Schema.Value;
+        public string Version { get; set; }
         public Dictionary<string, DtmAttributeDefinition> Attributes { get; set; }
+        public Dictionary<string, List<DtmAttributeReference>> Types { get; set; } = new();
         public Dictionary<string, DtmObjectDefinition> Objects { get; set; }
 
         public static string CanonicalName(string name) => Aliases.Value.TryGetValue(name, out var canonical) ? canonical : name;
