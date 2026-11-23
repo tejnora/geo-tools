@@ -22,6 +22,7 @@
     <Content Include="DTM\Doc\xsd\**\*.xsd" CopyToOutputDirectory="PreserveNewest" />
     <EmbeddedResource Include="DTM\Configuration\DtmSchema.json;DTM\Configuration\DtmAliases.json" />
     <Content Include="DTM\Configuration\DtmConfiguration.json" Link="Data\DtmConfiguration.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Data\*.dat" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="DTM\Symbols\*.png" Link="Data\DtmSymbols\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
