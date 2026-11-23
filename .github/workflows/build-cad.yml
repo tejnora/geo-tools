@@ -41,7 +41,9 @@ jobs:
           git tag -f latest
           git push -f origin latest
           gh release delete latest --yes 2>$null
+          $notes = (Get-Content README.md -Raw -Encoding utf8) + "`n---`nAutomatický build z commitu ${{ github.sha }}"
+          Set-Content release-notes.md $notes -Encoding utf8
           gh release create latest CAD.zip `
             --title "CAD - latest build" `
-            --notes "Automaticky build z commitu ${{ github.sha }}" `
+            --notes-file release-notes.md `
             --prerelease
