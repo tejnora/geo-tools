@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objtyp:JVFDTM xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:pobzps="pobzps" xmlns:pdmdef="pdmdef" xmlns:hrasta="hrasta" xmlns:objtyp="objtyp" xmlns:cmn="cmn" xmlns:atr="atr" xmlns:dopinf="dopinf">
+  <objtyp:DataJVFDTM>
+    <cmn:VerzeJVFDTM>1.5.0.2</cmn:VerzeJVFDTM>
+    <cmn:DatumZapisu>2026-11-23T16:20:54</cmn:DatumZapisu>
+    <cmn:TypZapisu>kompletní zápis</cmn:TypZapisu>
+    <objtyp:Data>
+      <objtyp:PodrobnyBodZPS>
+        <pobzps:ObjektovyTypNazev code_base="0100000218" code_suffix="01">podrobný bod ZPS</pobzps:ObjektovyTypNazev>
+        <pobzps:KategorieObjektu>Geodetické prvky</pobzps:KategorieObjektu>
+        <pobzps:SkupinaObjektu>Podrobný bod</pobzps:SkupinaObjektu>
+        <pobzps:ObsahovaCast>ZPS</pobzps:ObsahovaCast>
+        <pobzps:ZaznamyObjektu>
+          <ZaznamObjektuRefV xmlns="pobzps">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000330009124130</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">1</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">523</CisloBodu>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Bod3D xmlns="cmn">
+                <gml:pointProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:Point gml:id="ID52000330009124130_01" srsDimension="3" srsName="EPSG:5514">
+                    <gml:pos>-628691.71 -1034185.37 268.57</gml:pos>
+                  </gml:Point>
+                </gml:pointProperty>
+              </Bod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="pobzps">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000330009124131</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">1</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">522</CisloBodu>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Bod3D xmlns="cmn">
+                <gml:pointProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:Point gml:id="ID52000330009124131_01" srsDimension="3" srsName="EPSG:5514">
+                    <gml:pos>-628691.73 -1034185.05 268.58</gml:pos>
+                  </gml:Point>
+                </gml:pointProperty>
+              </Bod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="pobzps">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000330009124132</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">1</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">521</CisloBodu>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Bod3D xmlns="cmn">
+                <gml:pointProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:Point gml:id="ID52000330009124132_01" srsDimension="3" srsName="EPSG:5514">
+                    <gml:pos>-628691.94 -1034185.06 268.56</gml:pos>
+                  </gml:Point>
+                </gml:pointProperty>
+              </Bod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="pobzps">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000330009124133</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <ZpusobPorizeniPB_ZPS xmlns="atr">1</ZpusobPorizeniPB_ZPS>
+              <CisloBodu xmlns="atr">537</CisloBodu>
+              <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+              <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+              <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Bod3D xmlns="cmn">
+                <gml:pointProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:Point gml:id="ID52000330009124133_01" srsDimension="3" srsName="EPSG:5514">
+                    <gml:pos>-628691.92 -1034185.38 268.55</gml:pos>
+                  </gml:Point>
+                </gml:pointProperty>
+              </Bod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+        </pobzps:ZaznamyObjektu>
+      </objtyp:PodrobnyBodZPS>
+      <objtyp:PatkaDeskaMonolitPilirDefinicniBod>
+        <pdmdef:ObjektovyTypNazev code_base="0100000183" code_suffix="04">patka, deska, monolit, pilíř</pdmdef:ObjektovyTypNazev>
+        <pdmdef:KategorieObjektu>Součásti a příslušenství staveb</pdmdef:KategorieObjektu>
+        <pdmdef:SkupinaObjektu>Stavba společná pro více skupin</pdmdef:SkupinaObjektu>
+        <pdmdef:ObsahovaCast>ZPS</pdmdef:ObsahovaCast>
+        <pdmdef:ZaznamyObjektu>
+          <ZaznamObjektuRefV xmlns="pdmdef">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000040000048347</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuDefinicnichBodu>
+                <ICS xmlns="atr" />
+                <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuDefinicnichBodu>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Bod3D xmlns="cmn">
+                <gml:pointProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:Point gml:id="ID52000040000048347_04" srsDimension="3" srsName="EPSG:5514">
+                    <gml:pos>-628691.83 -1034185.21 267.86</gml:pos>
+                  </gml:Point>
+                </gml:pointProperty>
+              </Bod3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+        </pdmdef:ZaznamyObjektu>
+      </objtyp:PatkaDeskaMonolitPilirDefinicniBod>
+      <objtyp:HraniceStavby>
+        <hrasta:ObjektovyTypNazev code_base="0100000300" code_suffix="02">hranice stavby</hrasta:ObjektovyTypNazev>
+        <hrasta:KategorieObjektu>Konstrukční prvky objektů</hrasta:KategorieObjektu>
+        <hrasta:SkupinaObjektu>Základní konstrukční prvek</hrasta:SkupinaObjektu>
+        <hrasta:ObsahovaCast>ZPS</hrasta:ObsahovaCast>
+        <hrasta:ZaznamyObjektu>
+          <ZaznamObjektuRefV xmlns="hrasta">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000070000198049</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <ICS xmlns="atr" />
+                <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+                <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">7</TypStavby>
+              <ZpusobPorizeniZPS xmlns="atr">1</ZpusobPorizeniZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Linie3D xmlns="cmn">
+                <gml:curveProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:LineString gml:id="ID52000070000198049_02" srsDimension="3" srsName="EPSG:5514">
+                    <gml:posList>-628691.73 -1034185.05 268.58 -628691.94 -1034185.06 268.56</gml:posList>
+                  </gml:LineString>
+                </gml:curveProperty>
+              </Linie3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="hrasta">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000070000198050</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <ICS xmlns="atr" />
+                <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+                <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">7</TypStavby>
+              <ZpusobPorizeniZPS xmlns="atr">1</ZpusobPorizeniZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Linie3D xmlns="cmn">
+                <gml:curveProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:LineString gml:id="ID52000070000198050_02" srsDimension="3" srsName="EPSG:5514">
+                    <gml:posList>-628691.73 -1034185.05 268.58 -628691.71 -1034185.37 268.57</gml:posList>
+                  </gml:LineString>
+                </gml:curveProperty>
+              </Linie3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="hrasta">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000070000198051</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <ICS xmlns="atr" />
+                <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+                <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">7</TypStavby>
+              <ZpusobPorizeniZPS xmlns="atr">1</ZpusobPorizeniZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Linie3D xmlns="cmn">
+                <gml:curveProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:LineString gml:id="ID52000070000198051_02" srsDimension="3" srsName="EPSG:5514">
+                    <gml:posList>-628691.71 -1034185.37 268.57 -628691.92 -1034185.38 268.55</gml:posList>
+                  </gml:LineString>
+                </gml:curveProperty>
+              </Linie3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+          <ZaznamObjektuRefV xmlns="hrasta">
+            <AtributyObjektu>
+              <SpolecneAtributyVsechObjektu>
+                <DatumVkladu xmlns="atr">2025-10-03T14:44:46</DatumVkladu>
+                <DatumZmeny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">2025-10-03T14:44:46</DatumZmeny>
+                <ID xmlns="atr">52000070000198052</ID>
+                <IDEditora xmlns="atr">SUBJ-00003344</IDEditora>
+                <IDZmeny xmlns="atr">PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</IDZmeny>
+                <PopisObjektu xmlns="atr" />
+                <VkladOsoba xmlns="atr">Odile Vyhnálková</VkladOsoba>
+                <ZmenaOsoba xmlns="atr" />
+              </SpolecneAtributyVsechObjektu>
+              <SpolecneAtributyObjektuZPS>
+                <ICS xmlns="atr" />
+                <TridaPresnostiPoloha xmlns="atr">3</TridaPresnostiPoloha>
+                <TridaPresnostiVyska xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="atr">3</TridaPresnostiVyska>
+                <UrovenUmisteniObjektuZPS xmlns="atr">0</UrovenUmisteniObjektuZPS>
+              </SpolecneAtributyObjektuZPS>
+              <TypStavby xmlns="atr">7</TypStavby>
+              <ZpusobPorizeniZPS xmlns="atr">1</ZpusobPorizeniZPS>
+            </AtributyObjektu>
+            <GeometrieObjektu>
+              <Linie3D xmlns="cmn">
+                <gml:curveProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+                  <gml:LineString gml:id="ID52000070000198052_02" srsDimension="3" srsName="EPSG:5514">
+                    <gml:posList>-628691.94 -1034185.06 268.56 -628691.92 -1034185.38 268.55</gml:posList>
+                  </gml:LineString>
+                </gml:curveProperty>
+              </Linie3D>
+            </GeometrieObjektu>
+          </ZaznamObjektuRefV>
+        </hrasta:ZaznamyObjektu>
+      </objtyp:HraniceStavby>
+    </objtyp:Data>
+    <dopinf:DoprovodneInformaceVydejZPS>
+      <dopinf:UdajeOZmenach>
+        <dopinf:ZaznamZmeny>
+          <atr:IDEditora>SUBJ-00003344</atr:IDEditora>
+          <atr:DatumVkladu>2025-10-03T14:44:47</atr:DatumVkladu>
+          <atr:VkladOsoba>Odile Vyhnálková</atr:VkladOsoba>
+          <dopinf:NazevZakazky>Králova Lhota, p.č. 3388, kabel NN</dopinf:NazevZakazky>
+          <dopinf:CisloStavbyZakazky>IV-12-2030154</dopinf:CisloStavbyZakazky>
+          <dopinf:PartnerInvestor>ČEZ Distribuce, a.s.</dopinf:PartnerInvestor>
+          <atr:IDPodani>PGAD-EEF5ED0C-8F18-49A4-B543-603870AC0215</atr:IDPodani>
+          <dopinf:Konsolidace>0</dopinf:Konsolidace>
+          <dopinf:Zpracovatel>Ing. Kolář</dopinf:Zpracovatel>
+          <dopinf:OrganizaceZpracovatele>GEOŠRAFO s.r.o.  Kladská 181/55 Hradec Králové tel. 495 408 865</dopinf:OrganizaceZpracovatele>
+          <dopinf:DatumMereni>2025-09-24</dopinf:DatumMereni>
+          <dopinf:DatumZpracovani>2025-10-03</dopinf:DatumZpracovani>
+          <dopinf:AZI>2268</dopinf:AZI>
+          <dopinf:DatumOvereni>2025-10-03</dopinf:DatumOvereni>
+          <dopinf:CisloOvereni>421/2025</dopinf:CisloOvereni>
+          <dopinf:OblastZmeny>
+            <gml:surfaceProperty xmlns:gml="http://www.opengis.net/gml/3.2">
+              <gml:Polygon srsDimension="2" srsName="EPSG:5514">
+                <gml:exterior>
+                  <gml:LinearRing>
+                    <gml:posList>-628710.13 -1034170.27 -628661.39 -1034147.07 -628631.87 -1034171.45 -628670.50 -1034229.15 -628707.75 -1034224.98 -628710.13 -1034170.27</gml:posList>
+                  </gml:LinearRing>
+                </gml:exterior>
+              </gml:Polygon>
+            </gml:surfaceProperty>
+          </dopinf:OblastZmeny>
+        </dopinf:ZaznamZmeny>
+      </dopinf:UdajeOZmenach>
+      <dopinf:OblastiKompletniZPS>
+        <dopinf:ZaznamOKZPS xsi:nil="true" />
+      </dopinf:OblastiKompletniZPS>
+      <dopinf:UdajeOVydeji>
+        <dopinf:DatumPlatnosti>2026-11-23T16:20:54</dopinf:DatumPlatnosti>
+        <dopinf:TypDatoveSady>4</dopinf:TypDatoveSady>
+        <dopinf:PopisDatoveSady />
+        <dopinf:ObvodDatoveSady>
+          <gml:Polygon xmlns:gml="http://www.opengis.net/gml/3.2" srsDimension="2" srsName="EPSG:5514">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:posList>-628716.54 -1034164.00 -628717.24 -1034201.92 -628689.78 -1034200.28 -628690.31 -1034159.26 -628716.54 -1034164.00</gml:posList>
+              </gml:LinearRing>
+            </gml:exterior>
+          </gml:Polygon>
+        </dopinf:ObvodDatoveSady>
+      </dopinf:UdajeOVydeji>
+    </dopinf:DoprovodneInformaceVydejZPS>
+  </objtyp:DataJVFDTM>
+</objtyp:JVFDTM>

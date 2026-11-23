@@ -17,6 +17,7 @@ public class DtmRegressionTests
 {
     [TestCase("SUBJ-00006299_CZ053_00003.jvf.xml")]
     [TestCase("vydej_zps_ref.jvf.xml")]
+    [TestCase("vydej_zps_ref_jvf_1_5.jvf.xml")]
     public void SampleFilesImportAndPreserveAllAttributeValues(string filename)
     {
         var main = new DtmMain();

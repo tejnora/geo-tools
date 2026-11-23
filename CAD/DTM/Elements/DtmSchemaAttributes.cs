@@ -75,6 +75,24 @@ namespace CAD.DTM.Elements
             _values.Clear();
             foreach (XmlElement child in attributes.ChildNodes.OfType<XmlElement>())
                 Read(child, child.LocalName);
+            RelocateUnknownPaths();
+        }
+
+        /// <summary>
+        /// JVF DTM 1.5 moved some attributes (e.g. ZpusobPorizeniZPS) out of their 1.4.3 parent group.
+        /// Values whose path is unknown to the schema are moved to the single known path with the same attribute name.
+        /// </summary>
+        void RelocateUnknownPaths()
+        {
+            var known = Fields().Select(f => f.Path).ToList();
+            foreach (var path in _values.Keys.Where(p => !known.Contains(p)).ToList())
+            {
+                var name = path.Split('/').Last();
+                var targets = known.Where(p => p.Split('/').Last() == name).ToList();
+                if (targets.Count != 1 || _values.ContainsKey(targets[0])) continue;
+                _values[targets[0]] = _values[path];
+                _values.Remove(path);
+            }
         }
 
         public void ApplyToLegacyValues()
@@ -89,7 +107,11 @@ namespace CAD.DTM.Elements
             CaptureLegacyValues();
         }
 
-        public void ImportRecordAttribute(XmlElement element) => Read(element, element.LocalName);
+        public void ImportRecordAttribute(XmlElement element)
+        {
+            Read(element, element.LocalName);
+            RelocateUnknownPaths();
+        }
 
         void Read(XmlElement element, string path)
         {

@@ -7,8 +7,14 @@ namespace CAD.DTM
 {
     public static class DtmGeometryXml
     {
+        const string GmlNamespace = "http://www.opengis.net/gml/3.2";
+
         public static IDtmGeometry Read(XmlElement property)
         {
+            // JVF DTM 1.5 wraps the GML property in cmn:Bod2D/Bod3D/Linie2D/Linie3D/Plocha2D/Plocha3D...
+            while (property.NamespaceURI != GmlNamespace
+                   && property.ChildNodes.OfType<XmlElement>().FirstOrDefault() is { NamespaceURI: GmlNamespace } inner)
+                property = inner;
             var value = property.ChildNodes.OfType<XmlElement>().FirstOrDefault()
                 ?? throw new FormatException("Chybí geometrie " + property.LocalName);
             return property.LocalName switch
