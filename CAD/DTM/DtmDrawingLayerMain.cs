@@ -35,12 +35,27 @@ namespace CAD.DTM
         }
 
         public string Id => "Dtm";
+        /// <summary>
+        /// Areas are filled with an opaque color, so they are drawn first, then lines and points on top.
+        /// Otherwise a point (e.g. a definition point of a building) hides under an area drawn after it.
+        /// </summary>
+        internal static int DrawOrder(ICanvasLayer layer) => (layer as IDtmDrawingGroup)?.Options?.ElementType switch
+        {
+            DtmElementType.Plocha => 0,
+            DtmElementType.Linie => 1,
+            DtmElementType.DefinicniBod => 2,
+            DtmElementType.Bod => 3,
+            _ => 1
+        };
+
+        internal IEnumerable<ICanvasLayer> LayersInDrawOrder => _layers.Values.OrderBy(DrawOrder);
+
         public void Draw(ICanvas canvas, Rect unitrect)
         {
-            foreach (var layer in _layers)
+            foreach (var layer in LayersInDrawOrder)
             {
-                if (!layer.Value.Visible) continue;
-                layer.Value.Draw(canvas, unitrect);
+                if (!layer.Visible) continue;
+                layer.Draw(canvas, unitrect);
             }
 
             DtmPolygonGeometry bbox = null;

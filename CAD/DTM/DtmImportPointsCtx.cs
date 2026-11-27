@@ -9,15 +9,18 @@ namespace CAD.DTM
 {
     public class DtmImportPointsCtx : DataObjectBase<DtmImportCtx>
     {
+        static readonly string[] ImportablePointTypes = { "IdentickyBod", "PodrobnyBodZPS" };
+
         public DtmImportPointsCtx()
             : base(null, new StreamingContext())
         {
             var po = SingletonsBase.Registry.getEntry(Registry.SubKey.kCurrentUser, "Dtm/ImportPointsFileName");
             FileName = po.getString("");
             PointTypeElements = new ObservableCollection<string>();
-            foreach (var element in DtmConfigurationSingleton.Instance.ElementSetting.Where(element => element.Value.ElementType == DtmElementType.Bod))
+            var elementSetting = DtmConfigurationSingleton.Instance.ElementSetting;
+            foreach (var name in ImportablePointTypes.Where(name => elementSetting.ContainsKey(name)))
             {
-                PointTypeElements.Add(element.Key);
+                PointTypeElements.Add(name);
             }
             PointTypeSelected = PointTypeElements[0];
         }

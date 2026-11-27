@@ -138,10 +138,13 @@ namespace CAD.DTM.Validation.Rules
 
         protected override void Check(DtmValidationContext ctx, DtmRuleResult result)
         {
-            var areas = ctx.Areas.Select(a => new { a.Level, Ring = DtmAreaHelper.Ring(a) })
+            // An area is either an area object, or (as a derived object) a region enclosed by ZPS construction lines of the same level.
+            var areas = ctx.Areas.Select(a => (a.Level, Ring: DtmAreaHelper.Ring(a)))
+                .Concat(DerivedFaces(ctx.Lines))
                 .Where(a => a.Ring != null && a.Ring.Count >= 3).ToList();
             var originalAreas = ctx.OriginalItems.Where(a => a.IsZps && a.Type == DtmElementType.Plocha)
-                .Select(a => new { a.Level, Ring = DtmAreaHelper.Ring(a) })
+                .Select(a => (a.Level, Ring: DtmAreaHelper.Ring(a)))
+                .Concat(DerivedFaces(ctx.OriginalItems.Where(ctx.IsLine)))
                 .Where(a => a.Ring != null && a.Ring.Count >= 3).ToList();
             foreach (var d in ctx.DefinitionPoints)
             {
@@ -153,5 +156,8 @@ namespace CAD.DTM.Validation.Rules
                 }
             }
         }
+
+        static IEnumerable<(int Level, List<DtmPoint> Ring)> DerivedFaces(IEnumerable<DtmValidationItem> lines) =>
+            lines.GroupBy(l => l.Level).SelectMany(level => DtmDerivedAreas.Faces(level).Select(face => (level.Key, face)));
     }
 }

@@ -228,11 +228,11 @@ namespace CAD.DTM
             if (!Directory.Exists(OutputDirectory))
                 SetFieldError(OutputDirectoryProperty, ExportText("DtmExportDirectoryError", "Vyberte existující výstupní adresář."));
             if (!Regex.IsMatch(UidSubjektu ?? "", @"\ASUBJ-[0-9]{8}\z"))
-                SetFieldError(UidSubjektuProperty, ExportText("DtmExportUidError", "UID musí mít tvar SUBJ-00000001 (osm číslic)."));
+                SetFieldError(UidSubjektuProperty, ExportText("DtmExportUidError", "ID editora musí mít tvar SUBJ-00000001 (osm číslic)."));
             if (!Regions.Any(r => r.Key == PrefixKraje))
                 SetFieldError(PrefixKrajeProperty, ExportText("DtmExportRegionError", "Vyberte kraj."));
             if (!Regex.IsMatch(Cgad ?? "", @"\A[0-9]{1,5}\z"))
-                SetFieldError(CgadProperty, ExportText("DtmExportCgadError", "CGAD musí obsahovat 1 až 5 číslic."));
+                SetFieldError(CgadProperty, ExportText("DtmExportCgadError", "Pořadové číslo zakázky musí obsahovat 1 až 5 číslic."));
         }
         internal static string ExportText(string id, string fallback) =>
             (string)LanguageConverter.ResolveDictionary().Translate(id, "Text", fallback, typeof(string));

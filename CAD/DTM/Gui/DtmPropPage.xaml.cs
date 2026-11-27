@@ -46,8 +46,14 @@ namespace CAD.DTM.Gui
                 schemaAttributes.SynchronizeLegacyValues();
                 if (dtmElement.GetDtmElement.Geometry != null)
                     _customProperties.AddProperty(new DtmGeometryCustomProperty((DtmElement)dtmElement.GetDtmElement));
-                foreach (var field in schemaAttributes.Fields())
-                    _customProperties.AddProperty(new DtmSchemaCustomProperty(schemaAttributes, field.Path, field.Attribute, field.Required));
+                var isNew = schemaAttributes.EditingContext == "Ins";
+                foreach (var field in schemaAttributes.Fields(schemaAttributes.EditingContext))
+                {
+                    // Common attributes are not shown for new objects; for imported ones they are informative only (not validated).
+                    var common = field.Path.StartsWith(DtmSchemaAttributes.CommonGroup + "/", StringComparison.Ordinal);
+                    if (common && isNew) continue;
+                    _customProperties.AddProperty(new DtmSchemaCustomProperty(schemaAttributes, field.Path, field.Attribute, field.Required && !common));
+                }
             }
             else dtmElement.GetDtmElement.InitGUICustomProperties(_customProperties);
             // Schema editors include every shared group, including DI and TI groups absent from the old tabs.

@@ -1224,6 +1224,8 @@ namespace CAD.Canvas
             var sizeY = ToScreenWithoutZoom(imageSize.Y * SymbolScaleCoefficient);
             point.X -= (int)(sizeX / 2.0);
             point.Y -= (int)(sizeY / 2.0);
+            if (_model.BackgroundLayer is Layers.BackgroundLayer background)
+                image = SymbolContrast.ForBackground(image, background.Color);
             canvas.Graphics.DrawImage(image, point.X, point.Y, (float)sizeX, (float)sizeY);
         }
         public double SymbolScaleCoefficient => 0.004;

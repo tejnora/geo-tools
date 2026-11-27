@@ -14,6 +14,8 @@ namespace CAD.DTM.Elements
     /// <summary>Attribute values with explicit presence, shared by XML, typed models and the editor.</summary>
     public sealed class DtmSchemaAttributes
     {
+        public const string CommonGroup = "SpolecneAtributyVsechObjektu";
+
         readonly DtmElement _owner;
         readonly Dictionary<string, string> _values = new();
         readonly Dictionary<string, string> _legacySnapshot = new();
@@ -131,14 +133,29 @@ namespace CAD.DTM.Elements
                 foreach (var field in Fields(reference, reference.Name, true)) yield return field;
         }
 
-        IEnumerable<(string, DtmAttributeDefinition, bool)> Fields(DtmAttributeReference reference, string path, bool parentRequired)
+        /// <summary>Fields of the given JVF DTM 1.5 record variant (Ins, Upd, Del); without a context the complete record.</summary>
+        public IEnumerable<(string Path, DtmAttributeDefinition Attribute, bool Required)> Fields(string context)
+        {
+            if (context == null) return Fields();
+            var (attributes, recordAttributes) = References(context);
+            return attributes.Concat(recordAttributes).SelectMany(reference => Fields(reference, reference.Name, true, true));
+        }
+
+        /// <summary>
+        /// Record variant used for editing and validation in the application: the Ins record for new objects,
+        /// otherwise the complete record.
+        /// </summary>
+        public string EditingContext =>
+            _owner.ZapisObjektu == 'i' && !_owner.IsDeleted && Definition.Contexts.ContainsKey("Ins") ? "Ins" : null;
+
+        IEnumerable<(string, DtmAttributeDefinition, bool)> Fields(DtmAttributeReference reference, string path, bool parentRequired, bool typed = false)
         {
             if (!DtmSchema.Instance.Attributes.TryGetValue(reference.Name, out var attribute)) yield break;
             if (attribute.Type != "complex" || attribute.Children.Any(c => c.Namespace == "gml"))
                 yield return (path, attribute, parentRequired && reference.Required);
             else
-                foreach (var child in attribute.Children)
-                    foreach (var field in Fields(child, path + "/" + child.Name, parentRequired && reference.Required)) yield return field;
+                foreach (var child in typed ? Children(reference, attribute) : attribute.Children)
+                    foreach (var field in Fields(child, path + "/" + child.Name, parentRequired && reference.Required, typed)) yield return field;
         }
 
         public void CaptureLegacyValues()
@@ -170,13 +187,20 @@ namespace CAD.DTM.Elements
         /// Validates the values against the XSD. Without a context the complete (reference) record is checked;
         /// with a JVF DTM 1.5 context (Ins, Upd, Del) only the attributes of that record variant are checked.
         /// </summary>
-        public IReadOnlyList<string> Validate(string context = null)
+        /// <remarks>
+        /// SpolecneAtributyVsechObjektu (identifiers, editor, dates) are maintained by the server and checked only when
+        /// the change is inserted there, so the application skips them unless <paramref name="includeCommon"/> is set.
+        /// </remarks>
+        public IReadOnlyList<string> Validate(string context = null, bool includeCommon = false)
         {
             SynchronizeLegacyValues();
             var errors = new List<string>();
             var (attributes, recordAttributes) = References(context);
             foreach (var reference in attributes.Concat(recordAttributes))
+            {
+                if (!includeCommon && reference.Name == CommonGroup) continue;
                 Validate(reference, reference.Name, errors);
+            }
             return errors;
         }
 

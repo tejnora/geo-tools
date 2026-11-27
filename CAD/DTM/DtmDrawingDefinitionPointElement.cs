@@ -36,6 +36,15 @@ namespace CAD.DTM
             UpdatePoint();
 
         }
+        /// <summary>A definition point is placed by a free click; JVF DTM coordinates are kept to cm (validation rule 1.6).</summary>
+        void SetPosition(UnitPoint point)
+        {
+            PointGeometry.Point.X = RoundToCm(point.X);
+            PointGeometry.Point.Y = RoundToCm(point.Y);
+            UpdatePoint();
+        }
+        internal static double RoundToCm(double value) => Math.Round(value, 2, MidpointRounding.AwayFromZero);
+
         void UpdatePoint()
         {
             _point = new UnitPoint(PointGeometry.Point.X, PointGeometry.Point.Y);
@@ -44,8 +53,8 @@ namespace CAD.DTM
         public DtmPointGeometry PointGeometry { get; private set; }
         public override void InitializeFromModel(UnitPoint point, ICanvasLayer layer, ISnapPoint snap)
         {
-            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint() { X = point.X, Y = point.Y }, SrsDimension = 3 };
-            UpdatePoint();
+            PointGeometry = new DtmPointGeometry() { Point = new DtmPoint(), SrsDimension = 3 };
+            SetPosition(point);
             var dtmLayer = (DtmDrawingLayerMain)layer;
             _element = DtmConfigurationSingleton.Instance.CreateType(dtmLayer.DtmPointSelected);
             _element.Geometry = new DtmGeometryGroup { Geometries = new List<IDtmGeometry> { PointGeometry } };
@@ -149,15 +158,11 @@ namespace CAD.DTM
 
         public void OnMouseMove(ICanvas canvas, UnitPoint point)
         {
-            PointGeometry.Point.X = point.X;
-            PointGeometry.Point.Y = point.Y;
-            UpdatePoint();
+            SetPosition(point);
         }
         public DrawObjectState OnMouseDown(ICanvas canvas, UnitPoint point, ISnapPoint snappoint)
         {
-            PointGeometry.Point.X = point.X;
-            PointGeometry.Point.Y = point.Y;
-            UpdatePoint();
+            SetPosition(point);
             return DrawObjectState.DoneRepeat;
         }
         public DrawObjectState OnFinish()
